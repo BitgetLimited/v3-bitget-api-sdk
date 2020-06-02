@@ -65,7 +65,7 @@ public class ApiClient {
             String contentType = "application/json";
             try {
                 String sign = SignatureUtils.generate(timestamp,
-                        original.method().toUpperCase(),
+                        original.method(),
                         original.url().url().getPath(),
                         original.url().encodedQuery(),
                         original.body() == null ? "" : bodyToString(original),

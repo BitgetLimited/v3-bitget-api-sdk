@@ -28,12 +28,28 @@ public class SignatureUtils {
         }
     }
 
+    /**
+     * 签名算法
+     *
+     * @param timestamp
+     * @param method
+     * @param requestPath
+     * @param queryString
+     * @param body
+     * @param secretKey
+     * @return java.lang.String
+     * @description ACCESS-SIGN的请求头是对 timestamp + method + requestPath
+     * + "?" + queryString + body 字符串(+表示字符串连接)使用 HMAC SHA256 方法加密，通过BASE64 编码输出而得到的。
+     * @author jian.li
+     * @date 2020-06-02 17:04
+     */
     public static String generate(String timestamp, String method, String requestPath,
                                   String queryString, String body, String secretKey)
             throws CloneNotSupportedException, InvalidKeyException, UnsupportedEncodingException {
+
         method = method.toUpperCase();
         body = StringUtils.defaultIfBlank(body, StringUtils.EMPTY);
-        queryString = StringUtils.isBlank(queryString) ? "" : "?" + queryString;
+        queryString = StringUtils.isBlank(queryString) ? StringUtils.EMPTY : "?" + queryString;
 
         String preHash = timestamp + method + requestPath + queryString + body;
         byte[] secretKeyBytes = secretKey.getBytes(SignatureUtils.CHARSET);
