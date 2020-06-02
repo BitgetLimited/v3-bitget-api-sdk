@@ -6,6 +6,7 @@ import com.bitget.openapi.common.client.ApiClient;
 import com.bitget.openapi.dto.response.*;
 import com.bitget.openapi.service.MarketService;
 import retrofit2.Call;
+import retrofit2.Response;
 
 import java.io.IOException;
 import java.util.List;
@@ -24,8 +25,9 @@ public class MarketServiceImpl implements MarketService {
 
     @Override
     public ServerTime getTime() throws IOException {
-        Call<ServerTime> call = marketApi.getTime();
-        return call.execute().body();
+        Response<ServerTime> call = marketApi.getTime().execute();
+        return call.body();
+//        return call.execute().body();
     }
 
     @Override

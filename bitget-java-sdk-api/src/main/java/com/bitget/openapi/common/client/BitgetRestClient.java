@@ -1,7 +1,7 @@
 package com.bitget.openapi.common.client;
 
 import com.bitget.openapi.ContractApiFacade;
-import com.bitget.openapi.common.constant.Content;
+import com.bitget.openapi.common.constant.HttpHeader;
 import com.bitget.openapi.common.domain.ClientParameter;
 import com.bitget.openapi.common.enums.SupportedLocaleEnum;
 import org.apache.commons.lang3.ObjectUtils;
@@ -23,8 +23,8 @@ public class BitgetRestClient {
         Validate.notNull(configuration.getSecretKey(), "secretKey is null");
         Validate.notNull(configuration.getPassphrase(), "passphrase is null");
 
-        configuration.setBaseUrl(StringUtils.defaultIfBlank(configuration.getBaseUrl(), Content.BASE_URL));
-        configuration.setTimeout(ObjectUtils.defaultIfNull(configuration.getTimeout(), Content.TIME_OUT));
+        configuration.setBaseUrl(StringUtils.defaultIfBlank(configuration.getBaseUrl(), HttpHeader.BASE_URL));
+        configuration.setTimeout(ObjectUtils.defaultIfNull(configuration.getTimeout(), HttpHeader.TIME_OUT));
         configuration.setLocale(ObjectUtils.defaultIfNull(configuration.getLocale(), SupportedLocaleEnum.EN_US.getName()));
 
         apiClient = new ApiClient(configuration);

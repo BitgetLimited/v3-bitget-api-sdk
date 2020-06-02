@@ -18,8 +18,11 @@ public class MarketServiceTest extends BaseTest {
 
     @Test
     public void time() throws IOException {
-        ServerTime result = bitgetRestClient.contract().bitget().market().getTime();
-        System.out.println(JSON.toJSONString(result));
+        for (int i = 0; i < 100; i++) {
+            ServerTime result = bitgetRestClient.contract().bitget().market().getTime();
+            System.out.println(JSON.toJSONString(result));
+        }
+
     }
 
     @Test
