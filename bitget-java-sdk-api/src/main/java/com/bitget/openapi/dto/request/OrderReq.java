@@ -24,10 +24,6 @@ public class OrderReq implements Serializable {
      */
     private String instrument_id;
     /**
-     * 用户id
-     */
-    private Long userId;
-    /**
      *自定义订单号(不超过50个字符，且不能是特殊字符，如火星字符等)
      */
     private String client_oid;
