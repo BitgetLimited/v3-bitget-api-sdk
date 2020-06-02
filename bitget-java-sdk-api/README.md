@@ -1,17 +1,18 @@
-# bitget-java-api-sdk
+# bitget-java-sdk-api
 A Java sdk for bitget exchange API
 
-# open api sdk 使用说明
+# api sdk 使用说明
 1. 在maven项目的pom.xml加入如下依赖
 ```xml
 
  <dependency>
-    <groupId>com.bitget.dax</groupId>
-    <artifactId>bitget-java-api-sdk</artifactId>
+    <groupId>com.bitget.openapi</groupId>
+    <artifactId>bitget-java-sdk-api</artifactId>
     <version>1.0.0-SNAPSHOT</version>
  </dependency>
  
 ```
+
 由于当前发布的是snapshot版,因此需要您在maven settings.xml或pom.xml中设置如下repository
 
 ```xml
@@ -30,12 +31,12 @@ A Java sdk for bitget exchange API
                 
 ```
 
-2. 创建 bitgetClient
+2. 创建 BitgetRestClient
 
 ```java
 
     /**
-     * 用户 apiKey，需用户填写，在 https://www.bitget.com/user  api 中获取
+     * 用户 apiKey，需用户填写，在 https://www.bitget.com 中创建apikey
      */
     String apiKey = "";
     /**
@@ -47,9 +48,9 @@ A Java sdk for bitget exchange API
      */
     String passphrase = "";
     /**
-     * ccex open api 根路径
+     * open api 根路径
      */
-    String baseUrl = "https://www.bitget.com/api/v1/";
+    String baseUrl = "http://127.0.0.1:8081/api/swap/v3/";
 
     ClientParameter parameter = ClientParameter.builder()
             .apiKey(apiKey)
@@ -66,6 +67,9 @@ A Java sdk for bitget exchange API
 3. 接口调用
 - 创建 bitgetClient 后便可以调用服务接口，以获取币对信息为例
 ```java
-	List<CodeInfo> codeInfos = this.bitgetClient.spot().publics().products()
+
+ServerTime serverTime = this.bitgetClient.contract().market().getTime()
+
 ```
-- 其他接口调用参照 test 包中的测试用例，另外由于 bitget-java-api-sdk 使用了 lombok，请在编译器中安装 lombok 插件
+
+- 其他接口调用参照测试用例，另外由于bitget-java-sdk-api使用了lombok,请在编译器中安装lombok插件
