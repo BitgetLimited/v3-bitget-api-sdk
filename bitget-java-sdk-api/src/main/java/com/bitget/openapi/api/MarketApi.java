@@ -3,8 +3,6 @@ package com.bitget.openapi.api;
 import com.bitget.openapi.dto.response.*;
 import retrofit2.Call;
 import retrofit2.http.GET;
-import retrofit2.http.POST;
-import retrofit2.http.Path;
 import retrofit2.http.Query;
 
 import java.util.List;
@@ -30,122 +28,120 @@ public interface MarketApi {
     @GET("market/instruments")
     Call<List<ContractInfo>> getContractsApi();
 
-
     /**
      * 获取深度数据
      *
-     * @param instrumentId
+     * @param symbol
      * @param limit
      * @return
      */
-    @GET("market/instruments/{instrument_id}/depth")
-    Call<Depth> getDepthApi(@Path("instrument_id") String instrumentId, @Query("limit") String limit);
+    @GET("market/depth")
+    Call<Depth> getDepthApi(@Query("symbol") String symbol, @Query("limit") String limit);
 
     /**
      * 获取全部ticker信息
      *
      * @return
      */
-    @GET("market/instruments/ticker")
+    @GET("market/tickers")
     Call<List<Ticker>> getTickersApi();
 
     /**
      * 获取某个ticker信息
-     *
-     * @param instrumentId
+     * @param symbol
      * @return
      */
-    @GET("market/instruments/{instrument_id}/ticker")
-    Call<Ticker> getInstrumentTicker(@Path("instrument_id") String instrumentId);
+    @GET("market/ticker")
+    Call<Ticker> getInstrumentTicker(@Query("symbol") String symbol);
 
     /**
      * 获取成交数据
      *
-     * @param instrumentId
+     * @param symbol
      * @param limit
      * @return
      */
-    @GET("market/instruments/{instrument_id}/trades")
-    Call<List<Trades>> getInstrumentTrades(@Path("instrument_id") String instrumentId, @Query("limit") String limit);
+    @GET("market/trades")
+    Call<List<Trades>> getInstrumentTrades(@Query("symbol") String symbol, @Query("limit") String limit);
 
 
     /**
      * 获取K线数据
      *
-     * @param instrumentId
+     * @param symbol
      * @param start
      * @param end
      * @param granularity
      * @return
      */
-    @GET("market/instruments/{instrument_id}/candles")
-    Call<List<Object[]>> getInstrumentCandles(@Path("instrument_id") String instrumentId, @Query("start") String start,
+    @GET("market/candles")
+    Call<List<Object[]>> getInstrumentCandles(@Query("symbol") String symbol, @Query("start") String start,
                                               @Query("end") String end, @Query("granularity") String granularity);
 
     /**
      * 获取指数信息
      *
-     * @param instrumentId
+     * @param symbol
      * @return
      */
-    @GET("market/instruments/{instrument_id}/index")
-    Call<Index> getInstrumentIndex(@Path("instrument_id") String instrumentId);
+    @GET("market/index")
+    Call<Index> getInstrumentIndex(@Query("symbol") String symbol);
 
     /**
      * 获取平台总持仓量
      *
-     * @param instrumentId
+     * @param symbol
      * @return
      */
-    @GET("market/instruments/{instrument_id}/open_interest")
-    Call<OpenInterest> getOpenInterestApi(@Path("instrument_id") String instrumentId);
+    @GET("market/open_interest")
+    Call<OpenInterest> getOpenInterestApi(@Query("symbol") String symbol);
 
     /**
      * 获取合约最高限价和最低限价
      *
-     * @param instrumentId
+     * @param symbol
      * @return
      */
-    @GET("market/instruments/{instrument_id}/price_limit")
-    Call<PriceLimit> getPriceLimitApi(@Path("instrument_id") String instrumentId);
+    @GET("market/price_limit")
+    Call<PriceLimit> getPriceLimitApi(@Query("symbol") String symbol);
 
     /**
      * 获取合约下一次结算时间
      *
-     * @param instrumentId
+     * @param symbol
      * @return
      */
-    @GET("market/instruments/{instrument_id}/funding_time")
-    Call<FundingTime> getFundingTimeApi(@Path("instrument_id") String instrumentId);
+    @GET("market/funding_time")
+    Call<FundingTime> getFundingTimeApi(@Query("symbol") String symbol);
 
     /**
      * 获取合约历史资金费率
      *
-     * @param instrumentId
+     * @param symbol
      * @return
      */
-    @GET("market/instruments/{instrument_id}/historical_funding_rate")
-    Call<HistoricalFundingRate> getHistoricalFundingRateApi(@Path("instrument_id") String instrumentId);
+    @GET("market/historical_funding_rate")
+    Call<HistoricalFundingRate> getHistoricalFundingRateApi(@Query("symbol") String symbol);
 
     /**
      * 获取合约标记价格
      *
-     * @param instrumentId
+     * @param symbol
      * @return
      */
-    @GET("market/instruments/{instrument_id}/mark_price")
-    Call<MarkPrice> getMarkPriceApi(@Path("instrument_id") String instrumentId);
+    @GET("market/mark_price")
+    Call<MarkPrice> getMarkPriceApi(@Query("symbol") String symbol);
 
     /**
      * 可开张数
      *
-     * @param instrumentId 合约code
+     * @param symbol       合约Id或者交易对
      * @param amount       用于开仓的总的金额
      * @param leverage     杠杆，默认以20计算
      * @param openPrice    开仓价格
      * @return
      */
-    @POST("market/open-count")
-    Call<String> calOpenCount(@Query("instrumentId") String instrumentId, @Query("amount") String amount, @Query("leverage") String leverage, @Query("openPrice") String openPrice);
+    @GET("market/open-count")
+    Call<String> calOpenCount(@Query("symbol") String symbol, @Query("amount") String amount, @Query("leverage") String leverage, @Query("openPrice") String openPrice);
 
 }

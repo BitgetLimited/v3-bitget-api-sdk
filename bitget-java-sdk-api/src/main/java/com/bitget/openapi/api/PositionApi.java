@@ -4,7 +4,7 @@ import com.bitget.openapi.dto.response.AllPosition;
 import com.bitget.openapi.dto.response.Holds;
 import retrofit2.Call;
 import retrofit2.http.GET;
-import retrofit2.http.Path;
+import retrofit2.http.Query;
 
 import java.util.List;
 
@@ -27,15 +27,15 @@ public interface PositionApi {
      *
      * @return
      */
-    @GET("position/<instrument_id>")
-    Call<AllPosition> getSinglePosition(@Path("instrument_id") String instrumentId);
+    @GET("position/singlePosition")
+    Call<AllPosition> getSinglePosition(@Query("symbol") String symbol);
 
     /**
      * 获取合约挂单冻结数量
      *
-     * @param instrumentId
+     * @param symbol
      * @return
      */
-    @GET("position/<instrument_id>/holds")
-    Call<Holds> getHolds(@Path("instrument_id") String instrumentId);
+    @GET("position/holds")
+    Call<Holds> getHolds(@Query("symbol") String symbol);
 }
