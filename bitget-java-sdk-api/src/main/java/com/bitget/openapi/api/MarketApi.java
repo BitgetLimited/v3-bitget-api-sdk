@@ -144,7 +144,7 @@ public interface MarketApi {
      * @param openPrice    开仓价格
      * @return
      */
-    @GET("market/open-count")
+    @GET("market/open_count")
     Call<String> calOpenCount(@Query("symbol") String symbol, @Query("amount") String amount, @Query("leverage") String leverage, @Query("openPrice") String openPrice);
 
 }
