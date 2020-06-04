@@ -21,7 +21,7 @@ public class PriceLimit implements Serializable {
     /**
      * 合约名称，如cmt_btcusdt
      */
-    private String instrument_id;
+    private String symbol;
     /**
      * 最高买价
      */

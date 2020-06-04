@@ -19,8 +19,8 @@ public interface OrderApi {
      * @param body
      * @return
      */
-    @POST("order/postOrder")
-    Call<PlaceOrderResult> postOrder(@Body OrderReq body);
+    @POST("order/placeOrder")
+    Call<PlaceOrderResult> placeOrder(@Body OrderReq body);
 
     /**
      * 批量下单
@@ -53,25 +53,33 @@ public interface OrderApi {
 
     /**
      * 获取单订单信息
+     * @param symbol    合约code
+     * @param orderId   订单ID
+     * @return
      */
     @GET("order/detail")
     Call<Order> getOrderDetail(@Query("symbol") String symbol, @Query("order_id") String orderId);
 
     /**
      * 获取订单列表
+     * @param symbol    合约code
+     * @param body      查询对象
+     * @return
      */
     @GET("order/orders")
     Call<List<Order>> getOrders(@Query("symbol") String symbol, @Body OrderListReq body);
 
     /**
      * 查询成交明细
+     * @param symbol    合约code
+     * @param orderId   订单ID
+     * @return
      */
     @GET("order/fills")
     Call<List<Fill>> getFills(@Query("symbol") String symbol, @Query("order_id") String orderId);
 
     /**
      * 计划委托下单
-     *
      * @param body
      * @return
      */
@@ -80,7 +88,6 @@ public interface OrderApi {
 
     /**
      * 计划委托撤单
-     *
      * @param symbol
      * @param orderId
      * @return

@@ -5,8 +5,6 @@ import com.bitget.openapi.api.MarketApi;
 import com.bitget.openapi.common.client.ApiClient;
 import com.bitget.openapi.dto.response.*;
 import com.bitget.openapi.service.MarketService;
-import retrofit2.Call;
-import retrofit2.Response;
 
 import java.io.IOException;
 import java.util.List;
@@ -25,88 +23,73 @@ public class MarketServiceImpl implements MarketService {
 
     @Override
     public ServerTime getTime() throws IOException {
-        Response<ServerTime> call = marketApi.getTime().execute();
-        return call.body();
-//        return call.execute().body();
+        return marketApi.getTime().execute().body();
     }
 
     @Override
     public List<ContractInfo> getContractsApi() throws IOException {
-        Call<List<ContractInfo>> call = marketApi.getContractsApi();
-        return call.execute().body();
+        return marketApi.getContractsApi().execute().body();
     }
 
     @Override
     public List<Ticker> getTickersApi() throws IOException {
-        Call<List<Ticker>> call = marketApi.getTickersApi();
-        return call.execute().body();
+        return marketApi.getTickersApi().execute().body();
     }
 
     @Override
-    public Ticker getInstrumentTicker(String instrumentId) throws IOException {
-        Call<Ticker> call = marketApi.getInstrumentTicker(instrumentId);
-        return call.execute().body();
+    public Ticker getTicker(String symbol) throws IOException {
+        return marketApi.getTicker(symbol).execute().body();
     }
 
     @Override
-    public List<Trades> getInstrumentTrades(String instrumentId, String limit) throws IOException {
-        Call<List<Trades>> call = marketApi.getInstrumentTrades(instrumentId, limit);
-        return call.execute().body();
+    public List<Trades> getTrades(String symbol, String limit) throws IOException {
+        return marketApi.getTrades(symbol, limit).execute().body();
     }
 
     @Override
-    public Depth getDepthApi(String instrumentId, String size) throws IOException {
-        Call<Depth> call = marketApi.getDepthApi(instrumentId, size);
-        return call.execute().body();
+    public Depth getDepthApi(String symbol, String size) throws IOException {
+        return marketApi.getDepthApi(symbol, size).execute().body();
     }
 
     @Override
-    public List<Object[]> getInstrumentCandles(String instrumentId, String start, String end, String granularity) throws IOException {
-        Call<List<Object[]>> call = marketApi.getInstrumentCandles(instrumentId, start, end, granularity);
-        return call.execute().body();
+    public List<Object[]> getCandles(String symbol, String start, String end, String granularity) throws IOException {
+        return marketApi.getCandles(symbol, start, end, granularity).execute().body();
     }
 
     @Override
-    public Index getInstrumentIndex(String instrumentId) throws IOException {
-        Call<Index> call = marketApi.getInstrumentIndex(instrumentId);
-        return call.execute().body();
+    public Index getIndex(String symbol) throws IOException {
+        return marketApi.getIndex(symbol).execute().body();
     }
 
     @Override
-    public OpenInterest getOpenInterestApi(String instrumentId) throws IOException {
-        Call<OpenInterest> call = marketApi.getOpenInterestApi(instrumentId);
-        return call.execute().body();
+    public OpenInterest getOpenInterestApi(String symbol) throws IOException {
+        return marketApi.getOpenInterestApi(symbol).execute().body();
     }
 
     @Override
-    public PriceLimit getPriceLimitApi(String instrumentId) throws IOException {
-        Call<PriceLimit> call = marketApi.getPriceLimitApi(instrumentId);
-        return call.execute().body();
+    public PriceLimit getPriceLimitApi(String symbol) throws IOException {
+        return marketApi.getPriceLimitApi(symbol).execute().body();
     }
 
     @Override
-    public FundingTime getFundingTimeApi(String instrumentId) throws IOException {
-        Call<FundingTime> call = marketApi.getFundingTimeApi(instrumentId);
-        return call.execute().body();
+    public FundingTime getFundingTimeApi(String symbol) throws IOException {
+        return marketApi.getFundingTimeApi(symbol).execute().body();
     }
 
     @Override
-    public HistoricalFundingRate getHistoricalFundingRateApi(String instrumentId,String from,String to,String limit) throws IOException {
-        Call<HistoricalFundingRate> call = marketApi.getHistoricalFundingRateApi(instrumentId,from,to,limit);
-        return call.execute().body();
+    public HistoricalFundingRate getHistoricalFundingRateApi(String symbol, String from, String to, String limit) throws IOException {
+        return marketApi.getHistoricalFundingRateApi(symbol, from, to, limit).execute().body();
     }
 
     @Override
-    public MarkPrice getMarkPriceApi(String instrumentId) throws IOException {
-        Call<MarkPrice> call = marketApi.getMarkPriceApi(instrumentId);
-        return call.execute().body();
+    public MarkPrice getMarkPriceApi(String symbol) throws IOException {
+        return marketApi.getMarkPriceApi(symbol).execute().body();
     }
 
 
     @Override
-    public String calOpenCount(String instrumentId, String amount, String leverage, String openPrice) throws IOException {
-        Call<String> call = marketApi.calOpenCount(instrumentId, amount, leverage, openPrice);
-        return call.execute().body();
+    public String calOpenCount(String symbol, String amount, String leverage, String openPrice) throws IOException {
+        return marketApi.calOpenCount(symbol, amount, leverage, openPrice).execute().body();
     }
 
 }

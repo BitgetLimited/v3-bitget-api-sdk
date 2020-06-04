@@ -22,7 +22,7 @@ public class Holds implements Serializable {
     /**
      * 合约名称，如cmt_btcusdt
      */
-    private String instrument_id;
+    private String symbol;
     /**
      * 开仓冻结保证金
      */

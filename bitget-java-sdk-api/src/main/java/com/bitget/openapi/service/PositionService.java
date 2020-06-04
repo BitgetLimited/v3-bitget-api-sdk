@@ -22,17 +22,17 @@ public interface PositionService {
 
     /**
      * 获取全部合约仓位信息
-     *
+     * @param symbol
      * @return
      * @throws IOException
      */
-    AllPosition getSinglePosition(String instrumentId) throws IOException;
+    AllPosition getSinglePosition(String symbol) throws IOException;
 
     /**
      * 获取合约挂单冻结数量
      *
-     * @param instrumentId
+     * @param symbol
      * @return
      */
-    Holds getHolds(String instrumentId) throws IOException;
+    Holds getHolds(String symbol) throws IOException;
 }

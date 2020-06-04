@@ -24,7 +24,7 @@ public interface PositionApi {
 
     /**
      * 单个合约持仓信息
-     *
+     * @param symbol 合约code
      * @return
      */
     @GET("position/singlePosition")

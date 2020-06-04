@@ -22,7 +22,7 @@ public class OrderListReq implements Serializable {
     /**
      * 合约code
      */
-    private String instrumentId;
+    private String symbol;
     /**
      * -1:已撤单（包含风险触发撤销），0:未成交，1:部分成交，2：完全成交， 3:未成交或部分成交，4：已撤单（包含风险触发撤销）或完全成交
      */

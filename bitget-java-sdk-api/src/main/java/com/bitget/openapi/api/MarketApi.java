@@ -25,7 +25,7 @@ public interface MarketApi {
      *
      * @return
      */
-    @GET("market/instruments")
+    @GET("market/contracts")
     Call<List<ContractInfo>> getContractsApi();
 
     /**
@@ -52,7 +52,7 @@ public interface MarketApi {
      * @return
      */
     @GET("market/ticker")
-    Call<Ticker> getInstrumentTicker(@Query("symbol") String symbol);
+    Call<Ticker> getTicker(@Query("symbol") String symbol);
 
     /**
      * 获取成交数据
@@ -62,7 +62,7 @@ public interface MarketApi {
      * @return
      */
     @GET("market/trades")
-    Call<List<Trades>> getInstrumentTrades(@Query("symbol") String symbol, @Query("limit") String limit);
+    Call<List<Trades>> getTrades(@Query("symbol") String symbol, @Query("limit") String limit);
 
 
     /**
@@ -75,8 +75,8 @@ public interface MarketApi {
      * @return
      */
     @GET("market/candles")
-    Call<List<Object[]>> getInstrumentCandles(@Query("symbol") String symbol, @Query("start") String start,
-                                              @Query("end") String end, @Query("granularity") String granularity);
+    Call<List<Object[]>> getCandles(@Query("symbol") String symbol, @Query("start") String start,
+                                    @Query("end") String end, @Query("granularity") String granularity);
 
     /**
      * 获取指数信息
@@ -85,7 +85,7 @@ public interface MarketApi {
      * @return
      */
     @GET("market/index")
-    Call<Index> getInstrumentIndex(@Query("symbol") String symbol);
+    Call<Index> getIndex(@Query("symbol") String symbol);
 
     /**
      * 获取平台总持仓量

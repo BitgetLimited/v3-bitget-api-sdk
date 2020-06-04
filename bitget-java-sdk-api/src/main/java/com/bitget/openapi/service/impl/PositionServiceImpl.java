@@ -30,14 +30,14 @@ public class PositionServiceImpl implements PositionService {
     }
 
     @Override
-    public AllPosition getSinglePosition(String instrumentId) throws IOException {
-        Call<AllPosition> call = positionApi.getSinglePosition(instrumentId);
+    public AllPosition getSinglePosition(String symbol) throws IOException {
+        Call<AllPosition> call = positionApi.getSinglePosition(symbol);
         return call.execute().body();
     }
 
     @Override
-    public Holds getHolds(String instrumentId) throws IOException {
-        Call<Holds> call = positionApi.getHolds(instrumentId);
+    public Holds getHolds(String symbol) throws IOException {
+        Call<Holds> call = positionApi.getHolds(symbol);
         return call.execute().body();
     }
 }

@@ -21,7 +21,7 @@ public class FundingTime implements Serializable {
     /**
      * 合约名称，如cmt_btcusdt
      */
-    private String instrument_id;
+    private String symbol;
     /**
      * 下一次的结算时间
      */

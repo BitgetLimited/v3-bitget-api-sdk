@@ -40,7 +40,7 @@ public class PlanPlaceOrderReq implements Serializable {
     /**
      * 产品编码
      */
-    private String instrument_id;
+    private String symbol;
     /**
      * 客户端标识
      */

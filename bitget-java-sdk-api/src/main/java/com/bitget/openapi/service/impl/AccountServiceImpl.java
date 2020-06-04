@@ -31,37 +31,37 @@ public class AccountServiceImpl implements AccountService {
     }
 
     @Override
-    public AccountInfo getAccount(String instrumentId) throws IOException {
-        return accountApi.getAccount(instrumentId).execute().body();
+    public AccountInfo getAccount(String symbol) throws IOException {
+        return accountApi.getAccount(symbol).execute().body();
     }
 
     @Override
-    public AccountSetting settings(String instrumentId) throws IOException {
-        return accountApi.settings(instrumentId).execute().body();
+    public AccountSetting settings(String symbol) throws IOException {
+        return accountApi.settings(symbol).execute().body();
     }
 
     @Override
-    public ChangeLeverageResult leverage(String instrumentId, ChangeLeverageReq changeLeverageReq) throws IOException {
-        return accountApi.leverage(instrumentId, changeLeverageReq).execute().body();
+    public ChangeLeverageResult leverage(String symbol, ChangeLeverageReq changeLeverageReq) throws IOException {
+        return accountApi.leverage(symbol, changeLeverageReq).execute().body();
     }
 
     @Override
-    public List<LedgerResult> getLedger(String instrumentId, LedgerReq ledgerReq) throws IOException {
-        return accountApi.getLedger(instrumentId, ledgerReq).execute().body();
+    public List<LedgerResult> getLedger(String symbol, LedgerReq ledgerReq) throws IOException {
+        return accountApi.getLedger(symbol, ledgerReq).execute().body();
     }
 
     @Override
-    public List<LedgerResult> ledgerMargin(String instrumentId, LedgerReq ledgerReq) throws IOException {
-        return accountApi.ledgerMargin(instrumentId, ledgerReq).execute().body();
+    public List<LedgerResult> ledgerMargin(String symbol, LedgerReq ledgerReq) throws IOException {
+        return accountApi.ledgerMargin(symbol, ledgerReq).execute().body();
     }
 
     @Override
-    public AdjustMarginResult adjustMargin(String instrumentId, AdjustMarginReq adjustMarginReq) throws IOException {
-        return accountApi.adjustMargin(instrumentId, adjustMarginReq).execute().body();
+    public AdjustMarginResult adjustMargin(String symbol, AdjustMarginReq adjustMarginReq) throws IOException {
+        return accountApi.adjustMargin(symbol, adjustMarginReq).execute().body();
     }
 
     @Override
-    public AutoAppendMarginResult modifyAutoAppendMargin(String instrumentId, AutoAppendMarginReq autoAppendMarginReq) throws IOException {
-        return accountApi.modifyAutoAppendMargin(instrumentId, autoAppendMarginReq).execute().body();
+    public AutoAppendMarginResult modifyAutoAppendMargin(String symbol, AutoAppendMarginReq autoAppendMarginReq) throws IOException {
+        return accountApi.modifyAutoAppendMargin(symbol, autoAppendMarginReq).execute().body();
     }
 }

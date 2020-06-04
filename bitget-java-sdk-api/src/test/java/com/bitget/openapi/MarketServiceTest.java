@@ -41,26 +41,26 @@ public class MarketServiceTest extends BaseTest {
     }
 
     @Test
-    public void getInstrumentTicker() throws IOException {
-        Ticker result = bitgetRestClient.contract().bitget().market().getInstrumentTicker(symbol);
+    public void getTicker() throws IOException {
+        Ticker result = bitgetRestClient.contract().bitget().market().getTicker(symbol);
         System.out.println(JSON.toJSONString(result));
     }
 
     @Test
-    public void getInstrumentTrades() throws IOException {
-        List<Trades> result = bitgetRestClient.contract().bitget().market().getInstrumentTrades(symbol, "200");
+    public void getTrades() throws IOException {
+        List<Trades> result = bitgetRestClient.contract().bitget().market().getTrades(symbol, "200");
         System.out.println(JSON.toJSONString(result));
     }
 
     @Test
-    public void getInstrumentCandles() throws IOException {
-        List<Object[]> result = bitgetRestClient.contract().bitget().market().getInstrumentCandles(symbol, "2020-05-01T04:09:12.000Z", "2020-05-01T05:12:12.000Z", "60");
+    public void getCandles() throws IOException {
+        List<Object[]> result = bitgetRestClient.contract().bitget().market().getCandles(symbol, "2020-05-01T04:09:12.000Z", "2020-05-01T05:12:12.000Z", "60");
         System.out.println(JSON.toJSONString(result));
     }
 
     @Test
-    public void getInstrumentIndex() throws IOException {
-        Index result = bitgetRestClient.contract().bitget().market().getInstrumentIndex(symbol);
+    public void getIndex() throws IOException {
+        Index result = bitgetRestClient.contract().bitget().market().getIndex(symbol);
         System.out.println(JSON.toJSONString(result));
     }
 

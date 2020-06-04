@@ -12,7 +12,7 @@ public class CancelPlanResult implements Serializable {
      * result : true
      * orderId : 2047593676229632
      * client_oid : 2047593676229632
-     * instrument_id : LTC-USD-181228
+     * symbol : LTC-USD-181228
      */
     private String order_id;
     private String client_oid;
