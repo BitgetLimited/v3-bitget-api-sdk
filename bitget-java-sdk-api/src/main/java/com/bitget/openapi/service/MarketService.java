@@ -134,7 +134,7 @@ public interface MarketService {
      * @param instrumentId
      * @return
      */
-    HistoricalFundingRate getHistoricalFundingRateApi(String instrumentId) throws IOException;
+    HistoricalFundingRate getHistoricalFundingRateApi(String instrumentId,String from,String to,String limit) throws IOException;
 
     /**
      * 获取合约标记价格

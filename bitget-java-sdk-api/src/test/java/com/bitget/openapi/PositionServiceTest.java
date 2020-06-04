@@ -13,7 +13,7 @@ import java.util.List;
  * @date 2019-01-15
  */
 public class PositionServiceTest extends BaseTest {
-    private static final String instrumentId = "cmt_btcusdt";
+    private static final String symbol = "cmt_btcusdt";
 
     @Test
     public void getAllPosition() throws IOException {
@@ -23,13 +23,13 @@ public class PositionServiceTest extends BaseTest {
 
     @Test
     public void getSinglePosition() throws IOException {
-        AllPosition result = bitgetRestClient.contract().bitget().position().getSinglePosition(instrumentId);
+        AllPosition result = bitgetRestClient.contract().bitget().position().getSinglePosition(symbol);
         System.out.println(JSON.toJSONString(result));
     }
 
     @Test
     public void getHolds() throws IOException {
-        Holds result = bitgetRestClient.contract().bitget().position().getHolds(instrumentId);
+        Holds result = bitgetRestClient.contract().bitget().position().getHolds(symbol);
         System.out.println(JSON.toJSONString(result));
     }
 

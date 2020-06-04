@@ -14,7 +14,7 @@ import java.util.List;
 public class MarketServiceTest extends BaseTest {
 
 
-    private static final String instrumentId = "cmt_btcusdt";
+    private static final String symbol = "cmt_btcusdt";
 
     @Test
     public void time() throws IOException {
@@ -30,7 +30,7 @@ public class MarketServiceTest extends BaseTest {
 
     @Test
     public void getDepthApi() throws IOException {
-        Depth result = bitgetRestClient.contract().bitget().market().getDepthApi(instrumentId, "1000");
+        Depth result = bitgetRestClient.contract().bitget().market().getDepthApi(symbol, "1000");
         System.out.println(JSON.toJSONString(result));
     }
 
@@ -42,61 +42,61 @@ public class MarketServiceTest extends BaseTest {
 
     @Test
     public void getInstrumentTicker() throws IOException {
-        Ticker result = bitgetRestClient.contract().bitget().market().getInstrumentTicker(instrumentId);
+        Ticker result = bitgetRestClient.contract().bitget().market().getInstrumentTicker(symbol);
         System.out.println(JSON.toJSONString(result));
     }
 
     @Test
     public void getInstrumentTrades() throws IOException {
-        List<Trades> result = bitgetRestClient.contract().bitget().market().getInstrumentTrades(instrumentId, "200");
+        List<Trades> result = bitgetRestClient.contract().bitget().market().getInstrumentTrades(symbol, "200");
         System.out.println(JSON.toJSONString(result));
     }
 
     @Test
     public void getInstrumentCandles() throws IOException {
-        List<Object[]> result = bitgetRestClient.contract().bitget().market().getInstrumentCandles(instrumentId, "0", "100", "200");
+        List<Object[]> result = bitgetRestClient.contract().bitget().market().getInstrumentCandles(symbol, "2020-05-01T04:09:12.000Z", "2020-05-01T05:12:12.000Z", "60");
         System.out.println(JSON.toJSONString(result));
     }
 
     @Test
     public void getInstrumentIndex() throws IOException {
-        Index result = bitgetRestClient.contract().bitget().market().getInstrumentIndex(instrumentId);
+        Index result = bitgetRestClient.contract().bitget().market().getInstrumentIndex(symbol);
         System.out.println(JSON.toJSONString(result));
     }
 
     @Test
     public void getOpenInterestApi() throws IOException {
-        OpenInterest result = bitgetRestClient.contract().bitget().market().getOpenInterestApi(instrumentId);
+        OpenInterest result = bitgetRestClient.contract().bitget().market().getOpenInterestApi(symbol);
         System.out.println(JSON.toJSONString(result));
     }
 
     @Test
     public void getPriceLimitApi() throws IOException {
-        PriceLimit result = bitgetRestClient.contract().bitget().market().getPriceLimitApi(instrumentId);
+        PriceLimit result = bitgetRestClient.contract().bitget().market().getPriceLimitApi(symbol);
         System.out.println(JSON.toJSONString(result));
     }
 
     @Test
     public void getFundingTimeApi() throws IOException {
-        FundingTime result = bitgetRestClient.contract().bitget().market().getFundingTimeApi(instrumentId);
+        FundingTime result = bitgetRestClient.contract().bitget().market().getFundingTimeApi(symbol);
         System.out.println(JSON.toJSONString(result));
     }
 
     @Test
     public void getHistoricalFundingRateApi() throws IOException {
-        HistoricalFundingRate result = bitgetRestClient.contract().bitget().market().getHistoricalFundingRateApi(instrumentId);
+        HistoricalFundingRate result = bitgetRestClient.contract().bitget().market().getHistoricalFundingRateApi(symbol,"2","1","50");
         System.out.println(JSON.toJSONString(result));
     }
 
     @Test
     public void getMarkPriceApi() throws IOException {
-        MarkPrice result = bitgetRestClient.contract().bitget().market().getMarkPriceApi(instrumentId);
+        MarkPrice result = bitgetRestClient.contract().bitget().market().getMarkPriceApi(symbol);
         System.out.println(JSON.toJSONString(result));
     }
 
     @Test
     public void calOpenCount() throws IOException {
-        String result = bitgetRestClient.contract().bitget().market().calOpenCount(instrumentId, "10000", "10", "9000");
+        String result = bitgetRestClient.contract().bitget().market().calOpenCount(symbol, "10000", "10", "9000");
         System.out.println(result);
     }
 

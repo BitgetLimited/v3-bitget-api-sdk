@@ -13,7 +13,7 @@ import java.util.List;
 
 public class AccountServiceTest extends BaseTest {
 
-    private static final String instrumentId = "cmt_btcusdt";
+    private static final String symbol = "cmt_btcusdt";
     @Test
     public void accounts()throws IOException{
         List<AccountInfo> result = bitgetRestClient.contract().bitget().account().accounts();
@@ -21,18 +21,18 @@ public class AccountServiceTest extends BaseTest {
     }
     @Test
     public void  getAccount()throws  IOException{
-        AccountInfo result = bitgetRestClient.contract().bitget().account().getAccount(instrumentId);
+        AccountInfo result = bitgetRestClient.contract().bitget().account().getAccount(symbol);
       System.out.println(JSON.toJSONString(result));
     }
     @Test
     public void  settings()throws  IOException{
-        AccountSetting result = bitgetRestClient.contract().bitget().account().settings(instrumentId);
+        AccountSetting result = bitgetRestClient.contract().bitget().account().settings(symbol);
         System.out.println(JSON.toJSONString(result));
     }
     @Test
     public void leverage()throws IOException{
         ChangeLeverageReq req=ChangeLeverageReq.builder().leverage(10).side(1).build();
-        ChangeLeverageResult result = bitgetRestClient.contract().bitget().account().leverage(instrumentId, req);
+        ChangeLeverageResult result = bitgetRestClient.contract().bitget().account().leverage(symbol, req);
         System.out.println(JSON.toJSONString(result));
     }
     @Test
@@ -42,7 +42,7 @@ public class AccountServiceTest extends BaseTest {
                 to("2").
                 limit("50").
                 build();
-        List<LedgerResult> result = bitgetRestClient.contract().bitget().account().getLedger(instrumentId, req);
+        List<LedgerResult> result = bitgetRestClient.contract().bitget().account().getLedger(symbol, req);
         System.out.println(JSON.toJSONString(result));
     }
     @Test
@@ -52,7 +52,7 @@ public class AccountServiceTest extends BaseTest {
                 from("1").
                 to("2").
                 build();
-        List<LedgerResult> result = bitgetRestClient.contract().bitget().account().ledgerMargin(instrumentId, req);
+        List<LedgerResult> result = bitgetRestClient.contract().bitget().account().ledgerMargin(symbol, req);
         System.out.println(JSON.toJSONString(result));
     }
     @Test
@@ -62,7 +62,7 @@ public class AccountServiceTest extends BaseTest {
                 positionType(1).
                 type(1).
                 build();
-        AdjustMarginResult result = bitgetRestClient.contract().bitget().account().adjustMargin(instrumentId, req);
+        AdjustMarginResult result = bitgetRestClient.contract().bitget().account().adjustMargin(symbol, req);
         System.out.println(JSON.toJSONString(result));
     }
     @Test
@@ -71,7 +71,7 @@ public class AccountServiceTest extends BaseTest {
                 append_type(0).
                 side(1).
                 build();
-        AutoAppendMarginResult result = bitgetRestClient.contract().bitget().account().modifyAutoAppendMargin(instrumentId, req);
+        AutoAppendMarginResult result = bitgetRestClient.contract().bitget().account().modifyAutoAppendMargin(symbol, req);
         System.out.println(JSON.toJSONString(result));
     }
 }
