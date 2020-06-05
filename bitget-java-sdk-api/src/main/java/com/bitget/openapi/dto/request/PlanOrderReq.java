@@ -16,7 +16,7 @@ public class PlanOrderReq implements Serializable {
     /**
      * 合约代码
      */
-    private String instrumentId;
+    private String symbol;
     /**
      * 方向 1开多 2开空 3平多 4平空
      */

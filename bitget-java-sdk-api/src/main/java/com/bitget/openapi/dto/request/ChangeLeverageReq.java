@@ -29,5 +29,5 @@ public class ChangeLeverageReq implements Serializable {
     /**
      * 合约代码
      */
-    private String instrumentId;
+    private String symbol;
 }

@@ -24,19 +24,19 @@ public class OrderServiceTest extends BaseTest {
     @Test
     public void postOrder() throws IOException {
         OrderReq req = OrderReq.builder().client_oid("bitget#123456")
-                .instrument_id(symbol)
+                .symbol(symbol)
                 .match_price(MatchTypeEnum.MARKET.getCode())
                 .order_type(OrderTypeEnum.LIMIT.getCode().toString())
                 .size("1000")
                 .trace_no("1111")
                 .type("1").build();
-        PlaceOrderResult result = bitgetRestClient.contract().bitget().order().postOrder(req);
+        PlaceOrderResult result = bitgetRestClient.contract().bitget().order().placeOrder(req);
         System.out.println(JSON.toJSONString(result));
     }
 
     @Test
     public void batchOrders() throws IOException {
-        PlaceBatchOrderReq req = PlaceBatchOrderReq.builder().instrument_id(symbol)
+        PlaceBatchOrderReq req = PlaceBatchOrderReq.builder().symbol(symbol)
                 .order_data("")
                 .build();
         PlaceBatchOrderResult result = bitgetRestClient.contract().bitget().order().batchOrders(req);
@@ -85,7 +85,7 @@ public class OrderServiceTest extends BaseTest {
     public void planOrder() throws IOException {
         PlanPlaceOrderReq req = PlanPlaceOrderReq.builder()
                 .client_oid("bitget#123456")
-                .instrument_id(symbol)
+                .symbol(symbol)
                 .execute_price("1000")
                 .match_type(MatchTypeEnum.MARKET.getCode())
                 .side("1")

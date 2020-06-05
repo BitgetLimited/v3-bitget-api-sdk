@@ -25,7 +25,7 @@ public interface AccountApi {
 
     /**
      * 单个合约账户信息
-     *
+     * @param symbol
      * @return
      */
     @GET("account")

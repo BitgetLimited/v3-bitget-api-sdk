@@ -23,8 +23,8 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public PlaceOrderResult postOrder(OrderReq orderRequest) throws IOException {
-        return orderApi.postOrder(orderRequest).execute().body();
+    public PlaceOrderResult placeOrder(OrderReq orderRequest) throws IOException {
+        return orderApi.placeOrder(orderRequest).execute().body();
     }
 
 
@@ -34,28 +34,28 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public CancelOrderResult cancelOrder(String instrumentId, String orderId) throws IOException {
-        return orderApi.cancelOrder(instrumentId, orderId).execute().body();
+    public CancelOrderResult cancelOrder(String symbol, String orderId) throws IOException {
+        return orderApi.cancelOrder(symbol, orderId).execute().body();
     }
 
     @Override
-    public CancelBatchOrderResult cancelBathOrders(String instrumentId, CancelBatchOrdersReq param) throws IOException {
-        return orderApi.cancelBathOrders(instrumentId, param).execute().body();
+    public CancelBatchOrderResult cancelBathOrders(String symbol, CancelBatchOrdersReq param) throws IOException {
+        return orderApi.cancelBathOrders(symbol, param).execute().body();
     }
 
     @Override
-    public Order getOrderDetail(String instrumentId, String orderId) throws IOException {
-        return orderApi.getOrderDetail(instrumentId, orderId).execute().body();
+    public Order getOrderDetail(String symbol, String orderId) throws IOException {
+        return orderApi.getOrderDetail(symbol, orderId).execute().body();
     }
 
     @Override
-    public List<Order> getOrders(String instrumentId, OrderListReq orderListReq) throws IOException {
-        return orderApi.getOrders(instrumentId, orderListReq).execute().body();
+    public List<Order> getOrders(String symbol, OrderListReq orderListReq) throws IOException {
+        return orderApi.getOrders(symbol, orderListReq).execute().body();
     }
 
     @Override
-    public List<Fill> getFills(String instrumentId, String orderId) throws IOException {
-        return orderApi.getFills(instrumentId, orderId).execute().body();
+    public List<Fill> getFills(String symbol, String orderId) throws IOException {
+        return orderApi.getFills(symbol, orderId).execute().body();
     }
 
     @Override
@@ -64,17 +64,17 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public CancelPlanResult cancelPlan(String instrumentId, String orderId) throws IOException {
-        return orderApi.cancelPlan(instrumentId, orderId).execute().body();
+    public CancelPlanResult cancelPlan(String symbol, String orderId) throws IOException {
+        return orderApi.cancelPlan(symbol, orderId).execute().body();
     }
 
     @Override
-    public PlansOrderResult currentPlan(String instrumentId, PlanOrderReq planOrderReq) throws IOException {
-        return orderApi.currentPlan(instrumentId, planOrderReq).execute().body();
+    public PlansOrderResult currentPlan(String symbol, PlanOrderReq planOrderReq) throws IOException {
+        return orderApi.currentPlan(symbol, planOrderReq).execute().body();
     }
 
     @Override
-    public PlansOrderResult historyPlan(String instrumentId, PlanOrderReq planOrderReq) throws IOException {
-        return orderApi.historyPlan(instrumentId, planOrderReq).execute().body();
+    public PlansOrderResult historyPlan(String symbol, PlanOrderReq planOrderReq) throws IOException {
+        return orderApi.historyPlan(symbol, planOrderReq).execute().body();
     }
 }

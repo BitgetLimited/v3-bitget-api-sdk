@@ -22,7 +22,7 @@ public class OrderReq implements Serializable {
     /**
      * 合约代码
      */
-    private String instrument_id;
+    private String symbol;
     /**
      *自定义订单号(不超过50个字符，且不能是特殊字符，如火星字符等)
      */
