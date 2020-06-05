@@ -41,7 +41,7 @@ public class AccountInfo implements Serializable {
     /**
      * 合约名称
      */
-    private String instrument_id;
+    private String symbol;
     /**
      * 开仓冻结保证金
      */

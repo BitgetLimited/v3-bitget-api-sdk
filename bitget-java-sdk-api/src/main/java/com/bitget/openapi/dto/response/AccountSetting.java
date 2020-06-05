@@ -28,7 +28,7 @@ public class AccountSetting implements Serializable {
     /**
      * 合约名称
      */
-    private String instrument_id;
+    private String symbol;
 
     /**
      * 是否是正向合约

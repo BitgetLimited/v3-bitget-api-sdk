@@ -43,5 +43,5 @@ public class LedgerResult implements Serializable {
     /**
      * 合约代码
      */
-    private String instrument_id;
+    private String symbol;
 }

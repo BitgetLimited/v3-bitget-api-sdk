@@ -40,7 +40,7 @@ public class AccountServiceTest extends BaseTest {
         LedgerReq req=LedgerReq.builder().
                 from("1").
                 to("2").
-                limit("50").
+                limit("50").endTime("").startTime("").
                 build();
         List<LedgerResult> result = bitgetRestClient.contract().bitget().account().getLedger(symbol, req);
         System.out.println(JSON.toJSONString(result));
@@ -50,7 +50,7 @@ public class AccountServiceTest extends BaseTest {
         LedgerReq req=LedgerReq.builder().
                 limit("50").
                 from("1").
-                to("2").
+                to("2").endTime("").startTime("").
                 build();
         List<LedgerResult> result = bitgetRestClient.contract().bitget().account().ledgerMargin(symbol, req);
         System.out.println(JSON.toJSONString(result));

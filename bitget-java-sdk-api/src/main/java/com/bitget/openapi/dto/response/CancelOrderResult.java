@@ -16,7 +16,7 @@ public class CancelOrderResult implements Serializable {
     private static final long serialVersionUID = 2182672129628573247L;
     private String order_id;
     private String client_oid;
-    private String instrument_id;
+    private String symbol;
     /**
      * 是否取消成功
      */

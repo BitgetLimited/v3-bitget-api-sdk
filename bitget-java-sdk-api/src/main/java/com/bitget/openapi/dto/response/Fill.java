@@ -20,7 +20,7 @@ public class Fill implements Serializable {
     /**
      * 合约code
      */
-    private String instrument_id;
+    private String symbol;
     /**
      * 订单id
      */

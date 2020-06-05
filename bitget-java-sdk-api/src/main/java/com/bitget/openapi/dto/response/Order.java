@@ -21,7 +21,7 @@ public class Order implements Serializable {
     /**
      * 合约名称，如BTC-USD-SWAP
      */
-    private String instrument_id;
+    private String symbol;
     /**
      * 委托数量
      */

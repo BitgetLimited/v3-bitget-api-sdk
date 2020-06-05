@@ -59,7 +59,7 @@ public class PlanOrder implements Serializable {
     /**
      * 合约编码
      */
-    private String instrument_id;
+    private String symbol;
 
     /**
      * 订单状态：状态 1未执行状态 2已委托 3执行失败状态 4用户取消状态

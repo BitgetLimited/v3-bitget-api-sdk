@@ -41,5 +41,5 @@ public class Trades implements Serializable {
     /**
      * 合约code
      */
-    private String instrument_id;
+    private String symbol;
 }
