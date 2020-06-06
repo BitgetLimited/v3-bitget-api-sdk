@@ -65,11 +65,13 @@ public interface OrderService {
      * 获取订单列表
      *
      * @param symbol
-     * @param orderListReq
      * @return
      * @throws IOException
      */
-    List<Order> getOrders(String symbol, OrderListReq orderListReq) throws IOException;
+    List<Order> getOrders(String symbol, Integer status,
+                          String from,
+                          String to,
+                          String limit) throws IOException;
 
     /**
      * 查询成交明细

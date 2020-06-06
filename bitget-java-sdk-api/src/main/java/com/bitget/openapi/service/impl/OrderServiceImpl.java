@@ -6,6 +6,7 @@ import com.bitget.openapi.common.client.ApiClient;
 import com.bitget.openapi.dto.request.*;
 import com.bitget.openapi.dto.response.*;
 import com.bitget.openapi.service.OrderService;
+import retrofit2.http.Query;
 
 import java.io.IOException;
 import java.util.List;
@@ -49,8 +50,14 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public List<Order> getOrders(String symbol, OrderListReq orderListReq) throws IOException {
-        return orderApi.getOrders(symbol, orderListReq).execute().body();
+    public List<Order> getOrders(String symbol, Integer status,
+                                 String from,
+                                  String to,
+                                 String limit) throws IOException {
+        return orderApi.getOrders(symbol,status,
+                 from,
+                 to,
+                 limit).execute().body();
     }
 
     @Override

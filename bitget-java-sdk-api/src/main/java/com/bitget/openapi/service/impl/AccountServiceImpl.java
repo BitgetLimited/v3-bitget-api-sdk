@@ -46,13 +46,17 @@ public class AccountServiceImpl implements AccountService {
     }
 
     @Override
-    public List<LedgerResult> getLedger(String symbol, LedgerReq ledgerReq) throws IOException {
-        return accountApi.getLedger(symbol, ledgerReq).execute().body();
+    public List<LedgerResult> getLedger(String symbol,String from,
+                                        String to,String limit, String startTime,
+                                        String endTime) throws IOException {
+        return accountApi.getLedger(symbol, from,to,limit,startTime,endTime).execute().body();
     }
 
     @Override
-    public List<LedgerResult> ledgerMargin(String symbol, LedgerReq ledgerReq) throws IOException {
-        return accountApi.ledgerMargin(symbol, ledgerReq).execute().body();
+    public List<LedgerResult> ledgerMargin(String symbol, String from,
+                                           String to,String limit, String startTime,
+                                           String endTime) throws IOException {
+        return accountApi.ledgerMargin(symbol,from,to,limit,startTime,endTime).execute().body();
     }
 
     @Override

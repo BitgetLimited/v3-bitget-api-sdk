@@ -6,6 +6,7 @@ import com.bitget.openapi.dto.request.AutoAppendMarginReq;
 import com.bitget.openapi.dto.request.ChangeLeverageReq;
 import com.bitget.openapi.dto.request.LedgerReq;
 import com.bitget.openapi.dto.response.*;
+import retrofit2.http.Query;
 
 import java.io.IOException;
 import java.util.List;
@@ -51,20 +52,22 @@ public interface AccountService {
     /**
      * 列出主账户资产流水
      * @param symbol
-     * @param ledgerReq
      * @return
      * @throws IOException
      */
-    List<LedgerResult> getLedger(String symbol, LedgerReq ledgerReq) throws IOException;
+    List<LedgerResult> getLedger(String symbol,String from,
+                                 String to,String limit, String startTime,
+                                 String endTime) throws IOException;
 
     /**
      * 列出保证金账户资产流水
      * @param symbol
-     * @param ledgerReq
      * @return
      * @throws IOException
      */
-    List<LedgerResult> ledgerMargin(String symbol, LedgerReq ledgerReq) throws IOException;
+    List<LedgerResult> ledgerMargin(String symbol, String from,
+                                    String to,String limit, String startTime,
+                                    String endTime) throws IOException;
 
     /**
      * 调整保证金

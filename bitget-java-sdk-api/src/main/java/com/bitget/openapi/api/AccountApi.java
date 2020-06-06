@@ -55,23 +55,25 @@ public interface AccountApi {
 
     /**
      * 列出主账户资产流水
-     *
      * @param symbol
-     * @param body
      * @return
      */
     @GET("/api/swap/v3/account/ledger")
-    Call<List<LedgerResult>> getLedger(@Query("symbol") String symbol, @Body LedgerReq body);
+    Call<List<LedgerResult>> getLedger(@Query("symbol") String symbol,@Query("from")String from,
+                                       @Query("to") String to,@Query("limit")String limit,@Query("startTime") String startTime,
+                                       @Query("endTime")String endTime);
+
 
     /**
      * 列出保证金账户资产流水
-     *
      * @param symbol
-     * @param body
      * @return
      */
     @GET("/api/swap/v3/account/ledgerMargin")
-    Call<List<LedgerResult>> ledgerMargin(@Query("symbol") String symbol, @Body LedgerReq body);
+    Call<List<LedgerResult>> ledgerMargin(@Query("symbol") String symbol,@Query("from")String from,
+                                          @Query("to") String to,@Query("limit")String limit,@Query("startTime") String startTime,
+                                          @Query("endTime")String endTime);
+
 
 
     /**

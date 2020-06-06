@@ -62,12 +62,19 @@ public interface OrderApi {
 
     /**
      * 获取订单列表
-     * @param symbol    合约code
-     * @param body      查询对象
+     * @param symbol
+     * @param status
+     * @param from
+     * @param to
+     * @param limit
      * @return
      */
     @GET("/api/swap/v3/order/orders")
-    Call<List<Order>> getOrders(@Query("symbol") String symbol, @Body OrderListReq body);
+    Call<List<Order>> getOrders(@Query("symbol") String symbol,
+                                @Query("status") Integer status,
+                                @Query("from") String from,
+                                @Query("to") String to,
+                                @Query("limit") String limit);
 
     /**
      * 查询成交明细

@@ -9,6 +9,7 @@ import com.bitget.openapi.dto.response.*;
 import org.junit.Test;
 
 import java.io.IOException;
+import java.time.LocalDateTime;
 import java.util.List;
 
 public class AccountServiceTest extends BaseTest {
@@ -40,9 +41,9 @@ public class AccountServiceTest extends BaseTest {
         LedgerReq req=LedgerReq.builder().
                 from("1").
                 to("2").
-                limit("50").endTime("").startTime("").
+                limit("50").startTime("2020-05-30 11:02:36").endTime("2020-06-03 11:02:36").
                 build();
-        List<LedgerResult> result = bitgetRestClient.contract().bitget().account().getLedger(symbol, req);
+        List<LedgerResult> result = bitgetRestClient.contract().bitget().account().getLedger(symbol, req.getFrom(),req.getTo(),req.getLimit(),req.getStartTime(),req.getEndTime());
         System.out.println(JSON.toJSONString(result));
     }
     @Test
@@ -52,7 +53,7 @@ public class AccountServiceTest extends BaseTest {
                 from("1").
                 to("2").endTime("").startTime("").
                 build();
-        List<LedgerResult> result = bitgetRestClient.contract().bitget().account().ledgerMargin(symbol, req);
+        List<LedgerResult> result = bitgetRestClient.contract().bitget().account().ledgerMargin(symbol, req.getFrom(),req.getTo(),req.getLimit(),req.getStartTime(),req.getEndTime());
         System.out.println(JSON.toJSONString(result));
     }
     @Test
