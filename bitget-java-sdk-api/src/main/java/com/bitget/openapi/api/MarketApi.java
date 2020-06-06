@@ -17,7 +17,7 @@ public interface MarketApi {
      *
      * @return
      */
-    @GET("market/time")
+    @GET("/api/swap/v3/market/time")
     Call<ServerTime> getTime();
 
     /**
@@ -25,7 +25,7 @@ public interface MarketApi {
      *
      * @return
      */
-    @GET("market/contracts")
+    @GET("/api/swap/v3/market/contracts")
     Call<List<ContractInfo>> getContractsApi();
 
     /**
@@ -35,7 +35,7 @@ public interface MarketApi {
      * @param limit
      * @return
      */
-    @GET("market/depth")
+    @GET("/api/swap/v3/market/depth")
     Call<Depth> getDepthApi(@Query("symbol") String symbol, @Query("limit") String limit);
 
     /**
@@ -43,7 +43,7 @@ public interface MarketApi {
      *
      * @return
      */
-    @GET("market/tickers")
+    @GET("/api/swap/v3/market/tickers")
     Call<List<Ticker>> getTickersApi();
 
     /**
@@ -51,7 +51,7 @@ public interface MarketApi {
      * @param symbol
      * @return
      */
-    @GET("market/ticker")
+    @GET("/api/swap/v3/market/ticker")
     Call<Ticker> getTicker(@Query("symbol") String symbol);
 
     /**
@@ -61,7 +61,7 @@ public interface MarketApi {
      * @param limit
      * @return
      */
-    @GET("market/trades")
+    @GET("/api/swap/v3/market/trades")
     Call<List<Trades>> getTrades(@Query("symbol") String symbol, @Query("limit") String limit);
 
 
@@ -74,7 +74,7 @@ public interface MarketApi {
      * @param granularity
      * @return
      */
-    @GET("market/candles")
+    @GET("/api/swap/v3/market/candles")
     Call<List<Object[]>> getCandles(@Query("symbol") String symbol, @Query("start") String start,
                                     @Query("end") String end, @Query("granularity") String granularity);
 
@@ -84,7 +84,7 @@ public interface MarketApi {
      * @param symbol
      * @return
      */
-    @GET("market/index")
+    @GET("/api/swap/v3/market/index")
     Call<Index> getIndex(@Query("symbol") String symbol);
 
     /**
@@ -93,7 +93,7 @@ public interface MarketApi {
      * @param symbol
      * @return
      */
-    @GET("market/open_interest")
+    @GET("/api/swap/v3/market/open_interest")
     Call<OpenInterest> getOpenInterestApi(@Query("symbol") String symbol);
 
     /**
@@ -102,7 +102,7 @@ public interface MarketApi {
      * @param symbol
      * @return
      */
-    @GET("market/price_limit")
+    @GET("/api/swap/v3/market/price_limit")
     Call<PriceLimit> getPriceLimitApi(@Query("symbol") String symbol);
 
     /**
@@ -111,7 +111,7 @@ public interface MarketApi {
      * @param symbol
      * @return
      */
-    @GET("market/funding_time")
+    @GET("/api/swap/v3/market/funding_time")
     Call<FundingTime> getFundingTimeApi(@Query("symbol") String symbol);
 
     /**
@@ -122,7 +122,7 @@ public interface MarketApi {
      * @param limit
      * @return
      */
-    @GET("market/historical_funding_rate")
+    @GET("/api/swap/v3/market/historical_funding_rate")
     Call<HistoricalFundingRate> getHistoricalFundingRateApi(@Query("symbol") String symbol,@Query("from") String from,
                                                             @Query("to") String to,@Query("limit") String limit);
 
@@ -132,7 +132,7 @@ public interface MarketApi {
      * @param symbol
      * @return
      */
-    @GET("market/mark_price")
+    @GET("/api/swap/v3/market/mark_price")
     Call<MarkPrice> getMarkPriceApi(@Query("symbol") String symbol);
 
     /**
@@ -144,7 +144,7 @@ public interface MarketApi {
      * @param openPrice    开仓价格
      * @return
      */
-    @GET("market/open_count")
+    @GET("/api/swap/v3/market/open_count")
     Call<String> calOpenCount(@Query("symbol") String symbol, @Query("amount") String amount, @Query("leverage") String leverage, @Query("openPrice") String openPrice);
 
 }

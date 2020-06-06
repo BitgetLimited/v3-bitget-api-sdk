@@ -6,7 +6,10 @@ import com.bitget.openapi.dto.request.ChangeLeverageReq;
 import com.bitget.openapi.dto.request.LedgerReq;
 import com.bitget.openapi.dto.response.*;
 import retrofit2.Call;
-import retrofit2.http.*;
+import retrofit2.http.Body;
+import retrofit2.http.GET;
+import retrofit2.http.POST;
+import retrofit2.http.Query;
 
 import java.util.List;
 
@@ -20,7 +23,7 @@ public interface AccountApi {
      *
      * @return
      */
-    @GET("account/accounts")
+    @GET("/api/swap/v3/account/accounts")
     Call<List<AccountInfo>> accounts();
 
     /**
@@ -28,7 +31,7 @@ public interface AccountApi {
      * @param symbol
      * @return
      */
-    @GET("account/account")
+    @GET("/api/swap/v3/account/account")
     Call<AccountInfo> getAccount(@Query("symbol") String symbol);
 
     /**
@@ -37,7 +40,7 @@ public interface AccountApi {
      * @param symbol
      * @return
      */
-    @GET("account/settings")
+    @GET("/api/swap/v3/account/settings")
     Call<AccountSetting> settings(@Query("symbol") String symbol);
 
     /**
@@ -47,7 +50,7 @@ public interface AccountApi {
      * @param body
      * @return
      */
-    @POST("account/leverage")
+    @POST("/api/swap/v3/account/leverage")
     Call<ChangeLeverageResult> leverage(@Query("symbol") String symbol, @Body ChangeLeverageReq body);
 
     /**
@@ -57,7 +60,7 @@ public interface AccountApi {
      * @param body
      * @return
      */
-    @GET("account/ledger")
+    @GET("/api/swap/v3/account/ledger")
     Call<List<LedgerResult>> getLedger(@Query("symbol") String symbol, @Body LedgerReq body);
 
     /**
@@ -67,7 +70,7 @@ public interface AccountApi {
      * @param body
      * @return
      */
-    @GET("account/ledgerMargin")
+    @GET("/api/swap/v3/account/ledgerMargin")
     Call<List<LedgerResult>> ledgerMargin(@Query("symbol") String symbol, @Body LedgerReq body);
 
 
@@ -77,7 +80,7 @@ public interface AccountApi {
      * @param body
      * @return
      */
-    @POST("account/adjustMargin")
+    @POST("/api/swap/v3/account/adjustMargin")
     Call<AdjustMarginResult> adjustMargin(@Query("symbol")String symbol, @Body AdjustMarginReq body);
     /**
      * 自动追加保证金
@@ -86,7 +89,7 @@ public interface AccountApi {
      * @param body
      * @return
      */
-    @POST("account/modifyAutoAppendMargin")
+    @POST("/api/swap/v3/account/modifyAutoAppendMargin")
     Call<AutoAppendMarginResult> modifyAutoAppendMargin(@Query("symbol") String symbol, @Body AutoAppendMarginReq body);
 
 

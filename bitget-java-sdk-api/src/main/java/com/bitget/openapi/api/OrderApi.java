@@ -19,7 +19,7 @@ public interface OrderApi {
      * @param body
      * @return
      */
-    @POST("order/placeOrder")
+    @POST("/api/swap/v3/order/placeOrder")
     Call<PlaceOrderResult> placeOrder(@Body OrderReq body);
 
     /**
@@ -28,7 +28,7 @@ public interface OrderApi {
      * @param body
      * @return
      */
-    @POST("order/batchOrders")
+    @POST("/api/swap/v3/order/batchOrders")
     Call<PlaceBatchOrderResult> batchOrders(@Body PlaceBatchOrderReq body);
 
     /**
@@ -38,7 +38,7 @@ public interface OrderApi {
      * @param orderId
      * @return
      */
-    @POST("order/cancel_order")
+    @POST("/api/swap/v3/order/cancel_order")
     Call<CancelOrderResult> cancelOrder(@Query("symbol") String symbol, @Path("orderId") String orderId);
 
     /**
@@ -48,7 +48,7 @@ public interface OrderApi {
      * @param body
      * @return
      */
-    @POST("order/cancel_batch_orders")
+    @POST("/api/swap/v3/order/cancel_batch_orders")
     Call<CancelBatchOrderResult> cancelBathOrders(@Query("symbol") String symbol, @Body CancelBatchOrdersReq body);
 
     /**
@@ -57,8 +57,8 @@ public interface OrderApi {
      * @param orderId   订单ID
      * @return
      */
-    @GET("order/detail")
-    Call<Order> getOrderDetail(@Query("symbol") String symbol, @Query("order_id") String orderId);
+    @GET("/api/swap/v3/order/detail")
+    Call<Order> getOrderDetail(@Query("symbol") String symbol, @Query("orderId") String orderId);
 
     /**
      * 获取订单列表
@@ -66,7 +66,7 @@ public interface OrderApi {
      * @param body      查询对象
      * @return
      */
-    @GET("order/orders")
+    @GET("/api/swap/v3/order/orders")
     Call<List<Order>> getOrders(@Query("symbol") String symbol, @Body OrderListReq body);
 
     /**
@@ -75,15 +75,15 @@ public interface OrderApi {
      * @param orderId   订单ID
      * @return
      */
-    @GET("order/fills")
-    Call<List<Fill>> getFills(@Query("symbol") String symbol, @Query("order_id") String orderId);
+    @GET("/api/swap/v3/order/fills")
+    Call<List<Fill>> getFills(@Query("symbol") String symbol, @Query("orderId") String orderId);
 
     /**
      * 计划委托下单
      * @param body
      * @return
      */
-    @POST("order/plan_order")
+    @POST("/api/swap/v3/order/plan_order")
     Call<PlanPlaceOrderResult> planOrder(@Body PlanPlaceOrderReq body);
 
     /**
@@ -92,7 +92,7 @@ public interface OrderApi {
      * @param orderId
      * @return
      */
-    @POST("order/cancel_plan")
+    @POST("/api/swap/v3/order/cancel_plan")
     Call<CancelPlanResult> cancelPlan(@Query("symbol") String symbol, @Query("orderId") String orderId);
 
     /**
@@ -102,7 +102,7 @@ public interface OrderApi {
      * @param body
      * @return
      */
-    @POST("order/currentPlan")
+    @POST("/api/swap/v3/order/currentPlan")
     Call<PlansOrderResult> currentPlan(@Query("symbol") String symbol, @Body PlanOrderReq body);
 
     /**
@@ -112,7 +112,7 @@ public interface OrderApi {
      * @param body
      * @return
      */
-    @POST("order/historyPlan")
+    @POST("/api/swap/v3/order/historyPlan")
     Call<PlansOrderResult> historyPlan(@Query("symbol") String symbol, @Body PlanOrderReq body);
 
 }

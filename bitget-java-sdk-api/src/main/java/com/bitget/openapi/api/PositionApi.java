@@ -19,7 +19,7 @@ public interface PositionApi {
      *
      * @return
      */
-    @GET("position/allPosition")
+    @GET("/api/swap/v3/position/allPosition")
     Call<List<AllPosition>> getAllPosition();
 
     /**
@@ -27,7 +27,7 @@ public interface PositionApi {
      * @param symbol 合约code
      * @return
      */
-    @GET("position/singlePosition")
+    @GET("/api/swap/v3/position/singlePosition")
     Call<AllPosition> getSinglePosition(@Query("symbol") String symbol);
 
     /**
@@ -36,6 +36,6 @@ public interface PositionApi {
      * @param symbol
      * @return
      */
-    @GET("position/holds")
+    @GET("/api/swap/v3/position/holds")
     Call<Holds> getHolds(@Query("symbol") String symbol);
 }
