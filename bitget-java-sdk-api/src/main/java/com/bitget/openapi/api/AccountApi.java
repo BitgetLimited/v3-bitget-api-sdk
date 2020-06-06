@@ -28,7 +28,7 @@ public interface AccountApi {
      * @param symbol
      * @return
      */
-    @GET("account")
+    @GET("account/account")
     Call<AccountInfo> getAccount(@Query("symbol") String symbol);
 
     /**
