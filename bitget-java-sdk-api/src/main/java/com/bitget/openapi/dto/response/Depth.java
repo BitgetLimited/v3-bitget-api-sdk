@@ -15,11 +15,11 @@ import java.util.List;
 public class Depth implements Serializable {
     private static final long serialVersionUID = -3189494923249116793L;
     /**
-     * 买方深度
+     * 买方深度【价格，数量，该深度价格的数量】
      */
     private List<Object[]> asks;
     /**
-     * 卖方深度
+     * 卖方深度【价格，数量，该深度价格的数量】
      */
     private List<Object[]> bids;
     /**
