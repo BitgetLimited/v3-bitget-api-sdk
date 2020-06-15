@@ -19,8 +19,6 @@ public class HttpHeader {
     public static final String ACCESS_KEY = "ACCESS-KEY";
     public static final String ACCESS_PASSPHRASE = "ACCESS-PASSPHRASE";
     public static final String CONTENT_TYPE = "Content-Type";
-    public static final String BG_BEFORE = "BG_BEFORE";
-    public static final String BG_AFTER = "BG_AFTER";
-    public static final String X_LOCALE = "x-locale";
+    public static final String LOCALE = "locale";
     public static final String COOKIE = "Cookie";
 }

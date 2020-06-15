@@ -78,7 +78,7 @@ public class ApiClient {
                         .addHeader(HttpHeader.ACCESS_SIGN, sign)
                         .addHeader(HttpHeader.CONTENT_TYPE, contentType)
                         .addHeader(HttpHeader.COOKIE, String.format(localFormat, clientParameter.getLocale()))
-                        .addHeader(HttpHeader.X_LOCALE, clientParameter.getLocale())
+                        .addHeader(HttpHeader.LOCALE, clientParameter.getLocale())
                         .addHeader(HttpHeader.ACCESS_TIMESTAMP, timestamp);
 
                 Request request = requestBuilder.build();
