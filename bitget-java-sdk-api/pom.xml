@@ -11,15 +11,15 @@
     <url>http://www.bitget.com/</url>
 
     <properties>
-        <lombok-version>1.16.20</lombok-version>
         <java.version>1.8</java.version>
-        <okhttp-version>3.10.0</okhttp-version>
-        <retorfit2-version>2.3.0</retorfit2-version>
+        <lombok-version>1.16.20</lombok-version>
+        <okhttp-version>4.7.2</okhttp-version>
+        <retorfit2-version>2.8.1</retorfit2-version>
         <fastjson-version>1.2.70</fastjson-version>
         <commons-lang3-version>3.7</commons-lang3-version>
-        <commons-codec-version>1.11</commons-codec-version>
+        <commons-codec-version>1.14</commons-codec-version>
         <junit-version>4.12</junit-version>
-        <commons-collections4>4.1</commons-collections4>
+        <commons-collections4>4.4</commons-collections4>
     </properties>
 
     <dependencies>
@@ -97,7 +97,7 @@
             </plugin>
         </plugins>
     </build>
-    
+
     <profiles>
         <profile>
             <id>release</id>
