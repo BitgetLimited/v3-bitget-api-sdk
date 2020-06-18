@@ -1,3 +1,15 @@
+<<<<<<< HEAD
+# Created by .ignore support plugin (hsz.mobi)
+### Example user template template
+### Example user template
+
+# IntelliJ project files
+.idea
+*.iml
+out
+gen
+target/
+=======
 HELP.md
 target/
 !.mvn/wrapper/maven-wrapper.jar
@@ -29,3 +41,4 @@ build/
 
 ### VS Code ###
 .vscode/
+>>>>>>> dd683fc379f02f7d761524e4dc18b17b7a848981
