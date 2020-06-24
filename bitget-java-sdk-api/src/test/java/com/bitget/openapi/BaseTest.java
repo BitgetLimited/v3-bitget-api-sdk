@@ -15,20 +15,20 @@ public class BaseTest {
     /**
      * 用户 apiKey
      */
-    private final String apiKey = "bg_21cc4e1bd67dcffb5683f3e8f6d13966";
+    private final String apiKey = "bg_bbe24d57657d45de54210905888024e2";
     /**
      * 用户 secretKey
      */
-    private final String secretKey = "071e7b5970136d1bcdae58e6278a08943e0f66ba08897823a2974e20b1ce6e20";
+    private final String secretKey = "61629c51d4b5f127ace628fba9feb41a3272fee468d28deea35a23e121b37188";
     /**
      * 口令
      */
-    private final String passphrase = "123456a";
+    private final String passphrase = "11111111";
     /**
      * bitget open api 根路径
      */
 // private final String baseUrl = "http://127.0.0.1:8081";
-    private final String baseUrl = "http://192.168.33.2:12457";
+    private final String baseUrl = "http://192.168.33.10:27832";
     private final ClientParameter parameter = ClientParameter.builder()
             .apiKey(apiKey)
             .secretKey(secretKey)
