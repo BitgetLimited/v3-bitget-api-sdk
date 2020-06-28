@@ -106,20 +106,28 @@ public interface OrderApi {
      * 查询当前计划委托
      *
      * @param symbol
-     * @param body
      * @return
      */
-    @POST("/api/swap/v3/order/currentPlan")
-    Call<PlansOrderResult> currentPlan(@Query("symbol") String symbol, @Body PlanOrderReq body);
+    @GET("/api/swap/v3/order/currentPlan")
+    Call<PlansOrderResult> currentPlan(@Query("symbol") String symbol,
+                                       @Query("side") String side,
+                                       @Query("pageIndex") String pageIndex,
+                                       @Query("pageSize") String pageSize,
+                                       @Query("startTime")String startTime,
+                                       @Query("endTime") String endTime);
 
     /**
      * 查询计划历史委托
      *
      * @param symbol
-     * @param body
      * @return
      */
-    @POST("/api/swap/v3/order/historyPlan")
-    Call<PlansOrderResult> historyPlan(@Query("symbol") String symbol, @Body PlanOrderReq body);
+    @GET("/api/swap/v3/order/historyPlan")
+    Call<PlansOrderResult> historyPlan(@Query("symbol") String symbol,
+                                       @Query("side") String side,
+                                       @Query("pageIndex") String pageIndex,
+                                       @Query("pageSize") String pageSize,
+                                       @Query("startTime")String startTime,
+                                       @Query("endTime") String endTime);
 
 }

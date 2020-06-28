@@ -27,8 +27,8 @@ public class OrderServiceTest extends BaseTest {
                 .symbol(symbol)
                 .match_price(MatchTypeEnum.MARKET.getCode())
                 .order_type(OrderTypeEnum.LIMIT.getCode().toString())
-                .size("1000")
-                .trace_no("1111")
+                .size("1000.52")
+                .trace_no("1111").price("110")
                 .type("1").build();
         PlaceOrderResult result = bitgetRestClient.contract().bitget().order().placeOrder(req);
         System.out.println(JSON.toJSONString(result));

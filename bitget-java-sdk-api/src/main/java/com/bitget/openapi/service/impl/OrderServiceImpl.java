@@ -77,11 +77,11 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public PlansOrderResult currentPlan(String symbol, PlanOrderReq planOrderReq) throws IOException {
-        return orderApi.currentPlan(symbol, planOrderReq).execute().body();
+        return orderApi.currentPlan(symbol, planOrderReq.getSide(),planOrderReq.getPage_index(),planOrderReq.getPage_size(),planOrderReq.getStart_time(),planOrderReq.getEnd_time()).execute().body();
     }
 
     @Override
     public PlansOrderResult historyPlan(String symbol, PlanOrderReq planOrderReq) throws IOException {
-        return orderApi.historyPlan(symbol, planOrderReq).execute().body();
+        return orderApi.historyPlan(symbol, planOrderReq.getSide(),planOrderReq.getPage_index(),planOrderReq.getPage_size(),planOrderReq.getStart_time(),planOrderReq.getEnd_time()).execute().body();
     }
 }
