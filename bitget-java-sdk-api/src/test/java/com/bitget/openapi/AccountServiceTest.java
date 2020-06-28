@@ -35,8 +35,9 @@ public class AccountServiceTest extends BaseTest {
 
     @Test
     public void leverage() throws IOException {
-        ChangeLeverageReq req = ChangeLeverageReq.builder().leverage(10).side(1).build();
-        ChangeLeverageResult result = bitgetRestClient.contract().bitget().account().leverage(symbol, req);
+        ChangeLeverageReq req = ChangeLeverageReq.builder().leverage(10).side(1).symbol(symbol).
+                build();
+        ChangeLeverageResult result = bitgetRestClient.contract().bitget().account().leverage(req);
         System.out.println(JSON.toJSONString(result));
     }
 

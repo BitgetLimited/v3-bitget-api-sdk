@@ -42,12 +42,11 @@ public interface AccountService {
 
     /**
      * 调整杠杆
-     * @param symbol
      * @param changeLeverageReq
      * @return
      * @throws IOException
      */
-    ChangeLeverageResult leverage(String symbol, ChangeLeverageReq changeLeverageReq) throws IOException;
+    ChangeLeverageResult leverage( ChangeLeverageReq changeLeverageReq) throws IOException;
 
     /**
      * 列出主账户资产流水

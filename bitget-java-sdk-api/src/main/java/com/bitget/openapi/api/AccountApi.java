@@ -45,13 +45,11 @@ public interface AccountApi {
 
     /**
      * 调整杠杆
-     *
-     * @param symbol
      * @param body
      * @return
      */
     @POST("/api/swap/v3/account/leverage")
-    Call<ChangeLeverageResult> leverage(@Query("symbol") String symbol, @Body ChangeLeverageReq body);
+    Call<ChangeLeverageResult> leverage(@Body ChangeLeverageReq body);
 
     /**
      * 列出主账户资产流水

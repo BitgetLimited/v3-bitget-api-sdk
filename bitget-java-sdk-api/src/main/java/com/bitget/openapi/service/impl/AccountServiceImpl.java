@@ -41,8 +41,8 @@ public class AccountServiceImpl implements AccountService {
     }
 
     @Override
-    public ChangeLeverageResult leverage(String symbol, ChangeLeverageReq changeLeverageReq) throws IOException {
-        return accountApi.leverage(symbol, changeLeverageReq).execute().body();
+    public ChangeLeverageResult leverage( ChangeLeverageReq changeLeverageReq) throws IOException {
+        return accountApi.leverage(changeLeverageReq).execute().body();
     }
 
     @Override
