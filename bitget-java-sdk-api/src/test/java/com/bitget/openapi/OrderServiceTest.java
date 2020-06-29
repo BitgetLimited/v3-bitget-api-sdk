@@ -75,7 +75,7 @@ public class OrderServiceTest extends BaseTest {
                 .from("1")
                 .to("2")
                 .limit("50")
-                .status(1)
+                .status(2)
                 .build();
         List<Order> result = bitgetRestClient.contract().bitget().order().getOrders(symbol, req.getStatus(),req.getFrom(),req.getTo(),req.getLimit());
         System.out.println(JSON.toJSONString(result));
