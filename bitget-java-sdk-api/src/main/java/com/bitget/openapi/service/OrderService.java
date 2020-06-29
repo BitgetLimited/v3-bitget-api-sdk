@@ -34,22 +34,19 @@ public interface OrderService {
     /**
      * 取消订单
      *
-     * @param symbol
-     * @param orderId
      * @return
      * @throws IOException
      */
-    CancelOrderResult cancelOrder(String symbol, String orderId) throws IOException;
+    CancelOrderResult cancelOrder(CancelOrderParam cancelOrderParam) throws IOException;
 
     /**
      * 批量撤单
      *
-     * @param symbol
      * @param param
      * @return
      * @throws IOException
      */
-    CancelBatchOrderResult cancelBathOrders(String symbol, CancelBatchOrdersReq param) throws IOException;
+    CancelBatchOrderResult cancelBathOrders(CancelBatchOrdersReq param) throws IOException;
 
     /**
      * 获取单订单信息
@@ -95,12 +92,10 @@ public interface OrderService {
     /**
      * 计划委托撤单
      *
-     * @param symbol
-     * @param orderId
      * @return
      * @throws IOException
      */
-    CancelPlanResult cancelPlan(String symbol, String orderId) throws IOException;
+    CancelPlanResult cancelPlan(CancelPlanParamReq  cancelPlanParamReq) throws IOException;
 
     /**
      * 查询当前计划委托
