@@ -46,7 +46,7 @@ public class AccountServiceTest extends BaseTest {
         LedgerReq req = LedgerReq.builder().
                 from("1").
                 to("2").
-                limit("50").startTime("1586502961000").endTime("1589094961000").
+                limit("0").startTime("1586502961000").endTime("1589094961000").
                 build();
         List<LedgerResult> result = bitgetRestClient.contract().bitget().account().getLedger(symbol, req.getFrom(), req.getTo(), req.getLimit(), req.getStartTime(), req.getEndTime());
         System.out.println(JSON.toJSONString(result));
@@ -65,22 +65,22 @@ public class AccountServiceTest extends BaseTest {
 
     @Test
     public void adjustMargin() throws IOException {
-        AdjustMarginReq req = AdjustMarginReq.builder().
+        AdjustMarginReq req = AdjustMarginReq.builder().symbol(symbol).
                 amount("100").
-                positionType(1).
+                positionType(0).
                 type(1).
                 build();
-        AdjustMarginResult result = bitgetRestClient.contract().bitget().account().adjustMargin(symbol, req);
+        AdjustMarginResult result = bitgetRestClient.contract().bitget().account().adjustMargin(req);
         System.out.println(JSON.toJSONString(result));
     }
 
     @Test
     public void modifyAutoAppendMargin() throws IOException {
-        AutoAppendMarginReq req = AutoAppendMarginReq.builder().
+        AutoAppendMarginReq req = AutoAppendMarginReq.builder().symbol(symbol).
                 append_type(0).
                 side(1).
                 build();
-        AutoAppendMarginResult result = bitgetRestClient.contract().bitget().account().modifyAutoAppendMargin(symbol, req);
+        AutoAppendMarginResult result = bitgetRestClient.contract().bitget().account().modifyAutoAppendMargin(req);
         System.out.println(JSON.toJSONString(result));
     }
 }

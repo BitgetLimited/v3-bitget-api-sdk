@@ -60,12 +60,12 @@ public class AccountServiceImpl implements AccountService {
     }
 
     @Override
-    public AdjustMarginResult adjustMargin(String symbol, AdjustMarginReq adjustMarginReq) throws IOException {
-        return accountApi.adjustMargin(symbol, adjustMarginReq).execute().body();
+    public AdjustMarginResult adjustMargin( AdjustMarginReq adjustMarginReq) throws IOException {
+        return accountApi.adjustMargin(adjustMarginReq).execute().body();
     }
 
     @Override
-    public AutoAppendMarginResult modifyAutoAppendMargin(String symbol, AutoAppendMarginReq autoAppendMarginReq) throws IOException {
-        return accountApi.modifyAutoAppendMargin(symbol, autoAppendMarginReq).execute().body();
+    public AutoAppendMarginResult modifyAutoAppendMargin( AutoAppendMarginReq autoAppendMarginReq) throws IOException {
+        return accountApi.modifyAutoAppendMargin(autoAppendMarginReq).execute().body();
     }
 }

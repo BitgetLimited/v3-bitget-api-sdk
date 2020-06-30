@@ -70,18 +70,16 @@ public interface AccountService {
 
     /**
      * 调整保证金
-     * @param symbol
      * @param adjustMarginReq
      * @return
      * @throws IOException
      */
-    AdjustMarginResult adjustMargin(String symbol, AdjustMarginReq adjustMarginReq) throws IOException;
+    AdjustMarginResult adjustMargin(AdjustMarginReq adjustMarginReq) throws IOException;
     /**
-     * 列出保证金账户资产流水
-     * @param symbol
+     * 自动追加保证金
      * @param autoAppendMarginReq
      * @return
      * @throws IOException
      */
-    AutoAppendMarginResult modifyAutoAppendMargin(String symbol, AutoAppendMarginReq autoAppendMarginReq) throws IOException;
+    AutoAppendMarginResult modifyAutoAppendMargin(AutoAppendMarginReq autoAppendMarginReq) throws IOException;
 }

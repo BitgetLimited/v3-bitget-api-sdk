@@ -76,21 +76,18 @@ public interface AccountApi {
 
     /**
      * 调整保证金
-     * @param symbol
      * @param body
      * @return
      */
     @POST("/api/swap/v3/account/adjustMargin")
-    Call<AdjustMarginResult> adjustMargin(@Query("symbol")String symbol, @Body AdjustMarginReq body);
+    Call<AdjustMarginResult> adjustMargin(@Body AdjustMarginReq body);
     /**
      * 自动追加保证金
-     *
-     * @param symbol
      * @param body
      * @return
      */
     @POST("/api/swap/v3/account/modifyAutoAppendMargin")
-    Call<AutoAppendMarginResult> modifyAutoAppendMargin(@Query("symbol") String symbol, @Body AutoAppendMarginReq body);
+    Call<AutoAppendMarginResult> modifyAutoAppendMargin(@Body AutoAppendMarginReq body);
 
 
 }

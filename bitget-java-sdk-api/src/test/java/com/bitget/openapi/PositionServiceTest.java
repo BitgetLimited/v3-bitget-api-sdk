@@ -2,6 +2,7 @@ package com.bitget.openapi;
 
 import com.alibaba.fastjson.JSON;
 import com.bitget.openapi.dto.response.AllPosition;
+import com.bitget.openapi.dto.response.FVirtualCaptialOperator;
 import com.bitget.openapi.dto.response.Holds;
 import org.junit.Test;
 
@@ -33,4 +34,9 @@ public class PositionServiceTest extends BaseTest {
         System.out.println(JSON.toJSONString(result));
     }
 
+    @Test
+    public  void  virtualCapital()throws  IOException{
+        List<FVirtualCaptialOperator> capital = bitgetRestClient.contract().bitget().position().virtualCapital(symbol, "1,2", 10, 398526, null);
+        System.out.println(JSON.toJSON(capital));
+    }
 }

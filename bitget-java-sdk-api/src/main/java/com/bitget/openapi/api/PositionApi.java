@@ -1,6 +1,7 @@
 package com.bitget.openapi.api;
 
 import com.bitget.openapi.dto.response.AllPosition;
+import com.bitget.openapi.dto.response.FVirtualCaptialOperator;
 import com.bitget.openapi.dto.response.Holds;
 import retrofit2.Call;
 import retrofit2.http.GET;
@@ -38,4 +39,20 @@ public interface PositionApi {
      */
     @GET("/api/swap/v3/position/holds")
     Call<Holds> getHolds(@Query("symbol") String symbol);
+
+    /**
+     * 出入金接口
+     * @param symbol
+     * @param ftype
+     * @param limit
+     * @param gt
+     * @param lt
+     * @return
+     */
+    @GET("/api/swap/v3/position/virtualCapital")
+    Call<List<FVirtualCaptialOperator>> virtualCapital( @Query("symbol") String  symbol,
+                                                        @Query("ftype") String ftype,
+                                                        @Query("limit") Integer limit,
+                                                        @Query("gt") Integer gt,
+                                                        @Query("lt") Integer lt);
 }
