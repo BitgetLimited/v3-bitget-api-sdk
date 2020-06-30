@@ -36,7 +36,7 @@ public class PositionServiceTest extends BaseTest {
 
     @Test
     public  void  virtualCapital()throws  IOException{
-        List<FVirtualCaptialOperator> capital = bitgetRestClient.contract().bitget().position().virtualCapital(symbol, "1,2", 10, 398526, null);
+        List<FVirtualCaptialOperator> capital = bitgetRestClient.contract().bitget().position().virtualCapital("btc", "14", 10, 398526, null);
         System.out.println(JSON.toJSON(capital));
     }
 }
