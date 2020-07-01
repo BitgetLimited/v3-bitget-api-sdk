@@ -38,7 +38,7 @@ public class OrderServiceTest extends BaseTest {
     @Test
     public void batchOrders() throws IOException {
         PlaceBatchOrderReq req = PlaceBatchOrderReq.builder().symbol(symbol)
-                .order_data("[{price:5,size:2,type:1,match_price:1,order_type:1,client_oid:\"abc\"},{price:5,size:2,type:1,match_price:1,order_type:1,client_oid:\"abc\"}]")
+                .order_data("[{\"client_oid\":\"E213\",\"order_type\":\"1\",\"price\":\"5\",\"size\":\"2\",\"type\":\"1\",\"match_price\":\"0\"}]")
                 .build();
         PlaceBatchOrderResult result = bitgetRestClient.contract().bitget().order().batchOrders(req);
         System.out.println(JSON.toJSONString(result));
