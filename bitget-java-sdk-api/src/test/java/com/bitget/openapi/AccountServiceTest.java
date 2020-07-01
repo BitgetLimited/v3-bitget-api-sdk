@@ -66,11 +66,11 @@ public class AccountServiceTest extends BaseTest {
     @Test
     public void adjustMargin() throws IOException {
         AdjustMarginReq req = AdjustMarginReq.builder().symbol(symbol).
-                amount("100").
+                amount("10").
                 positionType(0).
-                type(1).
+                type(2).
                 build();
-        ResponseResult<AdjustMarginResult> result = bitgetRestClient.contract().bitget().account().adjustMargin(req);
+       AdjustMarginResult result = bitgetRestClient.contract().bitget().account().adjustMargin(req);
         System.out.println(JSON.toJSONString(result));
     }
 
@@ -78,9 +78,9 @@ public class AccountServiceTest extends BaseTest {
     public void modifyAutoAppendMargin() throws IOException {
         AutoAppendMarginReq req = AutoAppendMarginReq.builder().symbol(symbol).
                 append_type(0).
-                side(1).
+                side(2).
                 build();
-        ResponseResult<AutoAppendMarginResult> result = bitgetRestClient.contract().bitget().account().modifyAutoAppendMargin(req);
+        AutoAppendMarginResult result = bitgetRestClient.contract().bitget().account().modifyAutoAppendMargin(req);
         System.out.println(JSON.toJSONString(result));
     }
 }

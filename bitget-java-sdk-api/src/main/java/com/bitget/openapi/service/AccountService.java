@@ -74,12 +74,12 @@ public interface AccountService {
      * @return
      * @throws IOException
      */
-    ResponseResult<AdjustMarginResult> adjustMargin(AdjustMarginReq adjustMarginReq) throws IOException;
+    AdjustMarginResult adjustMargin(AdjustMarginReq adjustMarginReq) throws IOException;
     /**
      * 自动追加保证金
      * @param autoAppendMarginReq
      * @return
      * @throws IOException
      */
-    ResponseResult<AutoAppendMarginResult> modifyAutoAppendMargin(AutoAppendMarginReq autoAppendMarginReq) throws IOException;
+    AutoAppendMarginResult modifyAutoAppendMargin(AutoAppendMarginReq autoAppendMarginReq) throws IOException;
 }
