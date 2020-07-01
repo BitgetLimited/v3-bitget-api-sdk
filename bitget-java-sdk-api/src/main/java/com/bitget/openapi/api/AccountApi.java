@@ -80,14 +80,14 @@ public interface AccountApi {
      * @return
      */
     @POST("/api/swap/v3/account/adjustMargin")
-    Call<AdjustMarginResult> adjustMargin(@Body AdjustMarginReq body);
+    Call<ResponseResult<AdjustMarginResult>> adjustMargin(@Body AdjustMarginReq body);
     /**
      * 自动追加保证金
      * @param body
      * @return
      */
     @POST("/api/swap/v3/account/modifyAutoAppendMargin")
-    Call<AutoAppendMarginResult> modifyAutoAppendMargin(@Body AutoAppendMarginReq body);
+    Call<ResponseResult<AutoAppendMarginResult>> modifyAutoAppendMargin(@Body AutoAppendMarginReq body);
 
 
 }

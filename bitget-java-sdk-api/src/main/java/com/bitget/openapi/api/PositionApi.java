@@ -42,7 +42,7 @@ public interface PositionApi {
 
     /**
      * 出入金接口
-     * @param symbol
+     * @param symbol 
      * @param ftype
      * @param limit
      * @param gt
