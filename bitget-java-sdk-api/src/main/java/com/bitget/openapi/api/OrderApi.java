@@ -34,22 +34,19 @@ public interface OrderApi {
     /**
      * 取消订单
      *
-     * @param symbol
-     * @param orderId
      * @return
      */
     @POST("/api/swap/v3/order/cancel_order")
-    Call<CancelOrderResult> cancelOrder(@Query("symbol") String symbol, @Path("orderId") String orderId);
+    Call<CancelOrderResult> cancelOrder(@Body CancelOrderParam cancelOrderParam);
 
     /**
      * 批量撤单
      *
-     * @param symbol
      * @param body
      * @return
      */
     @POST("/api/swap/v3/order/cancel_batch_orders")
-    Call<CancelBatchOrderResult> cancelBathOrders(@Query("symbol") String symbol, @Body CancelBatchOrdersReq body);
+    Call<CancelBatchOrderResult> cancelBathOrders(@Body CancelBatchOrdersReq body);
 
     /**
      * 获取单订单信息
@@ -95,31 +92,37 @@ public interface OrderApi {
 
     /**
      * 计划委托撤单
-     * @param symbol
-     * @param orderId
      * @return
      */
     @POST("/api/swap/v3/order/cancel_plan")
-    Call<CancelPlanResult> cancelPlan(@Query("symbol") String symbol, @Query("orderId") String orderId);
+    Call<CancelPlanResult> cancelPlan(@Body  CancelPlanParamReq cancelPlanParamReq);
 
     /**
      * 查询当前计划委托
      *
      * @param symbol
-     * @param body
      * @return
      */
-    @POST("/api/swap/v3/order/currentPlan")
-    Call<PlansOrderResult> currentPlan(@Query("symbol") String symbol, @Body PlanOrderReq body);
+    @GET("/api/swap/v3/order/currentPlan")
+    Call<PlansOrderResult> currentPlan(@Query("symbol") String symbol,
+                                       @Query("side") String side,
+                                       @Query("pageIndex") String pageIndex,
+                                       @Query("pageSize") String pageSize,
+                                       @Query("startTime")String startTime,
+                                       @Query("endTime") String endTime);
 
     /**
      * 查询计划历史委托
      *
      * @param symbol
-     * @param body
      * @return
      */
-    @POST("/api/swap/v3/order/historyPlan")
-    Call<PlansOrderResult> historyPlan(@Query("symbol") String symbol, @Body PlanOrderReq body);
+    @GET("/api/swap/v3/order/historyPlan")
+    Call<PlansOrderResult> historyPlan(@Query("symbol") String symbol,
+                                       @Query("side") String side,
+                                       @Query("pageIndex") String pageIndex,
+                                       @Query("pageSize") String pageSize,
+                                       @Query("startTime")String startTime,
+                                       @Query("endTime") String endTime);
 
 }

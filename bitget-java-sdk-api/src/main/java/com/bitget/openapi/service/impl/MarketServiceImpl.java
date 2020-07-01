@@ -77,7 +77,7 @@ public class MarketServiceImpl implements MarketService {
     }
 
     @Override
-    public HistoricalFundingRate getHistoricalFundingRateApi(String symbol, String from, String to, String limit) throws IOException {
+    public List<HistoricalFundingRate> getHistoricalFundingRateApi(String symbol, String from, String to, String limit) throws IOException {
         return marketApi.getHistoricalFundingRateApi(symbol, from, to, limit).execute().body();
     }
 
