@@ -70,7 +70,7 @@ public class AccountServiceTest extends BaseTest {
                 positionType(0).
                 type(1).
                 build();
-        AdjustMarginResult result = bitgetRestClient.contract().bitget().account().adjustMargin(req);
+        ResponseResult<AdjustMarginResult> result = bitgetRestClient.contract().bitget().account().adjustMargin(req);
         System.out.println(JSON.toJSONString(result));
     }
 
@@ -80,7 +80,7 @@ public class AccountServiceTest extends BaseTest {
                 append_type(0).
                 side(1).
                 build();
-        AutoAppendMarginResult result = bitgetRestClient.contract().bitget().account().modifyAutoAppendMargin(req);
+        ResponseResult<AutoAppendMarginResult> result = bitgetRestClient.contract().bitget().account().modifyAutoAppendMargin(req);
         System.out.println(JSON.toJSONString(result));
     }
 }
