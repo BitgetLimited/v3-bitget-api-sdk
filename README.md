@@ -10,4 +10,3 @@
 |bitget-node-sdk-api|Node|-|
 |bitget-go-sdk-api|Go|-|
 |bitget-php-sdk-api|Php|-|
-k
