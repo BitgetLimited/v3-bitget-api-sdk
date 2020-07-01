@@ -115,9 +115,9 @@ public class OrderServiceTest extends BaseTest {
         PlanOrderReq req = PlanOrderReq.builder()
                 .page_index("1")
                 .page_size("50")
-                .side("1")
-                .end_time("1593402556000")
-                .start_time("1592884156000")
+                .side("2")
+                .end_time("1593584346687")
+                .start_time("1593066788000")
                 .build();
         PlansOrderResult result = bitgetRestClient.contract().bitget().order().currentPlan(symbol, req);
         System.out.println(JSON.toJSONString(result));
@@ -130,8 +130,8 @@ public class OrderServiceTest extends BaseTest {
                 .page_index("1")
                 .page_size("50")
                 .side("1")
-                .end_time("1592884156000")
-                .start_time("1592884156000")
+                .end_time("1593584346687")
+                .start_time("1593066788000")
                 .build();
         PlansOrderResult result = bitgetRestClient.contract().bitget().order().historyPlan(symbol, req);
         System.out.println(JSON.toJSONString(result));
