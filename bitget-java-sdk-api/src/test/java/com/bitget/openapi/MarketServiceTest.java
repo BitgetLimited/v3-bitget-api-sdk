@@ -13,13 +13,12 @@ import java.util.List;
  */
 public class MarketServiceTest extends BaseTest {
 
-
     private static final String symbol = "cmt_btcusdt";
 
     @Test
     public void time() throws IOException {
-            ServerTime result = bitgetRestClient.contract().bitget().market().getTime();
-            System.out.println(JSON.toJSONString(result));
+        ServerTime result = bitgetRestClient.contract().bitget().market().getTime();
+        System.out.println(JSON.toJSONString(result));
     }
 
     @Test
@@ -30,7 +29,7 @@ public class MarketServiceTest extends BaseTest {
 
     @Test
     public void getDepthApi() throws IOException {
-        Depth result = bitgetRestClient.contract().bitget().market().getDepthApi(symbol, "1000");
+        Depth result = bitgetRestClient.contract().bitget().market().getDepthApi(symbol, "2");
         System.out.println(JSON.toJSONString(result));
     }
 
@@ -54,7 +53,8 @@ public class MarketServiceTest extends BaseTest {
 
     @Test
     public void getCandles() throws IOException {
-        List<Object[]> result = bitgetRestClient.contract().bitget().market().getCandles(symbol, "2020-05-01T04:09:12.000Z", "2020-05-01T05:12:12.000Z", "60");
+        List<Object[]> result = bitgetRestClient.contract().bitget().market().getCandles(symbol,
+                "2020-06-28T10:00:12.000Z", "2020-06-28T16:00:12.000Z", "60");
         System.out.println(JSON.toJSONString(result));
     }
 
@@ -84,7 +84,8 @@ public class MarketServiceTest extends BaseTest {
 
     @Test
     public void getHistoricalFundingRateApi() throws IOException {
-        HistoricalFundingRate result = bitgetRestClient.contract().bitget().market().getHistoricalFundingRateApi(symbol, "1", null, "50");
+        List<HistoricalFundingRate> result = bitgetRestClient.contract().bitget().market()
+                .getHistoricalFundingRateApi(symbol, "1", "2", "50");
         System.out.println(JSON.toJSONString(result));
     }
 
@@ -96,7 +97,7 @@ public class MarketServiceTest extends BaseTest {
 
     @Test
     public void calOpenCount() throws IOException {
-        String result = bitgetRestClient.contract().bitget().market().calOpenCount(symbol, "10000", "10", "9000");
+        String result = bitgetRestClient.contract().bitget().market().calOpenCount(symbol, "9999.9393", "20", "9000");
         System.out.println(result);
     }
 

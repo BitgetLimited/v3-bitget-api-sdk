@@ -14,6 +14,11 @@ import java.io.Serializable;
 public class AutoAppendMarginReq implements Serializable {
 
     private static final long serialVersionUID = -8106007170051510407L;
+
+    /**
+     * 合约code
+     */
+    private String symbol;
     /**
      * 方向 1多仓 2空仓
      */

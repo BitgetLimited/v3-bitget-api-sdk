@@ -123,7 +123,7 @@ public interface MarketApi {
      * @return
      */
     @GET("/api/swap/v3/market/historical_funding_rate")
-    Call<HistoricalFundingRate> getHistoricalFundingRateApi(@Query("symbol") String symbol,@Query("from") String from,
+    Call<List<HistoricalFundingRate>> getHistoricalFundingRateApi(@Query("symbol") String symbol,@Query("from") String from,
                                                             @Query("to") String to,@Query("limit") String limit);
 
     /**

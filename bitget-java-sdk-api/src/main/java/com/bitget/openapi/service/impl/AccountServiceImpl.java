@@ -41,8 +41,8 @@ public class AccountServiceImpl implements AccountService {
     }
 
     @Override
-    public ChangeLeverageResult leverage(String symbol, ChangeLeverageReq changeLeverageReq) throws IOException {
-        return accountApi.leverage(symbol, changeLeverageReq).execute().body();
+    public ChangeLeverageResult leverage( ChangeLeverageReq changeLeverageReq) throws IOException {
+        return accountApi.leverage(changeLeverageReq).execute().body();
     }
 
     @Override
@@ -60,12 +60,12 @@ public class AccountServiceImpl implements AccountService {
     }
 
     @Override
-    public AdjustMarginResult adjustMargin(String symbol, AdjustMarginReq adjustMarginReq) throws IOException {
-        return accountApi.adjustMargin(symbol, adjustMarginReq).execute().body();
+    public ResponseResult<AdjustMarginResult> adjustMargin( AdjustMarginReq adjustMarginReq) throws IOException {
+        return accountApi.adjustMargin(adjustMarginReq).execute().body();
     }
 
     @Override
-    public AutoAppendMarginResult modifyAutoAppendMargin(String symbol, AutoAppendMarginReq autoAppendMarginReq) throws IOException {
-        return accountApi.modifyAutoAppendMargin(symbol, autoAppendMarginReq).execute().body();
+    public ResponseResult<AutoAppendMarginResult> modifyAutoAppendMargin( AutoAppendMarginReq autoAppendMarginReq) throws IOException {
+        return accountApi.modifyAutoAppendMargin(autoAppendMarginReq).execute().body();
     }
 }

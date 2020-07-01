@@ -35,13 +35,13 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public CancelOrderResult cancelOrder(String symbol, String orderId) throws IOException {
-        return orderApi.cancelOrder(symbol, orderId).execute().body();
+    public CancelOrderResult cancelOrder(CancelOrderParam cancelOrderParam) throws IOException {
+        return orderApi.cancelOrder(cancelOrderParam).execute().body();
     }
 
     @Override
-    public CancelBatchOrderResult cancelBathOrders(String symbol, CancelBatchOrdersReq param) throws IOException {
-        return orderApi.cancelBathOrders(symbol, param).execute().body();
+    public CancelBatchOrderResult cancelBathOrders(CancelBatchOrdersReq param) throws IOException {
+        return orderApi.cancelBathOrders(param).execute().body();
     }
 
     @Override
@@ -71,17 +71,17 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public CancelPlanResult cancelPlan(String symbol, String orderId) throws IOException {
-        return orderApi.cancelPlan(symbol, orderId).execute().body();
+    public CancelPlanResult cancelPlan(CancelPlanParamReq cancelPlanParamReq) throws IOException {
+        return orderApi.cancelPlan(cancelPlanParamReq).execute().body();
     }
 
     @Override
     public PlansOrderResult currentPlan(String symbol, PlanOrderReq planOrderReq) throws IOException {
-        return orderApi.currentPlan(symbol, planOrderReq).execute().body();
+        return orderApi.currentPlan(symbol, planOrderReq.getSide(),planOrderReq.getPage_index(),planOrderReq.getPage_size(),planOrderReq.getStart_time(),planOrderReq.getEnd_time()).execute().body();
     }
 
     @Override
     public PlansOrderResult historyPlan(String symbol, PlanOrderReq planOrderReq) throws IOException {
-        return orderApi.historyPlan(symbol, planOrderReq).execute().body();
+        return orderApi.historyPlan(symbol, planOrderReq.getSide(),planOrderReq.getPage_index(),planOrderReq.getPage_size(),planOrderReq.getStart_time(),planOrderReq.getEnd_time()).execute().body();
     }
 }
