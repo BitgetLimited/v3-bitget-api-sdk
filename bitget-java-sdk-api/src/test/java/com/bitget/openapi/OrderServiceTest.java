@@ -8,9 +8,7 @@ import com.bitget.openapi.dto.response.*;
 import org.junit.Test;
 
 import java.io.IOException;
-import java.time.LocalDateTime;
 import java.util.Arrays;
-import java.util.Date;
 import java.util.List;
 
 /**
@@ -23,8 +21,8 @@ public class OrderServiceTest extends BaseTest {
 
     @Test
     public void postOrder() throws IOException {
-        OrderReq req = OrderReq.builder().client_oid("abc").symbol(symbol).match_price(MatchTypeEnum.LIMIT.getCode())
-                .order_type(OrderTypeEnum.LIMIT.getCode().toString()).size("2").type("4").price("9009.5").build();
+        OrderReq req = OrderReq.builder().client_oid("RFIut#1594137696335").symbol(symbol).match_price(MatchTypeEnum.LIMIT.getCode())
+                .order_type(OrderTypeEnum.LIMIT.getCode().toString()).size("2").type("1").price("9209.5").build();
         PlaceOrderResult result = bitgetRestClient.contract().bitget().order().placeOrder(req);
         System.out.println(JSON.toJSONString(result));
     }
@@ -42,7 +40,7 @@ public class OrderServiceTest extends BaseTest {
     // pass
     @Test
     public void cancelOrder() throws IOException {
-        CancelOrderParam param = CancelOrderParam.builder().symbol(symbol).orderId("662048828534292413").build();
+        CancelOrderParam param = CancelOrderParam.builder().symbol(symbol).orderId("664668908963233715").build();
         CancelOrderResult result = bitgetRestClient.contract().bitget().order().cancelOrder(param);
         System.out.println(JSON.toJSONString(result));
     }
@@ -51,7 +49,7 @@ public class OrderServiceTest extends BaseTest {
     @Test
     public void cancelBathOrders() throws IOException {
         CancelBatchOrdersReq req = CancelBatchOrdersReq.builder()
-                .ids(Arrays.asList(new String[] { "662049979816214513", "662050232694996913" })).symbol(symbol).build();
+                .ids(Arrays.asList(new String[]{"662049979816214513", "662050232694996913"})).symbol(symbol).build();
         CancelBatchOrderResult result = bitgetRestClient.contract().bitget().order().cancelBathOrders(req);
         System.out.println(JSON.toJSONString(result));
     }
@@ -82,7 +80,7 @@ public class OrderServiceTest extends BaseTest {
     // pass
     @Test
     public void planOrder() throws IOException {
-        PlanPlaceOrderReq req = PlanPlaceOrderReq.builder().client_oid("abc").symbol(symbol).execute_price("1000")
+        PlanPlaceOrderReq req = PlanPlaceOrderReq.builder().client_oid("RFIut#1594137696335").symbol(symbol).execute_price("1000")
                 .match_type(MatchTypeEnum.MARKET.getCode()).side("1").size("100").trigger_price("125").type("1")
                 .build();
         PlanPlaceOrderResult result = bitgetRestClient.contract().bitget().order().planOrder(req);
