@@ -28,13 +28,13 @@ public class BaseTest {
      * bitget open api 根路径
      */
 // private final String baseUrl = "http://127.0.0.1:8081";
-    private final String baseUrl = "http://192.168.33.10:27832";
+    private final String baseUrl = "http://192.168.33.2:27832";
     private final ClientParameter parameter = ClientParameter.builder()
             .apiKey(apiKey)
             .secretKey(secretKey)
             .passphrase(passphrase)
             .baseUrl(baseUrl)
-            .locale(SupportedLocaleEnum.EN_US.getName())
+            .locale(SupportedLocaleEnum.KO_KR.getName())
             .build();
     BitgetRestClient bitgetRestClient;
 
