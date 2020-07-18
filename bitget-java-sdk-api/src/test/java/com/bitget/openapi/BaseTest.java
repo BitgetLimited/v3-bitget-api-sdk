@@ -34,7 +34,7 @@ public class BaseTest {
             .secretKey(secretKey)
             .passphrase(passphrase)
             .baseUrl(baseUrl)
-            .locale(SupportedLocaleEnum.KO_KR.getName())
+            .locale(SupportedLocaleEnum.ZH_CN.getName())
             .build();
     BitgetRestClient bitgetRestClient;
 
