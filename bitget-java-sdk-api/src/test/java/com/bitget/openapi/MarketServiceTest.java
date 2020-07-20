@@ -29,7 +29,7 @@ public class MarketServiceTest extends BaseTest {
 
     @Test
     public void getDepthApi() throws IOException {
-        Depth result = bitgetRestClient.contract().bitget().market().getDepthApi(symbol, "2");
+        Depth result = bitgetRestClient.contract().bitget().market().getDepthApi(symbol, "100");
         System.out.println(JSON.toJSONString(result));
     }
 

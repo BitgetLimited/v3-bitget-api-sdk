@@ -47,8 +47,8 @@ public class MarketServiceImpl implements MarketService {
     }
 
     @Override
-    public Depth getDepthApi(String symbol, String size) throws IOException {
-        return marketApi.getDepthApi(symbol, size).execute().body();
+    public Depth getDepthApi(String symbol, String limit) throws IOException {
+        return marketApi.getDepthApi(symbol, limit).execute().body();
     }
 
     @Override

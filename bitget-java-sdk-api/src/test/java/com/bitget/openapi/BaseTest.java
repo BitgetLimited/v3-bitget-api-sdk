@@ -28,7 +28,8 @@ public class BaseTest {
      * bitget open api 根路径
      */
 // private final String baseUrl = "http://127.0.0.1:8081";
-    private final String baseUrl = "http://192.168.33.2:27832";
+//    private final String baseUrl = "http://192.168.33.2:27832";
+    private final String baseUrl = "https://capi.bitget.com";
     private final ClientParameter parameter = ClientParameter.builder()
             .apiKey(apiKey)
             .secretKey(secretKey)
