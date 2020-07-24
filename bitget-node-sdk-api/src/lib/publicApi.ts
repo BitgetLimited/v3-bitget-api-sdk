@@ -1,15 +1,112 @@
 import axios, { AxiosRequestConfig, AxiosInstance } from 'axios'
-import {
-  BitgetContractInfo,
-  BitgetDepthInfo,
-  BitgetFundingHistoryInfo,
-  BitgetIndexInfo,
-  BitgetOpenInterestInfo,
-  BitgetPriceLimitInfo,
-  BitgetSystemTime,
-  BitgetTickerInfo,
-  BitgetTradeInfo
-} from 'bitget-node-sdk'
+
+/**
+ * /api/swap/v3/market/time
+ * 系统时间
+ */
+interface BitgetSystemTime {
+  epoch: string
+  iso: string
+  timestamp: number
+}
+
+/**
+ * /api/swap/v3/market/contracts
+ * 合约基本信息
+ */
+interface BitgetContractInfo {
+  symbol: string
+  underlying_index: string
+  quote_currency: string
+  coin: string
+  contract_val: string
+  listing?: boolean
+  delivery: string[]
+  size_increment: string
+  tick_size: string
+  forwardContractFlag: boolean
+  priceEndStep: number
+}
+
+/**
+ * /api/swap/v3/market/depth
+ * 深度信息
+ */
+interface BitgetDepthInfo {
+  asks: string[][]
+  bids: string[][]
+}
+
+/**
+ * /api/swap/v3/market/tickers
+ * ticker基本信息
+ */
+interface BitgetTickerInfo {
+  symbol: string
+  last: string
+  best_ask: string
+  best_bid: string
+  high_24h: string
+  low_24h: string
+  volume_24h: string
+  timestamp: string
+}
+
+/**
+ * /api/swap/v3/market/trades
+ * 成交记录数据
+ */
+interface BitgetTradeInfo {
+  trade_id: string
+  price: string
+  size: string
+  side: string
+  timestamp: string
+  symbol: string
+}
+
+/**
+ * /api/swap/v3/market/index
+ * 指数价格信息
+ */
+interface BitgetIndexInfo {
+  symbol: string
+  index: string
+  timestamp: string
+}
+
+/**
+ * /api/swap/v3/market/open_interest
+ * 平台持仓量信息
+ */
+interface BitgetOpenInterestInfo {
+  symbol: string
+  amount: string
+  timestamp: string
+  forwardContractFlag: boolean
+}
+
+/**
+ * /api/swap/v3/market/price_limit
+ * 限价信息
+ */
+interface BitgetPriceLimitInfo {
+  symbol: string
+  highest: string
+  lowest: string
+  timestamp: string
+  forwardContractFlag: boolean
+}
+
+/**
+ * /api/swap/v3/market/historical_funding_rate
+ * 历史资金费率
+ */
+interface BitgetFundingHistoryInfo {
+  symbol: string
+  funding_rate: string
+  funding_time: string
+}
 
 /**
  * 设置BitgetAPI 客户端
