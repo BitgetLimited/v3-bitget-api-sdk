@@ -1,0 +1,29 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "baseUrl": "./",
+    "paths": {
+      "*": [
+        "types/*"
+      ]
+    },
+    "target": "esnext",
+    "outDir": "build",
+    "rootDir": "src",
+    "moduleResolution": "node",
+    "inlineSourceMap": true,
+    "strict": true,
+    "pretty": true,
+    "typeRoots": [
+      "node_modules/@types",
+      "types"
+    ]
+  },
+  "include": [
+    "src/**/*.ts",
+    "types/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
+}
