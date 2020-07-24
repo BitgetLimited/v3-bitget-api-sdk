@@ -1,12 +1,7 @@
 {
   "compilerOptions": {
-    "module": "commonjs",
+    "module": "esnext",
     "baseUrl": "./",
-    "paths": {
-      "*": [
-        "types/*"
-      ]
-    },
     "target": "esnext",
     "outDir": "build",
     "rootDir": "src",
@@ -14,10 +9,7 @@
     "inlineSourceMap": true,
     "strict": true,
     "pretty": true,
-    "typeRoots": [
-      "node_modules/@types",
-      "types"
-    ]
+    "declaration": true
   },
   "include": [
     "src/**/*.ts",

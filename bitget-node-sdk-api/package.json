@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "main": "build/index.js",
-  "types": "types",
+  "types": "build/index.d.ts",
   "scripts": {
     "test": "jest",
     "build": "tsc -p tsconfig.json",
