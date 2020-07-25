@@ -2,7 +2,7 @@ import BitgetApi from '../build'
 import { test, describe, expect } from '@jest/globals'
 
 describe('test after build', () => {
-  const api = BitgetApi.PublicApi.setUp('http://192.168.33.2:27832/', {})
+  const api = new BitgetApi.PublicApi('http://192.168.33.2:27832/', {})
 
   const symbol = 'cmt_btcusdt'
 

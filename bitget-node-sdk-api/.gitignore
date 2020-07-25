@@ -117,4 +117,4 @@ dist
 .pnp.*
 
 .idea
-build
+build/**/*.*

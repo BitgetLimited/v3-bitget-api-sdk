@@ -2,13 +2,13 @@ import BitgetApi from '../src'
 import { describe, test, expect } from '@jest/globals'
 
 describe('OrderApiTest', () => {
-  const bitgetAuthenticatedApi = BitgetApi.AuthenticatedApi.setUp(
+  const bitgetAuthenticatedApi = new BitgetApi.OrderApi(
     'http://192.168.33.2:27832/',
     {},
     'bg_73487ebc68bff4718adcd50d659d02da',
     '234a3a17ea793b03ee227a20ef1bf7ba300ad75ccf6eb0b109f7190bd6f88cf7',
     '123123123'
-  ).order()
+  )
 
   const symbol = 'cmt_btcusdt'
 

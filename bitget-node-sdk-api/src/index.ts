@@ -1,7 +1,9 @@
-import * as PublicApi from './lib/publicApi'
-import * as AuthenticatedApi from './lib/authenticatedApi'
+import PublicApi from './lib/publicApi'
+import { AccountApi, OrderApi, PositionApi } from './lib/authenticatedApi'
 
 export default {
   PublicApi,
-  AuthenticatedApi
+  AccountApi,
+  OrderApi,
+  PositionApi
 }

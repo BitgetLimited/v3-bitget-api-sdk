@@ -1,15 +1,16 @@
 {
   "compilerOptions": {
-    "module": "esnext",
+    "module": "commonjs",
     "baseUrl": "./",
-    "target": "esnext",
+    "target": "es2018",
     "outDir": "build",
     "rootDir": "src",
     "moduleResolution": "node",
     "inlineSourceMap": true,
     "strict": true,
     "pretty": true,
-    "declaration": true
+    "declaration": true,
+    "esModuleInterop": true
   },
   "include": [
     "src/**/*.ts",

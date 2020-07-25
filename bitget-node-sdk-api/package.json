@@ -8,7 +8,8 @@
     "test": "jest",
     "build": "tsc -p tsconfig.json",
     "lint": "tslint --fix --project .",
-    "clean": "rm -rf build/"
+    "clean": "rm -rf build/",
+    "doc": "typedoc --out docs src"
   },
   "author": "",
   "license": "ISC",
@@ -21,6 +22,7 @@
     "prettier": "^2.0.5",
     "ts-jest": "^26.1.3",
     "tslint": "^6.1.2",
+    "typedoc": "^0.17.8",
     "typescript": "^3.9.7"
   },
   "husky": {
