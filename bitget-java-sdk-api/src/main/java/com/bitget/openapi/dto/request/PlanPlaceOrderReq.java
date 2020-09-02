@@ -30,6 +30,10 @@ public class PlanPlaceOrderReq implements Serializable {
      */
     private String side;
     /**
+     * 持仓方向
+     */
+    private String holdSide;
+    /**
      * 类型 1开仓 2平仓
      */
     private String type;

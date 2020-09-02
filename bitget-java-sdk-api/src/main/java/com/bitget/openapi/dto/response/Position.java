@@ -50,6 +50,11 @@ public class Position implements Serializable {
      * 方向
      */
     private String side;
+    /**
+     * 持仓方向
+     */
+    private String holdSide;
+
     private String timestamp;
 
     private String margin;

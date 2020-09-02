@@ -49,4 +49,6 @@ public class Fill implements Serializable {
      * 订单方向
      */
     private String side;
+
+    private String delegateType;
 }

@@ -23,6 +23,10 @@ public class AutoAppendMarginReq implements Serializable {
      * 方向 1多仓 2空仓
      */
     private Integer side;
+    /**
+     * 持仓方向 1多仓 2空仓
+     */
+    private Integer holdSide;
 
     /**
      * 追加保证金类型 0 不自动追加 1 自动追加

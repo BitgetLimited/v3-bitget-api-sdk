@@ -61,6 +61,16 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
+    public List<Order> getOrdersHistory(String symbol, String pageIndex, String pageSize, Integer createDate) throws IOException {
+        return orderApi.getOrdersHistory(symbol,pageIndex,pageSize,createDate).execute().body();
+    }
+
+    @Override
+    public List<Order> getOrdersCurrent(String symbol) throws IOException {
+        return orderApi.getOrdersCurrent(symbol).execute().body();
+    }
+
+    @Override
     public List<Fill> getFills(String symbol, String orderId) throws IOException {
         return orderApi.getFills(symbol, orderId).execute().body();
     }
@@ -77,11 +87,11 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public PlansOrderResult currentPlan(String symbol, PlanOrderReq planOrderReq) throws IOException {
-        return orderApi.currentPlan(symbol, planOrderReq.getSide(),planOrderReq.getPage_index(),planOrderReq.getPage_size(),planOrderReq.getStart_time(),planOrderReq.getEnd_time()).execute().body();
+        return orderApi.currentPlan(symbol, planOrderReq.getSide(),planOrderReq.getDelegateType(),planOrderReq.getPage_index(),planOrderReq.getPage_size(),planOrderReq.getStart_time(),planOrderReq.getEnd_time()).execute().body();
     }
 
     @Override
     public PlansOrderResult historyPlan(String symbol, PlanOrderReq planOrderReq) throws IOException {
-        return orderApi.historyPlan(symbol, planOrderReq.getSide(),planOrderReq.getPage_index(),planOrderReq.getPage_size(),planOrderReq.getStart_time(),planOrderReq.getEnd_time()).execute().body();
+        return orderApi.historyPlan(symbol, planOrderReq.getSide(),planOrderReq.getDelegateType(),planOrderReq.getPage_index(),planOrderReq.getPage_size(),planOrderReq.getStart_time(),planOrderReq.getEnd_time()).execute().body();
     }
 }
