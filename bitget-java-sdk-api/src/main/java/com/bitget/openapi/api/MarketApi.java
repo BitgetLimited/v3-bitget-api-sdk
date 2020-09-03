@@ -134,7 +134,7 @@ public interface MarketApi {
      * @param pageSize
      * @return
      */
-    @GET("/api/swap/v3/market/new/historical_funding_rate")
+    @GET("/api/swap/v3/market/historyFundRate")
     Call<List<HistoricalFundingRate>> getNewHistoricalFundingRateApi(@Query("symbol") String symbol,@Query("pageIndex") String pageIndex,
                                                                   @Query("pageSize") String pageSize);
 

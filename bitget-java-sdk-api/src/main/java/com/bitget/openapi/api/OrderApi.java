@@ -82,7 +82,7 @@ public interface OrderApi {
      * @param createDate
      * @return
      */
-    @GET("/api/swap/v3/order/orders/historyDelegate")
+    @GET("/api/swap/v3/order/orders/history")
     Call<List<Order>> getOrdersHistory(@Query("symbol") String symbol,
                                 @Query("pageIndex") String pageIndex,
                                 @Query("pageSize") String pageSize,
@@ -94,7 +94,7 @@ public interface OrderApi {
      * @param symbol
      * @return
      */
-    @GET("/api/swap/v3/order/orders/currentDelegate")
+    @GET("/api/swap/v3/order/orders/current")
     Call<List<Order>> getOrdersCurrent(@Query("symbol") String symbol);
 
 
