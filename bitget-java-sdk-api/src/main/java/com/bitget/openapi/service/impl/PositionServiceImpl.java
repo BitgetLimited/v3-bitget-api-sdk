@@ -37,12 +37,6 @@ public class PositionServiceImpl implements PositionService {
     }
 
     @Override
-    public Holds getHolds(String symbol) throws IOException {
-        Call<Holds> call = positionApi.getHolds(symbol);
-        return call.execute().body();
-    }
-
-    @Override
     public List<FVirtualCaptialOperator> virtualCapital(String symbol, String ftype, Integer limit, Integer gt, Integer lt) throws IOException {
         Call<List<FVirtualCaptialOperator>> call= positionApi.virtualCapital(symbol, ftype, limit, gt, lt);
         return call.execute().body();

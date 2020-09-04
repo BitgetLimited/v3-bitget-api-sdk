@@ -30,16 +30,6 @@ public interface PositionApi {
      */
     @GET("/api/swap/v3/position/singlePosition")
     Call<AllPosition> getSinglePosition(@Query("symbol") String symbol);
-
-    /**
-     * 获取合约挂单冻结数量
-     *
-     * @param symbol
-     * @return
-     */
-    @GET("/api/swap/v3/position/holds")
-    Call<Holds> getHolds(@Query("symbol") String symbol);
-
     /**
      * 出入金接口
      * @param symbol 
