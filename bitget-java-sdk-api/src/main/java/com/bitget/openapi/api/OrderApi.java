@@ -131,7 +131,7 @@ public interface OrderApi {
     @GET("/api/swap/v3/order/currentPlan")
     Call<PlansOrderResult> currentPlan(@Query("symbol") String symbol,
                                        @Query("side") String side,
-                                       @Query("delegateTye") String delegateTye,
+                                       @Query("delegateType") String delegateType,
                                        @Query("pageIndex") String pageIndex,
                                        @Query("pageSize") String pageSize,
                                        @Query("startTime")String startTime,
@@ -146,7 +146,7 @@ public interface OrderApi {
     @GET("/api/swap/v3/order/historyPlan")
     Call<PlansOrderResult> historyPlan(@Query("symbol") String symbol,
                                        @Query("side") String side,
-                                       @Query("delegateTye") String delegateTye,
+                                       @Query("delegateType") String delegateType,
                                        @Query("pageIndex") String pageIndex,
                                        @Query("pageSize") String pageSize,
                                        @Query("startTime")String startTime,
