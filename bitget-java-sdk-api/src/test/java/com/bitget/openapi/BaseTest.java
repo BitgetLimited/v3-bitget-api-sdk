@@ -16,11 +16,11 @@ public class BaseTest {
 	/**
 	 * 用户 apiKey 替换成自己的
 	 */
-	private final String apiKey = "bg_fc754e8a708c6077203cc1c3a1531147";
+	private final String apiKey = "bg_b6bf2c1e88e352f6d03a0d02544f1354";
 	/**
 	 * 用户 secretKey 替换成自己的
 	 */
-	private final String secretKey = "2b1374a3427990ee770dda8ca37294af9c534cfc802b35c61be786f3a8f9912f";
+	private final String secretKey = "8ecba60d41f18be31a35371800a22628b5d9a8ec5f4b9a084d862f85770306f1";
 	/**
 	 * 口令 替换成自己的
 	 */
@@ -29,8 +29,9 @@ public class BaseTest {
 	 * bitget open api 根路径
 	 */
 	
-	private final String baseUrl = "https://capi.bitgetapi.com";
-	
+	//private final String baseUrl = "https://capi.bitgetapi.com";
+	private final String baseUrl = "http://192.168.33.2:12457";
+
 	private final ClientParameter parameter = ClientParameter.builder().apiKey(apiKey).secretKey(secretKey).passphrase(passphrase).baseUrl(baseUrl)
 			.locale(SupportedLocaleEnum.ZH_CN.getName()).build();
 	BitgetRestClient bitgetRestClient;

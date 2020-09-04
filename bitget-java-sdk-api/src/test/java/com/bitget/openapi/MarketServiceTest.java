@@ -41,7 +41,7 @@ public class MarketServiceTest extends BaseTest {
 
     @Test
     public void getTicker() throws IOException {
-        Ticker result = bitgetRestClient.contract().bitget().market().getTicker(symbol);
+        Ticker result = bitgetRestClient.contract().bitget().market().getTicker("");
         System.out.println(JSON.toJSONString(result));
     }
 
