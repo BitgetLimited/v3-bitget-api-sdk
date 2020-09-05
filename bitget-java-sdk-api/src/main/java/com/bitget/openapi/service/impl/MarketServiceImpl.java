@@ -82,6 +82,12 @@ public class MarketServiceImpl implements MarketService {
     }
 
     @Override
+    public List<HistoricalFundingRate> getNewHistoricalFundingRateApi(String symbol, String pageIndex, String pageSize) throws IOException {
+
+        return marketApi.getNewHistoricalFundingRateApi(symbol,pageIndex,pageSize).execute().body();
+    }
+
+    @Override
     public MarkPrice getMarkPriceApi(String symbol) throws IOException {
         return marketApi.getMarkPriceApi(symbol).execute().body();
     }

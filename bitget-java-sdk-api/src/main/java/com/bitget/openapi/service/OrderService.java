@@ -70,6 +70,23 @@ public interface OrderService {
                           String to,
                           String limit) throws IOException;
 
+
+
+    /** 获取订单列表--历史委托-带分页的
+     * @param symbol
+     * @param pageIndex
+     * @param pageSize
+     * @return
+      */
+    List<Order> getOrdersHistory(String symbol,String pageIndex,
+                                 String pageSize,Integer createDate) throws IOException;
+
+    /**获取订单列表---当前委托不带分页的
+     * @param symbol
+     * @return
+    */
+    List<Order> getOrdersCurrent(String symbol) throws IOException;
+
     /**
      * 查询成交明细
      *

@@ -27,13 +27,6 @@ public class PositionServiceTest extends BaseTest {
         AllPosition result = bitgetRestClient.contract().bitget().position().getSinglePosition(symbol);
         System.out.println(JSON.toJSONString(result));
     }
-
-    @Test
-    public void getHolds() throws IOException {
-        Holds result = bitgetRestClient.contract().bitget().position().getHolds(symbol);
-        System.out.println(JSON.toJSONString(result));
-    }
-
     @Test
     public  void  virtualCapital()throws  IOException{
         List<FVirtualCaptialOperator> capital = bitgetRestClient.contract().bitget().position().virtualCapital("usdt", "14", 10, 398526, null);

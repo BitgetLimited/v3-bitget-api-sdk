@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
+import java.util.List;
 
 @Data
 @Builder
@@ -27,4 +28,9 @@ public class PlaceBatchOrderReq implements Serializable {
      * 订单信息
      */
     private String order_data;
+
+    /**
+     * 订单信息
+     */
+    private List<OrderData> orderDataList;
 }

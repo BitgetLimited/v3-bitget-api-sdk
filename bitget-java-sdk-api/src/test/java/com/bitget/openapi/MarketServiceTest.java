@@ -41,7 +41,7 @@ public class MarketServiceTest extends BaseTest {
 
     @Test
     public void getTicker() throws IOException {
-        Ticker result = bitgetRestClient.contract().bitget().market().getTicker(symbol);
+        Ticker result = bitgetRestClient.contract().bitget().market().getTicker("");
         System.out.println(JSON.toJSONString(result));
     }
 
@@ -89,6 +89,12 @@ public class MarketServiceTest extends BaseTest {
         System.out.println(JSON.toJSONString(result));
     }
 
+    @Test
+    public void getNewHistoricalFundingRateApi() throws IOException {
+
+        List<HistoricalFundingRate> result = bitgetRestClient.contract().bitget().market().getNewHistoricalFundingRateApi(symbol, "1", "50");
+        System.out.println(JSON.toJSONString(result));
+    }
     @Test
     public void getMarkPriceApi() throws IOException {
         MarkPrice result = bitgetRestClient.contract().bitget().market().getMarkPriceApi(symbol);

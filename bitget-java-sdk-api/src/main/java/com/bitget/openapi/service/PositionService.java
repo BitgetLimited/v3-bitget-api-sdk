@@ -31,14 +31,6 @@ public interface PositionService {
     AllPosition getSinglePosition(String symbol) throws IOException;
 
     /**
-     * 获取合约挂单冻结数量
-     *
-     * @param symbol
-     * @return
-     */
-    Holds getHolds(String symbol) throws IOException;
-
-    /**
      * 出入金数据记录
      * @return
      * @throws IOException

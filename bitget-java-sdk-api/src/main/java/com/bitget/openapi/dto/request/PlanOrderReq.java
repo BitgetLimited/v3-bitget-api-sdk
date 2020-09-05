@@ -22,6 +22,10 @@ public class PlanOrderReq implements Serializable {
      */
     private String side;
     /**
+     * 委托类型 1开多 2开空 3平多 4平空
+     */
+    private String delegateType;
+    /**
      * 当前页
      */
     private String page_index;

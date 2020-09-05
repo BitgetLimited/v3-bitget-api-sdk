@@ -26,6 +26,8 @@ public class ChangeLeverageReq implements Serializable {
      * SHORT_POSITIONS(2,"空仓"),
      */
     private Integer side;
+
+    private Integer holdSide;
     /**
      * 合约代码
      */

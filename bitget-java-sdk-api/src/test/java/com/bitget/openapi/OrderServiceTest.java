@@ -30,8 +30,7 @@ public class OrderServiceTest extends BaseTest {
     @Test
     public void batchOrders() throws IOException {
 
-        PlaceBatchOrderReq req = PlaceBatchOrderReq.builder().symbol(symbol).order_data(
-                "[{\"client_oid\":\"E213\",\"order_type\":\"1\",\"price\":\"5\",\"size\":\"2\",\"type\":\"1\",\"match_price\":\"0\"}]")
+        PlaceBatchOrderReq req = PlaceBatchOrderReq.builder().symbol(symbol).orderDataList(null)
                 .build();
         PlaceBatchOrderResult result = bitgetRestClient.contract().bitget().order().batchOrders(req);
         System.out.println(JSON.toJSONString(result));
@@ -70,6 +69,18 @@ public class OrderServiceTest extends BaseTest {
         System.out.println(JSON.toJSONString(result));
     }
 
+    @Test
+    public void getOrdersHistory() throws IOException{
+        List<Order> result = bitgetRestClient.contract().bitget().order().getOrdersHistory(symbol, "1", "1",0);
+        System.out.println(result);
+    }
+
+    @Test
+    public void getOrdersCurrent() throws IOException{
+        List<Order> result = bitgetRestClient.contract().bitget().order().getOrdersCurrent(symbol);
+        System.out.println(result);
+    }
+
     // pass
     @Test
     public void getFills() throws IOException {
@@ -100,7 +111,7 @@ public class OrderServiceTest extends BaseTest {
     @Test
     public void currentPlan() throws IOException {
         PlanOrderReq req = PlanOrderReq.builder().page_index("1").page_size("50").side("2").end_time("1593584346687")
-                .start_time("1593066788000").build();
+                .start_time("1593066788000").delegateType("2").build();
         PlansOrderResult result = bitgetRestClient.contract().bitget().order().currentPlan(symbol, req);
         System.out.println(JSON.toJSONString(result));
     }
@@ -109,7 +120,7 @@ public class OrderServiceTest extends BaseTest {
     @Test
     public void historyPlan() throws IOException {
         PlanOrderReq req = PlanOrderReq.builder().page_index("1").page_size("50").side("1").end_time("1593584346687")
-                .start_time("1593066788000").build();
+                .start_time("1593066788000").delegateType("2").build();
         PlansOrderResult result = bitgetRestClient.contract().bitget().order().historyPlan(symbol, req);
         System.out.println(JSON.toJSONString(result));
     }
