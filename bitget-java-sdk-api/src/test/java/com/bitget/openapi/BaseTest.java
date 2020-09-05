@@ -29,8 +29,7 @@ public class BaseTest {
 	 * bitget open api 根路径
 	 */
 	
-	//private final String baseUrl = "https://capi.bitgetapi.com";
-	private final String baseUrl = "http://192.168.33.2:12457";
+	private final String baseUrl = "https://capi.bitgetapi.com";
 
 	private final ClientParameter parameter = ClientParameter.builder().apiKey(apiKey).secretKey(secretKey).passphrase(passphrase).baseUrl(baseUrl)
 			.locale(SupportedLocaleEnum.ZH_CN.getName()).build();
