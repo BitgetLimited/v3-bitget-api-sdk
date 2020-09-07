@@ -117,19 +117,6 @@ public interface MarketApi {
     /**
      * 获取合约历史资金费率
      * @param symbol
-     * @param from
-     * @param to
-     * @param limit
-     * @return
-     */
-    @GET("/api/swap/v3/market/historical_funding_rate")
-    Call<List<HistoricalFundingRate>> getHistoricalFundingRateApi(@Query("symbol") String symbol,@Query("from") String from,
-                                                            @Query("to") String to,@Query("limit") String limit);
-
-
-    /**
-     * 获取合约历史资金费率 ---新接口
-     * @param symbol
      * @param pageIndex
      * @param pageSize
      * @return

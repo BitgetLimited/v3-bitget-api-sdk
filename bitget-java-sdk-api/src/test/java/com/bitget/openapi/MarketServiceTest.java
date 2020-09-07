@@ -81,14 +81,6 @@ public class MarketServiceTest extends BaseTest {
         FundingTime result = bitgetRestClient.contract().bitget().market().getFundingTimeApi(symbol);
         System.out.println(JSON.toJSONString(result));
     }
-
-    @Test
-    public void getHistoricalFundingRateApi() throws IOException {
-        List<HistoricalFundingRate> result = bitgetRestClient.contract().bitget().market()
-                .getHistoricalFundingRateApi(symbol, "1", "2", "50");
-        System.out.println(JSON.toJSONString(result));
-    }
-
     @Test
     public void getNewHistoricalFundingRateApi() throws IOException {
 

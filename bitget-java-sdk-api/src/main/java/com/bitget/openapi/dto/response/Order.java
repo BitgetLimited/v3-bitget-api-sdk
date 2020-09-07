@@ -27,10 +27,6 @@ public class Order implements Serializable {
      */
     private String size;
     /**
-     * 系统时间
-     */
-    private String timestamp;
-    /**
      * 客户标识
      */
     private String clientOid;

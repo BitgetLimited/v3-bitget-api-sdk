@@ -127,15 +127,6 @@ public interface MarketService {
      * @throws IOException
      */
     FundingTime getFundingTimeApi(String symbol) throws IOException;
-
-    /**
-     * 获取合约历史资金费率
-     *
-     * @param symbol
-     * @return
-     */
-   List<HistoricalFundingRate> getHistoricalFundingRateApi(String symbol, String from, String to, String limit) throws IOException;
-
     /**
      * 获取合约历史资金费率-----新的接口
      * @param symbol
