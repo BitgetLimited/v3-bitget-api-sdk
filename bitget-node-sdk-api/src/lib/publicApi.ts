@@ -312,21 +312,20 @@ export default class PublicApi {
     })
   }
 
-  /**
-   * 获取合约历史资金费率（分页）
-   * 限速规则：20次/2s
-   * @param symbol
-   * @param from 起始页
-   * @param to 结束页
-   * @param limit 每页条数
-   */
-  getHistoricalFundingRateApi(symbol: string, from: string, to: string, limit: string) {
-    return this.axiosInstance.get<BitgetFundingHistoryInfo[]>(
-      '/api/swap/v3/market/historical_funding_rate',
-      {
-        params: { symbol, from, to, limit }
-      }
-    )
+   /**
+     * 获取合约历史资金费率（分页）
+     * 限速规则：20次/2s
+     * @param symbol
+     * @param pageIndex 起始页,默认是第一页
+     * @param pageSize 每页条数
+     */
+  getHistoryFundingRateNewApi(symbol:string,pageIndex:string,pageSize:string){
+     return this.axiosInstance.get<BitgetFundingHistoryInfo[]>(
+           '/api/swap/v3/market/historyFundRate',
+           {
+             params: { symbol, pageIndex,pageIndex }
+           }
+         )
   }
 
   /**

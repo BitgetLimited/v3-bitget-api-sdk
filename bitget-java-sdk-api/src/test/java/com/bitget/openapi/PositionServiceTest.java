@@ -1,9 +1,10 @@
 package com.bitget.openapi;
 
 import com.alibaba.fastjson.JSON;
+import com.bitget.openapi.dto.request.ChangeHoldModel;
 import com.bitget.openapi.dto.response.AllPosition;
 import com.bitget.openapi.dto.response.FVirtualCaptialOperator;
-import com.bitget.openapi.dto.response.Holds;
+import com.bitget.openapi.dto.response.HoldModelDto;
 import org.junit.Test;
 
 import java.io.IOException;
@@ -31,5 +32,11 @@ public class PositionServiceTest extends BaseTest {
     public  void  virtualCapital()throws  IOException{
         List<FVirtualCaptialOperator> capital = bitgetRestClient.contract().bitget().position().virtualCapital("usdt", "14", 10, 398526, null);
         System.out.println(JSON.toJSON(capital));
+    }
+    @Test
+    public  void changeHoldMode()throws  IOException{
+        ChangeHoldModel holdModel= ChangeHoldModel.builder().holdModel(1).symbol(symbol).build();
+        HoldModelDto dto = bitgetRestClient.contract().bitget().position().changeHoldMode(holdModel);
+        System.out.println(JSON.toJSON(dto));
     }
 }

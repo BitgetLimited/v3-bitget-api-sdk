@@ -1,8 +1,10 @@
 package com.bitget.openapi.service;
 
 
+import com.bitget.openapi.dto.request.ChangeHoldModel;
 import com.bitget.openapi.dto.response.AllPosition;
 import com.bitget.openapi.dto.response.FVirtualCaptialOperator;
+import com.bitget.openapi.dto.response.HoldModelDto;
 import com.bitget.openapi.dto.response.Holds;
 import retrofit2.http.Query;
 
@@ -40,4 +42,11 @@ public interface PositionService {
                                                   Integer limit,
                                                   Integer gt,
                                                   Integer lt)throws  IOException;
+
+    /**
+     * 修改用户的平仓模式(全仓，逐仓）
+     * @param holdModel
+     * @return
+     */
+    HoldModelDto changeHoldMode(ChangeHoldModel holdModel)throws  IOException;
 }

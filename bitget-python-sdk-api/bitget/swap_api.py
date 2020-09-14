@@ -20,18 +20,19 @@ class SwapAPI(Client):
         return self._request_without_params(GET, API_SWAP_V3_ACCOUNT + '/settings?symbol={symbol}'.format(symbol=symbol))
 
 
-    def set_leverage(self, symbol, leverage, side):
+    def set_leverage(self, symbol, leverage, side,holdSide):
         '''
         调整杠杆
         method : POST
         参数名	参数类型	是否必须	描述
         :param symbol: String	是	合约名称
         :param leverage: Integer	是	杠杆倍数，可填写1-100之间的整数
-        :param side: Integer	是	方向（1-多仓，2-空仓）
+        :param side: Integer	是	持仓方向（1-多仓，2-空仓）  //标注废弃
+        :param holdSide:Integer 是  持仓方向(1-多仓，2-空仓)
         :return:
         '''
-        if symbol and isinstance(leverage,int) and isinstance(side,int):
-            params = {'symbol':symbol,'leverage': leverage, 'side': side}
+        if symbol and isinstance(leverage,int) and isinstance(side,int) and isinstance(holdSide,int):
+            params = {'symbol':symbol,'leverage': leverage, 'side': side,'holdSide':holdSide}
             return self._request_with_params(POST, API_SWAP_V3_ACCOUNT + '/leverage', params)
         else:
             return "pls check args"
@@ -197,20 +198,22 @@ class SwapAPI(Client):
             return "pls check args"
 
 
-    def modify_autoappend_margin(self,symbol,side,append_type):
+    def modify_autoappend_margin(self,symbol,side,append_type,holdSide):
         '''
         自动追加保证金
         method : POST
         参数类型	是否必须	描述
         :param symbol: String	是	合约名称
-        :param side: Integer	是	方向 1多仓 2空仓
+        :param side: Integer	是	持仓方向 1多仓 2空仓   标注废弃
+        :param holdSide: Integer	是	持仓方向 1多仓 2空仓
         :param append_type: Integer	是	追加保证金类型 0 不自动追加 1 自动追加
         :return:
         '''
         params = {}
-        if symbol and isinstance(side, int) and isinstance(append_type, int) :
+        if symbol and isinstance(side, int) and isinstance(append_type, int) and isinstance(holdSide,int) :
             params["symbol"] = symbol
             params["side"] = side
+            params["holdSide"] = holdSide
             params["append_type"] = append_type
             return self._request_with_params(POST, API_SWAP_V3_ACCOUNT + '/modifyAutoAppendMargin', params)
         else:
@@ -264,28 +267,24 @@ class SwapAPI(Client):
         '''
         return self._request_without_params(GET, API_SWAP_V3_ROOT + '/mark_price?symbol={symbol}'.format(symbol=symbol))
 
-
-    def get_historical_funding_rate(self, symbol, from_page, to_page , limit):
-        '''
-        获取合约历史资金费率
-        method : GET
-        参数名	参数类型	是否必须	描述
-        :param symbol: String	是	合约名称
-        :param from_page: String	是	请求开始页码数
-        :param to_page: String	是	请求结束此页码数
-        :param limit: String	是	结果集数量
-        :return:
-        '''
-        params = {}
-        if symbol and from_page and to_page and limit:
-            params["symbol"] = symbol
-            params["from"] = from_page
-            params["to"] = to_page
-            params["limit"] = limit
-            return self._request_with_params(GET, API_SWAP_V3_ROOT + '/historical_funding_rate', params)
-        else:
-            return "pls check args"
-
+    def getHistoryFundingRate(self,symbol,pageIndex,pageSize):
+          '''
+          获取合约历史资金费率
+          method : GET
+          参数名	参数类型	是否必须	描述
+          :param symbol: String	是	合约名称
+          :param pageIndex: String	是	页码数，默认是第1页
+          :param pageSize: String	是	每页的条数
+          :return:
+          '''
+          params = {}
+          if symbol and pageIndex and pageSize:
+               params["symbol"] = symbol
+               params["pageIndex"] = pageIndex
+               params["pageSize"] = pageSize
+               return self._request_with_params(GET,API_SWAP_V3_ROOT+'/historyFundRate',params)
+          else:
+               return "pls check args"
 
     def get_open_count(self, symbol, amount, openPrice , leverage=''):
         '''

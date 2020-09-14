@@ -1,11 +1,12 @@
 package com.bitget.openapi.api;
 
+import com.bitget.openapi.dto.request.ChangeHoldModel;
 import com.bitget.openapi.dto.response.AllPosition;
 import com.bitget.openapi.dto.response.FVirtualCaptialOperator;
+import com.bitget.openapi.dto.response.HoldModelDto;
 import com.bitget.openapi.dto.response.Holds;
 import retrofit2.Call;
-import retrofit2.http.GET;
-import retrofit2.http.Query;
+import retrofit2.http.*;
 
 import java.util.List;
 
@@ -45,4 +46,12 @@ public interface PositionApi {
                                                         @Query("limit") Integer limit,
                                                         @Query("gt") Integer gt,
                                                         @Query("lt") Integer lt);
+
+    /**
+     *修改用户的平仓模式(全仓，逐仓）
+     * @param changeHoldModel
+     * @return
+     */
+    @POST("/api/swap/v3/position/changeHoldModel")
+    Call<HoldModelDto> changeHoldMode(@Body ChangeHoldModel changeHoldModel);
 }
