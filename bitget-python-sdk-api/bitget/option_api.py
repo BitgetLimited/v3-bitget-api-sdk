@@ -88,7 +88,7 @@ class OptionAPI(Client):
             return "pls check args"
 
 
-    def take_plan_order(self,symbol,size,type,side,match_type,execute_price,trigger_price,client_oid=''):
+    def take_plan_order(self,symbol,size,type,side,match_type,execute_price,trigger_price,client_oid='',holdSide):
         '''
         计划委托下单
         method : POST
@@ -96,7 +96,8 @@ class OptionAPI(Client):
         :param symbol: String	是	合约code
         :param size: String	是	下单张数（不能为0，不能为负数）
         :param type: String	是	类型 1开仓 2平仓
-        :param side: String	是	方向 1多仓 2空仓
+        :param side: String	是	方向 1多仓 2空仓     //标注废弃
+        :param holdSide: String	是	持仓方向 1多仓 2空仓
         :param match_type: String	是	0:限价还是1:市价
         :param execute_price: String	是	执行价格
         :param trigger_price: String	是	触发价格
@@ -104,11 +105,12 @@ class OptionAPI(Client):
         :return:
         '''
         params = {}
-        if symbol and size and type and side and match_type and execute_price and trigger_price:
+        if symbol and size and type and side and match_type and execute_price and trigger_price and holdSide:
             params['symbol'] = symbol
             params['size'] = size
             params['type'] = type
             params['side'] = side
+            params['holdSide'] = holdSide
             params['match_type'] = match_type
             params['execute_price'] = execute_price
             params['trigger_price'] = trigger_price
@@ -139,13 +141,14 @@ class OptionAPI(Client):
 
 
 
-    def get_currentPlan(self,symbol,side,pageIndex,pageSize,startTime='',endTime=''):
+    def get_currentPlan(self,symbol,side,pageIndex,pageSize,startTime='',endTime='',delegateType):
         '''
         查询当前计划委托
         method : GET
         参数名	参数类型	是否必须	描述
         :param symbol: String	是	合约code
-        :param side: String	是	方向 1开多 2开空 3平多 4平空
+        :param side: String	是	方向 1开多 2开空 3平多 4平空  //标注废弃
+        :param delegateType: String	是	方向 1开多 2开空 3平多 4平空
         :param pageIndex: String	是	当前页
         :param pageSize: String	是	每页数量:实际查询会多查5条,且最多1000条
         :param startTime: String	否	查询开始时间(时间戳)
@@ -153,9 +156,10 @@ class OptionAPI(Client):
         :return:
         '''
         params = {}
-        if symbol and side and pageIndex and pageSize:
+        if symbol and side and pageIndex and pageSize and delegateType:
             params["symbol"] = symbol
             params["side"] = side
+            params["delegateType"] = delegateType
             params["pageIndex"] = pageIndex
             params["pageSize"] = pageSize
             params["startTime"] = startTime
@@ -166,13 +170,14 @@ class OptionAPI(Client):
 
 
 
-    def get_historyPlan(self,symbol,side,pageIndex,pageSize,startTime='',endTime=''):
+    def get_historyPlan(self,symbol,side,pageIndex,pageSize,startTime='',endTime='',delegateType):
         '''
         查询计划历史委托
         method : GET
         参数名	参数类型	是否必须	描述
         :param symbol: String	是	合约code
-        :param side: String	是	方向 1开多 2开空 3平多 4平空
+        :param side: String	是	方向 1开多 2开空 3平多 4平空   //标注废弃
+        :param delegateType: String	是	方向 1开多 2开空 3平多 4平空
         :param pageIndex: String	是	当前页
         :param pageSize: String	是	每页数量:实际查询会多查5条,且最多1000条
         :param startTime: String	否	查询开始时间(时间戳)
@@ -180,9 +185,10 @@ class OptionAPI(Client):
         :return:
         '''
         params = {}
-        if symbol and side and pageIndex and pageSize:
+        if symbol and side and pageIndex and pageSize and delegateType:
             params["symbol"] = symbol
             params["side"] = side
+            params["delegateType"] = delegateType
             params["pageIndex"] = pageIndex
             params["pageSize"] = pageSize
             params["startTime"] = startTime
@@ -213,7 +219,7 @@ class OptionAPI(Client):
     def get_order_list(self, symbol, from_page, to_page, limit,status):
         '''
         获取订单列表
-        method : POST
+        method : GET
         参数名	参数类型	是否必须	描述
         :param symbol: String	是	合约code
         :param from_page: String	是	from 和to主要是组成查第几页的数据（默认为1）
@@ -232,6 +238,44 @@ class OptionAPI(Client):
             return self._request_with_params(GET, API_OPTION_ORDER + "/orders", params, cursor=True)
         else:
             return "pls check args"
+
+
+
+    def get_order_history(self,symbol,pageIndex,pageSize,createDate):
+        '''
+        获取订单历史列表
+        method : GET
+        参数名	参数类型	是否必须	描述
+        :param symbol: String	是	合约code
+        :param pageIndex: String	是	 页码数，默认是第1页
+        :param pageSize: String	是	 每页条数
+        :param createDate:  int	是	天数必须小于或等于90
+        :return:
+        '''
+         params = {}
+         if symbol and pageIndex and pageSize and createDate:
+             params["symbol"] = symbol
+             params["pageIndex"] = pageIndex
+             params["pageSize"] = pageSize
+             params["createDate"] = createDate
+             return self._request_with_params(GET,API_OPTION_ORDER+"/history",params,cursor=True)
+         else:
+             return "pls check args"
+
+    def get_order_current(self,symbol):
+          '''
+          获取订单历史列表
+          method : GET
+          参数名	参数类型	是否必须	描述
+          :param symbol: String	是	合约code
+          :return:
+          '''
+          params={}
+          if symbol:
+             params["symbol"]=symbol
+             return self._request_with_params(GET,API_OPTION_ORDER+"/current",params)
+          else:
+             return "pls check args"
 
 
     def get_fills(self, symbol, orderId):

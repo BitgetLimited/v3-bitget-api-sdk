@@ -584,11 +584,12 @@ export class AccountApi extends AuthenticatedApi {
    * 限速规则：5次/s
    * @param symbol
    * @param leverage 要调整的杠杆数(一般为1-100)
-   * @param side 方向 1-多仓 2-空仓
+   * @param side 持仓方向 1-多仓 2-空仓    //标注废弃
+   * @param holdSide   持仓方向 1-多仓 2-空仓
    */
-  leverage(symbol: string, leverage: number, side: number) {
+  leverage(symbol: string, leverage: number, side: number,holdSide:number) {
     const url = '/api/swap/v3/account/leverage'
-    const qsOrBody = { symbol, leverage, side }
+    const qsOrBody = { symbol, leverage, side,holdSide }
     const headers = this.signer('POST', url, qsOrBody)
     return this.axiosInstance.post<BitgetAccountSettingInfo>(url, qsOrBody, {
       headers
@@ -668,12 +669,13 @@ export class AccountApi extends AuthenticatedApi {
    * 调整自动追加保证金开关
    * 限速规则：5次/s
    * @param symbol
-   * @param side 仓位 1-多仓 2-空仓
+   * @param side 持仓方向 1-多仓 2-空仓   //标注废弃
+   * @param holdSide  持仓方向 1-多仓 2-空仓
    * @param appendType 0-关闭 1-打开
    */
-  modifyAutoAppendMargin(symbol: string, side: number, appendType: number) {
+  modifyAutoAppendMargin(symbol: string, side: number, appendType: number,holdSide:number) {
     const url = '/api/swap/v3/account/modifyAutoAppendMargin'
-    const qsOrBody = { symbol, side, append_type: appendType }
+    const qsOrBody = { symbol, side, append_type: appendType,number}
     const headers = this.signer('POST', url, qsOrBody)
     return this.axiosInstance.post<BitgetAutoAppendMarginResult>(url, qsOrBody, {
       headers
@@ -788,6 +790,37 @@ export class OrderApi extends AuthenticatedApi {
   }
 
   /**
+   * 获取订单历史委托(分页)
+   * @param symbol   合约名称
+   * @param pageIndex  默认是第一页
+   * @param pageSize  每页最多100条，默认100条
+   * @param createDate   天数必须小于或等于90
+   */
+   getOrderHistory(symbol:string,pageIndex:number,pageSize:number,createDate:number){
+    const url = '/api/swap/v3/order/history'
+    const qsOrBody = { symbol,pageIndex,pageSize,createDate }
+    const headers = this.signer('GET', url, qsOrBody)
+    return this.axiosInstance.get<BitgetOrderDetail[]>(url, {
+      headers,
+      params: qsOrBody
+    })
+   }
+
+  /**
+   * 获取订单当前委托
+   * @param symbol  合约名称
+   */
+  getOrderCurrent(symbol:string){
+      const url = '/api/swap/v3/order/current'
+      const qsOrBody = {symbol}
+      const headers = this.signer('GET', url, qsOrBody)
+      return this.axiosInstance.get<BitgetOrderDetail[]>(url, {
+        headers,
+        params: qsOrBody
+      })
+  }
+
+  /**
    * 查询成交明细
    * 限速规则：10次/s
    * @param symbol
@@ -833,7 +866,8 @@ export class OrderApi extends AuthenticatedApi {
   /**
    * 获取当前计划(分页)
    * @param symbol
-   * @param side 根据方向获取 1开多 2开空 3平多 4平空
+   * @param side 根据方向获取 1开多 2开空 3平多 4平空   //标注废弃
+   * @param delegateType 根据方向获取 1开多 2开空 3平多 4平空
    * @param pageIndex 查询页数
    * @param pageSize 每页条数 最大1000
    * @param startTime 时间范围-起 时间戳
@@ -842,13 +876,14 @@ export class OrderApi extends AuthenticatedApi {
   currentPlan(
     symbol: string,
     side: number,
+    delegateType: number,
     pageIndex: number,
     pageSize: number,
     startTime: string,
     endTime: string
   ) {
     const url = '/api/swap/v3/order/currentPlan'
-    const qsOrBody = { symbol, side, pageIndex, pageSize, startTime, endTime }
+    const qsOrBody = { symbol, side, pageIndex, pageSize, startTime, endTime,delegateType}
     const headers = this.signer('GET', url, qsOrBody)
     return this.axiosInstance.get<BitgetPlanOrderPage>(url, {
       headers,
@@ -860,7 +895,8 @@ export class OrderApi extends AuthenticatedApi {
    * 查询计划历史委托
    * 限速规则：10次/s
    * @param symbol
-   * @param side 方向 1开多 2开空 3平多 4平空
+   * @param side 方向 1开多 2开空 3平多 4平空  //标注废弃
+   * @param delegateType 方向 1开多 2开空 3平多 4平空
    * @param pageIndex
    * @param pageSize
    * @param startTime
@@ -869,13 +905,14 @@ export class OrderApi extends AuthenticatedApi {
   historyPlan(
     symbol: string,
     side: number,
+    delegateType: number,
     pageIndex: number,
     pageSize: number,
     startTime: string,
     endTime: string
   ) {
     const url = '/api/swap/v3/order/historyPlan'
-    const qsOrBody = { symbol, side, pageIndex, pageSize, startTime, endTime }
+    const qsOrBody = { symbol, side, pageIndex, pageSize, startTime, endTime,delegateType}
     const headers = this.signer('GET', url, qsOrBody)
     return this.axiosInstance.get<BitgetPlanOrderPage>(url, {
       headers,
