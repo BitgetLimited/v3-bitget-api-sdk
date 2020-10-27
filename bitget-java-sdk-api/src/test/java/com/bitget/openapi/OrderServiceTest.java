@@ -8,6 +8,7 @@ import com.bitget.openapi.dto.response.*;
 import org.junit.Test;
 
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.util.Arrays;
 import java.util.List;
 
@@ -21,7 +22,7 @@ public class OrderServiceTest extends BaseTest {
 
     @Test
     public void postOrder() throws IOException {
-        OrderReq req = OrderReq.builder().client_oid("RFIut#1594137696335").symbol(symbol).match_price(MatchTypeEnum.LIMIT.getCode())
+        OrderReq req = OrderReq.builder().client_oid("RFIut#1594137696335").symbol(symbol).presetStopLossPrice(new BigDecimal("8400.5")).match_price(MatchTypeEnum.LIMIT.getCode())
                 .order_type(OrderTypeEnum.LIMIT.getCode().toString()).size("2").type("1").price("9209.5").build();
         PlaceOrderResult result = bitgetRestClient.contract().bitget().order().placeOrder(req);
         System.out.println(JSON.toJSONString(result));

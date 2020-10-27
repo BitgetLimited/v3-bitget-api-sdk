@@ -1,14 +1,8 @@
 package com.bitget.openapi;
 
 import com.bitget.openapi.common.client.ApiClient;
-import com.bitget.openapi.service.AccountService;
-import com.bitget.openapi.service.MarketService;
-import com.bitget.openapi.service.OrderService;
-import com.bitget.openapi.service.PositionService;
-import com.bitget.openapi.service.impl.AccountServiceImpl;
-import com.bitget.openapi.service.impl.MarketServiceImpl;
-import com.bitget.openapi.service.impl.OrderServiceImpl;
-import com.bitget.openapi.service.impl.PositionServiceImpl;
+import com.bitget.openapi.service.*;
+import com.bitget.openapi.service.impl.*;
 
 /**
  * @author bitget-sdk-team
@@ -67,6 +61,12 @@ public class ContractApiFacade {
          */
         AccountService account() {
             return new AccountServiceImpl(apiClient);
+        }
+        /**
+         * trace service
+         */
+        TraceService trace(){
+            return  new TraceServiceImpl(apiClient);
         }
     }
 

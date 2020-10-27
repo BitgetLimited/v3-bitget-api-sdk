@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 
 /**
  *下单对象
@@ -52,5 +53,15 @@ public class OrderReq implements Serializable {
      * 跟单号
      */
     private String trace_no;
+    /**
+     * 预设的止盈价格
+     */
+    private BigDecimal presetTakeProfitPrice;
+
+    /**
+     * 预设的止损价格
+     */
+    private BigDecimal presetStopLossPrice;
+
 
 }
