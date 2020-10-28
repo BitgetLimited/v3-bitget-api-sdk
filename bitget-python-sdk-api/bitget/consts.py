@@ -1,6 +1,6 @@
 
 # http header
-API_URL = 'http://192.168.210.61:8080'
+API_URL = 'https://capi.bitgetapi.com'
 CONTENT_TYPE = 'Content-Type'
 OK_ACCESS_KEY = 'ACCESS-KEY'
 OK_ACCESS_SIGN = 'ACCESS-SIGN'

@@ -1,16 +1,16 @@
 import bitget.swap_api as swap
 import bitget.option_api as option
 import json
-
+import  time
 
 if __name__ == '__main__':
     api_key = ""
     secret_key = ""
     passphrase = ""  #口令
 
+    swapAPI = swap.SwapAPI(api_key, secret_key, passphrase, use_server_time=True, first=False)
 
     ##合约行情接口
-    # swapAPI = swap.SwapAPI(api_key, secret_key, passphrase,use_server_time=True,first= False)
     #  HTTP请求 获取所有合约的信息 20/s
     # result = swapAPI.get_contracts_info()
     # print(result)
@@ -36,8 +36,8 @@ if __name__ == '__main__':
 
 
     # 获取K线数据 （20次/2s）
-    # result = swapAPI.get_kline(symbol='cmt_btcusdt', start='2020-07-24T14:24:44.614Z',end='2020-07-24T14:49:44.614Z',granularity='60')
-    # print(result)
+    result = swapAPI.get_kline(symbol='cmt_btcusdt', start='2020-10-24T14:24:44.614Z',end='2020-10-24T14:49:44.614Z',granularity='60')
+    print(result)
 
     ##  获取（币种）指数信息 （20次/2s）
     # result = swapAPI.get_index('cmt_bchusdt')
@@ -123,7 +123,7 @@ if __name__ == '__main__':
 
 
     # 合约交易API
-    optionAPI = option.OptionAPI(api_key, secret_key, passphrase,use_server_time=True,first=True)
+    #optionAPI = option.OptionAPI(api_key, secret_key, passphrase,use_server_time=True,first=True)
     # 下单 （20次/s）
     # result = optionAPI.take_order('cmt_btcusdt', '20200721113332232334422', '1', '2','0','0','8888.99')
     # print(result)

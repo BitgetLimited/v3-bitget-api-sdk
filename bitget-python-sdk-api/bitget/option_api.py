@@ -88,7 +88,7 @@ class OptionAPI(Client):
             return "pls check args"
 
 
-    def take_plan_order(self,symbol,size,type,side,match_type,execute_price,trigger_price,client_oid='',holdSide):
+    def take_plan_order(self,symbol,size,type,side,match_type,execute_price,trigger_price,holdSide,client_oid=''):
         '''
         计划委托下单
         method : POST
@@ -141,7 +141,7 @@ class OptionAPI(Client):
 
 
 
-    def get_currentPlan(self,symbol,side,pageIndex,pageSize,startTime='',endTime='',delegateType):
+    def get_currentPlan(self,symbol,side,pageIndex,pageSize,delegateType,startTime='',endTime='',):
         '''
         查询当前计划委托
         method : GET
@@ -170,7 +170,7 @@ class OptionAPI(Client):
 
 
 
-    def get_historyPlan(self,symbol,side,pageIndex,pageSize,startTime='',endTime='',delegateType):
+    def get_historyPlan(self,symbol,side,pageIndex,pageSize,delegateType,startTime='',endTime=''):
         '''
         查询计划历史委托
         method : GET
@@ -242,16 +242,16 @@ class OptionAPI(Client):
 
 
     def get_order_history(self,symbol,pageIndex,pageSize,createDate):
-        '''
-        获取订单历史列表
-        method : GET
-        参数名	参数类型	是否必须	描述
-        :param symbol: String	是	合约code
-        :param pageIndex: String	是	 页码数，默认是第1页
-        :param pageSize: String	是	 每页条数
-        :param createDate:  int	是	天数必须小于或等于90
-        :return:
-        '''
+         '''
+         获取订单历史列表
+         method : GET
+         参数名	参数类型	是否必须	描述
+         :param symbol: String	是	合约code
+         :param pageIndex: String	是	 页码数，默认是第1页
+         :param pageSize: String	是	 每页条数
+         :param createDate:  int	是	天数必须小于或等于90
+         :return:
+         '''
          params = {}
          if symbol and pageIndex and pageSize and createDate:
              params["symbol"] = symbol
