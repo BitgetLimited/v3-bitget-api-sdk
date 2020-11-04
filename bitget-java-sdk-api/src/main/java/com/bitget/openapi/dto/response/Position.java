@@ -47,6 +47,10 @@ public class Position implements Serializable {
      */
     private String realized_pnl;
     /**
+     * 维持保证金率
+     */
+    private String keepMarginRate;
+    /**
      * 方向
      */
     private String side;

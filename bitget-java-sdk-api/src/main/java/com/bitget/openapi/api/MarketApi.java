@@ -76,7 +76,7 @@ public interface MarketApi {
      */
     @GET("/api/swap/v3/market/candles")
     Call<List<Object[]>> getCandles(@Query("symbol") String symbol, @Query("start") String start,
-                                    @Query("end") String end, @Query("granularity") String granularity);
+                                    @Query("end") String end,@Query("startTime") Long startTime,@Query("endTime")Long endTime,@Query("granularity") String granularity);
 
     /**
      * 获取指数信息

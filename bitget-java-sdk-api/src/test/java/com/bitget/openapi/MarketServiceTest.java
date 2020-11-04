@@ -54,7 +54,7 @@ public class MarketServiceTest extends BaseTest {
     @Test
     public void getCandles() throws IOException {
         List<Object[]> result = bitgetRestClient.contract().bitget().market().getCandles(symbol,
-                "2020-06-28T10:00:12.000Z", "2020-06-28T16:00:12.000Z", "60");
+                "2020-06-28T10:00:12.000Z", "2020-06-28T16:00:12.000Z", null,null,"60");
         System.out.println(JSON.toJSONString(result));
     }
 

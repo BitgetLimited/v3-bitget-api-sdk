@@ -93,7 +93,7 @@ public interface MarketService {
      * @param granularity
      * @return
      */
-    List<Object[]> getCandles(String symbol, String start, String end, String granularity) throws IOException;
+    List<Object[]> getCandles(String symbol, String start, String end,Long startTime,Long endTime, String granularity) throws IOException;
 
     /**
      * 获取指数信息
