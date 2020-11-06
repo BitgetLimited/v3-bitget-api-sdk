@@ -4,9 +4,9 @@ import json
 import  time
 
 if __name__ == '__main__':
-    api_key = "bg_07830fc9abacebb05ba3d87a4370c8ad"
-    secret_key = "5c6ab9ba7d4e8b41821c9b12d4d91588d3052ec12552fe4c3ed4b5a24e5ec117"
-    passphrase = "11111111"  #口令
+    api_key = ""
+    secret_key = ""
+    passphrase = ""  #口令
 
     swapAPI = swap.SwapAPI(api_key, secret_key, passphrase, use_server_time=True, first=False)
 
