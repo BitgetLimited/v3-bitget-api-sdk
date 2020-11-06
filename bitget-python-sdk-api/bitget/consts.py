@@ -1,6 +1,7 @@
 
 # http header
-API_URL = 'https://capi.bitgetapi.com'
+#API_URL = 'https://capi.bitgetapi.com'
+API_URL = 'http://192.168.33.2:21890'
 CONTENT_TYPE = 'Content-Type'
 OK_ACCESS_KEY = 'ACCESS-KEY'
 OK_ACCESS_SIGN = 'ACCESS-SIGN'
@@ -38,3 +39,5 @@ API_SWAP_V3_ACCOUNT = '/api/swap/v3/account'
 API_OPTION_ORDER = '/api/swap/v3/order'
 # 合约仓位
 API_CONTRACT_ROOT = '/api/swap/v3/position'
+# 跟单
+API_TRACE = '/api/swap/v3/trace'

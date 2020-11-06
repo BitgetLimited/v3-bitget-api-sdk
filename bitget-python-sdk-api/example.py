@@ -4,9 +4,9 @@ import json
 import  time
 
 if __name__ == '__main__':
-    api_key = ""
-    secret_key = ""
-    passphrase = ""  #口令
+    api_key = "bg_07830fc9abacebb05ba3d87a4370c8ad"
+    secret_key = "5c6ab9ba7d4e8b41821c9b12d4d91588d3052ec12552fe4c3ed4b5a24e5ec117"
+    passphrase = "11111111"  #口令
 
     swapAPI = swap.SwapAPI(api_key, secret_key, passphrase, use_server_time=True, first=False)
 
@@ -36,8 +36,8 @@ if __name__ == '__main__':
 
 
     # 获取K线数据 （20次/2s）
-    result = swapAPI.get_kline(symbol='cmt_btcusdt', start='2020-10-24T14:24:44.614Z',end='2020-10-24T14:49:44.614Z',granularity='60')
-    print(result)
+    # result = swapAPI.get_kline(symbol='cmt_btcusdt', start='2020-10-24T14:24:44.614Z',end='2020-10-24T14:49:44.614Z',granularity='60')
+    # print(result)
 
     ##  获取（币种）指数信息 （20次/2s）
     # result = swapAPI.get_index('cmt_bchusdt')
@@ -74,7 +74,18 @@ if __name__ == '__main__':
     # print(result)
 
 
+    # 获取交易员当前带单list
+    # result=swapAPI.get_current_Track('cmt_btcusdt','1','100')
+    # print(result)
 
+    # 获取历史带单列表
+    # result=swapAPI.get_history_Track('1','100',70)
+    # print(result)
+
+
+    #下单平仓单
+    # result=optionAPI.close_track_order('cmt_btcusdt',3428248340039443)
+    # print(result)
 
 
     ##  合约账户接口 ##

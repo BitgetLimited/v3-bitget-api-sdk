@@ -294,3 +294,21 @@ class OptionAPI(Client):
             return self._request_with_params(GET, API_OPTION_ORDER + "/fills", params, cursor=True)
         else:
             return "pls check args"
+
+
+    def close_track_order(self,symbol,trackingNo):
+        '''
+        下单平仓单(跟单）
+        method : POST
+        参数名	参数类型	是否必须	描述
+        :param symbol: String 是 合约名称
+        :param trackingNo: Long 是 追踪订单号
+        :return:
+        '''
+        params = {}
+        if symbol and trackingNo:
+            params['symbol'] = symbol
+            params["trackingNo"] = trackingNo
+            return self._request_with_params(POST,API_TRACE+'/closeTrackOrder',params,cursor=True)
+        else:
+            return "pls check args"
