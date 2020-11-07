@@ -61,15 +61,6 @@ public class OrderServiceTest extends BaseTest {
         System.out.println(JSON.toJSONString(result));
     }
 
-    // pass
-    @Test
-    public void getOrders() throws IOException {
-        OrderListReq req = OrderListReq.builder().from("1").to("2").limit("50").status(0).build();
-        List<Order> result = bitgetRestClient.contract().bitget().order().getOrders(symbol, req.getStatus(),
-                req.getFrom(), req.getTo(), req.getLimit());
-        System.out.println(JSON.toJSONString(result));
-    }
-
     @Test
     public void getOrdersHistory() throws IOException{
         List<Order> result = bitgetRestClient.contract().bitget().order().getOrdersHistory(symbol, "1", "1",0);

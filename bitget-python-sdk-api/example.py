@@ -156,13 +156,6 @@ if __name__ == '__main__':
     # result = optionAPI.get_order_info('cmt_btcusdt', 'xxxxyyyx20200721')
     # print(result)
 
-
-    #获取订单列表 （10次/2s）
-    # result = optionAPI.get_order_list('cmt_btcusd', 1,10,100,1)
-    # print(result)
-
-
-
     #  获取成交明细 （10次/2s）
     # result = optionAPI.get_fills(symbol='cmt_btcusdt',orderId="525946425993854915")
     # print(result)

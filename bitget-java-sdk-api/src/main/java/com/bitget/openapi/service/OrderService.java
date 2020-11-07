@@ -58,18 +58,6 @@ public interface OrderService {
      */
     Order getOrderDetail(String symbol, String orderId) throws IOException;
 
-    /**
-     * 获取订单列表
-     *
-     * @param symbol
-     * @return
-     * @throws IOException
-     */
-    List<Order> getOrders(String symbol, Integer status,
-                          String from,
-                          String to,
-                          String limit) throws IOException;
-
 
 
     /** 获取订单列表--历史委托-带分页的

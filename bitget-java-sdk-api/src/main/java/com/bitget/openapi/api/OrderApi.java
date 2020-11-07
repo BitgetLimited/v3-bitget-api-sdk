@@ -57,22 +57,6 @@ public interface OrderApi {
     @GET("/api/swap/v3/order/detail")
     Call<Order> getOrderDetail(@Query("symbol") String symbol, @Query("orderId") String orderId);
 
-    /**
-     * 获取订单列表
-     * @param symbol
-     * @param status
-     * @param from
-     * @param to
-     * @param limit
-     * @return
-     */
-    @GET("/api/swap/v3/order/orders")
-    Call<List<Order>> getOrders(@Query("symbol") String symbol,
-                                @Query("status") Integer status,
-                                @Query("from") String from,
-                                @Query("to") String to,
-                                @Query("limit") String limit);
-
 
     /**
      * 获取订单列表--历史委托 带分页的

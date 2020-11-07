@@ -215,32 +215,6 @@ class OptionAPI(Client):
         else:
             return "pls check args"
 
-
-    def get_order_list(self, symbol, from_page, to_page, limit,status):
-        '''
-        获取订单列表
-        method : GET
-        参数名	参数类型	是否必须	描述
-        :param symbol: String	是	合约code
-        :param from_page: String	是	from 和to主要是组成查第几页的数据（默认为1）
-        :param to_page: String	是	from 和to主要是组成查第几页的数据 （默认为1）
-        :param limit: String	是	分页返回的结果集数量，最大为100，不填默认返回100条，小于或等于0报异常，非数字型字符报异常
-        :param status: String	是	-1:已撤单（包含风险触发撤销），0:未成交，1:部分成交，2：完全成交， 3:未成交或部分成交，4：已撤单（包含风险触发撤销）或完全成交 5:所有状态
-        :return:
-        '''
-        params = {}
-        if symbol and from_page and to_page and limit and status:
-            params["symbol"] = symbol
-            params["from"] = from_page
-            params["to"] = to_page
-            params["limit"] = limit
-            params["status"] = status
-            return self._request_with_params(GET, API_OPTION_ORDER + "/orders", params, cursor=True)
-        else:
-            return "pls check args"
-
-
-
     def get_order_history(self,symbol,pageIndex,pageSize,createDate):
          '''
          获取订单历史列表

@@ -50,17 +50,6 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public List<Order> getOrders(String symbol, Integer status,
-                                 String from,
-                                  String to,
-                                 String limit) throws IOException {
-        return orderApi.getOrders(symbol,status,
-                 from,
-                 to,
-                 limit).execute().body();
-    }
-
-    @Override
     public List<Order> getOrdersHistory(String symbol, String pageIndex, String pageSize, Integer createDate) throws IOException {
         return orderApi.getOrdersHistory(symbol,pageIndex,pageSize,createDate).execute().body();
     }
