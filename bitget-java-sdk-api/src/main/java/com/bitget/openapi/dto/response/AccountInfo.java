@@ -39,6 +39,18 @@ public class AccountInfo implements Serializable {
      */
     private String unrealized_pnl;
     /**
+     * 逐仓多仓保证金率
+     */
+    private String longMarginRatio;
+    /**
+     * 逐仓空仓保证金率
+     */
+    private String shortMarginRatio;
+    /**
+     * 全仓保证金率
+     */
+    private String marginRatio;
+    /**
      * 合约名称
      */
     private String symbol;
