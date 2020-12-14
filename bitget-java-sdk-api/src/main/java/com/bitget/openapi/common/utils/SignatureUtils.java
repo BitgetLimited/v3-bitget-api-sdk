@@ -58,4 +58,20 @@ public class SignatureUtils {
         mac.init(secretKeySpec);
         return Base64.getEncoder().encodeToString(mac.doFinal(preHash.getBytes(SignatureUtils.CHARSET)));
     }
+
+    /**
+     * ws签名
+     * @param timestamp
+     * @param secretKey
+     * @return
+     */
+    public static  String wsGenerateSign(String timestamp,String secretKey)throws  CloneNotSupportedException,
+            InvalidKeyException, UnsupportedEncodingException{
+        String preHash = timestamp + "GET" + "/user/verify";
+        byte[] secretKeyBytes = secretKey.getBytes(SignatureUtils.CHARSET);
+        SecretKeySpec secretKeySpec = new SecretKeySpec(secretKeyBytes, SignatureUtils.HMAC_SHA256);
+        Mac mac = (Mac) SignatureUtils.MAC.clone();
+        mac.init(secretKeySpec);
+        return Base64.getEncoder().encodeToString(mac.doFinal(preHash.getBytes(SignatureUtils.CHARSET)));
+    }
 }

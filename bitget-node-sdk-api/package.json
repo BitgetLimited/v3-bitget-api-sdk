@@ -33,6 +33,9 @@
   "dependencies": {
     "axios": "^0.19.2",
     "crypto": "^1.0.1",
-    "querystring": "^0.2.0"
+    "querystring": "^0.2.0",
+    "ws": "^6.1.4",
+    "crc-32": "^1.2.0",
+    "pako": "^1.0.8"
   }
 }
