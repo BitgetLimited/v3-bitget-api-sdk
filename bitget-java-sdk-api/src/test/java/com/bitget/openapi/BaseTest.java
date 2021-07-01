@@ -12,15 +12,15 @@ import com.bitget.openapi.common.enums.SupportedLocaleEnum;
  * @date 2019-01-15
  */
 public class BaseTest {
-	
+
 	/**
 	 * 用户 apiKey 替换成自己的
 	 */
-	private final String apiKey = "bg_b6bf2c1e88e352f6d03a0d02544f1354";
+	private final String apiKey = "akfdf5b88699834e79";
 	/**
 	 * 用户 secretKey 替换成自己的
 	 */
-	private final String secretKey = "8ecba60d41f18be31a35371800a22628b5d9a8ec5f4b9a084d862f85770306f1";
+	private final String secretKey = "a65a4de1655d46fb90ab2062cbed2583";
 	/**
 	 * 口令 替换成自己的
 	 */
@@ -28,12 +28,12 @@ public class BaseTest {
 	/**
 	 * bitget open api 根路径
 	 */
-	
+
 	private final String baseUrl = "https://capi.bitgetapi.com";
 
 	private final ClientParameter parameter = ClientParameter.builder().apiKey(apiKey).secretKey(secretKey).passphrase(passphrase).baseUrl(baseUrl)
 			.locale(SupportedLocaleEnum.ZH_CN.getName()).build();
-	BitgetRestClient bitgetRestClient;
+	public BitgetRestClient bitgetRestClient;
 	
 	@Before
 	public void setup() {
