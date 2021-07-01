@@ -1,6 +1,7 @@
 package com.bitget.openapi.common.client;
 
 import com.bitget.openapi.ContractApiFacade;
+import com.bitget.openapi.SpotApiFacade;
 import com.bitget.openapi.common.constant.HttpHeader;
 import com.bitget.openapi.common.domain.ClientParameter;
 import com.bitget.openapi.common.enums.SupportedLocaleEnum;
@@ -41,6 +42,15 @@ public class BitgetRestClient {
      */
     public ContractApiFacade contract() {
         return new ContractApiFacade(apiClient);
+    }
+
+    /**
+     * spot rest api
+     *
+     * @return
+     */
+    public SpotApiFacade spot() {
+        return new SpotApiFacade(apiClient);
     }
 
     public static class Builder {
