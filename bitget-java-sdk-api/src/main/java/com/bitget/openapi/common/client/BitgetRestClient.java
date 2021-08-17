@@ -1,6 +1,7 @@
 package com.bitget.openapi.common.client;
 
 import com.bitget.openapi.ContractApiFacade;
+import com.bitget.openapi.MixApiFacade;
 import com.bitget.openapi.SpotApiFacade;
 import com.bitget.openapi.common.constant.HttpHeader;
 import com.bitget.openapi.common.domain.ClientParameter;
@@ -51,6 +52,14 @@ public class BitgetRestClient {
      */
     public SpotApiFacade spot() {
         return new SpotApiFacade(apiClient);
+    }
+
+    /**
+     * mix api
+     * @return
+     */
+    public MixApiFacade mix() {
+        return new MixApiFacade(apiClient);
     }
 
     public static class Builder {
