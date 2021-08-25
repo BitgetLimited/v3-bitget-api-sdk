@@ -3,7 +3,7 @@
 A Java sdk for bitget exchange API
 
 <p align="center">
-<a href="https://github.com/88250/solo/blob/master/README.md">中文</a>
+<a href="https://github.com/BitgetLimited/v3-bitget-api-sdk/blob/master/bitget-java-sdk-api/README.md">中文</a>
 </p>
 
 ## api sdk Instructions
