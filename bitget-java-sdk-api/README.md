@@ -1,6 +1,10 @@
 # bitget-java-sdk-api
 A Java sdk for bitget exchange API
 
+<p align="center">
+<a href="https://github.com/88250/solo/blob/master/README.md">English</a>
+</p>
+
 # api sdk 使用说明
 1. 在maven项目的pom.xml加入如下依赖
 ```xml
