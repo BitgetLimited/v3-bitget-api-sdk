@@ -42,6 +42,8 @@ API_SWAP_V3_ACCOUNT = '/api/swap/v3/account'
 API_OPTION_ORDER = '/api/swap/v3/order'
 # 合约仓位
 API_CONTRACT_ROOT = '/api/swap/v3/position'
+# 合约跟单
+API_TRACE = '/api/swap/v3/trace'
 
 
 # ########################################
