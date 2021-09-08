@@ -3,9 +3,9 @@ package com.bitget.openapi.ws;
 public class WebSocketConfig {
 
     private static final String SERVICE_URL = "wss://csocketapi.bitgetapi.com/ws/v1";
-    private static final String API_KEY = "xxxxx";
-    private static final String SECRET_KEY = "xxxx";
-    private static final String PASSPHRASE = "xxxx";
+    private static final String API_KEY = "bg_6ec7289f2a360e415ac096ec5ce9acda";
+    private static final String SECRET_KEY = "bd96960ed310adb3ab6d51ad6c2b5f35fe571f4a6e6a707e5f77cd29830e0435";
+    private static final String PASSPHRASE = "1r1b6uX6PQ9tbKwb";
 
 
     public static void publicConnect(WebSocketClient webSocketClient) {

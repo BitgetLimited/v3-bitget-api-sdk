@@ -15,6 +15,8 @@ public interface MixAccountService {
      */
     ResponseResult getAccount(String symbol, String marginCoin) throws IOException;
 
+    ResponseResult getAccounts(String productType) throws IOException;
+
     ResponseResult leverage(MixChangeLeverageRequest mixChangeLeverageRequest) throws IOException;
 
     ResponseResult margin(MixAdjustMarginFixRequest mixAdjustMarginFixRequest) throws IOException;

@@ -93,7 +93,7 @@ public class PrivateChannelTest {
     @Test
     public void orderChannel() {
         ArrayList<String> channel = Lists.newArrayList();
-        channel.add("swap/order:btcusd");
+        channel.add("swap/order:cmt_xrpusdt");
         try {
             Thread.sleep(100);
         } catch (Exception e) {

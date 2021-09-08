@@ -22,6 +22,11 @@ public class MixAccountServiceImpl implements MixAccountService {
     }
 
     @Override
+    public ResponseResult getAccounts(String productType) throws IOException {
+        return mixAccountApi.accounts(productType).execute().body();
+    }
+
+    @Override
     public ResponseResult leverage(MixChangeLeverageRequest mixChangeLeverageRequest) throws IOException {
         return mixAccountApi.leverage(mixChangeLeverageRequest).execute().body();
     }

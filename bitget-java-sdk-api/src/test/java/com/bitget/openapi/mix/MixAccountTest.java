@@ -5,6 +5,7 @@ import com.bitget.openapi.BaseTest;
 import com.bitget.openapi.common.enums.mix.MixHoldModeEnum;
 import com.bitget.openapi.common.enums.mix.MixHoldSideEnum;
 import com.bitget.openapi.common.enums.mix.MixMarginModeEnum;
+import com.bitget.openapi.common.enums.mix.MixProductTypeEnum;
 import com.bitget.openapi.dto.request.mix.*;
 import com.bitget.openapi.dto.response.ResponseResult;
 import org.junit.Test;
@@ -20,6 +21,13 @@ public class MixAccountTest extends BaseTest {
     @Test
     public void account() throws IOException {
         ResponseResult result = bitgetRestClient.mix().bitget().account().getAccount(symbol, marginCoin);
+        System.out.println(JSON.toJSONString(result));
+    }
+
+    //passed
+    @Test
+    public void accounts() throws IOException {
+        ResponseResult result = bitgetRestClient.mix().bitget().account().getAccounts(MixProductTypeEnum.UMCBL.getCode());
         System.out.println(JSON.toJSONString(result));
     }
     // passed

@@ -32,7 +32,7 @@ public class MixTraceServiceTest extends BaseTest {
 
     @Test
     public void currentTrack() throws IOException {
-        ResponseResult result = bitgetRestClient.mix().bitget().trace().currentTrack(symbol, MixProductTypeEnum.USDT_TYPE.getCode(),pageSize,pageNo);
+        ResponseResult result = bitgetRestClient.mix().bitget().trace().currentTrack(symbol, MixProductTypeEnum.UMCBL.getCode(),pageSize,pageNo);
         System.out.println(JSON.toJSONString(result));
     }
 

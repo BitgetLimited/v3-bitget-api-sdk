@@ -7,13 +7,13 @@ import java.util.List;
 
 public interface MixMarketService {
 
-    ResponseResult contracts() throws IOException;
+    ResponseResult contracts(String productType) throws IOException;
 
     ResponseResult depth(String symbol,int limit) throws IOException;
 
     ResponseResult ticker(String symbol) throws IOException;
 
-    ResponseResult tickers() throws IOException;
+    ResponseResult tickers(String productType) throws IOException;
 
     ResponseResult fills(String symbol,int limit) throws IOException;
 

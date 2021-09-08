@@ -8,8 +8,10 @@ import lombok.Getter;
 public enum MixProductTypeEnum {
 
 
-    USDT_TYPE("usdt_type"),
-    MIX_TYPE("mix_type"),
+    UMCBL("umcbl"),
+    DMCBL("dmcbl"),
+    SUMCBL("sumcbl"),
+    SDMCBL("sdmcbl"),
     ;
 
     private final String code;

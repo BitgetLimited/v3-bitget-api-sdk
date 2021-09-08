@@ -2,6 +2,7 @@ package com.bitget.openapi.mix;
 
 import com.alibaba.fastjson.JSON;
 import com.bitget.openapi.BaseTest;
+import com.bitget.openapi.common.enums.mix.MixProductTypeEnum;
 import com.bitget.openapi.dto.response.ResponseResult;
 import org.junit.Test;
 
@@ -23,7 +24,7 @@ public class MixMarketServiceTest extends BaseTest {
     // 测试通过
     @Test
     public void contracts() throws IOException {
-        ResponseResult result = bitgetRestClient.mix().bitget().market().contracts();
+        ResponseResult result = bitgetRestClient.mix().bitget().market().contracts(MixProductTypeEnum.UMCBL.getCode());
         System.out.println(JSON.toJSONString(result));
     }
     // 测试通过
@@ -41,7 +42,7 @@ public class MixMarketServiceTest extends BaseTest {
     // 测试通过
     @Test
     public void tickers() throws IOException {
-        ResponseResult result = bitgetRestClient.mix().bitget().market().tickers();
+        ResponseResult result = bitgetRestClient.mix().bitget().market().tickers(MixProductTypeEnum.UMCBL.getCode());
         System.out.println(JSON.toJSONString(result));
     }
     // 测试通过

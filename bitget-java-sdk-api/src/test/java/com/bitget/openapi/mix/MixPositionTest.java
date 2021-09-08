@@ -22,7 +22,7 @@ public class MixPositionTest extends BaseTest {
     // passed
     @Test
     public void allPosition() throws IOException {
-        ResponseResult result = bitgetRestClient.mix().bitget().position().allPosition(MixProductTypeEnum.USDT_TYPE.getCode(), marginCoin);
+        ResponseResult result = bitgetRestClient.mix().bitget().position().allPosition(MixProductTypeEnum.UMCBL.getCode(), marginCoin);
         System.out.println(JSON.toJSONString(result));
     }
 }

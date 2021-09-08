@@ -10,7 +10,7 @@ import java.util.List;
 public interface MixMarketApi {
 
     @GET("/api/mix/v1/market/contracts")
-    Call<ResponseResult> contracts();
+    Call<ResponseResult> contracts(@Query("productType") String productType);
 
 
     @GET("/api/mix/v1/market/depth")
@@ -21,7 +21,7 @@ public interface MixMarketApi {
     Call<ResponseResult> ticker(@Query("symbol") String symbol);
 
     @GET("/api/mix/v1/market/tickers")
-    Call<ResponseResult> tickers();
+    Call<ResponseResult> tickers(@Query("productType") String productType);
 
     @GET("/api/mix/v1/market/fills")
     Call<ResponseResult> fills(@Query("symbol") String symbol,

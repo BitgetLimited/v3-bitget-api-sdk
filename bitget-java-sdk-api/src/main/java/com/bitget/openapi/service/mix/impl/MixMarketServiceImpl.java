@@ -17,8 +17,8 @@ public class MixMarketServiceImpl implements MixMarketService {
     }
 
     @Override
-    public ResponseResult contracts() throws IOException {
-        return mixMarketApi.contracts().execute().body();
+    public ResponseResult contracts(String productType) throws IOException {
+        return mixMarketApi.contracts(productType).execute().body();
     }
 
     @Override
@@ -32,8 +32,8 @@ public class MixMarketServiceImpl implements MixMarketService {
     }
 
     @Override
-    public ResponseResult tickers() throws IOException {
-        return mixMarketApi.tickers().execute().body();
+    public ResponseResult tickers(String productType) throws IOException {
+        return mixMarketApi.tickers(productType).execute().body();
     }
 
     @Override
