@@ -115,3 +115,16 @@ class AccountApi(Client):
             return self._request_with_params(POST, MIX_ACCOUNT_V1_URL + '/open-count', params)
         else:
             return "pls check args"
+
+    '''
+    获取账户信息列表
+    productType: umcbl(USDT专业合约) dmcbl(混合合约) sumcbl(USDT专业合约模拟盘)  sdmcbl(混合合约模拟盘)
+    :return:
+    '''
+    def accounts(self, productType):
+        params = {}
+        if productType:
+            params['productType'] = productType
+            return self._request_with_params(GET, MIX_ACCOUNT_V1_URL + '/accounts', params)
+        else:
+            return "pls check args"
