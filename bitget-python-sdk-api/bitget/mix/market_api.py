@@ -10,10 +10,14 @@ class MarketApi(Client):
 
     '''
     获取合约列表
+    productType: umcbl(USDT专业合约) dmcbl(混合合约) sumcbl(USDT专业合约模拟盘)  sdmcbl(混合合约模拟盘)
     :return:
     '''
-    def contracts(self):
-        return self._request_without_params(GET, MIX_MARKET_V1_URL + '/contracts')
+    def contracts(self, productType):
+        params = {}
+        if productType:
+            params['productType'] = productType
+        return self._request_with_params(GET, MIX_MARKET_V1_URL + '/contracts', params)
 
     '''
     获取深度数据
@@ -44,10 +48,14 @@ class MarketApi(Client):
 
     '''
     获取全部ticker信息
+    productType: umcbl(USDT专业合约) dmcbl(混合合约) sumcbl(USDT专业合约模拟盘)  sdmcbl(混合合约模拟盘)
     :return:
     '''
-    def tickers(self):
-        return self._request_without_params(GET, MIX_MARKET_V1_URL + '/tickers')
+    def tickers(self,productType):
+        params = {}
+        if productType:
+            params['productType'] = productType
+        return self._request_with_params(GET, MIX_MARKET_V1_URL + '/tickers', params)
 
     '''
     获取实时成交
