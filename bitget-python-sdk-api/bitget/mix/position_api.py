@@ -23,7 +23,7 @@ class PositionApi(Client):
 
     '''
     获取用户单个持仓信息
-    productType: usdt_type(USDT专业合约) mix_type(混合合约)
+    productType: umcbl(USDT专业合约) dmcbl(混合合约) sumcbl(USDT专业合约模拟盘)  sdmcbl(混合合约模拟盘)
     :return:
     '''
     def all_position(self, productType, marginCoin):
