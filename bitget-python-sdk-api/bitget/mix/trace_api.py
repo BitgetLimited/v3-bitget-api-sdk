@@ -26,7 +26,7 @@ class TraceApi(Client):
     '''
     交易员获取当前带单
     symbol: 交易对名称
-    productType: 产品类型 usdt_type USDT专业合约 mix_type 混合合约
+    productType: umcbl(USDT专业合约) dmcbl(混合合约) sumcbl(USDT专业合约模拟盘)  sdmcbl(混合合约模拟盘)
     pageNo： 从1开始
     :return:
     '''
