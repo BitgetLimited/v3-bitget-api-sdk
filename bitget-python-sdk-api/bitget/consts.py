@@ -18,7 +18,7 @@ POST = "POST"
 DELETE = "DELETE"
 
 # Base Url
-API_URL = 'http://192.168.33.2:21890'
+API_URL = 'https://capi.bitget.com'
 
 
 # ########################################
@@ -55,6 +55,7 @@ SPOT_MARKET_V1_URL = '/api/spot/v1/market'
 SPOT_ACCOUNT_V1_URL = '/api/spot/v1/account'
 SPOT_ORDER_V1_URL = '/api/spot/v1/trade'
 
+
 # ########################################
 # ##############【mix url】################
 # ########################################
@@ -65,4 +66,3 @@ MIX_POSITION_V1_URL = '/api/mix/v1/position'
 MIX_ORDER_V1_URL = '/api/mix/v1/order'
 MIX_PLAN_V1_URL = '/api/mix/v1/plan'
 MIX_TRACE_V1_URL = '/api/mix/v1/trace'
-
