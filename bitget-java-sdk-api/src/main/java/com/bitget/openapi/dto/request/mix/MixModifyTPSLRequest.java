@@ -7,7 +7,7 @@ import java.io.Serializable;
 
 @Builder
 @Data
-public class MixModifyTPSLRequest  implements Serializable {
+public class MixModifyTPSLRequest implements Serializable {
 
     /**
      * 合约交易对
@@ -21,5 +21,7 @@ public class MixModifyTPSLRequest  implements Serializable {
     private String orderId;
 
     private String triggerPrice;
+
+    private String planType;
 
 }

@@ -6,6 +6,7 @@ import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
+import retrofit2.http.Query;
 
 /**
  * @Author: bitget-sdk-team
@@ -25,4 +26,11 @@ public interface SpotAccountApi {
 
     @POST("/api/spot/v1/account/bills")
     Call<ResponseResult> bills(@Body SpotBillQueryReq spotBillQueryReq);
+
+    @GET("/api/spot/v1/account/transferRecords")
+    Call<ResponseResult> transferRecords(@Query("coinId") Integer coinId,
+                                         @Query("fromType") String fromType,
+                                         @Query("limit") Integer limit,
+                                         @Query("after") Long after,
+                                         @Query("before") Long before);
 }

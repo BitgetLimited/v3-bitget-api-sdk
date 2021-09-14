@@ -2,17 +2,18 @@ import bitget.spot.public_api as public
 import bitget.spot.market_api as market
 import bitget.spot.account_api as account
 import bitget.spot.order_api as order
+import json
 
 if __name__ == '__main__':
     api_key = ""
     secret_key = ""
-    passphrase = ""  # 口令
+    passphrase = ""   # 口令
 
-    symbol = 'bftusdt_spbl'
+    symbol = 'btcusdt_spbl'
 
     # spot 获取币种信息
-    publicApi = public.PublicApi(api_key, secret_key, passphrase, use_server_time=True, first=False);
-    # result = publicApi.times()
+    # publicApi = public.PublicApi(api_key, secret_key, passphrase, use_server_time=True, first=False);
+    # result = publicApi.currencies()
     # print(result)
 
     # spot 获取交易对信息
@@ -20,8 +21,8 @@ if __name__ == '__main__':
     # print(result)
 
     # spot 获取单个交易对信息
-    result = publicApi.product('bftusdt_spbl')
-    print(result)
+    # result = publicApi.product('btcusdt_spbl')
+    # print(result)
 
 
 
@@ -42,28 +43,24 @@ if __name__ == '__main__':
     # print(result)
 
     accountApi = account.AccountApi(api_key, secret_key, passphrase, use_server_time=False, first=False)
+    result = accountApi.transfer_records()
+    print(result)
 
-    # result = accountApi.assets()
-    # print(result)
-
-    # result = accountApi.bills(coinId='2', groupType='transaction', bizType='buy', limit=10)
+    # result = accountApi.bills()
     # print(result)
 
     # orderApi = order.OrderApi(api_key, secret_key, passphrase, use_server_time=False, first=False)
-    # result = orderApi.orders(symbol='bftusdt_spbl', quantity='20', side='buy', orderType='market', force='normal', clientOrderId='spot#2392818kk')
+    # result = orderApi.orders(symbol='bftusdt_spbl', price='2.30222', quantity='1', side='buy', orderType='limit', force='normal', clientOrderId='spot#29028939ss')
     # print(result)
 
     # order_data=[{"price":"2.30222","quantity":"1","side":"buy","orderType":"limit","force":"normal","client_oid":"spot#jidhuu19399"}, {"price":"2.30111","quantity":"1","side":"buy","orderType":"limit","force":"normal","client_oid":"spot#akncnai8821"}]
     # result = orderApi.batch_orders(symbol='bftusdt_spbl', order_data=order_data)
     # print(result)
 
-    # result = orderApi.order_info(symbol='bftusdt_spbl')
-    # print(result)
-
     # result = orderApi.cancel_orders(symbol='bftusdt_spbl', orderId='791171749756964864')
     # print(result)
 
-    # result = orderApi.cancel_batch_orders(symbol='bftusdt_spbl', orderIds=['793726305732825088', '793726305804128256'])
+    # result = orderApi.cancel_batch_orders(symbol='bftusdt_spbl', orderId=[''])
     # print(result)
 
     # result = orderApi.open_order(symbol='bftusdt_spbl')
@@ -72,5 +69,5 @@ if __name__ == '__main__':
     # result = orderApi.history(symbol='bftusdt_spbl')
     # print(result)
 
-    # result = orderApi.fills(symbol='bftusdt_spbl', orderId='791113184589549568')
+    # result = orderApi.fills(symbol='bftusdt_spbl')
     # print(result)

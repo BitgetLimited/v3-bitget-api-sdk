@@ -1,6 +1,7 @@
 package com.bitget.openapi.service.spot;
 
 import com.bitget.openapi.dto.request.spot.SpotBillQueryReq;
+import com.bitget.openapi.dto.request.spot.SpotTransferRecordReq;
 import com.bitget.openapi.dto.response.ResponseResult;
 
 import java.io.IOException;
@@ -21,4 +22,6 @@ public interface SpotAccountService {
     ResponseResult assets() throws IOException;
 
     ResponseResult bills(SpotBillQueryReq spotBillQueryReq) throws IOException;
+
+    ResponseResult transferRecords(SpotTransferRecordReq spotTransferRecordReq) throws IOException;
 }
