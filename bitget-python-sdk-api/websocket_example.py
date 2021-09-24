@@ -6,7 +6,7 @@ import json
 import base64
 
 
-#获取当前时间的秒数时间戳
+#获取当前时间的秒数时间戳 
 def get_timestamp():
     t=time.time()
     return str(int(t))
