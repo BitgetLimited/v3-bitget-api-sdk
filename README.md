@@ -8,5 +8,5 @@
 |bitget-java-sdk-api|Java|-|
 |bitget-python-sdk-api|Python|-|
 |bitget-node-sdk-api|Node|-|
-|bitget-go-sdk-api|Go|-|
+|bitget-golang-sdk-api|Go|-|
 |bitget-php-sdk-api|Php|-|
