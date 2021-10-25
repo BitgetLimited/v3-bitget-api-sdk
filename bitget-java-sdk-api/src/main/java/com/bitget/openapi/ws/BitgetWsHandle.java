@@ -31,7 +31,7 @@ public class BitgetWsHandle implements BitgetWsClient {
 
     private WebSocket webSocket;
     private volatile boolean loginStatus = false;
-    private volatile boolean connectStatus = false;ß
+    private volatile boolean connectStatus = false;
     private volatile boolean reconnectStatus = false;
 
 
