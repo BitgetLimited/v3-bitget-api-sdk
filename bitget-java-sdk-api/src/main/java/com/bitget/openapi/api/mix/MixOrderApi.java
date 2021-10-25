@@ -12,6 +12,8 @@ import retrofit2.http.GET;
 import retrofit2.http.POST;
 import retrofit2.http.Query;
 
+import java.util.List;
+
 public interface MixOrderApi {
 
     @POST("/api/mix/v1/order/placeOrder")

@@ -64,7 +64,6 @@ public class MixPlanServiceTest extends BaseTest {
                 .orderId("803521986049314816")
                 .symbol(symbol)
                 .marginCoin(marginCoin)
-//                .planType(MixPlanTypeEnum.NORMAL_PLAN.getValue())
                 .presetTakeProfitPrice("55012.1")
                 .build();
 
@@ -93,7 +92,6 @@ public class MixPlanServiceTest extends BaseTest {
                 .orderId("803521986049314816")
                 .symbol(symbol)
                 .marginCoin(marginCoin)
-//                .planType(MixPlanTypeEnum.PROFIT_PLAN.getValue())
                 .triggerPrice("55012.1")
                 .build();
 

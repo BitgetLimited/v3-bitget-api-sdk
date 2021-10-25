@@ -3,6 +3,14 @@ package com.bitget.openapi;
 import com.bitget.openapi.common.client.ApiClient;
 import com.bitget.openapi.service.mix.*;
 import com.bitget.openapi.service.mix.impl.*;
+import com.bitget.openapi.service.spot.SpotAccountService;
+import com.bitget.openapi.service.spot.SpotMarketService;
+import com.bitget.openapi.service.spot.SpotOrderService;
+import com.bitget.openapi.service.spot.SpotPublicService;
+import com.bitget.openapi.service.spot.impl.SpotAccountServiceImpl;
+import com.bitget.openapi.service.spot.impl.SpotMarketServiceImpl;
+import com.bitget.openapi.service.spot.impl.SpotOrderServiceImpl;
+import com.bitget.openapi.service.spot.impl.SpotPublicServiceImpl;
 
 
 public class MixApiFacade {
@@ -18,8 +26,8 @@ public class MixApiFacade {
      *
      * @return SpotEndpoint
      */
-    public MixEndpoint bitget() {
-        return new MixEndpoint(apiClient);
+    public MixApiFacade.MixEndpoint bitget() {
+        return new MixApiFacade.MixEndpoint(apiClient);
     }
 
     public static class MixEndpoint {

@@ -1,4 +1,4 @@
-package com.bitget.openapi.ws;
+package com.bitget.openapi.test.ws.swap.config;
 
 import com.alibaba.fastjson.JSONArray;
 import com.bitget.openapi.common.utils.DateUtil;
@@ -9,11 +9,14 @@ import okhttp3.*;
 import okio.ByteString;
 import org.apache.commons.compress.compressors.deflate64.Deflate64CompressorInputStream;
 import org.apache.commons.lang3.time.DateFormatUtils;
+
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.time.Instant;
-import java.util.*;
+import java.util.Date;
+import java.util.List;
+import java.util.Objects;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
@@ -24,6 +27,7 @@ public class WebSocketClient {
     private static Boolean isConnect = false;
     private static String sign;
     private final static HashFunction crc32 = Hashing.crc32();
+
     public WebSocketClient() {
     }
 
@@ -46,6 +50,7 @@ public class WebSocketClient {
                 isConnect = true;
                 System.out.println(Instant.now().toString() + " Connected to the server success!");
                 Runnable runnable = new Runnable() {
+                    @Override
                     public void run() {
                         // task to run goes here
                         sendMessage("ping");
@@ -80,7 +85,7 @@ public class WebSocketClient {
             @Override
             public void onMessage(final WebSocket webSocket, final ByteString bytes) {
                 final String s = uncompress(bytes.toByteArray());
-                    System.out.println(DateFormatUtils.format(new Date(), DateUtil.TIME_STYLE_S4) + " Receive: " + s);
+                System.out.println(DateFormatUtils.format(new Date(), DateUtil.TIME_STYLE_S4) + " Receive: " + s);
                 if (null != s && s.contains("login")) {
                     if (s.endsWith("true}")) {
                         flag = true;
@@ -89,7 +94,7 @@ public class WebSocketClient {
             }
 
             @Override
-            public void onMessage(final WebSocket webSocket,final String message){
+            public void onMessage(final WebSocket webSocket, final String message) {
                 System.out.println(DateFormatUtils.format(new Date(), DateUtil.TIME_STYLE_S4) + " Receive: " + message);
                 if (null != message && message.contains("login")) {
                     if (message.endsWith("true}")) {
@@ -129,7 +134,7 @@ public class WebSocketClient {
     private static String sha256_HMAC(String timeStamp, String secret) {
         String hash = "";
         try {
-            hash=SignatureUtils.wsGenerateSign(timeStamp,secret);
+            hash = SignatureUtils.wsGenerateSign(timeStamp, secret);
         } catch (Exception e) {
             System.out.println("Error HmacSHA256 ===========" + e.getMessage());
         }
@@ -146,7 +151,7 @@ public class WebSocketClient {
 
     //登录
     public static void login(String apiKey, String passPhrase, String secretKey) {
-        String timestamp =Long.valueOf(Instant.now().getEpochSecond()).toString();
+        String timestamp = Long.valueOf(Instant.now().getEpochSecond()).toString();
         sign = sha256_HMAC(timestamp, secretKey);
         String str = "{\"op\"" + ":" + "\"login\"" + "," + "\"args\"" + ":" + "[" + "\"" + apiKey + "\"" + "," + "\"" + passPhrase + "\"" + "," + "\"" + timestamp + "\"" + "," + "\"" + sign + "\"" + "]}";
         sendMessage(str);
@@ -176,7 +181,7 @@ public class WebSocketClient {
             } catch (Exception e) {
                 e.printStackTrace();
             }
-            if (str.contains("account") || str.contains("position") || str.contains("order")||str.contains("_plans")) {
+            if (str.contains("account") || str.contains("position") || str.contains("order") || str.contains("_plans")) {
                 if (!flag) {
                     System.out.println("Channels contain channels that require login privileges to operate. Please login and operate again！");
                     return;

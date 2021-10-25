@@ -53,7 +53,7 @@ public class MarketServiceImpl implements MarketService {
 
     @Override
     public List<Object[]> getCandles(String symbol, String start, String end,Long startTime,Long endTime, String granularity) throws IOException {
-        return marketApi.getCandles(symbol, start, end,startTime,endTime, granularity).execute().body();
+        return marketApi.getCandles(symbol, start, end,startTime,endTime,granularity).execute().body();
     }
 
     @Override

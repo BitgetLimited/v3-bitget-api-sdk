@@ -10,7 +10,7 @@ import org.junit.Test;
 import java.io.IOException;
 import java.util.List;
 
-public class TraceServiceTest extends BaseTest{
+public class TraceServiceTest  extends BaseTest{
 
 
     private static final String symbol = "cmt_btcusdt";
@@ -29,7 +29,7 @@ public class TraceServiceTest extends BaseTest{
     }
     @Test
     public void historyTrack() throws  IOException{
-        List<HistoryTraceResult> result = bitgetRestClient.contract().bitget().trace().historyTrack(symbol, "1", "100", 70);
+        List<HistoryTraceResult> result = bitgetRestClient.contract().bitget().trace().historyTrack("1", "100", 70);
         System.out.println(JSON.toJSONString(result));
     }
 }

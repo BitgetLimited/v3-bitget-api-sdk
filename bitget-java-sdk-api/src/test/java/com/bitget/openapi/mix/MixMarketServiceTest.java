@@ -3,10 +3,11 @@ package com.bitget.openapi.mix;
 import com.alibaba.fastjson.JSON;
 import com.bitget.openapi.BaseTest;
 import com.bitget.openapi.common.enums.mix.MixProductTypeEnum;
+import com.bitget.openapi.dto.request.mix.MixOpenCountRequest;
 import com.bitget.openapi.dto.response.ResponseResult;
 import org.junit.Test;
-
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.util.List;
 
 public class MixMarketServiceTest extends BaseTest {
@@ -15,16 +16,16 @@ public class MixMarketServiceTest extends BaseTest {
 
     static Integer limit = 50;
 
-    static String startTime = "1627008799000";
+    static String startTime = "1629177891000";
 
-    static String endTime = "1627012399000";
+    static String endTime = "1629181491000";
 
     static String granularity = "60";
 
     // 测试通过
     @Test
     public void contracts() throws IOException {
-        ResponseResult result = bitgetRestClient.mix().bitget().market().contracts(MixProductTypeEnum.UMCBL.getCode());
+        ResponseResult result = bitgetRestClient.mix().bitget().market().contracts(MixProductTypeEnum.SDMCBL.getCode());
         System.out.println(JSON.toJSONString(result));
     }
     // 测试通过

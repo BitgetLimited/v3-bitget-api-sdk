@@ -65,8 +65,16 @@ public class ContractApiFacade {
         /**
          * trace service
          */
-        TraceService trace(){
+        TraceService  trace(){
             return  new TraceServiceImpl(apiClient);
+        }
+
+        /**
+         * traceProfit service
+         * @return
+         */
+        TraceProfitService traceProfit() {
+            return new TraceProfitServiceImpl(apiClient);
         }
     }
 

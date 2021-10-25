@@ -1,6 +1,7 @@
 package com.bitget.openapi.service.mix;
 
 import com.bitget.openapi.dto.response.ResponseResult;
+import com.bitget.openapi.dto.response.mix.ContractPositionResult;
 
 import java.io.IOException;
 

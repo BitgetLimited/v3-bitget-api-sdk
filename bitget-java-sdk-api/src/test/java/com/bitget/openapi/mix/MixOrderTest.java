@@ -17,10 +17,10 @@ import java.util.List;
 
 public class MixOrderTest extends BaseTest {
 
-    private static String symbol = "BTCUSDT_UMCBL";
-    private static String marginCoin = "USDT";
-    private static String startTime = "1626859582000";
-    private static String endTime = "1627032382000";
+    private static String symbol = "SBTCSUSDT_SUMCBL";
+    private static String marginCoin = "SUSDT";
+    private static String startTime = "1629113823000";
+    private static String endTime = "1629513368000";
     private static String lastEndId = "0";
     private static int pageSize = 20;
 
@@ -30,9 +30,9 @@ public class MixOrderTest extends BaseTest {
         MixPlaceOrderRequest req = MixPlaceOrderRequest.builder()
                 .clientOid("RFIut#"+System.currentTimeMillis())
                 .symbol(symbol)
-                .price(new BigDecimal("22999.3"))
+                .price(new BigDecimal("44067.0"))
                 .size(new BigDecimal("1"))
-                .marginCoin("USDT")
+                .marginCoin(marginCoin)
                 .side(MixSideEnum.OPEN_LONG.getSide())
                 .timeInForceValue(ForceEnum.NORMAL.getCode())
                 .orderType(MixOrderTypeEnum.LIMIT.getCode())
@@ -80,7 +80,7 @@ public class MixOrderTest extends BaseTest {
         MixCancelOrderRequest req = MixCancelOrderRequest.builder()
                 .symbol(symbol)
                 .marginCoin(marginCoin)
-                .orderId("802382049422487552")
+                .orderId("811489712408248322")
                 .build();
         ResponseResult result = bitgetRestClient.mix().bitget().order().cancelOrder(req);
         System.out.println(JSON.toJSONString(result));
@@ -114,13 +114,13 @@ public class MixOrderTest extends BaseTest {
     // passed
     @Test
     public void detail() throws IOException {
-        ResponseResult result = bitgetRestClient.mix().bitget().order().detail(symbol, "802377533381816325");
+        ResponseResult result = bitgetRestClient.mix().bitget().order().detail(symbol, "811489712408248322");
         System.out.println(JSON.toJSONString(result));
     }
     // passed
     @Test
     public void fills() throws IOException {
-        ResponseResult result = bitgetRestClient.mix().bitget().order().fills(symbol, "802377533381816325");
+        ResponseResult result = bitgetRestClient.mix().bitget().order().fills(symbol, "811489712408248322");
         System.out.println(JSONObject.toJSONString(result));
     }
 }

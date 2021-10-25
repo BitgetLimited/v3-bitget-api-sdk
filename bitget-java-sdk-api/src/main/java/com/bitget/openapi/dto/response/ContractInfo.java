@@ -59,4 +59,13 @@ public class ContractInfo implements Serializable {
      * 价格最后一位步长 5
      */
     private BigDecimal priceEndStep;
+
+    /**
+     * 最小杠杆倍数1
+     */
+    private Integer minLeverage;
+    /**
+     * 最大杠杆倍数100
+     */
+    private Integer maxLeverage;
 }

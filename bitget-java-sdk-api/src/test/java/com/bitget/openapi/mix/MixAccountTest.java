@@ -24,12 +24,13 @@ public class MixAccountTest extends BaseTest {
         System.out.println(JSON.toJSONString(result));
     }
 
-    //passed
+
     @Test
     public void accounts() throws IOException {
         ResponseResult result = bitgetRestClient.mix().bitget().account().getAccounts(MixProductTypeEnum.UMCBL.getCode());
         System.out.println(JSON.toJSONString(result));
     }
+
     // passed
     @Test
     public void leverage() throws IOException {

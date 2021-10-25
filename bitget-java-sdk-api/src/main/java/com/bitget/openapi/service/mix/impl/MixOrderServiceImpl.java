@@ -1,15 +1,21 @@
 package com.bitget.openapi.service.mix.impl;
 
 import com.bitget.openapi.api.mix.MixOrderApi;
+import com.bitget.openapi.api.mix.MixPositionApi;
 import com.bitget.openapi.common.client.ApiClient;
 import com.bitget.openapi.dto.request.mix.MixCancelBatchOrdersRequest;
 import com.bitget.openapi.dto.request.mix.MixCancelOrderRequest;
 import com.bitget.openapi.dto.request.mix.MixPlaceOrderRequest;
 import com.bitget.openapi.dto.request.mix.PlaceBatchOrderRequest;
 import com.bitget.openapi.dto.response.ResponseResult;
+import com.bitget.openapi.dto.response.mix.MixDelegateOrderListResult;
+import com.bitget.openapi.dto.response.mix.MixDelegateOrderResult;
+import com.bitget.openapi.dto.response.mix.MixFillRecordResult;
+import com.bitget.openapi.dto.response.mix.PlaceOrderResult;
 import com.bitget.openapi.service.mix.MixOrderService;
 
 import java.io.IOException;
+import java.util.List;
 
 public class MixOrderServiceImpl implements MixOrderService {
 

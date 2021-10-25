@@ -13,6 +13,7 @@ public enum MixProductTypeEnum {
     SUMCBL("sumcbl"),
     SDMCBL("sdmcbl"),
     ;
+    ;
 
     private final String code;
 

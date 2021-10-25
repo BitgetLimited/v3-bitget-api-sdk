@@ -59,7 +59,6 @@ public interface OrderService {
     Order getOrderDetail(String symbol, String orderId) throws IOException;
 
 
-
     /** 获取订单列表--历史委托-带分页的
      * @param symbol
      * @param pageIndex

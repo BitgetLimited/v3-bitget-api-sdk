@@ -6,7 +6,6 @@ import com.bitget.openapi.common.enums.mix.MixProductTypeEnum;
 import com.bitget.openapi.dto.request.mix.MixCloseTrackOrderRequest;
 import com.bitget.openapi.dto.response.ResponseResult;
 import org.junit.Test;
-
 import java.io.IOException;
 
 public class MixTraceServiceTest extends BaseTest {

@@ -3,11 +3,12 @@ package com.bitget.openapi.service.spot.impl;
 import com.bitget.openapi.api.spot.SpotAccountApi;
 import com.bitget.openapi.common.client.ApiClient;
 import com.bitget.openapi.dto.request.spot.SpotBillQueryReq;
-import com.bitget.openapi.dto.request.spot.SpotTransferRecordReq;
 import com.bitget.openapi.dto.response.ResponseResult;
+import com.bitget.openapi.dto.response.spot.SpotAssetsResult;
 import com.bitget.openapi.service.spot.SpotAccountService;
 
 import java.io.IOException;
+import java.util.List;
 
 /**
  * @Author: bitget
@@ -33,7 +34,7 @@ public class SpotAccountServiceImpl implements SpotAccountService {
     }
 
     @Override
-    public ResponseResult transferRecords(SpotTransferRecordReq req) throws IOException {
-        return spotAccountApi.transferRecords(req.getCoinId(),req.getFromType(),req.getLimit(),req.getAfter(),req.getBefore()).execute().body();
+    public ResponseResult transferRecords(String coinId, String fromType, String limit, String after, String before) throws IOException {
+        return spotAccountApi.transferRecords(coinId,fromType,limit,after,before).execute().body();
     }
 }

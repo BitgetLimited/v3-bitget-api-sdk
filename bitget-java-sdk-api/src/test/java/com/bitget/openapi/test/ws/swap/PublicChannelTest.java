@@ -1,5 +1,7 @@
-package com.bitget.openapi.ws;
+package com.bitget.openapi.test.ws.swap;
 
+import com.bitget.openapi.test.ws.swap.config.WebSocketClient;
+import com.bitget.openapi.test.ws.swap.config.WebSocketConfig;
 import org.apache.commons.compress.utils.Lists;
 import org.junit.After;
 import org.junit.Before;
@@ -50,17 +52,17 @@ public class PublicChannelTest {
      * 公共-k线频道
      * 频道列表：
      * swap/candle60s // 1分钟k线数据频道
-     swap/candle180s // 3分钟k线数据频道
-     swap/candle300s // 5分钟k线数据频道
-     swap/candle900s // 15分钟k线数据频道
-     swap/candle1800s // 30分钟k线数据频道
-     swap/candle3600s // 1小时k线数据频道
-     swap/candle7200s // 2小时k线数据频道
-     swap/candle14400s // 4小时k线数据频道
-     swap/candle21600 // 6小时k线数据频道
-     swap/candle43200s // 12小时k线数据频道
-     swap/candle86400s // 1day k线数据频道
-     swap/candle604800s // 1week k线数据频道
+     * swap/candle180s // 3分钟k线数据频道
+     * swap/candle300s // 5分钟k线数据频道
+     * swap/candle900s // 15分钟k线数据频道
+     * swap/candle1800s // 30分钟k线数据频道
+     * swap/candle3600s // 1小时k线数据频道
+     * swap/candle7200s // 2小时k线数据频道
+     * swap/candle14400s // 4小时k线数据频道
+     * swap/candle21600 // 6小时k线数据频道
+     * swap/candle43200s // 12小时k线数据频道
+     * swap/candle86400s // 1day k线数据频道
+     * swap/candle604800s // 1week k线数据频道
      */
     @Test
     public void klineChannel() {

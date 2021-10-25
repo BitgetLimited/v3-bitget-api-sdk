@@ -71,7 +71,8 @@ public interface MarketApi {
      * @param symbol
      * @param start
      * @param end
-     * @param granularity
+     * @param startTime
+     * @param endTime
      * @return
      */
     @GET("/api/swap/v3/market/candles")

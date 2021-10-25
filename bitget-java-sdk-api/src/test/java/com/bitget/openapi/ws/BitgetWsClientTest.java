@@ -13,6 +13,7 @@ import java.util.List;
 public class BitgetWsClientTest {
 
     public static final String PUSH_URL = "wss://ws.bitgetapi.com/spot/v1/stream";
+
     public static final String API_KEY = "";
     public static final String SECRET_KEY = "";
     public static final String PASS_PHRASE = "";
@@ -37,12 +38,14 @@ public class BitgetWsClientTest {
 
 
         List<SubscribeReq> list = new ArrayList<SubscribeReq>() {{
-            add(SubscribeReq.builder().instType("SP").channel("trade").instId("BTCUSDT").build());
+            add(SubscribeReq.builder().instType("mc").channel("ticker").instId("BTCUSD").build());
+            add(SubscribeReq.builder().instType("SP").channel("candle1W").instId("BTCUSDT").build());
         }};
         client.subscribe(list);
 
         List<SubscribeReq> list2 = new ArrayList<SubscribeReq>() {{
-            add(SubscribeReq.builder().instType("SP").channel("trade").instId("BTCUSDT").build());
+
+            add(SubscribeReq.builder().instType("UMCBL").channel("account").instId("default").build());
         }};
         client.subscribe(list2, response -> {
             JSONObject json = JSONObject.parseObject(response);

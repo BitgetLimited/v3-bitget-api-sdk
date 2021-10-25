@@ -2,10 +2,10 @@ package com.bitget.openapi.mix;
 
 import com.alibaba.fastjson.JSON;
 import com.bitget.openapi.BaseTest;
+import com.bitget.openapi.common.enums.mix.MixHoldSideEnum;
 import com.bitget.openapi.common.enums.mix.MixProductTypeEnum;
 import com.bitget.openapi.dto.response.ResponseResult;
 import org.junit.Test;
-
 import java.io.IOException;
 
 public class MixPositionTest extends BaseTest {

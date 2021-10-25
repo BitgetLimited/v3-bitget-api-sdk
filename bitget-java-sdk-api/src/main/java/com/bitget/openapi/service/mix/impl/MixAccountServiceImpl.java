@@ -4,6 +4,10 @@ import com.bitget.openapi.api.mix.MixAccountApi;
 import com.bitget.openapi.common.client.ApiClient;
 import com.bitget.openapi.dto.request.mix.*;
 import com.bitget.openapi.dto.response.ResponseResult;
+import com.bitget.openapi.dto.response.mix.ApiBalanceResult;
+import com.bitget.openapi.dto.response.mix.ChangeHoldModeResult;
+import com.bitget.openapi.dto.response.mix.ChangeLeverageResult;
+import com.bitget.openapi.dto.response.mix.MixCommonResult;
 import com.bitget.openapi.service.mix.MixAccountService;
 
 import java.io.IOException;
@@ -25,6 +29,7 @@ public class MixAccountServiceImpl implements MixAccountService {
     public ResponseResult getAccounts(String productType) throws IOException {
         return mixAccountApi.accounts(productType).execute().body();
     }
+
 
     @Override
     public ResponseResult leverage(MixChangeLeverageRequest mixChangeLeverageRequest) throws IOException {

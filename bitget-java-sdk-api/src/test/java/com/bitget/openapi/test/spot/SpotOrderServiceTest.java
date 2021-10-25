@@ -1,4 +1,4 @@
-package com.bitget.openapi.spot;
+package com.bitget.openapi.test.spot;
 
 import com.alibaba.fastjson.JSON;
 import com.bitget.openapi.BaseTest;
@@ -20,15 +20,18 @@ public class SpotOrderServiceTest extends BaseTest {
 
     @Test
     public void orders() throws IOException {
-        SpotOrderReq spotOrderReq = SpotOrderReq.builder()
-                                                .symbol(symbol)
-                                                .price("2.68111")
-                                                .quantity("1")
-                                                .side(OrderSideEnum.BUY.getCode())
-                                                .orderType(SpotOrderTypeEnum.LIMIT.getCode())
-                                                .force(ForceEnum.NORMAL.getCode())
-                                                .clientOrderId("spot1624941230000")
-                                                .build();
+//        SpotOrderReq spotOrderReq = SpotOrderReq.builder()
+//                                                .symbol(symbol)
+//                                                .price("2.68111")
+//                                                .quantity("1")
+//                                                .side(OrderSideEnum.BUY.getCode())
+//                                                .orderType(SpotOrderTypeEnum.LIMIT.getCode())
+//                                                .force(ForceEnum.NORMAL.getCode())
+//                                                .clientOrderId("spot1624941230000")
+//                                                .build();
+        SpotOrderReq spotOrderReq = SpotOrderReq.builder().symbol(symbol).price("2.68111").quantity("10")
+                .side(OrderSideEnum.BUY.getCode()).orderType(SpotOrderTypeEnum.LIMIT.getCode())
+                .force(ForceEnum.NORMAL.getCode()).build();
 
 //        SpotOrderReq spotOrderReq = SpotOrderReq.builder()
 //                .symbol(symbol)
@@ -85,7 +88,7 @@ public class SpotOrderServiceTest extends BaseTest {
 
     @Test
     public void cancelBatchOrder() throws IOException {
-        SpotCancelBatchOrderReq batchOrderReq = SpotCancelBatchOrderReq.builder().symbol(symbol).orderIds(Arrays.asList("793726305732825088","793726305804128256")).build();
+        SpotCancelBatchOrderReq batchOrderReq = SpotCancelBatchOrderReq.builder().symbol(symbol).orderIds(Arrays.asList("793726305732825088", "793726305804128256")).build();
 
         ResponseResult result = bitgetRestClient.spot().bitget().order().cancelBatchOrder(batchOrderReq);
         System.out.println(JSON.toJSONString(result));
@@ -94,7 +97,7 @@ public class SpotOrderServiceTest extends BaseTest {
 
     @Test
     public void orderInfo() throws IOException {
-        SpotOrderInfoReq orderInfoReq = SpotOrderInfoReq.builder().orderId("").build();
+        SpotOrderInfoReq orderInfoReq = SpotOrderInfoReq.builder().build();
 
         ResponseResult result = bitgetRestClient.spot().bitget().order().orderInfo(orderInfoReq);
         System.out.println(JSON.toJSONString(result));
@@ -127,7 +130,6 @@ public class SpotOrderServiceTest extends BaseTest {
         ResponseResult result = bitgetRestClient.spot().bitget().order().fills(fillsOrderReq);
         System.out.println(JSON.toJSONString(result));
     }
-
 
 
 }

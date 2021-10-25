@@ -28,8 +28,8 @@ public class SpotApiFacade {
      *
      * @return SpotEndpoint
      */
-    public SpotEndpoint bitget() {
-        return new SpotEndpoint(apiClient);
+    public SpotApiFacade.SpotEndpoint bitget() {
+        return new SpotApiFacade.SpotEndpoint(apiClient);
     }
 
     public static class SpotEndpoint {

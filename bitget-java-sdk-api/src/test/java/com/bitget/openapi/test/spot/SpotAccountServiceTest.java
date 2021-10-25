@@ -1,10 +1,8 @@
-package com.bitget.openapi.spot;
+package com.bitget.openapi.test.spot;
 
 import com.alibaba.fastjson.JSON;
 import com.bitget.openapi.BaseTest;
-import com.bitget.openapi.common.enums.spot.AccountTypeEnum;
 import com.bitget.openapi.dto.request.spot.SpotBillQueryReq;
-import com.bitget.openapi.dto.request.spot.SpotTransferRecordReq;
 import com.bitget.openapi.dto.response.ResponseResult;
 import org.junit.Test;
 
@@ -20,7 +18,6 @@ public class SpotAccountServiceTest extends BaseTest {
     }
 
 
-
     @Test
     public void bills() throws IOException {
         SpotBillQueryReq build = SpotBillQueryReq.builder()
@@ -33,10 +30,12 @@ public class SpotAccountServiceTest extends BaseTest {
 
     @Test
     public void transferRecords() throws IOException {
-        SpotTransferRecordReq build = SpotTransferRecordReq.builder().fromType(AccountTypeEnum.OTC_SGD.getCode()).build();
-        ResponseResult assets = bitgetRestClient.spot().bitget().account().transferRecords(build);
-        System.out.println(JSON.toJSONString(assets,true));
+        SpotBillQueryReq build = SpotBillQueryReq.builder()
+//                .coinId(1)
+//                .before(777031099461570560L)
+                .build();
+        ResponseResult assets = bitgetRestClient.spot().bitget().account().transferRecords("2","USDT_MIX","10","","");
+        System.out.println(JSON.toJSONString(assets));
     }
-
 
 }

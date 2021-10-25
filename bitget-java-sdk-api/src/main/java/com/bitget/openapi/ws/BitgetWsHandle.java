@@ -31,7 +31,7 @@ public class BitgetWsHandle implements BitgetWsClient {
 
     private WebSocket webSocket;
     private volatile boolean loginStatus = false;
-    private volatile boolean connectStatus = false;
+    private volatile boolean connectStatus = false;ß
     private volatile boolean reconnectStatus = false;
 
 
@@ -91,6 +91,10 @@ public class BitgetWsHandle implements BitgetWsClient {
 
     @Override
     public void unsubscribe(List<SubscribeReq> channels) {
+        allSuribe.removeAll(channels);
+        channels.forEach(channel->{
+            scribeMap.remove(channel);
+        });
         sendMessage(new WsBaseReq<>(WS_OP_UNSUBSCRIBE, channels));
     }
 

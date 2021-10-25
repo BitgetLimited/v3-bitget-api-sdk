@@ -5,6 +5,7 @@ import com.bitget.openapi.common.client.ApiClient;
 import com.bitget.openapi.dto.request.mix.*;
 import com.bitget.openapi.dto.response.ResponseResult;
 import com.bitget.openapi.service.mix.MixPlanService;
+import retrofit2.http.Query;
 
 import java.io.IOException;
 

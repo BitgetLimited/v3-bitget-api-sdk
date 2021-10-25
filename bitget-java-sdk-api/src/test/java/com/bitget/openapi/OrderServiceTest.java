@@ -22,8 +22,8 @@ public class OrderServiceTest extends BaseTest {
 
     @Test
     public void postOrder() throws IOException {
-        OrderReq req = OrderReq.builder().client_oid("RFIut#1594137696335").symbol(symbol).presetStopLossPrice(new BigDecimal("8400.5")).match_price(MatchTypeEnum.LIMIT.getCode())
-                .order_type(OrderTypeEnum.LIMIT.getCode().toString()).size("2").type("1").price("9209.5").build();
+        OrderReq req = OrderReq.builder().client_oid("RFIut#1594137696335").symbol(symbol).match_price(MatchTypeEnum.LIMIT.getCode())
+                .order_type(OrderTypeEnum.LIMIT.getCode().toString()).size("1").type("1").price("9209.5").build();
         PlaceOrderResult result = bitgetRestClient.contract().bitget().order().placeOrder(req);
         System.out.println(JSON.toJSONString(result));
     }
@@ -60,6 +60,7 @@ public class OrderServiceTest extends BaseTest {
         Order result = bitgetRestClient.contract().bitget().order().getOrderDetail(symbol, "662052689865080815");
         System.out.println(JSON.toJSONString(result));
     }
+
 
     @Test
     public void getOrdersHistory() throws IOException{

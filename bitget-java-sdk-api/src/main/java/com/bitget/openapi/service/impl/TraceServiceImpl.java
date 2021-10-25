@@ -11,7 +11,7 @@ import com.bitget.openapi.service.TraceService;
 import java.io.IOException;
 import java.util.List;
 
-public class TraceServiceImpl implements TraceService {
+public class TraceServiceImpl  implements TraceService {
 
     private final TraceApi traceApi;
     public TraceServiceImpl(ApiClient client) {
@@ -29,7 +29,7 @@ public class TraceServiceImpl implements TraceService {
     }
 
     @Override
-    public List<HistoryTraceResult> historyTrack(String symbol, String pageIndex, String pageSize, Integer createDate) throws IOException{
-        return traceApi.historyTrack(symbol,pageIndex,pageSize,createDate).execute().body();
+    public List<HistoryTraceResult> historyTrack(String pageIndex, String pageSize, Integer createDate) throws IOException{
+        return traceApi.historyTrack(pageIndex,pageSize,createDate).execute().body();
     }
 }

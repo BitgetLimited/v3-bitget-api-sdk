@@ -32,4 +32,11 @@ public class ChangeLeverageReq implements Serializable {
      * 合约代码
      */
     private String symbol;
+
+    /**
+     * 持仓模式
+     * 1 逐仓模式
+     * 2 全仓模式
+     */
+    private Integer holdModel;
 }

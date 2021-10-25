@@ -2,6 +2,7 @@ package com.bitget.openapi.service.mix;
 
 import com.bitget.openapi.dto.request.mix.*;
 import com.bitget.openapi.dto.response.ResponseResult;
+import retrofit2.http.Query;
 
 import java.io.IOException;
 

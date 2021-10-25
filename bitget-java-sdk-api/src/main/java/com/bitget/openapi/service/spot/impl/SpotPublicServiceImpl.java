@@ -1,5 +1,6 @@
 package com.bitget.openapi.service.spot.impl;
 
+import com.bitget.openapi.api.AccountApi;
 import com.bitget.openapi.api.spot.SpotPublicApi;
 import com.bitget.openapi.common.client.ApiClient;
 import com.bitget.openapi.dto.response.ResponseResult;

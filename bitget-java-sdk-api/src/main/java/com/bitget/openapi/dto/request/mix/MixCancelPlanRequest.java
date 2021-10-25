@@ -2,7 +2,6 @@ package com.bitget.openapi.dto.request.mix;
 
 import lombok.Builder;
 import lombok.Data;
-
 import java.io.Serializable;
 
 @Builder

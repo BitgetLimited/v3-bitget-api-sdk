@@ -30,12 +30,11 @@ public interface TraceService {
 
     /**
      * 获取历史带单列表
-     * @param symbol
      * @param pageIndex
      * @param pageSize
      * @param createDate
      * @return
      */
-    List<HistoryTraceResult> historyTrack( String symbol, String pageIndex, String pageSize, Integer createDate)throws IOException;
+    List<HistoryTraceResult> historyTrack(String pageIndex, String pageSize, Integer createDate)throws IOException;
 
 }

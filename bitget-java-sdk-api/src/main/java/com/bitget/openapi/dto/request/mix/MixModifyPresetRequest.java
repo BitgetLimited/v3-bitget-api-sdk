@@ -24,4 +24,5 @@ public class MixModifyPresetRequest implements Serializable {
 
     private String orderId;
 
+    private String planType;
 }

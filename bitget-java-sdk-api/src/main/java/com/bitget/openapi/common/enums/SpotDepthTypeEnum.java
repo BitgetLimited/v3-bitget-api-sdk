@@ -1,4 +1,4 @@
-package com.bitget.openapi.common.enums.spot;
+package com.bitget.openapi.common.enums;
 
 import lombok.Getter;
 

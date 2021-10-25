@@ -52,6 +52,7 @@ public class SignatureUtils {
         queryString = StringUtils.isBlank(queryString) ? StringUtils.EMPTY : "?" + queryString;
 
         String preHash = timestamp + method + requestPath + queryString + body;
+        System.out.println(preHash);
         byte[] secretKeyBytes = secretKey.getBytes(SignatureUtils.CHARSET);
         SecretKeySpec secretKeySpec = new SecretKeySpec(secretKeyBytes, SignatureUtils.HMAC_SHA256);
         Mac mac = (Mac) SignatureUtils.MAC.clone();
@@ -59,6 +60,27 @@ public class SignatureUtils {
         return Base64.getEncoder().encodeToString(mac.doFinal(preHash.getBytes(SignatureUtils.CHARSET)));
     }
 
+    /**
+     * websocket 签名加密
+     * @param timestamp
+     * @param method
+     * @param requestPath
+     * @param secretKey
+     * @return
+     * @throws CloneNotSupportedException
+     * @throws InvalidKeyException
+     * @throws UnsupportedEncodingException
+     */
+    public static String ws_sign(String timestamp, String method, String requestPath, String secretKey)
+            throws CloneNotSupportedException, InvalidKeyException, UnsupportedEncodingException {
+        method = method.toUpperCase();
+        String preHash = timestamp + method + requestPath;
+        byte[] secretKeyBytes = secretKey.getBytes(SignatureUtils.CHARSET);
+        SecretKeySpec secretKeySpec = new SecretKeySpec(secretKeyBytes, SignatureUtils.HMAC_SHA256);
+        Mac mac = (Mac) SignatureUtils.MAC.clone();
+        mac.init(secretKeySpec);
+        return Base64.getEncoder().encodeToString(mac.doFinal(preHash.getBytes(SignatureUtils.CHARSET)));
+    }
     /**
      * ws签名
      * @param timestamp
@@ -74,4 +96,12 @@ public class SignatureUtils {
         mac.init(secretKeySpec);
         return Base64.getEncoder().encodeToString(mac.doFinal(preHash.getBytes(SignatureUtils.CHARSET)));
     }
+
+    public static void main(String[] args) throws Exception {
+      String msg=generate("1606981450","GET","/user/verify" ,null,null,"9ae40dd0f6074f9e2714e3ef9f9ed0ac33a049d85a38c02cc42873f03308f1fa");
+      System.out.println(msg);
+    }
+
+
+
 }

@@ -37,8 +37,7 @@ public interface TraceApi {
      * @return
      */
     @GET("/api/swap/v3/trace/historyTrack")
-    Call<List<HistoryTraceResult>> historyTrack(@Query("symbol") String symbol,
-                                                @Query("pageIndex") String pageIndex,
+    Call<List<HistoryTraceResult>> historyTrack(@Query("pageIndex") String pageIndex,
                                                 @Query("pageSize") String pageSize,
                                                 @Query("createDate") Integer createDate);
 

@@ -5,8 +5,13 @@ import com.bitget.openapi.dto.request.mix.MixCancelOrderRequest;
 import com.bitget.openapi.dto.request.mix.MixPlaceOrderRequest;
 import com.bitget.openapi.dto.request.mix.PlaceBatchOrderRequest;
 import com.bitget.openapi.dto.response.ResponseResult;
+import com.bitget.openapi.dto.response.mix.MixDelegateOrderListResult;
+import com.bitget.openapi.dto.response.mix.MixDelegateOrderResult;
+import com.bitget.openapi.dto.response.mix.MixFillRecordResult;
+import com.bitget.openapi.dto.response.mix.PlaceOrderResult;
 
 import java.io.IOException;
+import java.util.List;
 
 public interface MixOrderService {
 

@@ -1,4 +1,4 @@
-package com.bitget.openapi.spot;
+package com.bitget.openapi.test.spot;
 
 import com.alibaba.fastjson.JSON;
 import com.bitget.openapi.BaseTest;
@@ -30,7 +30,7 @@ public class PublicServiceTest extends BaseTest {
 
     @Test
     public void product() throws IOException {
-        ResponseResult productSingle = bitgetRestClient.spot().bitget().common().product("BTCUSDT_SPBL");
+        ResponseResult productSingle = bitgetRestClient.spot().bitget().common().product("ETHUSDT_SPBL");
         System.out.println(JSON.toJSONString(productSingle));
     }
 

@@ -1,5 +1,7 @@
-package com.bitget.openapi.ws;
+package com.bitget.openapi.test.ws.swap;
 
+import com.bitget.openapi.test.ws.swap.config.WebSocketClient;
+import com.bitget.openapi.test.ws.swap.config.WebSocketConfig;
 import org.apache.commons.compress.utils.Lists;
 import org.junit.After;
 import org.junit.Before;
@@ -93,7 +95,7 @@ public class PrivateChannelTest {
     @Test
     public void orderChannel() {
         ArrayList<String> channel = Lists.newArrayList();
-        channel.add("swap/order:cmt_xrpusdt");
+        channel.add("swap/order:btcusd");
         try {
             Thread.sleep(100);
         } catch (Exception e) {
@@ -110,10 +112,10 @@ public class PrivateChannelTest {
     }
 
     /**
-     *用户当前计划委托频道
+     * 用户当前计划委托频道
      */
     @Test
-    public void currentPlanChannel(){
+    public void currentPlanChannel() {
         ArrayList<String> channel = Lists.newArrayList();
         channel.add("swap/current_plans:btcusd");
         try {
@@ -132,10 +134,10 @@ public class PrivateChannelTest {
     }
 
     /**
-     *用户历史计划委托频道
+     * 用户历史计划委托频道
      */
     @Test
-    public void historyPlanChannel(){
+    public void historyPlanChannel() {
         ArrayList<String> channel = Lists.newArrayList();
         channel.add("swap/history_plans:btcusd");
         try {

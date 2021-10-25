@@ -9,6 +9,7 @@ import java.io.Serializable;
 
 /**
  * ( 持仓 )
+ *
  * @author jian.li
  * @create 2020-05-29 12:36
  */
@@ -43,13 +44,13 @@ public class Position implements Serializable {
      */
     private String leverage;
     /**
-     * 已实现盈亏
-     */
-    private String realized_pnl;
-    /**
      * 维持保证金率
      */
     private String keepMarginRate;
+    /**
+     * 已实现盈亏
+     */
+    private String realized_pnl;
     /**
      * 方向
      */
@@ -62,5 +63,12 @@ public class Position implements Serializable {
     private String timestamp;
 
     private String margin;
+
+
+    /**
+     * 未实现盈亏
+     */
+    private String unrealized_pnl;
+
 
 }

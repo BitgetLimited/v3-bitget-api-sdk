@@ -19,6 +19,7 @@ public interface MixAccountApi {
     @GET("/api/mix/v1/account/accounts")
     Call<ResponseResult> accounts(@Query("productType") String productType);
 
+
     @POST("/api/mix/v1/account/setLeverage")
     Call<ResponseResult> leverage(@Body MixChangeLeverageRequest mixChangeLeverageRequest);
 

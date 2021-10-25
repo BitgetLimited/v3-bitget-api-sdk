@@ -2,6 +2,10 @@ package com.bitget.openapi.service.mix;
 
 import com.bitget.openapi.dto.request.mix.*;
 import com.bitget.openapi.dto.response.ResponseResult;
+import com.bitget.openapi.dto.response.mix.ApiBalanceResult;
+import com.bitget.openapi.dto.response.mix.ChangeHoldModeResult;
+import com.bitget.openapi.dto.response.mix.ChangeLeverageResult;
+import com.bitget.openapi.dto.response.mix.MixCommonResult;
 
 import java.io.IOException;
 
