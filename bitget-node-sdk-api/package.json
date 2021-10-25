@@ -1,6 +1,6 @@
 {
-  "name": "bitget-node-sdk-api",
-  "version": "1.0.0",
+  "name": "bitget",
+  "version": "2.0.1",
   "description": "",
   "main": "build/index.js",
   "types": "build/index.d.ts",
@@ -11,12 +11,19 @@
     "clean": "rm -rf build/",
     "doc": "typedoc --out docs src"
   },
-  "author": "",
-  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.19.2",
+    "crypto": "^1.0.1",
+    "querystring": "^0.2.0",
+    "ws": "^6.1.4",
+    "crc-32": "^1.2.0",
+    "pako": "^1.0.8"
+  },
   "devDependencies": {
     "@types/axios": "^0.14.0",
     "@types/node": "^14.0.24",
     "@types/pako": "^1.0.1",
+    "@types/ws": "^6.0.1",
     "husky": "^4.2.5",
     "jest": "^26.1.0",
     "prettier": "^2.0.5",
@@ -30,12 +37,7 @@
       "pre-commit": "npm run lint"
     }
   },
-  "dependencies": {
-    "axios": "^0.19.2",
-    "crypto": "^1.0.1",
-    "querystring": "^0.2.0",
-    "ws": "^6.1.4",
-    "crc-32": "^1.2.0",
-    "pako": "^1.0.8"
-  }
+
+  "author": "bitget openapi",
+  "license": "ISC"
 }

@@ -1,0 +1,37 @@
+{
+    "name": "bitget/sdk",
+    "description": "This is an api sdk about OKEx V3",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Heng Liu",
+            "email": "ai747957633@qq.com"
+        }
+    ],
+    "require": {
+        "php": ">=7.4",
+        "workerman/workerman": "^3.5",
+        "textalk/websocket": "*",
+        "ext-curl": "*",
+        "ext-json": "*",
+        "ext-mbstring": "*",
+        "guzzlehttp/guzzle": "^6.2"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^4.8",
+        "squizlabs/php_codesniffer": "~2.6",
+        "friendsofphp/php-cs-fixer": "~2.12"
+    },
+    "autoload": {
+        "psr-4": {
+            "bitget\\" : "src"
+        },
+        "files": [
+            "src/internal/BitgetWsClient.php"
+        ]
+    },
+    "autoload-dev": {
+        "psr-4": { "test\\" : "test" }
+    }
+}

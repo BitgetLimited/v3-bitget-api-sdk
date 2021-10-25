@@ -1,15 +1,17 @@
-import BitgetApi from '../build'
+// tslint:disable-next-line:no-var-requires
+const {MixAccountApi} = require('@bitget/bitget-node');
 import { test, describe, expect } from '@jest/globals'
+import * as Console from 'console';
+
 
 describe('test after build', () => {
-  const api = new BitgetApi.PublicApi('http://192.168.33.2:27832/', {})
+  const api = new MixAccountApi();
 
   const symbol = 'cmt_btcusdt'
 
-  test('/api/swap/v3/market/time', () => {
-    expect.assertions(1)
-    return api.getTime().then((data) => {
-      expect(data.data.timestamp).toBeTruthy()
+  test('accounts', () => {
+    return api.accounts('umcbl').then(() => {
+      Console.log();
     })
   })
 })
