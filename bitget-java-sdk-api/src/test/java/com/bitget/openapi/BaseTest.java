@@ -16,15 +16,15 @@ public class BaseTest {
 	/**
 	 * 用户 apiKey 替换成自己的
 	 */
-	private final String apiKey = "bg_6ec7289f2a360e415ac096ec5ce9acda";
+	private final String apiKey = "";
 	/**
 	 * 用户 secretKey 替换成自己的
 	 */
-	private final String secretKey = "bd96960ed310adb3ab6d51ad6c2b5f35fe571f4a6e6a707e5f77cd29830e0435";
+	private final String secretKey = "";
 	/**
 	 * 口令 替换成自己的
 	 */
-	private final String passphrase = "1r1b6uX6PQ9tbKwb";
+	private final String passphrase = "";
 	/**
 	 * bitget open api 根路径
 	 */

@@ -65,9 +65,10 @@ public class BitgetWsHandle implements BitgetWsClient {
         if (builder.isLogin) {
             login();
         }
-        printLog("start connect ....","info");
+        printLog("start connect ....", "info");
 
-        while(!connectStatus){}
+        while (!connectStatus) {
+        }
 
         return webSocket;
     }
@@ -79,7 +80,7 @@ public class BitgetWsHandle implements BitgetWsClient {
 
     @Override
     public void sendMessage(WsBaseReq<?> req) {
-        printLog("send message:"+JSONObject.toJSONString(req),"info");
+        printLog("send message:" + JSONObject.toJSONString(req), "info");
         sendMessage(JSONObject.toJSONString(req));
     }
 
@@ -92,7 +93,7 @@ public class BitgetWsHandle implements BitgetWsClient {
     @Override
     public void unsubscribe(List<SubscribeReq> channels) {
         allSuribe.removeAll(channels);
-        channels.forEach(channel->{
+        channels.forEach(channel -> {
             scribeMap.remove(channel);
         });
         sendMessage(new WsBaseReq<>(WS_OP_UNSUBSCRIBE, channels));
@@ -100,6 +101,7 @@ public class BitgetWsHandle implements BitgetWsClient {
 
     @Override
     public void subscribe(List<SubscribeReq> channels) {
+        allSuribe.addAll(channels);
         sendMessage(new WsBaseReq<>(WS_OP_SUBSCRIBE, channels));
     }
 
@@ -108,7 +110,6 @@ public class BitgetWsHandle implements BitgetWsClient {
         channels.forEach(channel -> {
             scribeMap.put(channel, listener);
         });
-        allSuribe.addAll(channels);
         subscribe(channels);
     }
 
@@ -118,6 +119,22 @@ public class BitgetWsHandle implements BitgetWsClient {
         Validate.notNull(builder.secretKey, "secretKey is null");
         Validate.notNull(builder.passPhrase, "passphrase is null");
 
+        List<WsLoginReq> args = buildArgs();
+        sendMessage(new WsBaseReq<>(WS_OP_LOGIN, args));
+        //休眠1s，等待登录结果
+        printLog("login in ......", "info");
+        while (!this.loginStatus) {
+            try {
+                Thread.sleep(10000);
+                args = buildArgs();
+                sendMessage(new WsBaseReq<>(WS_OP_LOGIN, args));
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        printLog("login in ......end", "info");
+    }
+    private List<WsLoginReq> buildArgs(){
         String timestamp = Long.valueOf(Instant.now().getEpochSecond()).toString();
         String sign = sha256_HMAC(timestamp, builder.secretKey);
 
@@ -126,13 +143,10 @@ public class BitgetWsHandle implements BitgetWsClient {
         List<WsLoginReq> args = new ArrayList<WsLoginReq>() {{
             add(loginReq);
         }};
-        sendMessage(new WsBaseReq<>(WS_OP_LOGIN, args));
-        //休眠1s，等待登录结果
-        printLog("login in ......","info");
-        while (!this.loginStatus){
-        }
-        printLog("login in ......end","info");
+        return args;
     }
+
+
 
     private void sleep(long s) {
         try {
@@ -181,7 +195,7 @@ public class BitgetWsHandle implements BitgetWsClient {
         public void onClosing(WebSocket webSocket, int code, String reason) {
             System.out.println("Connection is about to disconnect！");
             close();
-            if(!reconnectStatus){
+            if (!reconnectStatus) {
 
                 reConnect();
             }
@@ -190,9 +204,9 @@ public class BitgetWsHandle implements BitgetWsClient {
 
         @Override
         public void onClosed(final WebSocket webSocket, final int code, final String reason) {
-            System.out.println("Connection dropped！"+reason);
+            System.out.println("Connection dropped！" + reason);
             close();
-            if(!reconnectStatus){
+            if (!reconnectStatus) {
 
                 reConnect();
             }
@@ -202,7 +216,7 @@ public class BitgetWsHandle implements BitgetWsClient {
         public void onFailure(final WebSocket webSocket, final Throwable t, final Response response) {
             t.printStackTrace();
             close();
-            if(!reconnectStatus){
+            if (!reconnectStatus) {
 
                 reConnect();
             }
@@ -241,15 +255,16 @@ public class BitgetWsHandle implements BitgetWsClient {
                 if (jsonObject.containsKey("data")) {
                     listener = getListener(jsonObject);
 
-                }
-                if (Objects.nonNull(listener)) {
-                    listener.onReceive(message);
-                    return;
-                }
-                if (Objects.nonNull(builder.listener)) {
-                    builder.listener.onReceive(message);
-                }
+                    if (Objects.nonNull(listener)) {
+                        listener.onReceive(message);
+                        return;
+                    }
+                    if (Objects.nonNull(builder.listener)) {
+                        builder.listener.onReceive(message);
+                        return;
+                    }
 
+                }
                 printLog("receive op msg:" + message, "info");
             } catch (Exception e) {
                 printLog("receive error msg:" + message, "error");
@@ -286,17 +301,19 @@ public class BitgetWsHandle implements BitgetWsClient {
                 throw new RuntimeException(e);
             }
         }
-        private void close(){
+
+        private void close() {
             loginStatus = false;
             connectStatus = false;
             webSocket.close(1000, "Long time no message was sent or received！");
             webSocket = null;
         }
-        private void reConnect(){
+
+        private void reConnect() {
             reconnectStatus = true;
-            printLog("start reconnection ...","info");
+            printLog("start reconnection ...", "info");
             initClient();
-            if(CollectionUtils.isNotEmpty(allSuribe)){
+            if (CollectionUtils.isNotEmpty(allSuribe)) {
                 subscribe(new ArrayList<>(allSuribe));
             }
         }
