@@ -1,20 +1,74 @@
-# bitget-node-sdk-api
+# 使用说明
 
-## 使用说明
+## 安装
 
-本SDK开发环境为v10.15.3，TypeScript(tsc)版本为3.9.7  
-依赖axios作为网络请求库，需要时可参阅 [官方文档](https://github.com/axios/axios)  
+```bash
+npm i bitget-openapi
+```
 
+## 本地运行
 
 ```bash
 git clone https://github.com/BitgetLimited/v3-bitget-api-sdk.git
 cd v3-bitget-api-sdk/bitget-node-sdk-api
-npm install
-npm build
+npm run install
+npm run build
 ```
 
-- __test__目录存放相关测试用例，SDK调用方式可以参考  
-- build目录存放CommonJS规范模块输出，需要其他规范可自行修改tsconfig.json进行编译  
-- doc目录存放使用typedoc工具自动生成的类型声明文档(HTML版)
+## 测试用例
 
-本SDK基于 [api文档](https://bitgetlimited.github.io/apidoc/zh/swap/#25e54147de) 实现
+|               文件名               |         说明         |
+| :--------------------------------: | :------------------: |
+|    \_\_test\_\_/mixapi.spec.ts     |   合约相关测试用例   |
+|    \_\_test\_\_/spotapi.spec.ts    |   现货相关测试用例   |
+| \_\_test\_\_/websocketTest.spec.ts | 消息推送相关测试用例 |
+|                                    |                      |
+
+## API示例
+
+```javascript
+const bitgetApi = require('bitget-openapi');
+const { test, describe, expect } = require('@jest/globals')
+const   Console  = require('console')
+
+const apiKey = '';
+const secretKey = '';
+const passphrase = '';
+describe('test accounts', () => {
+  test('accounts', () => {
+    const mixAccountApi = new bitgetApi.default.MixAccountApi(apiKey,secretKey,passphrase);
+    mixAccountApi.accounts('umcbl').then((data) => {
+      Console.info(data);
+    });
+  })
+})
+```
+
+## websocket示例
+
+```javascript
+var bitgetApi = require("bitget-openapi")
+var Console = require("console")
+
+const apiKey = '';
+const secretKey = '';
+const passphrase = '';
+//处理消息的实现类
+class ListennerObj extends bitgetApi.default.Listenner{
+    reveice(message){
+        Console.info('>>>'+message);
+    }
+}
+
+const listenner = new ListennerObj();
+const bitgetWsClient = new bitgetApi.default.BitgetWsClient(listenner,apiKey,secretKey,passphrase);
+const subArr = new Array();
+
+const subscribeOne = new bitgetApi.default.SubscribeReq('mc','ticker','BTCUSD');
+const subscribeTow = new bitgetApi.default.SubscribeReq('SP','candle1W','BTCUSDT');
+
+subArr.push(subscribeOne);
+subArr.push(subscribeTow);
+
+bitgetWsClient.subscribe(subArr)
+```

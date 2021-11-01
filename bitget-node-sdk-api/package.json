@@ -1,6 +1,6 @@
 {
-  "name": "bitget",
-  "version": "2.0.1",
+  "name": "bitget-openapi",
+  "version": "2.0.7",
   "description": "",
   "main": "build/index.js",
   "types": "build/index.d.ts",

@@ -1,4 +1,4 @@
-import BitgetResetApi from '../src';
+import * as BitgetApi from '../src';
 import Console from 'console';
 import { describe, test, expect } from '@jest/globals'
 import {toJsonString} from '../src/lib/util';
@@ -17,7 +17,7 @@ const secretKey = '';
 const passphrase = '';
 
 describe('SpotMarketApiTest', () => {
-    const spotMarketApi = new BitgetResetApi.SpotMarketApi(apiKey,secretKey,passphrase);
+    const spotMarketApi = new BitgetApi.SpotMarketApi(apiKey,secretKey,passphrase);
 
     test('fills',()=>{
         return spotMarketApi.fills('btcusdt_spbl','50').then((data)=>{
@@ -48,7 +48,7 @@ describe('SpotMarketApiTest', () => {
 
 
 describe('SpotPublicApiTest', () => {
-    const spotPublicApi = new BitgetResetApi.SpotPublicApi(apiKey,secretKey,passphrase);
+    const spotPublicApi = new BitgetApi.SpotPublicApi(apiKey,secretKey,passphrase);
 
     test('time',()=>{
         return spotPublicApi.time().then((data)=>{
@@ -74,7 +74,7 @@ describe('SpotPublicApiTest', () => {
 
 
 describe('SpotAccountApiTest', () => {
-    const spotAccountApi = new BitgetResetApi.SpotAccountApi(apiKey,secretKey,passphrase);
+    const spotAccountApi = new BitgetApi.SpotAccountApi(apiKey,secretKey,passphrase);
 
     test('assets',()=>{
         return spotAccountApi.assets().then((data)=>{
@@ -95,7 +95,7 @@ describe('SpotAccountApiTest', () => {
 });
 
 describe('SpotOrderApiTest', () => {
-    const spotOrderApi = new BitgetResetApi.SpotOrderApi(apiKey,secretKey,passphrase);
+    const spotOrderApi = new BitgetApi.SpotOrderApi(apiKey,secretKey,passphrase);
 
     test('orders',()=>{
         const ordersReq = new OrdersReq();

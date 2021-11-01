@@ -1,33 +1,19 @@
-import BitgetResetApi from '../src';
+import * as BitgetApi from '../src';
 import { describe, test, expect } from '@jest/globals';
 
 import {toJsonString} from '../src/lib/util';
-import {SetLeverageReq} from '../src/lib/model/mix/account/SetLeverageReq';
-import {SetMarginReq} from '../src/lib/model/mix/account/SetMarginReq';
-import {SetMarginModeReq} from '../src/lib/model/mix/account/SetMarginModeReq';
-import {SetPositionModeReq} from '../src/lib/model/mix/account/SetPositionModeReq';
-import {OpenCountReq} from '../src/lib/model/mix/account/OpenCountReq';
+
 import * as Console from 'console';
-import {PlaceOrderReq} from '../src/lib/model/mix/order/PlaceOrderReq';
-import {BatchOrdersReq} from '../src/lib/model/mix/order/BatchOrdersReq';
-import {PlaceOrderBaseParam} from '../src/lib/model/mix/order/PlaceOrderBaseParam';
-import {CancelOrderReq} from '../src/lib/model/mix/order/CancelOrderReq';
-import {CancelBatchOrderReq} from '../src/lib/model/mix/order/CancelBatchOrderReq';
-import {PlacePlanReq} from '../src/lib/model/mix/plan/PlacePlanReq';
-import {ModifyPlanReq} from '../src/lib/model/mix/plan/ModifyPlanReq';
-import {ModifyPlanPresetReq} from '../src/lib/model/mix/plan/ModifyPlanPresetReq';
-import {PlaceTPSLReq} from '../src/lib/model/mix/plan/PlaceTPSLReq';
-import {ModifyTPSLPlanReq} from '../src/lib/model/mix/plan/ModifyTPSLPlanReq';
-import {CancelPlanReq} from '../src/lib/model/mix/plan/CancelPlanReq';
-import {CloseTrackOrderReq} from '../src/lib/model/mix/trace/CloseTrackOrderReq';
+
+
 
 const apiKey = '';
 const secretKey = '';
 const passphrase = '';
-describe('MixAccountApiTest', () => {
+describe('', () => {
 
 
-    const mixAccountApi = new BitgetResetApi.MixAccountApi(apiKey,secretKey,passphrase);
+    const mixAccountApi = new BitgetApi.MixAccountApi(apiKey,secretKey,passphrase);
 
     test('account', () => {
         return mixAccountApi.account('BTCUSDT_UMCBL','USDT').then((data) => {
@@ -42,7 +28,7 @@ describe('MixAccountApiTest', () => {
     });
 
     test('setLeverage', () => {
-        const setLeverageReq = new SetLeverageReq();
+        const setLeverageReq = new BitgetApi.SetLeverageReq();
         setLeverageReq.symbol = 'BTCUSDT_UMCBL';
         setLeverageReq.marginCoin = 'USDT';
         setLeverageReq.leverage = '25';
@@ -52,7 +38,7 @@ describe('MixAccountApiTest', () => {
         });
     });
     test('setMargin', () => {
-        const setMarginReq = new SetMarginReq();
+        const setMarginReq = new BitgetApi.SetMarginReq();
         setMarginReq.symbol = 'BTCUSDT_UMCBL';
         setMarginReq.marginCoin = 'USDT';
         setMarginReq.amount = '10';
@@ -63,7 +49,7 @@ describe('MixAccountApiTest', () => {
     })
 
     test('setMarginMode', () => {
-        const setMarginModeReq = new SetMarginModeReq();
+        const setMarginModeReq = new BitgetApi.SetMarginModeReq();
         setMarginModeReq.symbol = 'BTCUSDT_UMCBL';
         setMarginModeReq.marginCoin = 'USDT';
         setMarginModeReq.marginMode = 'fixed';
@@ -73,7 +59,7 @@ describe('MixAccountApiTest', () => {
         })
     })
     test('setPositionMode', () => {
-        const setPositionModeReq = new SetPositionModeReq();
+        const setPositionModeReq = new BitgetApi.SetPositionModeReq();
         setPositionModeReq.symbol = 'BTCUSDT_UMCBL';
         setPositionModeReq.marginCoin = 'USDT';
         setPositionModeReq.holdMode = 'double_hold';
@@ -82,7 +68,7 @@ describe('MixAccountApiTest', () => {
         })
     })
     test('openCount', () => {
-        const openCountReq = new OpenCountReq();
+        const openCountReq = new BitgetApi.OpenCountReq();
         openCountReq.symbol = 'BTCUSDT_UMCBL';
         openCountReq.marginCoin = 'USDT';
         openCountReq.openPrice = '30000';
@@ -95,7 +81,7 @@ describe('MixAccountApiTest', () => {
 });
 
 describe('MixMarketApiTest', () => {
-    const mixMarketApi = new BitgetResetApi.MixMarketApi(apiKey,secretKey,passphrase);
+    const mixMarketApi = new BitgetApi.MixMarketApi(apiKey,secretKey,passphrase);
     test('contracts',()=>{
         return mixMarketApi.contracts('sdmcbl').then((data)=>{
             Console.info(toJsonString(data));
@@ -170,9 +156,9 @@ describe('MixMarketApiTest', () => {
 });
 
 describe('MixOrderApiTest', () => {
-    const mixOrderApi = new BitgetResetApi.MixOrderApi(apiKey,secretKey,passphrase);
+    const mixOrderApi = new BitgetApi.MixOrderApi(apiKey,secretKey,passphrase);
     test('placeOrder',()=>{
-        const placeOrderReq = new PlaceOrderReq();
+        const placeOrderReq = new BitgetApi.PlaceOrderReq();
         placeOrderReq.clientOid='RFIut#'+Date.now();
         placeOrderReq.symbol = 'SBTCSUSDT_SUMCBL';
         placeOrderReq.price = '44067';
@@ -187,11 +173,11 @@ describe('MixOrderApiTest', () => {
     })
 
     test('batchOrders',()=>{
-        const batchOrdersReq = new BatchOrdersReq();
+        const batchOrdersReq = new BitgetApi.BatchOrdersReq();
         batchOrdersReq.symbol = 'SBTCSUSDT_SUMCBL';
         batchOrdersReq.marginCoin = 'SUSDT';
 
-        const placeOrderBaseParamOne = new PlaceOrderBaseParam();
+        const placeOrderBaseParamOne = new BitgetApi.PlaceOrderBaseParam();
         placeOrderBaseParamOne.clientOid='RFIut#'+Date.now();
         placeOrderBaseParamOne.price = '23789.3';
         placeOrderBaseParamOne.size = '1';
@@ -199,7 +185,7 @@ describe('MixOrderApiTest', () => {
         placeOrderBaseParamOne.timeInForceValue = 'normal';
         placeOrderBaseParamOne.orderType = 'limit';
 
-        const placeOrderBaseParamTow = new PlaceOrderBaseParam();
+        const placeOrderBaseParamTow = new BitgetApi.PlaceOrderBaseParam();
         placeOrderBaseParamTow.clientOid='RFIut#'+Date.now();
         placeOrderBaseParamTow.price = '23888.3';
         placeOrderBaseParamTow.size = '1';
@@ -207,7 +193,7 @@ describe('MixOrderApiTest', () => {
         placeOrderBaseParamTow.timeInForceValue = 'normal';
         placeOrderBaseParamTow.orderType = 'limit';
 
-        const orderDataList = new Array<PlaceOrderBaseParam>();
+        const orderDataList = new Array();
         orderDataList.push(placeOrderBaseParamOne);
         orderDataList.push(placeOrderBaseParamTow);
 
@@ -218,7 +204,7 @@ describe('MixOrderApiTest', () => {
     })
 
     test('cancelOrder',()=>{
-        const cancelOrderReq = new CancelOrderReq();
+        const cancelOrderReq = new BitgetApi.CancelOrderReq();
         cancelOrderReq.symbol = 'SBTCSUSDT_SUMCBL';
         cancelOrderReq.marginCoin = 'SUSDT';
         cancelOrderReq.orderId = '811489712408248322';
@@ -228,7 +214,7 @@ describe('MixOrderApiTest', () => {
     })
 
     test('cancelBatchOrder',()=>{
-        const cancelBatchOrderReq = new CancelBatchOrderReq();
+        const cancelBatchOrderReq = new BitgetApi.CancelBatchOrderReq();
         cancelBatchOrderReq.symbol = 'SBTCSUSDT_SUMCBL';
         cancelBatchOrderReq.marginCoin = 'SUSDT';
         const orderIds = new Array<string>();
@@ -270,10 +256,10 @@ describe('MixOrderApiTest', () => {
 });
 
 describe('MixPlanApiTest', () => {
-    const mixPlanApi = new BitgetResetApi.MixPlanApi(apiKey,secretKey,passphrase);
+    const mixPlanApi = new BitgetApi.MixPlanApi(apiKey,secretKey,passphrase);
 
     test('placePlan',()=>{
-        const placePlanReq = new PlacePlanReq();
+        const placePlanReq = new BitgetApi.PlacePlanReq();
         placePlanReq.clientOid = '#'+Date.now();
         placePlanReq.symbol = 'BTCUSDT_UMCBL';
         placePlanReq.triggerPrice = '45000.3';
@@ -289,7 +275,7 @@ describe('MixPlanApiTest', () => {
     })
 
     test('modifyPlan',()=>{
-        const modifyPlanReq = new ModifyPlanReq();
+        const modifyPlanReq = new BitgetApi.ModifyPlanReq();
         modifyPlanReq.orderId = '833883177497890816';
         modifyPlanReq.symbol = 'BTCUSDT_UMCBL';
         modifyPlanReq.triggerPrice = '45012.1';
@@ -303,7 +289,7 @@ describe('MixPlanApiTest', () => {
     })
 
     test('modifyPlanPreset',()=>{
-        const modifyPlanPresetReq = new ModifyPlanPresetReq();
+        const modifyPlanPresetReq = new BitgetApi.ModifyPlanPresetReq();
         modifyPlanPresetReq.orderId = '833883177497890816';
         modifyPlanPresetReq.symbol = 'BTCUSDT_UMCBL';
         modifyPlanPresetReq.marginCoin = 'USDT';
@@ -314,7 +300,7 @@ describe('MixPlanApiTest', () => {
     })
 
     test('placeTPSL',()=>{
-        const placeTPSLReq = new PlaceTPSLReq();
+        const placeTPSLReq = new BitgetApi.PlaceTPSLReq();
         placeTPSLReq.symbol = 'BTCUSDT_UMCBL';
         placeTPSLReq.marginCoin = 'USDT';
         placeTPSLReq.planType = 'profit_plan';
@@ -326,7 +312,7 @@ describe('MixPlanApiTest', () => {
     })
 
     test('modifyTPSLPlan',()=>{
-        const modifyTPSLPlanReq = new ModifyTPSLPlanReq();
+        const modifyTPSLPlanReq = new BitgetApi.ModifyTPSLPlanReq();
         modifyTPSLPlanReq.symbol = 'BTCUSDT_UMCBL';
         modifyTPSLPlanReq.marginCoin = 'USDT';
         modifyTPSLPlanReq.planType = 'profit_plan';
@@ -338,7 +324,7 @@ describe('MixPlanApiTest', () => {
     })
 
     test('cancelPlan',()=>{
-        const cancelPlanReq = new CancelPlanReq();
+        const cancelPlanReq = new BitgetApi.CancelPlanReq();
         cancelPlanReq.symbol = 'BTCUSDT_UMCBL';
         cancelPlanReq.marginCoin = 'USDT';
         cancelPlanReq.planType = 'profit_plan';
@@ -366,7 +352,7 @@ describe('MixPlanApiTest', () => {
 
 
 describe('MixPositionApiTest', () => {
-    const mixPositionApi = new BitgetResetApi.MixPositionApi(apiKey,secretKey,passphrase);
+    const mixPositionApi = new BitgetApi.MixPositionApi(apiKey,secretKey,passphrase);
 
     test('singlePosition',()=>{
         return mixPositionApi.singlePosition('BTCUSDT_UMCBL','USDT').then((data)=>{
@@ -382,10 +368,10 @@ describe('MixPositionApiTest', () => {
 });
 
 describe('MixTraceApiTest', () => {
-    const mixTraceApi = new BitgetResetApi.MixTraceApi(apiKey,secretKey,passphrase);
+    const mixTraceApi = new BitgetApi.MixTraceApi(apiKey,secretKey,passphrase);
 
     test('closeTraceOrder',()=>{
-        const closeTrackOrderReq = new CloseTrackOrderReq();
+        const closeTrackOrderReq = new BitgetApi.CloseTrackOrderReq();
         closeTrackOrderReq.symbol = 'BTCUSDT_UMCBL';
         closeTrackOrderReq.trackingNo = '0';
         return mixTraceApi.closeTrackOrder(closeTrackOrderReq).then((data)=>{
