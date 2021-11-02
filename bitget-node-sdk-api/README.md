@@ -61,11 +61,11 @@ class ListennerObj extends bitgetApi.default.Listenner{
 }
 
 const listenner = new ListennerObj();
-const bitgetWsClient = new bitgetApi.default.BitgetWsClient(listenner,apiKey,secretKey,passphrase);
+const bitgetWsClient = new bitgetApi.BitgetWsClient(listenner,apiKey,secretKey,passphrase);
 const subArr = new Array();
 
-const subscribeOne = new bitgetApi.default.SubscribeReq('mc','ticker','BTCUSD');
-const subscribeTow = new bitgetApi.default.SubscribeReq('SP','candle1W','BTCUSDT');
+const subscribeOne = new bitgetApi.SubscribeReq('mc','ticker','BTCUSD');
+const subscribeTow = new bitgetApi.SubscribeReq('SP','candle1W','BTCUSDT');
 
 subArr.push(subscribeOne);
 subArr.push(subscribeTow);
