@@ -61,7 +61,7 @@ class ListennerObj extends bitgetApi.Listenner{
 }
 
 const listenner = new ListennerObj();
-const bitgetWsClient = new bitgetApi.default.BitgetWsClient(listenner,apiKey,secretKey,passphrase);
+const bitgetWsClient = new bitgetApi.BitgetWsClient(listenner,apiKey,secretKey,passphrase);
 const subArr = new Array();
 
 const subscribeOne = new bitgetApi.SubscribeReq('mc','ticker','BTCUSD');
