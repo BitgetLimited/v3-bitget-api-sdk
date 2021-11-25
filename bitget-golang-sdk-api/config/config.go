@@ -9,5 +9,5 @@ const (
 	TimeoutSecond = 30
 
 	//websocket config
-	WsUrl = "wss://csocketapi.bitget.com/ws/v1"
+	WsUrl = "wss://ws.bitgetapi.com/spot/v1/stream"
 )

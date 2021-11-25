@@ -4,16 +4,18 @@ import { describe, test, expect } from '@jest/globals';
 import {toJsonString} from '../src/lib/util';
 
 import * as Console from 'console';
+import {LOCAL} from "../src/lib/config";
 
 
 
 const apiKey = '';
 const secretKey = '';
 const passphrase = '';
+const locale = LOCAL.ZH_CH;
 describe('', () => {
 
 
-    const mixAccountApi = new BitgetApi.MixAccountApi(apiKey,secretKey,passphrase);
+    const mixAccountApi = new BitgetApi.MixAccountApi(apiKey,secretKey,passphrase,locale);
 
     test('account', () => {
         return mixAccountApi.account('BTCUSDT_UMCBL','USDT').then((data) => {
@@ -81,7 +83,7 @@ describe('', () => {
 });
 
 describe('MixMarketApiTest', () => {
-    const mixMarketApi = new BitgetApi.MixMarketApi(apiKey,secretKey,passphrase);
+    const mixMarketApi = new BitgetApi.MixMarketApi(apiKey,secretKey,passphrase,locale);
     test('contracts',()=>{
         return mixMarketApi.contracts('sdmcbl').then((data)=>{
             Console.info(toJsonString(data));
@@ -122,7 +124,7 @@ describe('MixMarketApiTest', () => {
         return mixMarketApi.index('BTCUSDT_UMCBL').then((data)=>{
             Console.info(toJsonString(data));
         });
-    })
+    }, 30000)
 
     test('fundingTime',()=>{
         return mixMarketApi.index('BTCUSDT_UMCBL').then((data)=>{
@@ -156,7 +158,7 @@ describe('MixMarketApiTest', () => {
 });
 
 describe('MixOrderApiTest', () => {
-    const mixOrderApi = new BitgetApi.MixOrderApi(apiKey,secretKey,passphrase);
+    const mixOrderApi = new BitgetApi.MixOrderApi(apiKey,secretKey,passphrase,locale);
     test('placeOrder',()=>{
         const placeOrderReq = new BitgetApi.PlaceOrderReq();
         placeOrderReq.clientOid='RFIut#'+Date.now();
@@ -256,7 +258,7 @@ describe('MixOrderApiTest', () => {
 });
 
 describe('MixPlanApiTest', () => {
-    const mixPlanApi = new BitgetApi.MixPlanApi(apiKey,secretKey,passphrase);
+    const mixPlanApi = new BitgetApi.MixPlanApi(apiKey,secretKey,passphrase,locale);
 
     test('placePlan',()=>{
         const placePlanReq = new BitgetApi.PlacePlanReq();
@@ -350,9 +352,8 @@ describe('MixPlanApiTest', () => {
 
 });
 
-
 describe('MixPositionApiTest', () => {
-    const mixPositionApi = new BitgetApi.MixPositionApi(apiKey,secretKey,passphrase);
+    const mixPositionApi = new BitgetApi.MixPositionApi(apiKey,secretKey,passphrase,locale);
 
     test('singlePosition',()=>{
         return mixPositionApi.singlePosition('BTCUSDT_UMCBL','USDT').then((data)=>{
@@ -368,7 +369,7 @@ describe('MixPositionApiTest', () => {
 });
 
 describe('MixTraceApiTest', () => {
-    const mixTraceApi = new BitgetApi.MixTraceApi(apiKey,secretKey,passphrase);
+    const mixTraceApi = new BitgetApi.MixTraceApi(apiKey,secretKey,passphrase,locale);
 
     test('closeTraceOrder',()=>{
         const closeTrackOrderReq = new BitgetApi.CloseTrackOrderReq();
@@ -416,7 +417,7 @@ describe('MixTraceApiTest', () => {
 
     test('profitDateList',()=>{
 
-        return mixTraceApi.profitDateList('BTCUSDT_UMCBL','1','','').then((data)=>{
+        return mixTraceApi.profitDateList('USDT','1636532513987','10','1').then((data)=>{
             Console.info(toJsonString(data));
         });
     })
@@ -424,6 +425,12 @@ describe('MixTraceApiTest', () => {
     test('waitProfitDateList',()=>{
 
         return mixTraceApi.waitProfitDateList('10','1').then((data)=>{
+            Console.info(toJsonString(data));
+        });
+    })
+    test('followerHistoryOrders',()=>{
+
+        return mixTraceApi.followerHistoryOrders('10','1','1635782400000','1635852263953').then((data)=>{
             Console.info(toJsonString(data));
         });
     })

@@ -18,6 +18,9 @@ public interface MixOrderService {
 
     ResponseResult placeOrder(MixPlaceOrderRequest mixPlaceOrderRequest) throws IOException;
 
+    ResponseResult proportionOrder(MixPlaceOrderRequest mixPlaceOrderRequest) throws IOException;
+
+
     ResponseResult batchOrders(PlaceBatchOrderRequest placeBatchOrderRequest) throws IOException;
 
     ResponseResult cancelOrder(MixCancelOrderRequest mixCancelOrderRequest) throws IOException;

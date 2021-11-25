@@ -32,6 +32,11 @@ public class MixOrderServiceImpl implements MixOrderService {
     }
 
     @Override
+    public ResponseResult proportionOrder(MixPlaceOrderRequest mixPlaceOrderRequest) throws IOException {
+        return mixOrderApi.proportionOrder(mixPlaceOrderRequest).execute().body();
+    }
+
+    @Override
     public ResponseResult batchOrders(PlaceBatchOrderRequest placeBatchOrderRequest) throws IOException {
         return mixOrderApi.batchOrders(placeBatchOrderRequest).execute().body();
     }

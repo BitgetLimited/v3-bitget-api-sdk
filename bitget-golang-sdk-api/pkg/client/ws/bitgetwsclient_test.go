@@ -8,10 +8,10 @@ import (
 
 func TestBitgetWsClient_New(t *testing.T) {
 
-	client := new(BitgetWsClient).Init(true, func(message string) {
-		fmt.Println("default error:" + message)
+	client := new(BitgetWsClient).Init(false, func(message string) {
+		fmt.Println("success:" + message)
 	}, func(message string) {
-		fmt.Println("default error:" + message)
+		fmt.Println("error:" + message)
 	})
 
 	var channelsDef []model.SubscribeReq

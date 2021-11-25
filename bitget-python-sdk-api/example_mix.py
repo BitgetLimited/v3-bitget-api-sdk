@@ -3,6 +3,7 @@ import bitget.mix.account_api as accounts
 import bitget.mix.position_api as position
 import bitget.mix.order_api as order
 import bitget.mix.plan_api as plan
+import bitget.mix.trace_api as trace
 import json
 
 if __name__ == '__main__':
@@ -11,7 +12,6 @@ if __name__ == '__main__':
     passphrase = ""  # 口令
 
     symbol = 'BTCUSDT_UMCBL'
-
 
     marketApi = market.MarketApi(api_key, secret_key, passphrase, use_server_time=False, first=False)
     # result = marketApi.contracts('umcbl')
@@ -108,7 +108,6 @@ if __name__ == '__main__':
     # result = orderApi.fills(symbol, orderId='804553570245029890')
     # print(result)
 
-
     planApi = plan.PlanApi(api_key, secret_key, passphrase, use_server_time=False, first=False)
 
     # result = planApi.place_plan(symbol, marginCoin='USDT', size='1', side='open_long', orderType='limit', triggerPrice='39782', executePrice='38982', triggerType='fill_price', timeInForceValue='normal')
@@ -135,3 +134,8 @@ if __name__ == '__main__':
     # result = planApi.history_plan(symbol, startTime='1627454102000', endTime='1627558127000', pageSize=20, lastEndId='', isPlan='plan')
     # print(result)
 
+    traceApi = trace.TraceApi(api_key, secret_key, passphrase, use_server_time=False, first=False)
+
+    # traceApi.follower_history_orders('10', '1', '1635782400000', '1635852263953')
+
+    # traceApi.wait_profit_detail("10","1")

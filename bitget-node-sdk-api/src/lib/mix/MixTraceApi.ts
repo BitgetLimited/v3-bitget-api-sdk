@@ -55,4 +55,10 @@ export class MixTraceApi extends BaseApi{
         const headers = this.signer('GET', url, qsOrBody)
         return this.axiosInstance.get(url, {headers,params: qsOrBody})
     }
+    followerHistoryOrders(pageSize:string,pageNo:string,startTime:string,endTime:string) {
+        const url = MIX_URL.MIX_TRACE + '/followerHistoryOrders';
+        const qsOrBody = {pageSize,pageNo,startTime,endTime};
+        const headers = this.signer('GET', url, qsOrBody)
+        return this.axiosInstance.get(url, {headers,params: qsOrBody})
+    }
 }

@@ -62,4 +62,9 @@ class MixTraceTest
     {
         return $this->mixTraceApi->waitProfitDateList("10","1");
     }
+
+    public function testFollowerHistoryOrders():string
+    {
+        return $this->mixTraceApi->followerHistoryOrders("10","1","1635782400000","1635852263953");
+    }
 }

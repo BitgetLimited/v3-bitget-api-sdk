@@ -62,4 +62,9 @@ class MixTraceApi
         $params = array("pageSize" => $pageSize, "pageNo" => $pageNo);
         return $this->BitgetApiClient->doGet(self::BASE_URL . "/waitProfitDateList", $params);
     }
+    public function followerHistoryOrders(string $pageSize,string $pageNo,string $startTime,string $endTime):string
+    {
+        $params = array("pageSize" => $pageSize, "pageNo" => $pageNo,"startTime"=>$startTime,"endTime"=>$endTime);
+        return $this->BitgetApiClient->doGet(self::BASE_URL . "/followerHistoryOrders", $params);
+    }
 }

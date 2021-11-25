@@ -1,5 +1,6 @@
 package com.bitget.openapi.api;
 
+import com.alibaba.fastjson.JSONObject;
 import com.bitget.openapi.dto.response.*;
 import retrofit2.Call;
 import retrofit2.http.GET;
@@ -18,7 +19,7 @@ public interface MarketApi {
      * @return
      */
     @GET("/api/swap/v3/market/time")
-    Call<ServerTime> getTime();
+    Call<JSONObject> getTime();
 
     /**
      * 获取合约信息
@@ -26,7 +27,7 @@ public interface MarketApi {
      * @return
      */
     @GET("/api/swap/v3/market/contracts")
-    Call<List<ContractInfo>> getContractsApi();
+    Call<JSONObject> getContractsApi();
 
     /**
      * 获取深度数据
@@ -36,7 +37,7 @@ public interface MarketApi {
      * @return
      */
     @GET("/api/swap/v3/market/depth")
-    Call<Depth> getDepthApi(@Query("symbol") String symbol, @Query("limit") String limit);
+    Call<JSONObject> getDepthApi(@Query("symbol") String symbol, @Query("limit") String limit);
 
     /**
      * 获取全部ticker信息
@@ -44,7 +45,7 @@ public interface MarketApi {
      * @return
      */
     @GET("/api/swap/v3/market/tickers")
-    Call<List<Ticker>> getTickersApi();
+    Call<JSONObject> getTickersApi();
 
     /**
      * 获取某个ticker信息
@@ -52,7 +53,7 @@ public interface MarketApi {
      * @return
      */
     @GET("/api/swap/v3/market/ticker")
-    Call<Ticker> getTicker(@Query("symbol") String symbol);
+    Call<JSONObject> getTicker(@Query("symbol") String symbol);
 
     /**
      * 获取成交数据
@@ -62,7 +63,7 @@ public interface MarketApi {
      * @return
      */
     @GET("/api/swap/v3/market/trades")
-    Call<List<Trades>> getTrades(@Query("symbol") String symbol, @Query("limit") String limit);
+    Call<JSONObject> getTrades(@Query("symbol") String symbol, @Query("limit") String limit);
 
 
     /**
@@ -76,7 +77,7 @@ public interface MarketApi {
      * @return
      */
     @GET("/api/swap/v3/market/candles")
-    Call<List<Object[]>> getCandles(@Query("symbol") String symbol, @Query("start") String start,
+    Call<JSONObject> getCandles(@Query("symbol") String symbol, @Query("start") String start,
                                     @Query("end") String end,@Query("startTime") Long startTime,@Query("endTime")Long endTime,@Query("granularity") String granularity);
 
     /**
@@ -86,7 +87,7 @@ public interface MarketApi {
      * @return
      */
     @GET("/api/swap/v3/market/index")
-    Call<Index> getIndex(@Query("symbol") String symbol);
+    Call<JSONObject> getIndex(@Query("symbol") String symbol);
 
     /**
      * 获取平台总持仓量
@@ -95,7 +96,7 @@ public interface MarketApi {
      * @return
      */
     @GET("/api/swap/v3/market/open_interest")
-    Call<OpenInterest> getOpenInterestApi(@Query("symbol") String symbol);
+    Call<JSONObject> getOpenInterestApi(@Query("symbol") String symbol);
 
     /**
      * 获取合约最高限价和最低限价
@@ -104,7 +105,7 @@ public interface MarketApi {
      * @return
      */
     @GET("/api/swap/v3/market/price_limit")
-    Call<PriceLimit> getPriceLimitApi(@Query("symbol") String symbol);
+    Call<JSONObject> getPriceLimitApi(@Query("symbol") String symbol);
 
     /**
      * 获取合约下一次结算时间
@@ -113,7 +114,7 @@ public interface MarketApi {
      * @return
      */
     @GET("/api/swap/v3/market/funding_time")
-    Call<FundingTime> getFundingTimeApi(@Query("symbol") String symbol);
+    Call<JSONObject> getFundingTimeApi(@Query("symbol") String symbol);
 
     /**
      * 获取合约历史资金费率
@@ -123,7 +124,7 @@ public interface MarketApi {
      * @return
      */
     @GET("/api/swap/v3/market/historyFundRate")
-    Call<List<HistoricalFundingRate>> getNewHistoricalFundingRateApi(@Query("symbol") String symbol,@Query("pageIndex") String pageIndex,
+    Call<JSONObject> getNewHistoricalFundingRateApi(@Query("symbol") String symbol,@Query("pageIndex") String pageIndex,
                                                                   @Query("pageSize") String pageSize);
 
     /**
@@ -133,7 +134,7 @@ public interface MarketApi {
      * @return
      */
     @GET("/api/swap/v3/market/mark_price")
-    Call<MarkPrice> getMarkPriceApi(@Query("symbol") String symbol);
+    Call<JSONObject> getMarkPriceApi(@Query("symbol") String symbol);
 
     /**
      * 可开张数
@@ -145,6 +146,6 @@ public interface MarketApi {
      * @return
      */
     @GET("/api/swap/v3/market/open_count")
-    Call<String> calOpenCount(@Query("symbol") String symbol, @Query("amount") String amount, @Query("leverage") String leverage, @Query("openPrice") String openPrice);
+    Call<JSONObject> calOpenCount(@Query("symbol") String symbol, @Query("amount") String amount, @Query("leverage") String leverage, @Query("openPrice") String openPrice);
 
 }

@@ -1,5 +1,6 @@
 package com.bitget.openapi.service.impl;
 
+import com.alibaba.fastjson.JSONObject;
 import com.bitget.openapi.api.TraceProfitApi;
 import com.bitget.openapi.common.client.ApiClient;
 import com.bitget.openapi.dto.response.*;
@@ -21,27 +22,27 @@ public class TraceProfitServiceImpl implements TraceProfitService {
     }
 
     @Override
-    public TotalProfitInfoResult totalProfitInfo() throws IOException {
+    public JSONObject totalProfitInfo() throws IOException {
         return traceProfitApi.totalProfitInfo().execute().body();
     }
 
     @Override
-    public PageResult<ProfitDateGroupResponseResult> profitHisList(Integer pageNo, Integer pageSize) throws IOException {
+    public JSONObject profitHisList(Integer pageNo, Integer pageSize) throws IOException {
         return traceProfitApi.profitHisList(pageNo, pageSize).execute().body();
     }
 
     @Override
-    public PageResult<ProfitDateDetailResponseResult> profitHisDetail(String symbol, Integer pageNo, Integer pageSize, Long date) throws IOException {
+    public JSONObject profitHisDetail(String symbol, Integer pageNo, Integer pageSize, Long date) throws IOException {
         return traceProfitApi.profitHisDetail(symbol, pageNo, pageSize, date).execute().body();
     }
 
     @Override
-    public PageResult<ProfitDateDetailResponseResult> waitProfitDetail(Integer pageNo, Integer pageSize) throws IOException {
+    public JSONObject waitProfitDetail(Integer pageNo, Integer pageSize) throws IOException {
         return traceProfitApi.waitProfitDetail(pageNo, pageSize).execute().body();
     }
 
     @Override
-    public List<ProfitSymbolGroupResult> getSumProfitList() throws IOException {
+    public JSONObject getSumProfitList() throws IOException {
         return traceProfitApi.getSumProfitList().execute().body();
     }
 }

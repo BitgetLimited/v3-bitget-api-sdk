@@ -1,5 +1,6 @@
 package com.bitget.openapi.service;
 
+import com.alibaba.fastjson.JSONObject;
 import com.bitget.openapi.dto.response.*;
 
 import java.io.IOException;
@@ -14,14 +15,14 @@ public interface TraceProfitService {
      * 累计已分润、预计待分润、昨日分润
      * @return
      */
-    TotalProfitInfoResult totalProfitInfo() throws IOException;
+    JSONObject totalProfitInfo() throws IOException;
 
     /**
      * 历史分润
      *
      * @return
      */
-    PageResult<ProfitDateGroupResponseResult> profitHisList(Integer pageIndex,
+    JSONObject profitHisList(Integer pageIndex,
                                                             Integer pageSize) throws IOException;
 
     /**
@@ -29,7 +30,7 @@ public interface TraceProfitService {
      *
      * @return
      */
-    PageResult<ProfitDateDetailResponseResult> profitHisDetail(String settleTokenId,
+    JSONObject profitHisDetail(String settleTokenId,
                                                                Integer pageIndex,
                                                                Integer pageSize,
                                                                Long date) throws IOException;
@@ -38,7 +39,7 @@ public interface TraceProfitService {
      *
      * @return
      */
-    PageResult<ProfitDateDetailResponseResult> waitProfitDetail(Integer pageIndex,
+    JSONObject waitProfitDetail(Integer pageIndex,
                                                                 Integer pageSize) throws IOException;
 
     /**
@@ -46,5 +47,5 @@ public interface TraceProfitService {
      *
      * @return
      */
-    List<ProfitSymbolGroupResult> getSumProfitList() throws IOException;
+    JSONObject getSumProfitList() throws IOException;
 }

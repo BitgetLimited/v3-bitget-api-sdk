@@ -1,6 +1,7 @@
 package com.bitget.openapi.service;
 
 
+import com.alibaba.fastjson.JSONObject;
 import com.bitget.openapi.dto.request.ChangeHoldModel;
 import com.bitget.openapi.dto.response.AllPosition;
 import com.bitget.openapi.dto.response.FVirtualCaptialOperator;
@@ -22,7 +23,7 @@ public interface PositionService {
      * @return
      * @throws IOException
      */
-    List<AllPosition> getAllPosition() throws IOException;
+    JSONObject getAllPosition() throws IOException;
 
     /**
      * 获取全部合约仓位信息
@@ -30,14 +31,14 @@ public interface PositionService {
      * @return
      * @throws IOException
      */
-    AllPosition getSinglePosition(String symbol) throws IOException;
+    JSONObject getSinglePosition(String symbol) throws IOException;
 
     /**
      * 出入金数据记录
      * @return
      * @throws IOException
      */
-    List<FVirtualCaptialOperator>  virtualCapital(String  symbol,
+    JSONObject  virtualCapital(String  symbol,
                                                   String ftype,
                                                   Integer limit,
                                                   Integer gt,
@@ -48,5 +49,5 @@ public interface PositionService {
      * @param holdModel
      * @return
      */
-    HoldModelDto changeHoldMode(ChangeHoldModel holdModel)throws  IOException;
+    JSONObject changeHoldMode(ChangeHoldModel holdModel)throws  IOException;
 }

@@ -22,4 +22,6 @@ public interface MixTraceService {
     ResponseResult profitDateList(String marginCoin,String date,int pageSize,int pageNo) throws IOException;
 
     ResponseResult waitProfitDateList(int pageSize,int pageNo) throws IOException;
+
+    ResponseResult followerHistoryOrders(String pageSize,String pageNo,String startTime,String endTime) throws IOException;
 }

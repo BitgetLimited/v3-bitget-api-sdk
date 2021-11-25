@@ -1,5 +1,6 @@
 package com.bitget.openapi.api;
 
+import com.alibaba.fastjson.JSONObject;
 import com.bitget.openapi.dto.request.*;
 import com.bitget.openapi.dto.response.*;
 import retrofit2.Call;
@@ -20,7 +21,7 @@ public interface OrderApi {
      * @return
      */
     @POST("/api/swap/v3/order/placeOrder")
-    Call<PlaceOrderResult> placeOrder(@Body OrderReq body);
+    Call<JSONObject> placeOrder(@Body OrderReq body);
 
     /**
      * 批量下单
@@ -29,7 +30,7 @@ public interface OrderApi {
      * @return
      */
     @POST("/api/swap/v3/order/batchOrders")
-    Call<PlaceBatchOrderResult> batchOrders(@Body PlaceBatchOrderReq body);
+    Call<JSONObject> batchOrders(@Body PlaceBatchOrderReq body);
 
     /**
      * 取消订单
@@ -37,7 +38,7 @@ public interface OrderApi {
      * @return
      */
     @POST("/api/swap/v3/order/cancel_order")
-    Call<CancelOrderResult> cancelOrder(@Body CancelOrderParam cancelOrderParam);
+    Call<JSONObject> cancelOrder(@Body CancelOrderParam cancelOrderParam);
 
     /**
      * 批量撤单
@@ -46,7 +47,7 @@ public interface OrderApi {
      * @return
      */
     @POST("/api/swap/v3/order/cancel_batch_orders")
-    Call<CancelBatchOrderResult> cancelBathOrders(@Body CancelBatchOrdersReq body);
+    Call<JSONObject> cancelBathOrders(@Body CancelBatchOrdersReq body);
 
     /**
      * 获取单订单信息
@@ -55,7 +56,7 @@ public interface OrderApi {
      * @return
      */
     @GET("/api/swap/v3/order/detail")
-    Call<Order> getOrderDetail(@Query("symbol") String symbol, @Query("orderId") String orderId);
+    Call<JSONObject> getOrderDetail(@Query("symbol") String symbol, @Query("orderId") String orderId);
 
 
     /**
@@ -67,7 +68,7 @@ public interface OrderApi {
      * @return
      */
     @GET("/api/swap/v3/order/history")
-    Call<List<Order>> getOrdersHistory(@Query("symbol") String symbol,
+    Call<JSONObject> getOrdersHistory(@Query("symbol") String symbol,
                                 @Query("pageIndex") String pageIndex,
                                 @Query("pageSize") String pageSize,
                                 @Query("createDate") Integer createDate);
@@ -79,7 +80,7 @@ public interface OrderApi {
      * @return
      */
     @GET("/api/swap/v3/order/current")
-    Call<List<Order>> getOrdersCurrent(@Query("symbol") String symbol);
+    Call<JSONObject> getOrdersCurrent(@Query("symbol") String symbol);
 
 
     /**
@@ -89,7 +90,7 @@ public interface OrderApi {
      * @return
      */
     @GET("/api/swap/v3/order/fills")
-    Call<List<Fill>> getFills(@Query("symbol") String symbol, @Query("orderId") String orderId);
+    Call<JSONObject> getFills(@Query("symbol") String symbol, @Query("orderId") String orderId);
 
     /**
      * 计划委托下单
@@ -97,14 +98,14 @@ public interface OrderApi {
      * @return
      */
     @POST("/api/swap/v3/order/plan_order")
-    Call<PlanPlaceOrderResult> planOrder(@Body PlanPlaceOrderReq body);
+    Call<JSONObject> planOrder(@Body PlanPlaceOrderReq body);
 
     /**
      * 计划委托撤单
      * @return
      */
     @POST("/api/swap/v3/order/cancel_plan")
-    Call<CancelPlanResult> cancelPlan(@Body  CancelPlanParamReq cancelPlanParamReq);
+    Call<JSONObject> cancelPlan(@Body  CancelPlanParamReq cancelPlanParamReq);
 
     /**
      * 查询当前计划委托
@@ -113,7 +114,7 @@ public interface OrderApi {
      * @return
      */
     @GET("/api/swap/v3/order/currentPlan")
-    Call<PlansOrderResult> currentPlan(@Query("symbol") String symbol,
+    Call<JSONObject> currentPlan(@Query("symbol") String symbol,
                                        @Query("side") String side,
                                        @Query("delegateType") String delegateType,
                                        @Query("pageIndex") String pageIndex,
@@ -128,7 +129,7 @@ public interface OrderApi {
      * @return
      */
     @GET("/api/swap/v3/order/historyPlan")
-    Call<PlansOrderResult> historyPlan(@Query("symbol") String symbol,
+    Call<JSONObject> historyPlan(@Query("symbol") String symbol,
                                        @Query("side") String side,
                                        @Query("delegateType") String delegateType,
                                        @Query("pageIndex") String pageIndex,

@@ -1,6 +1,7 @@
 package com.bitget.openapi;
 
 import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
 import com.bitget.openapi.dto.request.AdjustMarginReq;
 import com.bitget.openapi.dto.request.AutoAppendMarginReq;
 import com.bitget.openapi.dto.request.ChangeLeverageReq;
@@ -13,50 +14,50 @@ import java.util.List;
 
 public class AccountServiceTest extends BaseTest {
 
-        private static final String symbol = "cmt_btcusdt";
+    private static final String symbol = "cmt_btcusdt";
 
-        @Test
-        public void accounts() throws IOException {
-                List<AccountInfo> result = bitgetRestClient.contract().bitget().account().accounts();
-                System.out.println(JSON.toJSONString(result));
-        }
+    @Test
+    public void accounts() throws IOException {
+        JSONObject result = bitgetRestClient.contract().bitget().account().accounts();
+        System.out.println(JSON.toJSONString(result));
+    }
 
-        @Test
-        public void getAccount() throws IOException {
-                AccountInfo result = bitgetRestClient.contract().bitget().account().getAccount(symbol);
-                System.out.println(JSON.toJSONString(result));
-        }
+    @Test
+    public void getAccount() throws IOException {
+        JSONObject result = bitgetRestClient.contract().bitget().account().getAccount(symbol);
+        System.out.println(JSON.toJSONString(result));
+    }
 
-        @Test
-        public void settings() throws IOException {
-                AccountSetting result = bitgetRestClient.contract().bitget().account().settings(symbol);
-                System.out.println(JSON.toJSONString(result));
-        }
+    @Test
+    public void settings() throws IOException {
+        JSONObject result = bitgetRestClient.contract().bitget().account().settings(symbol);
+        System.out.println(JSON.toJSONString(result));
+    }
 
-        @Test
-        public void leverage() throws IOException {
-                ChangeLeverageReq req = ChangeLeverageReq.builder().leverage(10).symbol(symbol).holdModel(2).build();
-                ChangeLeverageResult result = bitgetRestClient.contract().bitget().account().leverage(req);
-                System.out.println(JSON.toJSONString(result));
-        }
+    @Test
+    public void leverage() throws IOException {
+        ChangeLeverageReq req = ChangeLeverageReq.builder().leverage(10).symbol(symbol).holdModel(2).build();
+        JSONObject result = bitgetRestClient.contract().bitget().account().leverage(req);
+        System.out.println(JSON.toJSONString(result));
+    }
 
-        @Test
-        public void getLedger() throws IOException {
-                LedgerReq req = LedgerReq.builder().from("1").to("2").limit("10").startTime("1586502961000")
-                                .endTime("1589094961000").build();
-                List<LedgerResult> result = bitgetRestClient.contract().bitget().account().getLedger(symbol,
-                                req.getFrom(), req.getTo(), req.getLimit(), req.getStartTime(), req.getEndTime());
-                System.out.println(JSON.toJSONString(result));
-        }
+    @Test
+    public void getLedger() throws IOException {
+        LedgerReq req = LedgerReq.builder().from("1").to("2").limit("10").startTime("1586502961000")
+                .endTime("1589094961000").build();
+        JSONObject result = bitgetRestClient.contract().bitget().account().getLedger(symbol,
+                req.getFrom(), req.getTo(), req.getLimit(), req.getStartTime(), req.getEndTime());
+        System.out.println(JSON.toJSONString(result));
+    }
 
-        @Test
-        public void ledgerMargin() throws IOException {
-                LedgerReq req = LedgerReq.builder().limit("50").from("1").to("2").endTime("1586502961000")
-                                .startTime("1589094961000").build();
-                List<LedgerResult> result = bitgetRestClient.contract().bitget().account().ledgerMargin(symbol,
-                                req.getFrom(), req.getTo(), req.getLimit(), req.getStartTime(), req.getEndTime());
-                System.out.println(JSON.toJSONString(result));
-        }
+    @Test
+    public void ledgerMargin() throws IOException {
+        LedgerReq req = LedgerReq.builder().limit("50").from("1").to("2").endTime("1586502961000")
+                .startTime("1589094961000").build();
+        JSONObject result = bitgetRestClient.contract().bitget().account().ledgerMargin(symbol,
+                req.getFrom(), req.getTo(), req.getLimit(), req.getStartTime(), req.getEndTime());
+        System.out.println(JSON.toJSONString(result));
+    }
 
     @Test
     public void adjustMargin() throws IOException {
@@ -65,7 +66,7 @@ public class AccountServiceTest extends BaseTest {
                 positionType(0).
                 type(2).
                 build();
-       AdjustMarginResult result = bitgetRestClient.contract().bitget().account().adjustMargin(req);
+        JSONObject result = bitgetRestClient.contract().bitget().account().adjustMargin(req);
         System.out.println(JSON.toJSONString(result));
     }
 
@@ -75,7 +76,7 @@ public class AccountServiceTest extends BaseTest {
                 append_type(0).
                 side(2).
                 build();
-        AutoAppendMarginResult result = bitgetRestClient.contract().bitget().account().modifyAutoAppendMargin(req);
+        JSONObject result = bitgetRestClient.contract().bitget().account().modifyAutoAppendMargin(req);
         System.out.println(JSON.toJSONString(result));
     }
 }

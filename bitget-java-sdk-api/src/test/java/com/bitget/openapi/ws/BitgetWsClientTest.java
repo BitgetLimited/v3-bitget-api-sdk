@@ -12,7 +12,7 @@ import java.util.List;
 
 public class BitgetWsClientTest {
 
-    public static final String PUSH_URL = "wss://ws.bitgetapi.com/spot/v1/stream";
+    public static final String PUSH_URL = "wss://ws.bitget.com/mix/v1/stream";
 
     public static final String API_KEY = "";
     public static final String SECRET_KEY = "";

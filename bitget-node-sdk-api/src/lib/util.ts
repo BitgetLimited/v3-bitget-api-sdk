@@ -1,6 +1,7 @@
 import {stringify} from 'querystring'
 import {createHmac} from 'crypto'
 import * as Console from 'console';
+import {LOCAL} from './config';
 
 export interface BitgetApiHeader {
     'ACCESS-SIGN': string
@@ -16,16 +17,17 @@ export interface BitgetApiHeader {
  * 获取签名器
  * @param apiKey
  * @param secretKey
- * @param timestamp
  * @param passphrase
+ * @param locale
  */
 export default function getSigner(
     apiKey: string = '',
     secretKey: string = '',
-    passphrase: string = ''
+    passphrase: string = '',
+    locale: string = LOCAL.EN_US
 ) {
 
-    return (httpMethod: string, url: string, qsOrBody: NodeJS.Dict<any> | null, locale = 'zh-CN') => {
+    return (httpMethod: string, url: string, qsOrBody: NodeJS.Dict<any> | null) => {
         const timestamp = Date.now();
         const signString = encrypt(httpMethod, url, qsOrBody, timestamp,secretKey)
 

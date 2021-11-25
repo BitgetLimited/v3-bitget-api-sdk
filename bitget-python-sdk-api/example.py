@@ -1,16 +1,16 @@
 import bitget.swap_api as swap
 import bitget.option_api as option
 import json
-import  time
+
 
 if __name__ == '__main__':
     api_key = ""
     secret_key = ""
     passphrase = ""  #口令
 
-    swapAPI = swap.SwapAPI(api_key, secret_key, passphrase, use_server_time=True, first=False)
 
     ##合约行情接口
+    # swapAPI = swap.SwapAPI(api_key, secret_key, passphrase,use_server_time=True,first= False)
     #  HTTP请求 获取所有合约的信息 20/s
     # result = swapAPI.get_contracts_info()
     # print(result)
@@ -36,7 +36,7 @@ if __name__ == '__main__':
 
 
     # 获取K线数据 （20次/2s）
-    # result = swapAPI.get_kline(symbol='cmt_btcusdt', start='2020-10-24T14:24:44.614Z',end='2020-10-24T14:49:44.614Z',granularity='60')
+    # result = swapAPI.get_kline(symbol='cmt_btcusdt', start='2020-07-24T14:24:44.614Z',end='2020-07-24T14:49:44.614Z',granularity='60')
     # print(result)
 
     ##  获取（币种）指数信息 （20次/2s）
@@ -74,18 +74,7 @@ if __name__ == '__main__':
     # print(result)
 
 
-    # 获取交易员当前带单list
-    # result=swapAPI.get_current_Track('cmt_btcusdt','1','100')
-    # print(result)
 
-    # 获取历史带单列表
-    # result=swapAPI.get_history_Track('1','100',70)
-    # print(result)
-
-
-    #下单平仓单
-    # result=optionAPI.close_track_order('cmt_btcusdt',3428248340039443)
-    # print(result)
 
 
     ##  合约账户接口 ##
@@ -134,7 +123,7 @@ if __name__ == '__main__':
 
 
     # 合约交易API
-    #optionAPI = option.OptionAPI(api_key, secret_key, passphrase,use_server_time=True,first=True)
+    optionAPI = option.OptionAPI(api_key, secret_key, passphrase,use_server_time=True,first=True)
     # 下单 （20次/s）
     # result = optionAPI.take_order('cmt_btcusdt', '20200721113332232334422', '1', '2','0','0','8888.99')
     # print(result)
@@ -155,6 +144,13 @@ if __name__ == '__main__':
     # 获取单个订单状态 （40次/2s）
     # result = optionAPI.get_order_info('cmt_btcusdt', 'xxxxyyyx20200721')
     # print(result)
+
+
+    #获取订单列表 （10次/2s）
+    # result = optionAPI.get_order_list('cmt_btcusd', 1,10,100,1)
+    # print(result)
+
+
 
     #  获取成交明细 （10次/2s）
     # result = optionAPI.get_fills(symbol='cmt_btcusdt',orderId="525946425993854915")

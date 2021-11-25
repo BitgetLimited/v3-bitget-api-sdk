@@ -7,21 +7,28 @@ import com.bitget.openapi.common.utils.SignatureUtils;
 import com.bitget.openapi.dto.request.ws.SubscribeReq;
 import com.bitget.openapi.dto.request.ws.WsBaseReq;
 import com.bitget.openapi.dto.request.ws.WsLoginReq;
+import lombok.Data;
 import okhttp3.*;
 import okio.ByteString;
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.compress.compressors.deflate64.Deflate64CompressorInputStream;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.Validate;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.time.Instant;
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
+import java.util.function.Function;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
+import java.util.zip.CRC32;
 
 public class BitgetWsHandle implements BitgetWsClient {
     public static final String WS_OP_LOGIN = "login";
@@ -37,6 +44,8 @@ public class BitgetWsHandle implements BitgetWsClient {
 
     private BitgetClientBuilder builder;
     private Map<SubscribeReq, SubscriptionListener> scribeMap = new ConcurrentHashMap<>();
+    private Map<SubscribeReq, BookInfo> allBook = new ConcurrentHashMap<>();
+
     private Set<SubscribeReq> allSuribe = Collections.synchronizedSet(new HashSet<>());
 
     private BitgetWsHandle(BitgetClientBuilder builder) {
@@ -44,7 +53,7 @@ public class BitgetWsHandle implements BitgetWsClient {
         webSocket = initClient();
     }
 
-    private void printLog(String msg, String type) {
+    private static void printLog(String msg, String type) {
         System.out.println("[" + DateUtil.getUnixTime() + "] [" + type.toUpperCase() + "] " + msg);
     }
 
@@ -134,7 +143,8 @@ public class BitgetWsHandle implements BitgetWsClient {
         }
         printLog("login in ......end", "info");
     }
-    private List<WsLoginReq> buildArgs(){
+
+    private List<WsLoginReq> buildArgs() {
         String timestamp = Long.valueOf(Instant.now().getEpochSecond()).toString();
         String sign = sha256_HMAC(timestamp, builder.secretKey);
 
@@ -145,7 +155,6 @@ public class BitgetWsHandle implements BitgetWsClient {
         }};
         return args;
     }
-
 
 
     private void sleep(long s) {
@@ -255,6 +264,12 @@ public class BitgetWsHandle implements BitgetWsClient {
                 if (jsonObject.containsKey("data")) {
                     listener = getListener(jsonObject);
 
+                    //check sum
+                    boolean checkSumFlag = checkSum(jsonObject);
+                    if (!checkSumFlag) {
+                        return;
+                    }
+
                     if (Objects.nonNull(listener)) {
                         listener.onReceive(message);
                         return;
@@ -271,6 +286,47 @@ public class BitgetWsHandle implements BitgetWsClient {
             }
         }
 
+        private boolean checkSum(JSONObject jsonObject) {
+
+            try {
+                if (!jsonObject.containsKey("arg") || !jsonObject.containsKey("action")) {
+                    return true;
+                }
+                String arg = jsonObject.get("arg").toString();
+                String action = jsonObject.get("action").toString();
+                SubscribeReq subscribeReq = JSONObject.parseObject(arg, SubscribeReq.class);
+
+                if (!StringUtils.equalsIgnoreCase(subscribeReq.getChannel(), "books")) {
+                    return true;
+                }
+                JSONArray data = (JSONArray) jsonObject.get("data");
+                BitgetWsHandle.BookInfo bookInfo = JSONObject.parseObject(JSONObject.toJSONString(data.get(0)), BitgetWsHandle.BookInfo.class);
+
+                if (StringUtils.equalsIgnoreCase(action, "snapshot")) {
+                    allBook.put(subscribeReq, bookInfo);
+                    return true;
+                }
+                if (StringUtils.equalsIgnoreCase(action, "update")) {
+                    BookInfo all = allBook.get(subscribeReq);
+                    boolean checkNum = all.merge(bookInfo).checkSum(Integer.parseInt(bookInfo.getChecksum()),25);
+
+                    if (!checkNum) {
+                        ArrayList<SubscribeReq> subList = new ArrayList<>();
+                        subList.add(subscribeReq);
+                        this.bitgetWsClient.subscribe(subList);
+                    }
+
+                    return checkNum;
+                }
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+
+            return true;
+        }
+
         private SubscriptionListener getListener(JSONObject jsonObject) {
             try {
                 if (jsonObject.containsKey("arg")) {
@@ -282,24 +338,6 @@ public class BitgetWsHandle implements BitgetWsClient {
             }
             return null;
 
-        }
-
-
-        // 解压函数
-        private String uncompress(final byte[] bytes) {
-            try (final ByteArrayOutputStream out = new ByteArrayOutputStream();
-                 final ByteArrayInputStream in = new ByteArrayInputStream(bytes);
-                 final Deflate64CompressorInputStream zin = new Deflate64CompressorInputStream(in)) {
-
-                final byte[] buffer = new byte[1024];
-                int offset;
-                while (-1 != (offset = zin.read(buffer))) {
-                    out.write(buffer, 0, offset);
-                }
-                return out.toString();
-            } catch (final IOException e) {
-                throw new RuntimeException(e);
-            }
         }
 
         private void close() {
@@ -371,5 +409,88 @@ public class BitgetWsHandle implements BitgetWsClient {
 
     }
 
+    @Data
+    static class BookInfo {
+        private List<String[]> asks;
+        private List<String[]> bids;
+        private String checksum;
+        private String ts;
+
+
+        public BookInfo() {
+
+        }
+
+        public BookInfo merge(BookInfo updateInfo) {
+
+            this.asks = merge(this.asks, updateInfo.getAsks(), false);
+            printLog("asks sort uniq:" + JSONObject.toJSONString(this.asks), "info");
+            this.bids = merge(this.bids, updateInfo.getBids(), true);
+            printLog("bids sort uniq:" + JSONObject.toJSONString(this.bids), "info");
+
+            return this;
+        }
+
+        //isReverse: true->desc,false->asc
+        private List<String[]> merge(List<String[]> allList, List<String[]> updateList, boolean isReverse) {
+
+            Map<String, String[]> priceAndValue = allList.stream().collect(Collectors.toMap(o -> o[0], o -> o));
+
+
+
+            for (String[] update : updateList) {
+
+                if(new BigDecimal(update[1]).compareTo(BigDecimal.ZERO)==0){
+                    priceAndValue.remove(update[0]);
+                    continue;
+                }
+                priceAndValue.put(update[0],update);
+
+            }
+
+            List<String[]> newAllList = new ArrayList<>(priceAndValue.values());
+
+            if(isReverse){
+                newAllList.sort((o1, o2) -> o2[0].compareTo(o1[0]));
+            }else{
+                newAllList.sort(Comparator.comparing(o -> o[0]));
+            }
+
+            return newAllList;
+        }
+
+        public <T> Predicate<T> distinctByKey(Function<? super T, Object> keyExtractor) {
+            Map<Object, Boolean> map = new ConcurrentHashMap<>();
+            return t -> map.putIfAbsent(keyExtractor.apply(t), Boolean.TRUE) == null;
+        }
+
+
+        public boolean checkSum(int checkSum,int gear) {
+            StringBuilder sb = new StringBuilder();
+            for (int i = 0; i < gear; i++) {
+                String[] bids = this.getBids().get(i);
+                sb.append(bids[0]).append(":").append(bids[1]).append(":");
+
+                String[] asks = this.getAsks().get(i);
+                sb.append(asks[0]).append(":").append(asks[1]).append(":");
+            }
+
+            String s = sb.toString();
+            String str = s.substring(0, s.length() - 1);
+
+
+            CRC32 crc32 = new CRC32();
+            crc32.update(str.getBytes());
+
+            int value = (int)crc32.getValue();
+
+
+            printLog("check val:" + str, "info");
+            printLog("start checknum mergeVal:" + value + ",checkVal:" + checkSum, "info");
+
+            return value == checkSum;
+
+        }
+    }
 
 }

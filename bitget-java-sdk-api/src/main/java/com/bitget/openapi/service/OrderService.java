@@ -1,5 +1,6 @@
 package com.bitget.openapi.service;
 
+import com.alibaba.fastjson.JSONObject;
 import com.bitget.openapi.dto.request.*;
 import com.bitget.openapi.dto.response.*;
 
@@ -20,7 +21,7 @@ public interface OrderService {
      * @return
      * @throws IOException
      */
-    PlaceOrderResult placeOrder(OrderReq orderRequest) throws IOException;
+    JSONObject placeOrder(OrderReq orderRequest) throws IOException;
 
     /**
      * 批量下单
@@ -29,7 +30,7 @@ public interface OrderService {
      * @return
      * @throws IOException
      */
-    PlaceBatchOrderResult batchOrders(PlaceBatchOrderReq placeBatchOrderReq) throws IOException;
+    JSONObject batchOrders(PlaceBatchOrderReq placeBatchOrderReq) throws IOException;
 
     /**
      * 取消订单
@@ -37,7 +38,7 @@ public interface OrderService {
      * @return
      * @throws IOException
      */
-    CancelOrderResult cancelOrder(CancelOrderParam cancelOrderParam) throws IOException;
+    JSONObject cancelOrder(CancelOrderParam cancelOrderParam) throws IOException;
 
     /**
      * 批量撤单
@@ -46,7 +47,7 @@ public interface OrderService {
      * @return
      * @throws IOException
      */
-    CancelBatchOrderResult cancelBathOrders(CancelBatchOrdersReq param) throws IOException;
+    JSONObject cancelBathOrders(CancelBatchOrdersReq param) throws IOException;
 
     /**
      * 获取单订单信息
@@ -56,7 +57,7 @@ public interface OrderService {
      * @return
      * @throws IOException
      */
-    Order getOrderDetail(String symbol, String orderId) throws IOException;
+    JSONObject getOrderDetail(String symbol, String orderId) throws IOException;
 
 
     /** 获取订单列表--历史委托-带分页的
@@ -65,14 +66,14 @@ public interface OrderService {
      * @param pageSize
      * @return
       */
-    List<Order> getOrdersHistory(String symbol,String pageIndex,
+    JSONObject getOrdersHistory(String symbol,String pageIndex,
                                  String pageSize,Integer createDate) throws IOException;
 
     /**获取订单列表---当前委托不带分页的
      * @param symbol
      * @return
     */
-    List<Order> getOrdersCurrent(String symbol) throws IOException;
+    JSONObject getOrdersCurrent(String symbol) throws IOException;
 
     /**
      * 查询成交明细
@@ -82,7 +83,7 @@ public interface OrderService {
      * @return
      * @throws IOException
      */
-    List<Fill> getFills(String symbol, String orderId) throws IOException;
+    JSONObject getFills(String symbol, String orderId) throws IOException;
 
     /**
      * 计划委托下单
@@ -91,7 +92,7 @@ public interface OrderService {
      * @return
      * @throws IOException
      */
-    PlanPlaceOrderResult planOrder(PlanPlaceOrderReq planPlaceOrderReq) throws IOException;
+    JSONObject planOrder(PlanPlaceOrderReq planPlaceOrderReq) throws IOException;
 
     /**
      * 计划委托撤单
@@ -99,7 +100,7 @@ public interface OrderService {
      * @return
      * @throws IOException
      */
-    CancelPlanResult cancelPlan(CancelPlanParamReq  cancelPlanParamReq) throws IOException;
+    JSONObject cancelPlan(CancelPlanParamReq  cancelPlanParamReq) throws IOException;
 
     /**
      * 查询当前计划委托
@@ -109,7 +110,7 @@ public interface OrderService {
      * @return
      * @throws IOException
      */
-    PlansOrderResult currentPlan(String symbol, PlanOrderReq planOrderReq) throws IOException;
+    JSONObject currentPlan(String symbol, PlanOrderReq planOrderReq) throws IOException;
 
     /**
      * 查询计划历史委托
@@ -119,5 +120,5 @@ public interface OrderService {
      * @return
      * @throws IOException
      */
-    PlansOrderResult historyPlan(String symbol, PlanOrderReq planOrderReq) throws IOException;
+    JSONObject historyPlan(String symbol, PlanOrderReq planOrderReq) throws IOException;
 }

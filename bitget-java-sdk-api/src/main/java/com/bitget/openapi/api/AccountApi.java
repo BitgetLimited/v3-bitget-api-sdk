@@ -1,5 +1,6 @@
 package com.bitget.openapi.api;
 
+import com.alibaba.fastjson.JSONObject;
 import com.bitget.openapi.dto.request.AdjustMarginReq;
 import com.bitget.openapi.dto.request.AutoAppendMarginReq;
 import com.bitget.openapi.dto.request.ChangeLeverageReq;
@@ -24,7 +25,7 @@ public interface AccountApi {
      * @return
      */
     @GET("/api/swap/v3/account/accounts")
-    Call<List<AccountInfo>> accounts();
+    Call<JSONObject> accounts();
 
     /**
      * 单个合约账户信息
@@ -32,7 +33,7 @@ public interface AccountApi {
      * @return
      */
     @GET("/api/swap/v3/account/account")
-    Call<AccountInfo> getAccount(@Query("symbol") String symbol);
+    Call<JSONObject> getAccount(@Query("symbol") String symbol);
 
     /**
      * 获取单个合约的用户配置
@@ -41,7 +42,7 @@ public interface AccountApi {
      * @return
      */
     @GET("/api/swap/v3/account/settings")
-    Call<AccountSetting> settings(@Query("symbol") String symbol);
+    Call<JSONObject> settings(@Query("symbol") String symbol);
 
     /**
      * 调整杠杆
@@ -49,7 +50,7 @@ public interface AccountApi {
      * @return
      */
     @POST("/api/swap/v3/account/leverage")
-    Call<ChangeLeverageResult> leverage(@Body ChangeLeverageReq body);
+    Call<JSONObject> leverage(@Body ChangeLeverageReq body);
 
     /**
      * 列出主账户资产流水
@@ -57,7 +58,7 @@ public interface AccountApi {
      * @return
      */
     @GET("/api/swap/v3/account/ledger")
-    Call<List<LedgerResult>> getLedger(@Query("symbol") String symbol,@Query("from")String from,
+    Call<JSONObject> getLedger(@Query("symbol") String symbol,@Query("from")String from,
                                        @Query("to") String to,@Query("limit")String limit,@Query("startTime") String startTime,
                                        @Query("endTime")String endTime);
 
@@ -68,7 +69,7 @@ public interface AccountApi {
      * @return
      */
     @GET("/api/swap/v3/account/ledgerMargin")
-    Call<List<LedgerResult>> ledgerMargin(@Query("symbol") String symbol,@Query("from")String from,
+    Call<JSONObject> ledgerMargin(@Query("symbol") String symbol,@Query("from")String from,
                                           @Query("to") String to,@Query("limit")String limit,@Query("startTime") String startTime,
                                           @Query("endTime")String endTime);
 
@@ -80,14 +81,14 @@ public interface AccountApi {
      * @return
      */
     @POST("/api/swap/v3/account/adjustMargin")
-    Call<AdjustMarginResult> adjustMargin(@Body AdjustMarginReq body);
+    Call<JSONObject> adjustMargin(@Body AdjustMarginReq body);
     /**
      * 自动追加保证金
      * @param body
      * @return
      */
     @POST("/api/swap/v3/account/modifyAutoAppendMargin")
-    Call<AutoAppendMarginResult> modifyAutoAppendMargin(@Body AutoAppendMarginReq body);
+    Call<JSONObject> modifyAutoAppendMargin(@Body AutoAppendMarginReq body);
 
 
 }

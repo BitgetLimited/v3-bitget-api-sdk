@@ -1,5 +1,6 @@
 package com.bitget.openapi.api;
 
+import com.alibaba.fastjson.JSONObject;
 import com.bitget.openapi.dto.response.*;
 import retrofit2.Call;
 import retrofit2.http.GET;
@@ -17,7 +18,7 @@ public interface TraceProfitApi {
      * @return
      */
     @GET(value = "/api/swap/v3/trace/summary")
-    Call<TotalProfitInfoResult> totalProfitInfo();
+    Call<JSONObject> totalProfitInfo();
 
     /**
      * 历史分润
@@ -25,7 +26,7 @@ public interface TraceProfitApi {
      * @return
      */
     @GET(value = "/api/swap/v3/trace/profitDateGroupList")
-    Call<PageResult<ProfitDateGroupResponseResult>> profitHisList(@Query("pageIndex") Integer pageNo,
+    Call<JSONObject> profitHisList(@Query("pageIndex") Integer pageNo,
                                                                   @Query("pageSize") Integer pageSize);
 
     /**
@@ -34,7 +35,7 @@ public interface TraceProfitApi {
      * @return
      */
     @GET(value = "/api/swap/v3/trace/profitDateList")
-    Call<PageResult<ProfitDateDetailResponseResult>> profitHisDetail(@Query("settleTokenId") String settleTokenId,
+    Call<JSONObject> profitHisDetail(@Query("settleTokenId") String settleTokenId,
                                                                      @Query("pageIndex") Integer pageNo,
                                                                      @Query("pageSize") Integer pageSize,
                                                                      @Query("date") Long date);
@@ -44,7 +45,7 @@ public interface TraceProfitApi {
      * @return
      */
     @GET(value = "/api/swap/v3/trace/waitProfitDateList")
-    Call<PageResult<ProfitDateDetailResponseResult>> waitProfitDetail(@Query("pageIndex") Integer pageNo,
+    Call<JSONObject> waitProfitDetail(@Query("pageIndex") Integer pageNo,
                                                                       @Query("pageSize") Integer pageSize);
 
     /**
@@ -53,5 +54,5 @@ public interface TraceProfitApi {
      * @return
      */
     @GET(value = "/api/swap/v3/trace/profitSettleTokenIdGroup")
-    Call<List<ProfitSymbolGroupResult>> getSumProfitList();
+    Call<JSONObject> getSumProfitList();
 }

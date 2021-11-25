@@ -12,12 +12,12 @@ use test\mix\MixPositionTest;
 use test\mix\MixTraceTest;
 
 date_default_timezone_set('PRC');
-testAccount();
+//testAccount();
 //testMarket();
 //testOrder();
 //testPosition();
 //testPlan();
-//testTrace();
+testTrace();
 
 
 function testAccount()
@@ -148,30 +148,33 @@ function testPosition()
 function testTrace()
 {
     $mixTraceTest = new MixTraceTest();
+//
+//    $testCloseTraceOrder = $mixTraceTest->testCloseTraceOrder();
+//    print_r($testCloseTraceOrder."\n");
+//
+//    $testCurrentTrack = $mixTraceTest->testCurrentTrack();
+//    print_r($testCurrentTrack."\n");
+//
+//
+//    $testHistoryTrack = $mixTraceTest->testHistoryTrack();
+//    print_r($testHistoryTrack."\n");
+//
+//    $testSummary = $mixTraceTest->testSummary();
+//    print_r($testSummary."\n");
+//
+//    $testProfitSettleTokenIdGroup = $mixTraceTest->testProfitSettleTokenIdGroup();
+//    print_r($testProfitSettleTokenIdGroup."\n");
+//
+//    $testProfitDateGroupList = $mixTraceTest->testProfitDateGroupList();
+//    print_r($testProfitDateGroupList."\n");
+//
+//    $testProfitDateList = $mixTraceTest->testProfitDateList();
+//    print_r($testProfitDateList."\n");
+//
+//    $testWaitProfitDateList = $mixTraceTest->testWaitProfitDateList();
+//    print_r($testWaitProfitDateList."\n");
 
-    $testCloseTraceOrder = $mixTraceTest->testCloseTraceOrder();
-    print_r($testCloseTraceOrder."\n");
-
-    $testCurrentTrack = $mixTraceTest->testCurrentTrack();
-    print_r($testCurrentTrack."\n");
-
-
-    $testHistoryTrack = $mixTraceTest->testHistoryTrack();
-    print_r($testHistoryTrack."\n");
-
-    $testSummary = $mixTraceTest->testSummary();
-    print_r($testSummary."\n");
-
-    $testProfitSettleTokenIdGroup = $mixTraceTest->testProfitSettleTokenIdGroup();
-    print_r($testProfitSettleTokenIdGroup."\n");
-
-    $testProfitDateGroupList = $mixTraceTest->testProfitDateGroupList();
-    print_r($testProfitDateGroupList."\n");
-
-    $testProfitDateList = $mixTraceTest->testProfitDateList();
-    print_r($testProfitDateList."\n");
-
-    $testWaitProfitDateList = $mixTraceTest->testWaitProfitDateList();
+    $testWaitProfitDateList = $mixTraceTest->testFollowerHistoryOrders();
     print_r($testWaitProfitDateList."\n");
 
 }

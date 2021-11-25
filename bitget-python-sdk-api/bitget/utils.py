@@ -21,6 +21,7 @@ def get_header(api_key, sign, timestamp, passphrase):
     header[c.OK_ACCESS_SIGN] = sign
     header[c.OK_ACCESS_TIMESTAMP] = str(timestamp)
     header[c.OK_ACCESS_PASSPHRASE] = passphrase
+    # header[c.LOCALE] = 'zh-CN'
 
     return header
 
@@ -35,6 +36,9 @@ def parse_params_to_str(params):
 
 def get_timestamp():
     return int(time.time() * 1000)
+
+
+
 
 
 def signature(timestamp, method, request_path, body, secret_key):

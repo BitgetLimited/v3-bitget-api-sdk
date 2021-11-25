@@ -3,7 +3,7 @@ import {API_CONFIG} from './config';
 import axios, {AxiosInstance, AxiosRequestConfig} from 'axios';
 import * as Console from 'console';
 
-export class BaseApi{
+export class BaseApi {
     protected signer: (
         httpMethod: string,
         url: string,
@@ -16,17 +16,18 @@ export class BaseApi{
         apiKey: string,
         secretKey: string,
         passphrase: string,
-        httpConfig: AxiosRequestConfig = {timeout: 3000}
+        locale?: string,
+        httpConfig: AxiosRequestConfig = {timeout: 10000}
     ) {
         this.axiosInstance = axios.create({
             baseURL: API_CONFIG.API_URL,
             ...httpConfig
         })
         this.axiosInstance.interceptors.request.use((data) => {
-            if(data.data){
+            if (data.data) {
                 data.data = toJsonString(data.data);
             }
-            Console.log('request:',data.data || data.params)
+            Console.log('request:', data.data || data.params)
             return data;
         })
 
@@ -40,7 +41,7 @@ export class BaseApi{
                 return err.response.data;
             }
         )
-        this.signer = getSigner(apiKey, secretKey ,passphrase)
+        this.signer = getSigner(apiKey, secretKey, passphrase, locale)
     }
 
     axiosInstance: AxiosInstance

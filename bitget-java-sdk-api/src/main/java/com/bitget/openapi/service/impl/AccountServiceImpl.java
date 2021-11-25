@@ -1,6 +1,7 @@
 package com.bitget.openapi.service.impl;
 
 
+import com.alibaba.fastjson.JSONObject;
 import com.bitget.openapi.api.AccountApi;
 import com.bitget.openapi.common.client.ApiClient;
 import com.bitget.openapi.dto.request.AdjustMarginReq;
@@ -26,46 +27,46 @@ public class AccountServiceImpl implements AccountService {
     }
 
     @Override
-    public List<AccountInfo> accounts() throws IOException {
+    public JSONObject accounts() throws IOException {
         return accountApi.accounts().execute().body();
     }
 
     @Override
-    public AccountInfo getAccount(String symbol) throws IOException {
+    public JSONObject getAccount(String symbol) throws IOException {
         return accountApi.getAccount(symbol).execute().body();
     }
 
     @Override
-    public AccountSetting settings(String symbol) throws IOException {
+    public JSONObject settings(String symbol) throws IOException {
         return accountApi.settings(symbol).execute().body();
     }
 
     @Override
-    public ChangeLeverageResult leverage( ChangeLeverageReq changeLeverageReq) throws IOException {
+    public JSONObject leverage( ChangeLeverageReq changeLeverageReq) throws IOException {
         return accountApi.leverage(changeLeverageReq).execute().body();
     }
 
     @Override
-    public List<LedgerResult> getLedger(String symbol,String from,
+    public JSONObject getLedger(String symbol,String from,
                                         String to,String limit, String startTime,
                                         String endTime) throws IOException {
         return accountApi.getLedger(symbol, from,to,limit,startTime,endTime).execute().body();
     }
 
     @Override
-    public List<LedgerResult> ledgerMargin(String symbol, String from,
+    public JSONObject ledgerMargin(String symbol, String from,
                                            String to,String limit, String startTime,
                                            String endTime) throws IOException {
         return accountApi.ledgerMargin(symbol,from,to,limit,startTime,endTime).execute().body();
     }
 
     @Override
-    public AdjustMarginResult adjustMargin( AdjustMarginReq adjustMarginReq) throws IOException {
+    public JSONObject adjustMargin( AdjustMarginReq adjustMarginReq) throws IOException {
         return accountApi.adjustMargin(adjustMarginReq).execute().body();
     }
 
     @Override
-    public AutoAppendMarginResult modifyAutoAppendMargin( AutoAppendMarginReq autoAppendMarginReq) throws IOException {
+    public JSONObject modifyAutoAppendMargin( AutoAppendMarginReq autoAppendMarginReq) throws IOException {
         return accountApi.modifyAutoAppendMargin(autoAppendMarginReq).execute().body();
     }
 }

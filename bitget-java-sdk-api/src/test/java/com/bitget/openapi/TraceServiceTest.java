@@ -1,6 +1,7 @@
 package com.bitget.openapi;
 
 import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
 import com.bitget.openapi.dto.request.CloseTrackOrderReq;
 import com.bitget.openapi.dto.response.CloseTrackOrderResult;
 import com.bitget.openapi.dto.response.ContractTrackOrderResult;
@@ -18,18 +19,18 @@ public class TraceServiceTest  extends BaseTest{
     @Test
     public void closeTrackOrder()throws IOException{
         CloseTrackOrderReq req=CloseTrackOrderReq.builder().symbol(symbol).trackingNo(666479626381428332L).build();
-        CloseTrackOrderResult result = bitgetRestClient.contract().bitget().trace().closeTrackOrder(req);
+        JSONObject result = bitgetRestClient.contract().bitget().trace().closeTrackOrder(req);
         System.out.println(JSON.toJSONString(result));
     }
 
     @Test
     public void currentTrack() throws  IOException{
-        List<ContractTrackOrderResult> result = bitgetRestClient.contract().bitget().trace().currentTrack(symbol, "1", "100");
+        JSONObject result = bitgetRestClient.contract().bitget().trace().currentTrack(symbol, "1", "100");
         System.out.println(JSON.toJSONString(result));
     }
     @Test
     public void historyTrack() throws  IOException{
-        List<HistoryTraceResult> result = bitgetRestClient.contract().bitget().trace().historyTrack("1", "100", 70);
+        JSONObject result = bitgetRestClient.contract().bitget().trace().historyTrack("1", "100", 70);
         System.out.println(JSON.toJSONString(result));
     }
 }

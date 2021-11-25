@@ -1,5 +1,6 @@
 package com.bitget.openapi.api;
 
+import com.alibaba.fastjson.JSONObject;
 import com.bitget.openapi.dto.request.ChangeHoldModel;
 import com.bitget.openapi.dto.response.AllPosition;
 import com.bitget.openapi.dto.response.FVirtualCaptialOperator;
@@ -22,7 +23,7 @@ public interface PositionApi {
      * @return
      */
     @GET("/api/swap/v3/position/allPosition")
-    Call<List<AllPosition>> getAllPosition();
+    Call<JSONObject> getAllPosition();
 
     /**
      * 单个合约持仓信息
@@ -30,7 +31,7 @@ public interface PositionApi {
      * @return
      */
     @GET("/api/swap/v3/position/singlePosition")
-    Call<AllPosition> getSinglePosition(@Query("symbol") String symbol);
+    Call<JSONObject> getSinglePosition(@Query("symbol") String symbol);
     /**
      * 出入金接口
      * @param symbol 
@@ -41,7 +42,7 @@ public interface PositionApi {
      * @return
      */
     @GET("/api/swap/v3/position/virtualCapital")
-    Call<List<FVirtualCaptialOperator>> virtualCapital( @Query("symbol") String  symbol,
+    Call<JSONObject> virtualCapital( @Query("symbol") String  symbol,
                                                         @Query("ftype") String ftype,
                                                         @Query("limit") Integer limit,
                                                         @Query("gt") Integer gt,
@@ -53,5 +54,5 @@ public interface PositionApi {
      * @return
      */
     @POST("/api/swap/v3/position/changeHoldModel")
-    Call<HoldModelDto> changeHoldMode(@Body ChangeHoldModel changeHoldModel);
+    Call<JSONObject> changeHoldMode(@Body ChangeHoldModel changeHoldModel);
 }

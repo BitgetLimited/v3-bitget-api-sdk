@@ -16,10 +16,6 @@ php example_mix.php
 
 # 运行websocket示例
 php example_ws.php start
-
-
-# 配置秘钥相关参数
-vim Config.php
 ```
 
 

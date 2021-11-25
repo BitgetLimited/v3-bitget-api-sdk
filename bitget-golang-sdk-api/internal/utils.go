@@ -4,6 +4,7 @@ import (
 	"bitget/constants"
 	"encoding/json"
 	"errors"
+	"math"
 	"net/http"
 	"net/url"
 	"strconv"
@@ -76,4 +77,25 @@ func ToJson(v interface{}) (string, error) {
 		return "", err
 	}
 	return string(result), nil
+}
+func powerf(x float64, n int) float64 {
+	ans := 1.0
+	for n != 0 {
+		if n%2 == 1 {
+			ans *= x
+		}
+		x *= x
+		n /= 2
+	}
+	return ans
+}
+
+func GetSignedInt(checksum string) string {
+	c, _ := strconv.ParseUint(checksum, 10, 64)
+
+	if c > math.MaxInt32 {
+		a := c - (1<<31-1)*2 - 2
+		return strconv.FormatUint(a, 10)
+	}
+	return checksum
 }

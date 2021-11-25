@@ -1,59 +1,58 @@
 import {BaseApi} from '../BaseApi';
-import {BillsReq} from '../model/spot/account/BillsReq';
 import {SPOT_URL} from '../config';
-import {OrdersReq} from '../model/spot/order/OrdersReq';
-import {BatchOrdersReq} from '../model/spot/order/BatchOrdersReq';
-import {CancelOrderReq} from '../model/spot/order/CancelOrderReq';
-import {CancelBatchOrderReq} from '../model/spot/order/CancelBatchOrderReq';
-import {OrderInfoReq} from '../model/spot/order/OrderInfoReq';
-import {OpenOrdersReq} from '../model/spot/order/OpenOrdersReq';
-import {HistoryReq} from '../model/spot/order/HistoryReq';
-import {FillsReq} from '../model/spot/order/FillsReq';
+import {SpotOrdersReq} from '../model/spot/order/SpotOrdersReq';
+import {SpotBatchOrdersReq} from '../model/spot/order/SpotBatchOrdersReq';
+import {SpotCancelOrderReq} from '../model/spot/order/SpotCancelOrderReq';
+import {SpotCancelBatchOrderReq} from '../model/spot/order/SpotCancelBatchOrderReq';
+import {SpotOrderInfoReq} from '../model/spot/order/SpotOrderInfoReq';
+import {SpotOpenOrdersReq} from '../model/spot/order/SpotOpenOrdersReq';
+import {SpotHistoryReq} from '../model/spot/order/SpotHistoryReq';
+import {SpotFillsReq} from '../model/spot/order/SpotFillsReq';
 
 export class SpotOrderApi extends BaseApi{
 
-    orders(ordersReq:OrdersReq) {
+    orders(ordersReq:SpotOrdersReq) {
         const url = SPOT_URL.SPOT_ORDER + '/orders';
         const headers = this.signer('POST', url, ordersReq)
         return this.axiosInstance.post(url, ordersReq, {headers})
     }
 
-    batchOrders(batchOrdersReq:BatchOrdersReq) {
+    batchOrders(batchOrdersReq:SpotBatchOrdersReq) {
         const url = SPOT_URL.SPOT_ORDER + '/batch-orders';
         const headers = this.signer('POST', url, batchOrdersReq)
         return this.axiosInstance.post(url, batchOrdersReq, {headers})
     }
 
-    cancelOrder(cancelOrderReq:CancelOrderReq) {
+    cancelOrder(cancelOrderReq:SpotCancelOrderReq) {
         const url = SPOT_URL.SPOT_ORDER + '/cancel-order';
         const headers = this.signer('POST', url, cancelOrderReq)
         return this.axiosInstance.post(url, cancelOrderReq, {headers})
     }
 
-    cancelBatchOrder(cancelBatchOrderReq:CancelBatchOrderReq) {
+    cancelBatchOrder(cancelBatchOrderReq:SpotCancelBatchOrderReq) {
         const url = SPOT_URL.SPOT_ORDER + '/cancel-batch-orders';
         const headers = this.signer('POST', url, cancelBatchOrderReq)
         return this.axiosInstance.post(url, cancelBatchOrderReq, {headers})
     }
 
-    orderInfo(orderInfoReq:OrderInfoReq) {
+    orderInfo(orderInfoReq:SpotOrderInfoReq) {
         const url = SPOT_URL.SPOT_ORDER + '/orderInfo';
         const headers = this.signer('POST', url, orderInfoReq)
         return this.axiosInstance.post(url, orderInfoReq, {headers})
     }
 
-    openOrders(openOrdersReq:OpenOrdersReq) {
+    openOrders(openOrdersReq:SpotOpenOrdersReq) {
         const url = SPOT_URL.SPOT_ORDER + '/open-orders';
         const headers = this.signer('POST', url, openOrdersReq)
         return this.axiosInstance.post(url, openOrdersReq, {headers})
     }
-    history(historyReq:HistoryReq) {
+    history(historyReq:SpotHistoryReq) {
         const url = SPOT_URL.SPOT_ORDER + '/history';
         const headers = this.signer('POST', url, historyReq)
         return this.axiosInstance.post(url, historyReq, {headers})
     }
 
-    fills(fillsReq:FillsReq) {
+    fills(fillsReq:SpotFillsReq) {
         const url = SPOT_URL.SPOT_ORDER + '/fills';
         const headers = this.signer('POST', url, fillsReq)
         return this.axiosInstance.post(url, fillsReq, {headers})

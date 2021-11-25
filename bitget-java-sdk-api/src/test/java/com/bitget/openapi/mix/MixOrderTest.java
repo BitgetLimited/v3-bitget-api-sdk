@@ -17,21 +17,30 @@ import java.util.List;
 
 public class MixOrderTest extends BaseTest {
 
-    private static String symbol = "SBTCSUSDT_SUMCBL";
-    private static String marginCoin = "SUSDT";
+    private static String symbol = "ETHUSD_DMCBL";
+    private static String marginCoin = "ETH";
     private static String startTime = "1629113823000";
     private static String endTime = "1629513368000";
     private static String lastEndId = "0";
     private static int pageSize = 20;
 
     // passed
+
+
+
+
+
+
+
+
+
     @Test
     public void placeOrder() throws IOException {
         MixPlaceOrderRequest req = MixPlaceOrderRequest.builder()
                 .clientOid("RFIut#"+System.currentTimeMillis())
                 .symbol(symbol)
-                .price(new BigDecimal("44067.0"))
-                .size(new BigDecimal("1"))
+                .price(new BigDecimal("2"))
+                .size(new BigDecimal("10"))
                 .marginCoin(marginCoin)
                 .side(MixSideEnum.OPEN_LONG.getSide())
                 .timeInForceValue(ForceEnum.NORMAL.getCode())
@@ -39,6 +48,25 @@ public class MixOrderTest extends BaseTest {
                 .build();
         ResponseResult result = bitgetRestClient.mix().bitget().order().placeOrder(req);
         System.out.println(JSON.toJSONString(result));
+    }
+    @Test
+    public void proportionOrder() throws IOException {
+        MixPlaceOrderRequest req = MixPlaceOrderRequest.builder()
+                .clientOid("RFIut#"+System.currentTimeMillis())
+                .symbol(symbol)
+                .price(new BigDecimal("5999.7"))
+                .size(new BigDecimal("0.01"))
+                .marginCoin(marginCoin)
+                .side(MixSideEnum.OPEN_LONG.getSide())
+                .timeInForceValue(ForceEnum.NORMAL.getCode())
+                .orderType(MixOrderTypeEnum.MARKET.getCode())
+                .build();
+        ResponseResult result = bitgetRestClient.mix().bitget().order().proportionOrder(req);
+        System.out.println(JSON.toJSONString(result,true));
+        JSONObject jsonObject = JSONObject.parseObject(JSON.toJSONString(result));
+        JSONObject jsonObject1 = (JSONObject)jsonObject.get("data");
+        ResponseResult resulta = bitgetRestClient.mix().bitget().order().detail(symbol, jsonObject1.get("orderId").toString());
+        System.out.println(JSONObject.toJSONString(resulta,true));
     }
     // passed
     @Test
@@ -114,13 +142,13 @@ public class MixOrderTest extends BaseTest {
     // passed
     @Test
     public void detail() throws IOException {
-        ResponseResult result = bitgetRestClient.mix().bitget().order().detail(symbol, "811489712408248322");
-        System.out.println(JSON.toJSONString(result));
+        ResponseResult result = bitgetRestClient.mix().bitget().order().detail(symbol, "842945946638233600");
+        System.out.println(JSON.toJSONString(result,true));
     }
     // passed
     @Test
     public void fills() throws IOException {
-        ResponseResult result = bitgetRestClient.mix().bitget().order().fills(symbol, "811489712408248322");
+        ResponseResult result = bitgetRestClient.mix().bitget().order().fills(symbol, "842893887893286912");
         System.out.println(JSONObject.toJSONString(result));
     }
 }

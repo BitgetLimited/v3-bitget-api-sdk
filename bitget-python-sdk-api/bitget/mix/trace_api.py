@@ -14,6 +14,7 @@ class TraceApi(Client):
     trackingNo: 跟踪订单号
     :return:
     '''
+
     def close_track_order(self, symbol, trackingNo):
         params = {}
         if symbol and trackingNo:
@@ -30,6 +31,7 @@ class TraceApi(Client):
     pageNo： 从1开始
     :return:
     '''
+
     def current_track(self, symbol, productType, pageSize=20, pageNo=1):
         params = {}
         if symbol:
@@ -50,6 +52,7 @@ class TraceApi(Client):
     pageNo: 查询页数
     :return:
     '''
+
     def history_track(self, startTime, endTime, pageSize=100, pageNo=1):
         params = {}
         if startTime and endTime:
@@ -65,6 +68,7 @@ class TraceApi(Client):
     交易员分润汇总
     :return:
     '''
+
     def summary(self):
         return self._request_without_params(GET, MIX_TRACE_V1_URL + '/summary')
 
@@ -72,6 +76,7 @@ class TraceApi(Client):
     交易员分润汇总(按结算币种)
     :return:
     '''
+
     def profit_settle_margin_coin(self):
         return self._request_without_params(GET, MIX_TRACE_V1_URL + '/profitSettleTokenIdGroup')
 
@@ -79,6 +84,7 @@ class TraceApi(Client):
     交易员分润汇总(按日期)
     :return:
     '''
+
     def profit_date_group(self, pageSize, pageNo):
         params = {}
         if pageSize and pageNo:
@@ -92,6 +98,7 @@ class TraceApi(Client):
     交易员历史分润明细
     :return:
     '''
+
     def profit_date_detail(self, marginCoin, date, pageSize, pageNo):
         params = {}
         if marginCoin and date and pageSize and pageNo:
@@ -107,6 +114,7 @@ class TraceApi(Client):
     交易员待分润明细
     :return:
     '''
+
     def wait_profit_detail(self, pageSize, pageNo):
         params = {}
         if pageSize and pageNo:
@@ -115,3 +123,20 @@ class TraceApi(Client):
             return self._request_with_params(GET, MIX_TRACE_V1_URL + '/waitProfitDateList', params)
         else:
             return "pls check args "
+
+    '''
+    跟随者 获取开仓平仓单信息
+    :return:
+    '''
+
+    def follower_history_orders(self, page_size, page_no, start_time, end_time):
+        params = {}
+        if page_size and page_no:
+            params["pageSize"] = page_size
+            params["pageNo"] = page_no
+
+        if start_time and end_time:
+            params["startTime"] = start_time
+            params["endTime"] = end_time
+
+        return self._request_with_params(GET, MIX_TRACE_V1_URL + '/followerHistoryOrders', params)

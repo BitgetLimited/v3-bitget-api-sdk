@@ -1,5 +1,6 @@
 package com.bitget.openapi.common.client;
 
+import com.alibaba.fastjson.JSONObject;
 import com.bitget.openapi.common.constant.HttpHeader;
 import com.bitget.openapi.common.domain.ClientParameter;
 import com.bitget.openapi.common.utils.SignatureUtils;
@@ -80,7 +81,6 @@ public class ApiClient {
                         .addHeader(HttpHeader.COOKIE, String.format(localFormat, clientParameter.getLocale()))
                         .addHeader(HttpHeader.LOCALE, clientParameter.getLocale())
                         .addHeader(HttpHeader.ACCESS_TIMESTAMP, timestamp);
-
                 Request request = requestBuilder.build();
                 return chain.proceed(request);
             } catch (Exception e) {

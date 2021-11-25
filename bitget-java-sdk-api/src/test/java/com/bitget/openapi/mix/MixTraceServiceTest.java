@@ -74,4 +74,10 @@ public class MixTraceServiceTest extends BaseTest {
         ResponseResult result = bitgetRestClient.mix().bitget().trace().waitProfitDateList(pageSize,pageNo);
         System.out.println(JSON.toJSONString(result));
     }
+
+    @Test
+    public void followerHistoryOrders() throws IOException {
+        ResponseResult result = bitgetRestClient.mix().bitget().trace().followerHistoryOrders("10","1","1635782400000","1635852263953");
+        System.out.println(JSON.toJSONString(result));
+    }
 }

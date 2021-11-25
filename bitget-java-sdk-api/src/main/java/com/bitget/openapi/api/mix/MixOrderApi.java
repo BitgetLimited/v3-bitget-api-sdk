@@ -19,6 +19,9 @@ public interface MixOrderApi {
     @POST("/api/mix/v1/order/placeOrder")
     Call<ResponseResult> placeOrder(@Body MixPlaceOrderRequest mixPlaceOrderRequest);
 
+    @POST("/api/mix/v1/order/proportionOrder")
+    Call<ResponseResult> proportionOrder(@Body MixPlaceOrderRequest mixPlaceOrderRequest);
+
     @POST("/api/mix/v1/order/batch-orders")
     Call<ResponseResult> batchOrders(@Body PlaceBatchOrderRequest placeBatchOrderRequest);
 

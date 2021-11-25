@@ -1,6 +1,6 @@
 import {BaseApi} from '../BaseApi';
 import {SPOT_URL} from '../config';
-import {BillsReq} from '../model/spot/account/BillsReq';
+import {SpotBillsReq} from '../model/spot/account/SpotBillsReq';
 
 export class SpotAccountApi extends BaseApi{
     assets() {
@@ -9,7 +9,7 @@ export class SpotAccountApi extends BaseApi{
         return this.axiosInstance.get(url, {headers})
     }
 
-    bills(billsReq:BillsReq) {
+    bills(billsReq:SpotBillsReq) {
         const url = SPOT_URL.SPOT_ACCOUNT + '/bills';
         const headers = this.signer('POST', url, billsReq)
         return this.axiosInstance.post(url, billsReq, {headers})

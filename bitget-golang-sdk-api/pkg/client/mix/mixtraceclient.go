@@ -171,3 +171,25 @@ func (p *MixTraceClient) WaitProfitDateList(pageSize string, pageNo string) (str
 
 	return resp, err
 }
+
+func (p *MixTraceClient) FollowerHistoryOrders(pageSize string, pageNo string, startTime string, endTime string) (string, error) {
+	params := internal.NewParams()
+
+	if len(pageSize) > 0 {
+		params["pageSize"] = pageSize
+	}
+	if len(pageNo) > 0 {
+		params["pageNo"] = pageNo
+	}
+	if len(startTime) > 0 {
+		params["startTime"] = startTime
+	}
+	if len(endTime) > 0 {
+		params["endTime"] = endTime
+	}
+	uri := constants.MixTrace + "/followerHistoryOrders"
+
+	resp, err := p.BitgetRestClient.DoGet(uri, params)
+
+	return resp, err
+}

@@ -1,6 +1,7 @@
 package com.bitget.openapi;
 
 import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
 import com.bitget.openapi.dto.response.*;
 import org.junit.Test;
 
@@ -18,7 +19,7 @@ public class TraceProfitServiceTest extends BaseTest{
      */
     @Test
     public void totalProfitInfo() throws IOException {
-        TotalProfitInfoResult result = bitgetRestClient.contract().bitget().traceProfit().totalProfitInfo();
+        JSONObject result = bitgetRestClient.contract().bitget().traceProfit().totalProfitInfo();
         System.out.println(JSON.toJSONString(result));
     }
 
@@ -29,7 +30,7 @@ public class TraceProfitServiceTest extends BaseTest{
      */
     @Test
     public void profitHisList() throws IOException {
-        PageResult<ProfitDateGroupResponseResult> result = bitgetRestClient.contract().bitget().traceProfit().profitHisList(1, 10);
+        JSONObject result = bitgetRestClient.contract().bitget().traceProfit().profitHisList(1, 10);
         System.out.println(JSON.toJSONString(result));
     }
 
@@ -40,7 +41,7 @@ public class TraceProfitServiceTest extends BaseTest{
      */
     @Test
     public void profitHisDetail() throws IOException{
-        PageResult<ProfitDateDetailResponseResult> result = bitgetRestClient.contract().bitget().traceProfit().profitHisDetail(symbol, 1, 10, 1614147600000L);
+        JSONObject result = bitgetRestClient.contract().bitget().traceProfit().profitHisDetail(symbol, 1, 10, 1614147600000L);
         System.out.println(JSON.toJSONString(result));
     }
     /**
@@ -50,7 +51,7 @@ public class TraceProfitServiceTest extends BaseTest{
      */
     @Test
     public void waitProfitDetail() throws IOException {
-        PageResult<ProfitDateDetailResponseResult> result = bitgetRestClient.contract().bitget().traceProfit().waitProfitDetail(1, 10);
+        JSONObject result = bitgetRestClient.contract().bitget().traceProfit().waitProfitDetail(1, 10);
         System.out.println(JSON.toJSONString(result));
     }
 
@@ -61,7 +62,7 @@ public class TraceProfitServiceTest extends BaseTest{
      */
     @Test
     public void getSumProfitList() throws IOException {
-        List<ProfitSymbolGroupResult> result = bitgetRestClient.contract().bitget().traceProfit().getSumProfitList();
+        JSONObject result = bitgetRestClient.contract().bitget().traceProfit().getSumProfitList();
         System.out.println(JSON.toJSONString(result));
     }
 }

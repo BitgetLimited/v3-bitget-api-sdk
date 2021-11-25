@@ -7,7 +7,7 @@ import json
 if __name__ == '__main__':
     api_key = ""
     secret_key = ""
-    passphrase = ""   # 口令
+    passphrase = ""  # 口令
 
     symbol = 'btcusdt_spbl'
 
@@ -42,20 +42,21 @@ if __name__ == '__main__':
     # result = marketApi.candles(symbol, period='1min', after='1624352586', before='1624356186', limit=100)
     # print(result)
 
-    accountApi = account.AccountApi(api_key, secret_key, passphrase, use_server_time=False, first=False)
-    result = accountApi.transfer_records()
-    print(result)
+    # accountApi = account.AccountApi(api_key, secret_key, passphrase, use_server_time=False, first=False)
+
+    # result = accountApi.assets()
+    # print(result)
 
     # result = accountApi.bills()
     # print(result)
 
-    # orderApi = order.OrderApi(api_key, secret_key, passphrase, use_server_time=False, first=False)
+    orderApi = order.OrderApi(api_key, secret_key, passphrase, use_server_time=False, first=False)
     # result = orderApi.orders(symbol='bftusdt_spbl', price='2.30222', quantity='1', side='buy', orderType='limit', force='normal', clientOrderId='spot#29028939ss')
     # print(result)
 
-    # order_data=[{"price":"2.30222","quantity":"1","side":"buy","orderType":"limit","force":"normal","client_oid":"spot#jidhuu19399"}, {"price":"2.30111","quantity":"1","side":"buy","orderType":"limit","force":"normal","client_oid":"spot#akncnai8821"}]
-    # result = orderApi.batch_orders(symbol='bftusdt_spbl', order_data=order_data)
-    # print(result)
+    order_data=[{"price":"2.30222","quantity":"1","side":"buy","orderType":"limit","force":"normal","client_oid":"spot#jidhuu19399"}, {"price":"2.30111","quantity":"1","side":"buy","orderType":"limit","force":"normal","client_oid":"spot#akncnai8821"}]
+    result = orderApi.batch_orders(symbol='bftusdt_spbl', order_data=order_data)
+    print(result)
 
     # result = orderApi.cancel_orders(symbol='bftusdt_spbl', orderId='791171749756964864')
     # print(result)

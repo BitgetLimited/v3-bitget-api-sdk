@@ -20,6 +20,8 @@ DELETE = "DELETE"
 # Base Url
 API_URL = 'https://capi.bitget.com'
 
+# ws Url
+CONTRACT_WS_URL = 'wss://ws.bitgetapi.com/spot/v1/stream'
 
 # ########################################
 # ##############【swap url】###############
@@ -55,7 +57,6 @@ SPOT_MARKET_V1_URL = '/api/spot/v1/market'
 SPOT_ACCOUNT_V1_URL = '/api/spot/v1/account'
 SPOT_ORDER_V1_URL = '/api/spot/v1/trade'
 
-
 # ########################################
 # ##############【mix url】################
 # ########################################
@@ -66,3 +67,10 @@ MIX_POSITION_V1_URL = '/api/mix/v1/position'
 MIX_ORDER_V1_URL = '/api/mix/v1/order'
 MIX_PLAN_V1_URL = '/api/mix/v1/plan'
 MIX_TRACE_V1_URL = '/api/mix/v1/trace'
+
+SUBSCRIBE = 'subscribe'
+UNSUBSCRIBE = 'unsubscribe'
+LOGIN = 'login'
+
+GET = 'GET'
+REQUEST_PATH = '/user/verify'

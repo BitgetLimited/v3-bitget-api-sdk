@@ -1,5 +1,6 @@
 package com.bitget.openapi.api;
 
+import com.alibaba.fastjson.JSONObject;
 import com.bitget.openapi.dto.request.CloseTrackOrderReq;
 import com.bitget.openapi.dto.response.CloseTrackOrderResult;
 import com.bitget.openapi.dto.response.ContractTrackOrderResult;
@@ -19,7 +20,7 @@ public interface TraceApi {
      * @return
      */
     @POST("/api/swap/v3/trace/closeTrackOrder")
-    Call<CloseTrackOrderResult> closeTrackOrder(@Body CloseTrackOrderReq orderReq);
+    Call<JSONObject> closeTrackOrder(@Body CloseTrackOrderReq orderReq);
 
     /**
      * 获取交易员当前带单list
@@ -27,7 +28,7 @@ public interface TraceApi {
      * @return
      */
     @GET("/api/swap/v3/trace/currentTrack")
-    Call<List<ContractTrackOrderResult>> currentTrack(@Query("symbol") String symbol,
+    Call<JSONObject> currentTrack(@Query("symbol") String symbol,
                                                       @Query("pageIndex") String pageIndex,
                                                       @Query("pageSize") String pageSize);
 
@@ -37,7 +38,7 @@ public interface TraceApi {
      * @return
      */
     @GET("/api/swap/v3/trace/historyTrack")
-    Call<List<HistoryTraceResult>> historyTrack(@Query("pageIndex") String pageIndex,
+    Call<JSONObject> historyTrack(@Query("pageIndex") String pageIndex,
                                                 @Query("pageSize") String pageSize,
                                                 @Query("createDate") Integer createDate);
 

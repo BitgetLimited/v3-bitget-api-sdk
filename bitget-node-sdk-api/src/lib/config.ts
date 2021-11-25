@@ -1,6 +1,6 @@
 export let API_CONFIG = {
     WS_URL: 'wss://ws.bitgetapi.com/spot/v1/stream',
-    API_URL: 'https://capi.bitget.com'
+    API_URL: 'http://127.0.0.1:8080'
 }
 
 export let MIX_URL = {
@@ -10,6 +10,11 @@ export let MIX_URL = {
     MIX_PLAN: '/api/mix/v1/plan',
     MIX_POSITION: '/api/mix/v1/position',
     MIX_TRACE: '/api/mix/v1/trace',
+}
+
+export let LOCAL = {
+    ZH_CH:'zh-CN',
+    EN_US:'en-US',
 }
 
 export let SPOT_URL = {

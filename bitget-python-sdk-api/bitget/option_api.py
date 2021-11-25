@@ -10,7 +10,6 @@ class OptionAPI(Client):
 
     def take_order(self, symbol,client_oid, size, type, order_type, match_price,price='' ):
         '''
-        下单
         method : POST
         参数名	参数类型	是否必须	描述
         :param symbol: String	是	合约名称
@@ -88,7 +87,7 @@ class OptionAPI(Client):
             return "pls check args"
 
 
-    def take_plan_order(self,symbol,size,type,side,match_type,execute_price,trigger_price,holdSide,client_oid=''):
+    def take_plan_order(self,symbol,size,type,side,match_type,execute_price,trigger_price,client_oid='',holdSide):
         '''
         计划委托下单
         method : POST
@@ -141,7 +140,7 @@ class OptionAPI(Client):
 
 
 
-    def get_currentPlan(self,symbol,side,pageIndex,pageSize,delegateType,startTime='',endTime='',):
+    def get_currentPlan(self,symbol,side,pageIndex,pageSize,startTime='',endTime='',delegateType):
         '''
         查询当前计划委托
         method : GET
@@ -170,7 +169,7 @@ class OptionAPI(Client):
 
 
 
-    def get_historyPlan(self,symbol,side,pageIndex,pageSize,delegateType,startTime='',endTime=''):
+    def get_historyPlan(self,symbol,side,pageIndex,pageSize,startTime='',endTime='',delegateType):
         '''
         查询计划历史委托
         method : GET
@@ -215,17 +214,18 @@ class OptionAPI(Client):
         else:
             return "pls check args"
 
+
     def get_order_history(self,symbol,pageIndex,pageSize,createDate):
-         '''
-         获取订单历史列表
-         method : GET
-         参数名	参数类型	是否必须	描述
-         :param symbol: String	是	合约code
-         :param pageIndex: String	是	 页码数，默认是第1页
-         :param pageSize: String	是	 每页条数
-         :param createDate:  int	是	天数必须小于或等于90
-         :return:
-         '''
+        '''
+        获取订单历史列表
+        method : GET
+        参数名	参数类型	是否必须	描述
+        :param symbol: String	是	合约code
+        :param pageIndex: String	是	 页码数，默认是第1页
+        :param pageSize: String	是	 每页条数
+        :param createDate:  int	是	天数必须小于或等于90
+        :return:
+        '''
          params = {}
          if symbol and pageIndex and pageSize and createDate:
              params["symbol"] = symbol
@@ -266,23 +266,5 @@ class OptionAPI(Client):
             params['symbol'] = symbol
             params["orderId"]=orderId
             return self._request_with_params(GET, API_OPTION_ORDER + "/fills", params, cursor=True)
-        else:
-            return "pls check args"
-
-
-    def close_track_order(self,symbol,trackingNo):
-        '''
-        下单平仓单(跟单）
-        method : POST
-        参数名	参数类型	是否必须	描述
-        :param symbol: String 是 合约名称
-        :param trackingNo: Long 是 追踪订单号
-        :return:
-        '''
-        params = {}
-        if symbol and trackingNo:
-            params['symbol'] = symbol
-            params["trackingNo"] = trackingNo
-            return self._request_with_params(POST,API_TRACE+'/closeTrackOrder',params,cursor=True)
         else:
             return "pls check args"

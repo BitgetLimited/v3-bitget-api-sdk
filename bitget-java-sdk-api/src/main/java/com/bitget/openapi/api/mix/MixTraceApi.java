@@ -46,4 +46,11 @@ public interface MixTraceApi {
     @GET("/api/mix/v1/trace/waitProfitDateList")
     Call<ResponseResult> waitProfitDateList(@Query("pageSize") int pageSize,
                                              @Query("pageNo") int pageNo);
+
+
+    @GET("/api/mix/v1/trace/followerHistoryOrders")
+    Call<ResponseResult> followerHistoryOrders(@Query("pageSize") String pageSize,
+                                            @Query("pageNo") String pageNo,
+                                            @Query("startTime") String startTime,
+                                            @Query("endTime") String endTime);
 }

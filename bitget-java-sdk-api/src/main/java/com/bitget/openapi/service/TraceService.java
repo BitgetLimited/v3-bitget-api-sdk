@@ -1,5 +1,6 @@
 package com.bitget.openapi.service;
 
+import com.alibaba.fastjson.JSONObject;
 import com.bitget.openapi.dto.request.CloseTrackOrderReq;
 import com.bitget.openapi.dto.response.CloseTrackOrderResult;
 import com.bitget.openapi.dto.response.ContractTrackOrderResult;
@@ -17,7 +18,7 @@ public interface TraceService {
      * @return
      * @throws IOException
      */
-    CloseTrackOrderResult closeTrackOrder( CloseTrackOrderReq orderReq) throws IOException;
+    JSONObject closeTrackOrder(CloseTrackOrderReq orderReq) throws IOException;
 
     /**
      *获取交易员当前带单list
@@ -26,7 +27,7 @@ public interface TraceService {
      * @param pageSize
      * @return
      */
-    List<ContractTrackOrderResult> currentTrack(String symbol, String pageIndex, String pageSize)throws IOException;
+    JSONObject currentTrack(String symbol, String pageIndex, String pageSize)throws IOException;
 
     /**
      * 获取历史带单列表
@@ -35,6 +36,6 @@ public interface TraceService {
      * @param createDate
      * @return
      */
-    List<HistoryTraceResult> historyTrack(String pageIndex, String pageSize, Integer createDate)throws IOException;
+    JSONObject historyTrack(String pageIndex, String pageSize, Integer createDate)throws IOException;
 
 }

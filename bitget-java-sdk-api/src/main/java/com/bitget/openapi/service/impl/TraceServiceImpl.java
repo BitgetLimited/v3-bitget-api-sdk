@@ -1,5 +1,6 @@
 package com.bitget.openapi.service.impl;
 
+import com.alibaba.fastjson.JSONObject;
 import com.bitget.openapi.api.TraceApi;
 import com.bitget.openapi.common.client.ApiClient;
 import com.bitget.openapi.dto.request.CloseTrackOrderReq;
@@ -19,17 +20,17 @@ public class TraceServiceImpl  implements TraceService {
     }
 
     @Override
-    public CloseTrackOrderResult closeTrackOrder(CloseTrackOrderReq orderReq) throws IOException {
+    public JSONObject closeTrackOrder(CloseTrackOrderReq orderReq) throws IOException {
         return traceApi.closeTrackOrder(orderReq).execute().body();
     }
 
     @Override
-    public List<ContractTrackOrderResult> currentTrack(String symbol, String pageIndex, String pageSize)throws IOException {
+    public JSONObject currentTrack(String symbol, String pageIndex, String pageSize)throws IOException {
         return traceApi.currentTrack(symbol,pageIndex,pageSize).execute().body();
     }
 
     @Override
-    public List<HistoryTraceResult> historyTrack(String pageIndex, String pageSize, Integer createDate) throws IOException{
+    public JSONObject historyTrack(String pageIndex, String pageSize, Integer createDate) throws IOException{
         return traceApi.historyTrack(pageIndex,pageSize,createDate).execute().body();
     }
 }

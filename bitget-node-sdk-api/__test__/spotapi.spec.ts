@@ -2,33 +2,34 @@ import * as BitgetApi from '../src';
 import Console from 'console';
 import { describe, test, expect } from '@jest/globals'
 import {toJsonString} from '../src/lib/util';
-import {BillsReq} from '../src/lib/model/spot/account/BillsReq';
-import {OrdersReq} from '../src/lib/model/spot/order/OrdersReq';
-import {BatchOrdersReq} from '../src/lib/model/spot/order/BatchOrdersReq';
-import {CancelOrderReq} from '../src/lib/model/spot/order/CancelOrderReq';
-import {CancelBatchOrderReq} from '../src/lib/model/spot/order/CancelBatchOrderReq';
-import {OrderInfoReq} from '../src/lib/model/spot/order/OrderInfoReq';
-import {OpenOrdersReq} from '../src/lib/model/spot/order/OpenOrdersReq';
-import {HistoryReq} from '../src/lib/model/spot/order/HistoryReq';
-import {FillsReq} from '../src/lib/model/spot/order/FillsReq';
+import {SpotBillsReq} from '../src';
+import {SpotOrdersReq} from '../src';
+import {SpotBatchOrdersReq} from '../src';
+import {SpotCancelOrderReq} from '../src';
+import {SpotCancelBatchOrderReq} from '../src';
+import {SpotOrderInfoReq} from '../src';
+import {SpotOpenOrdersReq} from '../src';
+import {SpotHistoryReq} from '../src';
+import {SpotFillsReq} from '../src';
+import {LOCAL} from '../src/lib/config';
 
 const apiKey = '';
 const secretKey = '';
 const passphrase = '';
-
+const locale = LOCAL.ZH_CH;
 describe('SpotMarketApiTest', () => {
-    const spotMarketApi = new BitgetApi.SpotMarketApi(apiKey,secretKey,passphrase);
+    const spotMarketApi = new BitgetApi.SpotMarketApi(apiKey,secretKey,passphrase,locale);
 
     test('fills',()=>{
         return spotMarketApi.fills('btcusdt_spbl','50').then((data)=>{
             Console.info(toJsonString(data));
         });
-    })
+    },30000)
     test('depth',()=>{
         return spotMarketApi.depth('umcbl','USDT','step0').then((data)=>{
             Console.info(toJsonString(data));
         });
-    })
+    },30000)
     test('ticker',()=>{
         return spotMarketApi.ticker('btcusdt_spbl').then((data)=>{
             Console.info(toJsonString(data));
@@ -48,7 +49,7 @@ describe('SpotMarketApiTest', () => {
 
 
 describe('SpotPublicApiTest', () => {
-    const spotPublicApi = new BitgetApi.SpotPublicApi(apiKey,secretKey,passphrase);
+    const spotPublicApi = new BitgetApi.SpotPublicApi(apiKey,secretKey,passphrase,locale);
 
     test('time',()=>{
         return spotPublicApi.time().then((data)=>{
@@ -74,7 +75,7 @@ describe('SpotPublicApiTest', () => {
 
 
 describe('SpotAccountApiTest', () => {
-    const spotAccountApi = new BitgetApi.SpotAccountApi(apiKey,secretKey,passphrase);
+    const spotAccountApi = new BitgetApi.SpotAccountApi(apiKey,secretKey,passphrase,locale);
 
     test('assets',()=>{
         return spotAccountApi.assets().then((data)=>{
@@ -82,7 +83,7 @@ describe('SpotAccountApiTest', () => {
         });
     })
     test('bills',()=>{
-        const billsReq = new BillsReq();
+        const billsReq = new SpotBillsReq();
         return spotAccountApi.bills(billsReq).then((data)=>{
             Console.info(toJsonString(data));
         });
@@ -95,10 +96,10 @@ describe('SpotAccountApiTest', () => {
 });
 
 describe('SpotOrderApiTest', () => {
-    const spotOrderApi = new BitgetApi.SpotOrderApi(apiKey,secretKey,passphrase);
+    const spotOrderApi = new BitgetApi.SpotOrderApi(apiKey,secretKey,passphrase,locale);
 
     test('orders',()=>{
-        const ordersReq = new OrdersReq();
+        const ordersReq = new SpotOrdersReq();
         ordersReq.symbol = 'bftusdt_spbl';
         ordersReq.price = '2.68222';
         ordersReq.quantity = '10';
@@ -110,8 +111,8 @@ describe('SpotOrderApiTest', () => {
         });
     })
     test('batchOrders',()=>{
-        const batchOrdersReq = new BatchOrdersReq();
-        const orderReqOne = new OrdersReq();
+        const batchOrdersReq = new SpotBatchOrdersReq();
+        const orderReqOne = new SpotOrdersReq();
         orderReqOne.price = '2.68111';
         orderReqOne.quantity = '10';
         orderReqOne.side = 'buy';
@@ -119,7 +120,7 @@ describe('SpotOrderApiTest', () => {
         orderReqOne.force = 'normal';
         orderReqOne.clientOrderId = Date.now()+'';
 
-        const orderReqTow = new OrdersReq();
+        const orderReqTow = new SpotOrdersReq();
         orderReqTow.price = '2.68222';
         orderReqTow.quantity = '10';
         orderReqTow.side = 'buy';
@@ -128,7 +129,7 @@ describe('SpotOrderApiTest', () => {
         orderReqTow.clientOrderId = Date.now()+'';
 
 
-        const orderList = new Array<OrdersReq>();
+        const orderList = new Array<SpotOrdersReq>();
         orderList.push(orderReqOne);
         orderList.push(orderReqTow);
 
@@ -139,7 +140,7 @@ describe('SpotOrderApiTest', () => {
         });
     })
     test('cancelOrder',()=>{
-        const cancelOrderReq = new CancelOrderReq();
+        const cancelOrderReq = new SpotCancelOrderReq();
         cancelOrderReq.orderId = '';
         cancelOrderReq.symbol = 'bftusdt_spbl';
         return spotOrderApi.cancelOrder(cancelOrderReq).then((data)=>{
@@ -147,7 +148,7 @@ describe('SpotOrderApiTest', () => {
         });
     })
     test('cancelBatchOrder',()=>{
-        const cancelBatchOrderReq = new CancelBatchOrderReq();
+        const cancelBatchOrderReq = new SpotCancelBatchOrderReq();
         cancelBatchOrderReq.symbol = 'bftusdt_spbl';
         const orderIds = new Array<string>();
         orderIds.push('');
@@ -158,14 +159,14 @@ describe('SpotOrderApiTest', () => {
         });
     })
     test('orderInfo',()=>{
-        const orderInfoReq = new OrderInfoReq();
+        const orderInfoReq = new SpotOrderInfoReq();
         orderInfoReq.orderId = '123456';
         return spotOrderApi.orderInfo(orderInfoReq).then((data)=>{
             Console.info(toJsonString(data));
         });
     })
     test('openOrders',()=>{
-        const openOrdersReq = new OpenOrdersReq();
+        const openOrdersReq = new SpotOpenOrdersReq();
         openOrdersReq.symbol = 'bftusdt_spbl';
         return spotOrderApi.openOrders(openOrdersReq).then((data)=>{
             Console.info(toJsonString(data));
@@ -173,7 +174,7 @@ describe('SpotOrderApiTest', () => {
     })
 
     test('history',()=>{
-        const historyReq = new HistoryReq();
+        const historyReq = new SpotHistoryReq();
         historyReq.symbol = 'bftusdt_spbl';
         return spotOrderApi.history(historyReq).then((data)=>{
             Console.info(toJsonString(data));
@@ -181,7 +182,7 @@ describe('SpotOrderApiTest', () => {
     })
 
     test('fills',()=>{
-        const fillsReq = new FillsReq();
+        const fillsReq = new SpotFillsReq();
         fillsReq.symbol = 'bftusdt_spbl';
         fillsReq.orderId = '791113184589549568';
         return spotOrderApi.fills(fillsReq).then((data)=>{

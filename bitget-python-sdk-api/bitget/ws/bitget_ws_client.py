@@ -1,12 +1,15 @@
 #!/usr/bin/python
 import json
+import math
 import threading
 import time
-from datetime import datetime
+import traceback
 from threading import Timer
+from zlib import crc32
 
 import websocket
 
+from bitget.consts import GET, REQUEST_PATH
 from bitget.ws.utils import ws_url
 from bitget.ws.utils import sign_utils
 
@@ -39,6 +42,7 @@ class BitgetWsClient:
         self.__error_listener = handel_error
         self.__url = url
         self.__scribe_map = {}
+        self.__allbooks_map = {}
 
     def build(self):
         self.__ws_client = self.__init_client()
@@ -95,7 +99,7 @@ class BitgetWsClient:
         sign_utils.check_none(self.__api_secret_key, "api secret key")
         sign_utils.check_none(self.__passphrase, "passphrase")
         timestamp = int(round(time.time()))
-        sign = sign_utils.sign(sign_utils.pre_hash(timestamp, ws_url.GET, ws_url.REQUEST_PATH), self.__api_secret_key)
+        sign = sign_utils.sign(sign_utils.pre_hash(timestamp, GET, REQUEST_PATH), self.__api_secret_key)
         ws_login_req = WsLoginReq(self.__api_key, self.__passphrase, str(timestamp), sign)
         self.send_message(WS_OP_LOGIN, [ws_login_req])
         print("logging in......")
@@ -132,6 +136,20 @@ class BitgetWsClient:
 
         self.send_message(WS_OP_SUBSCRIBE, channels)
 
+    def unsubscribe(self, channels):
+        try:
+            for chanel in channels:
+                if chanel in self.__scribe_map:
+                    del self.__scribe_map[chanel]
+
+            for channel in channels:
+                if chanel in self.__all_suribe:
+                    self.__all_suribe.remove(channel)
+
+            self.send_message(WS_OP_UNSUBSCRIBE, channels)
+        except Exception as e:
+            pass
+
     def __on_open(self, ws):
         print('connection is success....')
         self.__connection = True
@@ -152,9 +170,11 @@ class BitgetWsClient:
             print("login msg:" + message)
             self.__login_status = True
             return
-
         listenner = None
         if "data" in json_obj:
+            if not self.__check_sum(json_obj):
+                return
+
             listenner = self.get_listener(json_obj)
 
         if listenner:
@@ -162,6 +182,9 @@ class BitgetWsClient:
             return
 
         self.__listener(message)
+
+    def __dict_books_info(self, dict):
+        return BooksInfo(dict['asks'], dict['bids'], dict['checksum'])
 
     def __dict_to_subscribe_req(self, dict):
         return SubscribeReq(dict['instType'], dict['channel'], dict['instId'])
@@ -189,16 +212,107 @@ class BitgetWsClient:
             self.__re_connect()
 
     def __re_connect(self):
-        #重连
+        # 重连
         self.__reconnect_status = True
         print("start reconnection ...")
         self.build()
+        self.subscribe(self.__all_suribe)
         pass
 
     def __close(self):
-        self.__login_status=False
+        self.__login_status = False
         self.__connection = False
         self.__ws_client.close()
+
+    def __check_sum(self, json_obj):
+        # noinspection PyBroadException
+        try:
+            if "arg" not in json_obj or "action" not in json_obj:
+                return True
+            arg = str(json_obj.get('arg')).replace("\'", "\"")
+            action = str(json_obj.get('action')).replace("\'", "\"")
+            data = str(json_obj.get('data')).replace("\'", "\"")
+
+            subscribe_req = json.loads(arg, object_hook=self.__dict_to_subscribe_req)
+
+            if subscribe_req.channel != "books":
+                return True
+
+            books_info = json.loads(data, object_hook=self.__dict_books_info)[0]
+
+            if action == "snapshot":
+                self.__allbooks_map[subscribe_req] = books_info
+                return True
+            if action == "update":
+                all_books = self.__allbooks_map[subscribe_req]
+                if all_books is None:
+                    return False
+
+                all_books = all_books.merge(books_info)
+                check_sum = all_books.check_sum(books_info.checksum)
+                if not check_sum:
+                    self.unsubscribe([subscribe_req])
+                    self.subscribe([subscribe_req])
+                    return False
+                self.__allbooks_map[subscribe_req] = all_books
+        except Exception as e:
+            msg = traceback.format_exc()
+            print(msg)
+
+        return True
+
+
+class BooksInfo:
+    def __init__(self, asks, bids, checksum):
+        self.asks = asks
+        self.bids = bids
+        self.checksum = checksum
+
+    def merge(self, book_info):
+        self.asks = self.innerMerge(self.asks, book_info.asks, False)
+        self.bids = self.innerMerge(self.bids, book_info.bids, True)
+        return self
+
+    def innerMerge(self, all_list, update_list, is_reverse):
+        price_and_value = {}
+        for v in all_list:
+            price_and_value[v[0]] = v
+
+        for v in update_list:
+            if v[1] == "0":
+                del price_and_value[v[0]]
+                continue
+            price_and_value[v[0]] = v
+
+        keys = sorted(price_and_value.keys(), reverse=is_reverse)
+
+        result = []
+
+        for i in keys:
+            result.append(price_and_value[i])
+
+        return result
+
+    def check_sum(self, new_check_sum):
+        crc32str = ''
+        for x in range(25):
+            if self.bids[x] is not None:
+                crc32str = crc32str + self.bids[x][0] + ":" + self.bids[x][1] + ":"
+
+            if self.asks[x] is not None:
+                crc32str = crc32str + self.asks[x][0] + ":" + self.asks[x][1] + ":"
+
+        crc32str = crc32str[0:len(crc32str) - 1]
+        print(crc32str)
+        merge_num = crc32(bytes(crc32str, encoding="utf8"))
+        print("start checknum mergeVal:" + str(merge_num) + ",checkVal:" + str(new_check_sum)+",checkSin:"+str(self.__signed_int(merge_num)))
+        return self.__signed_int(merge_num) == new_check_sum
+
+    def __signed_int(self, checknum):
+        int_max = math.pow(2, 31) - 1
+        if checknum > int_max:
+            return checknum - int_max * 2 - 2
+        return checknum
 
 class SubscribeReq:
 

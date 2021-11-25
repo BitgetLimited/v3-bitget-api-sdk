@@ -17,6 +17,7 @@
  *************************************************************************/
 package com.bitget.openapi.service;
 
+import com.alibaba.fastjson.JSONObject;
 import com.bitget.openapi.dto.response.*;
 
 import java.io.IOException;
@@ -36,7 +37,7 @@ public interface MarketService {
      * @return
      * @throws IOException
      */
-    ServerTime getTime() throws IOException;
+    JSONObject getTime() throws IOException;
 
     /**
      * 获取全部ticker信息
@@ -44,7 +45,7 @@ public interface MarketService {
      * @return
      * @throws IOException
      */
-    List<ContractInfo> getContractsApi() throws IOException;
+    JSONObject getContractsApi() throws IOException;
 
 
     /**
@@ -55,7 +56,7 @@ public interface MarketService {
      * @return
      * @throws IOException
      */
-    Depth getDepthApi(String symbol, String size) throws IOException;
+    JSONObject getDepthApi(String symbol, String size) throws IOException;
 
     /**
      * 获取全部ticker信息
@@ -63,7 +64,7 @@ public interface MarketService {
      * @return
      * @throws IOException
      */
-    List<Ticker> getTickersApi() throws IOException;
+    JSONObject getTickersApi() throws IOException;
 
     /**
      * 获取某个ticker信息
@@ -72,7 +73,7 @@ public interface MarketService {
      * @return
      * @throws IOException
      */
-    Ticker getTicker(String symbol) throws IOException;
+    JSONObject getTicker(String symbol) throws IOException;
 
     /**
      * 获取成交数据
@@ -82,7 +83,7 @@ public interface MarketService {
      * @return
      * @throws IOException
      */
-    List<Trades> getTrades(String symbol, String limit) throws IOException;
+    JSONObject getTrades(String symbol, String limit) throws IOException;
 
     /**
      * 获取K线数据
@@ -93,7 +94,7 @@ public interface MarketService {
      * @param granularity
      * @return
      */
-    List<Object[]> getCandles(String symbol, String start, String end,Long startTime,Long endTime, String granularity) throws IOException;
+    JSONObject getCandles(String symbol, String start, String end,Long startTime,Long endTime, String granularity) throws IOException;
 
     /**
      * 获取指数信息
@@ -101,7 +102,7 @@ public interface MarketService {
      * @param symbol
      * @return
      */
-    Index getIndex(String symbol) throws IOException;
+    JSONObject getIndex(String symbol) throws IOException;
 
     /**
      * 获取平台总持仓量
@@ -109,7 +110,7 @@ public interface MarketService {
      * @param symbol
      * @return
      */
-    OpenInterest getOpenInterestApi(String symbol) throws IOException;
+    JSONObject getOpenInterestApi(String symbol) throws IOException;
 
     /**
      * 获取合约最高限价和最低限价
@@ -117,7 +118,7 @@ public interface MarketService {
      * @param symbol
      * @return
      */
-    PriceLimit getPriceLimitApi(String symbol) throws IOException;
+    JSONObject getPriceLimitApi(String symbol) throws IOException;
 
     /**
      * 获取合约下一次结算时间
@@ -126,7 +127,7 @@ public interface MarketService {
      * @return
      * @throws IOException
      */
-    FundingTime getFundingTimeApi(String symbol) throws IOException;
+    JSONObject getFundingTimeApi(String symbol) throws IOException;
     /**
      * 获取合约历史资金费率-----新的接口
      * @param symbol
@@ -135,7 +136,7 @@ public interface MarketService {
      * @return
      * @throws IOException
      */
-    List<HistoricalFundingRate>getNewHistoricalFundingRateApi(String symbol, String pageIndex, String pageSize) throws IOException;
+    JSONObject getNewHistoricalFundingRateApi(String symbol, String pageIndex, String pageSize) throws IOException;
 
     /**
      * 获取合约标记价格
@@ -143,7 +144,7 @@ public interface MarketService {
      * @param symbol
      * @return
      */
-    MarkPrice getMarkPriceApi(String symbol) throws IOException;
+    JSONObject getMarkPriceApi(String symbol) throws IOException;
 
     /**
      * 可开张数
@@ -154,5 +155,5 @@ public interface MarketService {
      * @param openPrice    开仓价格
      * @return
      */
-    String calOpenCount(String symbol, String amount, String leverage, String openPrice) throws IOException;
+    JSONObject calOpenCount(String symbol, String amount, String leverage, String openPrice) throws IOException;
 }

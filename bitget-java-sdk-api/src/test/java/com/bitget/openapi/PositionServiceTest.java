@@ -1,6 +1,7 @@
 package com.bitget.openapi;
 
 import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
 import com.bitget.openapi.dto.request.ChangeHoldModel;
 import com.bitget.openapi.dto.response.AllPosition;
 import com.bitget.openapi.dto.response.FVirtualCaptialOperator;
@@ -19,24 +20,24 @@ public class PositionServiceTest extends BaseTest {
 
     @Test
     public void getAllPosition() throws IOException {
-        List<AllPosition> result = bitgetRestClient.contract().bitget().position().getAllPosition();
+        JSONObject result = bitgetRestClient.contract().bitget().position().getAllPosition();
         System.out.println(JSON.toJSONString(result));
     }
 
     @Test
     public void getSinglePosition() throws IOException {
-        AllPosition result = bitgetRestClient.contract().bitget().position().getSinglePosition(symbol);
+        JSONObject result = bitgetRestClient.contract().bitget().position().getSinglePosition(symbol);
         System.out.println(JSON.toJSONString(result));
     }
     @Test
     public  void  virtualCapital()throws  IOException{
-        List<FVirtualCaptialOperator> capital = bitgetRestClient.contract().bitget().position().virtualCapital("usdt", "14", 10, 398526, null);
+        JSONObject capital = bitgetRestClient.contract().bitget().position().virtualCapital("usdt", "14", 10, 398526, null);
         System.out.println(JSON.toJSON(capital));
     }
     @Test
     public  void changeHoldMode()throws  IOException{
         ChangeHoldModel holdModel= ChangeHoldModel.builder().holdModel(1).symbol(symbol).build();
-        HoldModelDto dto = bitgetRestClient.contract().bitget().position().changeHoldMode(holdModel);
+        JSONObject dto = bitgetRestClient.contract().bitget().position().changeHoldMode(holdModel);
         System.out.println(JSON.toJSON(dto));
     }
 }

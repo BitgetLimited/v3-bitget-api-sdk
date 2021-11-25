@@ -23,7 +23,4 @@ class SubscribeReq
     public function toString():string{
         return $this->instType.",".$this->channel.",".$this->instId;
     }
-
-
-
 }

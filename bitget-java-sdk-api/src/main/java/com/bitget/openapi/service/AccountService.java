@@ -1,6 +1,7 @@
 package com.bitget.openapi.service;
 
 
+import com.alibaba.fastjson.JSONObject;
 import com.bitget.openapi.dto.request.AdjustMarginReq;
 import com.bitget.openapi.dto.request.AutoAppendMarginReq;
 import com.bitget.openapi.dto.request.ChangeLeverageReq;
@@ -22,7 +23,7 @@ public interface AccountService {
      * @return
      * @throws IOException
      */
-     List<AccountInfo> accounts() throws IOException;
+    JSONObject accounts() throws IOException;
 
     /**
      * 单个合约账户信息
@@ -30,7 +31,7 @@ public interface AccountService {
      * @return
      * @throws IOException
      */
-    AccountInfo getAccount(String symbol) throws IOException;
+    JSONObject getAccount(String symbol) throws IOException;
 
     /**
      * 获取单个合约的用户配置
@@ -38,7 +39,7 @@ public interface AccountService {
      * @return
      * @throws IOException
      */
-    AccountSetting settings(String symbol) throws IOException;
+    JSONObject settings(String symbol) throws IOException;
 
     /**
      * 调整杠杆
@@ -46,7 +47,7 @@ public interface AccountService {
      * @return
      * @throws IOException
      */
-    ChangeLeverageResult leverage( ChangeLeverageReq changeLeverageReq) throws IOException;
+    JSONObject leverage( ChangeLeverageReq changeLeverageReq) throws IOException;
 
     /**
      * 列出主账户资产流水
@@ -54,7 +55,7 @@ public interface AccountService {
      * @return
      * @throws IOException
      */
-    List<LedgerResult> getLedger(String symbol,String from,
+    JSONObject getLedger(String symbol,String from,
                                  String to,String limit, String startTime,
                                  String endTime) throws IOException;
 
@@ -64,7 +65,7 @@ public interface AccountService {
      * @return
      * @throws IOException
      */
-    List<LedgerResult> ledgerMargin(String symbol, String from,
+    JSONObject ledgerMargin(String symbol, String from,
                                     String to,String limit, String startTime,
                                     String endTime) throws IOException;
 
@@ -74,12 +75,12 @@ public interface AccountService {
      * @return
      * @throws IOException
      */
-    AdjustMarginResult adjustMargin(AdjustMarginReq adjustMarginReq) throws IOException;
+    JSONObject adjustMargin(AdjustMarginReq adjustMarginReq) throws IOException;
     /**
      * 自动追加保证金
      * @param autoAppendMarginReq
      * @return
      * @throws IOException
      */
-    AutoAppendMarginResult modifyAutoAppendMargin(AutoAppendMarginReq autoAppendMarginReq) throws IOException;
+    JSONObject modifyAutoAppendMargin(AutoAppendMarginReq autoAppendMarginReq) throws IOException;
 }
