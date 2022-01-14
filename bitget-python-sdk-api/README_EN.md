@@ -6,7 +6,7 @@ A Python sdk for bitget exchange API
 <a href="https://github.com/BitgetLimited/v3-bitget-api-sdk/blob/master/bitget-python-sdk-api/README.md">中文</a>
 </p>
 
-1. api documents： https://bitgetlimited.github.io/apidoc/zh/swap/#25e54147de
+1. api documents： https://bitgetlimited.github.io/apidoc/zh/mix/#25e54147de
 
 
 2. Download code and version requirements

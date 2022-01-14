@@ -6,7 +6,7 @@ A Python sdk for bitget exchange API
 <a href="https://github.com/BitgetLimited/v3-bitget-api-sdk/blob/master/bitget-python-sdk-api/README_EN.md">English</a>
 </p>
 
-1. api文档地址： https://bitgetlimited.github.io/apidoc/zh/swap/#25e54147de
+1. api文档地址： https://bitgetlimited.github.io/apidoc/zh/mix/
 
 2. 下载代码及版本要求
 - python版本3.6+
