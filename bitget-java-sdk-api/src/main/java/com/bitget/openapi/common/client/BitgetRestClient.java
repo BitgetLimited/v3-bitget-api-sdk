@@ -1,6 +1,5 @@
 package com.bitget.openapi.common.client;
 
-import com.bitget.openapi.ContractApiFacade;
 import com.bitget.openapi.MixApiFacade;
 import com.bitget.openapi.SpotApiFacade;
 import com.bitget.openapi.common.constant.HttpHeader;
@@ -34,15 +33,6 @@ public class BitgetRestClient {
 
     public static Builder builder() {
         return new Builder();
-    }
-
-    /**
-     * Contract REST API Endpoint
-     *
-     * @return ContractApiFacade
-     */
-    public ContractApiFacade contract() {
-        return new ContractApiFacade(apiClient);
     }
 
     /**
