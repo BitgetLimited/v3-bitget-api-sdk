@@ -10,7 +10,6 @@ from zlib import crc32
 import websocket
 
 from bitget.consts import GET, REQUEST_PATH
-from bitget.ws.utils import ws_url
 from bitget.ws.utils import sign_utils
 
 WS_OP_LOGIN = 'login'
