@@ -128,3 +128,21 @@ class AccountApi(Client):
             return self._request_with_params(GET, MIX_ACCOUNT_V1_URL + '/accounts', params)
         else:
             return "pls check args"
+
+    '''
+    获取账户流水信息列表
+    :return:
+    '''
+    def accountBill(self, symbol,marginCoin,startTime,endTime,lastEndId = '',pageSize=20,next=False):
+        params = {}
+        if symbol and marginCoin and startTime and endTime:
+            params['symbol'] = symbol
+            params['marginCoin'] = marginCoin
+            params['startTime'] = startTime
+            params['endTime'] = endTime
+            params['lastEndId'] = lastEndId
+            params['pageSize'] = pageSize
+            params['next'] = next
+            return self._request_with_params(GET, MIX_ACCOUNT_V1_URL + '/accountBill', params)
+        else:
+            return "pls check args"
