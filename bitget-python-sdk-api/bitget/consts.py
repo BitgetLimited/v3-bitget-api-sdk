@@ -33,6 +33,7 @@ SPOT_PUBLIC_V1_URL = '/api/spot/v1/public'
 SPOT_MARKET_V1_URL = '/api/spot/v1/market'
 SPOT_ACCOUNT_V1_URL = '/api/spot/v1/account'
 SPOT_ORDER_V1_URL = '/api/spot/v1/trade'
+SPOT_WALLET_V1_URL = '/api/spot/v1/wallet'
 
 # ########################################
 # ##############【mix url】################
