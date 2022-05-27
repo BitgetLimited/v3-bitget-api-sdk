@@ -60,4 +60,9 @@ public class MixTraceServiceImpl implements MixTraceService {
     public ResponseResult followerHistoryOrders(String pageSize, String pageNo, String startTime, String endTime) throws IOException {
         return mixTraceApi.followerHistoryOrders(pageSize,pageNo,startTime,endTime).execute().body();
     }
+
+    @Override
+    public ResponseResult followerOpenOrders(String symbol,String productType,int pageSize,int pageNo) throws IOException {
+        return mixTraceApi.followerOpenOrders(symbol, productType, pageSize, pageNo).execute().body();
+    }
 }

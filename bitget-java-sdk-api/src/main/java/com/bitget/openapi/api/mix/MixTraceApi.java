@@ -53,4 +53,10 @@ public interface MixTraceApi {
                                             @Query("pageNo") String pageNo,
                                             @Query("startTime") String startTime,
                                             @Query("endTime") String endTime);
+
+    @GET("/api/mix/v1/trace/followerOrder")
+    Call<ResponseResult> followerOpenOrders(@Query("symbol") String symbol,
+                                            @Query("productType") String productType,
+                                            @Query("pageSize") int pageSize,
+                                            @Query("pageNo") int pageNo);
 }
