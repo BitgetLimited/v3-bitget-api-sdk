@@ -30,7 +30,7 @@ class OrderApi(Client):
             params["side"] = side
             params["orderType"] = orderType
             params["timeInForceValue"] = timeInForceValue
-            params["clientOrderId"] = clientOrderId
+            params["clientOid"] = clientOrderId
             params["presetTakeProfitPrice"] = presetTakeProfitPrice
             params["presetStopLossPrice"] = presetStopLossPrice
             return self._request_with_params(POST, MIX_ORDER_V1_URL + '/placeOrder', params)
