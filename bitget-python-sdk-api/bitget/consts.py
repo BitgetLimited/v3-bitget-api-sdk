@@ -52,3 +52,5 @@ LOGIN = 'login'
 
 GET = 'GET'
 REQUEST_PATH = '/user/verify'
+
+SERVER_TIMESTAMP_URL='/api/spot/v1/public/time'
