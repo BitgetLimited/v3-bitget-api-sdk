@@ -63,8 +63,8 @@ class Client(object):
             if cursor:
                 r = dict()
                 try:
-                    r['before'] = res_header['OK-BEFORE']
-                    r['after'] = res_header['OK-AFTER']
+                    r['before'] = res_header['BEFORE']
+                    r['after'] = res_header['AFTER']
                 except:
                     pass
                 return response.json(), r
