@@ -1,7 +1,7 @@
 import hmac
 import base64
 import time
-# from . import consts as c
+from . import consts as c
 
 
 def sign(message, secret_key):
