@@ -17,7 +17,7 @@ func (p *SpotOrderClient) Init() *SpotOrderClient {
 }
 
 /**
-获取账单流水
+Get the bill flow
 */
 func (p *SpotOrderClient) Orders(params order.OrdersReq) (string, error) {
 

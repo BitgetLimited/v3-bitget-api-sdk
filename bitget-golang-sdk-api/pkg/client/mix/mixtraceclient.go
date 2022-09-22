@@ -17,7 +17,7 @@ func (p *MixTraceClient) Init() *MixTraceClient {
 }
 
 /**
-交易员 平仓
+Dealers close positions
 */
 func (p *MixTraceClient) CloseTrackOrder(params trace.CloseTrackOrderReq) (string, error) {
 	postBody, jsonErr := internal.ToJson(params)
@@ -35,7 +35,7 @@ func (p *MixTraceClient) CloseTrackOrder(params trace.CloseTrackOrderReq) (strin
 }
 
 /**
-交易员 获取当前带单
+The trader obtains the current order
 */
 func (p *MixTraceClient) CurrentTrack(symbol string, productType string, pageSize string, pageNo string) (string, error) {
 
@@ -58,7 +58,7 @@ func (p *MixTraceClient) CurrentTrack(symbol string, productType string, pageSiz
 }
 
 /**
-交易员 获取历史带单
+The trader obtains the historical order
 */
 func (p *MixTraceClient) HistoryTrack(startTime string, endTime string, pageSize string, pageNo string) (string, error) {
 
@@ -81,7 +81,7 @@ func (p *MixTraceClient) HistoryTrack(startTime string, endTime string, pageSize
 }
 
 /**
-交易员 分润汇总
+Summary of traders' profit sharing
 */
 func (p *MixTraceClient) Summary() (string, error) {
 
@@ -95,7 +95,7 @@ func (p *MixTraceClient) Summary() (string, error) {
 }
 
 /**
-交易员 分润汇总(按结算币种)
+Summary of traders' profit sharing (by settlement currency)
 */
 func (p *MixTraceClient) ProfitSettleTokenIdGroup() (string, error) {
 
@@ -109,7 +109,7 @@ func (p *MixTraceClient) ProfitSettleTokenIdGroup() (string, error) {
 }
 
 /**
-交易员 历史分润
+Historical profit sharing of traders
 */
 func (p *MixTraceClient) ProfitDateGroupList(pageSize string, pageNo string) (string, error) {
 
@@ -129,7 +129,7 @@ func (p *MixTraceClient) ProfitDateGroupList(pageSize string, pageNo string) (st
 }
 
 /**
-交易员 历史分润明细
+Historical profit distribution details of traders
 */
 func (p *MixTraceClient) ProfitDateList(marginCoin string, date string, pageSize string, pageNo string) (string, error) {
 
@@ -152,7 +152,7 @@ func (p *MixTraceClient) ProfitDateList(marginCoin string, date string, pageSize
 }
 
 /**
-交易员 待分润明细
+Details of traders to be distributed
 */
 func (p *MixTraceClient) WaitProfitDateList(pageSize string, pageNo string) (string, error) {
 

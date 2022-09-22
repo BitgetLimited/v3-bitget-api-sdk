@@ -16,7 +16,7 @@ func (p *MixMarketClient) Init() *MixMarketClient {
 }
 
 /**
-获取合约信息
+Get contract information
 */
 func (p *MixMarketClient) Contracts(productType string) (string, error) {
 
@@ -32,7 +32,7 @@ func (p *MixMarketClient) Contracts(productType string) (string, error) {
 }
 
 /**
-获取深度数据
+Get depth data
 */
 func (p *MixMarketClient) Depth(symbol string, limit string) (string, error) {
 
@@ -48,7 +48,7 @@ func (p *MixMarketClient) Depth(symbol string, limit string) (string, error) {
 }
 
 /**
-获取全部币对 ticker 行情
+Get all currency pair ticker quotations
 */
 func (p *MixMarketClient) Tickers(productType string) (string, error) {
 
@@ -63,7 +63,7 @@ func (p *MixMarketClient) Tickers(productType string) (string, error) {
 }
 
 /**
-获取某个ticker信息
+Get a ticket information
 */
 func (p *MixMarketClient) Ticker(symbol string) (string, error) {
 
@@ -78,7 +78,7 @@ func (p *MixMarketClient) Ticker(symbol string) (string, error) {
 }
 
 /**
-获取成交数据
+Obtain transaction data
 */
 func (p *MixMarketClient) Fills(symbol string, limit string) (string, error) {
 
@@ -94,7 +94,7 @@ func (p *MixMarketClient) Fills(symbol string, limit string) (string, error) {
 }
 
 /**
-获取K线数据
+Obtain K line data
 */
 func (p *MixMarketClient) Candles(symbol string, granularity string, startTime string, endTime string) (string, error) {
 
@@ -112,7 +112,7 @@ func (p *MixMarketClient) Candles(symbol string, granularity string, startTime s
 }
 
 /**
-获取币种指数。
+Get currency index.
 */
 func (p *MixMarketClient) Index(symbol string) (string, error) {
 
@@ -127,7 +127,7 @@ func (p *MixMarketClient) Index(symbol string) (string, error) {
 }
 
 /**
-获取合约下一次结算时间
+Get the next settlement time of the contract
 */
 func (p *MixMarketClient) FundingTime(symbol string) (string, error) {
 
@@ -142,7 +142,7 @@ func (p *MixMarketClient) FundingTime(symbol string) (string, error) {
 }
 
 /**
-获取合约标记价格
+Get contract tag price
 */
 func (p *MixMarketClient) MarkPrice(symbol string) (string, error) {
 
@@ -157,7 +157,7 @@ func (p *MixMarketClient) MarkPrice(symbol string) (string, error) {
 }
 
 /**
-获取历史资金费率
+Get historical fund rate
 */
 func (p *MixMarketClient) HistoryFundRate(symbol string, pageSize string, pageNo string, nextPage string) (string, error) {
 
@@ -181,7 +181,7 @@ func (p *MixMarketClient) HistoryFundRate(symbol string, pageSize string, pageNo
 }
 
 /**
-获取当前资金费率
+Get the current fund rate
 */
 func (p *MixMarketClient) CurrentFundRate(symbol string) (string, error) {
 
@@ -196,7 +196,7 @@ func (p *MixMarketClient) CurrentFundRate(symbol string) (string, error) {
 }
 
 /**
-获取平台总持仓量
+Obtain the total position of the platform
 */
 func (p *MixMarketClient) OpenInterest(symbol string) (string, error) {
 
