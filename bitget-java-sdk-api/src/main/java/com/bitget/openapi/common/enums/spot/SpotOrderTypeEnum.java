@@ -6,12 +6,12 @@ import lombok.Getter;
 public enum SpotOrderTypeEnum {
 
     /**
-     * 限价单
+     * Price limit order
      */
     LIMIT("limit"),
 
     /**
-     * 市价单
+     * Market price list
      */
     MARKET("market"),
     ;

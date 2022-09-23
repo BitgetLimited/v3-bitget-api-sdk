@@ -10,8 +10,9 @@ import lombok.Getter;
 @Getter
 public enum MixMarginModeEnum {
 
-    CROSSED( "crossed"),// 全仓
-    FIXED( "fixed"); // 逐仓
+    CROSSED( "crossed"),// Full warehouse
+
+    FIXED( "fixed"); // Warehouse by warehouse
 
     private final String code;
 

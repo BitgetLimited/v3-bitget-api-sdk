@@ -7,8 +7,9 @@ import lombok.Getter;
 @Getter
 public enum MixHoldSideEnum {
 
-    LONG("long"),     //多仓
-    SHORT("short"),   //空仓
+    LONG("long"),     //Multi warehouse
+
+    SHORT("short"),   //Empty position
     ;
 
     private final String code;

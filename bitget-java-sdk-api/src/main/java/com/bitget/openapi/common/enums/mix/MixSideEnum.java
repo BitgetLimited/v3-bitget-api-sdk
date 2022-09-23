@@ -8,19 +8,19 @@ import lombok.Getter;
 @Getter
 public enum MixSideEnum {
     /**
-     * 开多
+     * Kaiduo
      */
     OPEN_LONG("open_long"),
     /**
-     * 开空
+     * Open empty
      */
     OPEN_SHORT("open_short"),
     /**
-     * 平多
+     * Pingduo
      */
     CLOSE_LONG("close_long"),
     /**
-     * 平空
+     * Flat air
      */
     CLOSE_SHORT("close_short"),
     ;

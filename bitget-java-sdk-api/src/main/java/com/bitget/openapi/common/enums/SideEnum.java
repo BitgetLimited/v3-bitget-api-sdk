@@ -3,7 +3,7 @@ package com.bitget.openapi.common.enums;
 import lombok.AllArgsConstructor;
 
 /**
- * (下单方向： 1:开多 2:开空 3:平多 4:平空 )
+ * (Single direction: 1: open much 2: open empty 3: level much 4: level empty )
  *
  * @author jian.li
  * @create 2020-06-02 10:46
@@ -11,19 +11,19 @@ import lombok.AllArgsConstructor;
 @AllArgsConstructor
 public enum SideEnum {
     /**
-     * 开多
+     * open much
      */
     OPEN_LONG("1"),
     /**
-     * 开空
+     * open empty
      */
     OPEN_SHORT("2"),
     /**
-     * 平多
+     * level much
      */
     CLOSE_LONG("3"),
     /**
-     * 平空
+     * level empty
      */
     CLOSE_SHORT("4"),
     ;
@@ -31,7 +31,7 @@ public enum SideEnum {
     private final String side;
 
     /**
-     * 判断是否为开仓
+     * Judge whether it is open position
      *
      * @param side
      * @return
@@ -46,7 +46,7 @@ public enum SideEnum {
     }
 
     /**
-     * 判断是否为平仓
+     * Judge whether the position is closed
      *
      * @param side
      * @return

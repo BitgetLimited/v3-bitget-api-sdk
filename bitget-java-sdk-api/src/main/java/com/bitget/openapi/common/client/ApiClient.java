@@ -22,7 +22,7 @@ import java.util.concurrent.TimeUnit;
 public class ApiClient {
     private final Retrofit retrofit;
     /**
-     * 超时时间
+     * parameter
      */
     private final ClientParameter parameter;
 
@@ -49,7 +49,7 @@ public class ApiClient {
     }
 
     /**
-     * 签名过滤器
+     * Signature Filter
      */
     private class SignInterceptor implements Interceptor {
 
@@ -101,7 +101,7 @@ public class ApiClient {
     }
 
     /**
-     * http 请求返回状态过滤器
+     * Http request return status filter
      */
     private class HttpStatusInterceptor implements Interceptor {
         @Override

@@ -1,7 +1,7 @@
 package com.bitget.openapi.common.enums;
 
 /**
- * ( 匹配类型 )
+ * ( Match Type )
  *
  * @author jian.li
  * @create 2020-06-02 10:51

@@ -6,12 +6,12 @@ import lombok.Getter;
 public enum OrderSideEnum {
 
     /**
-     * 买单
+     * check
      */
     BUY("buy"),
 
     /**
-     * 卖单
+     * vouchers of sale
      */
     SELL("sell"),
     ;

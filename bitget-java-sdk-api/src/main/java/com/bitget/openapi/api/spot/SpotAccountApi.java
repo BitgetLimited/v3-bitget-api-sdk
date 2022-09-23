@@ -16,14 +16,16 @@ import retrofit2.http.Query;
 public interface SpotAccountApi {
 
     /**
-     * 获取币币资产
-     *
+     * Get currency assets
      * @return
      */
     @GET("/api/spot/v1/account/assets")
     Call<ResponseResult> assets();
 
-
+    /**
+     * Get bills
+     * @return
+     */
     @POST("/api/spot/v1/account/bills")
     Call<ResponseResult> bills(@Body SpotBillQueryReq spotBillQueryReq);
 
