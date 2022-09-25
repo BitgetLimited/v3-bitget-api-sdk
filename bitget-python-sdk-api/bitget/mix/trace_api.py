@@ -44,6 +44,27 @@ class TraceApi(Client):
             return "pls check args "
 
     '''
+    跟随者获取跟单信息
+    symbol: 交易对名称
+    productType: umcbl(USDT专业合约) dmcbl(混合合约) sumcbl(USDT专业合约模拟盘)  sdmcbl(混合合约模拟盘)
+    pageNo： 从1开始
+    :return:
+    '''
+
+    def follower_order(self, symbol, productType, pageSize=20, pageNo=1):
+        params = {}
+        if symbol:
+            params["symbol"] = symbol
+            params["productType"] = productType
+            params["pageSize"] = pageSize
+            params["pageNo"] = pageNo
+            return self._request_with_params(
+                GET, MIX_TRACE_V1_URL + "/followerOrder", params
+            )
+        else:
+            return "pls check args "
+
+    '''
     交易员获取当前带单
     symbol: 交易对名称
     startTime: 开始时间
