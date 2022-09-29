@@ -14,68 +14,53 @@ public class MixDelegateOrderResult implements Serializable {
 
     private static final long serialVersionUID = -1912104784842743195L;
     /**
-     * 交易对信息
+     * Currency pair
      */
     private String symbol;
-
     /**
-     * 委托数量
+     * Entrusted quantity
      */
     private BigDecimal size;
-
     /**
-     * 订单号
+     * Order Id
      */
     private Long order_id;
-
-
     /**
-     * 客户端标识
+     * Client ID
      */
     private String client_oid;
-
-
     /**
-     * 成交数量
+     * Number of transactions
      */
     private BigDecimal filled_qty;
-
     /**
-     * 总手续费
+     * Total handling charge
      */
     private BigDecimal fee;
-
-
     /**
-     * 委托价格
+     * Entrusted price
      */
     private BigDecimal price;
     /**
-     * 平均成交价
+     * Average transaction price
      */
     private BigDecimal price_avg;
-
     /**
-     * NEW 新建订单 PARTIALLY_FILLED 部分成交 FILLED 全部成交 CANCELED 已撤销
+     * NEW New Order PARTIALLY_ FILLED partial transactions FILLED all transactions CANCELLED canceled
      */
     private String state;
-
     /**
-     * 委托类型 委托类型 1:开多 2:开空 3:平多 4:平空
+     * Delegate type Delegate type 1: open many 2: open empty 3: average many 4: average empty
      */
     private Integer type;
-
-
     /**
-     * 订单类型 NORMAL：普通委托 POST_ONLY：只做Maker（Post only） FOK：全部成交或立即取消（FOK） IOC：立即成交并取消剩余（IOC）
+     * Order Type NORMAL: General Entrusted POST_ ONLY: Maker (Post only) FOK: Full transaction or immediate cancellation (FOK) IOC: immediate transaction and cancellation of the remaining (IOC)
      */
     private String timeInForce;
-
     /**
      *
      */
     private String businessSource;
-
     /**
      * 总盈亏
      */

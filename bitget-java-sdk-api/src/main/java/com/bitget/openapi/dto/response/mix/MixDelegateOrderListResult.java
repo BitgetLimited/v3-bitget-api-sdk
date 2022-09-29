@@ -13,15 +13,15 @@ public class MixDelegateOrderListResult implements Serializable {
     private static final long serialVersionUID = 3547072553938819685L;
 
     /**
-     * 是否有下一页
+     * Whether there is the next page
      */
     private boolean nextFlag = false;
     /**
-     * 截止id
+     * Cut off ID
      */
     private String endId;
     /**
-     * 委托列表
+     * Delegate List
      */
     private List<MixDelegateOrderResult> orderList;
 }

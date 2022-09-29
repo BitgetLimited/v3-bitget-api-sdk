@@ -13,19 +13,19 @@ import java.util.List;
 @AllArgsConstructor
 public class MixCancelBatchOrderResult {
     /**
-     * 处理结果
+     * Processing results
      */
     private boolean result;
     /**
-     * 合约code
+     * Contract code
      */
     private String symbol;
     /**
-     * 订单ids
+     * Order ids
      */
     private List<String> order_ids;
     /**
-     * 取消订单的结果集合
+     * Result set for cancelling orders
      */
 //    private List<CancelOrderResult> fail_infos;
 }

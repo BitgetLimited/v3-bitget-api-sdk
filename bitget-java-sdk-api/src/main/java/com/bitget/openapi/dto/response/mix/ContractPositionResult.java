@@ -17,33 +17,29 @@ public class ContractPositionResult implements Serializable {
 
     private static final long serialVersionUID = 5612256438518727605L;
     /**
-     * 仓位Id, PK4
+     * Bin Id, PK4
      */
     private String positionId;
-
-
     /**
-     * 该帐户所在的业务
+     * Business of the account
      */
     private String businessLine;
-
-
     /**
-     * 保证金币种
+     * Asset Currency Id
      */
     private String marginCoin;
 
     /**
-     * 该仓位所属的币对(symbol)
+     * Currency pair of the position (symbol)
      */
     private String symbolId;
 
     /**
-     * 该仓位所属的方向 1 LONG 2SHORT
+     * Direction of the position 1 LONG 2SHORT
      */
     private Integer holdSide;
     /**
-     * 开仓数量
+     * Opening quantity
      */
     private BigDecimal openDelegateCount;
 
@@ -53,59 +49,60 @@ public class ContractPositionResult implements Serializable {
     private BigDecimal lockedMargin;
 
     /**
-     * 该balanceIdent + symbolId + holdSide下的保证金数量, 单位为tokenId
+     * The deposit quantity under the balanceIdent+symbolId+holdSide, in tokenId
      */
-    private BigDecimal margin;
 
+    private BigDecimal margin;
     /**
-     * 该balanceIdent + symbolId + holdSide下的持仓数量， 单位为symbolId的左币种
+     * The position quantity under the balanceIdent+symbolId+holdSide, in the left currency of the symbolId
      */
     private BigDecimal available;
-
     /**
-     * 该balanceIdent + symbolId + holdSide下的持仓锁定数量，一般即平仓委托数量， 单位为symbolId的左币种
+     * The position locking quantity under the balanceIdent+symbolId+holdSide is generally the closing consignment quantity, and the unit is the left currency of the symbolId
      */
     private BigDecimal locked;
 
     private BigDecimal total;
-
     /**
-     * 该balanceident + symbolId + holdSide下的杠杆倍数, 全仓模式下，不同holdSide的
-     * 杠杆倍数是一样的
+
+     *The leverage multiple under the balanceident+symbolId+holdSide mode
+
+     *The leverage is the same
+
      */
     private Integer leverage;
 
     /**
-     * 该balanceIdent + symbolId + holdSide下的已实现盈亏，记录值. 单位为tokenId
+     * The realized profit and loss under the balanceIdent+symbolId+holdSide is recorded Unit: tokenId
      */
     private BigDecimal achievedProfits;
 
     /**
-     * 该balanceIdent + symbolId + holdSide下的平均开仓价。 单位为symbolId的右币种
+     * The average opening price under the balanceIdent+symbolId+holdSide. Right currency in symbolId
      */
     private BigDecimal averageOpenPrice;
 
     /**
-     * 该balanceIdent + symbolId + holdSide下的仓位状态
+     * Position status under the balanceIdent+symbolId+holdSide
      */
     private Integer status;
-
-
     /**
-     * 保证金模式
-     * 1逐仓模式,保证金支持单个币对的单个方向,
-     * 2全仓模式，保证金支持单个币对所有方向;
+
+     * Margin mode
+
+     * 1. In the warehouse by warehouse mode, the deposit supports a single direction of a single currency pair,
+
+     * 2 In the full warehouse mode, the deposit supports a single currency pair in all directions;
+
      */
     private Integer marginMode;
 
     /**
-     * 持仓模式 1单向持仓,2双向持仓 现在默认是双向持仓
+     *Position mode 1: one-way position, 2: two-way position. Now the default is two-way position
      */
     private Integer holdMode;
-
-
     /**
-     * 自动追加保证金
+     *Automatic margin increase
      */
     private Integer autoAppendMargin;
 

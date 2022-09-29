@@ -16,95 +16,94 @@ import java.math.BigDecimal;
 public class ApiBalanceResult implements Serializable {
 
     private static final long serialVersionUID = -2991634253324208657L;
+
     private Long id;
-
-
     /**
-     * 资产币种
+     * Asset Currency Id
      */
     private String marginCoin;
 
     /**
-     * 合约名称
+     * Currency pair
      */
     private String symbol;
 
     /**
-     * 结算币
+     * Settlement currency
      */
     private BigDecimal locked;
 
     /**
-     * //逐仓时： available -> locked(ContractDetailPosition.lockedMargin) -> ContractDetailPosition.margin
-     * //全仓时： available -> locked(ContractDetailPosition.lockedMargin) -> ContractCrossPosition.margin
-     * //混合时： available -> locked(ContractDetailPosition.lockedMargin) -> available
-     * //表示当前可用的资产, 其可以为负，在某些情况下。比如合约场景下，浮盈开仓
+     * //Warehouse by warehouse： available -> locked(ContractDetailPosition.lockedMargin) -> ContractDetailPosition.margin
+     * //Full warehouse： available -> locked(ContractDetailPosition.lockedMargin) -> ContractCrossPosition.margin
+     * //blend： available -> locked(ContractDetailPosition.lockedMargin) -> available
+     * //Indicates the currently available assets, which can be negative in some cases. For example, in the contract scenario, floating profit opening
      */
     private BigDecimal available;
 
     /**
-     * 全仓最大可用来开仓余额(结算币)
+     * Maximum opening balance of the whole warehouse (settlement currency)
      */
     private BigDecimal crossMaxAvailable;
 
     /**
-     * 逐仓最大可用来开仓金额(结算币)
+     * Maximum available opening amount (settlement currency)
      */
     private BigDecimal fixedMaxAvailable;
 
     /**
-     * 最大可转出
+     * Maximum transferable out
      */
     private BigDecimal maxTransferOut;
 
     /**
-     * 账户权益(结算币)
+     * Account equity (settlement currency)
      */
     private BigDecimal equity;
 
     /**
-     * 账户权益(usdt)
+     * Account equity (usdt)
      */
     private BigDecimal usdtEquity;
 
     /**
-     * 账户权益(btc)
+     * Account equity (btc)
      */
     private BigDecimal btcEquity;
 
     /**
-     * 已用(结算币)
+     * Used (settlement currency)
      */
     private BigDecimal usedBalance;
 
     /**
-     * 全仓时 实际保证金率
+     * Actual margin rate in full position
      */
     private BigDecimal crossMarginRate;
 
     /**
-     * 全仓时 风险率
+     * Full warehouse risk rate
      */
     private BigDecimal crossRiskRate;
 
     /**
-     * 全仓时的杠杆
+     * Lever in full position
      */
     private Integer crossMarginLeverage;
     /**
-     * 逐仓时的多头杠杆
+     * Long lever for position by position
      */
     private Integer fixedLongLeverage;
     /**
-     * 逐仓时的空头杠杆
+     * Short lever on a position by position basis
      */
     private Integer fixedShortLeverage;
     /**
-     * 合约保证金模式 1逐仓模式 2全仓模式
+     * Contract margin mode 1, position by position mode 2, full position mode
      */
     private Integer marginMode;
     /**
-     * 合约持仓模式 1 单向持仓 2 双向持仓
+     * Contractual position mode 1 One way position 2 Two way position
      */
     private Integer holdMode;
 

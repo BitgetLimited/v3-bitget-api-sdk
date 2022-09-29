@@ -16,32 +16,32 @@ public class ChangeLeverageResult implements Serializable {
     private static final long serialVersionUID = -5141021975009104090L;
 
     /**
-     * 合约名称
+     * Currency pair Id
      */
-    private String symbolId;
+     private String symbolId;
 
     /**
-     * 保证金币种
+     * Asset Currency Id
      */
     private String marginCoin;
 
     /**
-     * 多仓杠杆
+     * Multi position lever
      */
     private Integer long_leverage;
 
     /**
-     * 空仓杠杆
+     * Short position lever
      */
     private Integer short_leverage;
 
     /**
-     * 全仓时的杠杆
+     * Lever in full position
      */
     private Integer crossMarginLeverage;
 
     /**
-     * 保证金模式 1逐仓 2全仓
+     * Margin mode 1 warehouse by warehouse 2 full warehouse
      */
     private Integer marginMode;
 
