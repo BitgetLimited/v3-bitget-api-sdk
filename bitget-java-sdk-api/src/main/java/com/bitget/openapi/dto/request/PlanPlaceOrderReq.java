@@ -14,39 +14,39 @@ import java.io.Serializable;
 public class PlanPlaceOrderReq implements Serializable {
     private static final long serialVersionUID = 1288092295878149846L;
     /**
-     * 执行价格
+     * Execution price
      */
     private String execute_price;
     /**
-     * 触发价格
+     * Trigger Price
      */
     private String trigger_price;
     /**
-     * 匹配类型 0:限价 1：市价
+     * Matching type 0: Price limit 1: Market price
      */
     private String match_type;
     /**
-     * 方向 1多仓 2空仓
+     * Direction 1 Multi warehouse 2 Empty warehouse
      */
     private String side;
     /**
-     * 持仓方向
+     * Position direction
      */
     private String holdSide;
     /**
-     * 类型 1开仓 2平仓
+     * Type 1 Opening 2 Closing
      */
     private String type;
     /**
-     * 合约张数
+     * Number of contracts
      */
     private String size;
     /**
-     * 产品编码
+     * Currency pair
      */
     private String symbol;
     /**
-     * 客户端标识
+     * Client ID
      */
     private String client_oid;
 }

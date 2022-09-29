@@ -15,12 +15,12 @@ import java.util.List;
 public class SpotBatchOrdersReq implements Serializable {
 
     /**
-     * 币对
+     * Currency pair
      */
     private String symbol;
 
     /**
-     * 批量订单ID
+     * Batch order
      */
     private List<SpotOrdersReq> orderList;
 }

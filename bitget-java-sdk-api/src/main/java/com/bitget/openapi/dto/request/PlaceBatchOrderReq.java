@@ -21,16 +21,16 @@ public class PlaceBatchOrderReq implements Serializable {
      * {"client_oid":"bitget#123457","order_type":"1","price":"2","size":"3","type":"2","match_price":"1"}]
      */
     /**
-     * 合约编码
+     * Currency pair
      */
     private String symbol;
     /**
-     * 订单信息
+     * Order information
      */
     private String order_data;
 
     /**
-     * 订单信息
+     * Order information list
      */
     private List<OrderData> orderDataList;
 }

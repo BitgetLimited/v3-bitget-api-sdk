@@ -15,9 +15,14 @@ public class MixAutoAppendMarginRequest implements Serializable {
 
     private static final long serialVersionUID = 8014475115086428904L;
 
+    /**
+     * Asset Currency Id
+     */
     private String marginCoin;
 
-
+    /**
+     * Currency pair
+     */
     private String symbol;
 
     /**
@@ -26,8 +31,8 @@ public class MixAutoAppendMarginRequest implements Serializable {
     private Integer holdSide;
 
     /**
-     * 0 - 不自动追加
-     * 1 - 自动追加
+     * 0 - Do not automatically append
+     * 1 - Auto append
      */
     private Integer autoAppendMargin;
 

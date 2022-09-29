@@ -19,18 +19,18 @@ public class AdjustHoldModeRequest implements Serializable {
     private static final long serialVersionUID = -3858107194985716036L;
 
     /**
-     * 币对
+     * Currency pair
      */
     private String symbol;
 
     /**
-     * 资产币种Id
+     * Asset Currency Id
      */
     private String marginCoin;
     /**
-     * 持仓模式
-     * 1 单向持仓
-     * 2 双向持仓
+     * Position mode
+     * 1 One way position
+     * 2 Two way position
      */
     private String holdMode;
 

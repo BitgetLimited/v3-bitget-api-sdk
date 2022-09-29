@@ -14,13 +14,15 @@ public class MixCancelBatchOrdersRequest  {
 
 
     /**
-     * 合约symbol
+     * Currency pair
      */
     private String symbol;
-
+    /**
+     * Asset Currency Id
+     */
     private String marginCoin;
     /**
-     * 订单id
+     * Order Id
      */
     private List<String> orderIds;
 

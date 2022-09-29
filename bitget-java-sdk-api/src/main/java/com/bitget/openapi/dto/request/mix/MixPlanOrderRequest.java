@@ -10,45 +10,47 @@ import java.math.BigDecimal;
 public class MixPlanOrderRequest implements Serializable {
 
     /**
-     * 合约交易对
+     * Currency pair
      */
     private String symbol;
     /**
-     * 保证金币种
+     * Asset Currency Id
      */
     private String marginCoin;
     /**
-     * 下单数量
+     * Amount of currency placed
      */
     private BigDecimal size;
     /**
-     * 委托价格
+     * Entrusted price
      */
     private BigDecimal executePrice;
     /**
-     * 触发价格
+     * Trigger Price
      */
     private BigDecimal triggerPrice;
     /**
-     * 委托方向
+     * Entrusting direction
      */
     private String side;
     /**
-     * 交易类型
+     * Transaction Type
      */
     private String orderType;
     /**
-     * 触发类型 成交价触发 标记价触发
+     * Trigger Type Transaction Price Trigger Flag Price Trigger
      */
     private String triggerType;
-
+    /**
+     * Client ID
+     */
     private String clientOid;
     /**
-     * 预设止盈价
+     * Default stop profit price
      */
     private String presetTakeProfitPrice;
     /**
-     * 预设止损价
+     * Preset stop loss price
      */
     private String presetStopLossPrice;
 

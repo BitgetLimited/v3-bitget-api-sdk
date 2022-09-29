@@ -9,16 +9,16 @@ public class OrderData implements Serializable {
 	private String client_oid;
 	private String order_type;
 	/**
-	 * 委托价
+	 * Entrusted price
 	 */
 	private String price;
 	/**
-	 * 委托量
+	 * Entrusted quantity
 	 */
 	private String size;
 	private String type;
 	/**
-	 * 是否以对手价下单
+	 * Whether to place an order at the competitor's price
 	 */
 	private String match_price;
 	

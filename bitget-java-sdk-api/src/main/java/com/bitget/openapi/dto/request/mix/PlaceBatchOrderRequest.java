@@ -13,18 +13,18 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 public class PlaceBatchOrderRequest implements Serializable {
+
     private static final long serialVersionUID = 7456926698906558545L;
     /**
-     * 合约symbolId
+     * Currency pair
      */
     private String symbol;
     /**
-     * 结算币种id
+     * Asset Currency Id
      */
     private String marginCoin;
-
     /**
-     * 订单信息
+     * Order data
      */
     private List<PlaceOrderBaseParam> orderDataList;
 

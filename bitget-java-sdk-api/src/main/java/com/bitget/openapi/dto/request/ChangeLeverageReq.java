@@ -14,29 +14,33 @@ import java.io.Serializable;
 public class ChangeLeverageReq implements Serializable {
     private static final long serialVersionUID = 2185132921513652714L;
     /**
-     * 用户id
+     * User Id
      */
     private Long userId;
     /**
-     * 杠杆倍数，可填写1-100之间的整数
+     * Lever multiple, integer between 1-100 can be filled
      */
     private Integer leverage;
     /**
-     * 方向: LONG_POSITIONS(1,"多仓"),
-     * SHORT_POSITIONS(2,"空仓"),
+     * Direction: LONG_ Positions (1, "multi warehouse"),
+     * SHORT_POSITIONS(2,"Empty position"),
      */
     private Integer side;
 
     private Integer holdSide;
     /**
-     * 合约代码
+     * Currency pair
      */
     private String symbol;
 
     /**
-     * 持仓模式
-     * 1 逐仓模式
-     * 2 全仓模式
+
+     * Position mode
+
+     * 1 Warehouse by warehouse mode
+
+     * 2 Full warehouse mode
+
      */
     private Integer holdModel;
 }

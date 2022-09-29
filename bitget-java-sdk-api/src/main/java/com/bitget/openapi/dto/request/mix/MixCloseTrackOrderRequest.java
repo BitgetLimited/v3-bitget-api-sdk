@@ -13,6 +13,9 @@ import java.io.Serializable;
 @AllArgsConstructor
 public class MixCloseTrackOrderRequest implements Serializable {
 
+    /**
+     * Currency pair
+     */
     private String symbol;
 
     private Long trackingNo;

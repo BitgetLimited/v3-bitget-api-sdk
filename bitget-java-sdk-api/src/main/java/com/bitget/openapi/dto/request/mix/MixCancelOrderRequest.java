@@ -14,14 +14,16 @@ public class MixCancelOrderRequest implements Serializable {
 
     private static final long serialVersionUID = -5806007811150714152L;
     /**
-     * 订单id
+     * Order Id
      */
     private String orderId;
     /**
-     * 合约symbol
+     * Currency pair
      */
     private String symbol;
-
+    /**
+     * Asset Currency Id
+     */
     private String marginCoin;
 
 }

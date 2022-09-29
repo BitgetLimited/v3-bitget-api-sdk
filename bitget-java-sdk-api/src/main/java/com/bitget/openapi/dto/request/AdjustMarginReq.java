@@ -11,22 +11,23 @@ import java.io.Serializable;
 @NoArgsConstructor
 @AllArgsConstructor
 public class AdjustMarginReq implements Serializable {
+
     private static final long serialVersionUID = -7870680025161802152L;
 
     /**
-     * 合约code
+     * Currency pair
      */
     private  String symbol;
     /**
-     * 数量
+     * quantity
      */
     private String amount;
     /**
-     * 方向0多仓 1空仓
+     * Direction 0 Multi warehouse 1 Empty warehouse
      */
     private Integer positionType;
     /**
-     * 类型1增加 2减少
+     * Type 1 increase 2 decrease
      */
     private Integer type;
 }

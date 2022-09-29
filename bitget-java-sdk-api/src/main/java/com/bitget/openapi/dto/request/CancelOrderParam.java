@@ -13,7 +13,13 @@ import java.io.Serializable;
 public class CancelOrderParam  implements Serializable {
     private static final long serialVersionUID = 3983504190998930372L;
 
-    private String orderId;
 
+    /**
+     * Order Id
+     */
+    private String orderId;
+    /**
+     * Currency pair
+     */
     private String symbol;
 }

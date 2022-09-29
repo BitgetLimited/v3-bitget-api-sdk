@@ -14,7 +14,13 @@ import java.util.List;
 @AllArgsConstructor
 public class SpotCancelBatchOrderReq implements Serializable {
 
+    /**
+     * Currency pair
+     */
     private String symbol;
 
+    /**
+     *  Order ids
+     */
     private List<String> orderIds;
 }

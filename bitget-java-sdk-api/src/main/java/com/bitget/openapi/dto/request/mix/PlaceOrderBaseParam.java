@@ -13,23 +13,23 @@ public class PlaceOrderBaseParam {
 
     private static final long serialVersionUID = -7008876848185925619L;
     /**
-     * 客户端标识
+     * Client ID
      */
     private String clientOid;
     /**
-     * 下单币量
+     * Amount of currency placed
      */
     private BigDecimal size;
     /**
-     * 1:开多 2:开空 3:平多 4:平空
+     * 1: Kaiduo 2: Kaikong 3: Pingduo 4: Pingkong
      */
     private String side;
     /**
-     * 订单类型
+     * Order Type
      */
     private String orderType;
     /**
-     * 委托价格
+     * Entrusted price
      */
     private BigDecimal price;
 

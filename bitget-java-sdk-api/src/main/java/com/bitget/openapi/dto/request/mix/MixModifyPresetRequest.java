@@ -10,11 +10,11 @@ import java.io.Serializable;
 public class MixModifyPresetRequest implements Serializable {
 
     /**
-     * 合约交易对
+     * Currency pair
      */
     private String symbol;
     /**
-     * 保证金币种
+     * Asset Currency Id
      */
     private String marginCoin;
 

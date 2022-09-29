@@ -14,11 +14,11 @@ import java.io.Serializable;
 public class CloseTrackOrderReq implements Serializable {
 
     /**
-     * 合约名称
+     * Currency pair
      */
     private String symbol;
     /**
-     * 追踪订单号
+     * Tracking order No
      */
     private Long trackingNo;
 }

@@ -17,46 +17,43 @@ public class MixPlaceOrderRequest implements Serializable {
     private static final long serialVersionUID = -7008876848185925619L;
 
     /**
-     * 合约
+     * Currency pair
      */
     private String symbol;
-
     /**
-     * 保证金币种
+     * Asset Currency Id
      */
     private String marginCoin;
-
     /**
-     * 客户端标识
+     * Client ID
      */
     private String clientOid;
     /**
-     * 下单币量
+     * Amount of currency placed
      */
     private BigDecimal size;
     /**
-     * 开多 开空 平多 平空
+     * Open more, open more, empty more, empty more
      */
     private String side;
     /**
-     * 订单类型 市价 限价
+     * Order Type Market Price Limit
      */
     private String orderType;
     /**
-     * 委托价格
+     * Entrusted price
      */
     private BigDecimal price;
-
     /**
-     * 订单有效期
+     * Order validity
      */
     private String timeInForceValue;
     /**
-     * 预设止盈价
+     * Default stop profit price
      */
     private BigDecimal presetTakeProfitPrice;
     /**
-     * 预设止损价
+     * Preset stop loss price
      */
     private BigDecimal presetStopLossPrice;
 

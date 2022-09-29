@@ -13,9 +13,16 @@ import java.io.Serializable;
 @AllArgsConstructor
 public class SpotOrderInfoReq implements Serializable {
 
+    /**
+     * Currency pair
+     */
     private String symbol;
-
+    /**
+     * Order Id
+     */
     private String orderId;
-
+    /**
+     * Client Order Id
+     */
     private String clientOrderId;
 }

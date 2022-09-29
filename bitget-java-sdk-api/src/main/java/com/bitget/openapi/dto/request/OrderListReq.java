@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 import java.io.Serializable;
 
 /**
- * ( 订单列表查询对象 )
+ * ( Order List Query Object )
  *
  * @author jian.li
  * @create 2020-05-29 12:29
@@ -20,23 +20,25 @@ import java.io.Serializable;
 public class OrderListReq implements Serializable {
     private static final long serialVersionUID = 3721944028616588183L;
     /**
-     * 合约code
+     * Currency pair
      */
     private String symbol;
     /**
-     * -1:已撤单（包含风险触发撤销），0:未成交，1:部分成交，2：完全成交， 3:未成交或部分成交，4：已撤单（包含风险触发撤销）或完全成交
+
+     * - 1: Cancelled (including risk triggered cancellation), 0: No deal, 1: Partial deal, 2: Full deal, 3: No deal or partial deal, 4: Cancelled (including risk triggered cancellation) or Full deal
+
      */
     private Integer status;
     /**
-     * from 和to主要是组成查第几页的数据（默认为1）
+     * From and to are mainly the data of the page to be queried (1 by default)
      */
     private String from;
     /**
-     * from 和to主要是组成查第几页的数据 （默认为1）
+     * From and to are mainly the data of the page to be queried (1 by default)
      */
     private String to;
     /**
-     * 分页返回的结果集数量，最大为100，不填默认返回100条，小于或等于0报异常，非数字型字符报异常
+     * The maximum number of result sets returned by pages is 100. If it is not filled, 100 will be returned by default. If it is less than or equal to 0, an exception will be reported. If it is not a numeric character, an exception will be reported
      */
     private String limit;
 

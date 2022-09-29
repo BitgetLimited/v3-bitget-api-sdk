@@ -15,24 +15,22 @@ import lombok.Data;
 public class LoginArgs {
 
     /**
-     * 用于调用API的用户身份唯一标示，需要用户申请
+     * The unique ID of the user used to call the API, which needs to be applied by the user
      */
     @JSONField(ordinal = 1)
     private String apiKey;
     /**
-     * APIKey 的密码
+     * Password of APIKey
      */
     @JSONField(ordinal = 2)
     private String passphrase;
-
     /**
-     * 时间戳 ，是Unix Epoch时间，单位是秒
+     * Timestamp is the Unix Epoch time in seconds
      */
     @JSONField(ordinal = 3)
     private String timestamp;
-
     /**
-     * 签名字符串
+     * Signature String
      */
     @JSONField(ordinal = 4)
     private String sign;

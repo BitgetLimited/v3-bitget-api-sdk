@@ -13,6 +13,12 @@ import java.io.Serializable;
 public class CancelPlanParamReq implements Serializable {
     private static final long serialVersionUID = -4049337926733255487L;
 
+    /**
+     * Order Id
+     */
     private String orderId;
+    /**
+     * Currency pair
+     */
     private String symbol;
 }

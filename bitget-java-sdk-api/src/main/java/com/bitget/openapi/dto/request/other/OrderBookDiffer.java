@@ -56,9 +56,9 @@ public class OrderBookDiffer {
 
     public <T extends OrderBookItem> List<T> diff(List<T> current, List<T> snapshot,
                                                   final Comparator<String> comparator) {
-        //增量的数组
+        //Incremental array
         final Iterator<T> snapshotIter = snapshot.iterator();
-        //现有全量的数据
+        //Full amount of data available
         final Iterator<T> currentIter = current.iterator();
         final List<T> diff = new ArrayList<>(current.size());
         if (snapshotIter.hasNext() && currentIter.hasNext()) {
@@ -73,7 +73,7 @@ public class OrderBookDiffer {
             for (; ; ) {
                 final int compare = comparator.compare(snapshotBookItem.getPrice(), currentBookItem.getPrice());
                 //final int compare = comparator.compare(spotOrderBookItems[0], currentBookItems[0]);
-                //价格相等时候
+                //When prices are equal
                 if (compare == 0) {
                     if (!snapshotBookItem.equals(currentBookItem)) {
                         if (!"0".equals(snapshotBookItem.getSize().toString())) {
@@ -86,7 +86,7 @@ public class OrderBookDiffer {
                     } else {
                         break;
                     }
-                    //增量价格小于全量的
+                    //The incremental price is less than the full quantity
                 } else if (compare < 0) {
                     if (!"0".equals(snapshotBookItem.getSize().toString())) {
                         diff.add(snapshotBookItem);
@@ -118,7 +118,7 @@ public class OrderBookDiffer {
 //            snapshotIter.forEachRemaining(remain -> diff.add(emptyItemFunction.apply(remain.getPrice())));
             snapshotIter.forEachRemaining(diff::add);
         }
-        //返回不可修改的diff
+        //Return the non modifiable diff
         return Collections.unmodifiableList(diff);
 
     }

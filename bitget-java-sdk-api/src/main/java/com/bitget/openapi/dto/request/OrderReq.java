@@ -9,7 +9,7 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 
 /**
- *下单对象
+ * Ordering object
  * @author bitget-sdk-team
  * @date 2019-01-15
  */
@@ -21,45 +21,44 @@ public class OrderReq implements Serializable {
 
     private static final long serialVersionUID = 5109506374875594403L;
     /**
-     * 合约代码
+     * Currency pair
      */
     private String symbol;
     /**
-     *自定义订单号(不超过50个字符，且不能是特殊字符，如火星字符等)
+     * Custom order number (no more than 50 characters, and cannot be special characters, such as Mars characters)
      */
     private String client_oid;
     /**
-     * 下单数量（不能为0，不能为负数）
+     * Order quantity (cannot be 0 or negative)
      */
     private String size;
     /**
-     * 1:开多 2:开空 3:平多 4:平空
+     * 1: Kaiduo 2: Kaikong 3: Pingduo 4: Pingkong
      */
     private String type;
 
     /**
-     * 0:限价还是1:市价
+     * 0: price limit or 1: market price
      */
     private String match_price;
     /**
-     * 委托价格（有精度限制，精度（tick_size）和步长（priceEndStep）取“合约信息接口”，限价必填）
+     * Entrusted price (with precision limit, the precision (ticke_size) and step length (priceEndStep) are "contract information interface", and price limit is required)
      */
     private String price;
     /**
-     * 0:普通，1：只做maker;2:全部成交或立即取消;3:立即成交并取消剩余
+     * 0: ordinary, 1: only make; 2: Complete transaction or immediate cancellation; 3: Close immediately and cancel the remaining
      */
     private String order_type;
     /**
-     * 跟单号
+     * trace_no
      */
     private String trace_no;
     /**
-     * 预设的止盈价格
+     * Preset stop profit price
      */
     private BigDecimal presetTakeProfitPrice;
-
     /**
-     * 预设的止损价格
+     * Preset stop loss price
      */
     private BigDecimal presetStopLossPrice;
 

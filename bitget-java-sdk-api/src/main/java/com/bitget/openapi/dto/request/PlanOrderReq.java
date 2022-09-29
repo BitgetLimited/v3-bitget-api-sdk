@@ -14,31 +14,31 @@ import java.io.Serializable;
 public class PlanOrderReq implements Serializable {
     private static final long serialVersionUID = 402439922703688936L;
     /**
-     * 合约代码
+     * Currency pair
      */
     private String symbol;
     /**
-     * 方向 1开多 2开空 3平多 4平空
+     * Direction 1: more open, 2: more open, 3: more flat, 4: more flat
      */
     private String side;
     /**
-     * 委托类型 1开多 2开空 3平多 4平空
+     * Entrustment type: 1 open more, 2 open more, 3 open more, 4 open more
      */
     private String delegateType;
     /**
-     * 当前页
+     * Current Page
      */
     private String page_index;
     /**
-     * 每页数量
+     * Quantity per page
      */
     private String page_size;
     /**
-     * 查询开始时间(时间戳)
+     * Query start time (timestamp)
      */
     private String start_time;
     /**
-     * 查询结束时间(时间戳)
+     * Query end time (timestamp)
      */
     private String end_time;
 }

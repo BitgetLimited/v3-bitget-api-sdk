@@ -5,7 +5,7 @@ import lombok.Data;
 import java.util.List;
 
 @Data
-//深度合并之后的类，可以通过toString方法合成深度合并之后的字符串
+//The deeply merged class can synthesize the deeply merged string through the toString method
 public class SpotOrderBookDiff {
     private final List<SpotOrderBookItem> asks;
     private final List<SpotOrderBookItem> bids;

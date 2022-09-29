@@ -13,13 +13,15 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 public class CancelBatchOrdersReq implements Serializable {
+
     private static final long serialVersionUID = 2194353520856678089L;
+
     /**
-     * 订单id
+     * Order Ids
      */
     private List<String> ids;
     /**
-     * 合约名称
+     * Currency pair
      */
     private String symbol;
 }

@@ -16,17 +16,17 @@ public class AdjustMarginModeRequest implements Serializable {
     private static final long serialVersionUID = 586091911369690370L;
 
     /**
-     * 资产币种Id
+     * Asset Currency Id
      */
     private String marginCoin;
 
     /**
-     * 币对
+     * Currency pair
      */
     private String symbol;
 
     /**
-     * 保证金模式
+     * Margin mode
      */
     private String marginMode;
 

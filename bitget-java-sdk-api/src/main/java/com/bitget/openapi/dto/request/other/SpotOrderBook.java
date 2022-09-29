@@ -35,7 +35,7 @@ public class SpotOrderBook {
     }*/
 
     /**
-     * 检查合法性 asks 应该不递减，bids 应该不递增
+     * Check the validity. The asks should not decrease, and the bids should not increase
      */
     public boolean check() {
         if (this.bids == null || this.asks == null) {
@@ -63,19 +63,19 @@ public class SpotOrderBook {
         return true;
     }
 
-    //调用这个方法，that为增量的数据，this为老的数据
+    //Call this method. That is incremental data and this is old data
     public SpotOrderBookDiff diff(SpotOrderBook that) {
         System.out.println("全量数据：" + this.toString());
         System.out.println("增量数据：" + that.toString());
-        //深度合并ask
+        //Deep merge ask
         final List<SpotOrderBookItem> askDiff = this.diff(this.getAsks(), that.getAsks(), Comparator.naturalOrder());
-        //深度合并bid
+        //Deep merge bid
         final List<SpotOrderBookItem> bidDiff = this.diff(this.getBids(), that.getBids(), Comparator.reverseOrder());
-        //根据ask和bid创建合并后的对象
+        //Create the merged object according to ask and bid
         return new SpotOrderBookDiff(askDiff, bidDiff, that.timestamp, that.checksum);
     }
 
-    //深度合并，返回深度合并后的内容current为现有的数据，snapshot为快照增量的数据
+    //Deep merge returns the content after deep merge. Current is the existing data and snapshot is the snapshot incremental data
     private List<SpotOrderBookItem> diff(final List<SpotOrderBookItem> current, final List<SpotOrderBookItem> snapshot,
                                          final Comparator<String> comparator) {
         return differ.diff(current, snapshot, comparator);

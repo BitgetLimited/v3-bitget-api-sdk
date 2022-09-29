@@ -18,15 +18,15 @@ public class LedgerReq implements Serializable {
 
     private String to;
     /**
-     * 分页大小
+     * Paging Size
      */
     private String limit;
     /**
-     * 开始时间
+     * Start time
      */
     private String startTime;
     /**
-     * 结束时间
+     * End time
      */
     private String endTime;
 }

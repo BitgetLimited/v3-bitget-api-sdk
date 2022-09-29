@@ -13,8 +13,13 @@ import java.io.Serializable;
 @AllArgsConstructor
 public class SpotCancelOrderReq implements Serializable {
 
-
+    /**
+     * Currency pair
+     */
     private String symbol;
 
+    /**
+     * Order Id
+     */
     private String orderId;
 }

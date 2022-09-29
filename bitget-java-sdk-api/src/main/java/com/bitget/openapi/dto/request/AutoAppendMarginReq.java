@@ -16,20 +16,19 @@ public class AutoAppendMarginReq implements Serializable {
     private static final long serialVersionUID = -8106007170051510407L;
 
     /**
-     * 合约code
+     * Currency pair
      */
     private String symbol;
     /**
-     * 方向 1多仓 2空仓
+     * Direction 1 Multi warehouse 2 Empty warehouse
      */
     private Integer side;
     /**
-     * 持仓方向 1多仓 2空仓
+     * Position direction 1 Multi position 2 Short position
      */
     private Integer holdSide;
-
     /**
-     * 追加保证金类型 0 不自动追加 1 自动追加
+     * Type of margin increase: 0, no automatic increase: 1, automatic increase
      */
     private Integer append_type;
 }

@@ -13,5 +13,8 @@ import java.io.Serializable;
 @AllArgsConstructor
 public class SpotOpenOrderReq implements Serializable {
 
+    /**
+     * Currency pair
+     */
     private String symbol;
 }

@@ -13,16 +13,20 @@ import java.io.Serializable;
 @AllArgsConstructor
 public class SpotFillsOrderReq implements Serializable {
 
+    /**
+     * Currency pair
+     */
     private String symbol;
-
+    /**
+     * Order Id
+     */
     private String orderId;
 
     private Long after;
 
     private Long before;
-
     /**
-     * 默认100，最大500
+     * Default 100, maximum 500
      */
     @Builder.Default
     private Integer limit = 100;

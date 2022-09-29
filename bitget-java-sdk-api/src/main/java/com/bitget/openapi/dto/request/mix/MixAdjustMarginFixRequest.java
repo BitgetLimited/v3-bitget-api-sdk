@@ -12,13 +12,20 @@ import java.math.BigDecimal;
 @AllArgsConstructor
 public class MixAdjustMarginFixRequest implements Serializable {
 
-    private String symbol;
+    private static final long serialVersionUID = -3858107194985716037L;
 
+    /**
+     * Currency pair
+     */
+    private String symbol;
+    /**
+     * Asset Currency Id
+     */
     private String marginCoin;
 
     private String holdSide;
     /**
-     * 金额 大于0 增加 小于0减少
+     * Amount greater than 0 increases less than 0 decreases
      */
     private BigDecimal amount;
 
