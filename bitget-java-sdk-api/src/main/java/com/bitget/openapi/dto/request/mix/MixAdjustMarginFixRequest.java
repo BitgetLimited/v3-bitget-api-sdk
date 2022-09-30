@@ -5,7 +5,11 @@ import lombok.*;
 import java.io.Serializable;
 import java.math.BigDecimal;
 
-
+/**
+ * @Author: bitget-sdk-team
+ * @Date: 2022-09-30 10:46
+ * @DES: Adjustment margin request
+ */
 @Data
 @Builder
 @NoArgsConstructor
@@ -19,10 +23,12 @@ public class MixAdjustMarginFixRequest implements Serializable {
      */
     private String symbol;
     /**
-     * Asset Currency Id
+     * Deposit currency
      */
     private String marginCoin;
-
+    /**
+     * Position direction (all positions are not transferred)
+     */
     private String holdSide;
     /**
      * Amount greater than 0 increases less than 0 decreases

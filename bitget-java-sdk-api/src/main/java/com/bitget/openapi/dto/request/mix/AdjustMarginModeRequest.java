@@ -6,7 +6,11 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import java.io.Serializable;
 
-
+/**
+ * @Author: bitget-sdk-team
+ * @Date: 2022-09-30 10:46
+ * @DES: Adjust margin mode request
+ */
 @Data
 @Builder
 @NoArgsConstructor
@@ -16,7 +20,7 @@ public class AdjustMarginModeRequest implements Serializable {
     private static final long serialVersionUID = 586091911369690370L;
 
     /**
-     * Asset Currency Id
+     * Deposit currency
      */
     private String marginCoin;
 

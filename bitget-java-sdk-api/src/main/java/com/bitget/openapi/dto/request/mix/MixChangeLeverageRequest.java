@@ -7,7 +7,11 @@ import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
 
-
+/**
+ * @Author: bitget-sdk-team
+ * @Date: 2022-09-30 10:46
+ * @DES: set lever request
+ */
 @Data
 @Builder
 @NoArgsConstructor
@@ -20,7 +24,7 @@ public  class MixChangeLeverageRequest implements Serializable {
      */
     private String symbol;
     /**
-     * Asset Currency Id
+     * Deposit currency
      */
     private String marginCoin;
     /**

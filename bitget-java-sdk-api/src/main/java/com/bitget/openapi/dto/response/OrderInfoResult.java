@@ -1,6 +1,6 @@
 package com.bitget.openapi.dto.response;
 
-import lombok.Data;
+import lombok.*;
 
 import java.io.Serializable;
 
