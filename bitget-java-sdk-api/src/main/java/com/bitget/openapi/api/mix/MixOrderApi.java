@@ -1,5 +1,6 @@
 package com.bitget.openapi.api.mix;
 
+
 import com.bitget.openapi.dto.request.mix.MixCancelBatchOrdersRequest;
 import com.bitget.openapi.dto.request.mix.MixCancelOrderRequest;
 import com.bitget.openapi.dto.request.mix.MixPlaceOrderRequest;
