@@ -1,20 +1,31 @@
 package com.bitget.openapi.dto.request.mix;
 
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import java.io.Serializable;
 import java.math.BigDecimal;
 
-@Builder
+/**
+ * @Author: bitget-sdk-team
+ * @Date: 2022-09-30 10:46
+ * @DES: placePlan request
+ */
 @Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class MixPlanOrderRequest implements Serializable {
+
+    private static final long serialVersionUID = -1L;
 
     /**
      * Currency pair
      */
     private String symbol;
     /**
-     * Asset Currency Id
+     * Deposit currency
      */
     private String marginCoin;
     /**
