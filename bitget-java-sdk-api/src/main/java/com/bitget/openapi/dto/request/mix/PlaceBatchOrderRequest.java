@@ -4,10 +4,14 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
 import java.io.Serializable;
 import java.util.List;
 
+/**
+ * @Author: bitget-sdk-team
+ * @Date: 2022-09-30 10:46
+ * @DES: place batch order request
+ */
 @Data
 @Builder
 @NoArgsConstructor
@@ -20,11 +24,11 @@ public class PlaceBatchOrderRequest implements Serializable {
      */
     private String symbol;
     /**
-     * Asset Currency Id
+     * Deposit currency
      */
     private String marginCoin;
     /**
-     * Order data
+     * Order data list
      */
     private List<PlaceOrderBaseParam> orderDataList;
 

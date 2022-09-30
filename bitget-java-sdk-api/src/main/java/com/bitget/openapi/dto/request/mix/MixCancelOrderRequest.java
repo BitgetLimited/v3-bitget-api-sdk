@@ -6,6 +6,11 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import java.io.Serializable;
 
+/**
+ * @Author: bitget-sdk-team
+ * @Date: 2022-09-30 10:46
+ * @DES: cancel the order request
+ */
 @Data
 @Builder
 @NoArgsConstructor
@@ -22,7 +27,7 @@ public class MixCancelOrderRequest implements Serializable {
      */
     private String symbol;
     /**
-     * Asset Currency Id
+     * Deposit currency
      */
     private String marginCoin;
 
