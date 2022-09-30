@@ -8,8 +8,18 @@ import retrofit2.http.GET;
 import retrofit2.http.POST;
 import retrofit2.http.Query;
 
+/**
+ * @Author: bitget-sdk-team
+ * @Date: 2022-09-30 10:46
+ * @DES: mix trace interface
+ */
 public interface MixTraceApi {
 
+    /**
+     * Dealer closing interface
+     * @param mixCloseTrackOrderRequest
+     * @return ResponseResult
+     */
     @POST("/api/mix/v1/trace/closeTrackOrder")
     Call<ResponseResult> closeTraceOrder(@Body MixCloseTrackOrderRequest mixCloseTrackOrderRequest);
 

@@ -55,13 +55,34 @@ public interface MixPlanApi {
     @POST("/api/mix/v1/plan/placeTPSL")
     Call<ResponseResult> placeTPSL(@Body MixTPSLOrderRequest mixTPSLOrderRequest);
 
+    /**
+     * Planned entrustment (profit and loss stop) cancellation
+     * @param mixCancelPlanRequest
+     * @return ResponseResult
+     */
     @POST("/api/mix/v1/plan/cancelPlan")
     Call<ResponseResult> cancelPlan(@Body MixCancelPlanRequest mixCancelPlanRequest);
 
+    /**
+     * Get the current plan commission (profit stop and loss stop) list
+     * @param symbol
+     * @param isPlan
+     * @return ResponseResult
+     */
     @GET("/api/mix/v1/plan/currentPlan")
     Call<ResponseResult> currentPlan(@Query("symbol") String symbol,
                                      @Query("isPlan") String isPlan);
 
+    /**
+     * Obtain the list of historical plan commissions (profit and loss stop)
+     * @param symbol
+     * @param startTime
+     * @param endTime
+     * @param pageSize
+     * @param isPre
+     * @param isPlan
+     * @return ResponseResult
+     */
     @GET("/api/mix/v1/plan/historyPlan")
     Call<ResponseResult> historyPlan(@Query("symbol") String symbol,
                                      @Query("startTime") String startTime,
