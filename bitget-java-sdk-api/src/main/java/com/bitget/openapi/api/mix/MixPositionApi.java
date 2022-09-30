@@ -8,7 +8,7 @@ import retrofit2.http.Query;
 /**
  * @Author: bitget-sdk-team
  * @Date: 2022-09-30 10:46
- * @DES: Contract quotation interface
+ * @DES: Contract quotation api
  */
 public interface MixPositionApi {
 

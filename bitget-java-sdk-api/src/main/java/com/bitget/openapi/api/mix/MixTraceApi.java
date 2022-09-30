@@ -11,7 +11,7 @@ import retrofit2.http.Query;
 /**
  * @Author: bitget-sdk-team
  * @Date: 2022-09-30 10:46
- * @DES: mix trace interface
+ * @DES: mix trace api
  */
 public interface MixTraceApi {
 
