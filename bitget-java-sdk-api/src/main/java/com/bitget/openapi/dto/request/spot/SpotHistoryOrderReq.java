@@ -26,12 +26,12 @@ public class SpotHistoryOrderReq implements Serializable {
     private String symbol;
 
     /**
-     * The orderId is passed in. The data before the orderId desc
+     * Pass in the data after the orderId asc
      */
     private Long after;
 
     /**
-     * Pass in the data after the orderId asc
+     * The orderId is passed in. The data before the orderId desc
      */
     private Long before;
     /**
