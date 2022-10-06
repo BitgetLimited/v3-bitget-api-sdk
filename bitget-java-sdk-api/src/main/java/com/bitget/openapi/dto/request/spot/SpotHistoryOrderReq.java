@@ -7,22 +7,35 @@ import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
 
+/**
+ * @Author: bitget-sdk-team
+ * @Date: 2022-09-30 10:46
+ * @DES: Get historical delegation list request
+ */
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
 public class SpotHistoryOrderReq implements Serializable {
 
+    private static final long serialVersionUID = -1L;
+
     /**
      * Currency pair
      */
     private String symbol;
 
+    /**
+     * The orderId is passed in. The data before the orderId desc
+     */
     private Long after;
 
+    /**
+     * Pass in the data after the orderId asc
+     */
     private Long before;
     /**
-     * Default 100, maximum 500
+     * Number of returned results Default 100, maximum 500
      */
     @Builder.Default
     private Integer limit = 100;

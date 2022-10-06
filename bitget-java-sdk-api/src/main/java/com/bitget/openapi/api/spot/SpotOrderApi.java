@@ -46,19 +46,34 @@ public interface SpotOrderApi {
     Call<ResponseResult> cancelBatchOrder(@Body SpotCancelBatchOrderReq body);
 
     /**
-     * Batch cancellation
+     * Get order details
      * @param body
      * @return ResponseResult
      */
     @POST("/api/spot/v1/trade/orderInfo")
     Call<ResponseResult> orderInfo(@Body SpotOrderInfoReq body);
 
+    /**
+     * Obtain orders that have not been closed or partially closed but not cancelled
+     * @param body
+     * @return ResponseResult
+     */
     @POST("/api/spot/v1/trade/open-orders")
     Call<ResponseResult> openOrders(@Body SpotOpenOrderReq body);
 
+    /**
+     * Get historical delegation list
+     * @param body
+     * @return ResponseResult
+     */
     @POST("/api/spot/v1/trade/history")
     Call<ResponseResult> history(@Body SpotHistoryOrderReq body);
 
+    /**
+     * Obtain transaction details
+     * @param body
+     * @return ResponseResult
+     */
     @POST("/api/spot/v1/trade/fills")
     Call<ResponseResult> fills(@Body SpotFillsOrderReq body);
 }
