@@ -8,9 +8,9 @@ import com.bitget.openapi.service.spot.SpotAccountService;
 import java.io.IOException;
 
 /**
- * @Author: bitget
- * @Date: 2021-05-31 15:08
- * @DES:
+ * @Author: bitget-sdk-team
+ * @Date: 2022-09-30 10:46
+ * @DES: spot account serviceImpl
  */
 public class SpotAccountServiceImpl implements SpotAccountService {
 
@@ -20,16 +20,34 @@ public class SpotAccountServiceImpl implements SpotAccountService {
         spotAccountApi = client.create(SpotAccountApi.class);
     }
 
+    /**
+     * Obtain account assets
+     * @return ResponseResult
+     */
     @Override
     public ResponseResult assets() throws IOException {
         return spotAccountApi.assets().execute().body();
     }
 
+    /**
+     * Get the bill flow
+     * @param spotBillQueryReq
+     * @return ResponseResult
+     */
     @Override
     public ResponseResult bills(SpotBillQueryReq spotBillQueryReq) throws IOException {
         return spotAccountApi.bills(spotBillQueryReq).execute().body();
     }
 
+    /**
+     * Obtain transfer records
+     * @param coinId
+     * @param fromType
+     * @param limit
+     * @param after
+     * @param before
+     * @return ResponseResult
+     */
     @Override
     public ResponseResult transferRecords(String coinId, String fromType, String limit, String after, String before) throws IOException {
         return spotAccountApi.transferRecords(coinId,fromType,limit,after,before).execute().body();

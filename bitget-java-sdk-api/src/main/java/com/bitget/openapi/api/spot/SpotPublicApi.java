@@ -8,7 +8,7 @@ import retrofit2.http.Query;
 /**
  * @Author: bitget-sdk-team
  * @Date: 2022-09-30 10:46
- * @DES: spot order api
+ * @DES: spot public api
  */
 public interface SpotPublicApi {
 

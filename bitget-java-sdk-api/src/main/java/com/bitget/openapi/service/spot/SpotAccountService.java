@@ -2,25 +2,36 @@ package com.bitget.openapi.service.spot;
 
 import com.bitget.openapi.dto.request.spot.SpotBillQueryReq;
 import com.bitget.openapi.dto.response.ResponseResult;
-
 import java.io.IOException;
 
 /**
- * @Author: bitget
- * @Date: 2021-05-31 11:12
- * @DES:
+ * @Author: bitget-sdk-team
+ * @Date: 2022-09-30 10:46
+ * @DES: spot account service
  */
 public interface SpotAccountService {
 
     /**
-     * 查询币币资产
-     *
-     * @return
-     * @throws IOException
+     * Obtain account assets
+     * @return ResponseResult
      */
     ResponseResult assets() throws IOException;
 
+    /**
+     * Get the bill flow
+     * @param spotBillQueryReq
+     * @return ResponseResult
+     */
     ResponseResult bills(SpotBillQueryReq spotBillQueryReq) throws IOException;
 
+    /**
+     * Obtain transfer records
+     * @param coinId
+     * @param fromType
+     * @param limit
+     * @param after
+     * @param before
+     * @return ResponseResult
+     */
     ResponseResult transferRecords(String coinId,String fromType,String limit,String after,String before) throws IOException;
 }
