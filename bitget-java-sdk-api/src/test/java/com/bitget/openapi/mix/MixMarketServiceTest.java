@@ -2,8 +2,8 @@ package com.bitget.openapi.mix;
 
 import com.alibaba.fastjson.JSON;
 import com.bitget.openapi.BaseTest;
-import com.bitget.openapi.common.enums.mix.MixProductTypeEnum;
 import com.bitget.openapi.dto.response.ResponseResult;
+import com.bitget.openapi.enums.mix.MixProductTypeEnum;
 import org.junit.Test;
 import java.io.IOException;
 import java.util.List;

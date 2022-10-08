@@ -3,13 +3,12 @@ package com.bitget.openapi.mix;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.bitget.openapi.BaseTest;
-import com.bitget.openapi.common.enums.mix.MixOrderTypeEnum;
-import com.bitget.openapi.common.enums.mix.MixSideEnum;
-import com.bitget.openapi.common.enums.spot.ForceEnum;
 import com.bitget.openapi.dto.request.mix.*;
 import com.bitget.openapi.dto.response.ResponseResult;
+import com.bitget.openapi.enums.mix.MixOrderTypeEnum;
+import com.bitget.openapi.enums.mix.MixSideEnum;
+import com.bitget.openapi.enums.spot.ForceEnum;
 import org.junit.Test;
-
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.ArrayList;
