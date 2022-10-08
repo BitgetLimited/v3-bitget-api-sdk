@@ -1,4 +1,4 @@
-package com.bitget.openapi.test.spot;
+package com.bitget.openapi.spot;
 
 import com.alibaba.fastjson.JSON;
 import com.bitget.openapi.BaseTest;
