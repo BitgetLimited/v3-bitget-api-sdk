@@ -2,7 +2,6 @@ package com.bitget.openapi.ws;
 
 import com.bitget.openapi.dto.request.ws.SubscribeReq;
 import com.bitget.openapi.dto.request.ws.WsBaseReq;
-
 import java.util.List;
 
 public interface BitgetWsClient {
