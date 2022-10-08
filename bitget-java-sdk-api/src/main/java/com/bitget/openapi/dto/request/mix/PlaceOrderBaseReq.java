@@ -5,7 +5,9 @@ import lombok.Data;
 import java.math.BigDecimal;
 
 /**
- * @author hupf
+ * @Author: bitget-sdk-team
+ * @Date: 2022-09-30 10:46
+ * @DES: place  order base request
  */
 @Data
 @Builder

@@ -11,7 +11,7 @@ import retrofit2.http.Query;
 /**
  * @Author: bitget-sdk-team
  * @Date: 2022-09-30 10:46
- * @DES: Contract quotation api
+ * @DES: Contract plan api
  */
 public interface MixPlanApi {
 
