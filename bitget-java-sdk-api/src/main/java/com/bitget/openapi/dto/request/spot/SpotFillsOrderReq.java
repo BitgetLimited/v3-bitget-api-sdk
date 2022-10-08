@@ -30,12 +30,12 @@ public class SpotFillsOrderReq implements Serializable {
     private String orderId;
 
     /**
-     * Pass in the data after the orderId asc
+     * The orderId is passed in. The data before the orderId desc
      */
     private Long after;
 
     /**
-     * The orderId is passed in. The data before the orderId desc
+     * Pass in the data after the orderId asc
      */
     private Long before;
 
