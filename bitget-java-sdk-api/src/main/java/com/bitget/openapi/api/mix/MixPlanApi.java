@@ -17,51 +17,51 @@ public interface MixPlanApi {
 
     /**
      * Plan Entrusted Order
-     * @param mixPlanOrderRequest
+     * @param mixPlanOrderReq
      * @return ResponseResult
      */
     @POST("/api/mix/v1/plan/placePlan")
-    Call<ResponseResult> placePlan(@Body MixPlanOrderRequest mixPlanOrderRequest);
+    Call<ResponseResult> placePlan(@Body MixPlanOrderReq mixPlanOrderReq);
 
     /**
      * Modify Plan Delegation
-     * @param mixModifyPlanRequest
+     * @param mixModifyPlanReq
      * @return ResponseResult
      */
     @POST("/api/mix/v1/plan/modifyPlan")
-    Call<ResponseResult> modifyPlan(@Body MixModifyPlanRequest mixModifyPlanRequest);
+    Call<ResponseResult> modifyPlan(@Body MixModifyPlanReq mixModifyPlanReq);
 
     /**
      * Modify the preset profit and loss stop of plan entrustment
-     * @param mixModifyPresetRequest
+     * @param mixModifyPresetReq
      * @return ResponseResult
      */
     @POST("/api/mix/v1/plan/modifyPlanPreset")
-    Call<ResponseResult> modifyPlanPreset(@Body MixModifyPresetRequest mixModifyPresetRequest);
+    Call<ResponseResult> modifyPlanPreset(@Body MixModifyPresetReq mixModifyPresetReq);
 
     /**
      * Modify profit and loss stop
-     * @param mixModifyTPSLRequest
+     * @param mixModifyTPSLReq
      * @return ResponseResult
      */
     @POST("/api/mix/v1/plan/modifyTPSLPlan")
-    Call<ResponseResult> modifyTPSLPlan(@Body MixModifyTPSLRequest mixModifyTPSLRequest);
+    Call<ResponseResult> modifyTPSLPlan(@Body MixModifyTPSLReq mixModifyTPSLReq);
 
     /**
      * Stop profit and stop loss Order
-     * @param mixTPSLOrderRequest
+     * @param mixTPSLOrderReq
      * @return ResponseResult
      */
     @POST("/api/mix/v1/plan/placeTPSL")
-    Call<ResponseResult> placeTPSL(@Body MixTPSLOrderRequest mixTPSLOrderRequest);
+    Call<ResponseResult> placeTPSL(@Body MixTPSLOrderReq mixTPSLOrderReq);
 
     /**
      * Planned entrustment (profit and loss stop) cancellation
-     * @param mixCancelPlanRequest
+     * @param mixCancelPlanReq
      * @return ResponseResult
      */
     @POST("/api/mix/v1/plan/cancelPlan")
-    Call<ResponseResult> cancelPlan(@Body MixCancelPlanRequest mixCancelPlanRequest);
+    Call<ResponseResult> cancelPlan(@Body MixCancelPlanReq mixCancelPlanReq);
 
     /**
      * Get the current plan commission (profit stop and loss stop) list

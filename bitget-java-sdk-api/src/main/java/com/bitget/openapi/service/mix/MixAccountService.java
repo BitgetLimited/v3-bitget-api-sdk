@@ -2,10 +2,6 @@ package com.bitget.openapi.service.mix;
 
 import com.bitget.openapi.dto.request.mix.*;
 import com.bitget.openapi.dto.response.ResponseResult;
-import com.bitget.openapi.dto.response.mix.ApiBalanceResult;
-import com.bitget.openapi.dto.response.mix.ChangeHoldModeResult;
-import com.bitget.openapi.dto.response.mix.ChangeLeverageResult;
-import com.bitget.openapi.dto.response.mix.MixCommonResult;
 
 import java.io.IOException;
 
@@ -21,13 +17,13 @@ public interface MixAccountService {
 
     ResponseResult getAccounts(String productType) throws IOException;
 
-    ResponseResult leverage(MixChangeLeverageRequest mixChangeLeverageRequest) throws IOException;
+    ResponseResult leverage(MixChangeLeverageReq mixChangeLeverageReq) throws IOException;
 
-    ResponseResult margin(MixAdjustMarginFixRequest mixAdjustMarginFixRequest) throws IOException;
+    ResponseResult margin(MixAdjustMarginFixReq mixAdjustMarginFixReq) throws IOException;
 
-    ResponseResult marginMode(AdjustMarginModeRequest adjustMarginModeRequest) throws IOException;
+    ResponseResult marginMode(AdjustMarginModeReq adjustMarginModeReq) throws IOException;
 
-    ResponseResult positionMode(AdjustHoldModeRequest adjustHoldModeRequest) throws IOException;
+    ResponseResult positionMode(AdjustHoldModeReq adjustHoldModeReq) throws IOException;
 
-    ResponseResult openCount(MixOpenCountRequest mixOpenCountRequest) throws IOException;
+    ResponseResult openCount(MixOpenCountReq mixOpenCountReq) throws IOException;
 }

@@ -1,10 +1,10 @@
 package com.bitget.openapi.api.mix;
 
 
-import com.bitget.openapi.dto.request.mix.MixCancelBatchOrdersRequest;
-import com.bitget.openapi.dto.request.mix.MixCancelOrderRequest;
-import com.bitget.openapi.dto.request.mix.MixPlaceOrderRequest;
-import com.bitget.openapi.dto.request.mix.PlaceBatchOrderRequest;
+import com.bitget.openapi.dto.request.mix.MixCancelBatchOrdersReq;
+import com.bitget.openapi.dto.request.mix.MixCancelOrderReq;
+import com.bitget.openapi.dto.request.mix.MixPlaceOrderReq;
+import com.bitget.openapi.dto.request.mix.PlaceBatchOrderReq;
 import com.bitget.openapi.dto.response.ResponseResult;
 import retrofit2.Call;
 import retrofit2.http.Body;
@@ -21,43 +21,43 @@ public interface MixOrderApi {
 
     /**
      * place an order
-     * @param mixPlaceOrderRequest
+     * @param mixPlaceOrderReq
      * @return ResponseResult
      */
     @POST("/api/mix/v1/order/placeOrder")
-    Call<ResponseResult> placeOrder(@Body MixPlaceOrderRequest mixPlaceOrderRequest);
+    Call<ResponseResult> placeOrder(@Body MixPlaceOrderReq mixPlaceOrderReq);
 
     /**
      * place an order
-     * @param mixPlaceOrderRequest
+     * @param mixPlaceOrderReq
      * @return ResponseResult
      */
     @POST("/api/mix/v1/order/proportionOrder")
-    Call<ResponseResult> proportionOrder(@Body MixPlaceOrderRequest mixPlaceOrderRequest);
+    Call<ResponseResult> proportionOrder(@Body MixPlaceOrderReq mixPlaceOrderReq);
 
     /**
      * Place orders in batches
-     * @param placeBatchOrderRequest
+     * @param placeBatchOrderReq
      * @return ResponseResult
      */
     @POST("/api/mix/v1/order/batch-orders")
-    Call<ResponseResult> batchOrders(@Body PlaceBatchOrderRequest placeBatchOrderRequest);
+    Call<ResponseResult> batchOrders(@Body PlaceBatchOrderReq placeBatchOrderReq);
 
     /**
      * cancel the order
-     * @param mixCancelOrderRequest
+     * @param mixCancelOrderReq
      * @return ResponseResult
      */
     @POST("/api/mix/v1/order/cancel-order")
-    Call<ResponseResult> cancelOrder(@Body MixCancelOrderRequest mixCancelOrderRequest);
+    Call<ResponseResult> cancelOrder(@Body MixCancelOrderReq mixCancelOrderReq);
 
     /**
      * Batch cancellation
-     * @param mixCancelBatchOrdersRequest
+     * @param mixCancelBatchOrdersReq
      * @return ResponseResult
      */
     @POST("/api/mix/v1/order/cancel-batch-orders")
-    Call<ResponseResult> cancelBatchOrder(@Body MixCancelBatchOrdersRequest mixCancelBatchOrdersRequest);
+    Call<ResponseResult> cancelBatchOrder(@Body MixCancelBatchOrdersReq mixCancelBatchOrdersReq);
 
     /**
      * Get Historical Delegation

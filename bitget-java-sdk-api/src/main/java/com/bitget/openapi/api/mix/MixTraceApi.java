@@ -1,6 +1,6 @@
 package com.bitget.openapi.api.mix;
 
-import com.bitget.openapi.dto.request.mix.MixCloseTrackOrderRequest;
+import com.bitget.openapi.dto.request.mix.MixCloseTrackOrderReq;
 import com.bitget.openapi.dto.response.ResponseResult;
 import retrofit2.Call;
 import retrofit2.http.Body;
@@ -17,11 +17,11 @@ public interface MixTraceApi {
 
     /**
      * Dealer closing interface
-     * @param mixCloseTrackOrderRequest
+     * @param mixCloseTrackOrderReq
      * @return ResponseResult
      */
     @POST("/api/mix/v1/trace/closeTrackOrder")
-    Call<ResponseResult> closeTraceOrder(@Body MixCloseTrackOrderRequest mixCloseTrackOrderRequest);
+    Call<ResponseResult> closeTraceOrder(@Body MixCloseTrackOrderReq mixCloseTrackOrderReq);
 
     /**
      * The trader obtains the current order

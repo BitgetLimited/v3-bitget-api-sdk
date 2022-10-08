@@ -34,41 +34,41 @@ public interface MixAccountApi {
 
     /**
      * set lever
-     * @param mixChangeLeverageRequest
+     * @param mixChangeLeverageReq
      * @return ResponseResult
      */
     @POST("/api/mix/v1/account/setLeverage")
-    Call<ResponseResult> leverage(@Body MixChangeLeverageRequest mixChangeLeverageRequest);
+    Call<ResponseResult> leverage(@Body MixChangeLeverageReq mixChangeLeverageReq);
 
     /**
      * Adjustment margin
-     * @param mixAdjustMarginFixRequest
+     * @param mixAdjustMarginFixReq
      * @return ResponseResult
      */
     @POST("/api/mix/v1/account/setMargin")
-    Call<ResponseResult> margin(@Body MixAdjustMarginFixRequest mixAdjustMarginFixRequest);
+    Call<ResponseResult> margin(@Body MixAdjustMarginFixReq mixAdjustMarginFixReq);
 
     /**
      * Adjust margin mode
-     * @param adjustMarginModeRequest
+     * @param adjustMarginModeReq
      * @return ResponseResult
      */
     @POST("/api/mix/v1/account/setMarginMode")
-    Call<ResponseResult> marginMode(@Body AdjustMarginModeRequest adjustMarginModeRequest);
+    Call<ResponseResult> marginMode(@Body AdjustMarginModeReq adjustMarginModeReq);
 
     /**
      * Adjust hold mode
-     * @param adjustHoldModeRequest
+     * @param adjustHoldModeReq
      * @return ResponseResult
      */
     @POST("/api/mix/v1/account/setPositionMode")
-    Call<ResponseResult> positionMode(@Body AdjustHoldModeRequest adjustHoldModeRequest);
+    Call<ResponseResult> positionMode(@Body AdjustHoldModeReq adjustHoldModeReq);
 
     /**
      * Get the openable quantity
-     * @param mixOpenCountRequest
+     * @param mixOpenCountReq
      * @return ResponseResult
      */
     @POST("/api/mix/v1/account/open-count")
-    Call<ResponseResult> openCount(@Body MixOpenCountRequest mixOpenCountRequest);
+    Call<ResponseResult> openCount(@Body MixOpenCountReq mixOpenCountReq);
 }

@@ -4,11 +4,8 @@ import com.bitget.openapi.api.spot.SpotAccountApi;
 import com.bitget.openapi.common.client.ApiClient;
 import com.bitget.openapi.dto.request.spot.SpotBillQueryReq;
 import com.bitget.openapi.dto.response.ResponseResult;
-import com.bitget.openapi.dto.response.spot.SpotAssetsResult;
 import com.bitget.openapi.service.spot.SpotAccountService;
-
 import java.io.IOException;
-import java.util.List;
 
 /**
  * @Author: bitget

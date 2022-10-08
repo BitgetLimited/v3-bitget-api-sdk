@@ -2,10 +2,8 @@ package com.bitget.openapi.service.spot;
 
 import com.bitget.openapi.dto.request.spot.SpotBillQueryReq;
 import com.bitget.openapi.dto.response.ResponseResult;
-import com.bitget.openapi.dto.response.spot.SpotAssetsResult;
 
 import java.io.IOException;
-import java.util.List;
 
 /**
  * @Author: bitget

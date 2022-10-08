@@ -24,7 +24,7 @@ public class MixPlanServiceTest extends BaseTest {
     //passed
     @Test
     public void planPlace() throws IOException {
-        MixPlanOrderRequest build = MixPlanOrderRequest.builder()
+        MixPlanOrderReq build = MixPlanOrderReq.builder()
                 .clientOid("RFIut#" + System.currentTimeMillis())
                 .symbol(symbol)
                 .triggerPrice(new BigDecimal("45000.3"))
@@ -43,7 +43,7 @@ public class MixPlanServiceTest extends BaseTest {
     //passed
     @Test
     public void modifyPlan() throws IOException {
-        MixModifyPlanRequest build = MixModifyPlanRequest.builder()
+        MixModifyPlanReq build = MixModifyPlanReq.builder()
                 .orderId("803521986049314816")
                 .symbol(symbol)
                 .triggerPrice(new BigDecimal("45012.1"))
@@ -60,7 +60,7 @@ public class MixPlanServiceTest extends BaseTest {
     //passed
     @Test
     public void modifyPlanPreset() throws IOException {
-        MixModifyPresetRequest build = MixModifyPresetRequest.builder()
+        MixModifyPresetReq build = MixModifyPresetReq.builder()
                 .orderId("803521986049314816")
                 .symbol(symbol)
                 .marginCoin(marginCoin)
@@ -74,7 +74,7 @@ public class MixPlanServiceTest extends BaseTest {
     //passed
     @Test
     public void placeTPSL() throws IOException {
-        MixTPSLOrderRequest build = MixTPSLOrderRequest.builder()
+        MixTPSLOrderReq build = MixTPSLOrderReq.builder()
                 .symbol(symbol)
                 .marginCoin(marginCoin)
                 .planType(MixPlanTypeEnum.PROFIT_PLAN.getValue())
@@ -88,7 +88,7 @@ public class MixPlanServiceTest extends BaseTest {
 
     @Test
     public void modifyTPSLPlan() throws IOException {
-        MixModifyTPSLRequest build = MixModifyTPSLRequest.builder()
+        MixModifyTPSLReq build = MixModifyTPSLReq.builder()
                 .orderId("803521986049314816")
                 .symbol(symbol)
                 .marginCoin(marginCoin)
@@ -102,7 +102,7 @@ public class MixPlanServiceTest extends BaseTest {
     //passed
     @Test
     public void cancelPlan() throws IOException {
-        MixCancelPlanRequest build = MixCancelPlanRequest.builder()
+        MixCancelPlanReq build = MixCancelPlanReq.builder()
                 .symbol(symbol)
                 .marginCoin(marginCoin)
                 .orderId("803521986049314816")

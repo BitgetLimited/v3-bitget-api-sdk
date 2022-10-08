@@ -5,7 +5,6 @@ import com.bitget.openapi.common.client.ApiClient;
 import com.bitget.openapi.dto.request.mix.*;
 import com.bitget.openapi.dto.response.ResponseResult;
 import com.bitget.openapi.service.mix.MixPlanService;
-import retrofit2.http.Query;
 
 import java.io.IOException;
 
@@ -18,33 +17,33 @@ public class MixPlanServiceImpl implements MixPlanService {
     }
 
     @Override
-    public ResponseResult placePlan(MixPlanOrderRequest mixPlanOrderRequest) throws IOException {
-        return mixPlanApi.placePlan(mixPlanOrderRequest).execute().body();
+    public ResponseResult placePlan(MixPlanOrderReq mixPlanOrderReq) throws IOException {
+        return mixPlanApi.placePlan(mixPlanOrderReq).execute().body();
     }
 
     @Override
-    public ResponseResult modifyPlan(MixModifyPlanRequest mixModifyPlanRequest) throws IOException {
-        return mixPlanApi.modifyPlan(mixModifyPlanRequest).execute().body();
+    public ResponseResult modifyPlan(MixModifyPlanReq mixModifyPlanReq) throws IOException {
+        return mixPlanApi.modifyPlan(mixModifyPlanReq).execute().body();
     }
 
     @Override
-    public ResponseResult modifyPlanPreset(MixModifyPresetRequest mixModifyPresetRequest) throws IOException {
-        return mixPlanApi.modifyPlanPreset(mixModifyPresetRequest).execute().body();
+    public ResponseResult modifyPlanPreset(MixModifyPresetReq mixModifyPresetReq) throws IOException {
+        return mixPlanApi.modifyPlanPreset(mixModifyPresetReq).execute().body();
     }
 
     @Override
-    public ResponseResult modifyTPSLPlan(MixModifyTPSLRequest mixModifyTPSLRequest) throws IOException {
-        return mixPlanApi.modifyTPSLPlan(mixModifyTPSLRequest).execute().body();
+    public ResponseResult modifyTPSLPlan(MixModifyTPSLReq mixModifyTPSLReq) throws IOException {
+        return mixPlanApi.modifyTPSLPlan(mixModifyTPSLReq).execute().body();
     }
 
     @Override
-    public ResponseResult placeTPSL(MixTPSLOrderRequest mixTPSLOrderRequest) throws IOException {
-        return mixPlanApi.placeTPSL(mixTPSLOrderRequest).execute().body();
+    public ResponseResult placeTPSL(MixTPSLOrderReq mixTPSLOrderReq) throws IOException {
+        return mixPlanApi.placeTPSL(mixTPSLOrderReq).execute().body();
     }
 
     @Override
-    public ResponseResult cancelPlan(MixCancelPlanRequest mixCancelPlanRequest) throws IOException {
-        return mixPlanApi.cancelPlan(mixCancelPlanRequest).execute().body();
+    public ResponseResult cancelPlan(MixCancelPlanReq mixCancelPlanReq) throws IOException {
+        return mixPlanApi.cancelPlan(mixCancelPlanReq).execute().body();
     }
 
     @Override

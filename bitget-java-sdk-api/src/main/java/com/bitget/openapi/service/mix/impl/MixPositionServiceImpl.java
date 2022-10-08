@@ -4,7 +4,6 @@ import com.bitget.openapi.api.mix.MixPositionApi;
 import com.bitget.openapi.common.client.ApiClient;
 import com.bitget.openapi.dto.response.ResponseResult;
 import com.bitget.openapi.service.mix.MixPositionService;
-
 import java.io.IOException;
 
 public class MixPositionServiceImpl implements MixPositionService {

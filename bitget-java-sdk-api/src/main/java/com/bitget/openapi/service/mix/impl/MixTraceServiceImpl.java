@@ -2,7 +2,7 @@ package com.bitget.openapi.service.mix.impl;
 
 import com.bitget.openapi.api.mix.MixTraceApi;
 import com.bitget.openapi.common.client.ApiClient;
-import com.bitget.openapi.dto.request.mix.MixCloseTrackOrderRequest;
+import com.bitget.openapi.dto.request.mix.MixCloseTrackOrderReq;
 import com.bitget.openapi.dto.response.ResponseResult;
 import com.bitget.openapi.service.mix.MixTraceService;
 
@@ -17,8 +17,8 @@ public class MixTraceServiceImpl implements MixTraceService {
     }
 
     @Override
-    public ResponseResult closeTraceOrder(MixCloseTrackOrderRequest mixCloseTrackOrderRequest) throws IOException {
-        return mixTraceApi.closeTraceOrder(mixCloseTrackOrderRequest).execute().body();
+    public ResponseResult closeTraceOrder(MixCloseTrackOrderReq mixCloseTrackOrderReq) throws IOException {
+        return mixTraceApi.closeTraceOrder(mixCloseTrackOrderReq).execute().body();
     }
 
     @Override

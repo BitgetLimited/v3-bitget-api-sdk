@@ -4,7 +4,6 @@ import com.bitget.openapi.api.mix.MixMarketApi;
 import com.bitget.openapi.common.client.ApiClient;
 import com.bitget.openapi.dto.response.ResponseResult;
 import com.bitget.openapi.service.mix.MixMarketService;
-
 import java.io.IOException;
 import java.util.List;
 

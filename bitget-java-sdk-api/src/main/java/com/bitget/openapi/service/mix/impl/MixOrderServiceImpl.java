@@ -1,21 +1,15 @@
 package com.bitget.openapi.service.mix.impl;
 
 import com.bitget.openapi.api.mix.MixOrderApi;
-import com.bitget.openapi.api.mix.MixPositionApi;
 import com.bitget.openapi.common.client.ApiClient;
-import com.bitget.openapi.dto.request.mix.MixCancelBatchOrdersRequest;
-import com.bitget.openapi.dto.request.mix.MixCancelOrderRequest;
-import com.bitget.openapi.dto.request.mix.MixPlaceOrderRequest;
-import com.bitget.openapi.dto.request.mix.PlaceBatchOrderRequest;
+import com.bitget.openapi.dto.request.mix.MixCancelBatchOrdersReq;
+import com.bitget.openapi.dto.request.mix.MixCancelOrderReq;
+import com.bitget.openapi.dto.request.mix.MixPlaceOrderReq;
+import com.bitget.openapi.dto.request.mix.PlaceBatchOrderReq;
 import com.bitget.openapi.dto.response.ResponseResult;
-import com.bitget.openapi.dto.response.mix.MixDelegateOrderListResult;
-import com.bitget.openapi.dto.response.mix.MixDelegateOrderResult;
-import com.bitget.openapi.dto.response.mix.MixFillRecordResult;
-import com.bitget.openapi.dto.response.mix.PlaceOrderResult;
 import com.bitget.openapi.service.mix.MixOrderService;
 
 import java.io.IOException;
-import java.util.List;
 
 public class MixOrderServiceImpl implements MixOrderService {
 
@@ -27,28 +21,28 @@ public class MixOrderServiceImpl implements MixOrderService {
 
 
     @Override
-    public ResponseResult placeOrder(MixPlaceOrderRequest mixPlaceOrderRequest) throws IOException {
-        return mixOrderApi.placeOrder(mixPlaceOrderRequest).execute().body();
+    public ResponseResult placeOrder(MixPlaceOrderReq mixPlaceOrderReq) throws IOException {
+        return mixOrderApi.placeOrder(mixPlaceOrderReq).execute().body();
     }
 
     @Override
-    public ResponseResult proportionOrder(MixPlaceOrderRequest mixPlaceOrderRequest) throws IOException {
-        return mixOrderApi.proportionOrder(mixPlaceOrderRequest).execute().body();
+    public ResponseResult proportionOrder(MixPlaceOrderReq mixPlaceOrderReq) throws IOException {
+        return mixOrderApi.proportionOrder(mixPlaceOrderReq).execute().body();
     }
 
     @Override
-    public ResponseResult batchOrders(PlaceBatchOrderRequest placeBatchOrderRequest) throws IOException {
-        return mixOrderApi.batchOrders(placeBatchOrderRequest).execute().body();
+    public ResponseResult batchOrders(PlaceBatchOrderReq placeBatchOrderReq) throws IOException {
+        return mixOrderApi.batchOrders(placeBatchOrderReq).execute().body();
     }
 
     @Override
-    public ResponseResult cancelOrder(MixCancelOrderRequest mixCancelOrderRequest) throws IOException {
-        return mixOrderApi.cancelOrder(mixCancelOrderRequest).execute().body();
+    public ResponseResult cancelOrder(MixCancelOrderReq mixCancelOrderReq) throws IOException {
+        return mixOrderApi.cancelOrder(mixCancelOrderReq).execute().body();
     }
 
     @Override
-    public ResponseResult cancelBatchOrder(MixCancelBatchOrdersRequest mixCancelBatchOrdersRequest) throws IOException {
-        return mixOrderApi.cancelBatchOrder(mixCancelBatchOrdersRequest).execute().body();
+    public ResponseResult cancelBatchOrder(MixCancelBatchOrdersReq mixCancelBatchOrdersReq) throws IOException {
+        return mixOrderApi.cancelBatchOrder(mixCancelBatchOrdersReq).execute().body();
     }
 
     @Override

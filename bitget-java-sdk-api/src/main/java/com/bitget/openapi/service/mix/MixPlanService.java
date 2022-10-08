@@ -2,23 +2,22 @@ package com.bitget.openapi.service.mix;
 
 import com.bitget.openapi.dto.request.mix.*;
 import com.bitget.openapi.dto.response.ResponseResult;
-import retrofit2.http.Query;
 
 import java.io.IOException;
 
 public interface MixPlanService {
 
-    ResponseResult placePlan(MixPlanOrderRequest mixPlanOrderRequest) throws IOException;
+    ResponseResult placePlan(MixPlanOrderReq mixPlanOrderReq) throws IOException;
 
-    ResponseResult modifyPlan(MixModifyPlanRequest mixModifyPlanRequest) throws IOException;
+    ResponseResult modifyPlan(MixModifyPlanReq mixModifyPlanReq) throws IOException;
 
-    ResponseResult modifyPlanPreset(MixModifyPresetRequest mixModifyPresetRequest) throws IOException;
+    ResponseResult modifyPlanPreset(MixModifyPresetReq mixModifyPresetReq) throws IOException;
 
-    ResponseResult modifyTPSLPlan(MixModifyTPSLRequest mixModifyTPSLRequest) throws IOException;
+    ResponseResult modifyTPSLPlan(MixModifyTPSLReq mixModifyTPSLReq) throws IOException;
 
-    ResponseResult placeTPSL(MixTPSLOrderRequest mixTPSLOrderRequest) throws IOException;
+    ResponseResult placeTPSL(MixTPSLOrderReq mixTPSLOrderReq) throws IOException;
 
-    ResponseResult cancelPlan(MixCancelPlanRequest mixCancelPlanRequest) throws IOException;
+    ResponseResult cancelPlan(MixCancelPlanReq mixCancelPlanReq) throws IOException;
 
     ResponseResult currentPlan(String symbol, String isPlan) throws IOException;
 

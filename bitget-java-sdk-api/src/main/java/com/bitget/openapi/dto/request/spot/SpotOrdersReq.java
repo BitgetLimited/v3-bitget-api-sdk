@@ -4,6 +4,11 @@ import lombok.*;
 
 import java.io.Serializable;
 
+/**
+ * @Author: bitget-sdk-team
+ * @Date: 2022-09-30 10:46
+ * @DES: SpotOrdersReq
+ */
 @Data
 @Builder
 @NoArgsConstructor

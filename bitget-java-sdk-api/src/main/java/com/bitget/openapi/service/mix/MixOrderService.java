@@ -1,31 +1,26 @@
 package com.bitget.openapi.service.mix;
 
-import com.bitget.openapi.dto.request.mix.MixCancelBatchOrdersRequest;
-import com.bitget.openapi.dto.request.mix.MixCancelOrderRequest;
-import com.bitget.openapi.dto.request.mix.MixPlaceOrderRequest;
-import com.bitget.openapi.dto.request.mix.PlaceBatchOrderRequest;
+import com.bitget.openapi.dto.request.mix.MixCancelBatchOrdersReq;
+import com.bitget.openapi.dto.request.mix.MixCancelOrderReq;
+import com.bitget.openapi.dto.request.mix.MixPlaceOrderReq;
+import com.bitget.openapi.dto.request.mix.PlaceBatchOrderReq;
 import com.bitget.openapi.dto.response.ResponseResult;
-import com.bitget.openapi.dto.response.mix.MixDelegateOrderListResult;
-import com.bitget.openapi.dto.response.mix.MixDelegateOrderResult;
-import com.bitget.openapi.dto.response.mix.MixFillRecordResult;
-import com.bitget.openapi.dto.response.mix.PlaceOrderResult;
 
 import java.io.IOException;
-import java.util.List;
 
 public interface MixOrderService {
 
 
-    ResponseResult placeOrder(MixPlaceOrderRequest mixPlaceOrderRequest) throws IOException;
+    ResponseResult placeOrder(MixPlaceOrderReq mixPlaceOrderReq) throws IOException;
 
-    ResponseResult proportionOrder(MixPlaceOrderRequest mixPlaceOrderRequest) throws IOException;
+    ResponseResult proportionOrder(MixPlaceOrderReq mixPlaceOrderReq) throws IOException;
 
 
-    ResponseResult batchOrders(PlaceBatchOrderRequest placeBatchOrderRequest) throws IOException;
+    ResponseResult batchOrders(PlaceBatchOrderReq placeBatchOrderReq) throws IOException;
 
-    ResponseResult cancelOrder(MixCancelOrderRequest mixCancelOrderRequest) throws IOException;
+    ResponseResult cancelOrder(MixCancelOrderReq mixCancelOrderReq) throws IOException;
 
-    ResponseResult cancelBatchOrder(MixCancelBatchOrdersRequest mixCancelBatchOrdersRequest) throws IOException;
+    ResponseResult cancelBatchOrder(MixCancelBatchOrdersReq mixCancelBatchOrdersReq) throws IOException;
 
     ResponseResult history(String symbol, String startTime, String endTime, int pageSize, String lastEndId, boolean isPre) throws IOException;
 

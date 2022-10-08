@@ -1,7 +1,6 @@
 package com.bitget.openapi.service.spot;
 
 import com.bitget.openapi.dto.response.ResponseResult;
-
 import java.io.IOException;
 
 public interface SpotMarketService {
