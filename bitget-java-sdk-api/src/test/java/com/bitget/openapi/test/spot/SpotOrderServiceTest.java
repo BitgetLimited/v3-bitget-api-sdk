@@ -2,13 +2,12 @@ package com.bitget.openapi.test.spot;
 
 import com.alibaba.fastjson.JSON;
 import com.bitget.openapi.BaseTest;
-import com.bitget.openapi.common.enums.spot.ForceEnum;
-import com.bitget.openapi.common.enums.spot.OrderSideEnum;
-import com.bitget.openapi.common.enums.spot.SpotOrderTypeEnum;
 import com.bitget.openapi.dto.request.spot.*;
 import com.bitget.openapi.dto.response.ResponseResult;
+import com.bitget.openapi.enums.spot.ForceEnum;
+import com.bitget.openapi.enums.spot.OrderSideEnum;
+import com.bitget.openapi.enums.spot.SpotOrderTypeEnum;
 import org.junit.Test;
-
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;

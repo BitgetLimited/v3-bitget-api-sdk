@@ -2,10 +2,9 @@ package com.bitget.openapi.test.spot;
 
 import com.alibaba.fastjson.JSON;
 import com.bitget.openapi.BaseTest;
-import com.bitget.openapi.common.enums.SpotDepthTypeEnum;
 import com.bitget.openapi.dto.response.ResponseResult;
+import com.bitget.openapi.enums.SpotDepthTypeEnum;
 import org.junit.Test;
-
 import java.io.IOException;
 
 public class MarketServiceTest extends BaseTest {
