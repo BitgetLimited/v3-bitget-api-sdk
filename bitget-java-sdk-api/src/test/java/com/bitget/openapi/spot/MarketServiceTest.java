@@ -19,30 +19,35 @@ public class MarketServiceTest extends BaseTest {
 
     static String before = "1624933406000";
 
+    //passed
     @Test
     public void fills() throws IOException {
         ResponseResult fills = bitgetRestClient.spot().bitget().market().fills(symbol, limit);
         System.out.println(JSON.toJSONString(fills));
     }
 
+    //passed
     @Test
     public void depth() throws IOException {
         ResponseResult depth = bitgetRestClient.spot().bitget().market().depth(symbol, limit, SpotDepthTypeEnum.STEP0.getCode());
         System.out.println(JSON.toJSONString(depth));
     }
 
+    //passed
     @Test
     public void ticker() throws IOException {
         ResponseResult ticker = bitgetRestClient.spot().bitget().market().ticker(symbol);
         System.out.println(JSON.toJSONString(ticker));
     }
 
+    //passed
     @Test
     public void tickers() throws IOException {
         ResponseResult tickers = bitgetRestClient.spot().bitget().market().tickers();
         System.out.println(JSON.toJSONString(tickers));
     }
 
+    //passed
     @Test
     public void candles() throws IOException {
         ResponseResult candles = bitgetRestClient.spot().bitget().market().candles(symbol, period, after, before, limit);

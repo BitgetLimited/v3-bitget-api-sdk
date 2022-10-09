@@ -24,15 +24,6 @@ public class MixOrderTest extends BaseTest {
     private static int pageSize = 20;
 
     // passed
-
-
-
-
-
-
-
-
-
     @Test
     public void placeOrder() throws IOException {
         MixPlaceOrderReq req = MixPlaceOrderReq.builder()

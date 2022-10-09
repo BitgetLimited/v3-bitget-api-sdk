@@ -10,14 +10,14 @@ import java.io.IOException;
 
 public class SpotAccountServiceTest extends BaseTest {
 
-
+    //passed
     @Test
     public void assets() throws IOException {
         ResponseResult assets = bitgetRestClient.spot().bitget().account().assets();
         System.out.println(JSON.toJSONString(assets));
     }
 
-
+    //passed
     @Test
     public void bills() throws IOException {
         SpotBillQueryReq build = SpotBillQueryReq.builder()
@@ -28,6 +28,7 @@ public class SpotAccountServiceTest extends BaseTest {
         System.out.println(JSON.toJSONString(assets));
     }
 
+    //passed
     @Test
     public void transferRecords() throws IOException {
         SpotBillQueryReq build = SpotBillQueryReq.builder()

@@ -4,7 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 
 /**
- * 保证金模式
+ * Margin mode
  */
 @AllArgsConstructor
 @Getter

@@ -85,6 +85,7 @@ public class MixPlanServiceTest extends BaseTest {
         System.out.println(JSON.toJSONString(result));
     }
 
+    //passed
     @Test
     public void modifyTPSLPlan() throws IOException {
         MixModifyTPSLReq build = MixModifyTPSLReq.builder()
