@@ -4,7 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.upex.contract</groupId>
     <artifactId>bitget-java-sdk-api</artifactId>
-    <version>1.0.0</version>
+    <version>1.0.1-SNAPSHOT</version>
 
      <name>bitget-java-sdk-api</name>
     <description>A Java sdk for Bitget exchange API.</description>

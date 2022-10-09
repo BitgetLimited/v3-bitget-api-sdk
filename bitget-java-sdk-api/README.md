@@ -8,7 +8,7 @@ A Java sdk for bitget exchange API
  <dependency>
     <groupId>com.bitget.openapi</groupId>
     <artifactId>bitget-java-sdk-api</artifactId>
-    <version>1.0.0-SNAPSHOT</version>
+    <version>1.0.1-SNAPSHOT</version>
  </dependency>
  
 ```
