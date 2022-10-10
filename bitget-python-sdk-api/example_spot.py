@@ -7,20 +7,20 @@ import json
 if __name__ == '__main__':
     api_key = ""
     secret_key = ""
-    passphrase = ""  # 口令
+    passphrase = ""  # Password
 
     symbol = 'btcusdt_spbl'
 
-    # spot 获取币种信息
+    # spot Get currency information
     # publicApi = public.PublicApi(api_key, secret_key, passphrase, use_server_time=True, first=False);
     # result = publicApi.currencies()
     # print(result)
 
-    # spot 获取交易对信息
+    # spot Obtain transaction pair information
     # result = publicApi.products()
     # print(result)
 
-    # spot 获取单个交易对信息
+    # spot Get single transaction pair information
     # result = publicApi.product('btcusdt_spbl')
     # print(result)
 

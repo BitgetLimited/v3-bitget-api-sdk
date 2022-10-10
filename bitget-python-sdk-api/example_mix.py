@@ -9,7 +9,7 @@ import json
 if __name__ == '__main__':
     api_key = ""
     secret_key = ""
-    passphrase = ""  # 口令
+    passphrase = ""  # Password
 
     symbol = 'BTCUSDT_UMCBL'
 
