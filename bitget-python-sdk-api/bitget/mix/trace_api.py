@@ -9,9 +9,9 @@ class TraceApi(Client):
         Client.__init__(self, api_key, api_secret_key, passphrase, use_server_time, first)
 
     '''
-    交易员平仓
-    symbol： 交易对名称
-    trackingNo: 跟踪订单号
+    Dealers close positions
+    symbol： Trading pair name
+    trackingNo: Tracking order No
     :return:
     '''
 
@@ -25,10 +25,10 @@ class TraceApi(Client):
             return "pls check args "
 
     '''
-    交易员获取当前带单
-    symbol: 交易对名称
-    productType: umcbl(USDT专业合约) dmcbl(混合合约) sumcbl(USDT专业合约模拟盘)  sdmcbl(混合合约模拟盘)
-    pageNo： 从1开始
+    The trader obtains the current order
+    symbol: Trading pair name
+    productType: Umcbl (USDT professional contract) dmcbl (mixed contract) sumcbl (USDT professional contract simulation disk) sdmcbl (mixed contract simulation disk)
+    pageNo： Start at 1
     :return:
     '''
 
@@ -44,12 +44,12 @@ class TraceApi(Client):
             return "pls check args "
 
     '''
-    交易员获取当前带单
-    symbol: 交易对名称
-    startTime: 开始时间
-    endTime: 结束时间
-    pageSize: 查询条数
-    pageNo: 查询页数
+    The trader obtains the current order
+    symbol: Trading pair name
+    startTime: start time
+    endTime: end time
+    pageSize: Number of queries
+    pageNo: Number of query pages
     :return:
     '''
 
@@ -65,7 +65,7 @@ class TraceApi(Client):
             return "pls check args "
 
     '''
-    交易员分润汇总
+    Summary of traders' profit sharing
     :return:
     '''
 
@@ -73,7 +73,7 @@ class TraceApi(Client):
         return self._request_without_params(GET, MIX_TRACE_V1_URL + '/summary')
 
     '''
-    交易员分润汇总(按结算币种)
+    Summary of traders' profit sharing (by settlement currency)
     :return:
     '''
 
@@ -81,7 +81,7 @@ class TraceApi(Client):
         return self._request_without_params(GET, MIX_TRACE_V1_URL + '/profitSettleTokenIdGroup')
 
     '''
-    交易员分润汇总(按日期)
+    Summary of traders' profit sharing (by date)
     :return:
     '''
 
@@ -95,7 +95,7 @@ class TraceApi(Client):
             return "pls check args "
 
     '''
-    交易员历史分润明细
+    Historical profit distribution details of traders
     :return:
     '''
 
@@ -111,7 +111,7 @@ class TraceApi(Client):
             return "pls check args "
 
     '''
-    交易员待分润明细
+    Details of traders to be distributed
     :return:
     '''
 
@@ -125,7 +125,7 @@ class TraceApi(Client):
             return "pls check args "
 
     '''
-    跟随者 获取开仓平仓单信息
+    Followers obtain information on opening and closing orders
     :return:
     '''
 

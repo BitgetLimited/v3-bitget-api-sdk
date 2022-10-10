@@ -10,14 +10,14 @@ class PublicApi(Client):
         Client.__init__(self, api_key, api_secret_key, passphrase, use_server_time, first)
 
     '''
-    获取时间戳
+    Get Timestamp
     :return:
     '''
     def times(self):
         return self._request_without_params(GET, SPOT_PUBLIC_V1_URL + '/time')
 
     '''
-    获取所有币种
+    Get all currencies
     :return:
     '''
     def currencies(self):
@@ -25,7 +25,7 @@ class PublicApi(Client):
         return self._request_without_params(GET, SPOT_PUBLIC_V1_URL + '/currencies')
 
     '''
-    获取所有交易对信息
+    Get all transaction pair information
     :return:
     '''
     def products(self):
@@ -33,7 +33,7 @@ class PublicApi(Client):
         return self._request_without_params(GET, SPOT_PUBLIC_V1_URL+'/products')
 
     '''
-    根据交易对获取单个币对信息
+    Obtain single currency pair information according to the transaction pair
     :return:
     '''
     def product(self, symbol):

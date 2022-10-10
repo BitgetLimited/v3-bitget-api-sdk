@@ -9,7 +9,7 @@ class AccountApi(Client):
         Client.__init__(self, api_key, api_secret_key, passphrase, use_server_time, first)
 
     '''
-    获取用户 所有资产币种信息
+    Obtain all asset currency information of the user
     :return:
     '''
     def assets(self):
@@ -17,12 +17,12 @@ class AccountApi(Client):
         return self._request_without_params(GET, SPOT_ACCOUNT_V1_URL + '/assets')
 
     '''
-    获取用户 所有资产币种信息
+    Obtain all asset currency information of the user
     
-    groupType: deposit(充值), withdraw(提现), transaction(交易), transfer(划转), other(其他)
-    bizType：deposit(充值), withdraw(提现), buy(买), sell(卖), transfer-in(转入), transfer-out(转出)
-    after: 传入billId， 在这 billId 之前的数据
-    before: 传入 billId 在这 billId 之后的数据
+    groupType: Deposit, withdraw, transaction, transfer, other
+    bizType：Dispose, withdraw, buy, sell, transfer in, transfer out
+    after: Pass in billId, the data before this billId
+    before: Incoming billId data after this billId
     :return:
     '''
     def bills(self, coinId='', groupType='', bizType='', after='', before='', limit=100):

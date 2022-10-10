@@ -8,12 +8,12 @@ class OrderApi(Client):
         Client.__init__(self, api_key, api_secret_key, passphrase, use_server_time, first)
 
     '''
-    下单
-    price: 限价时 为 必填  
-    quantity: 限价时 为 数量  市价买 为额度 卖为数量
+    place an order
+    price: Mandatory in case of price limit
+    quantity: It is quantity when the price is limited. The market price is the limit. The sales is the quantity
     side：buy sell
-    orderType: limit(限价)  market(市价)
-    force:normal(普通限价订单)   postOnly(只做maker,市价不允许使用这个)  ioc(立即成交并取消剩余)  fok(全部成交或立即取消)
+    orderType: limit(fixed price)  market(market price)
+    force:normal(Ordinary price limit order)   postOnly(It is only a maker. The market price is not allowed to use this)  ioc(Close immediately and cancel the remaining)  fok(Complete transaction or immediate cancellation)
     :return:
     '''
     def orders(self, symbol, quantity, side, orderType, force, price='', clientOrderId=''):
@@ -32,14 +32,14 @@ class OrderApi(Client):
             return "pls check args "
 
     '''
-    批量下单
+    Place orders in batches
     '''
     def batch_orders(self, symbol, order_data):
         params = {'symbol': symbol, 'orderList': order_data}
         return self._request_with_params(POST, SPOT_ORDER_V1_URL + "/batch-orders", params)
 
     '''
-    撤单
+    cancel the order
     :return:
     '''
     def cancel_orders(self, symbol, orderId):
@@ -52,7 +52,7 @@ class OrderApi(Client):
             return "pls check args "
 
     '''
-    批量撤单
+    Batch cancellation
     orderIds: List 
     :return:
     '''
@@ -64,7 +64,7 @@ class OrderApi(Client):
             return "pls check args "
 
     '''
-    获取订单信息
+    Get order information
     :return:
     '''
     def order_info(self, symbol, orderId='', clientOrderId=''):
@@ -81,7 +81,7 @@ class OrderApi(Client):
             return "pls check args "
 
     '''
-    获取当前委托单
+    Get the current order
     :return:
     '''
     def open_order(self, symbol):
@@ -93,9 +93,9 @@ class OrderApi(Client):
             return "pls check args "
 
     '''
-    获取历史委托
-    after: 传入 orderId， 在这 orderId 之前的数据 desc
-    before: 传入 orderId 在这 orderId 之后的数据 asc
+    Get Historical Delegation
+    after: The orderId is passed in. The data before the orderId desc
+    before: Pass in the data after the orderId asc
     :return:
     '''
     def history(self, symbol, after='', before='', limit=100):
@@ -110,9 +110,9 @@ class OrderApi(Client):
             return "pls check args "
 
     '''
-    获取成交明细
-    after: 只支持传入 fillId， 在这 fillId 之前的数据
-    before: 只支持传入 fillId 在这 fillId 之后的数据
+    Obtain transaction details
+    after: Only the data before the fillId can be passed in
+    before: Only data passing in the fillId after this fillId is supported
     :return:
     '''
     def fills(self, symbol='', orderId='', after='', before='', limit=100):
