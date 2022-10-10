@@ -1,9 +1,7 @@
-export class OrderInfoReq{
+export class SpotCancelOrderReq {
     private _symbol!:string;
 
     private _orderId!:string;
-
-    private _clientOrderId!:string;
 
 
     get symbol(): string {
@@ -20,13 +18,5 @@ export class OrderInfoReq{
 
     set orderId(value: string) {
         this._orderId = value;
-    }
-
-    get clientOrderId(): string {
-        return this._clientOrderId;
-    }
-
-    set clientOrderId(value: string) {
-        this._clientOrderId = value;
     }
 }

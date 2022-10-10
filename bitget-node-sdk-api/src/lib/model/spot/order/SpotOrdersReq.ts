@@ -1,4 +1,4 @@
-export class OrdersReq {
+export class SpotOrdersReq {
     /**
      * 币对
      */

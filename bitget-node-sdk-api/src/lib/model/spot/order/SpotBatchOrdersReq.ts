@@ -1,8 +1,8 @@
-import {OrdersReq} from './OrdersReq';
+import {SpotOrdersReq} from './SpotOrdersReq';
 
-export class BatchOrdersReq {
+export class SpotBatchOrdersReq {
     private _symbol!:string;
-    private _orderList!:OrdersReq[];
+    private _orderList!:SpotOrdersReq[];
 
 
     get symbol(): string {
@@ -13,11 +13,11 @@ export class BatchOrdersReq {
         this._symbol = value;
     }
 
-    get orderList(): OrdersReq[] {
+    get orderList(): SpotOrdersReq[] {
         return this._orderList;
     }
 
-    set orderList(value: OrdersReq[]) {
+    set orderList(value: SpotOrdersReq[]) {
         this._orderList = value;
     }
 }

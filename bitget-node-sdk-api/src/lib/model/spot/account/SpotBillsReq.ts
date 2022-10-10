@@ -1,4 +1,4 @@
-export class BillsReq{
+export class SpotBillsReq {
     /**
      * 币种ID
      */

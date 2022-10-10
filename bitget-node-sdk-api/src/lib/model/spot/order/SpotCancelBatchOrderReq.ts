@@ -1,4 +1,4 @@
-export class CancelBatchOrderReq {
+export class SpotCancelBatchOrderReq {
     private _symbol!:string;
 
     private _orderIds!:string[];

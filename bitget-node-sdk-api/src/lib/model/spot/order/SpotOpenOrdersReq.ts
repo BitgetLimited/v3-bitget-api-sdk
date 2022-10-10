@@ -1,4 +1,4 @@
-export class OpenOrdersReq{
+export class SpotOpenOrdersReq {
     private _symbol!:string;
 
 

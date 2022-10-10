@@ -1,7 +1,5 @@
-export class FillsReq{
+export class SpotHistoryReq {
     private _symbol!:string;
-
-    private _orderId!:string;
 
     private _after!:string;
 
@@ -16,14 +14,6 @@ export class FillsReq{
 
     set symbol(value: string) {
         this._symbol = value;
-    }
-
-    get orderId(): string {
-        return this._orderId;
-    }
-
-    set orderId(value: string) {
-        this._orderId = value;
     }
 
     get after(): string {
