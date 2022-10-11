@@ -1,6 +1,6 @@
 export class SpotBillsReq {
     /**
-     * 币种ID
+     * 币种ID121
      */
     private _coinId!:string;
 
