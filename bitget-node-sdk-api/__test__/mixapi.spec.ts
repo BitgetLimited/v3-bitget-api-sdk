@@ -12,7 +12,7 @@ const apiKey = '';
 const secretKey = '';
 const passphrase = '';
 const locale = LOCAL.ZH_CH;
-describe('', () => {
+describe('MixAccountApiTest', () => {
 
 
     const mixAccountApi = new BitgetApi.MixAccountApi(apiKey,secretKey,passphrase,locale);
