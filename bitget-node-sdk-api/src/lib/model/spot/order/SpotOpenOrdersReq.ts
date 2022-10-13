@@ -1,4 +1,7 @@
 export class SpotOpenOrdersReq {
+    /**
+     * Currency pair
+     */
     private _symbol!:string;
 
 

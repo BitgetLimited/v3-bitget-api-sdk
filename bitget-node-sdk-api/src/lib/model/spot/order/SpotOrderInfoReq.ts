@@ -1,8 +1,15 @@
 export class SpotOrderInfoReq {
+    /**
+     * Currency pair
+     */
     private _symbol!:string;
-
+    /**
+     * Order Id
+     */
     private _orderId!:string;
-
+    /**
+     * Client Order Id
+     */
     private _clientOrderId!:string;
 
 

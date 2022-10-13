@@ -1,10 +1,19 @@
 export class SpotHistoryReq {
+    /**
+     * Currency pair
+     */
     private _symbol!:string;
-
+    /**
+     * The orderId is passed in. The data before the orderId desc
+     */
     private _after!:string;
-
+    /**
+     * Pass in the data after the orderId asc
+     */
     private _before!:string;
-
+    /**
+     * Number of returned results Default 100, maximum 500
+     */
     private _limit!:string;
 
 

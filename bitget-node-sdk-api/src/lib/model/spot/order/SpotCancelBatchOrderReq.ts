@@ -1,6 +1,11 @@
 export class SpotCancelBatchOrderReq {
+    /**
+     * Currency pair
+     */
     private _symbol!:string;
-
+    /**
+     *  Order ids
+     */
     private _orderIds!:string[];
 
 

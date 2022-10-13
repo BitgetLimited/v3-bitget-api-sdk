@@ -1,7 +1,13 @@
 import {SpotOrdersReq} from './SpotOrdersReq';
 
 export class SpotBatchOrdersReq {
+    /**
+     * Currency pair
+     */
     private _symbol!:string;
+    /**
+     * order list
+     */
     private _orderList!:SpotOrdersReq[];
 
 

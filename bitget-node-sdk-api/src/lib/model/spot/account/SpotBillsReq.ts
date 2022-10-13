@@ -1,29 +1,31 @@
 export class SpotBillsReq {
     /**
-     * 币种ID121
+     * Currency ID
      */
     private _coinId!:string;
 
     /**
-     * 分组类型
+     * Group Type
      */
     private _groupType!:string;
 
     /**
-     * 业务类型
+     * Business Type
      */
     private _bizType!:string;
 
     /**
-     * 传入billId ,查之前的数据
+     * Pass in billId to query previous data
      */
     private _after!:string;
 
     /**
-     * 传入billId,查之后的数据
+     * Pass in billId to check the subsequent data
      */
     private _before!:string;
-
+    /**
+     * Default 100, maximum 500
+     */
     private _limit!:string;
 
     get coinId(): string {

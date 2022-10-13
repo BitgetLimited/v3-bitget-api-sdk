@@ -1,6 +1,11 @@
 export class SpotCancelOrderReq {
+    /**
+     * Currency pair
+     */
     private _symbol!:string;
-
+    /**
+     * Order Id
+     */
     private _orderId!:string;
 
 

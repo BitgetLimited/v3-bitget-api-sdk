@@ -1,35 +1,35 @@
 export class SpotOrdersReq {
     /**
-     * 币对
+     * Currency pair
      */
     private _symbol!:string;
     /**
-     * 订单方向
+     * Order direction
      */
     private _side!:string;
 
     /**
-     * 订单类型
+     * Order type
      */
     private _orderType!:string;
 
     /**
-     * 订单控制类型
+     * Order Control Type
      */
     private _force!:string;
 
     /**
-     * 委托价格，仅适用于限价单
+     * Entrusted price, only applicable to price limit order
      */
     private _price!:string;
 
     /**
-     * 数量
+     * quantity
      */
     private _quantity!:string;
 
     /**
-     * 客户端订单ID
+     * Client order ID
      */
     private _clientOrderId!:string;
 
