@@ -16,19 +16,29 @@ describe('MixAccountApiTest', () => {
 
 
     const mixAccountApi = new BitgetApi.MixAccountApi(apiKey,secretKey,passphrase,locale);
-
+    /**
+     * Get account  information
+     * @param symbol
+     * @param marginCoin
+     */
     test('account', () => {
         return mixAccountApi.account('BTCUSDT_UMCBL','USDT').then((data) => {
             Console.info(toJsonString(data));
         });
     });
-
+    /**
+     * Get account  information list
+     * @param productType
+     */
     test('accounts', () => {
         return mixAccountApi.accounts('umcbl').then((data) => {
             Console.info(toJsonString(data));
         });
     });
-
+    /**
+     * set lever
+     * @param mixChangeLeverageReq
+     */
     test('setLeverage', () => {
         const setLeverageReq = new BitgetApi.SetLeverageReq();
         setLeverageReq.symbol = 'BTCUSDT_UMCBL';
@@ -39,6 +49,10 @@ describe('MixAccountApiTest', () => {
             Console.info(toJsonString(data));
         });
     });
+    /**
+     * Adjustment margin
+     * @param mixAdjustMarginFixReq
+     */
     test('setMargin', () => {
         const setMarginReq = new BitgetApi.SetMarginReq();
         setMarginReq.symbol = 'BTCUSDT_UMCBL';
@@ -49,7 +63,10 @@ describe('MixAccountApiTest', () => {
             Console.info(toJsonString(data));
         })
     })
-
+    /**
+     * Adjust margin mode
+     * @param adjustMarginModeReq
+     */
     test('setMarginMode', () => {
         const setMarginModeReq = new BitgetApi.SetMarginModeReq();
         setMarginModeReq.symbol = 'BTCUSDT_UMCBL';
@@ -60,6 +77,10 @@ describe('MixAccountApiTest', () => {
             Console.info(toJsonString(data));
         })
     })
+    /**
+     * Adjust hold mode
+     * @param adjustHoldModeReq
+     */
     test('setPositionMode', () => {
         const setPositionModeReq = new BitgetApi.SetPositionModeReq();
         setPositionModeReq.symbol = 'BTCUSDT_UMCBL';
@@ -69,6 +90,10 @@ describe('MixAccountApiTest', () => {
             Console.info(toJsonString(data));
         })
     })
+    /**
+     * Get the openable quantity
+     * @param mixOpenCountReq
+     */
     test('openCount', () => {
         const openCountReq = new BitgetApi.OpenCountReq();
         openCountReq.symbol = 'BTCUSDT_UMCBL';

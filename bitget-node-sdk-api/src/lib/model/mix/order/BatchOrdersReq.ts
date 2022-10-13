@@ -1,8 +1,17 @@
 import {PlaceOrderBaseParam} from './PlaceOrderBaseParam';
 
 export class BatchOrdersReq {
+    /**
+     * Currency pair
+     */
     private _symbol!:string;
+    /**
+     * Deposit currency
+     */
     private _marginCoin!:string;
+    /**
+     * Order data list
+     */
     private _orderDataList!:PlaceOrderBaseParam[]
 
     get symbol(): string {

@@ -1,6 +1,17 @@
 export class SetPositionModeReq{
+    /**
+     * Currency pair
+     */
     private _symbol!:string;
+    /**
+     * Deposit currency
+     */
     private _marginCoin!:string;
+    /**
+     * Position mode
+     * 1 One way position
+     * 2 Two way position
+     */
     private _holdMode!:string;
 
 

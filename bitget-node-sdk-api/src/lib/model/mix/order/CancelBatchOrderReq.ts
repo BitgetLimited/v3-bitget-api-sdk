@@ -1,6 +1,15 @@
 export class CancelBatchOrderReq{
+    /**
+     * Currency pair
+     */
     private _symbol!:string;
+    /**
+     * Deposit currency
+     */
     private _marginCoin!:string;
+    /**
+     * Order Id list
+     */
     private _orderIds!:string[];
 
 

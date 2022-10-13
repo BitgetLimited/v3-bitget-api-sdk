@@ -1,8 +1,23 @@
 export class OpenCountReq {
+    /**
+     * Currency pair
+     */
     public _symbol!:string;
+    /**
+     * Deposit currency
+     */
     private _marginCoin!:string;
+    /**
+     * open price
+     */
     private _openPrice!:string;
+    /**
+     * open amount
+     */
     private _openAmount!:string;
+    /**
+     * Default leverage 20
+     */
     private _leverage!:string;
 
 

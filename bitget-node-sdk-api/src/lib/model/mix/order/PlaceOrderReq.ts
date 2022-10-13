@@ -1,13 +1,43 @@
 export class PlaceOrderReq{
+    /**
+     * Currency pair
+     */
     private _symbol!:string;
+    /**
+     * Deposit currency
+     */
     private _marginCoin!:string;
+    /**
+     * Client ID
+     */
     private _clientOid!:string;
+    /**
+     * Amount of currency placed
+     */
     private _size!:string;
+    /**
+     * Open more, open more, empty more, empty more
+     */
     private _side!:string;
+    /**
+     * Order Type Market Price Limit
+     */
     private _orderType!:string;
+    /**
+     * Entrusted price
+     */
     private _price!:string;
+    /**
+     * Order validity
+     */
     private _timeInForceValue!:string;
+    /**
+     * Default stop profit price
+     */
     private _presetTakeProfitPrice!:string;
+    /**
+     * Preset stop loss price
+     */
     private _presetStopLossPrice!:string;
 
 

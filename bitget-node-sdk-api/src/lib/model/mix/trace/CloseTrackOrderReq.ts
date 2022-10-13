@@ -1,6 +1,11 @@
 export class CloseTrackOrderReq{
+    /**
+     * Currency pair
+     */
     private _symbol!:string;
-
+    /**
+     * The tracking order number comes from the trackingNo of the current interface with the order
+     */
     private _trackingNo!:string;
 
 
