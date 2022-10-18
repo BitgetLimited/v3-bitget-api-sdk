@@ -7,13 +7,15 @@ namespace bitget\model\mix\order;
 class CancelBatchOrderReq
 {
     /**
-     * 合约symbol
+     * Currency pair
      */
     var string $symbol;
-
+    /**
+     * Deposit currency
+     */
     var string $marginCoin;
     /**
-     * 订单id
+     * Order Id list
      */
     var array $orderIds;
 

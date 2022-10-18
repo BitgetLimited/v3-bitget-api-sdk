@@ -6,14 +6,25 @@ namespace bitget\model\mix\order;
 
 class PlaceOrderBaseParam
 {
+    /**
+     * Client ID
+     */
     var string $clientOid;
-
+    /**
+     * Amount of currency placed
+     */
     var string $size;
-
+    /**
+     * 1: Kaiduo 2: Kaikong 3: Pingduo 4: Pingkong
+     */
     var string $side;
-
+    /**
+     * Order Type
+     */
     var string $orderType;
-
+    /**
+     * Entrusted price
+     */
     var string $price;
 
     var string $timeInForceValue;

@@ -6,10 +6,25 @@ namespace bitget\model\mix\account;
 
 class OpenCountReq
 {
+    /**
+     * Currency pair
+     */
     var string $symbol;
+    /**
+     * Deposit currency
+     */
     var string $marginCoin;
+    /**
+     * open price
+     */
     var string $openPrice;
+    /**
+     * open amount
+     */
     var string $openAmount;
+    /**
+     * Default leverage 20
+     */
     var string $leverage;
 
     /**

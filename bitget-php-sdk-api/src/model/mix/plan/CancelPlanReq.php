@@ -6,12 +6,21 @@ namespace bitget\model\mix\plan;
 
 class CancelPlanReq
 {
+    /**
+     * Order Id
+     */
     var string $orderId;
-
+    /**
+     * Currency pair
+     */
     var string $symbol;
-
+    /**
+     * Plan type
+     */
     var string $planType;
-
+    /**
+     * Deposit currency
+     */
     var string $marginCoin;
 
     /**

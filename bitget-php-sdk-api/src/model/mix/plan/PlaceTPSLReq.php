@@ -7,18 +7,24 @@ namespace bitget\model\mix\plan;
 class PlaceTPSLReq
 {
     /**
-     * 合约交易对
+     * Currency pair
      */
     var string $symbol;
     /**
-     * 保证金币种
+     * Deposit currency
      */
     var string $marginCoin;
-
+    /**
+     * Plan type
+     */
     var string $planType;
-
+    /**
+     * Trigger price
+     */
     var string $triggerPrice;
-
+    /**
+     * Is this position long or short
+     */
     var string $holdSide;
 
     /**

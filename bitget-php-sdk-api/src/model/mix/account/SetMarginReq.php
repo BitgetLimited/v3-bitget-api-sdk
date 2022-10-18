@@ -6,9 +6,21 @@ namespace bitget\model\mix\account;
 
 class SetMarginReq
 {
+    /**
+     * Currency pair
+     */
     var string $symbol;
+    /**
+     * Deposit currency
+     */
     var string $marginCoin;
+    /**
+     * Position direction (all positions are not transferred)
+     */
     var string $holdSide;
+    /**
+     * Amount greater than 0 increases less than 0 decreases
+     */
     var string $amount;
 
     /**

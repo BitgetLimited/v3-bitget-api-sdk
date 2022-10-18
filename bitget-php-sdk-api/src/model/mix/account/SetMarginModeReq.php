@@ -6,9 +6,17 @@ namespace bitget\model\mix\account;
 
 class SetMarginModeReq
 {
-
+    /**
+     * Deposit currency
+     */
     var string $marginCoin;
+    /**
+     * Currency pair
+     */
     var string $symbol;
+    /**
+     * Margin mode
+     */
     var string $marginMode;
 
     /**

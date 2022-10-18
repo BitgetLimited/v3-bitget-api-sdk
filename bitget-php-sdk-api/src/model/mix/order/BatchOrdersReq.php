@@ -6,11 +6,17 @@ namespace bitget\model\mix\order;
 
 class BatchOrdersReq
 {
-
+    /**
+     * Currency pair
+     */
     var string $symbol;
-
+    /**
+     * Deposit currency
+     */
     var string $marginCoin;
-
+    /**
+     * Order data list
+     */
     var array $orderDataList;
 
     /**

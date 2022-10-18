@@ -7,17 +7,25 @@ namespace bitget\model\mix\plan;
 class ModifyTPSLPlanReq
 {
     /**
-     * 合约交易对
+     * Currency pair
      */
     var string $symbol;
     /**
-     * 保证金币种
+     * Deposit currency
      */
     var string $marginCoin;
-
+    /**
+     * Order id
+     */
     var string $orderId;
-
+    /**
+     * Trigger price
+     */
     var string $triggerPrice;
+    /**
+     * plan type
+     */
+    var string $planType;
 
     /**
      * @return string
@@ -82,6 +90,20 @@ class ModifyTPSLPlanReq
     {
         $this->triggerPrice = $triggerPrice;
     }
+    /**
+     * @return string
+     */
+    public function getPlanType(): string
+    {
+        return $this->planType;
+    }
 
+    /**
+     * @param string $planType
+     */
+    public function setPlanType(string $planType): void
+    {
+        $this->planType = $planType;
+    }
 
 }

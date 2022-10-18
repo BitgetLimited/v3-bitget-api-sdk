@@ -6,10 +6,19 @@ namespace bitget\model\mix\account;
 
 class SetPositionModeReq
 {
+    /**
+     * Currency pair
+     */
     var string $symbol;
-
+    /**
+     * Deposit currency
+     */
     var string $marginCoin;
-
+    /**
+     * Position mode
+     * 1 One way position
+     * 2 Two way position
+     */
     var string $holdMode;
 
     /**

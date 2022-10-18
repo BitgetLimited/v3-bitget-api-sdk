@@ -7,46 +7,46 @@ namespace bitget\model\mix\order;
 class PlaceOrderReq
 {
     /**
-     * 合约
+     * Currency pair
      */
     var string $symbol;
 
     /**
-     * 保证金币种
+     * Deposit currency
      */
     var string $marginCoin;
 
     /**
-     * 客户端标识
+     * Client ID
      */
     var string $clientOid;
     /**
-     * 下单币量
+     * Amount of currency placed
      */
     var string $size;
     /**
-     * 开多 开空 平多 平空
+     * Open more, open more, empty more, empty more
      */
     var string $side;
     /**
-     * 订单类型 市价 限价
+     * Order Type Market Price Limit
      */
     var string $orderType;
     /**
-     * 委托价格
+     * Entrusted price
      */
     var string $price;
 
     /**
-     * 订单有效期
+     * Order validity
      */
     var string $timeInForceValue;
     /**
-     * 预设止盈价
+     * Default stop profit price
      */
     var string $presetTakeProfitPrice;
     /**
-     * 预设止损价
+     * Preset stop loss price
      */
     var string $presetStopLossPrice;
 
