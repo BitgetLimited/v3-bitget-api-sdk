@@ -6,10 +6,17 @@ namespace bitget\model\spot\order;
 
 class OrderInfoReq
 {
+    /**
+     * Currency pair
+     */
     var string $symbol;
-
+    /**
+     * Order Id
+     */
     var string $orderId;
-
+    /**
+     * Client Order Id
+     */
     var string $clientOrderId;
 
     /**

@@ -6,10 +6,15 @@ namespace bitget\model\spot\order;
 
 class BatchOrdersReq
 {
+
     /**
-     * 币对
+     * Currency pair
      */
     var string $symbol;
+
+    /**
+     * order list
+     */
     var array $orderList;
 
     /**

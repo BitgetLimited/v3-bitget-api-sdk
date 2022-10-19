@@ -6,12 +6,21 @@ namespace bitget\model\spot\order;
 
 class HistoryReq
 {
+    /**
+     * Currency pair
+     */
     var string $symbol;
-
+    /**
+     * The orderId is passed in. The data before the orderId desc
+     */
     var string $after;
-
+    /**
+     * Pass in the data after the orderId asc
+     */
     var string $before;
-
+    /**
+     * Number of returned results Default 100, maximum 500
+     */
     var string $limit;
 
     /**

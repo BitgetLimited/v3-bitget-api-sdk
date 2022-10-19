@@ -17,17 +17,32 @@ class SpotAccountApi
     {
         $this->BitgetApiClient = $BitgetApiClient;
     }
-
+    /**
+     * Obtain account assets
+     * @return string
+     */
     public function assets(): string
     {
         return $this->BitgetApiClient->doGet(self::BASE_URL . "/assets", null);
     }
-
+    /**
+     * Get the bill flow
+     * @param $billsReq
+     * @return string
+     */
     public function bills(BillsReq $billsReq): string
     {
         return $this->BitgetApiClient->doPost(self::BASE_URL . "/bills", $billsReq);
     }
-
+    /**
+     * Obtain transfer records
+     * @param $coinId
+     * @param $fromType
+     * @param $limit
+     * @param $after
+     * @param $before
+     * @return string
+     */
     public function transferRecords(string $coinId, string $fromType,string $limit,string $after,string $before): string
     {
         $params = array("coinId" => $coinId, "fromType" => $fromType, "limit" => $limit, "after" => $after, "before" => $before);

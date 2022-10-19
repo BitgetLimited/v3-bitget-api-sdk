@@ -6,8 +6,14 @@ namespace bitget\model\spot\order;
 
 class CancelOrderReq
 {
+    /**
+     * Currency pair
+     */
     var string $symbol;
 
+    /**
+     * Order Id
+     */
     var string $orderId;
 
     /**
