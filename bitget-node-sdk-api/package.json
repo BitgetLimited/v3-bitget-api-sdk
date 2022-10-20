@@ -1,5 +1,5 @@
 {
-  "name": "bitget-openapi",
+  "name": "bitget-api-node-sdk",
   "version": "2.0.9",
   "description": "",
   "main": "build/index.js",
