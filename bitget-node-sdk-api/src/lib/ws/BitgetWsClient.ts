@@ -23,10 +23,6 @@ export class BitgetWsClient extends EventEmitter {
     private apiSecret!: string;
     private passphrase!: string;
     private allBooks!: Map<string, BookInfo>;
-    private isLock: boolean = false //todo 重连锁
-    private l_timer: NodeJS.Timeout | undefined //todo 重连定时器
-    private lock_time: number = 4000 //todo 重连时间
-    private isLogin: boolean = false //todo 登录状态
 
     constructor(callBack: Listenner, apiKey: string, apiSecret: string, passphrase: string) {
         super();
@@ -40,7 +36,6 @@ export class BitgetWsClient extends EventEmitter {
         this.socket.on('open', () => this.onOpen());
         this.socket.on('close', (code, reason) => this.onClose(code, reason));
         this.socket.on('message', data => this.onMessage(data));
-        this.socket.on('error', (err) => this.onError(err));//todo 出错
 
     }
 
@@ -53,7 +48,6 @@ export class BitgetWsClient extends EventEmitter {
         args.push(wsLoginReq);
         const request = new WsBaseReq('login', args);
         this.send(request);
-        this.isLogin =true ;//todo
     }
 
     subscribe(args: SubscribeReq[]) {
@@ -147,7 +141,6 @@ export class BitgetWsClient extends EventEmitter {
             this.interval = null;
         }
         this.emit('close');
-        this.reconnect();//todo
     }
 
     close() {
@@ -160,41 +153,5 @@ export class BitgetWsClient extends EventEmitter {
             }
             this.socket = undefined;
         }
-    }
-    //todo 出错
-    private onError(err: Error){
-
-        this.reconnect()
-    }
-
-    //todo 重连
-    private reconnect(): void {
-        if (this.isLock) {
-            return
-        }
-        this.isLock = true
-        this.l_timer && clearTimeout(this.l_timer)
-        this.l_timer = setTimeout(() => {
-           // this.constructor();//todo
-            this.initSocket();
-            this.isLock = false;
-            if(this.isLogin){
-                this.login();//todo
-            }
-        }, this.lock_time)
-    }
-
-    //todo 创建socket
-    private initSocket(){
-
-        this.socket = new WebSocket(API_CONFIG.WS_URL, {});
-        this.websocketUri = API_CONFIG.WS_URL;
-        //this.callBack = callBack;
-        this.socket = new WebSocket(API_CONFIG.WS_URL, {});
-        this.allBooks = new Map();
-        this.socket.on('open', () => this.onOpen());
-        this.socket.on('close', (code, reason) => this.onClose(code, reason));
-        this.socket.on('message', data => this.onMessage(data));
-        this.socket.on('error', (err) => this.onError(err));//todo 出错
     }
 }
