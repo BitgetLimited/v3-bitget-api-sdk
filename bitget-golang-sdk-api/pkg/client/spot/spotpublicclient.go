@@ -16,7 +16,7 @@ func (p *SpotPublicClient) Init() *SpotPublicClient {
 }
 
 /**
-time
+单个币种账户信息
 symbol:
 marginCoin:
 */
@@ -32,7 +32,7 @@ func (p *SpotPublicClient) Time() (string, error) {
 }
 
 /**
-Currencies
+单个币种账户信息
 symbol:
 marginCoin:
 */
@@ -48,7 +48,7 @@ func (p *SpotPublicClient) Currencies() (string, error) {
 }
 
 /**
-Products
+单个币种账户信息
 symbol:
 marginCoin:
 */
@@ -64,7 +64,7 @@ func (p *SpotPublicClient) Products() (string, error) {
 }
 
 /**
-Product
+单个币种账户信息
 symbol:
 marginCoin:
 */

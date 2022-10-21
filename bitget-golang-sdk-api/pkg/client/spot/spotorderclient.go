@@ -17,7 +17,7 @@ func (p *SpotOrderClient) Init() *SpotOrderClient {
 }
 
 /**
-place an order
+获取账单流水
 */
 func (p *SpotOrderClient) Orders(params order.OrdersReq) (string, error) {
 
@@ -35,7 +35,7 @@ func (p *SpotOrderClient) Orders(params order.OrdersReq) (string, error) {
 }
 
 /**
-Place orders in batches
+获取账单流水
 */
 func (p *SpotOrderClient) BatchOrders(params order.BatchOrdersReq) (string, error) {
 
@@ -53,7 +53,7 @@ func (p *SpotOrderClient) BatchOrders(params order.BatchOrdersReq) (string, erro
 }
 
 /**
-cancellation of order
+获取账单流水
 */
 func (p *SpotOrderClient) CancelOrder(params order.CancelOrderReq) (string, error) {
 
@@ -71,7 +71,7 @@ func (p *SpotOrderClient) CancelOrder(params order.CancelOrderReq) (string, erro
 }
 
 /**
-CancelBatchOrders
+获取账单流水
 */
 func (p *SpotOrderClient) CancelBatchOrders(params order.CancelBatchOrdersReq) (string, error) {
 
@@ -89,7 +89,7 @@ func (p *SpotOrderClient) CancelBatchOrders(params order.CancelBatchOrdersReq) (
 }
 
 /**
-OrderInfo
+获取账单流水
 */
 func (p *SpotOrderClient) OrderInfo(params order.OrderInfoReq) (string, error) {
 
@@ -107,7 +107,7 @@ func (p *SpotOrderClient) OrderInfo(params order.OrderInfoReq) (string, error) {
 }
 
 /**
-OpenOrders
+获取账单流水
 */
 func (p *SpotOrderClient) OpenOrders(params order.OpenOrdersReq) (string, error) {
 
@@ -125,7 +125,7 @@ func (p *SpotOrderClient) OpenOrders(params order.OpenOrdersReq) (string, error)
 }
 
 /**
-History
+获取账单流水
 */
 func (p *SpotOrderClient) History(params order.HistoryReq) (string, error) {
 
@@ -143,7 +143,7 @@ func (p *SpotOrderClient) History(params order.HistoryReq) (string, error) {
 }
 
 /**
-Fills
+获取账单流水
 */
 func (p *SpotOrderClient) Fills(params order.FillsReq) (string, error) {
 
@@ -161,7 +161,7 @@ func (p *SpotOrderClient) Fills(params order.FillsReq) (string, error) {
 }
 
 /**
-ChangeDepth
+获取账单流水
 */
 func (p *SpotOrderClient) ChangeDepth(params order.ChangeDepthReq) (string, error) {
 

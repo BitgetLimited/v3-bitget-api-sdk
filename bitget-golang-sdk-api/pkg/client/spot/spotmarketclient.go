@@ -16,7 +16,7 @@ func (p *SpotMarketClient) Init() *SpotMarketClient {
 }
 
 /**
-Obtain account assets-Fills
+获取账户资产
 symbol:
 marginCoin:
 */
@@ -34,7 +34,7 @@ func (p *SpotMarketClient) Fills(symbol string) (string, error) {
 }
 
 /**
-Obtain account assets-Depth
+获取账户资产
 symbol:
 marginCoin:
 */
@@ -58,7 +58,7 @@ func (p *SpotMarketClient) Depth(symbol string, limit string, tp string) (string
 }
 
 /**
-Obtain account assets-ticker
+获取账户资产
 */
 func (p *SpotMarketClient) Ticker(symbol string) (string, error) {
 
@@ -74,7 +74,7 @@ func (p *SpotMarketClient) Ticker(symbol string) (string, error) {
 }
 
 /**
-Obtain account assets-Tickers
+获取账户资产
 */
 func (p *SpotMarketClient) Tickers() (string, error) {
 
@@ -89,7 +89,7 @@ func (p *SpotMarketClient) Tickers() (string, error) {
 }
 
 /**
-Obtain account assets-Candles
+获取账户资产
 */
 func (p *SpotMarketClient) Candles(symbol string, period string, after string, before string, limit string) (string, error) {
 

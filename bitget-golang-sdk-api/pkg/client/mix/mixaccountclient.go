@@ -17,7 +17,7 @@ func (p *MixAccountClient) Init() *MixAccountClient {
 }
 
 /**
-Account information of single currency
+单个币种账户信息
 symbol:
 marginCoin:
 */
@@ -36,7 +36,7 @@ func (p *MixAccountClient) Account(symbol string, marginCoin string) (string, er
 }
 
 /**
-Obtain the account list according to the business line
+根据业务线获取账户列表
 productType:
 */
 func (p *MixAccountClient) Accounts(productType string) (string, error) {
@@ -52,7 +52,7 @@ func (p *MixAccountClient) Accounts(productType string) (string, error) {
 }
 
 /**
-Adjusting lever
+调整杠杆
 */
 func (p *MixAccountClient) SetLeverage(params account.SetLeveragerReq) (string, error) {
 	postBody, jsonErr := internal.ToJson(params)
@@ -69,7 +69,7 @@ func (p *MixAccountClient) SetLeverage(params account.SetLeveragerReq) (string, 
 }
 
 /**
-Adjustment margin
+调整保证金
 */
 func (p *MixAccountClient) SetMargin(params account.SetMarginReq) (string, error) {
 
@@ -87,7 +87,7 @@ func (p *MixAccountClient) SetMargin(params account.SetMarginReq) (string, error
 }
 
 /**
-Adjustment margin mode
+调节保证金模式
 */
 func (p *MixAccountClient) SetMarginMode(params account.SetMarginModeReq) (string, error) {
 
@@ -105,7 +105,7 @@ func (p *MixAccountClient) SetMarginMode(params account.SetMarginModeReq) (strin
 }
 
 /**
-Calculate the number of open sheets
+计算可开张数
 */
 func (p *MixAccountClient) OpenCount(params account.OpenCountReq) (string, error) {
 

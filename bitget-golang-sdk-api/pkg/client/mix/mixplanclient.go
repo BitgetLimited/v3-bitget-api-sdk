@@ -17,7 +17,7 @@ func (p *MixPlanClient) Init() *MixPlanClient {
 }
 
 /**
-Plan Entrusted Order
+计划委托下单
 */
 func (p *MixPlanClient) PlacePlan(params plan.PlacePlanReq) (string, error) {
 
@@ -36,7 +36,7 @@ func (p *MixPlanClient) PlacePlan(params plan.PlacePlanReq) (string, error) {
 }
 
 /**
-Modify Plan Delegation
+修改计划委托
 */
 func (p *MixPlanClient) ModifyPlan(params plan.ModifyPlanReq) (string, error) {
 
@@ -55,7 +55,7 @@ func (p *MixPlanClient) ModifyPlan(params plan.ModifyPlanReq) (string, error) {
 }
 
 /**
-Modify the preset profit and loss stop of plan entrustment
+修改计划委托 预设止盈止损
 */
 func (p *MixPlanClient) ModifyPlanPreset(params plan.ModifyPlanPresetReq) (string, error) {
 
@@ -90,7 +90,7 @@ func (p *MixPlanClient) ModifyTPSLPlan(params plan.ModifyTPSLPlanReq) (string, e
 }
 
 /**
-Stop profit and stop loss Order
+止盈止损 下单
 */
 func (p *MixPlanClient) PlaceTPSL(params plan.PlaceTPSLReq) (string, error) {
 
@@ -109,7 +109,7 @@ func (p *MixPlanClient) PlaceTPSL(params plan.PlaceTPSLReq) (string, error) {
 }
 
 /**
-Planned Entrusted Cancellation
+计划委托撤单
 */
 func (p *MixPlanClient) CancelPlan(params plan.CancelPlanReq) (string, error) {
 
@@ -128,7 +128,7 @@ func (p *MixPlanClient) CancelPlan(params plan.CancelPlanReq) (string, error) {
 }
 
 /**
-Get the current plan commission&profit and loss stop
+获取当前计划委托&止盈止损
 */
 func (p *MixPlanClient) CurrentPlan(symbol string, isPlan string) (string, error) {
 
@@ -148,7 +148,7 @@ func (p *MixPlanClient) CurrentPlan(symbol string, isPlan string) (string, error
 }
 
 /**
-Obtain historical plan entrustment&stop profit and stop loss
+获取历史计划委托&止盈止损
 */
 func (p *MixPlanClient) HistoryPlan(symbol string, startTime string, endTime string, pageSize string, isPre string, isPlan string) (string, error) {
 

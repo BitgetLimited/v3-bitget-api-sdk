@@ -17,7 +17,7 @@ func (p *SpotAccountClient) Init() *SpotAccountClient {
 }
 
 /**
-Obtain account assets
+获取账户资产
 symbol:
 marginCoin:
 */
@@ -34,7 +34,7 @@ func (p *SpotAccountClient) Assets() (string, error) {
 }
 
 /**
-Obtain transfer records
+获取划转记录
 */
 func (p *SpotAccountClient) TransferRecords(coinId string, fromType string, limit string, after string, before string) (string, error) {
 
@@ -64,7 +64,7 @@ func (p *SpotAccountClient) TransferRecords(coinId string, fromType string, limi
 }
 
 /**
-Get the bill flow
+获取账单流水
 */
 func (p *SpotAccountClient) Bills(params account.BillsReq) (string, error) {
 

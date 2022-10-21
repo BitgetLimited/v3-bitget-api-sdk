@@ -16,7 +16,7 @@ func (p *MixPositionClient) Init() *MixPositionClient {
 }
 
 /**
-Obtain single contract position information
+获取单个合约仓位信息
 */
 func (p *MixPositionClient) SinglePosition(symbol string, marginCoin string) (string, error) {
 
@@ -33,7 +33,7 @@ func (p *MixPositionClient) SinglePosition(symbol string, marginCoin string) (st
 }
 
 /**
-Obtain all contract position information
+获取全部合约仓位信息
 */
 func (p *MixPositionClient) AllPosition(productType string, marginCoin string) (string, error) {
 

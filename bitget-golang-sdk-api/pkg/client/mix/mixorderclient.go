@@ -17,7 +17,7 @@ func (p *MixOrderClient) Init() *MixOrderClient {
 }
 
 /**
-place an order
+下单
 */
 func (p *MixOrderClient) PlaceOrder(params order.PlaceOrderReq) (string, error) {
 
@@ -36,7 +36,7 @@ func (p *MixOrderClient) PlaceOrder(params order.PlaceOrderReq) (string, error) 
 }
 
 /**
-Place orders in batches
+批量下单
 */
 func (p *MixOrderClient) BatchOrders(params order.BatchOrdersReq) (string, error) {
 
@@ -55,7 +55,7 @@ func (p *MixOrderClient) BatchOrders(params order.BatchOrdersReq) (string, error
 }
 
 /**
-cancel the order
+撤单
 */
 func (p *MixOrderClient) CancelOrder(params order.CancelOrderReq) (string, error) {
 
@@ -74,7 +74,7 @@ func (p *MixOrderClient) CancelOrder(params order.CancelOrderReq) (string, error
 }
 
 /**
-Batch cancellation
+批量撤单
 */
 func (p *MixOrderClient) CancelBatchOrders(params order.CancelBatchOrdersReq) (string, error) {
 
@@ -93,7 +93,7 @@ func (p *MixOrderClient) CancelBatchOrders(params order.CancelBatchOrdersReq) (s
 }
 
 /**
-Get the historical delegation of the order list --- with pagination
+获取订单列表的 历史委托---带分页的
 */
 func (p *MixOrderClient) History(symbol string, startTime string, endTime string, pageSize string, lastEndId string, isPre string) (string, error) {
 	params := internal.NewParams()
@@ -118,7 +118,7 @@ func (p *MixOrderClient) History(symbol string, startTime string, endTime string
 }
 
 /**
-Get the current delegate -- without paging
+获取当前委托----不带分页的
 */
 func (p *MixOrderClient) Current(symbol string) (string, error) {
 	params := internal.NewParams()
@@ -133,7 +133,7 @@ func (p *MixOrderClient) Current(symbol string) (string, error) {
 }
 
 /**
-Get order information
+获取订单信息
 */
 func (p *MixOrderClient) Detail(symbol string, orderId string) (string, error) {
 	params := internal.NewParams()
@@ -149,7 +149,7 @@ func (p *MixOrderClient) Detail(symbol string, orderId string) (string, error) {
 }
 
 /**
-Query transaction details
+查询成交明细
 */
 func (p *MixOrderClient) Fills(symbol string, orderId string) (string, error) {
 	params := internal.NewParams()
