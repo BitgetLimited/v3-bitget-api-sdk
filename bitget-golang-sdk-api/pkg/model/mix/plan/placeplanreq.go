@@ -1,15 +1,53 @@
 package plan
 
+/**
+ * @Author: bitget-sdk-team
+ * @Date: 2022-09-30 10:46
+ * @DES: placePlan request
+ */
 type PlacePlanReq struct {
-	Symbol                string `json:"symbol"`
-	MarginCoin            string `json:"marginCoin"`
-	Size                  string `json:"size"`
-	ExecutePrice          string `json:"executePrice"`
-	TriggerPrice          string `json:"triggerPrice"`
-	Side                  string `json:"side"`
-	OrderType             string `json:"orderType"`
-	TriggerType           string `json:"triggerType"`
-	ClientOid             string `json:"clientOid"`
+	/**
+	 * Currency pair
+	 */
+	Symbol string `json:"symbol"`
+	/**
+	 * Deposit currency
+	 */
+	MarginCoin string `json:"marginCoin"`
+	/**
+	 * Amount of currency placed
+	 */
+	Size string `json:"size"`
+	/**
+	 * Entrusted price
+	 */
+	ExecutePrice string `json:"executePrice"`
+	/**
+	 * Trigger Price
+	 */
+	TriggerPrice string `json:"triggerPrice"`
+	/**
+	 * Entrusting direction
+	 */
+	Side string `json:"side"`
+	/**
+	 * Transaction Type
+	 */
+	OrderType string `json:"orderType"`
+	/**
+	 * Trigger Type Transaction Price Trigger Flag Price Trigger
+	 */
+	TriggerType string `json:"triggerType"`
+	/**
+	 * Client ID
+	 */
+	ClientOid string `json:"clientOid"`
+	/**
+	 * Default stop profit price
+	 */
 	PresetTakeProfitPrice string `json:"presetTakeProfitPrice"`
-	PresetStopLossPrice   string `json:"presetStopLossPrice"`
+	/**
+	 * Preset stop loss price
+	 */
+	PresetStopLossPrice string `json:"presetStopLossPrice"`
 }

@@ -17,8 +17,10 @@ func (p *MixOrderClient) Init() *MixOrderClient {
 }
 
 /**
-下单
-*/
+ * place an order
+ * @param PlaceOrderReq
+ * @return ResponseResult
+ */
 func (p *MixOrderClient) PlaceOrder(params order.PlaceOrderReq) (string, error) {
 
 	postBody, jsonErr := internal.ToJson(params)
@@ -36,8 +38,10 @@ func (p *MixOrderClient) PlaceOrder(params order.PlaceOrderReq) (string, error) 
 }
 
 /**
-批量下单
-*/
+ * Place orders in batches
+ * @param BatchOrdersReq
+ * @return ResponseResult
+ */
 func (p *MixOrderClient) BatchOrders(params order.BatchOrdersReq) (string, error) {
 
 	postBody, jsonErr := internal.ToJson(params)
@@ -55,8 +59,10 @@ func (p *MixOrderClient) BatchOrders(params order.BatchOrdersReq) (string, error
 }
 
 /**
-撤单
-*/
+ * cancel the order
+ * @param CancelOrderReq
+ * @return ResponseResult
+ */
 func (p *MixOrderClient) CancelOrder(params order.CancelOrderReq) (string, error) {
 
 	postBody, jsonErr := internal.ToJson(params)
@@ -74,8 +80,10 @@ func (p *MixOrderClient) CancelOrder(params order.CancelOrderReq) (string, error
 }
 
 /**
-批量撤单
-*/
+ * Batch cancellation
+ * @param CancelBatchOrdersReq
+ * @return ResponseResult
+ */
 func (p *MixOrderClient) CancelBatchOrders(params order.CancelBatchOrdersReq) (string, error) {
 
 	postBody, jsonErr := internal.ToJson(params)
@@ -93,8 +101,15 @@ func (p *MixOrderClient) CancelBatchOrders(params order.CancelBatchOrdersReq) (s
 }
 
 /**
-获取订单列表的 历史委托---带分页的
-*/
+ * Get Historical Delegation
+ * @param symbol
+ * @param startTime
+ * @param endTime
+ * @param pageSize
+ * @param lastEndId
+ * @param isPre
+ * @return ResponseResult
+ */
 func (p *MixOrderClient) History(symbol string, startTime string, endTime string, pageSize string, lastEndId string, isPre string) (string, error) {
 	params := internal.NewParams()
 	params["symbol"] = symbol
@@ -118,8 +133,10 @@ func (p *MixOrderClient) History(symbol string, startTime string, endTime string
 }
 
 /**
-获取当前委托----不带分页的
-*/
+ * Get the current delegate
+ * @param symbol
+ * @return ResponseResult
+ */
 func (p *MixOrderClient) Current(symbol string) (string, error) {
 	params := internal.NewParams()
 	params["symbol"] = symbol
@@ -133,8 +150,11 @@ func (p *MixOrderClient) Current(symbol string) (string, error) {
 }
 
 /**
-获取订单信息
-*/
+ * Get order details
+ * @param symbol
+ * @param orderId
+ * @return ResponseResult
+ */
 func (p *MixOrderClient) Detail(symbol string, orderId string) (string, error) {
 	params := internal.NewParams()
 	params["symbol"] = symbol
@@ -149,8 +169,11 @@ func (p *MixOrderClient) Detail(symbol string, orderId string) (string, error) {
 }
 
 /**
-查询成交明细
-*/
+ * Query transaction details
+ * @param symbol
+ * @param orderId
+ * @return ResponseResult
+ */
 func (p *MixOrderClient) Fills(symbol string, orderId string) (string, error) {
 	params := internal.NewParams()
 	params["symbol"] = symbol

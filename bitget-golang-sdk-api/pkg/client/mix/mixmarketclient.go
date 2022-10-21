@@ -16,8 +16,10 @@ func (p *MixMarketClient) Init() *MixMarketClient {
 }
 
 /**
-获取合约信息
-*/
+ * Contract information
+ * @param productType
+ * @return ResponseResult
+ */
 func (p *MixMarketClient) Contracts(productType string) (string, error) {
 
 	params := internal.NewParams()
@@ -32,8 +34,11 @@ func (p *MixMarketClient) Contracts(productType string) (string, error) {
 }
 
 /**
-获取深度数据
-*/
+ * Deep market
+ * @param symbol
+ * @param limit
+ * @return ResponseResult
+ */
 func (p *MixMarketClient) Depth(symbol string, limit string) (string, error) {
 
 	params := internal.NewParams()
@@ -48,8 +53,10 @@ func (p *MixMarketClient) Depth(symbol string, limit string) (string, error) {
 }
 
 /**
-获取全部币对 ticker 行情
-*/
+ * Acquisition of single ticker market
+ * @param productType
+ * @return ResponseResult
+ */
 func (p *MixMarketClient) Tickers(productType string) (string, error) {
 
 	params := internal.NewParams()
@@ -63,8 +70,10 @@ func (p *MixMarketClient) Tickers(productType string) (string, error) {
 }
 
 /**
-获取某个ticker信息
-*/
+ * Deep market
+ * @param symbol
+ * @return ResponseResult
+ */
 func (p *MixMarketClient) Ticker(symbol string) (string, error) {
 
 	params := internal.NewParams()
@@ -78,8 +87,11 @@ func (p *MixMarketClient) Ticker(symbol string) (string, error) {
 }
 
 /**
-获取成交数据
-*/
+ * Obtain transaction details
+ * @param symbol
+ * @param limit
+ * @return ResponseResult
+ */
 func (p *MixMarketClient) Fills(symbol string, limit string) (string, error) {
 
 	params := internal.NewParams()
@@ -94,8 +106,13 @@ func (p *MixMarketClient) Fills(symbol string, limit string) (string, error) {
 }
 
 /**
-获取K线数据
-*/
+ * Obtain K line data
+ * @param symbol
+ * @param granularity (Category of k line)
+ * @param startTime
+ * @param endTime
+ * @return ResponseResult
+ */
 func (p *MixMarketClient) Candles(symbol string, granularity string, startTime string, endTime string) (string, error) {
 
 	params := internal.NewParams()
@@ -127,8 +144,10 @@ func (p *MixMarketClient) Index(symbol string) (string, error) {
 }
 
 /**
-获取合约下一次结算时间
-*/
+ * Get the next settlement time of the contract
+ * @param symbol
+ * @return ResponseResult
+ */
 func (p *MixMarketClient) FundingTime(symbol string) (string, error) {
 
 	params := internal.NewParams()
@@ -142,8 +161,10 @@ func (p *MixMarketClient) FundingTime(symbol string) (string, error) {
 }
 
 /**
-获取合约标记价格
-*/
+ * Get contract tag price
+ * @param symbol
+ * @return ResponseResult
+ */
 func (p *MixMarketClient) MarkPrice(symbol string) (string, error) {
 
 	params := internal.NewParams()
@@ -157,8 +178,13 @@ func (p *MixMarketClient) MarkPrice(symbol string) (string, error) {
 }
 
 /**
-获取历史资金费率
-*/
+ * Get historical fund rate
+ * @param symbol
+ * @param pageSize
+ * @param pageNo
+ * @param nextPage
+ * @return ResponseResult
+ */
 func (p *MixMarketClient) HistoryFundRate(symbol string, pageSize string, pageNo string, nextPage string) (string, error) {
 
 	params := internal.NewParams()
@@ -181,8 +207,10 @@ func (p *MixMarketClient) HistoryFundRate(symbol string, pageSize string, pageNo
 }
 
 /**
-获取当前资金费率
-*/
+ * Get the current fund rate
+ * @param symbol
+ * @return ResponseResult
+ */
 func (p *MixMarketClient) CurrentFundRate(symbol string) (string, error) {
 
 	params := internal.NewParams()
@@ -196,8 +224,10 @@ func (p *MixMarketClient) CurrentFundRate(symbol string) (string, error) {
 }
 
 /**
-获取平台总持仓量
-*/
+ * Obtain the total position of the platform
+ * @param symbol
+ * @return ResponseResult
+ */
 func (p *MixMarketClient) OpenInterest(symbol string) (string, error) {
 
 	params := internal.NewParams()

@@ -17,8 +17,10 @@ func (p *MixPlanClient) Init() *MixPlanClient {
 }
 
 /**
-计划委托下单
-*/
+ * Plan Entrusted Order
+ * @param PlacePlanReq
+ * @return ResponseResult
+ */
 func (p *MixPlanClient) PlacePlan(params plan.PlacePlanReq) (string, error) {
 
 	postBody, jsonErr := internal.ToJson(params)
@@ -36,8 +38,10 @@ func (p *MixPlanClient) PlacePlan(params plan.PlacePlanReq) (string, error) {
 }
 
 /**
-修改计划委托
-*/
+ * Modify Plan Delegation
+ * @param ModifyPlanReq
+ * @return ResponseResult
+ */
 func (p *MixPlanClient) ModifyPlan(params plan.ModifyPlanReq) (string, error) {
 
 	postBody, jsonErr := internal.ToJson(params)
@@ -55,8 +59,10 @@ func (p *MixPlanClient) ModifyPlan(params plan.ModifyPlanReq) (string, error) {
 }
 
 /**
-修改计划委托 预设止盈止损
-*/
+ * Modify the preset profit and loss stop of plan entrustment
+ * @param ModifyPlanPresetReq
+ * @return ResponseResult
+ */
 func (p *MixPlanClient) ModifyPlanPreset(params plan.ModifyPlanPresetReq) (string, error) {
 
 	postBody, jsonErr := internal.ToJson(params)
@@ -73,6 +79,11 @@ func (p *MixPlanClient) ModifyPlanPreset(params plan.ModifyPlanPresetReq) (strin
 
 }
 
+/**
+ * Modify profit and loss stop
+ * @param ModifyTPSLPlanReq
+ * @return ResponseResult
+ */
 func (p *MixPlanClient) ModifyTPSLPlan(params plan.ModifyTPSLPlanReq) (string, error) {
 
 	postBody, jsonErr := internal.ToJson(params)
@@ -90,8 +101,10 @@ func (p *MixPlanClient) ModifyTPSLPlan(params plan.ModifyTPSLPlanReq) (string, e
 }
 
 /**
-止盈止损 下单
-*/
+ * Stop profit and stop loss Order
+ * @param PlaceTPSLReq
+ * @return ResponseResult
+ */
 func (p *MixPlanClient) PlaceTPSL(params plan.PlaceTPSLReq) (string, error) {
 
 	postBody, jsonErr := internal.ToJson(params)
@@ -109,8 +122,10 @@ func (p *MixPlanClient) PlaceTPSL(params plan.PlaceTPSLReq) (string, error) {
 }
 
 /**
-计划委托撤单
-*/
+ * Planned entrustment (profit and loss stop) cancellation
+ * @param CancelPlanReq
+ * @return ResponseResult
+ */
 func (p *MixPlanClient) CancelPlan(params plan.CancelPlanReq) (string, error) {
 
 	postBody, jsonErr := internal.ToJson(params)
@@ -128,8 +143,11 @@ func (p *MixPlanClient) CancelPlan(params plan.CancelPlanReq) (string, error) {
 }
 
 /**
-获取当前计划委托&止盈止损
-*/
+ * Get the current plan commission (profit stop and loss stop) list
+ * @param symbol
+ * @param isPlan
+ * @return ResponseResult
+ */
 func (p *MixPlanClient) CurrentPlan(symbol string, isPlan string) (string, error) {
 
 	params := internal.NewParams()
@@ -148,8 +166,15 @@ func (p *MixPlanClient) CurrentPlan(symbol string, isPlan string) (string, error
 }
 
 /**
-获取历史计划委托&止盈止损
-*/
+ * Obtain the list of historical plan commissions (profit and loss stop)
+ * @param symbol
+ * @param startTime
+ * @param endTime
+ * @param pageSize
+ * @param isPre
+ * @param isPlan
+ * @return ResponseResult
+ */
 func (p *MixPlanClient) HistoryPlan(symbol string, startTime string, endTime string, pageSize string, isPre string, isPlan string) (string, error) {
 
 	params := internal.NewParams()

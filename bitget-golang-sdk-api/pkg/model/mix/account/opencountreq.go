@@ -1,9 +1,29 @@
 package account
 
+/**
+ * @Author: bitget-sdk-team
+ * @Date: 2022-09-30 10:46
+ * @DES: Get the openable request
+ */
 type OpenCountReq struct {
-	Symbol     string `json:"symbol"`
+	/**
+	 * Currency pair
+	 */
+	Symbol string `json:"symbol"`
+	/**
+	 * Deposit currency
+	 */
 	MarginCoin string `json:"marginCoin"`
-	OpenPrice  string `json:"openPrice"`
+	/**
+	 * open price
+	 */
+	OpenPrice string `json:"openPrice"`
+	/**
+	 * open amount
+	 */
 	OpenAmount string `json:"openAmount"`
-	Leverage   string `json:"leverage"`
+	/**
+	 * Default leverage 20
+	 */
+	Leverage string `json:"leverage"`
 }
