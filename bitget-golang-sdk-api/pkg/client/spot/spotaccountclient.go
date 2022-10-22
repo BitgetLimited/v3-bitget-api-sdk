@@ -17,10 +17,9 @@ func (p *SpotAccountClient) Init() *SpotAccountClient {
 }
 
 /**
-获取账户资产
-symbol:
-marginCoin:
-*/
+ * Obtain account assets
+ * @return ResponseResult
+ */
 func (p *SpotAccountClient) Assets() (string, error) {
 
 	params := internal.NewParams()
@@ -34,8 +33,14 @@ func (p *SpotAccountClient) Assets() (string, error) {
 }
 
 /**
-获取划转记录
-*/
+ * Obtain transfer records
+ * @param coinId
+ * @param fromType
+ * @param limit
+ * @param after
+ * @param before
+ * @return ResponseResult
+ */
 func (p *SpotAccountClient) TransferRecords(coinId string, fromType string, limit string, after string, before string) (string, error) {
 
 	params := internal.NewParams()
@@ -64,8 +69,10 @@ func (p *SpotAccountClient) TransferRecords(coinId string, fromType string, limi
 }
 
 /**
-获取账单流水
-*/
+ * Get the bill flow
+ * @param BillsReq
+ * @return ResponseResult
+ */
 func (p *SpotAccountClient) Bills(params account.BillsReq) (string, error) {
 
 	postBody, jsonErr := internal.ToJson(params)

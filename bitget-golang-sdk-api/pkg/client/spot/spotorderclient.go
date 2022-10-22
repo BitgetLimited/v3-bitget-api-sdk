@@ -17,8 +17,10 @@ func (p *SpotOrderClient) Init() *SpotOrderClient {
 }
 
 /**
-获取账单流水
-*/
+ * place an order
+ * @param OrdersReq
+ * @return ResponseResult
+ */
 func (p *SpotOrderClient) Orders(params order.OrdersReq) (string, error) {
 
 	postBody, jsonErr := internal.ToJson(params)
@@ -35,8 +37,10 @@ func (p *SpotOrderClient) Orders(params order.OrdersReq) (string, error) {
 }
 
 /**
-获取账单流水
-*/
+ * Place orders in batches
+ * @param BatchOrdersReq
+ * @return ResponseResult
+ */
 func (p *SpotOrderClient) BatchOrders(params order.BatchOrdersReq) (string, error) {
 
 	postBody, jsonErr := internal.ToJson(params)
@@ -53,8 +57,10 @@ func (p *SpotOrderClient) BatchOrders(params order.BatchOrdersReq) (string, erro
 }
 
 /**
-获取账单流水
-*/
+ * cancel the order
+ * @param CancelOrderReq
+ * @return ResponseResult
+ */
 func (p *SpotOrderClient) CancelOrder(params order.CancelOrderReq) (string, error) {
 
 	postBody, jsonErr := internal.ToJson(params)
@@ -71,8 +77,10 @@ func (p *SpotOrderClient) CancelOrder(params order.CancelOrderReq) (string, erro
 }
 
 /**
-获取账单流水
-*/
+ * Batch cancellation
+ * @param CancelBatchOrdersReq
+ * @return ResponseResult
+ */
 func (p *SpotOrderClient) CancelBatchOrders(params order.CancelBatchOrdersReq) (string, error) {
 
 	postBody, jsonErr := internal.ToJson(params)
@@ -89,8 +97,10 @@ func (p *SpotOrderClient) CancelBatchOrders(params order.CancelBatchOrdersReq) (
 }
 
 /**
-获取账单流水
-*/
+ * Get order details
+ * @param OrderInfoReq
+ * @return ResponseResult
+ */
 func (p *SpotOrderClient) OrderInfo(params order.OrderInfoReq) (string, error) {
 
 	postBody, jsonErr := internal.ToJson(params)
@@ -107,8 +117,10 @@ func (p *SpotOrderClient) OrderInfo(params order.OrderInfoReq) (string, error) {
 }
 
 /**
-获取账单流水
-*/
+ * Obtain orders that have not been closed or partially closed but not cancelled
+ * @param OpenOrdersReq
+ * @return ResponseResult
+ */
 func (p *SpotOrderClient) OpenOrders(params order.OpenOrdersReq) (string, error) {
 
 	postBody, jsonErr := internal.ToJson(params)
@@ -125,8 +137,10 @@ func (p *SpotOrderClient) OpenOrders(params order.OpenOrdersReq) (string, error)
 }
 
 /**
-获取账单流水
-*/
+ * Get historical delegation list
+ * @param HistoryReq
+ * @return ResponseResult
+ */
 func (p *SpotOrderClient) History(params order.HistoryReq) (string, error) {
 
 	postBody, jsonErr := internal.ToJson(params)
@@ -143,8 +157,10 @@ func (p *SpotOrderClient) History(params order.HistoryReq) (string, error) {
 }
 
 /**
-获取账单流水
-*/
+ * Obtain transaction details
+ * @param FillsReq
+ * @return ResponseResult
+ */
 func (p *SpotOrderClient) Fills(params order.FillsReq) (string, error) {
 
 	postBody, jsonErr := internal.ToJson(params)
@@ -163,7 +179,7 @@ func (p *SpotOrderClient) Fills(params order.FillsReq) (string, error) {
 /**
 获取账单流水
 */
-func (p *SpotOrderClient) ChangeDepth(params order.ChangeDepthReq) (string, error) {
+/*func (p *SpotOrderClient) ChangeDepth(params order.ChangeDepthReq) (string, error) {
 
 	postBody, jsonErr := internal.ToJson(params)
 
@@ -176,4 +192,4 @@ func (p *SpotOrderClient) ChangeDepth(params order.ChangeDepthReq) (string, erro
 	resp, err := p.BitgetRestClient.DoPost(uri, postBody)
 
 	return resp, err
-}
+}*/

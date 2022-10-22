@@ -16,10 +16,9 @@ func (p *SpotPublicClient) Init() *SpotPublicClient {
 }
 
 /**
-单个币种账户信息
-symbol:
-marginCoin:
-*/
+ * Get server time
+ * @return ResponseResult
+ */
 func (p *SpotPublicClient) Time() (string, error) {
 
 	params := internal.NewParams()
@@ -32,10 +31,9 @@ func (p *SpotPublicClient) Time() (string, error) {
 }
 
 /**
-单个币种账户信息
-symbol:
-marginCoin:
-*/
+ * Basic information of currency
+ * @return ResponseResult
+ */
 func (p *SpotPublicClient) Currencies() (string, error) {
 
 	params := internal.NewParams()
@@ -48,10 +46,9 @@ func (p *SpotPublicClient) Currencies() (string, error) {
 }
 
 /**
-单个币种账户信息
-symbol:
-marginCoin:
-*/
+ * Get all product information
+ * @return ResponseResult
+ */
 func (p *SpotPublicClient) Products() (string, error) {
 
 	params := internal.NewParams()
@@ -64,10 +61,10 @@ func (p *SpotPublicClient) Products() (string, error) {
 }
 
 /**
-单个币种账户信息
-symbol:
-marginCoin:
-*/
+ * Get single product information
+ * @param symbol
+ * @return ResponseResult
+ */
 func (p *SpotPublicClient) Product(symbol string) (string, error) {
 
 	params := internal.NewParams()
