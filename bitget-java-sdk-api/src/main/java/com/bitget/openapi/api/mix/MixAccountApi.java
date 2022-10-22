@@ -71,4 +71,31 @@ public interface MixAccountApi {
      */
     @POST("/api/mix/v1/account/open-count")
     Call<ResponseResult> openCount(@Body MixOpenCountReq mixOpenCountReq);
+
+
+    /**
+     * Get Account Bill
+     * @return ResponseResult
+     */
+    @GET("/api/mix/v1/account/accountBill")
+    Call<ResponseResult> accountBill(@Query("symbol") String symbol,
+                                     @Query("marginCoin") String marginCoin,
+                                     @Query("startTime") String startTime,
+                                     @Query("endTime") String endTime,
+                                     @Query("pageSize") int pageSize,
+                                     @Query("lastEndId") String lastEndId,
+                                     @Query("next") boolean next);
+
+
+    /**
+     * Get Account Bill
+     * @return ResponseResult
+     */
+    @GET("/api/mix/v1/account/accountBusinessBill")
+    Call<ResponseResult> accountBusinessBill(@Query("productType") String productType,
+                                     @Query("startTime") String startTime,
+                                     @Query("endTime") String endTime,
+                                     @Query("pageSize") int pageSize,
+                                     @Query("lastEndId") String lastEndId,
+                                     @Query("next") boolean next);
 }
