@@ -131,4 +131,14 @@ export class MixMarketApi extends BaseApi {
         const headers = this.signer('GET', url, qsOrBody)
         return this.axiosInstance.get(url, {headers, params: qsOrBody})
     }
+    /**
+     * Get contract minimum and maximum leverage
+     * @param symbol
+     */
+    getSymbolLeverage(symbol: string) {
+        const url = MIX_URL.MIX_MARKET + '/symbol-leverage';
+        const qsOrBody = {symbol};
+        const headers = this.signer('GET', url, qsOrBody)
+        return this.axiosInstance.get(url, {headers, params: qsOrBody})
+    }
 }
