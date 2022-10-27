@@ -19,7 +19,7 @@ class ManageApi(Client):
             params["remark"] = remark
             params["ip"] = ip
             params["perm"] = perm
-            return self._request_with_params(POST, BROKER_ACCOUNT_V1_URL + '/sub-api-create', params)
+            return self._request_with_params(POST, BROKER_MANAGE_V1_URL + '/sub-api-create', params)
         else:
             return "pls check args "
 
@@ -31,7 +31,7 @@ class ManageApi(Client):
         params = {}
         if subUid:
             params["subUid"] = subUid
-            return self._request_with_params(GET, BROKER_ACCOUNT_V1_URL + '/sub-api-list', params)
+            return self._request_with_params(GET, BROKER_MANAGE_V1_URL + '/sub-api-list', params)
         else:
             return "pls check args"
 
@@ -47,6 +47,6 @@ class ManageApi(Client):
             params["remark"] = remark
             params["ip"] = ip
             params["perm"] = perm
-            return self._request_with_params(POST, BROKER_ACCOUNT_V1_URL + '/sub-api-modify', params)
+            return self._request_with_params(POST, BROKER_MANAGE_V1_URL + '/sub-api-modify', params)
         else:
             return "pls check args "

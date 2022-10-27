@@ -48,6 +48,7 @@ MIX_TRACE_V1_URL = '/api/mix/v1/trace'
 
 
 BROKER_ACCOUNT_V1_URL = '/api/broker/v1/account'
+BROKER_MANAGE_V1_URL = '/api/broker/v1/manage'
 
 SUBSCRIBE = 'subscribe'
 UNSUBSCRIBE = 'unsubscribe'
