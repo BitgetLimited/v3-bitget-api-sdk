@@ -6,8 +6,14 @@ namespace bitget\model\spot\order;
 
 class CancelBatchOrderReq
 {
+    /**
+     * Currency pair
+     */
     var string $symbol;
 
+    /**
+     *  Order ids
+     */
     var array $orderIds;
 
     /**

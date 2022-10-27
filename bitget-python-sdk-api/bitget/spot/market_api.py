@@ -10,7 +10,7 @@ class MarketApi(Client):
         Client.__init__(self, api_key, api_secret_key, passphrase, use_server_time, first)
 
     '''
-    获取实时成交
+    Get real-time transaction
     :return:
     '''
     def fills(self, symbol, limit=100):
@@ -23,9 +23,8 @@ class MarketApi(Client):
             return "pls check args"
 
     '''
-    获取深度数据
-    
-    深度合并类型
+    Get depth data
+    Depth Merge Type
     type: step0(default) step1 step2 step3 step4 step5
     :return:
     '''
@@ -40,7 +39,7 @@ class MarketApi(Client):
             return "pls check args"
 
     '''
-    根据币对获取ticker信息
+    Get ticker information according to the currency pair
     :return:
     '''
     def ticker(self, symbol):
@@ -52,7 +51,7 @@ class MarketApi(Client):
             return "pls check args"
 
     '''
-    获取全部交易对 ticker 信息
+    Get all transaction pair ticker information
     :return:
     '''
     def tickers(self):
@@ -60,12 +59,12 @@ class MarketApi(Client):
         return self._request_without_params(GET, SPOT_MARKET_V1_URL + '/tickers')
 
     '''
-    获取 k 线信息
+    Obtain K line information
     params
     
     period: 1min, 5min, 15min, 30min, 1h,4h,12h, 1day, 1week
-    after: 时间之前的
-    before: 时间之后
+    after: time before
+    before: time after
     :return:
     '''
     def candles(self, symbol, period, after='', before='', limit=100):

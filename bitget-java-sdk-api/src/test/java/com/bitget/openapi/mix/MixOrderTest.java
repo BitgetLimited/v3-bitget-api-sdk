@@ -3,13 +3,12 @@ package com.bitget.openapi.mix;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.bitget.openapi.BaseTest;
-import com.bitget.openapi.common.enums.mix.MixOrderTypeEnum;
-import com.bitget.openapi.common.enums.mix.MixSideEnum;
-import com.bitget.openapi.common.enums.spot.ForceEnum;
 import com.bitget.openapi.dto.request.mix.*;
 import com.bitget.openapi.dto.response.ResponseResult;
+import com.bitget.openapi.enums.mix.MixOrderTypeEnum;
+import com.bitget.openapi.enums.mix.MixSideEnum;
+import com.bitget.openapi.enums.spot.ForceEnum;
 import org.junit.Test;
-
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -25,18 +24,9 @@ public class MixOrderTest extends BaseTest {
     private static int pageSize = 20;
 
     // passed
-
-
-
-
-
-
-
-
-
     @Test
     public void placeOrder() throws IOException {
-        MixPlaceOrderRequest req = MixPlaceOrderRequest.builder()
+        MixPlaceOrderReq req = MixPlaceOrderReq.builder()
                 .clientOid("RFIut#"+System.currentTimeMillis())
                 .symbol(symbol)
                 .price(new BigDecimal("2"))
@@ -51,7 +41,7 @@ public class MixOrderTest extends BaseTest {
     }
     @Test
     public void proportionOrder() throws IOException {
-        MixPlaceOrderRequest req = MixPlaceOrderRequest.builder()
+        MixPlaceOrderReq req = MixPlaceOrderReq.builder()
                 .clientOid("RFIut#"+System.currentTimeMillis())
                 .symbol(symbol)
                 .price(new BigDecimal("5999.7"))
@@ -71,9 +61,9 @@ public class MixOrderTest extends BaseTest {
     // passed
     @Test
     public void batchOrders() throws IOException {
-        List<PlaceOrderBaseParam> orderDataList = new ArrayList<>();
+        List<PlaceOrderBaseReq> orderDataList = new ArrayList<>();
 
-        PlaceOrderBaseParam order_one = PlaceOrderBaseParam.builder()
+        PlaceOrderBaseReq order_one = PlaceOrderBaseReq.builder()
                 .clientOid("RFIut#15914567782335")
                 .price(new BigDecimal("23789.3"))
                 .size(new BigDecimal("1"))
@@ -82,7 +72,7 @@ public class MixOrderTest extends BaseTest {
                 .orderType(MixOrderTypeEnum.LIMIT.getCode())
                 .build();
 
-        PlaceOrderBaseParam order_two = PlaceOrderBaseParam.builder()
+        PlaceOrderBaseReq order_two = PlaceOrderBaseReq.builder()
                 .clientOid("RFIut#1592567335")
                 .price(new BigDecimal("23888.3"))
                 .size(new BigDecimal("1"))
@@ -93,7 +83,7 @@ public class MixOrderTest extends BaseTest {
 
         orderDataList.add(order_one);
         orderDataList.add(order_two);
-        PlaceBatchOrderRequest req = PlaceBatchOrderRequest.builder()
+        PlaceBatchOrderReq req = PlaceBatchOrderReq.builder()
                 .symbol(symbol)
                 .marginCoin(marginCoin)
                 .orderDataList(orderDataList)
@@ -105,7 +95,7 @@ public class MixOrderTest extends BaseTest {
     // passed
     @Test
     public void cancelOrder() throws IOException {
-        MixCancelOrderRequest req = MixCancelOrderRequest.builder()
+        MixCancelOrderReq req = MixCancelOrderReq.builder()
                 .symbol(symbol)
                 .marginCoin(marginCoin)
                 .orderId("811489712408248322")
@@ -118,7 +108,7 @@ public class MixOrderTest extends BaseTest {
     public void cancelBatchOrder() throws IOException {
         List<String> stringList = new ArrayList<>();
         stringList.add("802382049422487552");
-        MixCancelBatchOrdersRequest req = MixCancelBatchOrdersRequest.builder()
+        MixCancelBatchOrdersReq req = MixCancelBatchOrdersReq.builder()
                 .symbol(symbol)
                 .marginCoin(marginCoin)
                 .orderIds(stringList)

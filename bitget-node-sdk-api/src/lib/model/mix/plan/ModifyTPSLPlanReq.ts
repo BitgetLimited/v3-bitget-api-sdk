@@ -1,17 +1,23 @@
 export class ModifyTPSLPlanReq{
     /**
-     * 合约交易对
+     * Currency pair
      */
     private _symbol!:string;
     /**
-     * 保证金币种
+     * Deposit currency
      */
     private _marginCoin!:string;
-
+    /**
+     * Order id
+     */
     private _orderId!:string;
-
+    /**
+     * Trigger price
+     */
     private _triggerPrice!:string;
-
+    /**
+     * Plan type
+     */
     private _planType!:string;
 
 

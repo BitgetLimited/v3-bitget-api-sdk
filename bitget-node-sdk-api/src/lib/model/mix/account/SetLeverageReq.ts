@@ -1,8 +1,21 @@
 export class SetLeverageReq {
-
+    /**
+     * Currency pair
+     */
     private _symbol!: string;
+    /**
+     * Deposit currency
+     */
     private _marginCoin!: string;
+    /**
+     * Leverage ratio
+     */
     private _leverage!: string;
+    /**
+     * The whole warehouse lever can not transfer this parameter
+     * Position direction: long multi position short short position,
+     * MixHoldSideEnum
+     */
     private _holdSide!: string;
 
     get symbol(): string {

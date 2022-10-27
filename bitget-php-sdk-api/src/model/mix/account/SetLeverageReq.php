@@ -6,9 +6,23 @@ namespace bitget\model\mix\account;
 
 class SetLeverageReq
 {
+    /**
+     * Currency pair
+     */
     var string $symbol;
+    /**
+     * Deposit currency
+     */
     var string $marginCoin;
+    /**
+     * Leverage ratio
+     */
     var string $leverage;
+    /**
+     * The whole warehouse lever can not transfer this parameter
+     * Position direction: long multi position short short position,
+     * MixHoldSideEnum
+     */
     var string $holdSide;
 
     /**

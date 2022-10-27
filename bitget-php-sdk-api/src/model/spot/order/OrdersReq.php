@@ -7,36 +7,36 @@ namespace bitget\model\spot\order;
 class OrdersReq
 {
     /**
-     * 币对
+     * Currency pair
      */
     var string $symbol;
     /**
-     * 订单方向
+     * Order direction
      */
     var string $side;
 
     /**
-     * 订单类型
+     * Order type
      */
     var string $orderType;
 
     /**
-     * 订单控制类型
+     * Order Control Type
      */
     var string $force;
 
     /**
-     * 委托价格，仅适用于限价单
+     * Entrusted price, only applicable to price limit order
      */
     var string $price;
 
     /**
-     * 数量
+     * quantity
      */
     var string $quantity;
 
     /**
-     * 客户端订单ID
+     * Client order ID
      */
     var string $clientOrderId;
 

@@ -1,6 +1,15 @@
 export class SetMarginModeReq {
+    /**
+     * Deposit currency
+     */
     private _marginCoin!:string;
+    /**
+     * Currency pair
+     */
     private _symbol!:string;
+    /**
+     * Margin mode
+     */
     private _marginMode!:string;
 
     get marginCoin(): string {

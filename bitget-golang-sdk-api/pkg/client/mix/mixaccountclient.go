@@ -17,10 +17,11 @@ func (p *MixAccountClient) Init() *MixAccountClient {
 }
 
 /**
-单个币种账户信息
-symbol:
-marginCoin:
-*/
+ * Get account  information
+ * @param symbol
+ * @param marginCoin
+ * @return ResponseResult
+ */
 func (p *MixAccountClient) Account(symbol string, marginCoin string) (string, error) {
 
 	params := internal.NewParams()
@@ -36,9 +37,10 @@ func (p *MixAccountClient) Account(symbol string, marginCoin string) (string, er
 }
 
 /**
-根据业务线获取账户列表
-productType:
-*/
+ * Get account  information list
+ * @param productType
+ * @return ResponseResult
+ */
 func (p *MixAccountClient) Accounts(productType string) (string, error) {
 
 	params := internal.NewParams()
@@ -52,8 +54,10 @@ func (p *MixAccountClient) Accounts(productType string) (string, error) {
 }
 
 /**
-调整杠杆
-*/
+ * set lever
+ * @param SetLeveragerReq
+ * @return ResponseResult
+ */
 func (p *MixAccountClient) SetLeverage(params account.SetLeveragerReq) (string, error) {
 	postBody, jsonErr := internal.ToJson(params)
 
@@ -69,8 +73,10 @@ func (p *MixAccountClient) SetLeverage(params account.SetLeveragerReq) (string, 
 }
 
 /**
-调整保证金
-*/
+ * Adjustment margin
+ * @param SetMarginReq
+ * @return ResponseResult
+ */
 func (p *MixAccountClient) SetMargin(params account.SetMarginReq) (string, error) {
 
 	postBody, jsonErr := internal.ToJson(params)
@@ -87,8 +93,10 @@ func (p *MixAccountClient) SetMargin(params account.SetMarginReq) (string, error
 }
 
 /**
-调节保证金模式
-*/
+ * Adjust margin mode
+ * @param SetMarginModeReq
+ * @return ResponseResult
+ */
 func (p *MixAccountClient) SetMarginMode(params account.SetMarginModeReq) (string, error) {
 
 	postBody, jsonErr := internal.ToJson(params)
@@ -105,8 +113,10 @@ func (p *MixAccountClient) SetMarginMode(params account.SetMarginModeReq) (strin
 }
 
 /**
-计算可开张数
-*/
+ * Get the openable quantity
+ * @param OpenCountReq
+ * @return ResponseResult
+ */
 func (p *MixAccountClient) OpenCount(params account.OpenCountReq) (string, error) {
 
 	postBody, jsonErr := internal.ToJson(params)

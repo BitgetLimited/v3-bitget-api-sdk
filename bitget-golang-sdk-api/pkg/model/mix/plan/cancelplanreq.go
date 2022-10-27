@@ -1,8 +1,25 @@
 package plan
 
+/**
+ * @Author: bitget-sdk-team
+ * @Date: 2022-09-30 10:46
+ * @DES: cancel plan request
+ */
 type CancelPlanReq struct {
-	Symbol     string `json:"symbol"`
+	/**
+	 * Currency pair
+	 */
+	Symbol string `json:"symbol"`
+	/**
+	 * Deposit currency
+	 */
 	MarginCoin string `json:"marginCoin"`
-	OrderId    string `json:"orderId"`
-	PlanType   string `json:"planType"`
+	/**
+	 * Order Id
+	 */
+	OrderId string `json:"orderId"`
+	/**
+	 * Plan type
+	 */
+	PlanType string `json:"planType"`
 }

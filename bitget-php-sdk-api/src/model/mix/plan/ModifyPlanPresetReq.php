@@ -7,19 +7,30 @@ namespace bitget\model\mix\plan;
 class ModifyPlanPresetReq
 {
     /**
-     * 合约交易对
+     * Currency pair
      */
     var string $symbol;
     /**
-     * 保证金币种
+     * Deposit currency
      */
     var string $marginCoin;
-
+    /**
+     * If the profit stop price is blank, cancel the profit stop
+     */
     var string $presetTakeProfitPrice;
-
+    /**
+     * If the stop loss price is blank, cancel the stop loss
+     */
     var string $presetStopLossPrice;
-
+    /**
+     * order id
+     */
     var string $orderId;
+
+    /**
+     * plan type
+     */
+    var string $planType;
 
     /**
      * @return string
@@ -101,5 +112,19 @@ class ModifyPlanPresetReq
         $this->orderId = $orderId;
     }
 
+    /**
+     * @return string
+     */
+    public function getPlanType(): string
+    {
+        return $this->planType;
+    }
 
+    /**
+     * @param string $planType
+     */
+    public function setPlanType(string $planType): void
+    {
+        $this->planType = $planType;
+    }
 }

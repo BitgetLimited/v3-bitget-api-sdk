@@ -2,14 +2,13 @@ package com.bitget.openapi.mix;
 
 import com.alibaba.fastjson.JSON;
 import com.bitget.openapi.BaseTest;
-import com.bitget.openapi.common.enums.mix.MixHoldModeEnum;
-import com.bitget.openapi.common.enums.mix.MixHoldSideEnum;
-import com.bitget.openapi.common.enums.mix.MixMarginModeEnum;
-import com.bitget.openapi.common.enums.mix.MixProductTypeEnum;
 import com.bitget.openapi.dto.request.mix.*;
 import com.bitget.openapi.dto.response.ResponseResult;
+import com.bitget.openapi.enums.mix.MixHoldModeEnum;
+import com.bitget.openapi.enums.mix.MixHoldSideEnum;
+import com.bitget.openapi.enums.mix.MixMarginModeEnum;
+import com.bitget.openapi.enums.mix.MixProductTypeEnum;
 import org.junit.Test;
-
 import java.io.IOException;
 import java.math.BigDecimal;
 
@@ -34,7 +33,7 @@ public class MixAccountTest extends BaseTest {
     // passed
     @Test
     public void leverage() throws IOException {
-        MixChangeLeverageRequest build = MixChangeLeverageRequest.builder()
+        MixChangeLeverageReq build = MixChangeLeverageReq.builder()
                 .symbol(symbol)
                 .marginCoin(marginCoin)
                 .leverage(25)
@@ -47,7 +46,7 @@ public class MixAccountTest extends BaseTest {
     // passed
     @Test
     public void margin() throws IOException {
-        MixAdjustMarginFixRequest build = MixAdjustMarginFixRequest.builder()
+        MixAdjustMarginFixReq build = MixAdjustMarginFixReq.builder()
                 .symbol(symbol)
                 .marginCoin(marginCoin)
                 .holdSide(MixHoldSideEnum.LONG.getCode())
@@ -61,7 +60,7 @@ public class MixAccountTest extends BaseTest {
     // passed
     @Test
     public void marginMode() throws IOException {
-        AdjustMarginModeRequest build = AdjustMarginModeRequest.builder()
+        AdjustMarginModeReq build = AdjustMarginModeReq.builder()
                 .symbol(symbol)
                 .marginCoin(marginCoin)
                 .marginMode(MixMarginModeEnum.FIXED.getCode())
@@ -72,7 +71,7 @@ public class MixAccountTest extends BaseTest {
     // passed
     @Test
     public void positionMode() throws IOException {
-        AdjustHoldModeRequest build = AdjustHoldModeRequest.builder()
+        AdjustHoldModeReq build = AdjustHoldModeReq.builder()
                 .symbol(symbol)
                 .marginCoin(marginCoin)
                 .holdMode(MixHoldModeEnum.DOUBLE_HOLD.getCode())
@@ -84,7 +83,7 @@ public class MixAccountTest extends BaseTest {
     //passed
     @Test
     public void openCount() throws IOException {
-        MixOpenCountRequest build = MixOpenCountRequest.builder()
+        MixOpenCountReq build = MixOpenCountReq.builder()
                 .symbol(symbol)
                 .marginCoin(marginCoin)
                 .openPrice(new BigDecimal("30000"))

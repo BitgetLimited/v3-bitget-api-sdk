@@ -6,8 +6,13 @@ namespace bitget\model\mix\trace;
 
 class CloseTrackOrderReq
 {
+    /**
+     * Currency pair
+     */
     var string $symbol;
-
+    /**
+     * The tracking order number comes from the trackingNo of the current interface with the order
+     */
     var string $trackingNo;
 
     /**

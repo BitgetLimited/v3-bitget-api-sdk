@@ -2,32 +2,62 @@ package com.bitget.openapi.service.mix;
 
 import com.bitget.openapi.dto.request.mix.*;
 import com.bitget.openapi.dto.response.ResponseResult;
-import com.bitget.openapi.dto.response.mix.ApiBalanceResult;
-import com.bitget.openapi.dto.response.mix.ChangeHoldModeResult;
-import com.bitget.openapi.dto.response.mix.ChangeLeverageResult;
-import com.bitget.openapi.dto.response.mix.MixCommonResult;
-
 import java.io.IOException;
 
+/**
+ * @Author: bitget-sdk-team
+ * @Date: 2022-09-30 10:46
+ * @DES: Contract account service
+ */
 public interface MixAccountService {
 
     /**
-     * 单个合约账户信息
+     * Get account  information
      * @param symbol
-     * @return
-     * @throws IOException
+     * @param marginCoin
+     * @return ResponseResult
      */
     ResponseResult getAccount(String symbol, String marginCoin) throws IOException;
 
+    /**
+     * Get account  information list
+     * @param productType
+     * @return ResponseResult
+     */
     ResponseResult getAccounts(String productType) throws IOException;
 
-    ResponseResult leverage(MixChangeLeverageRequest mixChangeLeverageRequest) throws IOException;
+    /**
+     * set lever
+     * @param mixChangeLeverageReq
+     * @return ResponseResult
+     */
+    ResponseResult leverage(MixChangeLeverageReq mixChangeLeverageReq) throws IOException;
 
-    ResponseResult margin(MixAdjustMarginFixRequest mixAdjustMarginFixRequest) throws IOException;
+    /**
+     * Adjustment margin
+     * @param mixAdjustMarginFixReq
+     * @return ResponseResult
+     */
+    ResponseResult margin(MixAdjustMarginFixReq mixAdjustMarginFixReq) throws IOException;
 
-    ResponseResult marginMode(AdjustMarginModeRequest adjustMarginModeRequest) throws IOException;
+    /**
+     * Adjust margin mode
+     * @param adjustMarginModeReq
+     * @return ResponseResult
+     */
+    ResponseResult marginMode(AdjustMarginModeReq adjustMarginModeReq) throws IOException;
 
-    ResponseResult positionMode(AdjustHoldModeRequest adjustHoldModeRequest) throws IOException;
+    /**
+     * Adjust hold mode
+     * @param adjustHoldModeReq
+     * @return ResponseResult
+     */
+    ResponseResult positionMode(AdjustHoldModeReq adjustHoldModeReq) throws IOException;
 
-    ResponseResult openCount(MixOpenCountRequest mixOpenCountRequest) throws IOException;
+    /**
+     * Get the openable quantity
+     * @param mixOpenCountReq
+     * @return ResponseResult
+     */
+    ResponseResult openCount(MixOpenCountReq mixOpenCountReq) throws IOException;
 }

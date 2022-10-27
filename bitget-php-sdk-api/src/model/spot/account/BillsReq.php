@@ -7,32 +7,32 @@ namespace bitget\model\spot\account;
 class BillsReq
 {
     /**
-     * 币种ID
+     * Currency ID
      */
     var string $coinId;
 
     /**
-     * 分组类型
+     * Group Type
      */
     var string $groupType;
 
     /**
-     * 业务类型
+     * Business Type
      */
     var string $bizType;
 
     /**
-     * 传入billId ,查之前的数据
+     * Pass in billId to query previous data
      */
     var string $after;
 
     /**
-     * 传入billId,查之后的数据
+     * Pass in billId to check the subsequent data
      */
     var string $before;
 
     /**
-     * 默认100，最大500
+     * Default 100, maximum 500
      */
     var string $limit;
 

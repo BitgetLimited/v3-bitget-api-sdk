@@ -9,17 +9,17 @@ class PlanApi(Client):
         Client.__init__(self, api_key, api_secret_key, passphrase, use_server_time, first)
 
     '''
-    计划委托下单
-    triggerPrice: 触发价格
-    executePrice: 执行价格
-    triggerType: 触发类型 fill_price market_price 
-    marginCoin: 保证金币种
-    size: 限价时 为 数量  市价买 为额度 卖为数量
+    Plan Entrusted Order
+    triggerPrice: Trigger Price
+    executePrice: Execution price
+    triggerType: Trigger Type fill_price market_price 
+    marginCoin: Deposit currency
+    size: It is quantity when the price is limited. The market price is the limit. The sales is the quantity
     side：open_long open_short close_long close_short
-    orderType: limit(限价)  market(市价)
-    timeInForceValue:normal(普通限价订单)   postOnly(只做maker,市价不允许使用这个)  ioc(立即成交并取消剩余)  fok(全部成交或立即取消)
-    presetTakeProfitPrice: 预设止盈价格
-    presetStopLossPrice： 预设止损价格
+    orderType: limit(fixed price)  market(market price)
+    timeInForceValue: normal(Ordinary price limit order)   postOnly(It is only a maker. The market price is not allowed to use this)  ioc(Close immediately and cancel the remaining)  fok(Complete transaction or immediate cancellation)
+    presetTakeProfitPrice: Default stop profit price
+    presetStopLossPrice： Preset stop loss price
     :return:
     '''
     def place_plan(self, symbol, marginCoin, size, side, orderType, triggerPrice, triggerType, executePrice='', clientOrderId='', timeInForceValue='normal', presetTakeProfitPrice='', presetStopLossPrice=''):
@@ -42,12 +42,12 @@ class PlanApi(Client):
             return "pls check args "
 
     '''
-    修改计划委托
-    triggerPrice: 触发价格
-    executePrice: 执行价格
-    triggerType: 触发类型 fill_price market_price 
-    marginCoin: 保证金币种
-    orderType: limit(限价)  market(市价)
+    Modify Plan Delegation
+    triggerPrice: Trigger Price
+    executePrice: Execution price
+    triggerType: Trigger Type fill_price market_price 
+    marginCoin: Deposit currency
+    orderType: limit(fixed price)  market(market price)
     :return:
     '''
     def modify_plan(self, symbol, marginCoin, orderId, orderType, triggerPrice, triggerType, executePrice=''):
@@ -65,13 +65,13 @@ class PlanApi(Client):
             return "pls check args "
 
     '''
-    修改计划委托预设止盈止损
-    orderId：订单号
-    triggerType: 触发类型 
-    marginCoin: 保证金币种
-    planType: 计划委托类型 normal_plan 普通计划 profit_plan止盈计划 loss_plan止损计划
-    presetTakeProfitPrice: 预设止盈价格
-    presetStopLossPrice： 预设止损价格
+    Modify the preset profit and loss stop of plan entrustment
+    orderId：orderId
+    triggerType: Trigger Type 
+    marginCoin: Deposit currency
+    planType: Plan delegation type normal_ Plan general plan_ Plan profit stop plan loss_ Plan stop loss plan
+    presetTakeProfitPrice: Default stop profit price
+    presetStopLossPrice： Preset stop loss price
     :return:
     '''
     def modify_plan_preset(self, symbol, marginCoin, orderId, planType='normal_plan', presetTakeProfitPrice='', presetStopLossPrice=''):
@@ -88,10 +88,10 @@ class PlanApi(Client):
             return "pls check args "
 
     '''
-    修改计划委托预设止盈止损
-    orderId：订单号
-    triggerPrice: 触发价格
-    marginCoin: 保证金币种
+    Modify the preset profit and loss stop of plan entrustment
+    orderId：orderId
+    triggerPrice: Trigger Price
+    marginCoin: Deposit currency
     :return:
     '''
     def modify_tpsl_plan(self, symbol, marginCoin, orderId, triggerPrice ):
@@ -106,13 +106,13 @@ class PlanApi(Client):
             return "pls check args "
 
     '''
-    止盈止损下单
-    目前止盈止损下单  只支持市价 触发类型为成交价格
-    symbol: 交易对名称
-    marginCoin: 保证金币种
-    orderId: 订单id 
-    planType: 订单类型   profit_plan 止盈计划  loss_plan止损计划
-    holdSide: 持仓方向 long 多仓  short 空仓
+    Stop profit and stop loss Order
+    At present, only the market price trigger type is transaction price when placing an order with profit stop and loss stop
+    symbol: Trading pair name
+    marginCoin: Deposit currency
+    orderId: orderId
+    planType: Order type prof it_ Plan profit stop plan loss_ Plan stop loss plan
+    holdSide: Long long short short short position in position direction
     :return:
     '''
     def place_tpsl(self, symbol, marginCoin, triggerPrice, planType, holdSide ):
@@ -129,11 +129,11 @@ class PlanApi(Client):
 
 
     '''
-    计划委托(止盈止损)撤单
-    symbol: 交易对名称
-    marginCoin: 保证金币种
-    orderId: 订单id 
-    planType: 订单类型  normal_plan 计划委托  profit_plan 止盈计划  loss_plan止损计划
+    Planned entrustment (profit and loss stop) cancellation
+    symbol: Trading pair name
+    marginCoin: Deposit currency
+    orderId: orderId 
+    planType: Order type normal_ Plan plan entrustment prof it_ Plan profit stop plan loss_ Plan stop loss plan
     :return:
     '''
     def cancel_plan(self, symbol, marginCoin, orderId, planType):
@@ -148,8 +148,8 @@ class PlanApi(Client):
             return "pls check args "
 
     '''
-    获取当前计划委托
-    isPlan: 是否查询计划委托  plan计划委托   profit_loss止盈止损
+    Get the current plan delegation
+    isPlan: Query plan delegation plan delegation profile_ Loss Stop Profit Stop Loss
     :return:
     '''
     def current_plan(self, symbol, isPlan='plan'):
@@ -162,9 +162,9 @@ class PlanApi(Client):
             return "pls check args "
 
     '''
-    获取历史计划委托
-    isPre： 是否查询上一页
-    isPlan: 是否查询计划委托  plan计划委托   profit_loss止盈止损
+    Get historical plan delegation
+    isPre： Whether to query the previous page
+    isPlan: Query plan delegation plan delegation profile_ Loss Stop Profit Stop Loss
     :return:
     '''
     def history_plan(self, symbol, startTime, endTime, pageSize, lastEndId='', isPre=False, isPlan='plan'):

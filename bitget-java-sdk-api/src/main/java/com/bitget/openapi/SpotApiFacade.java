@@ -11,9 +11,9 @@ import com.bitget.openapi.service.spot.impl.SpotOrderServiceImpl;
 import com.bitget.openapi.service.spot.impl.SpotPublicServiceImpl;
 
 /**
- * @Author: bitget
- * @Date: 2021-05-31 15:20
- * @DES: spot
+ * @Author: bitget-sdk-team
+ * @Date: 2022-09-30 10:46
+ * @DES: spot api facade
  */
 public class SpotApiFacade {
 

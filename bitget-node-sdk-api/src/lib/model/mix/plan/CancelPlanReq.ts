@@ -1,10 +1,19 @@
 export class CancelPlanReq{
+    /**
+     * Order Id
+     */
     private _orderId!:string;
-
+    /**
+     * Currency pair
+     */
     private _symbol!:string;
-
+    /**
+     * Plan type
+     */
     private _planType!:string;
-
+    /**
+     * Deposit currency
+     */
     private _marginCoin!:string;
 
 

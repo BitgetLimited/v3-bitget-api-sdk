@@ -1,9 +1,25 @@
 export class PlaceOrderBaseParam{
+    /**
+     * Client ID
+     */
     private _clientOid!:string;
+    /**
+     * Amount of currency placed
+     */
     private _size!:string;
+    /**
+     * 1: Kaiduo 2: Kaikong 3: Pingduo 4: Pingkong
+     */
     private _side!:string;
+    /**
+     * Order Type
+     */
     private _orderType!:string;
+    /**
+     * Entrusted price
+     */
     private _price!:string;
+
     private _timeInForceValue!:string;
 
 

@@ -1,6 +1,15 @@
 export class CancelOrderReq {
+    /**
+     * Order Id
+     */
     private _orderId!: string;
+    /**
+     * Currency pair
+     */
     private _symbol!: string;
+    /**
+     * Deposit currency
+     */
     private _marginCoin!: string;
 
 

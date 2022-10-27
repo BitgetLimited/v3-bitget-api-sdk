@@ -17,27 +17,27 @@ import lombok.NoArgsConstructor;
 public class ClientParameter {
 
     /**
-     * 用户 api key，必填
+     * User apiKey, required
      */
     private String apiKey;
     /**
-     * 用户密钥，必填
+     * User secretKey, required
      */
     private String secretKey;
     /**
-     * 用户 passphrase，必填
+     * User passphrase, required
      */
     private String passphrase;
     /**
-     * 服务 url，非必填 默认 https://capi.bitget.com/api/swap/v3/
+     * Service url, optional, default https://capi.bitget.com/api/swap/v3/
      */
     private String baseUrl;
     /**
-     * 链接超时时间，非必填 默认 30s
+     * Link timeout, optional, default 30s
      */
     private Long timeout;
     /**
-     * 语言环境
+     * Linguistic environment
      */
     private String locale;
 

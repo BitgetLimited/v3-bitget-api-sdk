@@ -4,46 +4,47 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
 import java.io.Serializable;
 
+/**
+ * @Author: bitget-sdk-team
+ * @Date: 2022-09-30 10:46
+ * @DES: place an order request
+ */
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
 public class SpotOrderReq implements Serializable {
 
+    private static final long serialVersionUID = -1L;
+
     /**
-     * 币对
+     * Currency pair
      */
     private String symbol;
     /**
-     * 订单方向
+     * Order direction
      */
     private String side;
-
     /**
-     * 订单类型
+     * Order type
      */
     private String orderType;
-
     /**
-     * 订单控制类型
+     * Order Control Type
      */
     private String force;
-
     /**
-     * 委托价格，仅适用于限价单
+     * Entrusted price, only applicable to price limit order
      */
     private String price;
-
     /**
-     * 数量
+     * quantity
      */
     private String quantity;
-
     /**
-     * 客户端订单ID
+     * Client order ID
      */
     private String clientOrderId;
 }

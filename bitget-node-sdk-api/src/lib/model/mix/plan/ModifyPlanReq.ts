@@ -1,21 +1,31 @@
 export class ModifyPlanReq{
     /**
-     * 合约交易对
+     * Currency pair
      */
     private _symbol!:string;
     /**
-     * 保证金币种
+     * Deposit currency
      */
     private _marginCoin!:string;
-
+    /**
+     * Planned entrusted order No
+     */
     private _orderId!:string;
-
+    /**
+     * Execution price
+     */
     private _executePrice!:string;
-
+    /**
+     * Trigger Price
+     */
     private _triggerPrice!:string;
-
+    /**
+     * Trigger Type
+     */
     private _triggerType!:string;
-
+    /**
+     * Order Type
+     */
     private _orderType!:string;
 
 

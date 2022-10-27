@@ -3,16 +3,12 @@ package com.bitget.openapi;
 import com.bitget.openapi.common.client.ApiClient;
 import com.bitget.openapi.service.mix.*;
 import com.bitget.openapi.service.mix.impl.*;
-import com.bitget.openapi.service.spot.SpotAccountService;
-import com.bitget.openapi.service.spot.SpotMarketService;
-import com.bitget.openapi.service.spot.SpotOrderService;
-import com.bitget.openapi.service.spot.SpotPublicService;
-import com.bitget.openapi.service.spot.impl.SpotAccountServiceImpl;
-import com.bitget.openapi.service.spot.impl.SpotMarketServiceImpl;
-import com.bitget.openapi.service.spot.impl.SpotOrderServiceImpl;
-import com.bitget.openapi.service.spot.impl.SpotPublicServiceImpl;
 
-
+/**
+ * @Author: bitget-sdk-team
+ * @Date: 2022-09-30 10:46
+ * @DES: mix api facade
+ */
 public class MixApiFacade {
 
     private final ApiClient apiClient;

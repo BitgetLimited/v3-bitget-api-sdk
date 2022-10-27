@@ -2,12 +2,10 @@ package com.bitget.openapi.mix;
 
 import com.alibaba.fastjson.JSON;
 import com.bitget.openapi.BaseTest;
-import com.bitget.openapi.common.enums.mix.MixProductTypeEnum;
-import com.bitget.openapi.dto.request.mix.MixOpenCountRequest;
 import com.bitget.openapi.dto.response.ResponseResult;
+import com.bitget.openapi.enums.mix.MixProductTypeEnum;
 import org.junit.Test;
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.List;
 
 public class MixMarketServiceTest extends BaseTest {
@@ -22,49 +20,49 @@ public class MixMarketServiceTest extends BaseTest {
 
     static String granularity = "60";
 
-    // 测试通过
+    // passed
     @Test
     public void contracts() throws IOException {
         ResponseResult result = bitgetRestClient.mix().bitget().market().contracts(MixProductTypeEnum.SDMCBL.getCode());
         System.out.println(JSON.toJSONString(result));
     }
-    // 测试通过
+    // passed
     @Test
     public void depth() throws IOException {
         ResponseResult result = bitgetRestClient.mix().bitget().market().depth(symbol,limit);
         System.out.println(JSON.toJSONString(result));
     }
-    // 测试通过
+    // passed
     @Test
     public void ticker() throws IOException {
         ResponseResult result = bitgetRestClient.mix().bitget().market().ticker(symbol);
         System.out.println(JSON.toJSONString(result));
     }
-    // 测试通过
+    // passed
     @Test
     public void tickers() throws IOException {
         ResponseResult result = bitgetRestClient.mix().bitget().market().tickers(MixProductTypeEnum.UMCBL.getCode());
         System.out.println(JSON.toJSONString(result));
     }
-    // 测试通过
+    // passed
     @Test
     public void fills() throws IOException {
         ResponseResult result = bitgetRestClient.mix().bitget().market().fills(symbol,limit);
         System.out.println(JSON.toJSONString(result));
     }
-    // 测试通过
+    // passed
     @Test
     public void candles() throws IOException {
         List<Object[]> result =  bitgetRestClient.mix().bitget().market().candles(symbol,granularity,startTime,endTime);
         System.out.println(JSON.toJSONString(result));
     }
-    // 测试通过
+    // passed
     @Test
     public void index() throws IOException {
         ResponseResult result = bitgetRestClient.mix().bitget().market().index(symbol);
         System.out.println(JSON.toJSONString(result));
     }
-    // 测试通过
+    // passed
     @Test
     public void fundingTime() throws IOException {
         ResponseResult result = bitgetRestClient.mix().bitget().market().fundingTime(symbol);
@@ -78,21 +76,21 @@ public class MixMarketServiceTest extends BaseTest {
         System.out.println(JSON.toJSONString(result));
     }
 
-    // 测试通过
+    // passed
     @Test
     public void currentFundRate() throws IOException {
         ResponseResult result = bitgetRestClient.mix().bitget().market().currentFundRate(symbol);
         System.out.println(JSON.toJSONString(result));
     }
 
-    // 测试通过
+    // passed
     @Test
     public void openInterest() throws IOException {
         ResponseResult result = bitgetRestClient.mix().bitget().market().openInterest(symbol);
         System.out.println(JSON.toJSONString(result));
     }
 
-    // 测试通过
+    // passed
     @Test
     public void markPrice() throws IOException {
         ResponseResult result = bitgetRestClient.mix().bitget().market().markPrice(symbol);

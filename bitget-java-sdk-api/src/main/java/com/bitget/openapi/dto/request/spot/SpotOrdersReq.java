@@ -4,6 +4,11 @@ import lombok.*;
 
 import java.io.Serializable;
 
+/**
+ * @Author: bitget-sdk-team
+ * @Date: 2022-09-30 10:46
+ * @DES: SpotOrdersReq
+ */
 @Data
 @Builder
 @NoArgsConstructor
@@ -11,32 +16,27 @@ import java.io.Serializable;
 public class SpotOrdersReq implements Serializable {
 
     /**
-     * 订单方向
+     * Order direction
      */
     private String side;
-
     /**
-     * 订单类型
+     * Order type
      */
     private String orderType;
-
     /**
-     * 订单控制类型
+     * Order Control Type
      */
     private String force;
-
     /**
-     * 委托价格，仅适用于限价单
+     * Entrusted price, only applicable to price limit order
      */
     private String price;
-
     /**
-     * 数量
+     * quantity
      */
     private String quantity;
-
     /**
-     * 客户端订单ID
+     * Client order ID
      */
     private String clientOrderId;
 }

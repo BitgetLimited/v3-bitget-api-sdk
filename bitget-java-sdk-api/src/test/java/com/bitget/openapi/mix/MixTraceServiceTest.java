@@ -2,9 +2,9 @@ package com.bitget.openapi.mix;
 
 import com.alibaba.fastjson.JSON;
 import com.bitget.openapi.BaseTest;
-import com.bitget.openapi.common.enums.mix.MixProductTypeEnum;
-import com.bitget.openapi.dto.request.mix.MixCloseTrackOrderRequest;
+import com.bitget.openapi.dto.request.mix.MixCloseTrackOrderReq;
 import com.bitget.openapi.dto.response.ResponseResult;
+import com.bitget.openapi.enums.mix.MixProductTypeEnum;
 import org.junit.Test;
 import java.io.IOException;
 
@@ -18,9 +18,10 @@ public class MixTraceServiceTest extends BaseTest {
     static String startTime = "";
     static String endTime = "";
 
+    //passed
     @Test
     public void closeTraceOrder() throws IOException {
-        MixCloseTrackOrderRequest build = MixCloseTrackOrderRequest.builder()
+        MixCloseTrackOrderReq build = MixCloseTrackOrderReq.builder()
                 .symbol(symbol)
                 .trackingNo(trackingNo)
                 .build();
@@ -29,12 +30,14 @@ public class MixTraceServiceTest extends BaseTest {
         System.out.println(JSON.toJSONString(result));
     }
 
+    //passed
     @Test
     public void currentTrack() throws IOException {
         ResponseResult result = bitgetRestClient.mix().bitget().trace().currentTrack(symbol, MixProductTypeEnum.UMCBL.getCode(),pageSize,pageNo);
         System.out.println(JSON.toJSONString(result));
     }
 
+    //passed
     @Test
     public void historyTrack() throws IOException {
         ResponseResult result = bitgetRestClient.mix().bitget().trace().historyTrack(startTime,endTime,pageSize,pageNo);
@@ -62,6 +65,7 @@ public class MixTraceServiceTest extends BaseTest {
         System.out.println(JSON.toJSONString(result));
     }
 
+    //passed
     @Test
     public void profitDateList() throws IOException {
         ResponseResult result = bitgetRestClient.mix().bitget().trace().profitDateList(symbol,date,pageSize,pageNo);
@@ -75,6 +79,7 @@ public class MixTraceServiceTest extends BaseTest {
         System.out.println(JSON.toJSONString(result));
     }
 
+    //passed
     @Test
     public void followerHistoryOrders() throws IOException {
         ResponseResult result = bitgetRestClient.mix().bitget().trace().followerHistoryOrders("10","1","1635782400000","1635852263953");

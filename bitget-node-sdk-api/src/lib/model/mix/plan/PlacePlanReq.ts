@@ -1,44 +1,47 @@
 export class PlacePlanReq{
+
     /**
-     * 合约交易对
+     * Currency pair
      */
     private _symbol!:string;
     /**
-     * 保证金币种
+     * Deposit currency
      */
     private _marginCoin!:string;
     /**
-     * 下单数量
+     * Amount of currency placed
      */
     private _size!:string;
     /**
-     * 委托价格
+     * Entrusted price
      */
     private _executePrice!:string;
     /**
-     * 触发价格
+     * Trigger Price
      */
     private _triggerPrice!:string;
     /**
-     * 委托方向
+     * Entrusting direction
      */
     private _side!:string;
     /**
-     * 交易类型
+     * Transaction Type
      */
     private _orderType!:string;
     /**
-     * 触发类型 成交价触发 标记价触发
+     * Trigger Type Transaction Price Trigger Flag Price Trigger
      */
     private _triggerType!:string;
-
+    /**
+     * Client ID
+     */
     private _clientOid!:string;
     /**
-     * 预设止盈价
+     * Default stop profit price
      */
     private _presetTakeProfitPrice!:string;
     /**
-     * 预设止损价
+     * Preset stop loss price
      */
     private _presetStopLossPrice!:string;
 

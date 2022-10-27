@@ -10,8 +10,12 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class WsLoginReq {
+
     private String apiKey;
+
     private String passphrase;
+
     private String timestamp;
+
     private String sign;
 }

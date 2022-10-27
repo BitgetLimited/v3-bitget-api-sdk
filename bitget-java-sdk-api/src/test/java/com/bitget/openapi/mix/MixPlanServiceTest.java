@@ -2,12 +2,11 @@ package com.bitget.openapi.mix;
 
 import com.alibaba.fastjson.JSON;
 import com.bitget.openapi.BaseTest;
-import com.bitget.openapi.common.enums.mix.*;
-import com.bitget.openapi.common.enums.spot.SpotOrderTypeEnum;
 import com.bitget.openapi.dto.request.mix.*;
 import com.bitget.openapi.dto.response.ResponseResult;
+import com.bitget.openapi.enums.mix.*;
+import com.bitget.openapi.enums.spot.SpotOrderTypeEnum;
 import org.junit.Test;
-
 import java.io.IOException;
 import java.math.BigDecimal;
 
@@ -24,7 +23,7 @@ public class MixPlanServiceTest extends BaseTest {
     //passed
     @Test
     public void planPlace() throws IOException {
-        MixPlanOrderRequest build = MixPlanOrderRequest.builder()
+        MixPlanOrderReq build = MixPlanOrderReq.builder()
                 .clientOid("RFIut#" + System.currentTimeMillis())
                 .symbol(symbol)
                 .triggerPrice(new BigDecimal("45000.3"))
@@ -43,7 +42,7 @@ public class MixPlanServiceTest extends BaseTest {
     //passed
     @Test
     public void modifyPlan() throws IOException {
-        MixModifyPlanRequest build = MixModifyPlanRequest.builder()
+        MixModifyPlanReq build = MixModifyPlanReq.builder()
                 .orderId("803521986049314816")
                 .symbol(symbol)
                 .triggerPrice(new BigDecimal("45012.1"))
@@ -60,7 +59,7 @@ public class MixPlanServiceTest extends BaseTest {
     //passed
     @Test
     public void modifyPlanPreset() throws IOException {
-        MixModifyPresetRequest build = MixModifyPresetRequest.builder()
+        MixModifyPresetReq build = MixModifyPresetReq.builder()
                 .orderId("803521986049314816")
                 .symbol(symbol)
                 .marginCoin(marginCoin)
@@ -74,7 +73,7 @@ public class MixPlanServiceTest extends BaseTest {
     //passed
     @Test
     public void placeTPSL() throws IOException {
-        MixTPSLOrderRequest build = MixTPSLOrderRequest.builder()
+        MixTPSLOrderReq build = MixTPSLOrderReq.builder()
                 .symbol(symbol)
                 .marginCoin(marginCoin)
                 .planType(MixPlanTypeEnum.PROFIT_PLAN.getValue())
@@ -86,9 +85,10 @@ public class MixPlanServiceTest extends BaseTest {
         System.out.println(JSON.toJSONString(result));
     }
 
+    //passed
     @Test
     public void modifyTPSLPlan() throws IOException {
-        MixModifyTPSLRequest build = MixModifyTPSLRequest.builder()
+        MixModifyTPSLReq build = MixModifyTPSLReq.builder()
                 .orderId("803521986049314816")
                 .symbol(symbol)
                 .marginCoin(marginCoin)
@@ -102,7 +102,7 @@ public class MixPlanServiceTest extends BaseTest {
     //passed
     @Test
     public void cancelPlan() throws IOException {
-        MixCancelPlanRequest build = MixCancelPlanRequest.builder()
+        MixCancelPlanReq build = MixCancelPlanReq.builder()
                 .symbol(symbol)
                 .marginCoin(marginCoin)
                 .orderId("803521986049314816")

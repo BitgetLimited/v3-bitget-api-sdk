@@ -24,7 +24,11 @@ class SpotOrderApi
     {
         $this->BitgetApiClient = $BitgetApiClient;
     }
-
+    /**
+     * place an order
+     * @param $ordersReq
+     * @return string
+     */
     public function orders(OrdersReq $ordersReq): string
     {
         return $this->BitgetApiClient->doPost(self::BASE_URL . "/orders", $ordersReq);

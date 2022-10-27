@@ -9,8 +9,8 @@ class MarketApi(Client):
         Client.__init__(self, api_key, api_secret_key, passphrase, use_server_time, first)
 
     '''
-    获取合约列表
-    productType: umcbl(USDT专业合约) dmcbl(混合合约) sumcbl(USDT专业合约模拟盘)  sdmcbl(混合合约模拟盘)
+    Get contract list
+    productType: Umcbl (USDT professional contract) dmcbl (mixed contract) sumcbl (USDT professional contract simulation disk) sdmcbl (mixed contract simulation disk)
     :return:
     '''
     def contracts(self, productType):
@@ -20,8 +20,8 @@ class MarketApi(Client):
         return self._request_with_params(GET, MIX_MARKET_V1_URL + '/contracts', params)
 
     '''
-    获取深度数据
-    symbol：合约交易对
+    Get depth data
+    symbol：Contract transaction pair
     :return:
     '''
     def depth(self, symbol, limit='150'):
@@ -34,8 +34,8 @@ class MarketApi(Client):
             return "pls check args"
 
     '''
-    根据币对获取ticker信息
-    symbol：合约交易对
+    Get ticker information according to the currency pair
+    symbol：Contract transaction pair
     :return:
     '''
     def ticker(self, symbol):
@@ -47,8 +47,8 @@ class MarketApi(Client):
             return "pls check args"
 
     '''
-    获取全部ticker信息
-    productType: umcbl(USDT专业合约) dmcbl(混合合约) sumcbl(USDT专业合约模拟盘)  sdmcbl(混合合约模拟盘)
+    Get all ticket information
+    productType: Umcbl (USDT professional contract) dmcbl (mixed contract) sumcbl (USDT professional contract simulation disk) sdmcbl (mixed contract simulation disk)
     :return:
     '''
     def tickers(self,productType):
@@ -58,8 +58,8 @@ class MarketApi(Client):
         return self._request_with_params(GET, MIX_MARKET_V1_URL + '/tickers', params)
 
     '''
-    获取实时成交
-    symbol：合约交易对
+    Get real-time transaction
+    symbol：Contract transaction pair
     :return:
     '''
     def fills(self, symbol, limit=100):
@@ -72,11 +72,11 @@ class MarketApi(Client):
             return "pls check args"
 
     '''
-    获取 k 线信息
+    Obtain K line information
     params
     period: 60, 300, 900, 1800, 3600,14400,43200, 86400, 604800
-    startTime: 开始时间
-    endTime: 结束时间
+    startTime: start time
+    endTime: end time
     :return:
     '''
     def candles(self, symbol, granularity, startTime='', endTime=''):
@@ -91,8 +91,8 @@ class MarketApi(Client):
             return "pls check args"
 
     '''
-    币种指数价格
-    symbol：合约交易对
+    Currency index price
+    symbol：Contract transaction pair
     :return:
     '''
     def index(self, symbol):
@@ -104,8 +104,8 @@ class MarketApi(Client):
             return "pls check args"
 
     '''
-    下一次结算时间
-    symbol：合约交易对
+    Next settlement time
+    symbol：Contract transaction pair
     :return:
     '''
     def funding_time(self, symbol):
@@ -117,8 +117,8 @@ class MarketApi(Client):
             return "pls check args"
 
     '''
-    合约标记价格
-    symbol：合约交易对
+    Contract Mark Price
+    symbol：Contract transaction pair
     :return:
     '''
     def market_price(self, symbol):
@@ -130,11 +130,11 @@ class MarketApi(Client):
             return "pls check args"
 
     '''
-    历史资金费率
-    symbol：合约交易对
-    pageSize: 查询条数
-    pageNo: 查询页数
-    nextPage: 是否查询下一页
+    Historical fund rate
+    symbol：Contract transaction pair
+    pageSize: Number of queries
+    pageNo: Number of query pages
+    nextPage: Whether to query the next page
     :return:F
     '''
     def history_fund_rate(self, symbol, pageSize=20, pageNo=1, nextPage=False):
@@ -149,8 +149,8 @@ class MarketApi(Client):
             return "pls check args"
 
     '''
-    当前资金费率
-    symbol：合约交易对
+    Current fund rate
+    symbol：Contract transaction pair
     :return:F
     '''
     def current_fund_rate(self, symbol):
@@ -162,8 +162,8 @@ class MarketApi(Client):
             return "pls check args"
 
     '''
-    获取平台总持仓量
-    symbol：合约交易对
+    Obtain the total position of the platform
+    symbol：Contract transaction pair
     :return:
     '''
     def open_interest(self, symbol):

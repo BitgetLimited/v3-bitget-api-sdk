@@ -1,19 +1,27 @@
 export class ModifyPlanPresetReq{
     /**
-     * 合约交易对
+     * Currency pair
      */
     private _symbol!:string;
     /**
-     * 保证金币种
+     * Deposit currency
      */
     private _marginCoin!:string;
-
+    /**
+     * If the profit stop price is blank, cancel the profit stop
+     */
     private _presetTakeProfitPrice!:string;
-
+    /**
+     * If the stop loss price is blank, cancel the stop loss
+     */
     private _presetStopLossPrice!:string;
-
+    /**
+     * order id
+     */
     private _orderId!:string;
-
+    /**
+     * plan type
+     */
     private _planType!:string;
 
 

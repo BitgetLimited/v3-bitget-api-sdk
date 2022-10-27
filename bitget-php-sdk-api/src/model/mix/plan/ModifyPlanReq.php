@@ -7,22 +7,32 @@ namespace bitget\model\mix\plan;
 class ModifyPlanReq
 {
     /**
-     * 合约交易对
+     * Currency pair
      */
     var string $symbol;
     /**
-     * 保证金币种
+     * Deposit currency
      */
     var string $marginCoin;
-
+    /**
+     * Planned entrusted order No
+     */
     var string $orderId;
-
+    /**
+     * Execution price
+     */
     var string $executePrice;
-
+    /**
+     * Trigger Price
+     */
     var string $triggerPrice;
-
+    /**
+     * Trigger Type
+     */
     var string $triggerType;
-
+    /**
+     * Order Type
+     */
     var string $orderType;
 
     /**

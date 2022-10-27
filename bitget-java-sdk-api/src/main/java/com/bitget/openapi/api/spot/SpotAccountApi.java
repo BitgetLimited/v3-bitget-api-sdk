@@ -10,23 +10,35 @@ import retrofit2.http.Query;
 
 /**
  * @Author: bitget-sdk-team
- * @Date: 2021-05-31 11:03
- * @DES:
+ * @Date: 2022-09-30 10:46
+ * @DES: spot account api
  */
 public interface SpotAccountApi {
 
     /**
-     * 获取币币资产
-     *
-     * @return
+     * Obtain account assets
+     * @return ResponseResult
      */
     @GET("/api/spot/v1/account/assets")
     Call<ResponseResult> assets();
 
-
+    /**
+     * Get the bill flow
+     * @param spotBillQueryReq
+     * @return ResponseResult
+     */
     @POST("/api/spot/v1/account/bills")
     Call<ResponseResult> bills(@Body SpotBillQueryReq spotBillQueryReq);
 
+    /**
+     * Obtain transfer records
+     * @param coinId
+     * @param fromType
+     * @param limit
+     * @param after
+     * @param before
+     * @return ResponseResult
+     */
     @GET("/api/spot/v1/account/transferRecords")
     Call<ResponseResult> transferRecords(@Query("coinId") String coinId,
                                          @Query("fromType") String fromType,

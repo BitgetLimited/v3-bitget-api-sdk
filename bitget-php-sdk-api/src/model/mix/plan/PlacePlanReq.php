@@ -7,45 +7,47 @@ namespace bitget\model\mix\plan;
 class PlacePlanReq
 {
     /**
-     * 合约交易对
+     * Currency pair
      */
     var string $symbol;
     /**
-     * 保证金币种
+     * Deposit currency
      */
     var string $marginCoin;
     /**
-     * 下单数量
+     * Amount of currency placed
      */
     var string $size;
     /**
-     * 委托价格
+     * Entrusted price
      */
     var string $executePrice;
     /**
-     * 触发价格
+     * Trigger Price
      */
     var string $triggerPrice;
     /**
-     * 委托方向
+     * Entrusting direction
      */
     var string $side;
     /**
-     * 交易类型
+     * Transaction Type
      */
     var string $orderType;
     /**
-     * 触发类型 成交价触发 标记价触发
+     * Trigger Type Transaction Price Trigger Flag Price Trigger
      */
     var string $triggerType;
-
+    /**
+     * Client ID
+     */
     var string $clientOid;
     /**
-     * 预设止盈价
+     * Default stop profit price
      */
     var string $presetTakeProfitPrice;
     /**
-     * 预设止损价
+     * Preset stop loss price
      */
     var string $presetStopLossPrice;
 

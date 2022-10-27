@@ -9,15 +9,15 @@ class OrderApi(Client):
         Client.__init__(self, api_key, api_secret_key, passphrase, use_server_time, first)
 
     '''
-    下单
-    price: 限价时 为 必填  
-    marginCoin: 保证金币种
-    size: 限价时 为 数量  市价买 为额度 卖为数量
+    place an order
+    price: Mandatory in case of price limit
+    marginCoin: Deposit currency
+    size: It is quantity when the price is limited. The market price is the limit. The sales is the quantity
     side：open_long open_short close_long close_short
-    orderType: limit(限价)  market(市价)
-    timeInForceValue:normal(普通限价订单)   postOnly(只做maker,市价不允许使用这个)  ioc(立即成交并取消剩余)  fok(全部成交或立即取消)
-    presetTakeProfitPrice: 预设止盈价格
-    presetStopLossPrice： 预设止损价格
+    orderType: limit(fixed price)  market(market price)
+    timeInForceValue: normal(Ordinary price limit order)   postOnly(It is only a maker. The market price is not allowed to use this)  ioc(Close immediately and cancel the remaining)  fok(Complete transaction or immediate cancellation)
+    presetTakeProfitPrice: Default stop profit price
+    presetStopLossPrice：Preset stop loss price
     :return:
     '''
     def place_order(self, symbol, marginCoin, size, side, orderType, price='', clientOrderId='', timeInForceValue='normal', presetTakeProfitPrice='', presetStopLossPrice=''):
@@ -38,16 +38,16 @@ class OrderApi(Client):
             return "pls check args "
 
     '''
-    批量下单
-    price: 限价时 为 必填  
-    marginCoin: 保证金币种
+    Place orders in batches
+    price: Mandatory in case of price limit
+    marginCoin: Deposit currency
     order_data: 
-    size: 限价时 为 数量  市价买 为额度 卖为数量
+    size: It is quantity when the price is limited. The market price is the limit. The sales is the quantity
     side：open_long open_short close_long close_short
-    orderType: limit(限价)  market(市价)
-    timeInForceValue:normal(普通限价订单)   postOnly(只做maker,市价不允许使用这个)  ioc(立即成交并取消剩余)  fok(全部成交或立即取消)
-    presetTakeProfitPrice: 预设止盈价格
-    presetStopLossPrice： 预设止损价格
+    orderType: limit(fixed price)  market(market price)
+    timeInForceValue: normal(Ordinary price limit order)   postOnly(It is only a maker. The market price is not allowed to use this)  ioc(Close immediately and cancel the remaining)  fok(Complete transaction or immediate cancellation)
+    presetTakeProfitPrice: Default stop profit price
+    presetStopLossPrice： Preset stop loss price
     :return:
     '''
     def batch_orders(self, symbol, marginCoin, order_data):
@@ -55,7 +55,7 @@ class OrderApi(Client):
         return self._request_with_params(POST, MIX_ORDER_V1_URL + '/batch-orders', params)
 
     '''
-    撤单
+    cancel the order
     :return:
     '''
     def cancel_orders(self, symbol, marginCoin, orderId):
@@ -69,7 +69,7 @@ class OrderApi(Client):
             return "pls check args "
 
     '''
-    批量撤单
+    Batch cancellation
     orderIds: List 
     :return:
     '''
@@ -81,7 +81,7 @@ class OrderApi(Client):
             return "pls check args "
 
     '''
-    获取订单信息
+    Get order information
     :return:
     '''
     def detail(self, symbol, orderId):
@@ -94,7 +94,7 @@ class OrderApi(Client):
             return "pls check args "
 
     '''
-    获取当前委托单
+    Get the current order
     :return:
     '''
     def current(self, symbol):
@@ -106,8 +106,8 @@ class OrderApi(Client):
             return "pls check args "
 
     '''
-    获取历史委托
-    isPre： 是否查询上一页
+    Get Historical Delegation
+    isPre： Whether to query the previous page
     :return:
     '''
     def history(self, symbol, startTime, endTime, pageSize, lastEndId='', isPre=False):
@@ -124,7 +124,7 @@ class OrderApi(Client):
             return "pls check args "
 
     '''
-    获取成交明细
+    Obtain transaction details
     :return:
     '''
     def fills(self, symbol='', orderId=''):

@@ -1,7 +1,21 @@
 package order
 
+/**
+ * @Author: bitget-sdk-team
+ * @Date: 2022-09-30 10:46
+ * @DES: cancel the order request
+ */
 type CancelOrderReq struct {
-	Symbol     string `json:"symbol"`
+	/**
+	 * Currency pair
+	 */
+	Symbol string `json:"symbol"`
+	/**
+	 * Deposit currency
+	 */
 	MarginCoin string `json:"marginCoin"`
-	OrderId    string `json:"orderId"`
+	/**
+	 * Order Id
+	 */
+	OrderId string `json:"orderId"`
 }

@@ -6,6 +6,9 @@ namespace bitget\model\spot\order;
 
 class OpenOrdersReq
 {
+    /**
+     * Currency pair
+     */
     var string $symbol;
 
     /**

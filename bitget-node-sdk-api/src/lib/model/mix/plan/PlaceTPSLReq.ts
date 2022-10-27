@@ -1,17 +1,23 @@
 export class PlaceTPSLReq{
     /**
-     * 合约交易对
+     * Currency pair
      */
     private _symbol!:string;
     /**
-     * 保证金币种
+     * Deposit currency
      */
     private _marginCoin!:string;
-
+    /**
+     * Plan type
+     */
     private _planType!:string;
-
+    /**
+     * Trigger price
+     */
     private _triggerPrice!:string;
-
+    /**
+     * Is this position long or short
+     */
     private _holdSide!:string;
 
 

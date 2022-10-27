@@ -29,7 +29,7 @@ public class SignatureUtils {
     }
 
     /**
-     * 签名算法
+     * signature algorithm
      *
      * @param timestamp
      * @param method
@@ -38,8 +38,8 @@ public class SignatureUtils {
      * @param body
      * @param secretKey
      * @return java.lang.String
-     * @description ACCESS-SIGN的请求头是对 timestamp + method + requestPath
-     * + "?" + queryString + body 字符串(+表示字符串连接)使用 HMAC SHA256 方法加密，通过BASE64 编码输出而得到的。
+     * @description ACCESS-SIGN of The request header is correct timestamp + method + requestPath
+     * + "?" + queryString + body The string (+indicates string connection) is encrypted using the HMAC SHA256 method and output through BASE64 encoding。
      * @author jian.li
      * @date 2020-06-02 17:04
      */
@@ -61,7 +61,7 @@ public class SignatureUtils {
     }
 
     /**
-     * websocket 签名加密
+     * websocket Signature encryption
      * @param timestamp
      * @param method
      * @param requestPath
@@ -82,7 +82,7 @@ public class SignatureUtils {
         return Base64.getEncoder().encodeToString(mac.doFinal(preHash.getBytes(SignatureUtils.CHARSET)));
     }
     /**
-     * ws签名
+     * Ws signature
      * @param timestamp
      * @param secretKey
      * @return

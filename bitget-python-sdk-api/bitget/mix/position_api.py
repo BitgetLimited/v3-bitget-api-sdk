@@ -9,7 +9,7 @@ class PositionApi(Client):
         Client.__init__(self, api_key, api_secret_key, passphrase, use_server_time, first)
 
     '''
-    获取用户单个持仓信息
+    Obtain the user's single position information
     :return:
     '''
     def single_position(self, symbol, marginCoin):
@@ -22,8 +22,8 @@ class PositionApi(Client):
             return "pls check args"
 
     '''
-    获取用户单个持仓信息
-    productType: umcbl(USDT专业合约) dmcbl(混合合约) sumcbl(USDT专业合约模拟盘)  sdmcbl(混合合约模拟盘)
+    Obtain all position information of the user
+    productType: Umcbl (USDT professional contract) dmcbl (mixed contract) sumcbl (USDT professional contract simulation disk) sdmcbl (mixed contract simulation disk)
     :return:
     '''
     def all_position(self, productType, marginCoin):

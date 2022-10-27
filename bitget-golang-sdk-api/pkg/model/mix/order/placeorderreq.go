@@ -1,14 +1,49 @@
 package order
 
+/**
+ * @Author: bitget-sdk-team
+ * @Date: 2022-09-30 10:46
+ * @DES: place an order request
+ */
 type PlaceOrderReq struct {
-	Symbol                string `json:"symbol"`
-	MarginCoin            string `json:"marginCoin"`
-	Side                  string `json:"side"`
-	ClientOid             string `json:"clientOid"`
-	Size                  string `json:"size"`
-	OrderType             string `json:"orderType"`
-	Price                 string `json:"price"`
-	TimeInForceValue      string `json:"timeInForceValue"`
+	/**
+	 * Currency pair
+	 */
+	Symbol string `json:"symbol"`
+	/**
+	 * Deposit currency
+	 */
+	MarginCoin string `json:"marginCoin"`
+	/**
+	 * Open more, open more, empty more, empty more
+	 */
+	Side string `json:"side"`
+	/**
+	 * Client ID
+	 */
+	ClientOid string `json:"clientOid"`
+	/**
+	 * Amount of currency placed
+	 */
+	Size string `json:"size"`
+	/**
+	 * Order Type Market Price Limit
+	 */
+	OrderType string `json:"orderType"`
+	/**
+	 * Entrusted price
+	 */
+	Price string `json:"price"`
+	/**
+	 * Order validity
+	 */
+	TimeInForceValue string `json:"timeInForceValue"`
+	/**
+	 * Default stop profit price
+	 */
 	PresetTakeProfitPrice string `json:"presetTakeProfitPrice"`
-	PresetStopLossPrice   string `json:"presetStopLossPrice"`
+	/**
+	 * Preset stop loss price
+	 */
+	PresetStopLossPrice string `json:"presetStopLossPrice"`
 }
