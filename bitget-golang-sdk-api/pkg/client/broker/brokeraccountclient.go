@@ -183,3 +183,43 @@ func (p *BrokerAccountClient) SubAddress(params broker.SubAddressReq) (string, e
 	return resp, err
 
 }
+
+/**
+ * broker sub withdrawal
+ * @return ResponseResult
+ */
+func (p *BrokerAccountClient) SubWithdrawal(params broker.SubWithdrawalReq) (string, error) {
+
+	postBody, jsonErr := internal.ToJson(params)
+
+	if jsonErr != nil {
+		return "", jsonErr
+	}
+
+	uri := constants.BrokerAccount + "/sub-withdrawal"
+
+	resp, err := p.BitgetRestClient.DoPost(uri, postBody)
+
+	return resp, err
+
+}
+
+/**
+ * broker sub auto transfer
+ * @return ResponseResult
+ */
+func (p *BrokerAccountClient) SubAutoTransfer(params broker.SubAutoTransferReq) (string, error) {
+
+	postBody, jsonErr := internal.ToJson(params)
+
+	if jsonErr != nil {
+		return "", jsonErr
+	}
+
+	uri := constants.BrokerAccount + "/sub-auto-transfer"
+
+	resp, err := p.BitgetRestClient.DoPost(uri, postBody)
+
+	return resp, err
+
+}
