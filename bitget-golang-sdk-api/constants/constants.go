@@ -47,6 +47,11 @@ const (
 	MixTrace    = "/api/mix/v1/trace"
 
 	/**
+	 * broker url
+	 */
+	BrokerAccount = "/api/broker/v1/account"
+
+	/**
 	websocket
 	*/
 	WsAuthMethod        = "GET"
