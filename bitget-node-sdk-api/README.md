@@ -3,7 +3,7 @@
 ## 安装
 
 ```bash
-npm i bitget-openapi
+npm i bitget-api-node-sdk
 ```
 
 ## 本地运行
