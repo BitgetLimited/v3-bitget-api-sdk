@@ -128,6 +128,7 @@ class BitgetWsClient:
 
         if listener:
             for chanel in channels:
+                chanel.inst_type = str(chanel.inst_type).lower()
                 self.__scribe_map[chanel] = listener
 
         for channel in channels:

@@ -2,34 +2,15 @@
 A Java sdk for bitget exchange API
 
 # api sdk 使用说明
-1. 在maven项目的pom.xml加入如下依赖
-```xml
-
- <dependency>
-    <groupId>com.bitget.openapi</groupId>
-    <artifactId>bitget-java-sdk-api</artifactId>
-    <version>1.0.1-SNAPSHOT</version>
- </dependency>
- 
+1. 请自行下载源代码，并在JDK8环境下运行以下命令：
+```shell
+#jdk8
+cd v3-bitget-api-sdk/bitget-java-sdk-api
+mvn clean install
 ```
+将打包后的代码导入项目中使用
 
-由于当前发布的是snapshot版,因此需要您在maven settings.xml或pom.xml中设置如下repository
 
-```xml
-   <repository> 
-       <id>oss-sonatype</id>
-       <url>https://oss.sonatype.org/content/groups/staging/</url>
-       <releases>
-           <enabled>true</enabled>
-           <updatePolicy>always</updatePolicy>
-       </releases>
-       <snapshots>
-           <enabled>true</enabled>
-           <updatePolicy>always</updatePolicy>
-       </snapshots>
-   </repository>
-                
-```
 
 2. 创建 BitgetRestClient
 

@@ -8,33 +8,15 @@ A Java sdk for bitget exchange API
 
 ## api sdk Instructions
 
-1. Add the following dependencies to the pom.xml of the maven project
+1. Download the java project, then run below command with JDK8
 
-```xml
-<dependency>
-    <groupId>com.bitget.openapi</groupId>
-    <artifactId>bitget-java-sdk-api</artifactId>
-    <version>1.0.1-SNAPSHOT</version>
- </dependency> 
+```shell
+#jdk8
+cd v3-bitget-api-sdk/bitget-java-sdk-api
+mvn clean install
 ```
 
-Since the snapshot version is currently released, you need to set the following repository in maven settings.xml or pom.xm
-
-```Xml
-  <repository> 
-       <id>oss-sonatype</id>
-       <url>https://oss.sonatype.org/content/groups/staging/</url>
-       <releases>
-           <enabled>true</enabled>
-           <updatePolicy>always</updatePolicy>
-       </releases>
-
-       <snapshots>
-           <enabled>true</enabled>
-           <updatePolicy>always</updatePolicy>
-       </snapshots>
-   </repository>
-```
+Import the output jar into your project
 
 
 
