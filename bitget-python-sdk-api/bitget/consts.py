@@ -22,6 +22,7 @@ API_URL = 'https://api.bitget.com'
 
 # ws Url
 CONTRACT_WS_URL = 'wss://ws.bitget.com/mix/v1/stream'
+CONTRACT_WS_URL = 'wss://ws.bitget.com/spot/v1/stream'
 
 
 
@@ -45,6 +46,10 @@ MIX_POSITION_V1_URL = '/api/mix/v1/position'
 MIX_ORDER_V1_URL = '/api/mix/v1/order'
 MIX_PLAN_V1_URL = '/api/mix/v1/plan'
 MIX_TRACE_V1_URL = '/api/mix/v1/trace'
+
+
+BROKER_ACCOUNT_V1_URL = '/api/broker/v1/account'
+BROKER_MANAGE_V1_URL = '/api/broker/v1/manage'
 
 SUBSCRIBE = 'subscribe'
 UNSUBSCRIBE = 'unsubscribe'

@@ -1,14 +1,9 @@
 package com.bitget.openapi;
 
+import com.bitget.openapi.api.spot.SpotWalletApi;
 import com.bitget.openapi.common.client.ApiClient;
-import com.bitget.openapi.service.spot.SpotAccountService;
-import com.bitget.openapi.service.spot.SpotMarketService;
-import com.bitget.openapi.service.spot.SpotOrderService;
-import com.bitget.openapi.service.spot.SpotPublicService;
-import com.bitget.openapi.service.spot.impl.SpotAccountServiceImpl;
-import com.bitget.openapi.service.spot.impl.SpotMarketServiceImpl;
-import com.bitget.openapi.service.spot.impl.SpotOrderServiceImpl;
-import com.bitget.openapi.service.spot.impl.SpotPublicServiceImpl;
+import com.bitget.openapi.service.spot.*;
+import com.bitget.openapi.service.spot.impl.*;
 
 /**
  * @Author: bitget-sdk-team
@@ -65,6 +60,13 @@ public class SpotApiFacade {
          */
         public SpotOrderService order() {
             return new SpotOrderServiceImpl(apiClient);
+        }
+
+        /**
+         * order service
+         */
+        public SpotWalletService wallet() {
+            return new SpotWalletServiceImpl(apiClient);
         }
 
 

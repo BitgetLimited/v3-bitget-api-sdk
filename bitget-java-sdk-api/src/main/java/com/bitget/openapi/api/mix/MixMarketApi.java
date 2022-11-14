@@ -126,6 +126,14 @@ public interface MixMarketApi {
     @GET("/api/mix/v1/market/mark-price")
     Call<ResponseResult> markPrice(@Query("symbol") String symbol);
 
+    /**
+     * Get symbol leverage
+     * @param symbol
+     * @return ResponseResult
+     */
+    @GET("/api/mix/v1/market/symbol-leverage")
+    Call<ResponseResult> symbolLeverage(@Query("symbol") String symbol);
+
 
 }
 
