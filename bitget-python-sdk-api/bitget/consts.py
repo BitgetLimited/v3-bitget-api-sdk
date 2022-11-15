@@ -22,7 +22,6 @@ API_URL = 'https://api.bitget.com'
 
 # ws Url
 CONTRACT_WS_URL = 'wss://ws.bitget.com/mix/v1/stream'
-CONTRACT_WS_URL = 'wss://ws.bitget.com/spot/v1/stream'
 
 
 
