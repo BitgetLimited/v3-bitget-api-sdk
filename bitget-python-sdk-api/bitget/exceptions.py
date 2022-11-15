@@ -11,18 +11,9 @@ class BitgetAPIException(Exception):
             self.message = 'Invalid JSON error message from Bitget: {}'.format(response.text)
         else:
             if "code" in json_res.keys() and "msg" in json_res.keys():
-            print(json_res)
-
-            if "code" in json_res.keys() and "msg" in json_res.keys():
                 self.code = json_res['code']
                 self.message = json_res['msg']
-                self.message = json_res['msg']
-            elif "error_code" in json_res.keys() and "error_message" in json_res.keys():
-                self.code = json_res['error_code']
-                self.message = json_res['error_message']
-            else:
-                self.code = 'Please wait a moment'
-                self.message = 'Maybe something is wrong'
+
 
         self.status_code = response.status_code
         self.response = response
