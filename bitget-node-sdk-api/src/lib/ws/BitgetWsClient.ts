@@ -71,7 +71,7 @@ export class BitgetWsClient extends EventEmitter {
             if (that.isOpen) {
                 this.socket?.send(jsonStr);
             }
-        }, 1000);
+        }, 10000);
 
     }
 
