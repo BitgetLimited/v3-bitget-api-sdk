@@ -6,10 +6,11 @@ export class SpotAccountApi extends BaseApi{
     /**
      * Obtain account assets
      */
-    assets() {
-        const url = SPOT_URL.SPOT_ACCOUNT + '/assets';
-        const headers = this.signer('GET', url, null)
-        return this.axiosInstance.get(url, {headers})
+    assets(coin:string,) {
+        const url = SPOT_URL.SPOT_ACCOUNT + '/assets-lite';
+        const qsOrBody = {coin};
+        const headers = this.signer('GET', url, qsOrBody)
+        return this.axiosInstance.get(url, {headers,params: qsOrBody})
     }
 
     /**

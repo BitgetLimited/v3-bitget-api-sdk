@@ -117,7 +117,7 @@ describe('SpotAccountApiTest', () => {
      * Obtain account assets
      */
     test('assets',()=>{
-        return spotAccountApi.assets().then((data)=>{
+        return spotAccountApi.assets("").then((data)=>{
             Console.info(toJsonString(data));
         });
     })

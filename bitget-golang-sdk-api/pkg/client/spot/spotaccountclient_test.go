@@ -9,7 +9,7 @@ import (
 func TestSpotAccountClient_Assets(t *testing.T) {
 	client := new(SpotAccountClient).Init()
 
-	resp, err := client.Assets()
+	resp, err := client.Assets("")
 
 	if err != nil {
 		println(err.Error())

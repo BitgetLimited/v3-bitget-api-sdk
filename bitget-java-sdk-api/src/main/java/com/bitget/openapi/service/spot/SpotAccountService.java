@@ -15,7 +15,7 @@ public interface SpotAccountService {
      * Obtain account assets
      * @return ResponseResult
      */
-    ResponseResult assets() throws IOException;
+    ResponseResult assets(String coin) throws IOException;
 
     /**
      * Get the bill flow

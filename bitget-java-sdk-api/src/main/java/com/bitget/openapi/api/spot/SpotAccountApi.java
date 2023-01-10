@@ -19,8 +19,8 @@ public interface SpotAccountApi {
      * Obtain account assets
      * @return ResponseResult
      */
-    @GET("/api/spot/v1/account/assets")
-    Call<ResponseResult> assets();
+    @GET("/api/spot/v1/account/assets-lite")
+    Call<ResponseResult> assets(@Query("coin") String coin);
 
     /**
      * Get the bill flow

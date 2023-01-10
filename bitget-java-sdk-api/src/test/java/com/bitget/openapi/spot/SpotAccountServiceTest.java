@@ -13,7 +13,7 @@ public class SpotAccountServiceTest extends BaseTest {
     //passed
     @Test
     public void assets() throws IOException {
-        ResponseResult assets = bitgetRestClient.spot().bitget().account().assets();
+        ResponseResult assets = bitgetRestClient.spot().bitget().account().assets(null);
         System.out.println(JSON.toJSONString(assets));
     }
 

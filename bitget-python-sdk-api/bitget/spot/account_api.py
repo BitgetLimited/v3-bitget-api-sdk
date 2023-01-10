@@ -12,9 +12,11 @@ class AccountApi(Client):
     Obtain all asset currency information of the user
     :return:
     '''
-    def assets(self):
-
-        return self._request_without_params(GET, SPOT_ACCOUNT_V1_URL + '/assets')
+    def assets(self, coin=''):
+        params = {}
+        if coin:
+            params["coin"] = coin
+        return self._request_with_params(GET, SPOT_ACCOUNT_V1_URL + '/assets-lite', params)
 
     '''
     Obtain all asset currency information of the user
@@ -42,3 +44,25 @@ class AccountApi(Client):
 
         params["limit"] = limit
         return self._request_with_params(POST, SPOT_ACCOUNT_V1_URL + '/bills', params)
+
+
+
+    '''
+    query transfer records
+    fromType: exchange(spot)   USD_MIX(coin future) USDT_MIX(usdt future)
+    :return:
+    '''
+    def transfer_records(self, coinId='', fromType='', after='', before='', limit=100):
+        params = {}
+
+        if coinId:
+            params["coinId"] = coinId
+        if fromType:
+            params["fromType"] = fromType
+        if after:
+            params["after"] = after
+        if before:
+            params["before"] = before
+
+        params["limit"] = limit
+        return self._request_with_params(GET, SPOT_ACCOUNT_V1_URL + '/transferRecords', params)

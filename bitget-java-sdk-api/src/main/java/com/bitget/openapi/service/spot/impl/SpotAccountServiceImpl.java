@@ -25,8 +25,8 @@ public class SpotAccountServiceImpl implements SpotAccountService {
      * @return ResponseResult
      */
     @Override
-    public ResponseResult assets() throws IOException {
-        return spotAccountApi.assets().execute().body();
+    public ResponseResult assets(String coin) throws IOException {
+        return spotAccountApi.assets(coin).execute().body();
     }
 
     /**

@@ -20,11 +20,13 @@ func (p *SpotAccountClient) Init() *SpotAccountClient {
  * Obtain account assets
  * @return ResponseResult
  */
-func (p *SpotAccountClient) Assets() (string, error) {
+func (p *SpotAccountClient) Assets(coin string) (string, error) {
 
 	params := internal.NewParams()
-
-	uri := constants.SpotAccount + "/assets"
+	if len(coin) > 0 {
+		params["coin"] = coin
+	}
+	uri := constants.SpotAccount + "/assets-lite"
 
 	resp, err := p.BitgetRestClient.DoGet(uri, params)
 
