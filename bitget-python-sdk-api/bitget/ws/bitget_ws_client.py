@@ -216,7 +216,8 @@ class BitgetWsClient:
         self.__reconnect_status = True
         print("start reconnection ...")
         self.build()
-        self.subscribe(self.__all_suribe)
+        for channel in self.__all_suribe :
+            self.subscribe([channel])
         pass
 
     def __close(self):
