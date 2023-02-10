@@ -6,6 +6,7 @@ import {ModifyPlanPresetReq} from '../model/mix/plan/ModifyPlanPresetReq';
 import {ModifyTPSLPlanReq} from '../model/mix/plan/ModifyTPSLPlanReq';
 import {PlaceTPSLReq} from '../model/mix/plan/PlaceTPSLReq';
 import {CancelPlanReq} from '../model/mix/plan/CancelPlanReq';
+import {PlaceTrailStopReq} from '../model/mix/plan/PlaceTrailStopReq';
 
 export class MixPlanApi extends BaseApi{
 
@@ -55,6 +56,12 @@ export class MixPlanApi extends BaseApi{
         const url = MIX_URL.MIX_PLAN + '/placeTPSL';
         const headers = this.signer('POST', url, placeTPSLReq)
         return this.axiosInstance.post(url, placeTPSLReq, {headers})
+    }
+
+    placeTrailStop(placeTrailStopReq: PlaceTrailStopReq) {
+        const url = MIX_URL.MIX_PLAN + '/placeTrailStop';
+        const headers = this.signer('POST', url, placeTrailStopReq)
+        return this.axiosInstance.post(url, placeTrailStopReq, {headers})
     }
     /**
      * Planned entrustment (profit and loss stop) cancellation

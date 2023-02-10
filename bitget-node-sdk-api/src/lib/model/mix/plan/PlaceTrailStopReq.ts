@@ -1,26 +1,22 @@
-export class PlaceTPSLReq{
+export class PlaceTrailStopReq{
     /**
-     * Currency pair
+     * 合约交易对
      */
     private _symbol!:string;
     /**
-     * Deposit currency
+     * 保证金币种
      */
     private _marginCoin!:string;
-    /**
-     * Plan type
-     */
-    private _planType!:string;
-    /**
-     * Trigger price
-     */
+
+    // private _planType!:string;
+
     private _triggerPrice!:string;
-    /**
-     * Is this position long or short
-     */
+
     private _holdSide!:string;
 
     private _rangeRate!:string;
+
+    private _reduceOnly!:boolean;
 
 
     get symbol(): string {
@@ -37,14 +33,6 @@ export class PlaceTPSLReq{
 
     set marginCoin(value: string) {
         this._marginCoin = value;
-    }
-
-    get planType(): string {
-        return this._planType;
-    }
-
-    set planType(value: string) {
-        this._planType = value;
     }
 
     get triggerPrice(): string {
