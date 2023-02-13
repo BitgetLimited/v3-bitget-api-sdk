@@ -432,7 +432,6 @@ describe('MixPlanApiTest', () => {
 
     test('placeTrailStop',()=>{
         const placeTrailStopReq = new BitgetApi.PlaceTrailStopReq();
-        placeTrailStopReq.clientOid = '#'+Date.now();
         placeTrailStopReq.symbol = 'BTCUSDT_UMCBL';
         placeTrailStopReq.triggerPrice = '45000.3';
         placeTrailStopReq.size = '1';
