@@ -26,6 +26,7 @@ import {ModifyPlanReq} from './lib/model/mix/plan/ModifyPlanReq';
 import {ModifyTPSLPlanReq} from './lib/model/mix/plan/ModifyTPSLPlanReq';
 import {PlacePlanReq} from './lib/model/mix/plan/PlacePlanReq';
 import {PlaceTPSLReq} from './lib/model/mix/plan/PlaceTPSLReq';
+import {PlaceTrailStopReq} from './lib/model/mix/plan/PlaceTrailStopReq';
 import {CloseTrackOrderReq} from './lib/model/mix/trace/CloseTrackOrderReq';
 
 import {SpotBillsReq} from './lib/model/spot/account/SpotBillsReq';
@@ -80,7 +81,8 @@ export {
   SpotHistoryReq,
   SpotOpenOrdersReq,
   SpotOrderInfoReq,
-  SpotOrdersReq
+  SpotOrdersReq,
+  PlaceTrailStopReq
 }
 
 

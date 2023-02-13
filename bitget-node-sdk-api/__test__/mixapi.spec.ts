@@ -428,6 +428,21 @@ describe('MixPlanApiTest', () => {
             Console.info(toJsonString(data));
         });
     })
+
+
+    test('placeTrailStop',()=>{
+        const placeTrailStopReq = new BitgetApi.PlaceTrailStopReq();
+        placeTrailStopReq.clientOid = '#'+Date.now();
+        placeTrailStopReq.symbol = 'BTCUSDT_UMCBL';
+        placeTrailStopReq.triggerPrice = '45000.3';
+        placeTrailStopReq.size = '1';
+        placeTrailStopReq.marginCoin = 'USDT';
+        placeTrailStopReq.side = 'open_long';
+        placeTrailStopReq.triggerType = 'fill_price';
+        return mixPlanApi.placeTrailStop(placeTrailStopReq).then((data)=>{
+            Console.info(toJsonString(data));
+        });
+    })
     /**
      * Modify profit and loss stop
      * @param modifyTPSLPlanReq
