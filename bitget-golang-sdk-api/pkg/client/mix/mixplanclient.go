@@ -122,6 +122,27 @@ func (p *MixPlanClient) PlaceTPSL(params plan.PlaceTPSLReq) (string, error) {
 }
 
 /**
+ * Stop profit and stop loss Order
+ * @param PlaceTPSLReq
+ * @return ResponseResult
+ */
+func (p *MixPlanClient) PlaceTrailStop(params plan.PlaceTPSLReq) (string, error) {
+
+	postBody, jsonErr := internal.ToJson(params)
+
+	if jsonErr != nil {
+		return "", jsonErr
+	}
+
+	uri := constants.MixPlan + "/placeTrailStop"
+
+	resp, err := p.BitgetRestClient.DoPost(uri, postBody)
+
+	return resp, err
+
+}
+
+/**
  * Planned entrustment (profit and loss stop) cancellation
  * @param CancelPlanReq
  * @return ResponseResult
@@ -135,6 +156,27 @@ func (p *MixPlanClient) CancelPlan(params plan.CancelPlanReq) (string, error) {
 	}
 
 	uri := constants.MixPlan + "/cancelPlan"
+
+	resp, err := p.BitgetRestClient.DoPost(uri, postBody)
+
+	return resp, err
+
+}
+
+/**
+ * Planned entrustment (profit and loss stop) cancellation
+ * @param CancelPlanReq
+ * @return ResponseResult
+ */
+func (p *MixPlanClient) CancelAllPlan(params plan.CancelAllPlanReq) (string, error) {
+
+	postBody, jsonErr := internal.ToJson(params)
+
+	if jsonErr != nil {
+		return "", jsonErr
+	}
+
+	uri := constants.MixPlan + "/cancelAllPlan"
 
 	resp, err := p.BitgetRestClient.DoPost(uri, postBody)
 

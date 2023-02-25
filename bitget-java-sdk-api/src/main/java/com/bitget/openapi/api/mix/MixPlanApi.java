@@ -56,12 +56,37 @@ public interface MixPlanApi {
     Call<ResponseResult> placeTPSL(@Body MixTPSLOrderReq mixTPSLOrderReq);
 
     /**
+     * trail order
+     * @param mixTrailOrderReq
+     * @return ResponseResult
+     */
+    @POST("/api/mix/v1/plan/placeTrailStop")
+    Call<ResponseResult> placeTrailStop(@Body MixTrailOrderReq mixTrailOrderReq);
+
+
+    /**
+     * position tpsl order
+     * @param mixTPSLPositionsReq
+     * @return ResponseResult
+     */
+    @POST("/api/mix/v1/plan/placePositionsTPSL")
+    Call<ResponseResult> placePositionsTPSL(@Body MixTPSLPositionsReq mixTPSLPositionsReq);
+
+    /**
      * Planned entrustment (profit and loss stop) cancellation
      * @param mixCancelPlanReq
      * @return ResponseResult
      */
     @POST("/api/mix/v1/plan/cancelPlan")
     Call<ResponseResult> cancelPlan(@Body MixCancelPlanReq mixCancelPlanReq);
+
+    /**
+     * cancel all trigger order
+     * @param mixCancelAllPlanReq
+     * @return ResponseResult
+     */
+    @POST("/api/mix/v1/plan/cancelAllPlan")
+    Call<ResponseResult> cancelAllPlan(@Body MixCancelAllPlanReq mixCancelAllPlanReq);
 
     /**
      * Get the current plan commission (profit stop and loss stop) list

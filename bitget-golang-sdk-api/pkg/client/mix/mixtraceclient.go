@@ -226,3 +226,53 @@ func (p *MixTraceClient) FollowerHistoryOrders(pageSize string, pageNo string, s
 
 	return resp, err
 }
+
+/**
+ * Trader get copyTader symbol
+ * @return ResponseResult
+ */
+func (p *MixTraceClient) TraderSymbols() (string, error) {
+	params := internal.NewParams()
+
+	uri := constants.MixTrace + "/traderSymbols"
+
+	resp, err := p.BitgetRestClient.DoGet(uri, params)
+
+	return resp, err
+}
+
+/**
+ * Trader set copyTader symbol
+ * @return ResponseResult
+ */
+func (p *MixTraceClient) SetUpCopySymbols(params trace.CloseTrackOrderReq) (string, error) {
+	postBody, jsonErr := internal.ToJson(params)
+
+	if jsonErr != nil {
+		return "", jsonErr
+	}
+
+	uri := constants.MixTrace + "/setUpCopySymbols"
+
+	resp, err := p.BitgetRestClient.DoPost(uri, postBody)
+
+	return resp, err
+}
+
+/**
+ * Trader modify tpsl order
+ * @return ResponseResult
+ */
+func (p *MixTraceClient) ModifyTPSL(params trace.TraderModifyTPSLOrderReq) (string, error) {
+	postBody, jsonErr := internal.ToJson(params)
+
+	if jsonErr != nil {
+		return "", jsonErr
+	}
+
+	uri := constants.MixTrace + "/modifyTPSL"
+
+	resp, err := p.BitgetRestClient.DoPost(uri, postBody)
+
+	return resp, err
+}

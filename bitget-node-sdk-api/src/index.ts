@@ -28,6 +28,8 @@ import {PlacePlanReq} from './lib/model/mix/plan/PlacePlanReq';
 import {PlaceTPSLReq} from './lib/model/mix/plan/PlaceTPSLReq';
 import {PlaceTrailStopReq} from './lib/model/mix/plan/PlaceTrailStopReq';
 import {CloseTrackOrderReq} from './lib/model/mix/trace/CloseTrackOrderReq';
+import {TraderSetSymbolReq} from './lib/model/mix/trace/TraderSetSymbolReq';
+import {MixTraceUpdateTPSLReq} from './lib/model/mix/trace/MixTraceUpdateTPSLReq';
 
 import {SpotBillsReq} from './lib/model/spot/account/SpotBillsReq';
 import {SpotBatchOrdersReq} from './lib/model/spot/order/SpotBatchOrdersReq';
@@ -82,7 +84,9 @@ export {
   SpotOpenOrdersReq,
   SpotOrderInfoReq,
   SpotOrdersReq,
-  PlaceTrailStopReq
+  PlaceTrailStopReq,
+  TraderSetSymbolReq,
+  MixTraceUpdateTPSLReq
 }
 
 

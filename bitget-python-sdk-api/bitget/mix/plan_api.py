@@ -22,7 +22,9 @@ class PlanApi(Client):
     presetStopLossPrice： Preset stop loss price
     :return:
     '''
-    def place_plan(self, symbol, marginCoin, size, side, orderType, triggerPrice, triggerType, executePrice='', clientOrderId='', timeInForceValue='normal', presetTakeProfitPrice='', presetStopLossPrice=''):
+
+    def place_plan(self, symbol, marginCoin, size, side, orderType, triggerPrice, triggerType, executePrice='',
+                   clientOrderId='', timeInForceValue='normal', presetTakeProfitPrice='', presetStopLossPrice=''):
         params = {}
         if symbol and marginCoin and side and orderType and triggerPrice and triggerType:
             params["symbol"] = symbol
@@ -50,6 +52,7 @@ class PlanApi(Client):
     orderType: limit(fixed price)  market(market price)
     :return:
     '''
+
     def modify_plan(self, symbol, marginCoin, orderId, orderType, triggerPrice, triggerType, executePrice=''):
         params = {}
         if symbol and marginCoin and orderType and orderId and triggerType:
@@ -74,7 +77,9 @@ class PlanApi(Client):
     presetStopLossPrice： Preset stop loss price
     :return:
     '''
-    def modify_plan_preset(self, symbol, marginCoin, orderId, planType='normal_plan', presetTakeProfitPrice='', presetStopLossPrice=''):
+
+    def modify_plan_preset(self, symbol, marginCoin, orderId, planType='normal_plan', presetTakeProfitPrice='',
+                           presetStopLossPrice=''):
         params = {}
         if symbol and marginCoin and orderId and planType:
             params["symbol"] = symbol
@@ -94,7 +99,8 @@ class PlanApi(Client):
     marginCoin: Deposit currency
     :return:
     '''
-    def modify_tpsl_plan(self, symbol, marginCoin, orderId, triggerPrice ):
+
+    def modify_tpsl_plan(self, symbol, marginCoin, orderId, triggerPrice):
         params = {}
         if symbol and marginCoin and orderId and triggerPrice:
             params["symbol"] = symbol
@@ -115,7 +121,8 @@ class PlanApi(Client):
     holdSide: Long long short short short position in position direction
     :return:
     '''
-    def place_tpsl(self, symbol, marginCoin, triggerPrice, planType, holdSide ):
+
+    def place_tpsl(self, symbol, marginCoin, triggerPrice, planType, holdSide):
         params = {}
         if symbol and marginCoin and planType and holdSide and triggerPrice:
             params["symbol"] = symbol
@@ -127,6 +134,49 @@ class PlanApi(Client):
         else:
             return "pls check args "
 
+    '''
+    place trail stop order
+    symbol
+    marginCoin
+    triggerPrice
+    triggerType
+    side
+    size
+    rangeRate: 
+    reduceOnly: only one-way mode
+    :return:
+    '''
+    def place_trail_stop(self, params=None):
+        if params is None:
+            params = {}
+        return self._request_with_params(POST, MIX_PLAN_V1_URL + '/placeTrailStop', params)
+
+    '''
+    place positions tpsl order
+    symbol
+    marginCoin
+    triggerPrice
+    triggerType
+    side
+    size
+    rangeRate: 
+    reduceOnly: only one-way mode
+    :return:
+    '''
+    def place_positions_tpsl(self, params=None):
+        if params is None:
+            params = {}
+        return self._request_with_params(POST, MIX_PLAN_V1_URL + '/placePositionsTPSL', params)
+
+
+    '''
+    cancel all trigger order
+    :return:
+    '''
+    def cancel_all_plan(self, params=None):
+        if params is None:
+            params = {}
+        return self._request_with_params(POST, MIX_PLAN_V1_URL + '/cancelAllPlan', params)
 
     '''
     Planned entrustment (profit and loss stop) cancellation
@@ -136,6 +186,7 @@ class PlanApi(Client):
     planType: Order type normal_ Plan plan entrustment prof it_ Plan profit stop plan loss_ Plan stop loss plan
     :return:
     '''
+
     def cancel_plan(self, symbol, marginCoin, orderId, planType):
         params = {}
         if symbol and marginCoin and planType and orderId:
@@ -152,6 +203,7 @@ class PlanApi(Client):
     isPlan: Query plan delegation plan delegation profile_ Loss Stop Profit Stop Loss
     :return:
     '''
+
     def current_plan(self, symbol, isPlan='plan'):
         params = {}
         if symbol:
@@ -167,6 +219,7 @@ class PlanApi(Client):
     isPlan: Query plan delegation plan delegation profile_ Loss Stop Profit Stop Loss
     :return:
     '''
+
     def history_plan(self, symbol, startTime, endTime, pageSize, lastEndId='', isPre=False, isPlan='plan'):
         params = {}
         if symbol:

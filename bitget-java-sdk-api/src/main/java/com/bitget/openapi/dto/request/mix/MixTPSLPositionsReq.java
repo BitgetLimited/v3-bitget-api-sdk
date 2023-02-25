@@ -4,21 +4,15 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
 import java.io.Serializable;
 import java.math.BigDecimal;
 
-/**
- * @Author: bitget-sdk-team
- * @Date: 2022-09-30 10:46
- * @DES: modify plan request
- */
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class MixTPSLOrderReq implements Serializable {
-
-    private static final long serialVersionUID = -1L;
+public class MixTPSLPositionsReq implements Serializable {
 
     /**
      * Currency pair
@@ -30,19 +24,12 @@ public class MixTPSLOrderReq implements Serializable {
      */
     private String marginCoin;
 
-    /**
-     * Plan type
-     */
     private String planType;
 
-    /**
-     * Trigger price
-     */
     private BigDecimal triggerPrice;
 
-    /**
-     * Is this position long or short
-     */
+    private String triggerType;
+
     private String holdSide;
 
     /**
@@ -50,5 +37,9 @@ public class MixTPSLOrderReq implements Serializable {
      */
     private String channelApiCode;
 
-    private String rangeRate;
+    /**
+     * 单项持仓  是否只减仓
+     */
+    private boolean reduceOnly = false;
+
 }

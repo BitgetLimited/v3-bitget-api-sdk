@@ -62,4 +62,14 @@ public class MixPlaceOrderReq implements Serializable {
      */
     private BigDecimal presetStopLossPrice;
 
+    /**
+     * one-way mode
+     */
+    private boolean reduceOnly = false;
+
+    /**
+     *
+     */
+    private boolean reverse = false;
+
 }

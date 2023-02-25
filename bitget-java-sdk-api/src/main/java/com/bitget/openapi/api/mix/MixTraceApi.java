@@ -1,6 +1,8 @@
 package com.bitget.openapi.api.mix;
 
 import com.bitget.openapi.dto.request.mix.MixCloseTrackOrderReq;
+import com.bitget.openapi.dto.request.mix.MixTraceModifyTPSLOrderReq;
+import com.bitget.openapi.dto.request.mix.MixTraceSetCopyTradeSymbolReq;
 import com.bitget.openapi.dto.response.ResponseResult;
 import retrofit2.Call;
 import retrofit2.http.Body;
@@ -113,4 +115,26 @@ public interface MixTraceApi {
                                             @Query("pageNo") String pageNo,
                                             @Query("startTime") String startTime,
                                             @Query("endTime") String endTime);
+
+    /**
+     * trader get copytrade symbol
+     * @return ResponseResult
+     */
+    @GET("/api/mix/v1/trace/traderSymbols")
+    Call<ResponseResult> traderSymbols();
+
+    /**
+     * trader set copytrade symbol
+     * @return ResponseResult
+     */
+    @POST("/api/mix/v1/trace/setUpCopySymbols")
+    Call<ResponseResult> setUpCopySymbols(@Body MixTraceSetCopyTradeSymbolReq mixTraceSetCopyTradeSymbol);
+
+    /**
+     * trader modify tpsl order
+     * @return ResponseResult
+     */
+    @POST("/api/mix/v1/trace/modifyTPSL")
+    Call<ResponseResult> modifyTPSL(@Body MixTraceModifyTPSLOrderReq mixTraceModifyTPSLOrderReq);
+
 }

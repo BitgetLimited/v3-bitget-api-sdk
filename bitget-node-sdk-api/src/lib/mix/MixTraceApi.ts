@@ -1,5 +1,7 @@
 import {BaseApi} from '../BaseApi';
 import {CloseTrackOrderReq} from '../model/mix/trace/CloseTrackOrderReq';
+import {TraderSetSymbolReq} from '../model/mix/trace/TraderSetSymbolReq';
+import {MixTraceUpdateTPSLReq} from '../model/mix/trace/MixTraceUpdateTPSLReq';
 import {MIX_URL} from '../config';
 
 export class MixTraceApi extends BaseApi{
@@ -102,5 +104,34 @@ export class MixTraceApi extends BaseApi{
         const qsOrBody = {pageSize,pageNo,startTime,endTime};
         const headers = this.signer('GET', url, qsOrBody)
         return this.axiosInstance.get(url, {headers,params: qsOrBody})
+    }
+
+    /**
+     * trader get copyTrade symbol
+     */
+    traderSymbols() {
+        const url = MIX_URL.MIX_TRACE + '/traderSymbols';
+        const headers = this.signer('GET', url, null)
+        return this.axiosInstance.get(url, {headers})
+    }
+
+
+    /**
+     * trader set copyTrade symbol
+     */
+    setUpCopySymbols(traderSetSymbolReq: TraderSetSymbolReq) {
+        const url = MIX_URL.MIX_TRACE + '/setUpCopySymbols';
+
+        const headers = this.signer('POST', url, traderSetSymbolReq)
+        return this.axiosInstance.post(url,traderSetSymbolReq, {headers})
+    }
+
+    /**
+     * trader modify tpsl order
+     */
+    modifyTPSL(mixTraceUpdateTPSLReq: MixTraceUpdateTPSLReq) {
+        const url = MIX_URL.MIX_TRACE + '/modifyTPSL';
+        const headers = this.signer('POST', url, mixTraceUpdateTPSLReq)
+        return this.axiosInstance.post(url, mixTraceUpdateTPSLReq,{headers})
     }
 }

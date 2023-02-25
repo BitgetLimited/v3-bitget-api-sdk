@@ -45,6 +45,8 @@ export class PlacePlanReq{
      */
     private _presetStopLossPrice!:string;
 
+    private _reduceOnly!:boolean;
+
 
     get symbol(): string {
         return this._symbol;
@@ -132,5 +134,13 @@ export class PlacePlanReq{
 
     set presetStopLossPrice(value: string) {
         this._presetStopLossPrice = value;
+    }
+
+    get reduceOnly():boolean{
+        return this._reduceOnly;
+    }
+
+    set reduceOnly(value:boolean){
+        this._reduceOnly = value;
     }
 }

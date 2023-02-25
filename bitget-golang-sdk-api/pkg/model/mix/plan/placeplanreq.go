@@ -50,4 +50,6 @@ type PlacePlanReq struct {
 	 * Preset stop loss price
 	 */
 	PresetStopLossPrice string `json:"presetStopLossPrice"`
+
+	ReduceOnly bool `json:"reduceOnly"`
 }

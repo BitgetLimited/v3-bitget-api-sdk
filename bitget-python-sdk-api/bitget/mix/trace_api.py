@@ -140,3 +140,27 @@ class TraceApi(Client):
             params["endTime"] = end_time
 
         return self._request_with_params(GET, MIX_TRACE_V1_URL + '/followerHistoryOrders', params)
+
+    '''
+    get trader copytrader symbol
+    '''
+
+    def trader_symbols(self):
+        return self._request_without_params(GET, MIX_TRACE_V1_URL + '/traderSymbols')
+
+    '''
+    set trader copytrader symbol
+   '''
+
+    def set_trder_symbol(self, params=None):
+        if params is None:
+            params = {}
+        return self._request_with_params(POST, MIX_TRACE_V1_URL + '/setUpCopySymbols', params)
+
+    '''
+      trader modify tpsl order
+    '''
+    def trader_modify_tpsl_order(self, params=None):
+        if params is None:
+            params = {}
+        return self._request_with_params(POST, MIX_TRACE_V1_URL + '/modifyTPSL', params)
