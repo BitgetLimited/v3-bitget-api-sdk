@@ -20,7 +20,7 @@ class OrderApi(Client):
     presetStopLossPrice：Preset stop loss price
     :return:
     '''
-    def place_order(self, symbol, marginCoin, size, side, orderType, price='', clientOrderId='', timeInForceValue='normal', presetTakeProfitPrice='', presetStopLossPrice=''):
+    def place_order(self, symbol, marginCoin, size, side, orderType, clientOrderId=None, price='', timeInForceValue='normal', presetTakeProfitPrice='', presetStopLossPrice=''):
         params = {}
         if symbol and marginCoin and side and orderType and marginCoin:
             params["symbol"] = symbol
