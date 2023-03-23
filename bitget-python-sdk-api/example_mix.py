@@ -1,3 +1,4 @@
+
 import bitget.mix.market_api as market
 import bitget.mix.account_api as accounts
 import bitget.mix.position_api as position
@@ -29,8 +30,8 @@ if __name__ == '__main__':
     # result = marketApi.fills(symbol, limit=50)
     # print(result)
 
-    # result = marketApi.candles(symbol, granularity=60,startTime=1627540502000, endTime=1627544102000)
-    # print(result)
+    result = marketApi.candles(symbol, granularity='1m',startTime=1679103025000, endTime=1679104945000)
+    print(result)
 
     # result = marketApi.index(symbol)
     # print(result)
@@ -75,7 +76,7 @@ if __name__ == '__main__':
 
     positionApi = position.PositionApi(api_key, secret_key, passphrase, use_server_time=False, first=False)
 
-    # result = positionApi.single_position(symbol, marginCoin='USDT', holdSide='long')
+    # result = positionApi.single_position(symbol, marginCoin='USDT')
     # print(result)
 
     # result = positionApi.all_position(productType='mix_type')
@@ -83,11 +84,11 @@ if __name__ == '__main__':
 
     orderApi = order.OrderApi(api_key, secret_key, passphrase, use_server_time=False, first=False)
     # 804554549183000576
-    # result = orderApi.place_order(symbol, marginCoin='USDT', size=1,side='open_short', orderType='limit', price='39723', timeInForceValue='normal')
+    # result = orderApi.place_order(symbol="TRXUSDT_UMCBL", marginCoin='USDT', size=555,side='open_long', orderType='limit', price='0.0333', timeInForceValue='normal')
     # print(result)
 
-    # order_data=[{"price":"38723","size":"1","side":"open_short","orderType":"limit","timeInForceValue":"normal"}, {"price":"25723","size":"1","side":"open_long","orderType":"limit","timeInForceValue":"normal"}]
-    # result = orderApi.batch_orders(symbol, marginCoin='USDT', order_data=order_data)
+    # order_data=[{"price":"0.0333","size":"666","side":"open_long","orderType":"limit","timeInForceValue":"normal",}]
+    # result = orderApi.batch_orders("TRXUSDT_UMCBL", marginCoin='USDT', order_data=order_data)
     # print(result)
 
     # result = orderApi.cancel_orders(symbol, marginCoin='USDT', orderId='804554549183000576')
