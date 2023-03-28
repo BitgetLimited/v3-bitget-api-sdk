@@ -86,4 +86,14 @@ public interface MixTraceService {
      * @return ResponseResult
      */
     ResponseResult followerHistoryOrders(String pageSize,String pageNo,String startTime,String endTime) throws IOException;
+
+    /**
+     * Get Follower Open Orders
+     * @param symbol
+     * @param productType
+     * @param pageSize
+     * @param pageNo
+     * @return ResponseResult
+     */
+    ResponseResult followerOrder(String symbol,String productType,int pageSize,int pageNo) throws IOException;
 }

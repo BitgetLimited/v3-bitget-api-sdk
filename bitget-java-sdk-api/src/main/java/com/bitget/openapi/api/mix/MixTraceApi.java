@@ -137,4 +137,16 @@ public interface MixTraceApi {
     @POST("/api/mix/v1/trace/modifyTPSL")
     Call<ResponseResult> modifyTPSL(@Body MixTraceModifyTPSLOrderReq mixTraceModifyTPSLOrderReq);
 
+
+
+    /**
+     * trader get copytrade symbol
+     * @return ResponseResult
+     */
+    @GET("/api/mix/v1/trace/followerOrder")
+    Call<ResponseResult> followerOrder(@Query("symbol") String symbol,
+                                       @Query("productType") String productType,
+                                       @Query("pageSize") int pageSize,
+                                       @Query("pageNo") int pageNo);
+
 }

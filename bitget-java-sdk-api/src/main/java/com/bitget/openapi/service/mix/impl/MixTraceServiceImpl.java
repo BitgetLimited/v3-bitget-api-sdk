@@ -121,4 +121,18 @@ public class MixTraceServiceImpl implements MixTraceService {
     public ResponseResult followerHistoryOrders(String pageSize, String pageNo, String startTime, String endTime) throws IOException {
         return mixTraceApi.followerHistoryOrders(pageSize,pageNo,startTime,endTime).execute().body();
     }
+
+    /**
+     * Get Follower Open Orders
+     * @param symbol
+     * @param productType
+     * @param pageSize
+     * @param pageNo
+     * @return ResponseResult
+     */
+    @Override
+    public ResponseResult followerOrder(String symbol,String productType,int pageSize,int pageNo) throws IOException {
+
+        return mixTraceApi.followerOrder(symbol,productType,pageSize,pageNo).execute().body();
+    }
 }
