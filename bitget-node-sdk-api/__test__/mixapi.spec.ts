@@ -5,6 +5,7 @@ import {toJsonString} from '../src/lib/util';
 
 import * as Console from 'console';
 import {LOCAL} from "../src/lib/config";
+import {MixTraceUpdateTPSLReq, TraderSetSymbolReq} from "../src";
 
 
 
@@ -627,6 +628,53 @@ describe('MixTraceApiTest', () => {
     test('followerHistoryOrders',()=>{
 
         return mixTraceApi.followerHistoryOrders('10','1','1635782400000','1635852263953').then((data)=>{
+            Console.info(toJsonString(data));
+        });
+    })
+
+    /**
+     * trader get copyTrade symbol
+     */
+    test('traderSymbols',()=>{
+
+        return mixTraceApi.traderSymbols().then((data)=>{
+            Console.info(toJsonString(data));
+        });
+    })
+
+    /**
+     * trader set copyTrade symbol
+     */
+    test('setUpCopySymbols',()=>{
+        const traderSetSymbolReq = new BitgetApi.TraderSetSymbolReq();
+        traderSetSymbolReq.symbol = 'BTCUSDT_UMCBL';
+        return mixTraceApi.setUpCopySymbols(traderSetSymbolReq).then((data)=>{
+            Console.info(toJsonString(data));
+        });
+    })
+
+    /**
+     * trader modify tpsl order
+     */
+    test('modifyTPSL',()=>{
+        const mixTraceUpdateTPSLReq = new BitgetApi.MixTraceUpdateTPSLReq();
+        mixTraceUpdateTPSLReq.symbol = 'BTCUSDT_UMCBL';
+        mixTraceUpdateTPSLReq.trackingNo = '804641389214179330';
+        return mixTraceApi.modifyTPSL(mixTraceUpdateTPSLReq).then((data)=>{
+            Console.info(toJsonString(data));
+        });
+    })
+
+    /**
+     * trader get copytrade symbol
+     * @param pageSize
+     * @param pageNo
+     * @param startTime
+     * @param endTime
+     */
+    test('followerOrder',()=>{
+
+        return mixTraceApi.followerOrder('BTCUSDT_UMCBL','umcbl','100','1').then((data)=>{
             Console.info(toJsonString(data));
         });
     })

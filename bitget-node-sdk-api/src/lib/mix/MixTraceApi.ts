@@ -134,4 +134,14 @@ export class MixTraceApi extends BaseApi{
         const headers = this.signer('POST', url, mixTraceUpdateTPSLReq)
         return this.axiosInstance.post(url, mixTraceUpdateTPSLReq,{headers})
     }
+
+    /**
+     * trader get copytrade symbol
+     */
+    followerOrder(symbol:string,productType:string,pageSize:string,pageNo:string) {
+        const url = MIX_URL.MIX_TRACE + '/followerOrder';
+        const qsOrBody = {symbol,productType,pageSize,pageNo};
+        const headers = this.signer('GET', url, qsOrBody)
+        return this.axiosInstance.get(url, {headers,params: qsOrBody})
+    }
 }
