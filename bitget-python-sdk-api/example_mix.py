@@ -140,3 +140,7 @@ if __name__ == '__main__':
     # traceApi.follower_history_orders('10', '1', '1635782400000', '1635852263953')
 
     # traceApi.wait_profit_detail("10","1")
+
+    # traceApi.trader_symbols()
+
+    # traceApi.set_trder_symbol("BTCUSDT_UMCBL")

@@ -152,15 +152,40 @@ class TraceApi(Client):
     set trader copytrader symbol
    '''
 
-    def set_trder_symbol(self, params=None):
-        if params is None:
-            params = {}
-        return self._request_with_params(POST, MIX_TRACE_V1_URL + '/setUpCopySymbols', params)
+    def set_trder_symbol(self, symbol):
+        params = {}
+        if symbol:
+            params["symbol"] = symbol
+            return self._request_with_params(POST, MIX_TRACE_V1_URL + '/setUpCopySymbols', params)
+        else:
+            return "pls check args "
 
     '''
       trader modify tpsl order
     '''
-    def trader_modify_tpsl_order(self, params=None):
-        if params is None:
-            params = {}
-        return self._request_with_params(POST, MIX_TRACE_V1_URL + '/modifyTPSL', params)
+
+    def trader_modify_tpsl_order(self, symbol, trackingNo, stopProfitPrice, stopLossPrice):
+        params = {}
+        if symbol and trackingNo:
+            params["symbol"] = symbol
+            params["trackingNo"] = trackingNo
+            params["stopProfitPrice"] = stopProfitPrice
+            params["stopLossPrice"] = stopLossPrice
+            return self._request_with_params(POST, MIX_TRACE_V1_URL + '/modifyTPSL', params)
+        else:
+            return "pls check args "
+
+    '''
+      followerOrder
+    '''
+
+    def followerOrder(self, symbol, productType, pageSize=100, pageNo=1):
+        params = {}
+        if symbol and productType:
+            params["symbol"] = symbol
+            params["productType"] = productType
+            params["pageSize"] = pageSize
+            params["pageNo"] = pageNo
+            return self._request_with_params(GET, MIX_TRACE_V1_URL + '/followerOrder', params)
+        else:
+            return "pls check args "
