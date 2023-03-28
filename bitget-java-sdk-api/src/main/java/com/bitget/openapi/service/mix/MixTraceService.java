@@ -1,6 +1,8 @@
 package com.bitget.openapi.service.mix;
 
 import com.bitget.openapi.dto.request.mix.MixCloseTrackOrderReq;
+import com.bitget.openapi.dto.request.mix.MixTraceModifyTPSLOrderReq;
+import com.bitget.openapi.dto.request.mix.MixTraceSetCopyTradeSymbolReq;
 import com.bitget.openapi.dto.response.ResponseResult;
 import java.io.IOException;
 
@@ -96,4 +98,23 @@ public interface MixTraceService {
      * @return ResponseResult
      */
     ResponseResult followerOrder(String symbol,String productType,int pageSize,int pageNo) throws IOException;
+
+    /**
+     * trader get copytrade symbol
+     * @return ResponseResult
+     */
+    ResponseResult traderSymbols() throws IOException;
+
+    /**
+     * trader set copytrade symbol
+     * @return ResponseResult
+     */
+    ResponseResult setUpCopySymbols(MixTraceSetCopyTradeSymbolReq mixTraceSetCopyTradeSymbol) throws IOException;
+
+    /**
+     * trader modify tpsl order
+     * @return ResponseResult
+     */
+    ResponseResult modifyTPSL(MixTraceModifyTPSLOrderReq mixTraceModifyTPSLOrderReq) throws IOException;
+
 }

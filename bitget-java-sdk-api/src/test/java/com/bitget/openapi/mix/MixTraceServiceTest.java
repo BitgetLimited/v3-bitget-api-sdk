@@ -3,6 +3,8 @@ package com.bitget.openapi.mix;
 import com.alibaba.fastjson.JSON;
 import com.bitget.openapi.BaseTest;
 import com.bitget.openapi.dto.request.mix.MixCloseTrackOrderReq;
+import com.bitget.openapi.dto.request.mix.MixTraceModifyTPSLOrderReq;
+import com.bitget.openapi.dto.request.mix.MixTraceSetCopyTradeSymbolReq;
 import com.bitget.openapi.dto.response.ResponseResult;
 import com.bitget.openapi.enums.mix.MixProductTypeEnum;
 import org.junit.Test;
@@ -89,6 +91,32 @@ public class MixTraceServiceTest extends BaseTest {
     @Test
     public void followerOrder() throws IOException {
         ResponseResult result = bitgetRestClient.mix().bitget().trace().followerOrder(symbol,"umcbl",pageSize,pageNo);
+        System.out.println(JSON.toJSONString(result));
+    }
+
+    //passed
+    @Test
+    public void traderSymbols() throws IOException {
+        ResponseResult result = bitgetRestClient.mix().bitget().trace().traderSymbols();
+        System.out.println(JSON.toJSONString(result));
+    }
+
+    //passed
+    @Test
+    public void setUpCopySymbols() throws IOException {
+        MixTraceSetCopyTradeSymbolReq mixTraceSetCopyTradeSymbolReq = new MixTraceSetCopyTradeSymbolReq();
+        mixTraceSetCopyTradeSymbolReq.setSymbol(symbol);
+        ResponseResult result = bitgetRestClient.mix().bitget().trace().setUpCopySymbols(mixTraceSetCopyTradeSymbolReq);
+        System.out.println(JSON.toJSONString(result));
+    }
+
+    //passed
+    @Test
+    public void modifyTPSL() throws IOException {
+        MixTraceModifyTPSLOrderReq mixTraceModifyTPSLOrderReq = new MixTraceModifyTPSLOrderReq();
+        mixTraceModifyTPSLOrderReq.setSymbol(symbol);
+        mixTraceModifyTPSLOrderReq.setTrackingNo(804641389214179330L);
+        ResponseResult result = bitgetRestClient.mix().bitget().trace().modifyTPSL(mixTraceModifyTPSLOrderReq);
         System.out.println(JSON.toJSONString(result));
     }
 }

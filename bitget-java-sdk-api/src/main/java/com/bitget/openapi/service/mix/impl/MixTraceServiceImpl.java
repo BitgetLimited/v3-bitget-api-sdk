@@ -3,6 +3,8 @@ package com.bitget.openapi.service.mix.impl;
 import com.bitget.openapi.api.mix.MixTraceApi;
 import com.bitget.openapi.common.client.ApiClient;
 import com.bitget.openapi.dto.request.mix.MixCloseTrackOrderReq;
+import com.bitget.openapi.dto.request.mix.MixTraceModifyTPSLOrderReq;
+import com.bitget.openapi.dto.request.mix.MixTraceSetCopyTradeSymbolReq;
 import com.bitget.openapi.dto.response.ResponseResult;
 import com.bitget.openapi.service.mix.MixTraceService;
 import java.io.IOException;
@@ -132,7 +134,33 @@ public class MixTraceServiceImpl implements MixTraceService {
      */
     @Override
     public ResponseResult followerOrder(String symbol,String productType,int pageSize,int pageNo) throws IOException {
-
         return mixTraceApi.followerOrder(symbol,productType,pageSize,pageNo).execute().body();
+    }
+
+    /**
+     * trader get copytrade symbol
+     * @return ResponseResult
+     */
+    @Override
+    public ResponseResult traderSymbols() throws IOException {
+        return mixTraceApi.traderSymbols().execute().body();
+    }
+
+    /**
+     * trader set copytrade symbol
+     * @return ResponseResult
+     */
+    @Override
+    public ResponseResult setUpCopySymbols(MixTraceSetCopyTradeSymbolReq mixTraceSetCopyTradeSymbol) throws IOException {
+        return mixTraceApi.setUpCopySymbols(mixTraceSetCopyTradeSymbol).execute().body();
+    }
+
+    /**
+     * trader modify tpsl order
+     * @return ResponseResult
+     */
+    @Override
+    public ResponseResult modifyTPSL(MixTraceModifyTPSLOrderReq mixTraceModifyTPSLOrderReq) throws IOException {
+        return mixTraceApi.modifyTPSL(mixTraceModifyTPSLOrderReq).execute().body();
     }
 }
