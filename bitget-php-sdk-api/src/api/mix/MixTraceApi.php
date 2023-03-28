@@ -6,6 +6,10 @@ namespace bitget\api\mix;
 
 use bitget\internal\BitgetApiClient;
 use bitget\model\mix\trace\CloseTrackOrderReq;
+use bitget\model\mix\trace\MixTraceSetCopyTradeSymbolReq;
+use bitget\model\mix\trace\MixTraceModifyTPSLOrderReq;
+
+
 
 class MixTraceApi
 {
@@ -117,5 +121,50 @@ class MixTraceApi
     {
         $params = array("pageSize" => $pageSize, "pageNo" => $pageNo,"startTime"=>$startTime,"endTime"=>$endTime);
         return $this->BitgetApiClient->doGet(self::BASE_URL . "/followerHistoryOrders", $params);
+    }
+
+
+    /**
+     * trader get copytrade symbol
+     * @return string
+     */
+    public function traderSymbols():string
+    {
+        return $this->BitgetApiClient->doGet(self::BASE_URL . "/traderSymbols", null);
+    }
+
+
+    /**
+     * trader set copytrade symbol
+     * @param $mixTraceSetCopyTradeSymbolReq
+     * @return string
+     */
+    public function setUpCopySymbols(MixTraceSetCopyTradeSymbolReq $mixTraceSetCopyTradeSymbolReq):string
+    {
+        return $this->BitgetApiClient->doPost(self::BASE_URL . "/setUpCopySymbols", $mixTraceSetCopyTradeSymbolReq);
+    }
+
+    /**
+     * trader modify tpsl order
+     * @param $mixTraceModifyTPSLOrderReq
+     * @return string
+     */
+    public function modifyTPSL(MixTraceModifyTPSLOrderReq $mixTraceModifyTPSLOrderReq):string
+    {
+        return $this->BitgetApiClient->doPost(self::BASE_URL . "/modifyTPSL", $mixTraceModifyTPSLOrderReq);
+    }
+
+    /**
+     * trader get copytrade symbol
+     * @param $symbol
+     * @param $productType
+     * @param $pageSize
+     * @param $pageNo
+     * @return string
+     */
+    public function followerOrder(string $symbol,string $productType,string $pageSize,string $pageNo):string
+    {
+        $params = array("symbol" => $symbol, "productType" => $productType, "pageSize" => $pageSize, "pageNo" => $pageNo);
+        return $this->BitgetApiClient->doGet(self::BASE_URL . "/followerOrder", $params);
     }
 }

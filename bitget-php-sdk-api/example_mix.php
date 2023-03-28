@@ -177,6 +177,14 @@ function testTrace()
     $testWaitProfitDateList = $mixTraceTest->testFollowerHistoryOrders();
     print_r($testWaitProfitDateList."\n");
 
+//    $testWaitProfitDateList = $mixTraceTest->traderSymbols();
+//    print_r($testWaitProfitDateList."\n");
+//    $testWaitProfitDateList = $mixTraceTest->setUpCopySymbols();
+//    print_r($testWaitProfitDateList."\n");
+//    $testWaitProfitDateList = $mixTraceTest->modifyTPSL();
+//    print_r($testWaitProfitDateList."\n");
+//    $testWaitProfitDateList = $mixTraceTest->followerOrder();
+//    print_r($testWaitProfitDateList."\n");
 }
 
 

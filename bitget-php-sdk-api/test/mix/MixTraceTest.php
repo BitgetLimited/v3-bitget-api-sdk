@@ -7,6 +7,9 @@ namespace test\mix;
 use bitget\api\mix\MixTraceApi;
 use bitget\internal\BitgetRestClient;
 use bitget\model\mix\trace\CloseTrackOrderReq;
+use bitget\model\mix\trace\MixTraceSetCopyTradeSymbolReq;
+use bitget\model\mix\trace\MixTraceModifyTPSLOrderReq;
+
 
 class MixTraceTest
 {
@@ -66,5 +69,30 @@ class MixTraceTest
     public function testFollowerHistoryOrders():string
     {
         return $this->mixTraceApi->followerHistoryOrders("10","1","1635782400000","1635852263953");
+    }
+
+    public function traderSymbols():string
+    {
+        return $this->mixTraceApi->traderSymbols();
+    }
+
+    public function setUpCopySymbols():string
+    {
+        $mixTraceSetCopyTradeSymbolReq = new MixTraceSetCopyTradeSymbolReq();
+        $mixTraceSetCopyTradeSymbolReq->setSymbol("BTCUSDT_UMCBL");
+        return $this->mixTraceApi->setUpCopySymbols($mixTraceSetCopyTradeSymbolReq);
+    }
+
+    public function modifyTPSL():string
+    {
+        $mixTraceModifyTPSLOrderReq = new MixTraceModifyTPSLOrderReq();
+        $mixTraceModifyTPSLOrderReq->setSymbol("BTCUSDT_UMCBL");
+        $mixTraceModifyTPSLOrderReq->setTrackingNo("0");
+        return $this->mixTraceApi->modifyTPSL($mixTraceModifyTPSLOrderReq);
+    }
+
+    public function followerOrder():string
+    {
+        return $this->mixTraceApi->followerOrder("BTCUSDT_UMCBL","umcbl","10","1");
     }
 }
