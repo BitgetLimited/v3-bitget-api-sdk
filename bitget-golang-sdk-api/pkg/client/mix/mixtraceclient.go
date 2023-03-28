@@ -276,3 +276,29 @@ func (p *MixTraceClient) ModifyTPSL(params trace.TraderModifyTPSLOrderReq) (stri
 
 	return resp, err
 }
+
+/**
+ * trader get copytrade symbol
+ * @param pageSize
+ * @param pageNo
+ * @param startTime
+ * @param endTime
+ * @return ResponseResult
+ */
+func (p *MixTraceClient) followerOrder(symbol string, productType string, pageSize string, pageNo string) (string, error) {
+	params := internal.NewParams()
+
+	if len(pageSize) > 0 {
+		params["pageSize"] = pageSize
+	}
+	if len(pageNo) > 0 {
+		params["pageNo"] = pageNo
+	}
+	params["symbol"] = symbol
+	params["productType"] = productType
+	uri := constants.MixTrace + "/followerOrder"
+
+	resp, err := p.BitgetRestClient.DoGet(uri, params)
+
+	return resp, err
+}

@@ -104,3 +104,14 @@ func TestMixTraceClient_FollowerHistoryOrders(t *testing.T) {
 	i := int32(crc32.ChecksumIEEE(crc32BaseBuffer.Bytes()))
 	fmt.Println(i)
 }
+
+func TestMixTraceClient_followerOrder(t *testing.T) {
+	client := new(MixTraceClient).Init()
+
+	resp, err := client.followerOrder("BTCUSDT_UMCBL", "umcbl", "10", "1")
+
+	if err != nil {
+		println(err.Error())
+	}
+	fmt.Println(resp)
+}
