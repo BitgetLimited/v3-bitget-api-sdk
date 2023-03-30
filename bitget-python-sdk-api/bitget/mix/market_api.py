@@ -79,13 +79,14 @@ class MarketApi(Client):
     endTime: end time
     :return:
     '''
-    def candles(self, symbol, granularity, startTime='', endTime=''):
+    def candles(self, symbol, granularity, startTime='', endTime='',limit=''):
         params = {}
         if symbol and granularity:
             params["symbol"] = symbol
             params["granularity"] = granularity
             params["startTime"] = startTime
             params["endTime"] = endTime
+            params["limit"] = limit
             return self._request_with_params(GET, MIX_MARKET_V1_URL + '/candles', params)
         else:
             return "pls check args"

@@ -30,7 +30,7 @@ if __name__ == '__main__':
     # result = marketApi.fills(symbol, limit=50)
     # print(result)
 
-    result = marketApi.candles(symbol, granularity='1m',startTime=1679103025000, endTime=1679104945000)
+    result = marketApi.candles(symbol, granularity='1m',startTime=1679103025000, endTime=1679104945000,limit=100)
     print(result)
 
     # result = marketApi.index(symbol)
