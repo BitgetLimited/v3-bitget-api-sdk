@@ -2,6 +2,7 @@ import bitget.spot.public_api as public
 import bitget.spot.market_api as market
 import bitget.spot.account_api as account
 import bitget.spot.order_api as order
+import bitget.spot.plan_api as plan
 import json
 
 if __name__ == '__main__':
@@ -71,4 +72,20 @@ if __name__ == '__main__':
     # print(result)
 
     # result = orderApi.fills(symbol='bftusdt_spbl')
+    # print(result)
+
+    planApi = plan.PlanApi(api_key, secret_key, passphrase, use_server_time=False, first=False)
+#     result = planApi.placePlan(symbol='BTCUSDT_SPBL', side='buy', triggerPrice='22031', executePrice='22031', size='50', triggerType='market_price', orderType='market', timeInForceValue='normal')
+#     print(result)
+
+#     result = planApi.modifyPlan(orderId='987136018723487744', triggerPrice='22031', executePrice='22031', size='50', orderType='market')
+#     print(result)
+
+#     result = planApi.cancelPlan(orderId='987136018723487744')
+#     print(result)
+
+    # result = planApi.currentPlan(symbol='BTCUSDT_SPBL', pageSize='5')
+    # print(result)
+    #
+    # result = planApi.historyPlan(symbol='BTCUSDT_SPBL', pageSize='5', startTime='1671005531000', endTime='1671085652000')
     # print(result)
