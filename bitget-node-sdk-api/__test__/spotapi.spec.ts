@@ -271,3 +271,64 @@ describe('SpotOrderApiTest', () => {
         });
     })
 });
+
+
+describe('SpotPlanApiTest', () => {
+    const spotPlanApi = new BitgetResetApi.SpotPlanApi(apiKey,secretKey,passphrase);
+
+    test('placePlan',()=>{
+        const req = new SpotPlanReq();
+        req.symbol = 'BTCUSDT_SPBL';
+        req.side = 'buy';
+        req.triggerPrice = '22031';
+        req.executePrice = '22031';
+        req.size = '100';
+        req.triggerType = 'market_price';
+        req.orderType = 'market';
+        req.timeInForceValue = 'normal';
+        return spotPlanApi.placePlan(req).then((data)=>{
+            Console.info(toJsonString(data));
+        });
+    })
+
+    test('modifyPlan',()=>{
+        const req = new SpotModifyPlanReq();
+        req.orderId = '987136018723487744';
+        req.triggerPrice = '16000';
+        req.executePrice = '16000';
+        req.size = '50';
+        req.orderType = 'market';
+        return spotPlanApi.modifyPlan(req).then((data)=>{
+            Console.info(toJsonString(data));
+        });
+    })
+
+    test('cancelPlan',()=>{
+        const req = new SpotCancelPlanReq();
+        req.orderId = '987136018723487744';
+        return spotPlanApi.cancelPlan(req).then((data)=>{
+            Console.info(toJsonString(data));
+        });
+    })
+
+    test('currentPlan',()=>{
+        const req = new SpotQueryPlanReq();
+        req.symbol = 'BTCUSDT_SPBL';
+        req.pageSize = '10';
+        return spotPlanApi.currentPlan(req).then((data)=>{
+            Console.info(toJsonString(data));
+        });
+    })
+
+    test('historyPlan',()=>{
+        const req = new SpotQueryPlanReq();
+        req.symbol = 'BTCUSDT_SPBL';
+        req.pageSize = '10';
+        req.startTime = '1671005531000';
+        req.endTime = '1671085652000';
+        return spotPlanApi.historyPlan(req).then((data)=>{
+            Console.info(toJsonString(data));
+        });
+    })
+
+});
