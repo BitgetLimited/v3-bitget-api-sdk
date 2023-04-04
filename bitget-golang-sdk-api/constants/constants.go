@@ -35,6 +35,7 @@ const (
 	SpotMarket  = "/api/spot/v1/market"
 	SpotAccount = "/api/spot/v1/account"
 	SpotTrade   = "/api/spot/v1/trade"
+	SpotPlan    = "/api/spot/v1/plan"
 
 	/**
 	 * MIX URL
