@@ -22,4 +22,8 @@ export let SPOT_URL = {
     SPOT_MARKET: '/api/spot/v1/market',
     SPOT_ORDER: '/api/spot/v1/trade',
     SPOT_PUBLIC: '/api/spot/v1/public',
+    SPOT_PLAN: '/api/spot/v1/plan',
+}
+export let FIAT_URL = {
+    FIAT_MARKET: '/api/fiat/v1/market'
 }
