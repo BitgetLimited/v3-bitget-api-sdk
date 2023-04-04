@@ -69,6 +69,14 @@ public class SpotApiFacade {
             return new SpotWalletServiceImpl(apiClient);
         }
 
+        /**
+         * plan service
+         */
+        public SpotPlanService plan() {
+            return new SpotPlanServiceImpl(apiClient);
+        }
+
+
 
     }
 }
