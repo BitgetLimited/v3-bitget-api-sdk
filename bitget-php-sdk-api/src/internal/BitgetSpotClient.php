@@ -7,6 +7,7 @@ namespace bitget\internal;
 use bitget\api\spot\SpotAccountApi;
 use bitget\api\spot\SpotMarketApi;
 use bitget\api\spot\SpotOrderApi;
+use bitget\api\spot\SpotPlanApi;
 use bitget\api\spot\SpotPublicApi;
 
 class BitgetSpotClient
@@ -26,6 +27,10 @@ class BitgetSpotClient
     public function getPublicApi()
     {
         return new SpotPublicApi(new BitgetApiClient());
+    }
+    public function getPlanApi()
+    {
+        return new SpotPlanApi(new BitgetApiClient());
     }
 
 }
