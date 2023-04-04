@@ -15,15 +15,15 @@ public class BaseTest {
 	/**
 	 * The user apiKey is replaced with his own
 	 */
-	private final String apiKey = "";
+	private final String apiKey = "bg_fcdae1a6714c08a554bf4f62a6da9563";
 	/**
 	 * The user's secretKey is replaced with his own
 	 */
-	private final String secretKey = "";
+	private final String secretKey = "5ccea28f627c4ac772a8044cbe0aa2792df6688414c062b3761cc3d6d692a298";
 	/**
 	 * Replace the password with your own
 	 */
-	private final String passphrase = "";
+	private final String passphrase = "1r1b6uX6PQ9tbKwb";
 	/**
 	 * Bitget open api root path
 	 */

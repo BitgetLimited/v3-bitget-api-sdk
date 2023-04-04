@@ -30,4 +30,5 @@ public class MixTraceModifyTPSLOrderReq  implements Serializable {
      */
     private BigDecimal	 stopLossPrice ;
 
+    private String clientOid;
 }

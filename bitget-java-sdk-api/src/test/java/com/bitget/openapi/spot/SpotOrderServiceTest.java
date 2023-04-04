@@ -15,31 +15,13 @@ import java.util.List;
 
 public class SpotOrderServiceTest extends BaseTest {
 
-    static String symbol = "bftusdt_spbl";
+    static String symbol = "bgbusdt_spbl";
 
     @Test
     public void orders() throws IOException {
-//        SpotOrderReq spotOrderReq = SpotOrderReq.builder()
-//                                                .symbol(symbol)
-//                                                .price("2.68111")
-//                                                .quantity("1")
-//                                                .side(OrderSideEnum.BUY.getCode())
-//                                                .orderType(SpotOrderTypeEnum.LIMIT.getCode())
-//                                                .force(ForceEnum.NORMAL.getCode())
-//                                                .clientOrderId("spot1624941230000")
-//                                                .build();
-        SpotOrderReq spotOrderReq = SpotOrderReq.builder().symbol(symbol).price("2.68111").quantity("10")
+        SpotOrderReq spotOrderReq = SpotOrderReq.builder().symbol(symbol).price("0.31").quantity("100")
                 .side(OrderSideEnum.BUY.getCode()).orderType(SpotOrderTypeEnum.LIMIT.getCode())
                 .force(ForceEnum.NORMAL.getCode()).build();
-
-//        SpotOrderReq spotOrderReq = SpotOrderReq.builder()
-//                .symbol(symbol)
-//                .quantity("30")
-//                .side(OrderSideEnum.BUY.getCode())
-//                .orderType(SpotOrderTypeEnum.MARKET.getCode())
-//                .force(ForceEnum.NORMAL.getCode())
-//                .clientOrderId("clientId1624948230000")
-//                .build();
 
         ResponseResult orders = bitgetRestClient.spot().bitget().order().orders(spotOrderReq);
         System.out.println(JSON.toJSONString(orders));
