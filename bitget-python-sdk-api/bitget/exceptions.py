@@ -13,7 +13,8 @@ class BitgetAPIException(Exception):
             if "code" in json_res.keys() and "msg" in json_res.keys():
                 self.code = json_res['code']
                 self.message = json_res['msg']
-
+            else:
+                print(json_res)
 
         self.status_code = response.status_code
         self.response = response
