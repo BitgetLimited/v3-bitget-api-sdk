@@ -1,0 +1,5056 @@
+openapi: 3.0.1
+info:
+  title: Bitget Open API
+  version: 2.0.0
+servers:
+- url: https://api.bitget.com/
+tags:
+- description: Margin Cross Account Controller
+  name: margin_cross_account
+- description: Margin Cross Borrow Query Controller
+  name: margin_cross_borrow
+- description: Margin Cross Fin Flow Query Controller
+  name: margin_cross_finflow
+- description: Margin Cross Interest Query Controller
+  name: margin_cross_interest
+- description: Margin Cross Liquidation Query Controller
+  name: margin_cross_liquidation
+- description: Margin Cross Order Controller
+  name: margin_cross_order
+- description: Margin Cross Public Controller
+  name: margin_cross_public
+- description: Margin Cross Repay Query Controller
+  name: margin_cross_repay
+- description: Margin Isolated Account Controller
+  name: margin_isolated_account
+- description: Margin Isolated Borrow Query Controller
+  name: margin_isolated_borrow
+- description: Margin Isolated Fin Flow Query Controller
+  name: margin_isolated_finflow
+- description: Margin Isolated Interest Query Controller
+  name: margin_isolated_interest
+- description: Margin Isolated Liquidation Query Controller
+  name: margin_isolated_liquidation
+- description: Margin Isolated Order Controller
+  name: margin_isolated_order
+- description: Margin Isolated Public Controller
+  name: margin_isolated_public
+- description: Margin Isolated Repay Query Controller
+  name: margin_isolated_repay
+- description: Margin Public Controller
+  name: margin_public
+paths:
+  /api/margin/v1/cross/account/assets:
+    get:
+      deprecated: false
+      description: Get Assets
+      operationId: marginCrossAccountAssets
+      parameters:
+      - description: coin
+        example: USDT
+        in: query
+        name: coin
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfListOfMarginCrossAssetsPopulationResult'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfVoid'
+          description: Bad Request
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfVoid'
+          description: Gateway Frequency Limit
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfVoid'
+          description: Server Error
+      security:
+      - ACCESS_TIMESTAMP: []
+      - SECRET_KEY: []
+      - ACCESS_PASSPHRASE: []
+      - ACCESS_SIGN: []
+      - ACCESS_KEY: []
+      summary: assets
+      tags:
+      - margin_cross_account
+  /api/margin/v1/cross/account/borrow:
+    post:
+      deprecated: false
+      description: borrow
+      operationId: marginCrossAccountBorrow
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MarginCrossLimitRequest'
+        description: marginCrossLimitRequest
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfMarginCrossBorrowLimitResult'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfVoid'
+          description: Bad Request
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfVoid'
+          description: Gateway Frequency Limit
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfVoid'
+          description: Server Error
+      security:
+      - ACCESS_TIMESTAMP: []
+      - SECRET_KEY: []
+      - ACCESS_PASSPHRASE: []
+      - ACCESS_SIGN: []
+      - ACCESS_KEY: []
+      summary: borrow
+      tags:
+      - margin_cross_account
+      x-codegen-request-body-name: marginCrossLimitRequest
+  /api/margin/v1/cross/account/maxBorrowableAmount:
+    post:
+      deprecated: false
+      description: Get MaxBorrowableAmount
+      operationId: marginCrossAccountMaxBorrowableAmount
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MarginCrossMaxBorrowRequest'
+        description: marginCrossMaxBorrowRequest
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfMarginCrossMaxBorrowResult'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfVoid'
+          description: Bad Request
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfVoid'
+          description: Gateway Frequency Limit
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfVoid'
+          description: Server Error
+      security:
+      - ACCESS_TIMESTAMP: []
+      - SECRET_KEY: []
+      - ACCESS_PASSPHRASE: []
+      - ACCESS_SIGN: []
+      - ACCESS_KEY: []
+      summary: maxBorrowableAmount
+      tags:
+      - margin_cross_account
+      x-codegen-request-body-name: marginCrossMaxBorrowRequest
+  /api/margin/v1/cross/account/maxTransferOutAmount:
+    get:
+      deprecated: false
+      description: Get Max TransferOutAmount
+      operationId: marginCrossAccountMaxTransferOutAmount
+      parameters:
+      - description: coin
+        example: USDT
+        in: query
+        name: coin
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfMarginCrossAssetsResult'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfVoid'
+          description: Bad Request
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfVoid'
+          description: Gateway Frequency Limit
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfVoid'
+          description: Server Error
+      security:
+      - ACCESS_TIMESTAMP: []
+      - SECRET_KEY: []
+      - ACCESS_PASSPHRASE: []
+      - ACCESS_SIGN: []
+      - ACCESS_KEY: []
+      summary: maxTransferOutAmount
+      tags:
+      - margin_cross_account
+  /api/margin/v1/cross/account/repay:
+    post:
+      deprecated: false
+      description: repay
+      operationId: marginCrossAccountRepay
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MarginCrossRepayRequest'
+        description: marginCrossRepayRequest
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfMarginCrossRepayResult'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfVoid'
+          description: Bad Request
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfVoid'
+          description: Gateway Frequency Limit
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfVoid'
+          description: Server Error
+      security:
+      - ACCESS_TIMESTAMP: []
+      - SECRET_KEY: []
+      - ACCESS_PASSPHRASE: []
+      - ACCESS_SIGN: []
+      - ACCESS_KEY: []
+      summary: repay
+      tags:
+      - margin_cross_account
+      x-codegen-request-body-name: marginCrossRepayRequest
+  /api/margin/v1/cross/account/riskRate:
+    get:
+      deprecated: false
+      description: riskRate
+      operationId: marginCrossAccountRiskRate
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfMarginCrossAssetsRiskResult'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfVoid'
+          description: Bad Request
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfVoid'
+          description: Gateway Frequency Limit
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfVoid'
+          description: Server Error
+      security:
+      - ACCESS_TIMESTAMP: []
+      - SECRET_KEY: []
+      - ACCESS_PASSPHRASE: []
+      - ACCESS_SIGN: []
+      - ACCESS_KEY: []
+      summary: riskRate
+      tags:
+      - margin_cross_account
+  /api/margin/v1/cross/account/void:
+    get:
+      deprecated: false
+      description: empty
+      operationId: void
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfVoid'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfVoid'
+          description: Bad Request
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfVoid'
+          description: Gateway Frequency Limit
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfVoid'
+          description: Server Error
+      security:
+      - ACCESS_TIMESTAMP: []
+      - SECRET_KEY: []
+      - ACCESS_PASSPHRASE: []
+      - ACCESS_SIGN: []
+      - ACCESS_KEY: []
+      summary: void
+      tags:
+      - margin_cross_account
+  /api/margin/v1/cross/fin/list:
+    get:
+      deprecated: false
+      description: Get finance flow List
+      operationId: crossFinList
+      parameters:
+      - description: coin
+        example: USDT
+        in: query
+        name: coin
+        schema:
+          type: string
+      - description: startTime
+        example: "1678193338000"
+        in: query
+        name: startTime
+        required: true
+        schema:
+          type: string
+      - description: endTime
+        example: "1678193338000"
+        in: query
+        name: endTime
+        schema:
+          type: string
+      - description: marginType
+        example: transfer_in
+        in: query
+        name: marginType
+        schema:
+          type: string
+      - description: pageSize
+        example: "10"
+        in: query
+        name: pageSize
+        schema:
+          type: string
+      - description: pageId
+        example: minId
+        in: query
+        name: pageId
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfMarginCrossFinFlowResult'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfVoid'
+          description: Bad Request
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfVoid'
+          description: Gateway Frequency Limit
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfVoid'
+          description: Server Error
+      security:
+      - ACCESS_TIMESTAMP: []
+      - SECRET_KEY: []
+      - ACCESS_PASSPHRASE: []
+      - ACCESS_SIGN: []
+      - ACCESS_KEY: []
+      summary: list
+      tags:
+      - margin_cross_finflow
+  /api/margin/v1/cross/interest/list:
+    get:
+      deprecated: false
+      description: Get interest List
+      operationId: crossInterestList
+      parameters:
+      - description: coin
+        example: USDT
+        in: query
+        name: coin
+        schema:
+          type: string
+      - description: startTime
+        example: "1678193138000"
+        in: query
+        name: startTime
+        required: true
+        schema:
+          type: string
+      - description: pageSize
+        example: "10"
+        in: query
+        name: pageSize
+        schema:
+          type: string
+      - description: pageId
+        in: query
+        name: pageId
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfMarginInterestInfoResult'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfVoid'
+          description: Bad Request
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfVoid'
+          description: Gateway Frequency Limit
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfVoid'
+          description: Server Error
+      security:
+      - ACCESS_TIMESTAMP: []
+      - SECRET_KEY: []
+      - ACCESS_PASSPHRASE: []
+      - ACCESS_SIGN: []
+      - ACCESS_KEY: []
+      summary: list
+      tags:
+      - margin_cross_interest
+  /api/margin/v1/cross/liquidation/list:
+    get:
+      deprecated: false
+      description: Get liquidation List
+      operationId: crossLiquidationList
+      parameters:
+      - description: startTime
+        example: "1678193138000"
+        in: query
+        name: startTime
+        required: true
+        schema:
+          type: string
+      - description: endTime
+        example: "1678193338000"
+        in: query
+        name: endTime
+        schema:
+          type: string
+      - description: pageSize
+        example: "10"
+        in: query
+        name: pageSize
+        schema:
+          type: string
+      - description: pageId
+        in: query
+        name: pageId
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfMarginLiquidationInfoResult'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfVoid'
+          description: Bad Request
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfVoid'
+          description: Gateway Frequency Limit
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfVoid'
+          description: Server Error
+      security:
+      - ACCESS_TIMESTAMP: []
+      - SECRET_KEY: []
+      - ACCESS_PASSPHRASE: []
+      - ACCESS_SIGN: []
+      - ACCESS_KEY: []
+      summary: list
+      tags:
+      - margin_cross_liquidation
+  /api/margin/v1/cross/loan/list:
+    get:
+      deprecated: false
+      description: Get Loan List
+      operationId: crossLoanList
+      parameters:
+      - description: coin
+        example: USDT
+        in: query
+        name: coin
+        schema:
+          type: string
+      - description: startTime
+        example: "1678193338000"
+        in: query
+        name: startTime
+        required: true
+        schema:
+          type: string
+      - description: endTime
+        example: "1678193338000"
+        in: query
+        name: endTime
+        schema:
+          type: string
+      - description: loanId
+        in: query
+        name: loanId
+        schema:
+          type: string
+      - description: pageSize
+        example: "10"
+        in: query
+        name: pageSize
+        schema:
+          type: string
+      - description: pageId
+        example: minId
+        in: query
+        name: pageId
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfMarginLoanInfoResult'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfVoid'
+          description: Bad Request
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfVoid'
+          description: Gateway Frequency Limit
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfVoid'
+          description: Server Error
+      security:
+      - ACCESS_TIMESTAMP: []
+      - SECRET_KEY: []
+      - ACCESS_PASSPHRASE: []
+      - ACCESS_SIGN: []
+      - ACCESS_KEY: []
+      summary: list
+      tags:
+      - margin_cross_borrow
+  /api/margin/v1/cross/order/batchCancelOrder:
+    post:
+      deprecated: false
+      description: Margin Cross BatchCancelOrder
+      operationId: marginCrossBatchCancelOrder
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MarginBatchCancelOrderRequest'
+        description: marginBatchCancelOrderRequest
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfMarginBatchCancelOrderResult'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfVoid'
+          description: Bad Request
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfVoid'
+          description: Gateway Frequency Limit
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfVoid'
+          description: Server Error
+      security:
+      - ACCESS_TIMESTAMP: []
+      - SECRET_KEY: []
+      - ACCESS_PASSPHRASE: []
+      - ACCESS_SIGN: []
+      - ACCESS_KEY: []
+      summary: batchCancelOrder
+      tags:
+      - margin_cross_order
+      x-codegen-request-body-name: marginBatchCancelOrderRequest
+  /api/margin/v1/cross/order/batchPlaceOrder:
+    post:
+      deprecated: false
+      description: Margin Cross PlaceOrder
+      operationId: marginCrossBatchPlaceOrder
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MarginBatchOrdersRequest'
+        description: marginOrderRequest
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfMarginBatchPlaceOrderResult'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfVoid'
+          description: Bad Request
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfVoid'
+          description: Gateway Frequency Limit
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfVoid'
+          description: Server Error
+      security:
+      - ACCESS_TIMESTAMP: []
+      - SECRET_KEY: []
+      - ACCESS_PASSPHRASE: []
+      - ACCESS_SIGN: []
+      - ACCESS_KEY: []
+      summary: batchPlaceOrder
+      tags:
+      - margin_cross_order
+      x-codegen-request-body-name: marginOrderRequest
+  /api/margin/v1/cross/order/cancelOrder:
+    post:
+      deprecated: false
+      description: Margin Cross CancelOrder
+      operationId: marginCrossCancelOrder
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MarginCancelOrderRequest'
+        description: marginCancelOrderRequest
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfMarginBatchCancelOrderResult'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfVoid'
+          description: Bad Request
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfVoid'
+          description: Gateway Frequency Limit
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfVoid'
+          description: Server Error
+      security:
+      - ACCESS_TIMESTAMP: []
+      - SECRET_KEY: []
+      - ACCESS_PASSPHRASE: []
+      - ACCESS_SIGN: []
+      - ACCESS_KEY: []
+      summary: cancelOrder
+      tags:
+      - margin_cross_order
+      x-codegen-request-body-name: marginCancelOrderRequest
+  /api/margin/v1/cross/order/fills:
+    get:
+      deprecated: false
+      description: Margin Cross Fills
+      operationId: marginCrossFills
+      parameters:
+      - description: symbol
+        example: BTCUSDT
+        in: query
+        name: symbol
+        required: true
+        schema:
+          type: string
+      - description: source
+        example: API
+        in: query
+        name: source
+        schema:
+          type: string
+      - description: startTime
+        example: "1678193338000"
+        in: query
+        name: startTime
+        required: true
+        schema:
+          type: string
+      - description: endTime
+        example: "1678193338000"
+        in: query
+        name: endTime
+        schema:
+          type: string
+      - description: orderId
+        example: "32428347234"
+        in: query
+        name: orderId
+        schema:
+          type: string
+      - description: lastFillId
+        in: query
+        name: lastFillId
+        schema:
+          type: string
+      - description: pageSize
+        example: "10"
+        in: query
+        name: pageSize
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfMarginTradeDetailInfoResult'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfVoid'
+          description: Bad Request
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfVoid'
+          description: Gateway Frequency Limit
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfVoid'
+          description: Server Error
+      security:
+      - ACCESS_TIMESTAMP: []
+      - SECRET_KEY: []
+      - ACCESS_PASSPHRASE: []
+      - ACCESS_SIGN: []
+      - ACCESS_KEY: []
+      summary: fills
+      tags:
+      - margin_cross_order
+  /api/margin/v1/cross/order/history:
+    get:
+      deprecated: false
+      description: Margin Cross historyOrders
+      operationId: marginCrossHistoryOrders
+      parameters:
+      - description: symbol
+        example: BTCUSDT
+        in: query
+        name: symbol
+        required: true
+        schema:
+          type: string
+      - description: source
+        example: API
+        in: query
+        name: source
+        schema:
+          type: string
+      - description: startTime
+        example: "1678193338000"
+        in: query
+        name: startTime
+        required: true
+        schema:
+          type: string
+      - description: endTime
+        example: "1678193338000"
+        in: query
+        name: endTime
+        schema:
+          type: string
+      - description: orderId
+        example: "32428347234"
+        in: query
+        name: orderId
+        schema:
+          type: string
+      - description: clientOid
+        example: "123456"
+        in: query
+        name: clientOid
+        schema:
+          type: string
+      - description: minId
+        in: query
+        name: minId
+        schema:
+          type: string
+      - description: pageSize
+        example: "10"
+        in: query
+        name: pageSize
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfMarginOpenOrderInfoResult'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfVoid'
+          description: Bad Request
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfVoid'
+          description: Gateway Frequency Limit
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfVoid'
+          description: Server Error
+      security:
+      - ACCESS_TIMESTAMP: []
+      - SECRET_KEY: []
+      - ACCESS_PASSPHRASE: []
+      - ACCESS_SIGN: []
+      - ACCESS_KEY: []
+      summary: history
+      tags:
+      - margin_cross_order
+  /api/margin/v1/cross/order/openOrders:
+    get:
+      deprecated: false
+      description: Margin Cross openOrders
+      operationId: marginCrossOpenOrders
+      parameters:
+      - description: symbol
+        example: BTCUSDT
+        in: query
+        name: symbol
+        required: true
+        schema:
+          type: string
+      - description: startTime
+        example: "1678193338000"
+        in: query
+        name: startTime
+        required: true
+        schema:
+          type: string
+      - description: endTime
+        example: "1678193338000"
+        in: query
+        name: endTime
+        schema:
+          type: string
+      - description: orderId
+        example: "32428347234"
+        in: query
+        name: orderId
+        schema:
+          type: string
+      - description: clientOid
+        example: "123456"
+        in: query
+        name: clientOid
+        schema:
+          type: string
+      - description: pageSize
+        example: "10"
+        in: query
+        name: pageSize
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfMarginOpenOrderInfoResult'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfVoid'
+          description: Bad Request
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfVoid'
+          description: Gateway Frequency Limit
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfVoid'
+          description: Server Error
+      security:
+      - ACCESS_TIMESTAMP: []
+      - SECRET_KEY: []
+      - ACCESS_PASSPHRASE: []
+      - ACCESS_SIGN: []
+      - ACCESS_KEY: []
+      summary: openOrders
+      tags:
+      - margin_cross_order
+  /api/margin/v1/cross/order/placeOrder:
+    post:
+      deprecated: false
+      description: Margin Cross PlaceOrder
+      operationId: marginCrossPlaceOrder
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MarginOrderRequest'
+        description: marginOrderRequest
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfMarginPlaceOrderResult'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfVoid'
+          description: Bad Request
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfVoid'
+          description: Gateway Frequency Limit
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfVoid'
+          description: Server Error
+      security:
+      - ACCESS_TIMESTAMP: []
+      - SECRET_KEY: []
+      - ACCESS_PASSPHRASE: []
+      - ACCESS_SIGN: []
+      - ACCESS_KEY: []
+      summary: placeOrder
+      tags:
+      - margin_cross_order
+      x-codegen-request-body-name: marginOrderRequest
+  /api/margin/v1/cross/public/interestRateAndLimit:
+    get:
+      deprecated: false
+      description: Get InterestRateAndLimit
+      operationId: marginCrossPublicInterestRateAndLimit
+      parameters:
+      - description: coin
+        example: USDT
+        in: query
+        name: coin
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfListOfMarginCrossRateAndLimitResult'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfVoid'
+          description: Bad Request
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfVoid'
+          description: Gateway Frequency Limit
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfVoid'
+          description: Server Error
+      summary: interestRateAndLimit
+      tags:
+      - margin_cross_public
+  /api/margin/v1/cross/public/tierData:
+    get:
+      deprecated: false
+      description: Get TierData
+      operationId: marginCrossPublicTierData
+      parameters:
+      - description: coin
+        example: USDT
+        in: query
+        name: coin
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfListOfMarginCrossLevelResult'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfVoid'
+          description: Bad Request
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfVoid'
+          description: Gateway Frequency Limit
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfVoid'
+          description: Server Error
+      summary: tierData
+      tags:
+      - margin_cross_public
+  /api/margin/v1/cross/repay/list:
+    get:
+      deprecated: false
+      description: Get liquidation List
+      operationId: crossRepayList
+      parameters:
+      - description: coin
+        example: USDT
+        in: query
+        name: coin
+        schema:
+          type: string
+      - description: repayId
+        example: "32428347234"
+        in: query
+        name: repayId
+        schema:
+          type: string
+      - description: startTime
+        example: "1678193338000"
+        in: query
+        name: startTime
+        required: true
+        schema:
+          type: string
+      - description: endTime
+        example: "1678193338000"
+        in: query
+        name: endTime
+        schema:
+          type: string
+      - description: pageSize
+        example: "10"
+        in: query
+        name: pageSize
+        schema:
+          type: string
+      - description: pageId
+        example: minId
+        in: query
+        name: pageId
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfMarginRepayInfoResult'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfVoid'
+          description: Bad Request
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfVoid'
+          description: Gateway Frequency Limit
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfVoid'
+          description: Server Error
+      security:
+      - ACCESS_TIMESTAMP: []
+      - SECRET_KEY: []
+      - ACCESS_PASSPHRASE: []
+      - ACCESS_SIGN: []
+      - ACCESS_KEY: []
+      summary: list
+      tags:
+      - margin_cross_repay
+  /api/margin/v1/isolated/account/assets:
+    get:
+      deprecated: false
+      description: Get Assets
+      operationId: marginIsolatedAccountAssets
+      parameters:
+      - description: symbol
+        example: BTCUSDT
+        in: query
+        name: symbol
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfListOfMarginIsolatedAssetsPopulationResult'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfVoid'
+          description: Bad Request
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfVoid'
+          description: Gateway Frequency Limit
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfVoid'
+          description: Server Error
+      security:
+      - ACCESS_TIMESTAMP: []
+      - SECRET_KEY: []
+      - ACCESS_PASSPHRASE: []
+      - ACCESS_SIGN: []
+      - ACCESS_KEY: []
+      summary: assets
+      tags:
+      - margin_isolated_account
+  /api/margin/v1/isolated/account/borrow:
+    post:
+      deprecated: false
+      description: borrow
+      operationId: marginIsolatedAccountBorrow
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MarginIsolatedLimitRequest'
+        description: marginIsolatedLimitRequest
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfMarginIsolatedBorrowLimitResult'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfVoid'
+          description: Bad Request
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfVoid'
+          description: Gateway Frequency Limit
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfVoid'
+          description: Server Error
+      security:
+      - ACCESS_TIMESTAMP: []
+      - SECRET_KEY: []
+      - ACCESS_PASSPHRASE: []
+      - ACCESS_SIGN: []
+      - ACCESS_KEY: []
+      summary: borrow
+      tags:
+      - margin_isolated_account
+      x-codegen-request-body-name: marginIsolatedLimitRequest
+  /api/margin/v1/isolated/account/maxBorrowableAmount:
+    post:
+      deprecated: false
+      description: Get MaxBorrowableAmount
+      operationId: marginIsolatedAccountMaxBorrowableAmount
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MarginIsolatedMaxBorrowRequest'
+        description: marginIsolatedMaxBorrowRequest
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfMarginIsolatedMaxBorrowResult'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfVoid'
+          description: Bad Request
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfVoid'
+          description: Gateway Frequency Limit
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfVoid'
+          description: Server Error
+      security:
+      - ACCESS_TIMESTAMP: []
+      - SECRET_KEY: []
+      - ACCESS_PASSPHRASE: []
+      - ACCESS_SIGN: []
+      - ACCESS_KEY: []
+      summary: maxBorrowableAmount
+      tags:
+      - margin_isolated_account
+      x-codegen-request-body-name: marginIsolatedMaxBorrowRequest
+  /api/margin/v1/isolated/account/maxTransferOutAmount:
+    get:
+      deprecated: false
+      description: Get Max TransferOutAmount
+      operationId: marginIsolatedAccountMaxTransferOutAmount
+      parameters:
+      - description: coin
+        example: USDT
+        in: query
+        name: coin
+        required: true
+        schema:
+          type: string
+      - description: symbol
+        example: BTCUSDT
+        in: query
+        name: symbol
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfMarginIsolatedAssetsResult'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfVoid'
+          description: Bad Request
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfVoid'
+          description: Gateway Frequency Limit
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfVoid'
+          description: Server Error
+      security:
+      - ACCESS_TIMESTAMP: []
+      - SECRET_KEY: []
+      - ACCESS_PASSPHRASE: []
+      - ACCESS_SIGN: []
+      - ACCESS_KEY: []
+      summary: maxTransferOutAmount
+      tags:
+      - margin_isolated_account
+  /api/margin/v1/isolated/account/repay:
+    post:
+      deprecated: false
+      description: repay
+      operationId: marginIsolatedAccountRepay
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MarginIsolatedRepayRequest'
+        description: marginIsolatedRepayRequest
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfMarginIsolatedRepayResult'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfVoid'
+          description: Bad Request
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfVoid'
+          description: Gateway Frequency Limit
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfVoid'
+          description: Server Error
+      security:
+      - ACCESS_TIMESTAMP: []
+      - SECRET_KEY: []
+      - ACCESS_PASSPHRASE: []
+      - ACCESS_SIGN: []
+      - ACCESS_KEY: []
+      summary: repay
+      tags:
+      - margin_isolated_account
+      x-codegen-request-body-name: marginIsolatedRepayRequest
+  /api/margin/v1/isolated/account/riskRate:
+    post:
+      deprecated: false
+      description: riskRate
+      operationId: marginIsolatedAccountRiskRate
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MarginIsolatedAssetsRiskRequest'
+        description: marginIsolatedAssetsRiskRequest
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfListOfMarginIsolatedAssetsRiskResult'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfVoid'
+          description: Bad Request
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfVoid'
+          description: Gateway Frequency Limit
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfVoid'
+          description: Server Error
+      security:
+      - ACCESS_TIMESTAMP: []
+      - SECRET_KEY: []
+      - ACCESS_PASSPHRASE: []
+      - ACCESS_SIGN: []
+      - ACCESS_KEY: []
+      summary: riskRate
+      tags:
+      - margin_isolated_account
+      x-codegen-request-body-name: marginIsolatedAssetsRiskRequest
+  /api/margin/v1/isolated/fin/list:
+    get:
+      deprecated: false
+      description: Get finance flow List
+      operationId: isolatedFinList
+      parameters:
+      - description: symbol
+        example: BTCUSDT
+        in: query
+        name: symbol
+        required: true
+        schema:
+          type: string
+      - description: coin
+        example: USDT
+        in: query
+        name: coin
+        schema:
+          type: string
+      - description: marginType
+        example: transfer_in
+        in: query
+        name: marginType
+        schema:
+          type: string
+      - description: startTime
+        example: "1678193338000"
+        in: query
+        name: startTime
+        required: true
+        schema:
+          type: string
+      - description: endTime
+        example: "1678193338000"
+        in: query
+        name: endTime
+        schema:
+          type: string
+      - description: loanId
+        in: query
+        name: loanId
+        schema:
+          type: string
+      - description: pageSize
+        example: "10"
+        in: query
+        name: pageSize
+        schema:
+          type: string
+      - description: pageId
+        in: query
+        name: pageId
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfMarginIsolatedFinFlowResult'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfVoid'
+          description: Bad Request
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfVoid'
+          description: Gateway Frequency Limit
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfVoid'
+          description: Server Error
+      security:
+      - ACCESS_TIMESTAMP: []
+      - SECRET_KEY: []
+      - ACCESS_PASSPHRASE: []
+      - ACCESS_SIGN: []
+      - ACCESS_KEY: []
+      summary: list
+      tags:
+      - margin_isolated_finflow
+  /api/margin/v1/isolated/interest/list:
+    get:
+      deprecated: false
+      description: Get interest List
+      operationId: isolatedInterestList
+      parameters:
+      - description: symbol
+        example: BTCUSDT
+        in: query
+        name: symbol
+        required: true
+        schema:
+          type: string
+      - description: coin
+        example: USDT
+        in: query
+        name: coin
+        schema:
+          type: string
+      - description: startTime
+        example: "1678193138000"
+        in: query
+        name: startTime
+        required: true
+        schema:
+          type: string
+      - description: pageSize
+        example: "10"
+        in: query
+        name: pageSize
+        schema:
+          type: string
+      - description: pageId
+        in: query
+        name: pageId
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfMarginIsolatedInterestInfoResult'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfVoid'
+          description: Bad Request
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfVoid'
+          description: Gateway Frequency Limit
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfVoid'
+          description: Server Error
+      security:
+      - ACCESS_TIMESTAMP: []
+      - SECRET_KEY: []
+      - ACCESS_PASSPHRASE: []
+      - ACCESS_SIGN: []
+      - ACCESS_KEY: []
+      summary: list
+      tags:
+      - margin_isolated_interest
+  /api/margin/v1/isolated/liquidation/list:
+    get:
+      deprecated: false
+      description: Get liquidation List
+      operationId: isolatedLiquidationList
+      parameters:
+      - description: symbol
+        example: BTCUSDT
+        in: query
+        name: symbol
+        required: true
+        schema:
+          type: string
+      - description: startTime
+        example: "1678193138000"
+        in: query
+        name: startTime
+        required: true
+        schema:
+          type: string
+      - description: endTime
+        example: "1678193338000"
+        in: query
+        name: endTime
+        schema:
+          type: string
+      - description: pageSize
+        example: "10"
+        in: query
+        name: pageSize
+        schema:
+          type: string
+      - description: pageId
+        in: query
+        name: pageId
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfMarginIsolatedLiquidationInfoResult'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfVoid'
+          description: Bad Request
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfVoid'
+          description: Gateway Frequency Limit
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfVoid'
+          description: Server Error
+      security:
+      - ACCESS_TIMESTAMP: []
+      - SECRET_KEY: []
+      - ACCESS_PASSPHRASE: []
+      - ACCESS_SIGN: []
+      - ACCESS_KEY: []
+      summary: list
+      tags:
+      - margin_isolated_liquidation
+  /api/margin/v1/isolated/loan/list:
+    get:
+      deprecated: false
+      description: Get Loan List
+      operationId: isolatedLoanList
+      parameters:
+      - description: symbol
+        example: BTCUSDT
+        in: query
+        name: symbol
+        required: true
+        schema:
+          type: string
+      - description: coin
+        example: USDT
+        in: query
+        name: coin
+        schema:
+          type: string
+      - description: startTime
+        example: "1678193338000"
+        in: query
+        name: startTime
+        required: true
+        schema:
+          type: string
+      - description: endTime
+        example: "1678193338000"
+        in: query
+        name: endTime
+        schema:
+          type: string
+      - description: loanId
+        in: query
+        name: loanId
+        schema:
+          type: string
+      - description: pageSize
+        example: "10"
+        in: query
+        name: pageSize
+        schema:
+          type: string
+      - description: pageId
+        in: query
+        name: pageId
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfMarginIsolatedLoanInfoResult'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfVoid'
+          description: Bad Request
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfVoid'
+          description: Gateway Frequency Limit
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfVoid'
+          description: Server Error
+      security:
+      - ACCESS_TIMESTAMP: []
+      - SECRET_KEY: []
+      - ACCESS_PASSPHRASE: []
+      - ACCESS_SIGN: []
+      - ACCESS_KEY: []
+      summary: list
+      tags:
+      - margin_isolated_borrow
+  /api/margin/v1/isolated/order/batchCancelOrder:
+    post:
+      deprecated: false
+      description: Margin Isolated BatchCancelOrder
+      operationId: marginIsolatedBatchCancelOrder
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MarginBatchCancelOrderRequest'
+        description: marginBatchCancelOrderRequest
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfMarginBatchCancelOrderResult'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfVoid'
+          description: Bad Request
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfVoid'
+          description: Gateway Frequency Limit
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfVoid'
+          description: Server Error
+      security:
+      - ACCESS_TIMESTAMP: []
+      - SECRET_KEY: []
+      - ACCESS_PASSPHRASE: []
+      - ACCESS_SIGN: []
+      - ACCESS_KEY: []
+      summary: batchCancelOrder
+      tags:
+      - margin_isolated_order
+      x-codegen-request-body-name: marginBatchCancelOrderRequest
+  /api/margin/v1/isolated/order/batchPlaceOrder:
+    post:
+      deprecated: false
+      description: Margin Isolated PlaceOrder
+      operationId: marginIsolatedBatchPlaceOrder
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MarginBatchOrdersRequest'
+        description: marginOrderRequest
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfMarginBatchPlaceOrderResult'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfVoid'
+          description: Bad Request
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfVoid'
+          description: Gateway Frequency Limit
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfVoid'
+          description: Server Error
+      security:
+      - ACCESS_TIMESTAMP: []
+      - SECRET_KEY: []
+      - ACCESS_PASSPHRASE: []
+      - ACCESS_SIGN: []
+      - ACCESS_KEY: []
+      summary: batchPlaceOrder
+      tags:
+      - margin_isolated_order
+      x-codegen-request-body-name: marginOrderRequest
+  /api/margin/v1/isolated/order/cancelOrder:
+    post:
+      deprecated: false
+      description: Margin Isolated CancelOrder
+      operationId: marginIsolatedCancelOrder
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MarginCancelOrderRequest'
+        description: marginCancelOrderRequest
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfMarginBatchCancelOrderResult'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfVoid'
+          description: Bad Request
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfVoid'
+          description: Gateway Frequency Limit
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfVoid'
+          description: Server Error
+      security:
+      - ACCESS_TIMESTAMP: []
+      - SECRET_KEY: []
+      - ACCESS_PASSPHRASE: []
+      - ACCESS_SIGN: []
+      - ACCESS_KEY: []
+      summary: cancelOrder
+      tags:
+      - margin_isolated_order
+      x-codegen-request-body-name: marginCancelOrderRequest
+  /api/margin/v1/isolated/order/fills:
+    get:
+      deprecated: false
+      description: Margin Isolated Fills
+      operationId: marginIsolatedFills
+      parameters:
+      - description: symbol
+        example: BTCUSDT
+        in: query
+        name: symbol
+        schema:
+          type: string
+      - description: startTime
+        example: "1678193338000"
+        in: query
+        name: startTime
+        required: true
+        schema:
+          type: string
+      - description: endTime
+        example: "1678193338000"
+        in: query
+        name: endTime
+        schema:
+          type: string
+      - description: orderId
+        example: "32428347234"
+        in: query
+        name: orderId
+        schema:
+          type: string
+      - description: lastFillId
+        in: query
+        name: lastFillId
+        schema:
+          type: string
+      - description: pageSize
+        example: "10"
+        in: query
+        name: pageSize
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfMarginTradeDetailInfoResult'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfVoid'
+          description: Bad Request
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfVoid'
+          description: Gateway Frequency Limit
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfVoid'
+          description: Server Error
+      security:
+      - ACCESS_TIMESTAMP: []
+      - SECRET_KEY: []
+      - ACCESS_PASSPHRASE: []
+      - ACCESS_SIGN: []
+      - ACCESS_KEY: []
+      summary: fills
+      tags:
+      - margin_isolated_order
+  /api/margin/v1/isolated/order/history:
+    get:
+      deprecated: false
+      description: Margin Isolated historyOrders
+      operationId: marginIsolatedHistoryOrders
+      parameters:
+      - description: symbol
+        example: BTCUSDT
+        in: query
+        name: symbol
+        schema:
+          type: string
+      - description: source
+        example: API
+        in: query
+        name: source
+        schema:
+          type: string
+      - description: startTime
+        example: "1678193338000"
+        in: query
+        name: startTime
+        required: true
+        schema:
+          type: string
+      - description: endTime
+        example: "1678193338000"
+        in: query
+        name: endTime
+        schema:
+          type: string
+      - description: orderId
+        example: "32428347234"
+        in: query
+        name: orderId
+        schema:
+          type: string
+      - description: clientOid
+        example: "123456"
+        in: query
+        name: clientOid
+        schema:
+          type: string
+      - description: pageSize
+        example: "10"
+        in: query
+        name: pageSize
+        schema:
+          type: string
+      - description: minId
+        in: query
+        name: minId
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfMarginOpenOrderInfoResult'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfVoid'
+          description: Bad Request
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfVoid'
+          description: Gateway Frequency Limit
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfVoid'
+          description: Server Error
+      security:
+      - ACCESS_TIMESTAMP: []
+      - SECRET_KEY: []
+      - ACCESS_PASSPHRASE: []
+      - ACCESS_SIGN: []
+      - ACCESS_KEY: []
+      summary: history
+      tags:
+      - margin_isolated_order
+  /api/margin/v1/isolated/order/openOrders:
+    get:
+      deprecated: false
+      description: Margin Isolated openOrders
+      operationId: marginIsolatedOpenOrders
+      parameters:
+      - description: symbol
+        example: BTCUSDT
+        in: query
+        name: symbol
+        required: true
+        schema:
+          type: string
+      - description: startTime
+        example: "1678193338000"
+        in: query
+        name: startTime
+        required: true
+        schema:
+          type: string
+      - description: endTime
+        example: "1678193338000"
+        in: query
+        name: endTime
+        schema:
+          type: string
+      - description: orderId
+        example: "32428347234"
+        in: query
+        name: orderId
+        schema:
+          type: string
+      - description: clientOid
+        example: "123456"
+        in: query
+        name: clientOid
+        schema:
+          type: string
+      - description: pageSize
+        example: "10"
+        in: query
+        name: pageSize
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfMarginOpenOrderInfoResult'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfVoid'
+          description: Bad Request
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfVoid'
+          description: Gateway Frequency Limit
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfVoid'
+          description: Server Error
+      security:
+      - ACCESS_TIMESTAMP: []
+      - SECRET_KEY: []
+      - ACCESS_PASSPHRASE: []
+      - ACCESS_SIGN: []
+      - ACCESS_KEY: []
+      summary: openOrders
+      tags:
+      - margin_isolated_order
+  /api/margin/v1/isolated/order/placeOrder:
+    post:
+      deprecated: false
+      description: Margin Isolated PlaceOrder
+      operationId: marginIsolatedPlaceOrder
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MarginOrderRequest'
+        description: marginOrderRequest
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfMarginPlaceOrderResult'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfVoid'
+          description: Bad Request
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfVoid'
+          description: Gateway Frequency Limit
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfVoid'
+          description: Server Error
+      security:
+      - ACCESS_TIMESTAMP: []
+      - SECRET_KEY: []
+      - ACCESS_PASSPHRASE: []
+      - ACCESS_SIGN: []
+      - ACCESS_KEY: []
+      summary: placeOrder
+      tags:
+      - margin_isolated_order
+      x-codegen-request-body-name: marginOrderRequest
+  /api/margin/v1/isolated/public/interestRateAndLimit:
+    get:
+      deprecated: false
+      description: Get InterestRateAndLimit
+      operationId: marginIsolatedPublicInterestRateAndLimit
+      parameters:
+      - description: symbol
+        example: BTCUSDT
+        in: query
+        name: symbol
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfListOfMarginIsolatedRateAndLimitResult'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfVoid'
+          description: Bad Request
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfVoid'
+          description: Gateway Frequency Limit
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfVoid'
+          description: Server Error
+      summary: interestRateAndLimit
+      tags:
+      - margin_isolated_public
+  /api/margin/v1/isolated/public/tierData:
+    get:
+      deprecated: false
+      description: Get TierData
+      operationId: marginIsolatedPublicTierData
+      parameters:
+      - description: symbol
+        example: BTCUSDT
+        in: query
+        name: symbol
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfListOfMarginIsolatedLevelResult'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfVoid'
+          description: Bad Request
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfVoid'
+          description: Gateway Frequency Limit
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfVoid'
+          description: Server Error
+      summary: tierData
+      tags:
+      - margin_isolated_public
+  /api/margin/v1/isolated/repay/list:
+    get:
+      deprecated: false
+      description: Get liquidation List
+      operationId: isolateRepayList
+      parameters:
+      - description: symbol
+        example: BTCUSDT
+        in: query
+        name: symbol
+        required: true
+        schema:
+          type: string
+      - description: coin
+        example: USDT
+        in: query
+        name: coin
+        schema:
+          type: string
+      - description: repayId
+        in: query
+        name: repayId
+        schema:
+          type: string
+      - description: startTime
+        example: "1678193338000"
+        in: query
+        name: startTime
+        required: true
+        schema:
+          type: string
+      - description: endTime
+        example: "1678193338000"
+        in: query
+        name: endTime
+        schema:
+          type: string
+      - description: pageSize
+        example: "10"
+        in: query
+        name: pageSize
+        schema:
+          type: string
+      - description: pageId
+        in: query
+        name: pageId
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfMarginIsolatedRepayInfoResult'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfVoid'
+          description: Bad Request
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfVoid'
+          description: Gateway Frequency Limit
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfVoid'
+          description: Server Error
+      security:
+      - ACCESS_TIMESTAMP: []
+      - SECRET_KEY: []
+      - ACCESS_PASSPHRASE: []
+      - ACCESS_SIGN: []
+      - ACCESS_KEY: []
+      summary: list
+      tags:
+      - margin_isolated_repay
+  /api/margin/v1/public/currencies:
+    get:
+      deprecated: false
+      description: Get Currencies
+      operationId: marginPublicCurrencies
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfListOfMarginSystemResult'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfVoid'
+          description: Bad Request
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfVoid'
+          description: Gateway Frequency Limit
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfVoid'
+          description: Server Error
+      summary: currencies
+      tags:
+      - margin_public
+components:
+  schemas:
+    ApiResponseResultOfListOfMarginCrossAssetsPopulationResult:
+      example:
+        msg: success
+        requestTime: 1675044340493
+        code: "00000"
+        data: {}
+      properties:
+        code:
+          description: code
+          example: "00000"
+          type: string
+        data:
+          description: data
+          example: {}
+          items:
+            $ref: '#/components/schemas/MarginCrossAssetsPopulationResult'
+          type: array
+        msg:
+          description: msg
+          example: success
+          type: string
+        requestTime:
+          description: requestTime
+          example: 1675044340493
+          format: int64
+          type: integer
+      title: ApiResponseResultOfListOfMarginCrossAssetsPopulationResult
+      type: object
+    ApiResponseResultOfListOfMarginCrossLevelResult:
+      example:
+        msg: success
+        requestTime: 1675044340493
+        code: "00000"
+        data: {}
+      properties:
+        code:
+          description: code
+          example: "00000"
+          type: string
+        data:
+          description: data
+          example: {}
+          items:
+            $ref: '#/components/schemas/MarginCrossLevelResult'
+          type: array
+        msg:
+          description: msg
+          example: success
+          type: string
+        requestTime:
+          description: requestTime
+          example: 1675044340493
+          format: int64
+          type: integer
+      title: ApiResponseResultOfListOfMarginCrossLevelResult
+      type: object
+    ApiResponseResultOfListOfMarginCrossRateAndLimitResult:
+      example:
+        msg: success
+        requestTime: 1675044340493
+        code: "00000"
+        data: {}
+      properties:
+        code:
+          description: code
+          example: "00000"
+          type: string
+        data:
+          description: data
+          example: {}
+          items:
+            $ref: '#/components/schemas/MarginCrossRateAndLimitResult'
+          type: array
+        msg:
+          description: msg
+          example: success
+          type: string
+        requestTime:
+          description: requestTime
+          example: 1675044340493
+          format: int64
+          type: integer
+      title: ApiResponseResultOfListOfMarginCrossRateAndLimitResult
+      type: object
+    ApiResponseResultOfListOfMarginIsolatedAssetsPopulationResult:
+      example:
+        msg: success
+        requestTime: 1675044340493
+        code: "00000"
+        data: {}
+      properties:
+        code:
+          description: code
+          example: "00000"
+          type: string
+        data:
+          description: data
+          example: {}
+          items:
+            $ref: '#/components/schemas/MarginIsolatedAssetsPopulationResult'
+          type: array
+        msg:
+          description: msg
+          example: success
+          type: string
+        requestTime:
+          description: requestTime
+          example: 1675044340493
+          format: int64
+          type: integer
+      title: ApiResponseResultOfListOfMarginIsolatedAssetsPopulationResult
+      type: object
+    ApiResponseResultOfListOfMarginIsolatedAssetsRiskResult:
+      example:
+        msg: success
+        requestTime: 1675044340493
+        code: "00000"
+        data: {}
+      properties:
+        code:
+          description: code
+          example: "00000"
+          type: string
+        data:
+          description: data
+          example: {}
+          items:
+            $ref: '#/components/schemas/MarginIsolatedAssetsRiskResult'
+          type: array
+        msg:
+          description: msg
+          example: success
+          type: string
+        requestTime:
+          description: requestTime
+          example: 1675044340493
+          format: int64
+          type: integer
+      title: ApiResponseResultOfListOfMarginIsolatedAssetsRiskResult
+      type: object
+    ApiResponseResultOfListOfMarginIsolatedLevelResult:
+      example:
+        msg: success
+        requestTime: 1675044340493
+        code: "00000"
+        data: {}
+      properties:
+        code:
+          description: code
+          example: "00000"
+          type: string
+        data:
+          description: data
+          example: {}
+          items:
+            $ref: '#/components/schemas/MarginIsolatedLevelResult'
+          type: array
+        msg:
+          description: msg
+          example: success
+          type: string
+        requestTime:
+          description: requestTime
+          example: 1675044340493
+          format: int64
+          type: integer
+      title: ApiResponseResultOfListOfMarginIsolatedLevelResult
+      type: object
+    ApiResponseResultOfListOfMarginIsolatedRateAndLimitResult:
+      example:
+        msg: success
+        requestTime: 1675044340493
+        code: "00000"
+        data: {}
+      properties:
+        code:
+          description: code
+          example: "00000"
+          type: string
+        data:
+          description: data
+          example: {}
+          items:
+            $ref: '#/components/schemas/MarginIsolatedRateAndLimitResult'
+          type: array
+        msg:
+          description: msg
+          example: success
+          type: string
+        requestTime:
+          description: requestTime
+          example: 1675044340493
+          format: int64
+          type: integer
+      title: ApiResponseResultOfListOfMarginIsolatedRateAndLimitResult
+      type: object
+    ApiResponseResultOfListOfMarginSystemResult:
+      example:
+        msg: success
+        requestTime: 1675044340493
+        code: "00000"
+        data: {}
+      properties:
+        code:
+          description: code
+          example: "00000"
+          type: string
+        data:
+          description: data
+          example: {}
+          items:
+            $ref: '#/components/schemas/MarginSystemResult'
+          type: array
+        msg:
+          description: msg
+          example: success
+          type: string
+        requestTime:
+          description: requestTime
+          example: 1675044340493
+          format: int64
+          type: integer
+      title: ApiResponseResultOfListOfMarginSystemResult
+      type: object
+    ApiResponseResultOfMarginBatchCancelOrderResult:
+      example:
+        msg: success
+        requestTime: 1675044340493
+        code: "00000"
+        data:
+          failure:
+          - orderId: orderId
+            clientOid: clientOid
+            errorMsg: errorMsg
+          - orderId: orderId
+            clientOid: clientOid
+            errorMsg: errorMsg
+          resultList:
+          - orderId: orderId
+            clientOid: clientOid
+          - orderId: orderId
+            clientOid: clientOid
+      properties:
+        code:
+          description: code
+          example: "00000"
+          type: string
+        data:
+          $ref: '#/components/schemas/MarginBatchCancelOrderResult'
+        msg:
+          description: msg
+          example: success
+          type: string
+        requestTime:
+          description: requestTime
+          example: 1675044340493
+          format: int64
+          type: integer
+      title: ApiResponseResultOfMarginBatchCancelOrderResult
+      type: object
+    ApiResponseResultOfMarginBatchPlaceOrderResult:
+      example:
+        msg: success
+        requestTime: 1675044340493
+        code: "00000"
+        data:
+          failure:
+          - clientOid: clientOid
+            errorMsg: errorMsg
+          - clientOid: clientOid
+            errorMsg: errorMsg
+          resultList:
+          - orderId: orderId
+            clientOid: clientOid
+          - orderId: orderId
+            clientOid: clientOid
+      properties:
+        code:
+          description: code
+          example: "00000"
+          type: string
+        data:
+          $ref: '#/components/schemas/MarginBatchPlaceOrderResult'
+        msg:
+          description: msg
+          example: success
+          type: string
+        requestTime:
+          description: requestTime
+          example: 1675044340493
+          format: int64
+          type: integer
+      title: ApiResponseResultOfMarginBatchPlaceOrderResult
+      type: object
+    ApiResponseResultOfMarginCrossAssetsResult:
+      example:
+        msg: success
+        requestTime: 1675044340493
+        code: "00000"
+        data:
+          maxTransferOutAmount: maxTransferOutAmount
+          coin: coin
+      properties:
+        code:
+          description: code
+          example: "00000"
+          type: string
+        data:
+          $ref: '#/components/schemas/MarginCrossAssetsResult'
+        msg:
+          description: msg
+          example: success
+          type: string
+        requestTime:
+          description: requestTime
+          example: 1675044340493
+          format: int64
+          type: integer
+      title: ApiResponseResultOfMarginCrossAssetsResult
+      type: object
+    ApiResponseResultOfMarginCrossAssetsRiskResult:
+      example:
+        msg: success
+        requestTime: 1675044340493
+        code: "00000"
+        data:
+          riskRate: riskRate
+      properties:
+        code:
+          description: code
+          example: "00000"
+          type: string
+        data:
+          $ref: '#/components/schemas/MarginCrossAssetsRiskResult'
+        msg:
+          description: msg
+          example: success
+          type: string
+        requestTime:
+          description: requestTime
+          example: 1675044340493
+          format: int64
+          type: integer
+      title: ApiResponseResultOfMarginCrossAssetsRiskResult
+      type: object
+    ApiResponseResultOfMarginCrossBorrowLimitResult:
+      example:
+        msg: success
+        requestTime: 1675044340493
+        code: "00000"
+        data:
+          borrowAmount: borrowAmount
+          clientOid: clientOid
+          coin: coin
+      properties:
+        code:
+          description: code
+          example: "00000"
+          type: string
+        data:
+          $ref: '#/components/schemas/MarginCrossBorrowLimitResult'
+        msg:
+          description: msg
+          example: success
+          type: string
+        requestTime:
+          description: requestTime
+          example: 1675044340493
+          format: int64
+          type: integer
+      title: ApiResponseResultOfMarginCrossBorrowLimitResult
+      type: object
+    ApiResponseResultOfMarginCrossFinFlowResult:
+      example:
+        msg: success
+        requestTime: 1675044340493
+        code: "00000"
+        data:
+          maxId: maxId
+          minId: minId
+          resultList:
+          - amount: amount
+            balance: balance
+            marginType: marginType
+            fee: fee
+            marginId: marginId
+            ctime: ctime
+            coin: coin
+          - amount: amount
+            balance: balance
+            marginType: marginType
+            fee: fee
+            marginId: marginId
+            ctime: ctime
+            coin: coin
+      properties:
+        code:
+          description: code
+          example: "00000"
+          type: string
+        data:
+          $ref: '#/components/schemas/MarginCrossFinFlowResult'
+        msg:
+          description: msg
+          example: success
+          type: string
+        requestTime:
+          description: requestTime
+          example: 1675044340493
+          format: int64
+          type: integer
+      title: ApiResponseResultOfMarginCrossFinFlowResult
+      type: object
+    ApiResponseResultOfMarginCrossMaxBorrowResult:
+      example:
+        msg: success
+        requestTime: 1675044340493
+        code: "00000"
+        data:
+          maxBorrowableAmount: maxBorrowableAmount
+          coin: coin
+      properties:
+        code:
+          description: code
+          example: "00000"
+          type: string
+        data:
+          $ref: '#/components/schemas/MarginCrossMaxBorrowResult'
+        msg:
+          description: msg
+          example: success
+          type: string
+        requestTime:
+          description: requestTime
+          example: 1675044340493
+          format: int64
+          type: integer
+      title: ApiResponseResultOfMarginCrossMaxBorrowResult
+      type: object
+    ApiResponseResultOfMarginCrossRepayResult:
+      example:
+        msg: success
+        requestTime: 1675044340493
+        code: "00000"
+        data:
+          remainDebtAmount: remainDebtAmount
+          repayAmount: repayAmount
+          clientOid: clientOid
+          coin: coin
+      properties:
+        code:
+          description: code
+          example: "00000"
+          type: string
+        data:
+          $ref: '#/components/schemas/MarginCrossRepayResult'
+        msg:
+          description: msg
+          example: success
+          type: string
+        requestTime:
+          description: requestTime
+          example: 1675044340493
+          format: int64
+          type: integer
+      title: ApiResponseResultOfMarginCrossRepayResult
+      type: object
+    ApiResponseResultOfMarginInterestInfoResult:
+      example:
+        msg: success
+        requestTime: 1675044340493
+        code: "00000"
+        data:
+          maxId: maxId
+          minId: minId
+          resultList:
+          - interestRate: interestRate
+            amount: amount
+            interestId: interestId
+            loanCoin: loanCoin
+            ctime: ctime
+            type: type
+            interestCoin: interestCoin
+          - interestRate: interestRate
+            amount: amount
+            interestId: interestId
+            loanCoin: loanCoin
+            ctime: ctime
+            type: type
+            interestCoin: interestCoin
+      properties:
+        code:
+          description: code
+          example: "00000"
+          type: string
+        data:
+          $ref: '#/components/schemas/MarginInterestInfoResult'
+        msg:
+          description: msg
+          example: success
+          type: string
+        requestTime:
+          description: requestTime
+          example: 1675044340493
+          format: int64
+          type: integer
+      title: ApiResponseResultOfMarginInterestInfoResult
+      type: object
+    ApiResponseResultOfMarginIsolatedAssetsResult:
+      example:
+        msg: success
+        requestTime: 1675044340493
+        code: "00000"
+        data:
+          maxTransferOutAmount: maxTransferOutAmount
+          symbol: symbol
+          coin: coin
+      properties:
+        code:
+          description: code
+          example: "00000"
+          type: string
+        data:
+          $ref: '#/components/schemas/MarginIsolatedAssetsResult'
+        msg:
+          description: msg
+          example: success
+          type: string
+        requestTime:
+          description: requestTime
+          example: 1675044340493
+          format: int64
+          type: integer
+      title: ApiResponseResultOfMarginIsolatedAssetsResult
+      type: object
+    ApiResponseResultOfMarginIsolatedBorrowLimitResult:
+      example:
+        msg: success
+        requestTime: 1675044340493
+        code: "00000"
+        data:
+          symbol: symbol
+          borrowAmount: borrowAmount
+          clientOid: clientOid
+          coin: coin
+      properties:
+        code:
+          description: code
+          example: "00000"
+          type: string
+        data:
+          $ref: '#/components/schemas/MarginIsolatedBorrowLimitResult'
+        msg:
+          description: msg
+          example: success
+          type: string
+        requestTime:
+          description: requestTime
+          example: 1675044340493
+          format: int64
+          type: integer
+      title: ApiResponseResultOfMarginIsolatedBorrowLimitResult
+      type: object
+    ApiResponseResultOfMarginIsolatedFinFlowResult:
+      example:
+        msg: success
+        requestTime: 1675044340493
+        code: "00000"
+        data:
+          maxId: maxId
+          minId: minId
+          resultList:
+          - symbol: symbol
+            amount: amount
+            balance: balance
+            marginType: marginType
+            fee: fee
+            marginId: marginId
+            ctime: ctime
+            coin: coin
+          - symbol: symbol
+            amount: amount
+            balance: balance
+            marginType: marginType
+            fee: fee
+            marginId: marginId
+            ctime: ctime
+            coin: coin
+      properties:
+        code:
+          description: code
+          example: "00000"
+          type: string
+        data:
+          $ref: '#/components/schemas/MarginIsolatedFinFlowResult'
+        msg:
+          description: msg
+          example: success
+          type: string
+        requestTime:
+          description: requestTime
+          example: 1675044340493
+          format: int64
+          type: integer
+      title: ApiResponseResultOfMarginIsolatedFinFlowResult
+      type: object
+    ApiResponseResultOfMarginIsolatedInterestInfoResult:
+      example:
+        msg: success
+        requestTime: 1675044340493
+        code: "00000"
+        data:
+          maxId: maxId
+          minId: minId
+          resultList:
+          - interestRate: interestRate
+            symbol: symbol
+            amount: amount
+            interestId: interestId
+            loanCoin: loanCoin
+            ctime: ctime
+            type: type
+            interestCoin: interestCoin
+          - interestRate: interestRate
+            symbol: symbol
+            amount: amount
+            interestId: interestId
+            loanCoin: loanCoin
+            ctime: ctime
+            type: type
+            interestCoin: interestCoin
+      properties:
+        code:
+          description: code
+          example: "00000"
+          type: string
+        data:
+          $ref: '#/components/schemas/MarginIsolatedInterestInfoResult'
+        msg:
+          description: msg
+          example: success
+          type: string
+        requestTime:
+          description: requestTime
+          example: 1675044340493
+          format: int64
+          type: integer
+      title: ApiResponseResultOfMarginIsolatedInterestInfoResult
+      type: object
+    ApiResponseResultOfMarginIsolatedLiquidationInfoResult:
+      example:
+        msg: success
+        requestTime: 1675044340493
+        code: "00000"
+        data:
+          maxId: maxId
+          minId: minId
+          resultList:
+          - symbol: symbol
+            totalAssets: totalAssets
+            liqFee: liqFee
+            totalDebt: totalDebt
+            ctime: ctime
+            liqEndTime: liqEndTime
+            liqStartTime: liqStartTime
+            liqId: liqId
+            liqRisk: liqRisk
+          - symbol: symbol
+            totalAssets: totalAssets
+            liqFee: liqFee
+            totalDebt: totalDebt
+            ctime: ctime
+            liqEndTime: liqEndTime
+            liqStartTime: liqStartTime
+            liqId: liqId
+            liqRisk: liqRisk
+      properties:
+        code:
+          description: code
+          example: "00000"
+          type: string
+        data:
+          $ref: '#/components/schemas/MarginIsolatedLiquidationInfoResult'
+        msg:
+          description: msg
+          example: success
+          type: string
+        requestTime:
+          description: requestTime
+          example: 1675044340493
+          format: int64
+          type: integer
+      title: ApiResponseResultOfMarginIsolatedLiquidationInfoResult
+      type: object
+    ApiResponseResultOfMarginIsolatedLoanInfoResult:
+      example:
+        msg: success
+        requestTime: 1675044340493
+        code: "00000"
+        data:
+          maxId: maxId
+          minId: minId
+          resultList:
+          - symbol: symbol
+            amount: amount
+            ctime: ctime
+            type: type
+            loanId: loanId
+            coin: coin
+          - symbol: symbol
+            amount: amount
+            ctime: ctime
+            type: type
+            loanId: loanId
+            coin: coin
+      properties:
+        code:
+          description: code
+          example: "00000"
+          type: string
+        data:
+          $ref: '#/components/schemas/MarginIsolatedLoanInfoResult'
+        msg:
+          description: msg
+          example: success
+          type: string
+        requestTime:
+          description: requestTime
+          example: 1675044340493
+          format: int64
+          type: integer
+      title: ApiResponseResultOfMarginIsolatedLoanInfoResult
+      type: object
+    ApiResponseResultOfMarginIsolatedMaxBorrowResult:
+      example:
+        msg: success
+        requestTime: 1675044340493
+        code: "00000"
+        data:
+          symbol: symbol
+          maxBorrowableAmount: maxBorrowableAmount
+          coin: coin
+      properties:
+        code:
+          description: code
+          example: "00000"
+          type: string
+        data:
+          $ref: '#/components/schemas/MarginIsolatedMaxBorrowResult'
+        msg:
+          description: msg
+          example: success
+          type: string
+        requestTime:
+          description: requestTime
+          example: 1675044340493
+          format: int64
+          type: integer
+      title: ApiResponseResultOfMarginIsolatedMaxBorrowResult
+      type: object
+    ApiResponseResultOfMarginIsolatedRepayInfoResult:
+      example:
+        msg: success
+        requestTime: 1675044340493
+        code: "00000"
+        data:
+          maxId: maxId
+          minId: minId
+          resultList:
+          - symbol: symbol
+            totalAmount: totalAmount
+            amount: amount
+            interest: interest
+            repayId: repayId
+            ctime: ctime
+            type: type
+            coin: coin
+          - symbol: symbol
+            totalAmount: totalAmount
+            amount: amount
+            interest: interest
+            repayId: repayId
+            ctime: ctime
+            type: type
+            coin: coin
+      properties:
+        code:
+          description: code
+          example: "00000"
+          type: string
+        data:
+          $ref: '#/components/schemas/MarginIsolatedRepayInfoResult'
+        msg:
+          description: msg
+          example: success
+          type: string
+        requestTime:
+          description: requestTime
+          example: 1675044340493
+          format: int64
+          type: integer
+      title: ApiResponseResultOfMarginIsolatedRepayInfoResult
+      type: object
+    ApiResponseResultOfMarginIsolatedRepayResult:
+      example:
+        msg: success
+        requestTime: 1675044340493
+        code: "00000"
+        data:
+          symbol: symbol
+          remainDebtAmount: remainDebtAmount
+          repayAmount: repayAmount
+          clientOid: clientOid
+          coin: coin
+      properties:
+        code:
+          description: code
+          example: "00000"
+          type: string
+        data:
+          $ref: '#/components/schemas/MarginIsolatedRepayResult'
+        msg:
+          description: msg
+          example: success
+          type: string
+        requestTime:
+          description: requestTime
+          example: 1675044340493
+          format: int64
+          type: integer
+      title: ApiResponseResultOfMarginIsolatedRepayResult
+      type: object
+    ApiResponseResultOfMarginLiquidationInfoResult:
+      example:
+        msg: success
+        requestTime: 1675044340493
+        code: "00000"
+        data:
+          maxId: maxId
+          minId: minId
+          resultList:
+          - totalAssets: totalAssets
+            liqFee: liqFee
+            totalDebt: totalDebt
+            ctime: ctime
+            liqEndTime: liqEndTime
+            liqStartTime: liqStartTime
+            liqId: liqId
+            liqRisk: liqRisk
+          - totalAssets: totalAssets
+            liqFee: liqFee
+            totalDebt: totalDebt
+            ctime: ctime
+            liqEndTime: liqEndTime
+            liqStartTime: liqStartTime
+            liqId: liqId
+            liqRisk: liqRisk
+      properties:
+        code:
+          description: code
+          example: "00000"
+          type: string
+        data:
+          $ref: '#/components/schemas/MarginLiquidationInfoResult'
+        msg:
+          description: msg
+          example: success
+          type: string
+        requestTime:
+          description: requestTime
+          example: 1675044340493
+          format: int64
+          type: integer
+      title: ApiResponseResultOfMarginLiquidationInfoResult
+      type: object
+    ApiResponseResultOfMarginLoanInfoResult:
+      example:
+        msg: success
+        requestTime: 1675044340493
+        code: "00000"
+        data:
+          maxId: maxId
+          minId: minId
+          resultList:
+          - amount: amount
+            ctime: ctime
+            type: type
+            loanId: loanId
+            coin: coin
+          - amount: amount
+            ctime: ctime
+            type: type
+            loanId: loanId
+            coin: coin
+      properties:
+        code:
+          description: code
+          example: "00000"
+          type: string
+        data:
+          $ref: '#/components/schemas/MarginLoanInfoResult'
+        msg:
+          description: msg
+          example: success
+          type: string
+        requestTime:
+          description: requestTime
+          example: 1675044340493
+          format: int64
+          type: integer
+      title: ApiResponseResultOfMarginLoanInfoResult
+      type: object
+    ApiResponseResultOfMarginOpenOrderInfoResult:
+      example:
+        msg: success
+        requestTime: 1675044340493
+        code: "00000"
+        data:
+          maxId: maxId
+          orderList:
+          - orderType: orderType
+            symbol: symbol
+            side: side
+            loanType: loanType
+            orderId: orderId
+            fillTotalAmount: fillTotalAmount
+            source: source
+            fillPrice: fillPrice
+            baseQuantity: baseQuantity
+            price: price
+            quoteAmount: quoteAmount
+            ctime: ctime
+            fillQuantity: fillQuantity
+            clientOid: clientOid
+            status: status
+          - orderType: orderType
+            symbol: symbol
+            side: side
+            loanType: loanType
+            orderId: orderId
+            fillTotalAmount: fillTotalAmount
+            source: source
+            fillPrice: fillPrice
+            baseQuantity: baseQuantity
+            price: price
+            quoteAmount: quoteAmount
+            ctime: ctime
+            fillQuantity: fillQuantity
+            clientOid: clientOid
+            status: status
+          minId: minId
+      properties:
+        code:
+          description: code
+          example: "00000"
+          type: string
+        data:
+          $ref: '#/components/schemas/MarginOpenOrderInfoResult'
+        msg:
+          description: msg
+          example: success
+          type: string
+        requestTime:
+          description: requestTime
+          example: 1675044340493
+          format: int64
+          type: integer
+      title: ApiResponseResultOfMarginOpenOrderInfoResult
+      type: object
+    ApiResponseResultOfMarginPlaceOrderResult:
+      example:
+        msg: success
+        requestTime: 1675044340493
+        code: "00000"
+        data:
+          orderId: orderId
+          clientOid: clientOid
+      properties:
+        code:
+          description: code
+          example: "00000"
+          type: string
+        data:
+          $ref: '#/components/schemas/MarginPlaceOrderResult'
+        msg:
+          description: msg
+          example: success
+          type: string
+        requestTime:
+          description: requestTime
+          example: 1675044340493
+          format: int64
+          type: integer
+      title: ApiResponseResultOfMarginPlaceOrderResult
+      type: object
+    ApiResponseResultOfMarginRepayInfoResult:
+      example:
+        msg: success
+        requestTime: 1675044340493
+        code: "00000"
+        data:
+          maxId: maxId
+          minId: minId
+          resultList:
+          - totalAmount: totalAmount
+            amount: amount
+            interest: interest
+            repayId: repayId
+            ctime: ctime
+            type: type
+            coin: coin
+          - totalAmount: totalAmount
+            amount: amount
+            interest: interest
+            repayId: repayId
+            ctime: ctime
+            type: type
+            coin: coin
+      properties:
+        code:
+          description: code
+          example: "00000"
+          type: string
+        data:
+          $ref: '#/components/schemas/MarginRepayInfoResult'
+        msg:
+          description: msg
+          example: success
+          type: string
+        requestTime:
+          description: requestTime
+          example: 1675044340493
+          format: int64
+          type: integer
+      title: ApiResponseResultOfMarginRepayInfoResult
+      type: object
+    ApiResponseResultOfMarginTradeDetailInfoResult:
+      example:
+        msg: success
+        requestTime: 1675044340493
+        code: "00000"
+        data:
+          maxId: maxId
+          minId: minId
+          fills:
+          - orderType: orderType
+            fees: fees
+            side: side
+            orderId: orderId
+            fillId: fillId
+            ctime: ctime
+            fillTotalAmount: fillTotalAmount
+            fillQuantity: fillQuantity
+            fillPrice: fillPrice
+            feeCcy: feeCcy
+          - orderType: orderType
+            fees: fees
+            side: side
+            orderId: orderId
+            fillId: fillId
+            ctime: ctime
+            fillTotalAmount: fillTotalAmount
+            fillQuantity: fillQuantity
+            fillPrice: fillPrice
+            feeCcy: feeCcy
+      properties:
+        code:
+          description: code
+          example: "00000"
+          type: string
+        data:
+          $ref: '#/components/schemas/MarginTradeDetailInfoResult'
+        msg:
+          description: msg
+          example: success
+          type: string
+        requestTime:
+          description: requestTime
+          example: 1675044340493
+          format: int64
+          type: integer
+      title: ApiResponseResultOfMarginTradeDetailInfoResult
+      type: object
+    ApiResponseResultOfVoid:
+      example:
+        msg: success
+        requestTime: 1675044340493
+        code: "00000"
+      properties:
+        code:
+          description: code
+          example: "00000"
+          type: string
+        msg:
+          description: msg
+          example: success
+          type: string
+        requestTime:
+          description: requestTime
+          example: 1675044340493
+          format: int64
+          type: integer
+      title: ApiResponseResultOfVoid
+      type: object
+    MarginBatchCancelOrderRequest:
+      example:
+        symbol: BTCUSDT_SPBL
+        clientOids:
+        - myId001
+        orderIds:
+        - "34324234234234324"
+      properties:
+        clientOids:
+          description: clientOids
+          example:
+          - myId001
+          items:
+            type: string
+          type: array
+        orderIds:
+          description: orderIds
+          example:
+          - "34324234234234324"
+          items:
+            type: string
+          type: array
+        symbol:
+          description: symbol
+          example: BTCUSDT_SPBL
+          type: string
+      required:
+      - symbol
+      title: MarginBatchCancelOrderRequest
+      type: object
+    MarginBatchCancelOrderResult:
+      example:
+        failure:
+        - orderId: orderId
+          clientOid: clientOid
+          errorMsg: errorMsg
+        - orderId: orderId
+          clientOid: clientOid
+          errorMsg: errorMsg
+        resultList:
+        - orderId: orderId
+          clientOid: clientOid
+        - orderId: orderId
+          clientOid: clientOid
+      properties:
+        failure:
+          items:
+            $ref: '#/components/schemas/MarginCancelOrderFailureResult'
+          type: array
+        resultList:
+          items:
+            $ref: '#/components/schemas/MarginCancelOrderResult'
+          type: array
+      title: MarginBatchCancelOrderResult
+      type: object
+    MarginBatchOrdersRequest:
+      example:
+        symbol: BTCUSDT_SPBL
+        ip: ip
+        channelApiCode: channelApiCode
+        orderList:
+        - orderType: limit/market
+          symbol: BTCUSDT_SPBL
+          side: sell/buy
+          loanType: normal/autoLoan/autoRepay
+          baseQuantity: "0.2"
+          price: "21000"
+          ip: ip
+          quoteAmount: "2000"
+          channelApiCode: channelApiCode
+          timeInForce: gtc
+          clientOid: myId0001
+        - orderType: limit/market
+          symbol: BTCUSDT_SPBL
+          side: sell/buy
+          loanType: normal/autoLoan/autoRepay
+          baseQuantity: "0.2"
+          price: "21000"
+          ip: ip
+          quoteAmount: "2000"
+          channelApiCode: channelApiCode
+          timeInForce: gtc
+          clientOid: myId0001
+      properties:
+        channelApiCode:
+          type: string
+        ip:
+          type: string
+        orderList:
+          items:
+            $ref: '#/components/schemas/MarginOrderRequest'
+          type: array
+        symbol:
+          description: symbol
+          example: BTCUSDT_SPBL
+          type: string
+      required:
+      - symbol
+      title: MarginBatchOrdersRequest
+      type: object
+    MarginBatchPlaceOrderFailureResult:
+      example:
+        clientOid: clientOid
+        errorMsg: errorMsg
+      properties:
+        clientOid:
+          type: string
+        errorMsg:
+          type: string
+      title: MarginBatchPlaceOrderFailureResult
+      type: object
+    MarginBatchPlaceOrderResult:
+      example:
+        failure:
+        - clientOid: clientOid
+          errorMsg: errorMsg
+        - clientOid: clientOid
+          errorMsg: errorMsg
+        resultList:
+        - orderId: orderId
+          clientOid: clientOid
+        - orderId: orderId
+          clientOid: clientOid
+      properties:
+        failure:
+          items:
+            $ref: '#/components/schemas/MarginBatchPlaceOrderFailureResult'
+          type: array
+        resultList:
+          items:
+            $ref: '#/components/schemas/MarginCancelOrderResult'
+          type: array
+      title: MarginBatchPlaceOrderResult
+      type: object
+    MarginCancelOrderFailureResult:
+      example:
+        orderId: orderId
+        clientOid: clientOid
+        errorMsg: errorMsg
+      properties:
+        clientOid:
+          type: string
+        errorMsg:
+          type: string
+        orderId:
+          type: string
+      title: MarginCancelOrderFailureResult
+      type: object
+    MarginCancelOrderRequest:
+      example:
+        symbol: BTCUSDT_SPBL
+        orderId: "324234234234234723647"
+        clientOid: myId0001
+      properties:
+        clientOid:
+          description: clientOid
+          example: myId0001
+          type: string
+        orderId:
+          description: orderId
+          example: "324234234234234723647"
+          type: string
+        symbol:
+          description: symbol
+          example: BTCUSDT_SPBL
+          type: string
+      required:
+      - symbol
+      title: MarginCancelOrderRequest
+      type: object
+    MarginCancelOrderResult:
+      example:
+        orderId: orderId
+        clientOid: clientOid
+      properties:
+        clientOid:
+          type: string
+        orderId:
+          type: string
+      title: MarginCancelOrderResult
+      type: object
+    MarginCrossAssetsPopulationResult:
+      properties:
+        available:
+          type: string
+        borrow:
+          type: string
+        coin:
+          type: string
+        ctime:
+          type: string
+        frozen:
+          type: string
+        interest:
+          type: string
+        net:
+          type: string
+        totalAmount:
+          type: string
+      title: MarginCrossAssetsPopulationResult
+      type: object
+    MarginCrossAssetsResult:
+      example:
+        maxTransferOutAmount: maxTransferOutAmount
+        coin: coin
+      properties:
+        coin:
+          type: string
+        maxTransferOutAmount:
+          type: string
+      title: MarginCrossAssetsResult
+      type: object
+    MarginCrossAssetsRiskResult:
+      example:
+        riskRate: riskRate
+      properties:
+        riskRate:
+          type: string
+      title: MarginCrossAssetsRiskResult
+      type: object
+    MarginCrossBorrowLimitResult:
+      example:
+        borrowAmount: borrowAmount
+        clientOid: clientOid
+        coin: coin
+      properties:
+        borrowAmount:
+          type: string
+        clientOid:
+          type: string
+        coin:
+          type: string
+      title: MarginCrossBorrowLimitResult
+      type: object
+    MarginCrossFinFlowInfo:
+      example:
+        amount: amount
+        balance: balance
+        marginType: marginType
+        fee: fee
+        marginId: marginId
+        ctime: ctime
+        coin: coin
+      properties:
+        amount:
+          type: string
+        balance:
+          type: string
+        coin:
+          type: string
+        ctime:
+          type: string
+        fee:
+          type: string
+        marginId:
+          type: string
+        marginType:
+          type: string
+      title: MarginCrossFinFlowInfo
+      type: object
+    MarginCrossFinFlowResult:
+      example:
+        maxId: maxId
+        minId: minId
+        resultList:
+        - amount: amount
+          balance: balance
+          marginType: marginType
+          fee: fee
+          marginId: marginId
+          ctime: ctime
+          coin: coin
+        - amount: amount
+          balance: balance
+          marginType: marginType
+          fee: fee
+          marginId: marginId
+          ctime: ctime
+          coin: coin
+      properties:
+        maxId:
+          type: string
+        minId:
+          type: string
+        resultList:
+          items:
+            $ref: '#/components/schemas/MarginCrossFinFlowInfo'
+          type: array
+      title: MarginCrossFinFlowResult
+      type: object
+    MarginCrossLevelResult:
+      properties:
+        coin:
+          type: string
+        leverage:
+          type: string
+        maintainMarginRate:
+          type: string
+        maxBorrowableAmount:
+          type: string
+        tier:
+          type: string
+      title: MarginCrossLevelResult
+      type: object
+    MarginCrossLimitRequest:
+      example:
+        borrowAmount: "1.0"
+        coin: USDT
+      properties:
+        borrowAmount:
+          description: borrowAmount
+          example: "1.0"
+          type: string
+        coin:
+          description: coin
+          example: USDT
+          type: string
+      required:
+      - borrowAmount
+      - coin
+      title: MarginCrossLimitRequest
+      type: object
+    MarginCrossMaxBorrowRequest:
+      example:
+        coin: USDT
+      properties:
+        coin:
+          description: coin
+          example: USDT
+          type: string
+      required:
+      - coin
+      title: MarginCrossMaxBorrowRequest
+      type: object
+    MarginCrossMaxBorrowResult:
+      example:
+        maxBorrowableAmount: maxBorrowableAmount
+        coin: coin
+      properties:
+        coin:
+          type: string
+        maxBorrowableAmount:
+          type: string
+      title: MarginCrossMaxBorrowResult
+      type: object
+    MarginCrossRateAndLimitResult:
+      properties:
+        borrowAble:
+          type: boolean
+        coin:
+          type: string
+        dailyInterestRate:
+          type: string
+        leverage:
+          type: string
+        maxBorrowableAmount:
+          type: string
+        transferInAble:
+          type: boolean
+        vips:
+          items:
+            $ref: '#/components/schemas/MarginCrossVipResult'
+          type: array
+        yearlyInterestRate:
+          type: string
+      title: MarginCrossRateAndLimitResult
+      type: object
+    MarginCrossRepayRequest:
+      example:
+        repayAmount: "1.0"
+        coin: USDT
+      properties:
+        coin:
+          description: coin
+          example: USDT
+          type: string
+        repayAmount:
+          description: repayAmount
+          example: "1.0"
+          type: string
+      required:
+      - coin
+      - repayAmount
+      title: MarginCrossRepayRequest
+      type: object
+    MarginCrossRepayResult:
+      example:
+        remainDebtAmount: remainDebtAmount
+        repayAmount: repayAmount
+        clientOid: clientOid
+        coin: coin
+      properties:
+        clientOid:
+          type: string
+        coin:
+          type: string
+        remainDebtAmount:
+          type: string
+        repayAmount:
+          type: string
+      title: MarginCrossRepayResult
+      type: object
+    MarginCrossVipResult:
+      properties:
+        dailyInterestRate:
+          type: string
+        discountRate:
+          type: string
+        level:
+          type: string
+        yearlyInterestRate:
+          type: string
+      title: MarginCrossVipResult
+      type: object
+    MarginInterestInfo:
+      example:
+        interestRate: interestRate
+        amount: amount
+        interestId: interestId
+        loanCoin: loanCoin
+        ctime: ctime
+        type: type
+        interestCoin: interestCoin
+      properties:
+        amount:
+          type: string
+        ctime:
+          type: string
+        interestCoin:
+          type: string
+        interestId:
+          type: string
+        interestRate:
+          type: string
+        loanCoin:
+          type: string
+        type:
+          type: string
+      title: MarginInterestInfo
+      type: object
+    MarginInterestInfoResult:
+      example:
+        maxId: maxId
+        minId: minId
+        resultList:
+        - interestRate: interestRate
+          amount: amount
+          interestId: interestId
+          loanCoin: loanCoin
+          ctime: ctime
+          type: type
+          interestCoin: interestCoin
+        - interestRate: interestRate
+          amount: amount
+          interestId: interestId
+          loanCoin: loanCoin
+          ctime: ctime
+          type: type
+          interestCoin: interestCoin
+      properties:
+        maxId:
+          type: string
+        minId:
+          type: string
+        resultList:
+          items:
+            $ref: '#/components/schemas/MarginInterestInfo'
+          type: array
+      title: MarginInterestInfoResult
+      type: object
+    MarginIsolatedAssetsPopulationResult:
+      properties:
+        available:
+          type: string
+        borrow:
+          type: string
+        coin:
+          type: string
+        ctime:
+          type: string
+        frozen:
+          type: string
+        interest:
+          type: string
+        net:
+          type: string
+        symbol:
+          type: string
+        totalAmount:
+          type: string
+      title: MarginIsolatedAssetsPopulationResult
+      type: object
+    MarginIsolatedAssetsResult:
+      example:
+        maxTransferOutAmount: maxTransferOutAmount
+        symbol: symbol
+        coin: coin
+      properties:
+        coin:
+          type: string
+        maxTransferOutAmount:
+          type: string
+        symbol:
+          type: string
+      title: MarginIsolatedAssetsResult
+      type: object
+    MarginIsolatedAssetsRiskRequest:
+      example:
+        symbol: BTCUSDT
+        pageSize: "100"
+        pageNum: "1"
+      properties:
+        pageNum:
+          description: pageNum
+          example: "1"
+          type: string
+        pageSize:
+          description: pageSize
+          example: "100"
+          type: string
+        symbol:
+          description: symbol
+          example: BTCUSDT
+          type: string
+      required:
+      - symbol
+      title: MarginIsolatedAssetsRiskRequest
+      type: object
+    MarginIsolatedAssetsRiskResult:
+      properties:
+        riskRate:
+          type: string
+        symbol:
+          type: string
+      title: MarginIsolatedAssetsRiskResult
+      type: object
+    MarginIsolatedBorrowLimitResult:
+      example:
+        symbol: symbol
+        borrowAmount: borrowAmount
+        clientOid: clientOid
+        coin: coin
+      properties:
+        borrowAmount:
+          type: string
+        clientOid:
+          type: string
+        coin:
+          type: string
+        symbol:
+          type: string
+      title: MarginIsolatedBorrowLimitResult
+      type: object
+    MarginIsolatedFinFlowInfo:
+      example:
+        symbol: symbol
+        amount: amount
+        balance: balance
+        marginType: marginType
+        fee: fee
+        marginId: marginId
+        ctime: ctime
+        coin: coin
+      properties:
+        amount:
+          type: string
+        balance:
+          type: string
+        coin:
+          type: string
+        ctime:
+          type: string
+        fee:
+          type: string
+        marginId:
+          type: string
+        marginType:
+          type: string
+        symbol:
+          type: string
+      title: MarginIsolatedFinFlowInfo
+      type: object
+    MarginIsolatedFinFlowResult:
+      example:
+        maxId: maxId
+        minId: minId
+        resultList:
+        - symbol: symbol
+          amount: amount
+          balance: balance
+          marginType: marginType
+          fee: fee
+          marginId: marginId
+          ctime: ctime
+          coin: coin
+        - symbol: symbol
+          amount: amount
+          balance: balance
+          marginType: marginType
+          fee: fee
+          marginId: marginId
+          ctime: ctime
+          coin: coin
+      properties:
+        maxId:
+          type: string
+        minId:
+          type: string
+        resultList:
+          items:
+            $ref: '#/components/schemas/MarginIsolatedFinFlowInfo'
+          type: array
+      title: MarginIsolatedFinFlowResult
+      type: object
+    MarginIsolatedInterestInfo:
+      example:
+        interestRate: interestRate
+        symbol: symbol
+        amount: amount
+        interestId: interestId
+        loanCoin: loanCoin
+        ctime: ctime
+        type: type
+        interestCoin: interestCoin
+      properties:
+        amount:
+          type: string
+        ctime:
+          type: string
+        interestCoin:
+          type: string
+        interestId:
+          type: string
+        interestRate:
+          type: string
+        loanCoin:
+          type: string
+        symbol:
+          type: string
+        type:
+          type: string
+      title: MarginIsolatedInterestInfo
+      type: object
+    MarginIsolatedInterestInfoResult:
+      example:
+        maxId: maxId
+        minId: minId
+        resultList:
+        - interestRate: interestRate
+          symbol: symbol
+          amount: amount
+          interestId: interestId
+          loanCoin: loanCoin
+          ctime: ctime
+          type: type
+          interestCoin: interestCoin
+        - interestRate: interestRate
+          symbol: symbol
+          amount: amount
+          interestId: interestId
+          loanCoin: loanCoin
+          ctime: ctime
+          type: type
+          interestCoin: interestCoin
+      properties:
+        maxId:
+          type: string
+        minId:
+          type: string
+        resultList:
+          items:
+            $ref: '#/components/schemas/MarginIsolatedInterestInfo'
+          type: array
+      title: MarginIsolatedInterestInfoResult
+      type: object
+    MarginIsolatedLevelResult:
+      properties:
+        baseCoin:
+          type: string
+        baseMaxBorrowableAmount:
+          type: string
+        initRate:
+          type: string
+        leverage:
+          type: string
+        maintainMarginRate:
+          type: string
+        quoteCoin:
+          type: string
+        quoteMaxBorrowableAmount:
+          type: string
+        symbol:
+          type: string
+        tier:
+          type: string
+      title: MarginIsolatedLevelResult
+      type: object
+    MarginIsolatedLimitRequest:
+      example:
+        symbol: USDT
+        borrowAmount: "1.0"
+        coin: USDT
+      properties:
+        borrowAmount:
+          description: borrowAmount
+          example: "1.0"
+          type: string
+        coin:
+          description: coin
+          example: USDT
+          type: string
+        symbol:
+          description: symbol
+          example: USDT
+          type: string
+      required:
+      - borrowAmount
+      - coin
+      - symbol
+      title: MarginIsolatedLimitRequest
+      type: object
+    MarginIsolatedLiquidationInfo:
+      example:
+        symbol: symbol
+        totalAssets: totalAssets
+        liqFee: liqFee
+        totalDebt: totalDebt
+        ctime: ctime
+        liqEndTime: liqEndTime
+        liqStartTime: liqStartTime
+        liqId: liqId
+        liqRisk: liqRisk
+      properties:
+        ctime:
+          type: string
+        liqEndTime:
+          type: string
+        liqFee:
+          type: string
+        liqId:
+          type: string
+        liqRisk:
+          type: string
+        liqStartTime:
+          type: string
+        symbol:
+          type: string
+        totalAssets:
+          type: string
+        totalDebt:
+          type: string
+      title: MarginIsolatedLiquidationInfo
+      type: object
+    MarginIsolatedLiquidationInfoResult:
+      example:
+        maxId: maxId
+        minId: minId
+        resultList:
+        - symbol: symbol
+          totalAssets: totalAssets
+          liqFee: liqFee
+          totalDebt: totalDebt
+          ctime: ctime
+          liqEndTime: liqEndTime
+          liqStartTime: liqStartTime
+          liqId: liqId
+          liqRisk: liqRisk
+        - symbol: symbol
+          totalAssets: totalAssets
+          liqFee: liqFee
+          totalDebt: totalDebt
+          ctime: ctime
+          liqEndTime: liqEndTime
+          liqStartTime: liqStartTime
+          liqId: liqId
+          liqRisk: liqRisk
+      properties:
+        maxId:
+          type: string
+        minId:
+          type: string
+        resultList:
+          items:
+            $ref: '#/components/schemas/MarginIsolatedLiquidationInfo'
+          type: array
+      title: MarginIsolatedLiquidationInfoResult
+      type: object
+    MarginIsolatedLoanInfo:
+      example:
+        symbol: symbol
+        amount: amount
+        ctime: ctime
+        type: type
+        loanId: loanId
+        coin: coin
+      properties:
+        amount:
+          type: string
+        coin:
+          type: string
+        ctime:
+          type: string
+        loanId:
+          type: string
+        symbol:
+          type: string
+        type:
+          type: string
+      title: MarginIsolatedLoanInfo
+      type: object
+    MarginIsolatedLoanInfoResult:
+      example:
+        maxId: maxId
+        minId: minId
+        resultList:
+        - symbol: symbol
+          amount: amount
+          ctime: ctime
+          type: type
+          loanId: loanId
+          coin: coin
+        - symbol: symbol
+          amount: amount
+          ctime: ctime
+          type: type
+          loanId: loanId
+          coin: coin
+      properties:
+        maxId:
+          type: string
+        minId:
+          type: string
+        resultList:
+          items:
+            $ref: '#/components/schemas/MarginIsolatedLoanInfo'
+          type: array
+      title: MarginIsolatedLoanInfoResult
+      type: object
+    MarginIsolatedMaxBorrowRequest:
+      example:
+        symbol: BTCUSDT
+        coin: USDT
+      properties:
+        coin:
+          description: coin
+          example: USDT
+          type: string
+        symbol:
+          description: symbol
+          example: BTCUSDT
+          type: string
+      required:
+      - coin
+      - symbol
+      title: MarginIsolatedMaxBorrowRequest
+      type: object
+    MarginIsolatedMaxBorrowResult:
+      example:
+        symbol: symbol
+        maxBorrowableAmount: maxBorrowableAmount
+        coin: coin
+      properties:
+        coin:
+          type: string
+        maxBorrowableAmount:
+          type: string
+        symbol:
+          type: string
+      title: MarginIsolatedMaxBorrowResult
+      type: object
+    MarginIsolatedRateAndLimitResult:
+      properties:
+        baseBorrowAble:
+          type: boolean
+        baseCoin:
+          type: string
+        baseDailyInterestRate:
+          type: string
+        baseMaxBorrowableAmount:
+          type: string
+        baseTransferInAble:
+          type: boolean
+        baseVips:
+          items:
+            $ref: '#/components/schemas/MarginIsolatedVipResult'
+          type: array
+        baseYearlyInterestRate:
+          type: string
+        leverage:
+          type: string
+        quoteBorrowAble:
+          type: boolean
+        quoteCoin:
+          type: string
+        quoteDailyInterestRate:
+          type: string
+        quoteMaxBorrowableAmount:
+          type: string
+        quoteTransferInAble:
+          type: boolean
+        quoteVips:
+          items:
+            $ref: '#/components/schemas/MarginIsolatedVipResult'
+          type: array
+        quoteYearlyInterestRate:
+          type: string
+        symbol:
+          type: string
+      title: MarginIsolatedRateAndLimitResult
+      type: object
+    MarginIsolatedRepayInfo:
+      example:
+        symbol: symbol
+        totalAmount: totalAmount
+        amount: amount
+        interest: interest
+        repayId: repayId
+        ctime: ctime
+        type: type
+        coin: coin
+      properties:
+        amount:
+          type: string
+        coin:
+          type: string
+        ctime:
+          type: string
+        interest:
+          type: string
+        repayId:
+          type: string
+        symbol:
+          type: string
+        totalAmount:
+          type: string
+        type:
+          type: string
+      title: MarginIsolatedRepayInfo
+      type: object
+    MarginIsolatedRepayInfoResult:
+      example:
+        maxId: maxId
+        minId: minId
+        resultList:
+        - symbol: symbol
+          totalAmount: totalAmount
+          amount: amount
+          interest: interest
+          repayId: repayId
+          ctime: ctime
+          type: type
+          coin: coin
+        - symbol: symbol
+          totalAmount: totalAmount
+          amount: amount
+          interest: interest
+          repayId: repayId
+          ctime: ctime
+          type: type
+          coin: coin
+      properties:
+        maxId:
+          type: string
+        minId:
+          type: string
+        resultList:
+          items:
+            $ref: '#/components/schemas/MarginIsolatedRepayInfo'
+          type: array
+      title: MarginIsolatedRepayInfoResult
+      type: object
+    MarginIsolatedRepayRequest:
+      example:
+        symbol: BTCUSDT
+        repayAmount: "1.0"
+        coin: USDT
+      properties:
+        coin:
+          description: coin
+          example: USDT
+          type: string
+        repayAmount:
+          description: repayAmount
+          example: "1.0"
+          type: string
+        symbol:
+          description: symbol
+          example: BTCUSDT
+          type: string
+      required:
+      - coin
+      - repayAmount
+      - symbol
+      title: MarginIsolatedRepayRequest
+      type: object
+    MarginIsolatedRepayResult:
+      example:
+        symbol: symbol
+        remainDebtAmount: remainDebtAmount
+        repayAmount: repayAmount
+        clientOid: clientOid
+        coin: coin
+      properties:
+        clientOid:
+          type: string
+        coin:
+          type: string
+        remainDebtAmount:
+          type: string
+        repayAmount:
+          type: string
+        symbol:
+          type: string
+      title: MarginIsolatedRepayResult
+      type: object
+    MarginIsolatedVipResult:
+      properties:
+        dailyInterestRate:
+          type: string
+        discountRate:
+          type: string
+        level:
+          type: string
+        yearlyInterestRate:
+          type: string
+      title: MarginIsolatedVipResult
+      type: object
+    MarginLiquidationInfo:
+      example:
+        totalAssets: totalAssets
+        liqFee: liqFee
+        totalDebt: totalDebt
+        ctime: ctime
+        liqEndTime: liqEndTime
+        liqStartTime: liqStartTime
+        liqId: liqId
+        liqRisk: liqRisk
+      properties:
+        ctime:
+          type: string
+        liqEndTime:
+          type: string
+        liqFee:
+          type: string
+        liqId:
+          type: string
+        liqRisk:
+          type: string
+        liqStartTime:
+          type: string
+        totalAssets:
+          type: string
+        totalDebt:
+          type: string
+      title: MarginLiquidationInfo
+      type: object
+    MarginLiquidationInfoResult:
+      example:
+        maxId: maxId
+        minId: minId
+        resultList:
+        - totalAssets: totalAssets
+          liqFee: liqFee
+          totalDebt: totalDebt
+          ctime: ctime
+          liqEndTime: liqEndTime
+          liqStartTime: liqStartTime
+          liqId: liqId
+          liqRisk: liqRisk
+        - totalAssets: totalAssets
+          liqFee: liqFee
+          totalDebt: totalDebt
+          ctime: ctime
+          liqEndTime: liqEndTime
+          liqStartTime: liqStartTime
+          liqId: liqId
+          liqRisk: liqRisk
+      properties:
+        maxId:
+          type: string
+        minId:
+          type: string
+        resultList:
+          items:
+            $ref: '#/components/schemas/MarginLiquidationInfo'
+          type: array
+      title: MarginLiquidationInfoResult
+      type: object
+    MarginLoanInfo:
+      example:
+        amount: amount
+        ctime: ctime
+        type: type
+        loanId: loanId
+        coin: coin
+      properties:
+        amount:
+          type: string
+        coin:
+          type: string
+        ctime:
+          type: string
+        loanId:
+          type: string
+        type:
+          type: string
+      title: MarginLoanInfo
+      type: object
+    MarginLoanInfoResult:
+      example:
+        maxId: maxId
+        minId: minId
+        resultList:
+        - amount: amount
+          ctime: ctime
+          type: type
+          loanId: loanId
+          coin: coin
+        - amount: amount
+          ctime: ctime
+          type: type
+          loanId: loanId
+          coin: coin
+      properties:
+        maxId:
+          type: string
+        minId:
+          type: string
+        resultList:
+          items:
+            $ref: '#/components/schemas/MarginLoanInfo'
+          type: array
+      title: MarginLoanInfoResult
+      type: object
+    MarginOpenOrderInfoResult:
+      example:
+        maxId: maxId
+        orderList:
+        - orderType: orderType
+          symbol: symbol
+          side: side
+          loanType: loanType
+          orderId: orderId
+          fillTotalAmount: fillTotalAmount
+          source: source
+          fillPrice: fillPrice
+          baseQuantity: baseQuantity
+          price: price
+          quoteAmount: quoteAmount
+          ctime: ctime
+          fillQuantity: fillQuantity
+          clientOid: clientOid
+          status: status
+        - orderType: orderType
+          symbol: symbol
+          side: side
+          loanType: loanType
+          orderId: orderId
+          fillTotalAmount: fillTotalAmount
+          source: source
+          fillPrice: fillPrice
+          baseQuantity: baseQuantity
+          price: price
+          quoteAmount: quoteAmount
+          ctime: ctime
+          fillQuantity: fillQuantity
+          clientOid: clientOid
+          status: status
+        minId: minId
+      properties:
+        maxId:
+          type: string
+        minId:
+          type: string
+        orderList:
+          items:
+            $ref: '#/components/schemas/MarginOrderInfo'
+          type: array
+      title: MarginOpenOrderInfoResult
+      type: object
+    MarginOrderInfo:
+      example:
+        orderType: orderType
+        symbol: symbol
+        side: side
+        loanType: loanType
+        orderId: orderId
+        fillTotalAmount: fillTotalAmount
+        source: source
+        fillPrice: fillPrice
+        baseQuantity: baseQuantity
+        price: price
+        quoteAmount: quoteAmount
+        ctime: ctime
+        fillQuantity: fillQuantity
+        clientOid: clientOid
+        status: status
+      properties:
+        baseQuantity:
+          type: string
+        clientOid:
+          type: string
+        ctime:
+          type: string
+        fillPrice:
+          type: string
+        fillQuantity:
+          type: string
+        fillTotalAmount:
+          type: string
+        loanType:
+          type: string
+        orderId:
+          type: string
+        orderType:
+          type: string
+        price:
+          type: string
+        quoteAmount:
+          type: string
+        side:
+          type: string
+        source:
+          type: string
+        status:
+          type: string
+        symbol:
+          type: string
+      title: MarginOrderInfo
+      type: object
+    MarginOrderRequest:
+      example:
+        orderType: limit/market
+        symbol: BTCUSDT_SPBL
+        side: sell/buy
+        loanType: normal/autoLoan/autoRepay
+        baseQuantity: "0.2"
+        price: "21000"
+        ip: ip
+        quoteAmount: "2000"
+        channelApiCode: channelApiCode
+        timeInForce: gtc
+        clientOid: myId0001
+      properties:
+        baseQuantity:
+          description: baseQuantity
+          example: "0.2"
+          type: string
+        channelApiCode:
+          type: string
+        clientOid:
+          description: clientOid
+          example: myId0001
+          type: string
+        ip:
+          type: string
+        loanType:
+          description: loanType
+          example: normal/autoLoan/autoRepay
+          type: string
+        orderType:
+          description: orderType
+          example: limit/market
+          type: string
+        price:
+          description: price
+          example: "21000"
+          type: string
+        quoteAmount:
+          description: quoteAmount
+          example: "2000"
+          type: string
+        side:
+          description: side
+          example: sell/buy
+          type: string
+        symbol:
+          description: symbol
+          example: BTCUSDT_SPBL
+          type: string
+        timeInForce:
+          description: timeInForce
+          example: gtc
+          type: string
+      required:
+      - loanType
+      - orderType
+      - side
+      - symbol
+      title: MarginOrderRequest
+      type: object
+    MarginPlaceOrderResult:
+      example:
+        orderId: orderId
+        clientOid: clientOid
+      properties:
+        clientOid:
+          type: string
+        orderId:
+          type: string
+      title: MarginPlaceOrderResult
+      type: object
+    MarginRepayInfo:
+      example:
+        totalAmount: totalAmount
+        amount: amount
+        interest: interest
+        repayId: repayId
+        ctime: ctime
+        type: type
+        coin: coin
+      properties:
+        amount:
+          type: string
+        coin:
+          type: string
+        ctime:
+          type: string
+        interest:
+          type: string
+        repayId:
+          type: string
+        totalAmount:
+          type: string
+        type:
+          type: string
+      title: MarginRepayInfo
+      type: object
+    MarginRepayInfoResult:
+      example:
+        maxId: maxId
+        minId: minId
+        resultList:
+        - totalAmount: totalAmount
+          amount: amount
+          interest: interest
+          repayId: repayId
+          ctime: ctime
+          type: type
+          coin: coin
+        - totalAmount: totalAmount
+          amount: amount
+          interest: interest
+          repayId: repayId
+          ctime: ctime
+          type: type
+          coin: coin
+      properties:
+        maxId:
+          type: string
+        minId:
+          type: string
+        resultList:
+          items:
+            $ref: '#/components/schemas/MarginRepayInfo'
+          type: array
+      title: MarginRepayInfoResult
+      type: object
+    MarginSystemResult:
+      properties:
+        baseCoin:
+          type: string
+        isBorrowable:
+          type: boolean
+        liquidationRiskRatio:
+          type: string
+        makerFeeRate:
+          type: string
+        maxCrossLeverage:
+          type: string
+        maxIsolatedLeverage:
+          type: string
+        maxTradeAmount:
+          type: string
+        minTradeAmount:
+          type: string
+        minTradeUSDT:
+          type: string
+        priceScale:
+          type: string
+        quantityScale:
+          type: string
+        quoteCoin:
+          type: string
+        status:
+          type: string
+        symbol:
+          type: string
+        takerFeeRate:
+          type: string
+        userMinBorrow:
+          type: string
+        warningRiskRatio:
+          type: string
+      title: MarginSystemResult
+      type: object
+    MarginTradeDetailInfo:
+      example:
+        orderType: orderType
+        fees: fees
+        side: side
+        orderId: orderId
+        fillId: fillId
+        ctime: ctime
+        fillTotalAmount: fillTotalAmount
+        fillQuantity: fillQuantity
+        fillPrice: fillPrice
+        feeCcy: feeCcy
+      properties:
+        ctime:
+          type: string
+        feeCcy:
+          type: string
+        fees:
+          type: string
+        fillId:
+          type: string
+        fillPrice:
+          type: string
+        fillQuantity:
+          type: string
+        fillTotalAmount:
+          type: string
+        orderId:
+          type: string
+        orderType:
+          type: string
+        side:
+          type: string
+      title: MarginTradeDetailInfo
+      type: object
+    MarginTradeDetailInfoResult:
+      example:
+        maxId: maxId
+        minId: minId
+        fills:
+        - orderType: orderType
+          fees: fees
+          side: side
+          orderId: orderId
+          fillId: fillId
+          ctime: ctime
+          fillTotalAmount: fillTotalAmount
+          fillQuantity: fillQuantity
+          fillPrice: fillPrice
+          feeCcy: feeCcy
+        - orderType: orderType
+          fees: fees
+          side: side
+          orderId: orderId
+          fillId: fillId
+          ctime: ctime
+          fillTotalAmount: fillTotalAmount
+          fillQuantity: fillQuantity
+          fillPrice: fillPrice
+          feeCcy: feeCcy
+      properties:
+        fills:
+          items:
+            $ref: '#/components/schemas/MarginTradeDetailInfo'
+          type: array
+        maxId:
+          type: string
+        minId:
+          type: string
+      title: MarginTradeDetailInfoResult
+      type: object
+  securitySchemes:
+    ACCESS_KEY:
+      in: header
+      name: ACCESS-KEY
+      type: apiKey
+    ACCESS_PASSPHRASE:
+      in: header
+      name: ACCESS-PASSPHRASE
+      type: apiKey
+    ACCESS_SIGN:
+      in: header
+      name: ACCESS-SIGN
+      type: apiKey
+    ACCESS_TIMESTAMP:
+      in: header
+      name: ACCESS-TIMESTAMP
+      type: apiKey
+    SECRET_KEY:
+      in: header
+      name: SECRET-KEY
+      type: apiKey
+x-original-swagger-version: "2.0"
