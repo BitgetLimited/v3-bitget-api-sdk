@@ -165,7 +165,7 @@ public class MarginIsolatedOrderApiTest {
         String clientOid = null;
         String minId = null;
         String pageSize = null;
-        ApiResponseResultOfMarginOpenOrderInfoResult response = api.marginIsolatedHistoryOrders(startTime, symbol, source, endTime, orderId, clientOid, minId, pageSize);
+        ApiResponseResultOfMarginOpenOrderInfoResult response = api.marginIsolatedHistoryOrders(startTime, symbol, source, endTime, orderId, clientOid, pageSize, minId);
 
         assertThat(response).isNotNull();
         assertThat(response.getData()).isNotNull();

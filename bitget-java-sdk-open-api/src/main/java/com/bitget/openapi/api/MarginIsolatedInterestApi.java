@@ -75,9 +75,9 @@ public class MarginIsolatedInterestApi {
     }
 
     /**
-     * Build call for interestList1
+     * Build call for isolatedInterestList
+     * @param symbol symbol (required)
      * @param startTime startTime (required)
-     * @param symbol symbol (optional)
      * @param coin coin (optional)
      * @param pageSize pageSize (optional)
      * @param pageId pageId (optional)
@@ -93,7 +93,7 @@ public class MarginIsolatedInterestApi {
         <tr><td> 500 </td><td> Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call interestList1Call(String startTime, String symbol, String coin, String pageSize, String pageId, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call isolatedInterestListCall(String symbol, String startTime, String coin, String pageSize, String pageId, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -158,21 +158,26 @@ public class MarginIsolatedInterestApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call interestList1ValidateBeforeCall(String startTime, String symbol, String coin, String pageSize, String pageId, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'startTime' is set
-        if (startTime == null) {
-            throw new ApiException("Missing the required parameter 'startTime' when calling interestList1(Async)");
+    private okhttp3.Call isolatedInterestListValidateBeforeCall(String symbol, String startTime, String coin, String pageSize, String pageId, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'symbol' is set
+        if (symbol == null) {
+            throw new ApiException("Missing the required parameter 'symbol' when calling isolatedInterestList(Async)");
         }
 
-        return interestList1Call(startTime, symbol, coin, pageSize, pageId, _callback);
+        // verify the required parameter 'startTime' is set
+        if (startTime == null) {
+            throw new ApiException("Missing the required parameter 'startTime' when calling isolatedInterestList(Async)");
+        }
+
+        return isolatedInterestListCall(symbol, startTime, coin, pageSize, pageId, _callback);
 
     }
 
     /**
      * list
      * Get interest List
+     * @param symbol symbol (required)
      * @param startTime startTime (required)
-     * @param symbol symbol (optional)
      * @param coin coin (optional)
      * @param pageSize pageSize (optional)
      * @param pageId pageId (optional)
@@ -187,16 +192,16 @@ public class MarginIsolatedInterestApi {
         <tr><td> 500 </td><td> Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponseResultOfMarginIsolatedInterestInfoResult interestList1(String startTime, String symbol, String coin, String pageSize, String pageId) throws ApiException {
-        ApiResponse<ApiResponseResultOfMarginIsolatedInterestInfoResult> localVarResp = interestList1WithHttpInfo(startTime, symbol, coin, pageSize, pageId);
+    public ApiResponseResultOfMarginIsolatedInterestInfoResult isolatedInterestList(String symbol, String startTime, String coin, String pageSize, String pageId) throws ApiException {
+        ApiResponse<ApiResponseResultOfMarginIsolatedInterestInfoResult> localVarResp = isolatedInterestListWithHttpInfo(symbol, startTime, coin, pageSize, pageId);
         return localVarResp.getData();
     }
 
     /**
      * list
      * Get interest List
+     * @param symbol symbol (required)
      * @param startTime startTime (required)
-     * @param symbol symbol (optional)
      * @param coin coin (optional)
      * @param pageSize pageSize (optional)
      * @param pageId pageId (optional)
@@ -211,8 +216,8 @@ public class MarginIsolatedInterestApi {
         <tr><td> 500 </td><td> Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ApiResponseResultOfMarginIsolatedInterestInfoResult> interestList1WithHttpInfo(String startTime, String symbol, String coin, String pageSize, String pageId) throws ApiException {
-        okhttp3.Call localVarCall = interestList1ValidateBeforeCall(startTime, symbol, coin, pageSize, pageId, null);
+    public ApiResponse<ApiResponseResultOfMarginIsolatedInterestInfoResult> isolatedInterestListWithHttpInfo(String symbol, String startTime, String coin, String pageSize, String pageId) throws ApiException {
+        okhttp3.Call localVarCall = isolatedInterestListValidateBeforeCall(symbol, startTime, coin, pageSize, pageId, null);
         Type localVarReturnType = new TypeToken<ApiResponseResultOfMarginIsolatedInterestInfoResult>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -220,8 +225,8 @@ public class MarginIsolatedInterestApi {
     /**
      * list (asynchronously)
      * Get interest List
+     * @param symbol symbol (required)
      * @param startTime startTime (required)
-     * @param symbol symbol (optional)
      * @param coin coin (optional)
      * @param pageSize pageSize (optional)
      * @param pageId pageId (optional)
@@ -237,9 +242,9 @@ public class MarginIsolatedInterestApi {
         <tr><td> 500 </td><td> Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call interestList1Async(String startTime, String symbol, String coin, String pageSize, String pageId, final ApiCallback<ApiResponseResultOfMarginIsolatedInterestInfoResult> _callback) throws ApiException {
+    public okhttp3.Call isolatedInterestListAsync(String symbol, String startTime, String coin, String pageSize, String pageId, final ApiCallback<ApiResponseResultOfMarginIsolatedInterestInfoResult> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = interestList1ValidateBeforeCall(startTime, symbol, coin, pageSize, pageId, _callback);
+        okhttp3.Call localVarCall = isolatedInterestListValidateBeforeCall(symbol, startTime, coin, pageSize, pageId, _callback);
         Type localVarReturnType = new TypeToken<ApiResponseResultOfMarginIsolatedInterestInfoResult>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

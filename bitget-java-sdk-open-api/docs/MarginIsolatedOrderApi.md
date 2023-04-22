@@ -303,7 +303,7 @@ public class Example {
 
 <a name="marginIsolatedFills"></a>
 # **marginIsolatedFills**
-> ApiResponseResultOfMarginTradeDetailInfoResult marginIsolatedFills(startTime, endTime, symbol, orderId, lastFillId, pageSize)
+> ApiResponseResultOfMarginTradeDetailInfoResult marginIsolatedFills(startTime, symbol, endTime, orderId, lastFillId, pageSize)
 
 fills
 
@@ -356,13 +356,13 @@ public class Example {
 
     MarginIsolatedOrderApi apiInstance = new MarginIsolatedOrderApi(defaultClient);
     String startTime = "1678193338000"; // String | startTime
-    String endTime = "1678193338000"; // String | endTime
     String symbol = "BTCUSDT"; // String | symbol
+    String endTime = "1678193338000"; // String | endTime
     String orderId = "32428347234"; // String | orderId
     String lastFillId = "lastFillId_example"; // String | lastFillId
     String pageSize = "10"; // String | pageSize
     try {
-      ApiResponseResultOfMarginTradeDetailInfoResult result = apiInstance.marginIsolatedFills(startTime, endTime, symbol, orderId, lastFillId, pageSize);
+      ApiResponseResultOfMarginTradeDetailInfoResult result = apiInstance.marginIsolatedFills(startTime, symbol, endTime, orderId, lastFillId, pageSize);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling MarginIsolatedOrderApi#marginIsolatedFills");
@@ -380,8 +380,8 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **startTime** | **String**| startTime | |
-| **endTime** | **String**| endTime | |
 | **symbol** | **String**| symbol | [optional] |
+| **endTime** | **String**| endTime | [optional] |
 | **orderId** | **String**| orderId | [optional] |
 | **lastFillId** | **String**| lastFillId | [optional] |
 | **pageSize** | **String**| pageSize | [optional] |
@@ -519,7 +519,7 @@ public class Example {
 
 <a name="marginIsolatedOpenOrders"></a>
 # **marginIsolatedOpenOrders**
-> ApiResponseResultOfMarginOpenOrderInfoResult marginIsolatedOpenOrders(startTime, endTime, symbol, orderId, clientOid, pageSize)
+> ApiResponseResultOfMarginOpenOrderInfoResult marginIsolatedOpenOrders(symbol, startTime, endTime, orderId, clientOid, pageSize)
 
 openOrders
 
@@ -571,14 +571,14 @@ public class Example {
     //SECRET_KEY.setApiKeyPrefix("Token");
 
     MarginIsolatedOrderApi apiInstance = new MarginIsolatedOrderApi(defaultClient);
+    String symbol = "BTCUSDT"; // String | symbol
     String startTime = "1678193338000"; // String | startTime
     String endTime = "1678193338000"; // String | endTime
-    String symbol = "BTCUSDT"; // String | symbol
     String orderId = "32428347234"; // String | orderId
     String clientOid = "123456"; // String | clientOid
     String pageSize = "10"; // String | pageSize
     try {
-      ApiResponseResultOfMarginOpenOrderInfoResult result = apiInstance.marginIsolatedOpenOrders(startTime, endTime, symbol, orderId, clientOid, pageSize);
+      ApiResponseResultOfMarginOpenOrderInfoResult result = apiInstance.marginIsolatedOpenOrders(symbol, startTime, endTime, orderId, clientOid, pageSize);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling MarginIsolatedOrderApi#marginIsolatedOpenOrders");
@@ -595,9 +595,9 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
+| **symbol** | **String**| symbol | |
 | **startTime** | **String**| startTime | |
-| **endTime** | **String**| endTime | |
-| **symbol** | **String**| symbol | [optional] |
+| **endTime** | **String**| endTime | [optional] |
 | **orderId** | **String**| orderId | [optional] |
 | **clientOid** | **String**| clientOid | [optional] |
 | **pageSize** | **String**| pageSize | [optional] |

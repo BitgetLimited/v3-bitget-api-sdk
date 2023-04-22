@@ -49,7 +49,7 @@ public class MarginCrossInterestApiTest {
         String coin = null;
         String pageSize = "10";
         String pageId = null;
-        ApiResponseResultOfMarginInterestInfoResult response = api.interestList(startTime, coin, pageSize, pageId);
+        ApiResponseResultOfMarginInterestInfoResult response = api.crossInterestList(startTime, coin, pageSize, pageId);
         assertThat(response).isNotNull();
         assertThat(response.getCode()).isEqualTo(("00000"));
         assertThat(response.getData()).isNotNull();

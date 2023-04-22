@@ -53,7 +53,7 @@ public class MarginIsolatedFinflowApiTest {
         String pageSize = "10";
         String pageId = null;
         String loanId = null;
-        ApiResponseResultOfMarginIsolatedFinFlowResult response = api.finList1(startTime, symbol, coin, endTime, loanId, pageSize, pageId);
+        ApiResponseResultOfMarginIsolatedFinFlowResult response = api.isolatedFinList(symbol, startTime, coin, marginType, endTime, loanId, pageSize, pageId);
         assertThat(response).isNotNull();
         assertThat(response.getData()).isNotNull();
         if (response.getData().getResultList() != null && response.getData().getResultList().size() > 0) {

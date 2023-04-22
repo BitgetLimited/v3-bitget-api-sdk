@@ -4,12 +4,12 @@ All URIs are relative to *https://api.bitget.com*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**loanList**](MarginCrossBorrowApi.md#loanList) | **GET** /api/margin/v1/cross/loan/list | list |
+| [**crossLoanList**](MarginCrossBorrowApi.md#crossLoanList) | **GET** /api/margin/v1/cross/loan/list | list |
 
 
-<a name="loanList"></a>
-# **loanList**
-> ApiResponseResultOfMarginLoanInfoResult loanList(startTime, coin, endTime, loanId, pageSize, pageId)
+<a name="crossLoanList"></a>
+# **crossLoanList**
+> ApiResponseResultOfMarginLoanInfoResult crossLoanList(startTime, coin, endTime, loanId, pageSize, pageId)
 
 list
 
@@ -68,10 +68,10 @@ public class Example {
     String pageSize = "10"; // String | pageSize
     String pageId = "minId"; // String | pageId
     try {
-      ApiResponseResultOfMarginLoanInfoResult result = apiInstance.loanList(startTime, coin, endTime, loanId, pageSize, pageId);
+      ApiResponseResultOfMarginLoanInfoResult result = apiInstance.crossLoanList(startTime, coin, endTime, loanId, pageSize, pageId);
       System.out.println(result);
     } catch (ApiException e) {
-      System.err.println("Exception when calling MarginCrossBorrowApi#loanList");
+      System.err.println("Exception when calling MarginCrossBorrowApi#crossLoanList");
       System.err.println("Status code: " + e.getCode());
       System.err.println("Reason: " + e.getResponseBody());
       System.err.println("Response headers: " + e.getResponseHeaders());

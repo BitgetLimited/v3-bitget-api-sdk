@@ -75,7 +75,7 @@ public class MarginCrossLiquidationApi {
     }
 
     /**
-     * Build call for liquidationList
+     * Build call for crossLiquidationList
      * @param startTime startTime (required)
      * @param endTime endTime (optional)
      * @param pageSize pageSize (optional)
@@ -92,7 +92,7 @@ public class MarginCrossLiquidationApi {
         <tr><td> 500 </td><td> Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call liquidationListCall(String startTime, String endTime, String pageSize, String pageId, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call crossLiquidationListCall(String startTime, String endTime, String pageSize, String pageId, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -153,13 +153,13 @@ public class MarginCrossLiquidationApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call liquidationListValidateBeforeCall(String startTime, String endTime, String pageSize, String pageId, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call crossLiquidationListValidateBeforeCall(String startTime, String endTime, String pageSize, String pageId, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'startTime' is set
         if (startTime == null) {
-            throw new ApiException("Missing the required parameter 'startTime' when calling liquidationList(Async)");
+            throw new ApiException("Missing the required parameter 'startTime' when calling crossLiquidationList(Async)");
         }
 
-        return liquidationListCall(startTime, endTime, pageSize, pageId, _callback);
+        return crossLiquidationListCall(startTime, endTime, pageSize, pageId, _callback);
 
     }
 
@@ -181,8 +181,8 @@ public class MarginCrossLiquidationApi {
         <tr><td> 500 </td><td> Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponseResultOfMarginLiquidationInfoResult liquidationList(String startTime, String endTime, String pageSize, String pageId) throws ApiException {
-        ApiResponse<ApiResponseResultOfMarginLiquidationInfoResult> localVarResp = liquidationListWithHttpInfo(startTime, endTime, pageSize, pageId);
+    public ApiResponseResultOfMarginLiquidationInfoResult crossLiquidationList(String startTime, String endTime, String pageSize, String pageId) throws ApiException {
+        ApiResponse<ApiResponseResultOfMarginLiquidationInfoResult> localVarResp = crossLiquidationListWithHttpInfo(startTime, endTime, pageSize, pageId);
         return localVarResp.getData();
     }
 
@@ -204,8 +204,8 @@ public class MarginCrossLiquidationApi {
         <tr><td> 500 </td><td> Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ApiResponseResultOfMarginLiquidationInfoResult> liquidationListWithHttpInfo(String startTime, String endTime, String pageSize, String pageId) throws ApiException {
-        okhttp3.Call localVarCall = liquidationListValidateBeforeCall(startTime, endTime, pageSize, pageId, null);
+    public ApiResponse<ApiResponseResultOfMarginLiquidationInfoResult> crossLiquidationListWithHttpInfo(String startTime, String endTime, String pageSize, String pageId) throws ApiException {
+        okhttp3.Call localVarCall = crossLiquidationListValidateBeforeCall(startTime, endTime, pageSize, pageId, null);
         Type localVarReturnType = new TypeToken<ApiResponseResultOfMarginLiquidationInfoResult>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -229,9 +229,9 @@ public class MarginCrossLiquidationApi {
         <tr><td> 500 </td><td> Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call liquidationListAsync(String startTime, String endTime, String pageSize, String pageId, final ApiCallback<ApiResponseResultOfMarginLiquidationInfoResult> _callback) throws ApiException {
+    public okhttp3.Call crossLiquidationListAsync(String startTime, String endTime, String pageSize, String pageId, final ApiCallback<ApiResponseResultOfMarginLiquidationInfoResult> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = liquidationListValidateBeforeCall(startTime, endTime, pageSize, pageId, _callback);
+        okhttp3.Call localVarCall = crossLiquidationListValidateBeforeCall(startTime, endTime, pageSize, pageId, _callback);
         Type localVarReturnType = new TypeToken<ApiResponseResultOfMarginLiquidationInfoResult>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

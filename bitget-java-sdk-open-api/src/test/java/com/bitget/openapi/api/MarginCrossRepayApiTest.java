@@ -51,7 +51,7 @@ public class MarginCrossRepayApiTest {
         String coin = null;
         String repayId = null;
         String pageId = null;
-        ApiResponseResultOfMarginRepayInfoResult response = api.repayList(startTime, coin, repayId, endTime, pageSize, pageId);
+        ApiResponseResultOfMarginRepayInfoResult response = api.crossRepayList(startTime, coin, repayId, endTime, pageSize, pageId);
         assertThat(response).isNotNull();
         assertThat(response.getData()).isNotNull();
         if (response.getData().getResultList() != null && response.getData().getResultList().size() > 0) {

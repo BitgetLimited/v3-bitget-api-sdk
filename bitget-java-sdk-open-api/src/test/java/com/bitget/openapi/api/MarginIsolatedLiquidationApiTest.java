@@ -50,7 +50,7 @@ public class MarginIsolatedLiquidationApiTest {
         String pageSize = "10";
         String symbol = "BTCUSDT";
         String pageId = null;
-        ApiResponseResultOfMarginIsolatedLiquidationInfoResult response = api.liquidationList1(startTime, symbol, endTime, pageSize, pageId);
+        ApiResponseResultOfMarginIsolatedLiquidationInfoResult response = api.isolatedLiquidationList(symbol, startTime,  endTime, pageSize, pageId);
         assertThat(response).isNotNull();
         assertThat(response.getData()).isNotNull();
         if (response.getData().getResultList() != null && response.getData().getResultList().size() > 0) {

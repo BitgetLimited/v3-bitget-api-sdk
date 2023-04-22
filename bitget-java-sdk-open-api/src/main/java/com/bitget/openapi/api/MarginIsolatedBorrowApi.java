@@ -75,9 +75,9 @@ public class MarginIsolatedBorrowApi {
     }
 
     /**
-     * Build call for loanList1
+     * Build call for isolatedLoanList
+     * @param symbol symbol (required)
      * @param startTime startTime (required)
-     * @param symbol symbol (optional)
      * @param coin coin (optional)
      * @param endTime endTime (optional)
      * @param loanId loanId (optional)
@@ -95,7 +95,7 @@ public class MarginIsolatedBorrowApi {
         <tr><td> 500 </td><td> Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call loanList1Call(String startTime, String symbol, String coin, String endTime, String loanId, String pageSize, String pageId, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call isolatedLoanListCall(String symbol, String startTime, String coin, String endTime, String loanId, String pageSize, String pageId, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -168,21 +168,26 @@ public class MarginIsolatedBorrowApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call loanList1ValidateBeforeCall(String startTime, String symbol, String coin, String endTime, String loanId, String pageSize, String pageId, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'startTime' is set
-        if (startTime == null) {
-            throw new ApiException("Missing the required parameter 'startTime' when calling loanList1(Async)");
+    private okhttp3.Call isolatedLoanListValidateBeforeCall(String symbol, String startTime, String coin, String endTime, String loanId, String pageSize, String pageId, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'symbol' is set
+        if (symbol == null) {
+            throw new ApiException("Missing the required parameter 'symbol' when calling isolatedLoanList(Async)");
         }
 
-        return loanList1Call(startTime, symbol, coin, endTime, loanId, pageSize, pageId, _callback);
+        // verify the required parameter 'startTime' is set
+        if (startTime == null) {
+            throw new ApiException("Missing the required parameter 'startTime' when calling isolatedLoanList(Async)");
+        }
+
+        return isolatedLoanListCall(symbol, startTime, coin, endTime, loanId, pageSize, pageId, _callback);
 
     }
 
     /**
      * list
      * Get Loan List
+     * @param symbol symbol (required)
      * @param startTime startTime (required)
-     * @param symbol symbol (optional)
      * @param coin coin (optional)
      * @param endTime endTime (optional)
      * @param loanId loanId (optional)
@@ -199,16 +204,16 @@ public class MarginIsolatedBorrowApi {
         <tr><td> 500 </td><td> Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponseResultOfMarginIsolatedLoanInfoResult loanList1(String startTime, String symbol, String coin, String endTime, String loanId, String pageSize, String pageId) throws ApiException {
-        ApiResponse<ApiResponseResultOfMarginIsolatedLoanInfoResult> localVarResp = loanList1WithHttpInfo(startTime, symbol, coin, endTime, loanId, pageSize, pageId);
+    public ApiResponseResultOfMarginIsolatedLoanInfoResult isolatedLoanList(String symbol, String startTime, String coin, String endTime, String loanId, String pageSize, String pageId) throws ApiException {
+        ApiResponse<ApiResponseResultOfMarginIsolatedLoanInfoResult> localVarResp = isolatedLoanListWithHttpInfo(symbol, startTime, coin, endTime, loanId, pageSize, pageId);
         return localVarResp.getData();
     }
 
     /**
      * list
      * Get Loan List
+     * @param symbol symbol (required)
      * @param startTime startTime (required)
-     * @param symbol symbol (optional)
      * @param coin coin (optional)
      * @param endTime endTime (optional)
      * @param loanId loanId (optional)
@@ -225,8 +230,8 @@ public class MarginIsolatedBorrowApi {
         <tr><td> 500 </td><td> Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ApiResponseResultOfMarginIsolatedLoanInfoResult> loanList1WithHttpInfo(String startTime, String symbol, String coin, String endTime, String loanId, String pageSize, String pageId) throws ApiException {
-        okhttp3.Call localVarCall = loanList1ValidateBeforeCall(startTime, symbol, coin, endTime, loanId, pageSize, pageId, null);
+    public ApiResponse<ApiResponseResultOfMarginIsolatedLoanInfoResult> isolatedLoanListWithHttpInfo(String symbol, String startTime, String coin, String endTime, String loanId, String pageSize, String pageId) throws ApiException {
+        okhttp3.Call localVarCall = isolatedLoanListValidateBeforeCall(symbol, startTime, coin, endTime, loanId, pageSize, pageId, null);
         Type localVarReturnType = new TypeToken<ApiResponseResultOfMarginIsolatedLoanInfoResult>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -234,8 +239,8 @@ public class MarginIsolatedBorrowApi {
     /**
      * list (asynchronously)
      * Get Loan List
+     * @param symbol symbol (required)
      * @param startTime startTime (required)
-     * @param symbol symbol (optional)
      * @param coin coin (optional)
      * @param endTime endTime (optional)
      * @param loanId loanId (optional)
@@ -253,9 +258,9 @@ public class MarginIsolatedBorrowApi {
         <tr><td> 500 </td><td> Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call loanList1Async(String startTime, String symbol, String coin, String endTime, String loanId, String pageSize, String pageId, final ApiCallback<ApiResponseResultOfMarginIsolatedLoanInfoResult> _callback) throws ApiException {
+    public okhttp3.Call isolatedLoanListAsync(String symbol, String startTime, String coin, String endTime, String loanId, String pageSize, String pageId, final ApiCallback<ApiResponseResultOfMarginIsolatedLoanInfoResult> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = loanList1ValidateBeforeCall(startTime, symbol, coin, endTime, loanId, pageSize, pageId, _callback);
+        okhttp3.Call localVarCall = isolatedLoanListValidateBeforeCall(symbol, startTime, coin, endTime, loanId, pageSize, pageId, _callback);
         Type localVarReturnType = new TypeToken<ApiResponseResultOfMarginIsolatedLoanInfoResult>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

@@ -75,7 +75,7 @@ public class MarginCrossRepayApi {
     }
 
     /**
-     * Build call for repayList
+     * Build call for crossRepayList
      * @param startTime startTime (required)
      * @param coin coin (optional)
      * @param repayId repayId (optional)
@@ -94,7 +94,7 @@ public class MarginCrossRepayApi {
         <tr><td> 500 </td><td> Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call repayListCall(String startTime, String coin, String repayId, String endTime, String pageSize, String pageId, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call crossRepayListCall(String startTime, String coin, String repayId, String endTime, String pageSize, String pageId, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -163,13 +163,13 @@ public class MarginCrossRepayApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call repayListValidateBeforeCall(String startTime, String coin, String repayId, String endTime, String pageSize, String pageId, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call crossRepayListValidateBeforeCall(String startTime, String coin, String repayId, String endTime, String pageSize, String pageId, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'startTime' is set
         if (startTime == null) {
-            throw new ApiException("Missing the required parameter 'startTime' when calling repayList(Async)");
+            throw new ApiException("Missing the required parameter 'startTime' when calling crossRepayList(Async)");
         }
 
-        return repayListCall(startTime, coin, repayId, endTime, pageSize, pageId, _callback);
+        return crossRepayListCall(startTime, coin, repayId, endTime, pageSize, pageId, _callback);
 
     }
 
@@ -193,8 +193,8 @@ public class MarginCrossRepayApi {
         <tr><td> 500 </td><td> Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponseResultOfMarginRepayInfoResult repayList(String startTime, String coin, String repayId, String endTime, String pageSize, String pageId) throws ApiException {
-        ApiResponse<ApiResponseResultOfMarginRepayInfoResult> localVarResp = repayListWithHttpInfo(startTime, coin, repayId, endTime, pageSize, pageId);
+    public ApiResponseResultOfMarginRepayInfoResult crossRepayList(String startTime, String coin, String repayId, String endTime, String pageSize, String pageId) throws ApiException {
+        ApiResponse<ApiResponseResultOfMarginRepayInfoResult> localVarResp = crossRepayListWithHttpInfo(startTime, coin, repayId, endTime, pageSize, pageId);
         return localVarResp.getData();
     }
 
@@ -218,8 +218,8 @@ public class MarginCrossRepayApi {
         <tr><td> 500 </td><td> Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ApiResponseResultOfMarginRepayInfoResult> repayListWithHttpInfo(String startTime, String coin, String repayId, String endTime, String pageSize, String pageId) throws ApiException {
-        okhttp3.Call localVarCall = repayListValidateBeforeCall(startTime, coin, repayId, endTime, pageSize, pageId, null);
+    public ApiResponse<ApiResponseResultOfMarginRepayInfoResult> crossRepayListWithHttpInfo(String startTime, String coin, String repayId, String endTime, String pageSize, String pageId) throws ApiException {
+        okhttp3.Call localVarCall = crossRepayListValidateBeforeCall(startTime, coin, repayId, endTime, pageSize, pageId, null);
         Type localVarReturnType = new TypeToken<ApiResponseResultOfMarginRepayInfoResult>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -245,9 +245,9 @@ public class MarginCrossRepayApi {
         <tr><td> 500 </td><td> Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call repayListAsync(String startTime, String coin, String repayId, String endTime, String pageSize, String pageId, final ApiCallback<ApiResponseResultOfMarginRepayInfoResult> _callback) throws ApiException {
+    public okhttp3.Call crossRepayListAsync(String startTime, String coin, String repayId, String endTime, String pageSize, String pageId, final ApiCallback<ApiResponseResultOfMarginRepayInfoResult> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = repayListValidateBeforeCall(startTime, coin, repayId, endTime, pageSize, pageId, _callback);
+        okhttp3.Call localVarCall = crossRepayListValidateBeforeCall(startTime, coin, repayId, endTime, pageSize, pageId, _callback);
         Type localVarReturnType = new TypeToken<ApiResponseResultOfMarginRepayInfoResult>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

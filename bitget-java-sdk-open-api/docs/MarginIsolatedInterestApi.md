@@ -4,12 +4,12 @@ All URIs are relative to *https://api.bitget.com*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**interestList1**](MarginIsolatedInterestApi.md#interestList1) | **GET** /api/margin/v1/isolated/interest/list | list |
+| [**isolatedInterestList**](MarginIsolatedInterestApi.md#isolatedInterestList) | **GET** /api/margin/v1/isolated/interest/list | list |
 
 
-<a name="interestList1"></a>
-# **interestList1**
-> ApiResponseResultOfMarginIsolatedInterestInfoResult interestList1(startTime, symbol, coin, pageSize, pageId)
+<a name="isolatedInterestList"></a>
+# **isolatedInterestList**
+> ApiResponseResultOfMarginIsolatedInterestInfoResult isolatedInterestList(symbol, startTime, coin, pageSize, pageId)
 
 list
 
@@ -61,16 +61,16 @@ public class Example {
     //SECRET_KEY.setApiKeyPrefix("Token");
 
     MarginIsolatedInterestApi apiInstance = new MarginIsolatedInterestApi(defaultClient);
-    String startTime = "1678193138000"; // String | startTime
     String symbol = "BTCUSDT"; // String | symbol
+    String startTime = "1678193138000"; // String | startTime
     String coin = "USDT"; // String | coin
     String pageSize = "10"; // String | pageSize
     String pageId = "pageId_example"; // String | pageId
     try {
-      ApiResponseResultOfMarginIsolatedInterestInfoResult result = apiInstance.interestList1(startTime, symbol, coin, pageSize, pageId);
+      ApiResponseResultOfMarginIsolatedInterestInfoResult result = apiInstance.isolatedInterestList(symbol, startTime, coin, pageSize, pageId);
       System.out.println(result);
     } catch (ApiException e) {
-      System.err.println("Exception when calling MarginIsolatedInterestApi#interestList1");
+      System.err.println("Exception when calling MarginIsolatedInterestApi#isolatedInterestList");
       System.err.println("Status code: " + e.getCode());
       System.err.println("Reason: " + e.getResponseBody());
       System.err.println("Response headers: " + e.getResponseHeaders());
@@ -84,8 +84,8 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
+| **symbol** | **String**| symbol | |
 | **startTime** | **String**| startTime | |
-| **symbol** | **String**| symbol | [optional] |
 | **coin** | **String**| coin | [optional] |
 | **pageSize** | **String**| pageSize | [optional] |
 | **pageId** | **String**| pageId | [optional] |

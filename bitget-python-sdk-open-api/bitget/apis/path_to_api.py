@@ -43,6 +43,10 @@ from bitget.apis.paths.api_margin_v1_isolated_public_interest_rate_and_limit imp
 from bitget.apis.paths.api_margin_v1_isolated_public_tier_data import ApiMarginV1IsolatedPublicTierData
 from bitget.apis.paths.api_margin_v1_isolated_repay_list import ApiMarginV1IsolatedRepayList
 from bitget.apis.paths.api_margin_v1_public_currencies import ApiMarginV1PublicCurrencies
+from bitget.apis.paths.api_p2p_v1_merchant_adv_list import ApiP2pV1MerchantAdvList
+from bitget.apis.paths.api_p2p_v1_merchant_merchant_info import ApiP2pV1MerchantMerchantInfo
+from bitget.apis.paths.api_p2p_v1_merchant_merchant_list import ApiP2pV1MerchantMerchantList
+from bitget.apis.paths.api_p2p_v1_merchant_order_list import ApiP2pV1MerchantOrderList
 
 PathToApi = typing_extensions.TypedDict(
     'PathToApi',
@@ -89,6 +93,10 @@ PathToApi = typing_extensions.TypedDict(
         PathValues.API_MARGIN_V1_ISOLATED_PUBLIC_TIER_DATA: ApiMarginV1IsolatedPublicTierData,
         PathValues.API_MARGIN_V1_ISOLATED_REPAY_LIST: ApiMarginV1IsolatedRepayList,
         PathValues.API_MARGIN_V1_PUBLIC_CURRENCIES: ApiMarginV1PublicCurrencies,
+        PathValues.API_P2P_V1_MERCHANT_ADV_LIST: ApiP2pV1MerchantAdvList,
+        PathValues.API_P2P_V1_MERCHANT_MERCHANT_INFO: ApiP2pV1MerchantMerchantInfo,
+        PathValues.API_P2P_V1_MERCHANT_MERCHANT_LIST: ApiP2pV1MerchantMerchantList,
+        PathValues.API_P2P_V1_MERCHANT_ORDER_LIST: ApiP2pV1MerchantOrderList,
     }
 )
 
@@ -136,5 +144,9 @@ path_to_api = PathToApi(
         PathValues.API_MARGIN_V1_ISOLATED_PUBLIC_TIER_DATA: ApiMarginV1IsolatedPublicTierData,
         PathValues.API_MARGIN_V1_ISOLATED_REPAY_LIST: ApiMarginV1IsolatedRepayList,
         PathValues.API_MARGIN_V1_PUBLIC_CURRENCIES: ApiMarginV1PublicCurrencies,
+        PathValues.API_P2P_V1_MERCHANT_ADV_LIST: ApiP2pV1MerchantAdvList,
+        PathValues.API_P2P_V1_MERCHANT_MERCHANT_INFO: ApiP2pV1MerchantMerchantInfo,
+        PathValues.API_P2P_V1_MERCHANT_MERCHANT_LIST: ApiP2pV1MerchantMerchantList,
+        PathValues.API_P2P_V1_MERCHANT_ORDER_LIST: ApiP2pV1MerchantOrderList,
     }
 )

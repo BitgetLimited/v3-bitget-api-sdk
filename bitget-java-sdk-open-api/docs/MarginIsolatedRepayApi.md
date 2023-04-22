@@ -4,12 +4,12 @@ All URIs are relative to *https://api.bitget.com*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**repayList1**](MarginIsolatedRepayApi.md#repayList1) | **GET** /api/margin/v1/isolated/repay/list | list |
+| [**isolateRepayList**](MarginIsolatedRepayApi.md#isolateRepayList) | **GET** /api/margin/v1/isolated/repay/list | list |
 
 
-<a name="repayList1"></a>
-# **repayList1**
-> ApiResponseResultOfMarginIsolatedRepayInfoResult repayList1(startTime, symbol, coin, repayId, endTime, pageSize, pageId)
+<a name="isolateRepayList"></a>
+# **isolateRepayList**
+> ApiResponseResultOfMarginIsolatedRepayInfoResult isolateRepayList(symbol, startTime, coin, repayId, endTime, pageSize, pageId)
 
 list
 
@@ -61,18 +61,18 @@ public class Example {
     //SECRET_KEY.setApiKeyPrefix("Token");
 
     MarginIsolatedRepayApi apiInstance = new MarginIsolatedRepayApi(defaultClient);
-    String startTime = "1678193338000"; // String | startTime
     String symbol = "BTCUSDT"; // String | symbol
+    String startTime = "1678193338000"; // String | startTime
     String coin = "USDT"; // String | coin
     String repayId = "repayId_example"; // String | repayId
     String endTime = "1678193338000"; // String | endTime
     String pageSize = "10"; // String | pageSize
     String pageId = "pageId_example"; // String | pageId
     try {
-      ApiResponseResultOfMarginIsolatedRepayInfoResult result = apiInstance.repayList1(startTime, symbol, coin, repayId, endTime, pageSize, pageId);
+      ApiResponseResultOfMarginIsolatedRepayInfoResult result = apiInstance.isolateRepayList(symbol, startTime, coin, repayId, endTime, pageSize, pageId);
       System.out.println(result);
     } catch (ApiException e) {
-      System.err.println("Exception when calling MarginIsolatedRepayApi#repayList1");
+      System.err.println("Exception when calling MarginIsolatedRepayApi#isolateRepayList");
       System.err.println("Status code: " + e.getCode());
       System.err.println("Reason: " + e.getResponseBody());
       System.err.println("Response headers: " + e.getResponseHeaders());
@@ -86,8 +86,8 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
+| **symbol** | **String**| symbol | |
 | **startTime** | **String**| startTime | |
-| **symbol** | **String**| symbol | [optional] |
 | **coin** | **String**| coin | [optional] |
 | **repayId** | **String**| repayId | [optional] |
 | **endTime** | **String**| endTime | [optional] |

@@ -75,9 +75,9 @@ public class MarginIsolatedLiquidationApi {
     }
 
     /**
-     * Build call for liquidationList1
+     * Build call for isolatedLiquidationList
+     * @param symbol symbol (required)
      * @param startTime startTime (required)
-     * @param symbol symbol (optional)
      * @param endTime endTime (optional)
      * @param pageSize pageSize (optional)
      * @param pageId pageId (optional)
@@ -93,7 +93,7 @@ public class MarginIsolatedLiquidationApi {
         <tr><td> 500 </td><td> Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call liquidationList1Call(String startTime, String symbol, String endTime, String pageSize, String pageId, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call isolatedLiquidationListCall(String symbol, String startTime, String endTime, String pageSize, String pageId, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -158,21 +158,26 @@ public class MarginIsolatedLiquidationApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call liquidationList1ValidateBeforeCall(String startTime, String symbol, String endTime, String pageSize, String pageId, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'startTime' is set
-        if (startTime == null) {
-            throw new ApiException("Missing the required parameter 'startTime' when calling liquidationList1(Async)");
+    private okhttp3.Call isolatedLiquidationListValidateBeforeCall(String symbol, String startTime, String endTime, String pageSize, String pageId, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'symbol' is set
+        if (symbol == null) {
+            throw new ApiException("Missing the required parameter 'symbol' when calling isolatedLiquidationList(Async)");
         }
 
-        return liquidationList1Call(startTime, symbol, endTime, pageSize, pageId, _callback);
+        // verify the required parameter 'startTime' is set
+        if (startTime == null) {
+            throw new ApiException("Missing the required parameter 'startTime' when calling isolatedLiquidationList(Async)");
+        }
+
+        return isolatedLiquidationListCall(symbol, startTime, endTime, pageSize, pageId, _callback);
 
     }
 
     /**
      * list
      * Get liquidation List
+     * @param symbol symbol (required)
      * @param startTime startTime (required)
-     * @param symbol symbol (optional)
      * @param endTime endTime (optional)
      * @param pageSize pageSize (optional)
      * @param pageId pageId (optional)
@@ -187,16 +192,16 @@ public class MarginIsolatedLiquidationApi {
         <tr><td> 500 </td><td> Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponseResultOfMarginIsolatedLiquidationInfoResult liquidationList1(String startTime, String symbol, String endTime, String pageSize, String pageId) throws ApiException {
-        ApiResponse<ApiResponseResultOfMarginIsolatedLiquidationInfoResult> localVarResp = liquidationList1WithHttpInfo(startTime, symbol, endTime, pageSize, pageId);
+    public ApiResponseResultOfMarginIsolatedLiquidationInfoResult isolatedLiquidationList(String symbol, String startTime, String endTime, String pageSize, String pageId) throws ApiException {
+        ApiResponse<ApiResponseResultOfMarginIsolatedLiquidationInfoResult> localVarResp = isolatedLiquidationListWithHttpInfo(symbol, startTime, endTime, pageSize, pageId);
         return localVarResp.getData();
     }
 
     /**
      * list
      * Get liquidation List
+     * @param symbol symbol (required)
      * @param startTime startTime (required)
-     * @param symbol symbol (optional)
      * @param endTime endTime (optional)
      * @param pageSize pageSize (optional)
      * @param pageId pageId (optional)
@@ -211,8 +216,8 @@ public class MarginIsolatedLiquidationApi {
         <tr><td> 500 </td><td> Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ApiResponseResultOfMarginIsolatedLiquidationInfoResult> liquidationList1WithHttpInfo(String startTime, String symbol, String endTime, String pageSize, String pageId) throws ApiException {
-        okhttp3.Call localVarCall = liquidationList1ValidateBeforeCall(startTime, symbol, endTime, pageSize, pageId, null);
+    public ApiResponse<ApiResponseResultOfMarginIsolatedLiquidationInfoResult> isolatedLiquidationListWithHttpInfo(String symbol, String startTime, String endTime, String pageSize, String pageId) throws ApiException {
+        okhttp3.Call localVarCall = isolatedLiquidationListValidateBeforeCall(symbol, startTime, endTime, pageSize, pageId, null);
         Type localVarReturnType = new TypeToken<ApiResponseResultOfMarginIsolatedLiquidationInfoResult>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -220,8 +225,8 @@ public class MarginIsolatedLiquidationApi {
     /**
      * list (asynchronously)
      * Get liquidation List
+     * @param symbol symbol (required)
      * @param startTime startTime (required)
-     * @param symbol symbol (optional)
      * @param endTime endTime (optional)
      * @param pageSize pageSize (optional)
      * @param pageId pageId (optional)
@@ -237,9 +242,9 @@ public class MarginIsolatedLiquidationApi {
         <tr><td> 500 </td><td> Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call liquidationList1Async(String startTime, String symbol, String endTime, String pageSize, String pageId, final ApiCallback<ApiResponseResultOfMarginIsolatedLiquidationInfoResult> _callback) throws ApiException {
+    public okhttp3.Call isolatedLiquidationListAsync(String symbol, String startTime, String endTime, String pageSize, String pageId, final ApiCallback<ApiResponseResultOfMarginIsolatedLiquidationInfoResult> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = liquidationList1ValidateBeforeCall(startTime, symbol, endTime, pageSize, pageId, _callback);
+        okhttp3.Call localVarCall = isolatedLiquidationListValidateBeforeCall(symbol, startTime, endTime, pageSize, pageId, _callback);
         Type localVarReturnType = new TypeToken<ApiResponseResultOfMarginIsolatedLiquidationInfoResult>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

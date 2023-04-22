@@ -490,8 +490,8 @@ public class MarginIsolatedOrderApi {
     /**
      * Build call for marginIsolatedFills
      * @param startTime startTime (required)
-     * @param endTime endTime (required)
      * @param symbol symbol (optional)
+     * @param endTime endTime (optional)
      * @param orderId orderId (optional)
      * @param lastFillId lastFillId (optional)
      * @param pageSize pageSize (optional)
@@ -507,7 +507,7 @@ public class MarginIsolatedOrderApi {
         <tr><td> 500 </td><td> Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call marginIsolatedFillsCall(String startTime, String endTime, String symbol, String orderId, String lastFillId, String pageSize, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call marginIsolatedFillsCall(String startTime, String symbol, String endTime, String orderId, String lastFillId, String pageSize, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -576,18 +576,13 @@ public class MarginIsolatedOrderApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call marginIsolatedFillsValidateBeforeCall(String startTime, String endTime, String symbol, String orderId, String lastFillId, String pageSize, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call marginIsolatedFillsValidateBeforeCall(String startTime, String symbol, String endTime, String orderId, String lastFillId, String pageSize, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'startTime' is set
         if (startTime == null) {
             throw new ApiException("Missing the required parameter 'startTime' when calling marginIsolatedFills(Async)");
         }
 
-        // verify the required parameter 'endTime' is set
-        if (endTime == null) {
-            throw new ApiException("Missing the required parameter 'endTime' when calling marginIsolatedFills(Async)");
-        }
-
-        return marginIsolatedFillsCall(startTime, endTime, symbol, orderId, lastFillId, pageSize, _callback);
+        return marginIsolatedFillsCall(startTime, symbol, endTime, orderId, lastFillId, pageSize, _callback);
 
     }
 
@@ -595,8 +590,8 @@ public class MarginIsolatedOrderApi {
      * fills
      * Margin Isolated Fills
      * @param startTime startTime (required)
-     * @param endTime endTime (required)
      * @param symbol symbol (optional)
+     * @param endTime endTime (optional)
      * @param orderId orderId (optional)
      * @param lastFillId lastFillId (optional)
      * @param pageSize pageSize (optional)
@@ -611,8 +606,8 @@ public class MarginIsolatedOrderApi {
         <tr><td> 500 </td><td> Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponseResultOfMarginTradeDetailInfoResult marginIsolatedFills(String startTime, String endTime, String symbol, String orderId, String lastFillId, String pageSize) throws ApiException {
-        ApiResponse<ApiResponseResultOfMarginTradeDetailInfoResult> localVarResp = marginIsolatedFillsWithHttpInfo(startTime, endTime, symbol, orderId, lastFillId, pageSize);
+    public ApiResponseResultOfMarginTradeDetailInfoResult marginIsolatedFills(String startTime, String symbol, String endTime, String orderId, String lastFillId, String pageSize) throws ApiException {
+        ApiResponse<ApiResponseResultOfMarginTradeDetailInfoResult> localVarResp = marginIsolatedFillsWithHttpInfo(startTime, symbol, endTime, orderId, lastFillId, pageSize);
         return localVarResp.getData();
     }
 
@@ -620,8 +615,8 @@ public class MarginIsolatedOrderApi {
      * fills
      * Margin Isolated Fills
      * @param startTime startTime (required)
-     * @param endTime endTime (required)
      * @param symbol symbol (optional)
+     * @param endTime endTime (optional)
      * @param orderId orderId (optional)
      * @param lastFillId lastFillId (optional)
      * @param pageSize pageSize (optional)
@@ -636,8 +631,8 @@ public class MarginIsolatedOrderApi {
         <tr><td> 500 </td><td> Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ApiResponseResultOfMarginTradeDetailInfoResult> marginIsolatedFillsWithHttpInfo(String startTime, String endTime, String symbol, String orderId, String lastFillId, String pageSize) throws ApiException {
-        okhttp3.Call localVarCall = marginIsolatedFillsValidateBeforeCall(startTime, endTime, symbol, orderId, lastFillId, pageSize, null);
+    public ApiResponse<ApiResponseResultOfMarginTradeDetailInfoResult> marginIsolatedFillsWithHttpInfo(String startTime, String symbol, String endTime, String orderId, String lastFillId, String pageSize) throws ApiException {
+        okhttp3.Call localVarCall = marginIsolatedFillsValidateBeforeCall(startTime, symbol, endTime, orderId, lastFillId, pageSize, null);
         Type localVarReturnType = new TypeToken<ApiResponseResultOfMarginTradeDetailInfoResult>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -646,8 +641,8 @@ public class MarginIsolatedOrderApi {
      * fills (asynchronously)
      * Margin Isolated Fills
      * @param startTime startTime (required)
-     * @param endTime endTime (required)
      * @param symbol symbol (optional)
+     * @param endTime endTime (optional)
      * @param orderId orderId (optional)
      * @param lastFillId lastFillId (optional)
      * @param pageSize pageSize (optional)
@@ -663,9 +658,9 @@ public class MarginIsolatedOrderApi {
         <tr><td> 500 </td><td> Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call marginIsolatedFillsAsync(String startTime, String endTime, String symbol, String orderId, String lastFillId, String pageSize, final ApiCallback<ApiResponseResultOfMarginTradeDetailInfoResult> _callback) throws ApiException {
+    public okhttp3.Call marginIsolatedFillsAsync(String startTime, String symbol, String endTime, String orderId, String lastFillId, String pageSize, final ApiCallback<ApiResponseResultOfMarginTradeDetailInfoResult> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = marginIsolatedFillsValidateBeforeCall(startTime, endTime, symbol, orderId, lastFillId, pageSize, _callback);
+        okhttp3.Call localVarCall = marginIsolatedFillsValidateBeforeCall(startTime, symbol, endTime, orderId, lastFillId, pageSize, _callback);
         Type localVarReturnType = new TypeToken<ApiResponseResultOfMarginTradeDetailInfoResult>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -866,9 +861,9 @@ public class MarginIsolatedOrderApi {
     }
     /**
      * Build call for marginIsolatedOpenOrders
+     * @param symbol symbol (required)
      * @param startTime startTime (required)
-     * @param endTime endTime (required)
-     * @param symbol symbol (optional)
+     * @param endTime endTime (optional)
      * @param orderId orderId (optional)
      * @param clientOid clientOid (optional)
      * @param pageSize pageSize (optional)
@@ -884,7 +879,7 @@ public class MarginIsolatedOrderApi {
         <tr><td> 500 </td><td> Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call marginIsolatedOpenOrdersCall(String startTime, String endTime, String symbol, String orderId, String clientOid, String pageSize, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call marginIsolatedOpenOrdersCall(String symbol, String startTime, String endTime, String orderId, String clientOid, String pageSize, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -953,27 +948,27 @@ public class MarginIsolatedOrderApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call marginIsolatedOpenOrdersValidateBeforeCall(String startTime, String endTime, String symbol, String orderId, String clientOid, String pageSize, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call marginIsolatedOpenOrdersValidateBeforeCall(String symbol, String startTime, String endTime, String orderId, String clientOid, String pageSize, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'symbol' is set
+        if (symbol == null) {
+            throw new ApiException("Missing the required parameter 'symbol' when calling marginIsolatedOpenOrders(Async)");
+        }
+
         // verify the required parameter 'startTime' is set
         if (startTime == null) {
             throw new ApiException("Missing the required parameter 'startTime' when calling marginIsolatedOpenOrders(Async)");
         }
 
-        // verify the required parameter 'endTime' is set
-        if (endTime == null) {
-            throw new ApiException("Missing the required parameter 'endTime' when calling marginIsolatedOpenOrders(Async)");
-        }
-
-        return marginIsolatedOpenOrdersCall(startTime, endTime, symbol, orderId, clientOid, pageSize, _callback);
+        return marginIsolatedOpenOrdersCall(symbol, startTime, endTime, orderId, clientOid, pageSize, _callback);
 
     }
 
     /**
      * openOrders
      * Margin Isolated openOrders
+     * @param symbol symbol (required)
      * @param startTime startTime (required)
-     * @param endTime endTime (required)
-     * @param symbol symbol (optional)
+     * @param endTime endTime (optional)
      * @param orderId orderId (optional)
      * @param clientOid clientOid (optional)
      * @param pageSize pageSize (optional)
@@ -988,17 +983,17 @@ public class MarginIsolatedOrderApi {
         <tr><td> 500 </td><td> Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponseResultOfMarginOpenOrderInfoResult marginIsolatedOpenOrders(String startTime, String endTime, String symbol, String orderId, String clientOid, String pageSize) throws ApiException {
-        ApiResponse<ApiResponseResultOfMarginOpenOrderInfoResult> localVarResp = marginIsolatedOpenOrdersWithHttpInfo(startTime, endTime, symbol, orderId, clientOid, pageSize);
+    public ApiResponseResultOfMarginOpenOrderInfoResult marginIsolatedOpenOrders(String symbol, String startTime, String endTime, String orderId, String clientOid, String pageSize) throws ApiException {
+        ApiResponse<ApiResponseResultOfMarginOpenOrderInfoResult> localVarResp = marginIsolatedOpenOrdersWithHttpInfo(symbol, startTime, endTime, orderId, clientOid, pageSize);
         return localVarResp.getData();
     }
 
     /**
      * openOrders
      * Margin Isolated openOrders
+     * @param symbol symbol (required)
      * @param startTime startTime (required)
-     * @param endTime endTime (required)
-     * @param symbol symbol (optional)
+     * @param endTime endTime (optional)
      * @param orderId orderId (optional)
      * @param clientOid clientOid (optional)
      * @param pageSize pageSize (optional)
@@ -1013,8 +1008,8 @@ public class MarginIsolatedOrderApi {
         <tr><td> 500 </td><td> Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ApiResponseResultOfMarginOpenOrderInfoResult> marginIsolatedOpenOrdersWithHttpInfo(String startTime, String endTime, String symbol, String orderId, String clientOid, String pageSize) throws ApiException {
-        okhttp3.Call localVarCall = marginIsolatedOpenOrdersValidateBeforeCall(startTime, endTime, symbol, orderId, clientOid, pageSize, null);
+    public ApiResponse<ApiResponseResultOfMarginOpenOrderInfoResult> marginIsolatedOpenOrdersWithHttpInfo(String symbol, String startTime, String endTime, String orderId, String clientOid, String pageSize) throws ApiException {
+        okhttp3.Call localVarCall = marginIsolatedOpenOrdersValidateBeforeCall(symbol, startTime, endTime, orderId, clientOid, pageSize, null);
         Type localVarReturnType = new TypeToken<ApiResponseResultOfMarginOpenOrderInfoResult>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1022,9 +1017,9 @@ public class MarginIsolatedOrderApi {
     /**
      * openOrders (asynchronously)
      * Margin Isolated openOrders
+     * @param symbol symbol (required)
      * @param startTime startTime (required)
-     * @param endTime endTime (required)
-     * @param symbol symbol (optional)
+     * @param endTime endTime (optional)
      * @param orderId orderId (optional)
      * @param clientOid clientOid (optional)
      * @param pageSize pageSize (optional)
@@ -1040,9 +1035,9 @@ public class MarginIsolatedOrderApi {
         <tr><td> 500 </td><td> Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call marginIsolatedOpenOrdersAsync(String startTime, String endTime, String symbol, String orderId, String clientOid, String pageSize, final ApiCallback<ApiResponseResultOfMarginOpenOrderInfoResult> _callback) throws ApiException {
+    public okhttp3.Call marginIsolatedOpenOrdersAsync(String symbol, String startTime, String endTime, String orderId, String clientOid, String pageSize, final ApiCallback<ApiResponseResultOfMarginOpenOrderInfoResult> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = marginIsolatedOpenOrdersValidateBeforeCall(startTime, endTime, symbol, orderId, clientOid, pageSize, _callback);
+        okhttp3.Call localVarCall = marginIsolatedOpenOrdersValidateBeforeCall(symbol, startTime, endTime, orderId, clientOid, pageSize, _callback);
         Type localVarReturnType = new TypeToken<ApiResponseResultOfMarginOpenOrderInfoResult>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

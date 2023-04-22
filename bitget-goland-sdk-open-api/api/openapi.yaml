@@ -39,6 +39,8 @@ tags:
   name: margin_isolated_repay
 - description: Margin Public Controller
   name: margin_public
+- description: Merchant Controller
+  name: p2p_merchant
 paths:
   /api/margin/v1/cross/account/assets:
     get:
@@ -2459,6 +2461,323 @@ paths:
       summary: currencies
       tags:
       - margin_public
+  /api/p2p/v1/merchant/advList:
+    get:
+      deprecated: false
+      description: P2P merchant adv info
+      operationId: merchantAdvList
+      parameters:
+      - description: startTime
+        example: "1678193338000"
+        in: query
+        name: startTime
+        required: true
+        schema:
+          type: string
+      - description: endTime
+        example: "1678193338000"
+        in: query
+        name: endTime
+        schema:
+          type: string
+      - description: status
+        example: upper
+        in: query
+        name: status
+        schema:
+          type: string
+      - description: type
+        example: sell
+        in: query
+        name: type
+        schema:
+          type: string
+      - description: advNo
+        example: "1678193338000"
+        in: query
+        name: advNo
+        schema:
+          type: string
+      - description: coin
+        example: USDT
+        in: query
+        name: coin
+        schema:
+          type: string
+      - description: languageType
+        example: en-US
+        in: query
+        name: languageType
+        schema:
+          type: string
+      - description: fiat
+        example: USD
+        in: query
+        name: fiat
+        schema:
+          type: string
+      - description: languageType
+        example: "43534"
+        in: query
+        name: lastMinId
+        schema:
+          type: string
+      - description: pageSize
+        example: "10"
+        in: query
+        name: pageSize
+        schema:
+          type: string
+      - description: orderBy
+        example: createTime
+        in: query
+        name: orderBy
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfMerchantAdvResult'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfVoid'
+          description: Bad Request
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfVoid'
+          description: Gateway Frequency Limit
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfVoid'
+          description: Server Error
+      security:
+      - ACCESS_TIMESTAMP: []
+      - SECRET_KEY: []
+      - ACCESS_PASSPHRASE: []
+      - ACCESS_SIGN: []
+      - ACCESS_KEY: []
+      summary: advList
+      tags:
+      - p2p_merchant
+  /api/p2p/v1/merchant/merchantInfo:
+    get:
+      deprecated: false
+      description: P2P merchant info self
+      operationId: merchantInfo
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfMerchantPersonInfo'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfVoid'
+          description: Bad Request
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfVoid'
+          description: Gateway Frequency Limit
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfVoid'
+          description: Server Error
+      security:
+      - ACCESS_TIMESTAMP: []
+      - SECRET_KEY: []
+      - ACCESS_PASSPHRASE: []
+      - ACCESS_SIGN: []
+      - ACCESS_KEY: []
+      summary: merchantInfo
+      tags:
+      - p2p_merchant
+  /api/p2p/v1/merchant/merchantList:
+    get:
+      deprecated: false
+      description: P2P merchant list
+      operationId: merchantList
+      parameters:
+      - description: online
+        example: "yes"
+        in: query
+        name: online
+        schema:
+          type: string
+      - description: merchantId
+        example: "4534534534"
+        in: query
+        name: merchantId
+        schema:
+          type: string
+      - description: lastMinId
+        example: "1678193338000"
+        in: query
+        name: lastMinId
+        schema:
+          type: string
+      - description: pageSize
+        example: "10"
+        in: query
+        name: pageSize
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfMerchantInfoResult'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfVoid'
+          description: Bad Request
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfVoid'
+          description: Gateway Frequency Limit
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfVoid'
+          description: Server Error
+      security:
+      - ACCESS_TIMESTAMP: []
+      - SECRET_KEY: []
+      - ACCESS_PASSPHRASE: []
+      - ACCESS_SIGN: []
+      - ACCESS_KEY: []
+      summary: merchantList
+      tags:
+      - p2p_merchant
+  /api/p2p/v1/merchant/orderList:
+    get:
+      deprecated: false
+      description: P2P merchant order info
+      operationId: merchantOrderList
+      parameters:
+      - description: startTime
+        example: "1678193338000"
+        in: query
+        name: startTime
+        required: true
+        schema:
+          type: string
+      - description: endTime
+        example: "1678193338000"
+        in: query
+        name: endTime
+        schema:
+          type: string
+      - description: status
+        example: wait_pay
+        in: query
+        name: status
+        schema:
+          type: string
+      - description: type
+        example: sell
+        in: query
+        name: type
+        schema:
+          type: string
+      - description: advNo
+        example: "1678193338000"
+        in: query
+        name: advNo
+        schema:
+          type: string
+      - description: orderNo
+        example: "23842478324723423"
+        in: query
+        name: orderNo
+        schema:
+          type: string
+      - description: coin
+        example: USDT
+        in: query
+        name: coin
+        schema:
+          type: string
+      - description: languageType
+        example: en-US
+        in: query
+        name: languageType
+        schema:
+          type: string
+      - description: fiat
+        example: USD
+        in: query
+        name: fiat
+        schema:
+          type: string
+      - description: languageType
+        example: "43534"
+        in: query
+        name: lastMinId
+        schema:
+          type: string
+      - description: pageSize
+        example: "10"
+        in: query
+        name: pageSize
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfMerchantOrderResult'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfVoid'
+          description: Bad Request
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfVoid'
+          description: Gateway Frequency Limit
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfVoid'
+          description: Server Error
+      security:
+      - ACCESS_TIMESTAMP: []
+      - SECRET_KEY: []
+      - ACCESS_PASSPHRASE: []
+      - ACCESS_SIGN: []
+      - ACCESS_KEY: []
+      summary: orderList
+      tags:
+      - p2p_merchant
 components:
   schemas:
     ApiResponseResultOfListOfMarginCrossAssetsPopulationResult:
@@ -3544,6 +3863,305 @@ components:
           type: integer
       title: ApiResponseResultOfMarginTradeDetailInfoResult
       type: object
+    ApiResponseResultOfMerchantAdvResult:
+      example:
+        msg: success
+        requestTime: 1675044340493
+        code: "00000"
+        data:
+          advList:
+          - minAmount: minAmount
+            amount: amount
+            fiatPrecision: fiatPrecision
+            payDuration: payDuration
+            dealAmount: dealAmount
+            advId: advId
+            remark: remark
+            fiatCode: fiatCode
+            type: type
+            advNo: advNo
+            hide: hide
+            coinPrecision: coinPrecision
+            turnoverNum: turnoverNum
+            price: price
+            turnoverRate: turnoverRate
+            ctime: ctime
+            fiatSymbol: fiatSymbol
+            paymentMethod:
+            - paymentId: paymentId
+              paymentMethod: paymentMethod
+              paymentInfo:
+              - name: name
+                type: type
+                required: true
+              - name: name
+                type: type
+                required: true
+            - paymentId: paymentId
+              paymentMethod: paymentMethod
+              paymentInfo:
+              - name: name
+                type: type
+                required: true
+              - name: name
+                type: type
+                required: true
+            maxAmount: maxAmount
+            userLimit:
+              placeOrderNum: placeOrderNum
+              country: country
+              maxCompleteNum: maxCompleteNum
+              thirtyCompleteRate: thirtyCompleteRate
+              minCompleteNum: minCompleteNum
+              allowMerchantPlace: allowMerchantPlace
+            coin: coin
+            status: status
+          - minAmount: minAmount
+            amount: amount
+            fiatPrecision: fiatPrecision
+            payDuration: payDuration
+            dealAmount: dealAmount
+            advId: advId
+            remark: remark
+            fiatCode: fiatCode
+            type: type
+            advNo: advNo
+            hide: hide
+            coinPrecision: coinPrecision
+            turnoverNum: turnoverNum
+            price: price
+            turnoverRate: turnoverRate
+            ctime: ctime
+            fiatSymbol: fiatSymbol
+            paymentMethod:
+            - paymentId: paymentId
+              paymentMethod: paymentMethod
+              paymentInfo:
+              - name: name
+                type: type
+                required: true
+              - name: name
+                type: type
+                required: true
+            - paymentId: paymentId
+              paymentMethod: paymentMethod
+              paymentInfo:
+              - name: name
+                type: type
+                required: true
+              - name: name
+                type: type
+                required: true
+            maxAmount: maxAmount
+            userLimit:
+              placeOrderNum: placeOrderNum
+              country: country
+              maxCompleteNum: maxCompleteNum
+              thirtyCompleteRate: thirtyCompleteRate
+              minCompleteNum: minCompleteNum
+              allowMerchantPlace: allowMerchantPlace
+            coin: coin
+            status: status
+          minId: minId
+      properties:
+        code:
+          description: code
+          example: "00000"
+          type: string
+        data:
+          $ref: '#/components/schemas/MerchantAdvResult'
+        msg:
+          description: msg
+          example: success
+          type: string
+        requestTime:
+          description: requestTime
+          example: 1675044340493
+          format: int64
+          type: integer
+      title: ApiResponseResultOfMerchantAdvResult
+      type: object
+    ApiResponseResultOfMerchantInfoResult:
+      example:
+        msg: success
+        requestTime: 1675044340493
+        code: "00000"
+        data:
+          minId: minId
+          resultList:
+          - totalSell: totalSell
+            totalCompletionRate: totalCompletionRate
+            registerTime: registerTime
+            nickName: nickName
+            thirtyBuy: thirtyBuy
+            isOnline: isOnline
+            totalTrades: totalTrades
+            thirtySell: thirtySell
+            averagePayment: averagePayment
+            averageRealese: averageRealese
+            thirtyCompletionRate: thirtyCompletionRate
+            thirtyTrades: thirtyTrades
+            merchantId: merchantId
+            totalBuy: totalBuy
+          - totalSell: totalSell
+            totalCompletionRate: totalCompletionRate
+            registerTime: registerTime
+            nickName: nickName
+            thirtyBuy: thirtyBuy
+            isOnline: isOnline
+            totalTrades: totalTrades
+            thirtySell: thirtySell
+            averagePayment: averagePayment
+            averageRealese: averageRealese
+            thirtyCompletionRate: thirtyCompletionRate
+            thirtyTrades: thirtyTrades
+            merchantId: merchantId
+            totalBuy: totalBuy
+      properties:
+        code:
+          description: code
+          example: "00000"
+          type: string
+        data:
+          $ref: '#/components/schemas/MerchantInfoResult'
+        msg:
+          description: msg
+          example: success
+          type: string
+        requestTime:
+          description: requestTime
+          example: 1675044340493
+          format: int64
+          type: integer
+      title: ApiResponseResultOfMerchantInfoResult
+      type: object
+    ApiResponseResultOfMerchantOrderResult:
+      example:
+        msg: success
+        requestTime: 1675044340493
+        code: "00000"
+        data:
+          orderList:
+          - amount: amount
+            orderNo: orderNo
+            orderId: orderId
+            count: count
+            buyerRealName: buyerRealName
+            type: type
+            sellerRealName: sellerRealName
+            advNo: advNo
+            price: price
+            releaseCoinTime: releaseCoinTime
+            representTime: representTime
+            ctime: ctime
+            fiat: fiat
+            withdrawTime: withdrawTime
+            paymentTime: paymentTime
+            paymentInfo:
+              paymethodName: paymethodName
+              paymethodInfo:
+              - name: name
+                type: type
+                value: value
+                required: true
+              - name: name
+                type: type
+                value: value
+                required: true
+              paymethodId: paymethodId
+            coin: coin
+            status: status
+          - amount: amount
+            orderNo: orderNo
+            orderId: orderId
+            count: count
+            buyerRealName: buyerRealName
+            type: type
+            sellerRealName: sellerRealName
+            advNo: advNo
+            price: price
+            releaseCoinTime: releaseCoinTime
+            representTime: representTime
+            ctime: ctime
+            fiat: fiat
+            withdrawTime: withdrawTime
+            paymentTime: paymentTime
+            paymentInfo:
+              paymethodName: paymethodName
+              paymethodInfo:
+              - name: name
+                type: type
+                value: value
+                required: true
+              - name: name
+                type: type
+                value: value
+                required: true
+              paymethodId: paymethodId
+            coin: coin
+            status: status
+          minId: minId
+      properties:
+        code:
+          description: code
+          example: "00000"
+          type: string
+        data:
+          $ref: '#/components/schemas/MerchantOrderResult'
+        msg:
+          description: msg
+          example: success
+          type: string
+        requestTime:
+          description: requestTime
+          example: 1675044340493
+          format: int64
+          type: integer
+      title: ApiResponseResultOfMerchantOrderResult
+      type: object
+    ApiResponseResultOfMerchantPersonInfo:
+      example:
+        msg: success
+        requestTime: 1675044340493
+        code: "00000"
+        data:
+          totalSell: totalSell
+          totalCompletionRate: totalCompletionRate
+          registerTime: registerTime
+          nickName: nickName
+          kycFlag: true
+          mobile: mobile
+          thirtyBuy: thirtyBuy
+          totalTrades: totalTrades
+          emailBindFlag: true
+          thirtySell: thirtySell
+          averagePayment: averagePayment
+          averageRealese: averageRealese
+          thirtyCompletionRate: thirtyCompletionRate
+          realName: realName
+          thirtyTrades: thirtyTrades
+          merchantId: merchantId
+          totalBuy: totalBuy
+          mobileBindFlag: true
+          email: email
+      properties:
+        code:
+          description: code
+          example: "00000"
+          type: string
+        data:
+          $ref: '#/components/schemas/MerchantPersonInfo'
+        msg:
+          description: msg
+          example: success
+          type: string
+        requestTime:
+          description: requestTime
+          example: 1675044340493
+          format: int64
+          type: integer
+      title: ApiResponseResultOfMerchantPersonInfo
+      type: object
     ApiResponseResultOfVoid:
       example:
         msg: success
@@ -3564,6 +4182,42 @@ components:
           format: int64
           type: integer
       title: ApiResponseResultOfVoid
+      type: object
+    FiatPaymentDetailInfo:
+      example:
+        name: name
+        type: type
+        required: true
+      properties:
+        name:
+          type: string
+        required:
+          type: boolean
+        type:
+          type: string
+      title: FiatPaymentDetailInfo
+      type: object
+    FiatPaymentInfo:
+      example:
+        paymentId: paymentId
+        paymentMethod: paymentMethod
+        paymentInfo:
+        - name: name
+          type: type
+          required: true
+        - name: name
+          type: type
+          required: true
+      properties:
+        paymentId:
+          type: string
+        paymentInfo:
+          items:
+            $ref: '#/components/schemas/FiatPaymentDetailInfo'
+          type: array
+        paymentMethod:
+          type: string
+      title: FiatPaymentInfo
       type: object
     MarginBatchCancelOrderRequest:
       example:
@@ -5031,6 +5685,563 @@ components:
         minId:
           type: string
       title: MarginTradeDetailInfoResult
+      type: object
+    MerchantAdvInfo:
+      example:
+        minAmount: minAmount
+        amount: amount
+        fiatPrecision: fiatPrecision
+        payDuration: payDuration
+        dealAmount: dealAmount
+        advId: advId
+        remark: remark
+        fiatCode: fiatCode
+        type: type
+        advNo: advNo
+        hide: hide
+        coinPrecision: coinPrecision
+        turnoverNum: turnoverNum
+        price: price
+        turnoverRate: turnoverRate
+        ctime: ctime
+        fiatSymbol: fiatSymbol
+        paymentMethod:
+        - paymentId: paymentId
+          paymentMethod: paymentMethod
+          paymentInfo:
+          - name: name
+            type: type
+            required: true
+          - name: name
+            type: type
+            required: true
+        - paymentId: paymentId
+          paymentMethod: paymentMethod
+          paymentInfo:
+          - name: name
+            type: type
+            required: true
+          - name: name
+            type: type
+            required: true
+        maxAmount: maxAmount
+        userLimit:
+          placeOrderNum: placeOrderNum
+          country: country
+          maxCompleteNum: maxCompleteNum
+          thirtyCompleteRate: thirtyCompleteRate
+          minCompleteNum: minCompleteNum
+          allowMerchantPlace: allowMerchantPlace
+        coin: coin
+        status: status
+      properties:
+        advId:
+          type: string
+        advNo:
+          type: string
+        amount:
+          type: string
+        coin:
+          type: string
+        coinPrecision:
+          type: string
+        ctime:
+          type: string
+        dealAmount:
+          type: string
+        fiatCode:
+          type: string
+        fiatPrecision:
+          type: string
+        fiatSymbol:
+          type: string
+        hide:
+          type: string
+        maxAmount:
+          type: string
+        minAmount:
+          type: string
+        payDuration:
+          type: string
+        paymentMethod:
+          items:
+            $ref: '#/components/schemas/FiatPaymentInfo'
+          type: array
+        price:
+          type: string
+        remark:
+          type: string
+        status:
+          type: string
+        turnoverNum:
+          type: string
+        turnoverRate:
+          type: string
+        type:
+          type: string
+        userLimit:
+          $ref: '#/components/schemas/MerchantAdvUserLimitInfo'
+      title: MerchantAdvInfo
+      type: object
+    MerchantAdvResult:
+      example:
+        advList:
+        - minAmount: minAmount
+          amount: amount
+          fiatPrecision: fiatPrecision
+          payDuration: payDuration
+          dealAmount: dealAmount
+          advId: advId
+          remark: remark
+          fiatCode: fiatCode
+          type: type
+          advNo: advNo
+          hide: hide
+          coinPrecision: coinPrecision
+          turnoverNum: turnoverNum
+          price: price
+          turnoverRate: turnoverRate
+          ctime: ctime
+          fiatSymbol: fiatSymbol
+          paymentMethod:
+          - paymentId: paymentId
+            paymentMethod: paymentMethod
+            paymentInfo:
+            - name: name
+              type: type
+              required: true
+            - name: name
+              type: type
+              required: true
+          - paymentId: paymentId
+            paymentMethod: paymentMethod
+            paymentInfo:
+            - name: name
+              type: type
+              required: true
+            - name: name
+              type: type
+              required: true
+          maxAmount: maxAmount
+          userLimit:
+            placeOrderNum: placeOrderNum
+            country: country
+            maxCompleteNum: maxCompleteNum
+            thirtyCompleteRate: thirtyCompleteRate
+            minCompleteNum: minCompleteNum
+            allowMerchantPlace: allowMerchantPlace
+          coin: coin
+          status: status
+        - minAmount: minAmount
+          amount: amount
+          fiatPrecision: fiatPrecision
+          payDuration: payDuration
+          dealAmount: dealAmount
+          advId: advId
+          remark: remark
+          fiatCode: fiatCode
+          type: type
+          advNo: advNo
+          hide: hide
+          coinPrecision: coinPrecision
+          turnoverNum: turnoverNum
+          price: price
+          turnoverRate: turnoverRate
+          ctime: ctime
+          fiatSymbol: fiatSymbol
+          paymentMethod:
+          - paymentId: paymentId
+            paymentMethod: paymentMethod
+            paymentInfo:
+            - name: name
+              type: type
+              required: true
+            - name: name
+              type: type
+              required: true
+          - paymentId: paymentId
+            paymentMethod: paymentMethod
+            paymentInfo:
+            - name: name
+              type: type
+              required: true
+            - name: name
+              type: type
+              required: true
+          maxAmount: maxAmount
+          userLimit:
+            placeOrderNum: placeOrderNum
+            country: country
+            maxCompleteNum: maxCompleteNum
+            thirtyCompleteRate: thirtyCompleteRate
+            minCompleteNum: minCompleteNum
+            allowMerchantPlace: allowMerchantPlace
+          coin: coin
+          status: status
+        minId: minId
+      properties:
+        advList:
+          items:
+            $ref: '#/components/schemas/MerchantAdvInfo'
+          type: array
+        minId:
+          type: string
+      title: MerchantAdvResult
+      type: object
+    MerchantAdvUserLimitInfo:
+      example:
+        placeOrderNum: placeOrderNum
+        country: country
+        maxCompleteNum: maxCompleteNum
+        thirtyCompleteRate: thirtyCompleteRate
+        minCompleteNum: minCompleteNum
+        allowMerchantPlace: allowMerchantPlace
+      properties:
+        allowMerchantPlace:
+          type: string
+        country:
+          type: string
+        maxCompleteNum:
+          type: string
+        minCompleteNum:
+          type: string
+        placeOrderNum:
+          type: string
+        thirtyCompleteRate:
+          type: string
+      title: MerchantAdvUserLimitInfo
+      type: object
+    MerchantInfo:
+      example:
+        totalSell: totalSell
+        totalCompletionRate: totalCompletionRate
+        registerTime: registerTime
+        nickName: nickName
+        thirtyBuy: thirtyBuy
+        isOnline: isOnline
+        totalTrades: totalTrades
+        thirtySell: thirtySell
+        averagePayment: averagePayment
+        averageRealese: averageRealese
+        thirtyCompletionRate: thirtyCompletionRate
+        thirtyTrades: thirtyTrades
+        merchantId: merchantId
+        totalBuy: totalBuy
+      properties:
+        averagePayment:
+          type: string
+        averageRealese:
+          type: string
+        isOnline:
+          type: string
+        merchantId:
+          type: string
+        nickName:
+          type: string
+        registerTime:
+          type: string
+        thirtyBuy:
+          type: string
+        thirtyCompletionRate:
+          type: string
+        thirtySell:
+          type: string
+        thirtyTrades:
+          type: string
+        totalBuy:
+          type: string
+        totalCompletionRate:
+          type: string
+        totalSell:
+          type: string
+        totalTrades:
+          type: string
+      title: MerchantInfo
+      type: object
+    MerchantInfoResult:
+      example:
+        minId: minId
+        resultList:
+        - totalSell: totalSell
+          totalCompletionRate: totalCompletionRate
+          registerTime: registerTime
+          nickName: nickName
+          thirtyBuy: thirtyBuy
+          isOnline: isOnline
+          totalTrades: totalTrades
+          thirtySell: thirtySell
+          averagePayment: averagePayment
+          averageRealese: averageRealese
+          thirtyCompletionRate: thirtyCompletionRate
+          thirtyTrades: thirtyTrades
+          merchantId: merchantId
+          totalBuy: totalBuy
+        - totalSell: totalSell
+          totalCompletionRate: totalCompletionRate
+          registerTime: registerTime
+          nickName: nickName
+          thirtyBuy: thirtyBuy
+          isOnline: isOnline
+          totalTrades: totalTrades
+          thirtySell: thirtySell
+          averagePayment: averagePayment
+          averageRealese: averageRealese
+          thirtyCompletionRate: thirtyCompletionRate
+          thirtyTrades: thirtyTrades
+          merchantId: merchantId
+          totalBuy: totalBuy
+      properties:
+        minId:
+          type: string
+        resultList:
+          items:
+            $ref: '#/components/schemas/MerchantInfo'
+          type: array
+      title: MerchantInfoResult
+      type: object
+    MerchantOrderInfo:
+      example:
+        amount: amount
+        orderNo: orderNo
+        orderId: orderId
+        count: count
+        buyerRealName: buyerRealName
+        type: type
+        sellerRealName: sellerRealName
+        advNo: advNo
+        price: price
+        releaseCoinTime: releaseCoinTime
+        representTime: representTime
+        ctime: ctime
+        fiat: fiat
+        withdrawTime: withdrawTime
+        paymentTime: paymentTime
+        paymentInfo:
+          paymethodName: paymethodName
+          paymethodInfo:
+          - name: name
+            type: type
+            value: value
+            required: true
+          - name: name
+            type: type
+            value: value
+            required: true
+          paymethodId: paymethodId
+        coin: coin
+        status: status
+      properties:
+        advNo:
+          type: string
+        amount:
+          type: string
+        buyerRealName:
+          type: string
+        coin:
+          type: string
+        count:
+          type: string
+        ctime:
+          type: string
+        fiat:
+          type: string
+        orderId:
+          type: string
+        orderNo:
+          type: string
+        paymentInfo:
+          $ref: '#/components/schemas/MerchantOrderPaymentInfo'
+        paymentTime:
+          type: string
+        price:
+          type: string
+        releaseCoinTime:
+          type: string
+        representTime:
+          type: string
+        sellerRealName:
+          type: string
+        status:
+          type: string
+        type:
+          type: string
+        withdrawTime:
+          type: string
+      title: MerchantOrderInfo
+      type: object
+    MerchantOrderPaymentInfo:
+      example:
+        paymethodName: paymethodName
+        paymethodInfo:
+        - name: name
+          type: type
+          value: value
+          required: true
+        - name: name
+          type: type
+          value: value
+          required: true
+        paymethodId: paymethodId
+      properties:
+        paymethodId:
+          type: string
+        paymethodInfo:
+          items:
+            $ref: '#/components/schemas/OrderPaymentDetailInfo'
+          type: array
+        paymethodName:
+          type: string
+      title: MerchantOrderPaymentInfo
+      type: object
+    MerchantOrderResult:
+      example:
+        orderList:
+        - amount: amount
+          orderNo: orderNo
+          orderId: orderId
+          count: count
+          buyerRealName: buyerRealName
+          type: type
+          sellerRealName: sellerRealName
+          advNo: advNo
+          price: price
+          releaseCoinTime: releaseCoinTime
+          representTime: representTime
+          ctime: ctime
+          fiat: fiat
+          withdrawTime: withdrawTime
+          paymentTime: paymentTime
+          paymentInfo:
+            paymethodName: paymethodName
+            paymethodInfo:
+            - name: name
+              type: type
+              value: value
+              required: true
+            - name: name
+              type: type
+              value: value
+              required: true
+            paymethodId: paymethodId
+          coin: coin
+          status: status
+        - amount: amount
+          orderNo: orderNo
+          orderId: orderId
+          count: count
+          buyerRealName: buyerRealName
+          type: type
+          sellerRealName: sellerRealName
+          advNo: advNo
+          price: price
+          releaseCoinTime: releaseCoinTime
+          representTime: representTime
+          ctime: ctime
+          fiat: fiat
+          withdrawTime: withdrawTime
+          paymentTime: paymentTime
+          paymentInfo:
+            paymethodName: paymethodName
+            paymethodInfo:
+            - name: name
+              type: type
+              value: value
+              required: true
+            - name: name
+              type: type
+              value: value
+              required: true
+            paymethodId: paymethodId
+          coin: coin
+          status: status
+        minId: minId
+      properties:
+        minId:
+          type: string
+        orderList:
+          items:
+            $ref: '#/components/schemas/MerchantOrderInfo'
+          type: array
+      title: MerchantOrderResult
+      type: object
+    MerchantPersonInfo:
+      example:
+        totalSell: totalSell
+        totalCompletionRate: totalCompletionRate
+        registerTime: registerTime
+        nickName: nickName
+        kycFlag: true
+        mobile: mobile
+        thirtyBuy: thirtyBuy
+        totalTrades: totalTrades
+        emailBindFlag: true
+        thirtySell: thirtySell
+        averagePayment: averagePayment
+        averageRealese: averageRealese
+        thirtyCompletionRate: thirtyCompletionRate
+        realName: realName
+        thirtyTrades: thirtyTrades
+        merchantId: merchantId
+        totalBuy: totalBuy
+        mobileBindFlag: true
+        email: email
+      properties:
+        averagePayment:
+          type: string
+        averageRealese:
+          type: string
+        email:
+          type: string
+        emailBindFlag:
+          type: boolean
+        kycFlag:
+          type: boolean
+        merchantId:
+          type: string
+        mobile:
+          type: string
+        mobileBindFlag:
+          type: boolean
+        nickName:
+          type: string
+        realName:
+          type: string
+        registerTime:
+          type: string
+        thirtyBuy:
+          type: string
+        thirtyCompletionRate:
+          type: string
+        thirtySell:
+          type: string
+        thirtyTrades:
+          type: string
+        totalBuy:
+          type: string
+        totalCompletionRate:
+          type: string
+        totalSell:
+          type: string
+        totalTrades:
+          type: string
+      title: MerchantPersonInfo
+      type: object
+    OrderPaymentDetailInfo:
+      example:
+        name: name
+        type: type
+        value: value
+        required: true
+      properties:
+        name:
+          type: string
+        required:
+          type: boolean
+        type:
+          type: string
+        value:
+          type: string
+      title: OrderPaymentDetailInfo
       type: object
   securitySchemes:
     ACCESS_KEY:

@@ -198,6 +198,10 @@ Class | Method | HTTP request | Description
 *MarginIsolatedPublicApi* | [**marginIsolatedPublicTierData**](docs/Api/MarginIsolatedPublicApi.md#marginisolatedpublictierdata) | **GET** /api/margin/v1/isolated/public/tierData | tierData
 *MarginIsolatedRepayApi* | [**isolateRepayList**](docs/Api/MarginIsolatedRepayApi.md#isolaterepaylist) | **GET** /api/margin/v1/isolated/repay/list | list
 *MarginPublicApi* | [**marginPublicCurrencies**](docs/Api/MarginPublicApi.md#marginpubliccurrencies) | **GET** /api/margin/v1/public/currencies | currencies
+*P2pMerchantApi* | [**merchantAdvList**](docs/Api/P2pMerchantApi.md#merchantadvlist) | **GET** /api/p2p/v1/merchant/advList | advList
+*P2pMerchantApi* | [**merchantInfo**](docs/Api/P2pMerchantApi.md#merchantinfo) | **GET** /api/p2p/v1/merchant/merchantInfo | merchantInfo
+*P2pMerchantApi* | [**merchantList**](docs/Api/P2pMerchantApi.md#merchantlist) | **GET** /api/p2p/v1/merchant/merchantList | merchantList
+*P2pMerchantApi* | [**merchantOrderList**](docs/Api/P2pMerchantApi.md#merchantorderlist) | **GET** /api/p2p/v1/merchant/orderList | orderList
 
 ## Models
 
@@ -233,7 +237,13 @@ Class | Method | HTTP request | Description
 - [ApiResponseResultOfMarginPlaceOrderResult](docs/Model/ApiResponseResultOfMarginPlaceOrderResult.md)
 - [ApiResponseResultOfMarginRepayInfoResult](docs/Model/ApiResponseResultOfMarginRepayInfoResult.md)
 - [ApiResponseResultOfMarginTradeDetailInfoResult](docs/Model/ApiResponseResultOfMarginTradeDetailInfoResult.md)
+- [ApiResponseResultOfMerchantAdvResult](docs/Model/ApiResponseResultOfMerchantAdvResult.md)
+- [ApiResponseResultOfMerchantInfoResult](docs/Model/ApiResponseResultOfMerchantInfoResult.md)
+- [ApiResponseResultOfMerchantOrderResult](docs/Model/ApiResponseResultOfMerchantOrderResult.md)
+- [ApiResponseResultOfMerchantPersonInfo](docs/Model/ApiResponseResultOfMerchantPersonInfo.md)
 - [ApiResponseResultOfVoid](docs/Model/ApiResponseResultOfVoid.md)
+- [FiatPaymentDetailInfo](docs/Model/FiatPaymentDetailInfo.md)
+- [FiatPaymentInfo](docs/Model/FiatPaymentInfo.md)
 - [MarginBatchCancelOrderRequest](docs/Model/MarginBatchCancelOrderRequest.md)
 - [MarginBatchCancelOrderResult](docs/Model/MarginBatchCancelOrderResult.md)
 - [MarginBatchOrdersRequest](docs/Model/MarginBatchOrdersRequest.md)
@@ -294,6 +304,16 @@ Class | Method | HTTP request | Description
 - [MarginSystemResult](docs/Model/MarginSystemResult.md)
 - [MarginTradeDetailInfo](docs/Model/MarginTradeDetailInfo.md)
 - [MarginTradeDetailInfoResult](docs/Model/MarginTradeDetailInfoResult.md)
+- [MerchantAdvInfo](docs/Model/MerchantAdvInfo.md)
+- [MerchantAdvResult](docs/Model/MerchantAdvResult.md)
+- [MerchantAdvUserLimitInfo](docs/Model/MerchantAdvUserLimitInfo.md)
+- [MerchantInfo](docs/Model/MerchantInfo.md)
+- [MerchantInfoResult](docs/Model/MerchantInfoResult.md)
+- [MerchantOrderInfo](docs/Model/MerchantOrderInfo.md)
+- [MerchantOrderPaymentInfo](docs/Model/MerchantOrderPaymentInfo.md)
+- [MerchantOrderResult](docs/Model/MerchantOrderResult.md)
+- [MerchantPersonInfo](docs/Model/MerchantPersonInfo.md)
+- [OrderPaymentDetailInfo](docs/Model/OrderPaymentDetailInfo.md)
 
 ## Authorization
 

@@ -50,7 +50,7 @@ public class MarginIsolatedInterestApiTest {
         String coin = null;
         String pageSize = "10";
         String pageId = null;
-        ApiResponseResultOfMarginIsolatedInterestInfoResult response = api.interestList1(startTime, symbol, coin, pageSize, pageId);
+        ApiResponseResultOfMarginIsolatedInterestInfoResult response = api.isolatedInterestList(symbol, startTime, coin, pageSize, pageId);
         assertThat(response).isNotNull();
         assertThat(response.getData()).isNotNull();
         if (response.getData().getResultList() != null && response.getData().getResultList().size() > 0) {

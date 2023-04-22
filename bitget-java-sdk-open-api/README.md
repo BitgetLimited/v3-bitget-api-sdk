@@ -211,30 +211,30 @@ Class | Method | HTTP request | Description
 *MarginCrossAccountApi* | [**marginCrossAccountMaxTransferOutAmount**](docs/MarginCrossAccountApi.md#marginCrossAccountMaxTransferOutAmount) | **GET** /api/margin/v1/cross/account/maxTransferOutAmount | maxTransferOutAmount
 *MarginCrossAccountApi* | [**marginCrossAccountRepay**](docs/MarginCrossAccountApi.md#marginCrossAccountRepay) | **POST** /api/margin/v1/cross/account/repay | repay
 *MarginCrossAccountApi* | [**marginCrossAccountRiskRate**](docs/MarginCrossAccountApi.md#marginCrossAccountRiskRate) | **GET** /api/margin/v1/cross/account/riskRate | riskRate
-*MarginCrossBorrowApi* | [**loanList**](docs/MarginCrossBorrowApi.md#loanList) | **GET** /api/margin/v1/cross/loan/list | list
-*MarginCrossFinflowApi* | [**finList**](docs/MarginCrossFinflowApi.md#finList) | **GET** /api/margin/v1/cross/fin/list | list
-*MarginCrossInterestApi* | [**interestList**](docs/MarginCrossInterestApi.md#interestList) | **GET** /api/margin/v1/cross/interest/list | list
-*MarginCrossLiquidationApi* | [**liquidationList**](docs/MarginCrossLiquidationApi.md#liquidationList) | **GET** /api/margin/v1/cross/liquidation/list | list
+*MarginCrossBorrowApi* | [**crossLoanList**](docs/MarginCrossBorrowApi.md#crossLoanList) | **GET** /api/margin/v1/cross/loan/list | list
+*MarginCrossFinflowApi* | [**crossFinList**](docs/MarginCrossFinflowApi.md#crossFinList) | **GET** /api/margin/v1/cross/fin/list | list
+*MarginCrossInterestApi* | [**crossInterestList**](docs/MarginCrossInterestApi.md#crossInterestList) | **GET** /api/margin/v1/cross/interest/list | list
+*MarginCrossLiquidationApi* | [**crossLiquidationList**](docs/MarginCrossLiquidationApi.md#crossLiquidationList) | **GET** /api/margin/v1/cross/liquidation/list | list
 *MarginCrossOrderApi* | [**marginCrossBatchCancelOrder**](docs/MarginCrossOrderApi.md#marginCrossBatchCancelOrder) | **POST** /api/margin/v1/cross/order/batchCancelOrder | batchCancelOrder
-*MarginCrossOrderApi* | [**marginCrossBatchFills**](docs/MarginCrossOrderApi.md#marginCrossBatchFills) | **GET** /api/margin/v1/cross/order/fills | fills
-*MarginCrossOrderApi* | [**marginCrossBatchHistoryOrders**](docs/MarginCrossOrderApi.md#marginCrossBatchHistoryOrders) | **GET** /api/margin/v1/cross/order/history | history
-*MarginCrossOrderApi* | [**marginCrossBatchOpenOrders**](docs/MarginCrossOrderApi.md#marginCrossBatchOpenOrders) | **GET** /api/margin/v1/cross/order/openOrders | openOrders
 *MarginCrossOrderApi* | [**marginCrossBatchPlaceOrder**](docs/MarginCrossOrderApi.md#marginCrossBatchPlaceOrder) | **POST** /api/margin/v1/cross/order/batchPlaceOrder | batchPlaceOrder
 *MarginCrossOrderApi* | [**marginCrossCancelOrder**](docs/MarginCrossOrderApi.md#marginCrossCancelOrder) | **POST** /api/margin/v1/cross/order/cancelOrder | cancelOrder
+*MarginCrossOrderApi* | [**marginCrossFills**](docs/MarginCrossOrderApi.md#marginCrossFills) | **GET** /api/margin/v1/cross/order/fills | fills
+*MarginCrossOrderApi* | [**marginCrossHistoryOrders**](docs/MarginCrossOrderApi.md#marginCrossHistoryOrders) | **GET** /api/margin/v1/cross/order/history | history
+*MarginCrossOrderApi* | [**marginCrossOpenOrders**](docs/MarginCrossOrderApi.md#marginCrossOpenOrders) | **GET** /api/margin/v1/cross/order/openOrders | openOrders
 *MarginCrossOrderApi* | [**marginCrossPlaceOrder**](docs/MarginCrossOrderApi.md#marginCrossPlaceOrder) | **POST** /api/margin/v1/cross/order/placeOrder | placeOrder
 *MarginCrossPublicApi* | [**marginCrossPublicInterestRateAndLimit**](docs/MarginCrossPublicApi.md#marginCrossPublicInterestRateAndLimit) | **GET** /api/margin/v1/cross/public/interestRateAndLimit | interestRateAndLimit
 *MarginCrossPublicApi* | [**marginCrossPublicTierData**](docs/MarginCrossPublicApi.md#marginCrossPublicTierData) | **GET** /api/margin/v1/cross/public/tierData | tierData
-*MarginCrossRepayApi* | [**repayList**](docs/MarginCrossRepayApi.md#repayList) | **GET** /api/margin/v1/cross/repay/list | list
+*MarginCrossRepayApi* | [**crossRepayList**](docs/MarginCrossRepayApi.md#crossRepayList) | **GET** /api/margin/v1/cross/repay/list | list
 *MarginIsolatedAccountApi* | [**marginIsolatedAccountAssets**](docs/MarginIsolatedAccountApi.md#marginIsolatedAccountAssets) | **GET** /api/margin/v1/isolated/account/assets | assets
 *MarginIsolatedAccountApi* | [**marginIsolatedAccountBorrow**](docs/MarginIsolatedAccountApi.md#marginIsolatedAccountBorrow) | **POST** /api/margin/v1/isolated/account/borrow | borrow
 *MarginIsolatedAccountApi* | [**marginIsolatedAccountMaxBorrowableAmount**](docs/MarginIsolatedAccountApi.md#marginIsolatedAccountMaxBorrowableAmount) | **POST** /api/margin/v1/isolated/account/maxBorrowableAmount | maxBorrowableAmount
 *MarginIsolatedAccountApi* | [**marginIsolatedAccountMaxTransferOutAmount**](docs/MarginIsolatedAccountApi.md#marginIsolatedAccountMaxTransferOutAmount) | **GET** /api/margin/v1/isolated/account/maxTransferOutAmount | maxTransferOutAmount
 *MarginIsolatedAccountApi* | [**marginIsolatedAccountRepay**](docs/MarginIsolatedAccountApi.md#marginIsolatedAccountRepay) | **POST** /api/margin/v1/isolated/account/repay | repay
 *MarginIsolatedAccountApi* | [**marginIsolatedAccountRiskRate**](docs/MarginIsolatedAccountApi.md#marginIsolatedAccountRiskRate) | **POST** /api/margin/v1/isolated/account/riskRate | riskRate
-*MarginIsolatedBorrowApi* | [**loanList1**](docs/MarginIsolatedBorrowApi.md#loanList1) | **GET** /api/margin/v1/isolated/loan/list | list
-*MarginIsolatedFinflowApi* | [**finList1**](docs/MarginIsolatedFinflowApi.md#finList1) | **GET** /api/margin/v1/isolated/fin/list | list
-*MarginIsolatedInterestApi* | [**interestList1**](docs/MarginIsolatedInterestApi.md#interestList1) | **GET** /api/margin/v1/isolated/interest/list | list
-*MarginIsolatedLiquidationApi* | [**liquidationList1**](docs/MarginIsolatedLiquidationApi.md#liquidationList1) | **GET** /api/margin/v1/isolated/liquidation/list | list
+*MarginIsolatedBorrowApi* | [**isolatedLoanList**](docs/MarginIsolatedBorrowApi.md#isolatedLoanList) | **GET** /api/margin/v1/isolated/loan/list | list
+*MarginIsolatedFinflowApi* | [**isolatedFinList**](docs/MarginIsolatedFinflowApi.md#isolatedFinList) | **GET** /api/margin/v1/isolated/fin/list | list
+*MarginIsolatedInterestApi* | [**isolatedInterestList**](docs/MarginIsolatedInterestApi.md#isolatedInterestList) | **GET** /api/margin/v1/isolated/interest/list | list
+*MarginIsolatedLiquidationApi* | [**isolatedLiquidationList**](docs/MarginIsolatedLiquidationApi.md#isolatedLiquidationList) | **GET** /api/margin/v1/isolated/liquidation/list | list
 *MarginIsolatedOrderApi* | [**marginIsolatedBatchCancelOrder**](docs/MarginIsolatedOrderApi.md#marginIsolatedBatchCancelOrder) | **POST** /api/margin/v1/isolated/order/batchCancelOrder | batchCancelOrder
 *MarginIsolatedOrderApi* | [**marginIsolatedBatchPlaceOrder**](docs/MarginIsolatedOrderApi.md#marginIsolatedBatchPlaceOrder) | **POST** /api/margin/v1/isolated/order/batchPlaceOrder | batchPlaceOrder
 *MarginIsolatedOrderApi* | [**marginIsolatedCancelOrder**](docs/MarginIsolatedOrderApi.md#marginIsolatedCancelOrder) | **POST** /api/margin/v1/isolated/order/cancelOrder | cancelOrder
@@ -244,8 +244,12 @@ Class | Method | HTTP request | Description
 *MarginIsolatedOrderApi* | [**marginIsolatedPlaceOrder**](docs/MarginIsolatedOrderApi.md#marginIsolatedPlaceOrder) | **POST** /api/margin/v1/isolated/order/placeOrder | placeOrder
 *MarginIsolatedPublicApi* | [**marginIsolatedPublicInterestRateAndLimit**](docs/MarginIsolatedPublicApi.md#marginIsolatedPublicInterestRateAndLimit) | **GET** /api/margin/v1/isolated/public/interestRateAndLimit | interestRateAndLimit
 *MarginIsolatedPublicApi* | [**marginIsolatedPublicTierData**](docs/MarginIsolatedPublicApi.md#marginIsolatedPublicTierData) | **GET** /api/margin/v1/isolated/public/tierData | tierData
-*MarginIsolatedRepayApi* | [**repayList1**](docs/MarginIsolatedRepayApi.md#repayList1) | **GET** /api/margin/v1/isolated/repay/list | list
+*MarginIsolatedRepayApi* | [**isolateRepayList**](docs/MarginIsolatedRepayApi.md#isolateRepayList) | **GET** /api/margin/v1/isolated/repay/list | list
 *MarginPublicApi* | [**marginPublicCurrencies**](docs/MarginPublicApi.md#marginPublicCurrencies) | **GET** /api/margin/v1/public/currencies | currencies
+*P2pMerchantApi* | [**merchantAdvList**](docs/P2pMerchantApi.md#merchantAdvList) | **GET** /api/p2p/v1/merchant/advList | advList
+*P2pMerchantApi* | [**merchantInfo**](docs/P2pMerchantApi.md#merchantInfo) | **GET** /api/p2p/v1/merchant/merchantInfo | merchantInfo
+*P2pMerchantApi* | [**merchantList**](docs/P2pMerchantApi.md#merchantList) | **GET** /api/p2p/v1/merchant/merchantList | merchantList
+*P2pMerchantApi* | [**merchantOrderList**](docs/P2pMerchantApi.md#merchantOrderList) | **GET** /api/p2p/v1/merchant/orderList | orderList
 
 
 ## Documentation for Models
@@ -282,7 +286,13 @@ Class | Method | HTTP request | Description
  - [ApiResponseResultOfMarginPlaceOrderResult](docs/ApiResponseResultOfMarginPlaceOrderResult.md)
  - [ApiResponseResultOfMarginRepayInfoResult](docs/ApiResponseResultOfMarginRepayInfoResult.md)
  - [ApiResponseResultOfMarginTradeDetailInfoResult](docs/ApiResponseResultOfMarginTradeDetailInfoResult.md)
+ - [ApiResponseResultOfMerchantAdvResult](docs/ApiResponseResultOfMerchantAdvResult.md)
+ - [ApiResponseResultOfMerchantInfoResult](docs/ApiResponseResultOfMerchantInfoResult.md)
+ - [ApiResponseResultOfMerchantOrderResult](docs/ApiResponseResultOfMerchantOrderResult.md)
+ - [ApiResponseResultOfMerchantPersonInfo](docs/ApiResponseResultOfMerchantPersonInfo.md)
  - [ApiResponseResultOfVoid](docs/ApiResponseResultOfVoid.md)
+ - [FiatPaymentDetailInfo](docs/FiatPaymentDetailInfo.md)
+ - [FiatPaymentInfo](docs/FiatPaymentInfo.md)
  - [MarginBatchCancelOrderRequest](docs/MarginBatchCancelOrderRequest.md)
  - [MarginBatchCancelOrderResult](docs/MarginBatchCancelOrderResult.md)
  - [MarginBatchOrdersRequest](docs/MarginBatchOrdersRequest.md)
@@ -343,6 +353,16 @@ Class | Method | HTTP request | Description
  - [MarginSystemResult](docs/MarginSystemResult.md)
  - [MarginTradeDetailInfo](docs/MarginTradeDetailInfo.md)
  - [MarginTradeDetailInfoResult](docs/MarginTradeDetailInfoResult.md)
+ - [MerchantAdvInfo](docs/MerchantAdvInfo.md)
+ - [MerchantAdvResult](docs/MerchantAdvResult.md)
+ - [MerchantAdvUserLimitInfo](docs/MerchantAdvUserLimitInfo.md)
+ - [MerchantInfo](docs/MerchantInfo.md)
+ - [MerchantInfoResult](docs/MerchantInfoResult.md)
+ - [MerchantOrderInfo](docs/MerchantOrderInfo.md)
+ - [MerchantOrderPaymentInfo](docs/MerchantOrderPaymentInfo.md)
+ - [MerchantOrderResult](docs/MerchantOrderResult.md)
+ - [MerchantPersonInfo](docs/MerchantPersonInfo.md)
+ - [OrderPaymentDetailInfo](docs/OrderPaymentDetailInfo.md)
 
 
 ## Documentation for Authorization

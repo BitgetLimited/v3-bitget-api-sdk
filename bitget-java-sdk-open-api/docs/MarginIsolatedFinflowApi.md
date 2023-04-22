@@ -4,12 +4,12 @@ All URIs are relative to *https://api.bitget.com*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**finList1**](MarginIsolatedFinflowApi.md#finList1) | **GET** /api/margin/v1/isolated/fin/list | list |
+| [**isolatedFinList**](MarginIsolatedFinflowApi.md#isolatedFinList) | **GET** /api/margin/v1/isolated/fin/list | list |
 
 
-<a name="finList1"></a>
-# **finList1**
-> ApiResponseResultOfMarginIsolatedFinFlowResult finList1(startTime, symbol, coin, endTime, loanId, pageSize, pageId)
+<a name="isolatedFinList"></a>
+# **isolatedFinList**
+> ApiResponseResultOfMarginIsolatedFinFlowResult isolatedFinList(symbol, startTime, coin, marginType, endTime, loanId, pageSize, pageId)
 
 list
 
@@ -61,18 +61,19 @@ public class Example {
     //SECRET_KEY.setApiKeyPrefix("Token");
 
     MarginIsolatedFinflowApi apiInstance = new MarginIsolatedFinflowApi(defaultClient);
-    String startTime = "1678193338000"; // String | startTime
     String symbol = "BTCUSDT"; // String | symbol
+    String startTime = "1678193338000"; // String | startTime
     String coin = "USDT"; // String | coin
+    String marginType = "transfer_in"; // String | marginType
     String endTime = "1678193338000"; // String | endTime
     String loanId = "loanId_example"; // String | loanId
     String pageSize = "10"; // String | pageSize
     String pageId = "pageId_example"; // String | pageId
     try {
-      ApiResponseResultOfMarginIsolatedFinFlowResult result = apiInstance.finList1(startTime, symbol, coin, endTime, loanId, pageSize, pageId);
+      ApiResponseResultOfMarginIsolatedFinFlowResult result = apiInstance.isolatedFinList(symbol, startTime, coin, marginType, endTime, loanId, pageSize, pageId);
       System.out.println(result);
     } catch (ApiException e) {
-      System.err.println("Exception when calling MarginIsolatedFinflowApi#finList1");
+      System.err.println("Exception when calling MarginIsolatedFinflowApi#isolatedFinList");
       System.err.println("Status code: " + e.getCode());
       System.err.println("Reason: " + e.getResponseBody());
       System.err.println("Response headers: " + e.getResponseHeaders());
@@ -86,9 +87,10 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
+| **symbol** | **String**| symbol | |
 | **startTime** | **String**| startTime | |
-| **symbol** | **String**| symbol | [optional] |
 | **coin** | **String**| coin | [optional] |
+| **marginType** | **String**| marginType | [optional] |
 | **endTime** | **String**| endTime | [optional] |
 | **loanId** | **String**| loanId | [optional] |
 | **pageSize** | **String**| pageSize | [optional] |

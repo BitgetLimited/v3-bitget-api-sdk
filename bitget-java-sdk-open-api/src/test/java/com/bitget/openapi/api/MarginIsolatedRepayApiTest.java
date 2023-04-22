@@ -49,7 +49,7 @@ public class MarginIsolatedRepayApiTest {
         String coin = null;
         String repayId = null;
         String pageId = null;
-        ApiResponseResultOfMarginIsolatedRepayInfoResult response = api.repayList1(startTime, symbol, coin, repayId, endTime, pageSize, pageId);
+        ApiResponseResultOfMarginIsolatedRepayInfoResult response = api.isolateRepayList(symbol, startTime, coin, repayId, endTime, pageSize, pageId);
         assertThat(response).isNotNull();
         assertThat(response.getData()).isNotNull();
         if (response.getData().getResultList() != null && response.getData().getResultList().size() > 0) {

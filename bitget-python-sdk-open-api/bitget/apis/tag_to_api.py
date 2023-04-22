@@ -18,6 +18,7 @@ from bitget.apis.tags.margin_isolated_order_api import MarginIsolatedOrderApi
 from bitget.apis.tags.margin_isolated_public_api import MarginIsolatedPublicApi
 from bitget.apis.tags.margin_isolated_repay_api import MarginIsolatedRepayApi
 from bitget.apis.tags.margin_public_api import MarginPublicApi
+from bitget.apis.tags.p2p_merchant_api import P2pMerchantApi
 
 TagToApi = typing_extensions.TypedDict(
     'TagToApi',
@@ -39,6 +40,7 @@ TagToApi = typing_extensions.TypedDict(
         TagValues.MARGIN_ISOLATED_PUBLIC: MarginIsolatedPublicApi,
         TagValues.MARGIN_ISOLATED_REPAY: MarginIsolatedRepayApi,
         TagValues.MARGIN_PUBLIC: MarginPublicApi,
+        TagValues.P2P_MERCHANT: P2pMerchantApi,
     }
 )
 
@@ -61,5 +63,6 @@ tag_to_api = TagToApi(
         TagValues.MARGIN_ISOLATED_PUBLIC: MarginIsolatedPublicApi,
         TagValues.MARGIN_ISOLATED_REPAY: MarginIsolatedRepayApi,
         TagValues.MARGIN_PUBLIC: MarginPublicApi,
+        TagValues.P2P_MERCHANT: P2pMerchantApi,
     }
 )

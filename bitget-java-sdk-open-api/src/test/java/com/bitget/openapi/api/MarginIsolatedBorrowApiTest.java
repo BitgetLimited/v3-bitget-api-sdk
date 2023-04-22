@@ -51,7 +51,7 @@ public class MarginIsolatedBorrowApiTest {
         String loanId = null;
         String pageSize = "10";
         String pageId = null;
-        ApiResponseResultOfMarginIsolatedLoanInfoResult response = api.loanList1(startTime, symbol, coin, endTime, loanId, pageSize, pageId);
+        ApiResponseResultOfMarginIsolatedLoanInfoResult response = api.isolatedLoanList(symbol, startTime, coin, endTime, loanId, pageSize, pageId);
         assertThat(response).isNotNull();
         assertThat(response.getData()).isNotNull();
         if (response.getData().getResultList() != null && response.getData().getResultList().size() > 0) {

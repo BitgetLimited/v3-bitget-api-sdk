@@ -75,10 +75,11 @@ public class MarginIsolatedFinflowApi {
     }
 
     /**
-     * Build call for finList1
+     * Build call for isolatedFinList
+     * @param symbol symbol (required)
      * @param startTime startTime (required)
-     * @param symbol symbol (optional)
      * @param coin coin (optional)
+     * @param marginType marginType (optional)
      * @param endTime endTime (optional)
      * @param loanId loanId (optional)
      * @param pageSize pageSize (optional)
@@ -95,7 +96,7 @@ public class MarginIsolatedFinflowApi {
         <tr><td> 500 </td><td> Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call finList1Call(String startTime, String symbol, String coin, String endTime, String loanId, String pageSize, String pageId, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call isolatedFinListCall(String symbol, String startTime, String coin, String marginType, String endTime, String loanId, String pageSize, String pageId, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -126,6 +127,10 @@ public class MarginIsolatedFinflowApi {
 
         if (coin != null) {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("coin", coin));
+        }
+
+        if (marginType != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("marginType", marginType));
         }
 
         if (startTime != null) {
@@ -168,22 +173,28 @@ public class MarginIsolatedFinflowApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call finList1ValidateBeforeCall(String startTime, String symbol, String coin, String endTime, String loanId, String pageSize, String pageId, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'startTime' is set
-        if (startTime == null) {
-            throw new ApiException("Missing the required parameter 'startTime' when calling finList1(Async)");
+    private okhttp3.Call isolatedFinListValidateBeforeCall(String symbol, String startTime, String coin, String marginType, String endTime, String loanId, String pageSize, String pageId, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'symbol' is set
+        if (symbol == null) {
+            throw new ApiException("Missing the required parameter 'symbol' when calling isolatedFinList(Async)");
         }
 
-        return finList1Call(startTime, symbol, coin, endTime, loanId, pageSize, pageId, _callback);
+        // verify the required parameter 'startTime' is set
+        if (startTime == null) {
+            throw new ApiException("Missing the required parameter 'startTime' when calling isolatedFinList(Async)");
+        }
+
+        return isolatedFinListCall(symbol, startTime, coin, marginType, endTime, loanId, pageSize, pageId, _callback);
 
     }
 
     /**
      * list
      * Get finance flow List
+     * @param symbol symbol (required)
      * @param startTime startTime (required)
-     * @param symbol symbol (optional)
      * @param coin coin (optional)
+     * @param marginType marginType (optional)
      * @param endTime endTime (optional)
      * @param loanId loanId (optional)
      * @param pageSize pageSize (optional)
@@ -199,17 +210,18 @@ public class MarginIsolatedFinflowApi {
         <tr><td> 500 </td><td> Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponseResultOfMarginIsolatedFinFlowResult finList1(String startTime, String symbol, String coin, String endTime, String loanId, String pageSize, String pageId) throws ApiException {
-        ApiResponse<ApiResponseResultOfMarginIsolatedFinFlowResult> localVarResp = finList1WithHttpInfo(startTime, symbol, coin, endTime, loanId, pageSize, pageId);
+    public ApiResponseResultOfMarginIsolatedFinFlowResult isolatedFinList(String symbol, String startTime, String coin, String marginType, String endTime, String loanId, String pageSize, String pageId) throws ApiException {
+        ApiResponse<ApiResponseResultOfMarginIsolatedFinFlowResult> localVarResp = isolatedFinListWithHttpInfo(symbol, startTime, coin, marginType, endTime, loanId, pageSize, pageId);
         return localVarResp.getData();
     }
 
     /**
      * list
      * Get finance flow List
+     * @param symbol symbol (required)
      * @param startTime startTime (required)
-     * @param symbol symbol (optional)
      * @param coin coin (optional)
+     * @param marginType marginType (optional)
      * @param endTime endTime (optional)
      * @param loanId loanId (optional)
      * @param pageSize pageSize (optional)
@@ -225,8 +237,8 @@ public class MarginIsolatedFinflowApi {
         <tr><td> 500 </td><td> Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ApiResponseResultOfMarginIsolatedFinFlowResult> finList1WithHttpInfo(String startTime, String symbol, String coin, String endTime, String loanId, String pageSize, String pageId) throws ApiException {
-        okhttp3.Call localVarCall = finList1ValidateBeforeCall(startTime, symbol, coin, endTime, loanId, pageSize, pageId, null);
+    public ApiResponse<ApiResponseResultOfMarginIsolatedFinFlowResult> isolatedFinListWithHttpInfo(String symbol, String startTime, String coin, String marginType, String endTime, String loanId, String pageSize, String pageId) throws ApiException {
+        okhttp3.Call localVarCall = isolatedFinListValidateBeforeCall(symbol, startTime, coin, marginType, endTime, loanId, pageSize, pageId, null);
         Type localVarReturnType = new TypeToken<ApiResponseResultOfMarginIsolatedFinFlowResult>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -234,9 +246,10 @@ public class MarginIsolatedFinflowApi {
     /**
      * list (asynchronously)
      * Get finance flow List
+     * @param symbol symbol (required)
      * @param startTime startTime (required)
-     * @param symbol symbol (optional)
      * @param coin coin (optional)
+     * @param marginType marginType (optional)
      * @param endTime endTime (optional)
      * @param loanId loanId (optional)
      * @param pageSize pageSize (optional)
@@ -253,9 +266,9 @@ public class MarginIsolatedFinflowApi {
         <tr><td> 500 </td><td> Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call finList1Async(String startTime, String symbol, String coin, String endTime, String loanId, String pageSize, String pageId, final ApiCallback<ApiResponseResultOfMarginIsolatedFinFlowResult> _callback) throws ApiException {
+    public okhttp3.Call isolatedFinListAsync(String symbol, String startTime, String coin, String marginType, String endTime, String loanId, String pageSize, String pageId, final ApiCallback<ApiResponseResultOfMarginIsolatedFinFlowResult> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = finList1ValidateBeforeCall(startTime, symbol, coin, endTime, loanId, pageSize, pageId, _callback);
+        okhttp3.Call localVarCall = isolatedFinListValidateBeforeCall(symbol, startTime, coin, marginType, endTime, loanId, pageSize, pageId, _callback);
         Type localVarReturnType = new TypeToken<ApiResponseResultOfMarginIsolatedFinFlowResult>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

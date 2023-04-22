@@ -75,7 +75,7 @@ public class MarginCrossInterestApi {
     }
 
     /**
-     * Build call for interestList
+     * Build call for crossInterestList
      * @param startTime startTime (required)
      * @param coin coin (optional)
      * @param pageSize pageSize (optional)
@@ -92,7 +92,7 @@ public class MarginCrossInterestApi {
         <tr><td> 500 </td><td> Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call interestListCall(String startTime, String coin, String pageSize, String pageId, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call crossInterestListCall(String startTime, String coin, String pageSize, String pageId, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -153,13 +153,13 @@ public class MarginCrossInterestApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call interestListValidateBeforeCall(String startTime, String coin, String pageSize, String pageId, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call crossInterestListValidateBeforeCall(String startTime, String coin, String pageSize, String pageId, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'startTime' is set
         if (startTime == null) {
-            throw new ApiException("Missing the required parameter 'startTime' when calling interestList(Async)");
+            throw new ApiException("Missing the required parameter 'startTime' when calling crossInterestList(Async)");
         }
 
-        return interestListCall(startTime, coin, pageSize, pageId, _callback);
+        return crossInterestListCall(startTime, coin, pageSize, pageId, _callback);
 
     }
 
@@ -181,8 +181,8 @@ public class MarginCrossInterestApi {
         <tr><td> 500 </td><td> Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponseResultOfMarginInterestInfoResult interestList(String startTime, String coin, String pageSize, String pageId) throws ApiException {
-        ApiResponse<ApiResponseResultOfMarginInterestInfoResult> localVarResp = interestListWithHttpInfo(startTime, coin, pageSize, pageId);
+    public ApiResponseResultOfMarginInterestInfoResult crossInterestList(String startTime, String coin, String pageSize, String pageId) throws ApiException {
+        ApiResponse<ApiResponseResultOfMarginInterestInfoResult> localVarResp = crossInterestListWithHttpInfo(startTime, coin, pageSize, pageId);
         return localVarResp.getData();
     }
 
@@ -204,8 +204,8 @@ public class MarginCrossInterestApi {
         <tr><td> 500 </td><td> Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ApiResponseResultOfMarginInterestInfoResult> interestListWithHttpInfo(String startTime, String coin, String pageSize, String pageId) throws ApiException {
-        okhttp3.Call localVarCall = interestListValidateBeforeCall(startTime, coin, pageSize, pageId, null);
+    public ApiResponse<ApiResponseResultOfMarginInterestInfoResult> crossInterestListWithHttpInfo(String startTime, String coin, String pageSize, String pageId) throws ApiException {
+        okhttp3.Call localVarCall = crossInterestListValidateBeforeCall(startTime, coin, pageSize, pageId, null);
         Type localVarReturnType = new TypeToken<ApiResponseResultOfMarginInterestInfoResult>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -229,9 +229,9 @@ public class MarginCrossInterestApi {
         <tr><td> 500 </td><td> Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call interestListAsync(String startTime, String coin, String pageSize, String pageId, final ApiCallback<ApiResponseResultOfMarginInterestInfoResult> _callback) throws ApiException {
+    public okhttp3.Call crossInterestListAsync(String startTime, String coin, String pageSize, String pageId, final ApiCallback<ApiResponseResultOfMarginInterestInfoResult> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = interestListValidateBeforeCall(startTime, coin, pageSize, pageId, _callback);
+        okhttp3.Call localVarCall = crossInterestListValidateBeforeCall(startTime, coin, pageSize, pageId, _callback);
         Type localVarReturnType = new TypeToken<ApiResponseResultOfMarginInterestInfoResult>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

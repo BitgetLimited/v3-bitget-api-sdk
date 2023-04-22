@@ -4,12 +4,12 @@ All URIs are relative to *https://api.bitget.com*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**interestList**](MarginCrossInterestApi.md#interestList) | **GET** /api/margin/v1/cross/interest/list | list |
+| [**crossInterestList**](MarginCrossInterestApi.md#crossInterestList) | **GET** /api/margin/v1/cross/interest/list | list |
 
 
-<a name="interestList"></a>
-# **interestList**
-> ApiResponseResultOfMarginInterestInfoResult interestList(startTime, coin, pageSize, pageId)
+<a name="crossInterestList"></a>
+# **crossInterestList**
+> ApiResponseResultOfMarginInterestInfoResult crossInterestList(startTime, coin, pageSize, pageId)
 
 list
 
@@ -66,10 +66,10 @@ public class Example {
     String pageSize = "10"; // String | pageSize
     String pageId = "pageId_example"; // String | pageId
     try {
-      ApiResponseResultOfMarginInterestInfoResult result = apiInstance.interestList(startTime, coin, pageSize, pageId);
+      ApiResponseResultOfMarginInterestInfoResult result = apiInstance.crossInterestList(startTime, coin, pageSize, pageId);
       System.out.println(result);
     } catch (ApiException e) {
-      System.err.println("Exception when calling MarginCrossInterestApi#interestList");
+      System.err.println("Exception when calling MarginCrossInterestApi#crossInterestList");
       System.err.println("Status code: " + e.getCode());
       System.err.println("Reason: " + e.getResponseBody());
       System.err.println("Response headers: " + e.getResponseHeaders());

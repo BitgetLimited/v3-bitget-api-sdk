@@ -49,7 +49,7 @@ public class MarginCrossLiquidationApiTest {
         String endTime = "1680057356760";
         String pageSize = "10";
         String pageId = null;
-        ApiResponseResultOfMarginLiquidationInfoResult response = api.liquidationList(startTime, endTime, pageSize, pageId);
+        ApiResponseResultOfMarginLiquidationInfoResult response = api.crossLiquidationList(startTime, endTime, pageSize, pageId);
         assertThat(response).isNotNull();
         assertThat(response.getCode()).isEqualTo(("00000"));
         assertThat(response.getData()).isNotNull();

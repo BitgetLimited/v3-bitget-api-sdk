@@ -4,12 +4,12 @@ All URIs are relative to *https://api.bitget.com*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**finList**](MarginCrossFinflowApi.md#finList) | **GET** /api/margin/v1/cross/fin/list | list |
+| [**crossFinList**](MarginCrossFinflowApi.md#crossFinList) | **GET** /api/margin/v1/cross/fin/list | list |
 
 
-<a name="finList"></a>
-# **finList**
-> ApiResponseResultOfMarginCrossFinFlowResult finList(startTime, coin, endTime, marginType, pageSize, pageId)
+<a name="crossFinList"></a>
+# **crossFinList**
+> ApiResponseResultOfMarginCrossFinFlowResult crossFinList(startTime, coin, endTime, marginType, pageSize, pageId)
 
 list
 
@@ -68,10 +68,10 @@ public class Example {
     String pageSize = "10"; // String | pageSize
     String pageId = "minId"; // String | pageId
     try {
-      ApiResponseResultOfMarginCrossFinFlowResult result = apiInstance.finList(startTime, coin, endTime, marginType, pageSize, pageId);
+      ApiResponseResultOfMarginCrossFinFlowResult result = apiInstance.crossFinList(startTime, coin, endTime, marginType, pageSize, pageId);
       System.out.println(result);
     } catch (ApiException e) {
-      System.err.println("Exception when calling MarginCrossFinflowApi#finList");
+      System.err.println("Exception when calling MarginCrossFinflowApi#crossFinList");
       System.err.println("Status code: " + e.getCode());
       System.err.println("Reason: " + e.getResponseBody());
       System.err.println("Response headers: " + e.getResponseHeaders());

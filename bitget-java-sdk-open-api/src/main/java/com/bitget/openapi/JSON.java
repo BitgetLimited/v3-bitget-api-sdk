@@ -125,7 +125,13 @@ public class JSON {
         gsonBuilder.registerTypeAdapterFactory(new com.bitget.openapi.model.ApiResponseResultOfMarginPlaceOrderResult.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.bitget.openapi.model.ApiResponseResultOfMarginRepayInfoResult.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.bitget.openapi.model.ApiResponseResultOfMarginTradeDetailInfoResult.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.bitget.openapi.model.ApiResponseResultOfMerchantAdvResult.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.bitget.openapi.model.ApiResponseResultOfMerchantInfoResult.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.bitget.openapi.model.ApiResponseResultOfMerchantOrderResult.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.bitget.openapi.model.ApiResponseResultOfMerchantPersonInfo.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.bitget.openapi.model.ApiResponseResultOfVoid.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.bitget.openapi.model.FiatPaymentDetailInfo.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.bitget.openapi.model.FiatPaymentInfo.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.bitget.openapi.model.MarginBatchCancelOrderRequest.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.bitget.openapi.model.MarginBatchCancelOrderResult.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.bitget.openapi.model.MarginBatchOrdersRequest.CustomTypeAdapterFactory());
@@ -186,6 +192,16 @@ public class JSON {
         gsonBuilder.registerTypeAdapterFactory(new com.bitget.openapi.model.MarginSystemResult.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.bitget.openapi.model.MarginTradeDetailInfo.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.bitget.openapi.model.MarginTradeDetailInfoResult.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.bitget.openapi.model.MerchantAdvInfo.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.bitget.openapi.model.MerchantAdvResult.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.bitget.openapi.model.MerchantAdvUserLimitInfo.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.bitget.openapi.model.MerchantInfo.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.bitget.openapi.model.MerchantInfoResult.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.bitget.openapi.model.MerchantOrderInfo.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.bitget.openapi.model.MerchantOrderPaymentInfo.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.bitget.openapi.model.MerchantOrderResult.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.bitget.openapi.model.MerchantPersonInfo.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.bitget.openapi.model.OrderPaymentDetailInfo.CustomTypeAdapterFactory());
         gson = gsonBuilder.create();
     }
 

@@ -218,574 +218,6 @@ public class MarginCrossOrderApi {
         return localVarCall;
     }
     /**
-     * Build call for marginCrossBatchFills
-     * @param symbol symbol (required)
-     * @param startTime startTime (required)
-     * @param source source (optional)
-     * @param endTime endTime (optional)
-     * @param orderId orderId (optional)
-     * @param lastFillId lastFillId (optional)
-     * @param pageSize pageSize (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Gateway Frequency Limit </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Server Error </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call marginCrossBatchFillsCall(String symbol, String startTime, String source, String endTime, String orderId, String lastFillId, String pageSize, final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = null;
-
-        // create path and map variables
-        String localVarPath = "/api/margin/v1/cross/order/fills";
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        if (symbol != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("symbol", symbol));
-        }
-
-        if (source != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("source", source));
-        }
-
-        if (startTime != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("startTime", startTime));
-        }
-
-        if (endTime != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("endTime", endTime));
-        }
-
-        if (orderId != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("orderId", orderId));
-        }
-
-        if (lastFillId != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("lastFillId", lastFillId));
-        }
-
-        if (pageSize != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("pageSize", pageSize));
-        }
-
-        final String[] localVarAccepts = {
-            "application/json"
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "ACCESS_KEY", "ACCESS_PASSPHRASE", "ACCESS_SIGN", "ACCESS_TIMESTAMP", "SECRET_KEY" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call marginCrossBatchFillsValidateBeforeCall(String symbol, String startTime, String source, String endTime, String orderId, String lastFillId, String pageSize, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'symbol' is set
-        if (symbol == null) {
-            throw new ApiException("Missing the required parameter 'symbol' when calling marginCrossBatchFills(Async)");
-        }
-
-        // verify the required parameter 'startTime' is set
-        if (startTime == null) {
-            throw new ApiException("Missing the required parameter 'startTime' when calling marginCrossBatchFills(Async)");
-        }
-
-        return marginCrossBatchFillsCall(symbol, startTime, source, endTime, orderId, lastFillId, pageSize, _callback);
-
-    }
-
-    /**
-     * fills
-     * Margin Cross Fills
-     * @param symbol symbol (required)
-     * @param startTime startTime (required)
-     * @param source source (optional)
-     * @param endTime endTime (optional)
-     * @param orderId orderId (optional)
-     * @param lastFillId lastFillId (optional)
-     * @param pageSize pageSize (optional)
-     * @return ApiResponseResultOfMarginTradeDetailInfoResult
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Gateway Frequency Limit </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Server Error </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponseResultOfMarginTradeDetailInfoResult marginCrossBatchFills(String symbol, String startTime, String source, String endTime, String orderId, String lastFillId, String pageSize) throws ApiException {
-        ApiResponse<ApiResponseResultOfMarginTradeDetailInfoResult> localVarResp = marginCrossBatchFillsWithHttpInfo(symbol, startTime, source, endTime, orderId, lastFillId, pageSize);
-        return localVarResp.getData();
-    }
-
-    /**
-     * fills
-     * Margin Cross Fills
-     * @param symbol symbol (required)
-     * @param startTime startTime (required)
-     * @param source source (optional)
-     * @param endTime endTime (optional)
-     * @param orderId orderId (optional)
-     * @param lastFillId lastFillId (optional)
-     * @param pageSize pageSize (optional)
-     * @return ApiResponse&lt;ApiResponseResultOfMarginTradeDetailInfoResult&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Gateway Frequency Limit </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Server Error </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<ApiResponseResultOfMarginTradeDetailInfoResult> marginCrossBatchFillsWithHttpInfo(String symbol, String startTime, String source, String endTime, String orderId, String lastFillId, String pageSize) throws ApiException {
-        okhttp3.Call localVarCall = marginCrossBatchFillsValidateBeforeCall(symbol, startTime, source, endTime, orderId, lastFillId, pageSize, null);
-        Type localVarReturnType = new TypeToken<ApiResponseResultOfMarginTradeDetailInfoResult>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    /**
-     * fills (asynchronously)
-     * Margin Cross Fills
-     * @param symbol symbol (required)
-     * @param startTime startTime (required)
-     * @param source source (optional)
-     * @param endTime endTime (optional)
-     * @param orderId orderId (optional)
-     * @param lastFillId lastFillId (optional)
-     * @param pageSize pageSize (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Gateway Frequency Limit </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Server Error </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call marginCrossBatchFillsAsync(String symbol, String startTime, String source, String endTime, String orderId, String lastFillId, String pageSize, final ApiCallback<ApiResponseResultOfMarginTradeDetailInfoResult> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = marginCrossBatchFillsValidateBeforeCall(symbol, startTime, source, endTime, orderId, lastFillId, pageSize, _callback);
-        Type localVarReturnType = new TypeToken<ApiResponseResultOfMarginTradeDetailInfoResult>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
-    /**
-     * Build call for marginCrossBatchHistoryOrders
-     * @param startTime startTime (required)
-     * @param symbol symbol (optional)
-     * @param source source (optional)
-     * @param endTime endTime (optional)
-     * @param orderId orderId (optional)
-     * @param clientOid clientOid (optional)
-     * @param minId minId (optional)
-     * @param pageSize pageSize (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Gateway Frequency Limit </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Server Error </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call marginCrossBatchHistoryOrdersCall(String startTime, String symbol, String source, String endTime, String orderId, String clientOid, String minId, String pageSize, final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = null;
-
-        // create path and map variables
-        String localVarPath = "/api/margin/v1/cross/order/history";
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        if (symbol != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("symbol", symbol));
-        }
-
-        if (source != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("source", source));
-        }
-
-        if (startTime != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("startTime", startTime));
-        }
-
-        if (endTime != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("endTime", endTime));
-        }
-
-        if (orderId != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("orderId", orderId));
-        }
-
-        if (clientOid != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("clientOid", clientOid));
-        }
-
-        if (minId != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("minId", minId));
-        }
-
-        if (pageSize != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("pageSize", pageSize));
-        }
-
-        final String[] localVarAccepts = {
-            "application/json"
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "ACCESS_KEY", "ACCESS_PASSPHRASE", "ACCESS_SIGN", "ACCESS_TIMESTAMP", "SECRET_KEY" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call marginCrossBatchHistoryOrdersValidateBeforeCall(String startTime, String symbol, String source, String endTime, String orderId, String clientOid, String minId, String pageSize, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'startTime' is set
-        if (startTime == null) {
-            throw new ApiException("Missing the required parameter 'startTime' when calling marginCrossBatchHistoryOrders(Async)");
-        }
-
-        return marginCrossBatchHistoryOrdersCall(startTime, symbol, source, endTime, orderId, clientOid, minId, pageSize, _callback);
-
-    }
-
-    /**
-     * history
-     * Margin Cross historyOrders
-     * @param startTime startTime (required)
-     * @param symbol symbol (optional)
-     * @param source source (optional)
-     * @param endTime endTime (optional)
-     * @param orderId orderId (optional)
-     * @param clientOid clientOid (optional)
-     * @param minId minId (optional)
-     * @param pageSize pageSize (optional)
-     * @return ApiResponseResultOfMarginOpenOrderInfoResult
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Gateway Frequency Limit </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Server Error </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponseResultOfMarginOpenOrderInfoResult marginCrossBatchHistoryOrders(String startTime, String symbol, String source, String endTime, String orderId, String clientOid, String minId, String pageSize) throws ApiException {
-        ApiResponse<ApiResponseResultOfMarginOpenOrderInfoResult> localVarResp = marginCrossBatchHistoryOrdersWithHttpInfo(startTime, symbol, source, endTime, orderId, clientOid, minId, pageSize);
-        return localVarResp.getData();
-    }
-
-    /**
-     * history
-     * Margin Cross historyOrders
-     * @param startTime startTime (required)
-     * @param symbol symbol (optional)
-     * @param source source (optional)
-     * @param endTime endTime (optional)
-     * @param orderId orderId (optional)
-     * @param clientOid clientOid (optional)
-     * @param minId minId (optional)
-     * @param pageSize pageSize (optional)
-     * @return ApiResponse&lt;ApiResponseResultOfMarginOpenOrderInfoResult&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Gateway Frequency Limit </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Server Error </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<ApiResponseResultOfMarginOpenOrderInfoResult> marginCrossBatchHistoryOrdersWithHttpInfo(String startTime, String symbol, String source, String endTime, String orderId, String clientOid, String minId, String pageSize) throws ApiException {
-        okhttp3.Call localVarCall = marginCrossBatchHistoryOrdersValidateBeforeCall(startTime, symbol, source, endTime, orderId, clientOid, minId, pageSize, null);
-        Type localVarReturnType = new TypeToken<ApiResponseResultOfMarginOpenOrderInfoResult>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    /**
-     * history (asynchronously)
-     * Margin Cross historyOrders
-     * @param startTime startTime (required)
-     * @param symbol symbol (optional)
-     * @param source source (optional)
-     * @param endTime endTime (optional)
-     * @param orderId orderId (optional)
-     * @param clientOid clientOid (optional)
-     * @param minId minId (optional)
-     * @param pageSize pageSize (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Gateway Frequency Limit </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Server Error </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call marginCrossBatchHistoryOrdersAsync(String startTime, String symbol, String source, String endTime, String orderId, String clientOid, String minId, String pageSize, final ApiCallback<ApiResponseResultOfMarginOpenOrderInfoResult> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = marginCrossBatchHistoryOrdersValidateBeforeCall(startTime, symbol, source, endTime, orderId, clientOid, minId, pageSize, _callback);
-        Type localVarReturnType = new TypeToken<ApiResponseResultOfMarginOpenOrderInfoResult>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
-    /**
-     * Build call for marginCrossBatchOpenOrders
-     * @param startTime startTime (required)
-     * @param endTime endTime (required)
-     * @param symbol symbol (optional)
-     * @param orderId orderId (optional)
-     * @param clientOid clientOid (optional)
-     * @param pageSize pageSize (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Gateway Frequency Limit </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Server Error </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call marginCrossBatchOpenOrdersCall(String startTime, String endTime, String symbol, String orderId, String clientOid, String pageSize, final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = null;
-
-        // create path and map variables
-        String localVarPath = "/api/margin/v1/cross/order/openOrders";
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        if (symbol != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("symbol", symbol));
-        }
-
-        if (startTime != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("startTime", startTime));
-        }
-
-        if (endTime != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("endTime", endTime));
-        }
-
-        if (orderId != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("orderId", orderId));
-        }
-
-        if (clientOid != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("clientOid", clientOid));
-        }
-
-        if (pageSize != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("pageSize", pageSize));
-        }
-
-        final String[] localVarAccepts = {
-            "application/json"
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "ACCESS_KEY", "ACCESS_PASSPHRASE", "ACCESS_SIGN", "ACCESS_TIMESTAMP", "SECRET_KEY" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call marginCrossBatchOpenOrdersValidateBeforeCall(String startTime, String endTime, String symbol, String orderId, String clientOid, String pageSize, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'startTime' is set
-        if (startTime == null) {
-            throw new ApiException("Missing the required parameter 'startTime' when calling marginCrossBatchOpenOrders(Async)");
-        }
-
-        // verify the required parameter 'endTime' is set
-        if (endTime == null) {
-            throw new ApiException("Missing the required parameter 'endTime' when calling marginCrossBatchOpenOrders(Async)");
-        }
-
-        return marginCrossBatchOpenOrdersCall(startTime, endTime, symbol, orderId, clientOid, pageSize, _callback);
-
-    }
-
-    /**
-     * openOrders
-     * Margin Cross openOrders
-     * @param startTime startTime (required)
-     * @param endTime endTime (required)
-     * @param symbol symbol (optional)
-     * @param orderId orderId (optional)
-     * @param clientOid clientOid (optional)
-     * @param pageSize pageSize (optional)
-     * @return ApiResponseResultOfMarginOpenOrderInfoResult
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Gateway Frequency Limit </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Server Error </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponseResultOfMarginOpenOrderInfoResult marginCrossBatchOpenOrders(String startTime, String endTime, String symbol, String orderId, String clientOid, String pageSize) throws ApiException {
-        ApiResponse<ApiResponseResultOfMarginOpenOrderInfoResult> localVarResp = marginCrossBatchOpenOrdersWithHttpInfo(startTime, endTime, symbol, orderId, clientOid, pageSize);
-        return localVarResp.getData();
-    }
-
-    /**
-     * openOrders
-     * Margin Cross openOrders
-     * @param startTime startTime (required)
-     * @param endTime endTime (required)
-     * @param symbol symbol (optional)
-     * @param orderId orderId (optional)
-     * @param clientOid clientOid (optional)
-     * @param pageSize pageSize (optional)
-     * @return ApiResponse&lt;ApiResponseResultOfMarginOpenOrderInfoResult&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Gateway Frequency Limit </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Server Error </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<ApiResponseResultOfMarginOpenOrderInfoResult> marginCrossBatchOpenOrdersWithHttpInfo(String startTime, String endTime, String symbol, String orderId, String clientOid, String pageSize) throws ApiException {
-        okhttp3.Call localVarCall = marginCrossBatchOpenOrdersValidateBeforeCall(startTime, endTime, symbol, orderId, clientOid, pageSize, null);
-        Type localVarReturnType = new TypeToken<ApiResponseResultOfMarginOpenOrderInfoResult>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    /**
-     * openOrders (asynchronously)
-     * Margin Cross openOrders
-     * @param startTime startTime (required)
-     * @param endTime endTime (required)
-     * @param symbol symbol (optional)
-     * @param orderId orderId (optional)
-     * @param clientOid clientOid (optional)
-     * @param pageSize pageSize (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Gateway Frequency Limit </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Server Error </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call marginCrossBatchOpenOrdersAsync(String startTime, String endTime, String symbol, String orderId, String clientOid, String pageSize, final ApiCallback<ApiResponseResultOfMarginOpenOrderInfoResult> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = marginCrossBatchOpenOrdersValidateBeforeCall(startTime, endTime, symbol, orderId, clientOid, pageSize, _callback);
-        Type localVarReturnType = new TypeToken<ApiResponseResultOfMarginOpenOrderInfoResult>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
-    /**
      * Build call for marginCrossBatchPlaceOrder
      * @param marginOrderRequest marginOrderRequest (required)
      * @param _callback Callback for upload/download progress
@@ -1052,6 +484,579 @@ public class MarginCrossOrderApi {
 
         okhttp3.Call localVarCall = marginCrossCancelOrderValidateBeforeCall(marginCancelOrderRequest, _callback);
         Type localVarReturnType = new TypeToken<ApiResponseResultOfMarginBatchCancelOrderResult>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for marginCrossFills
+     * @param symbol symbol (required)
+     * @param startTime startTime (required)
+     * @param source source (optional)
+     * @param endTime endTime (optional)
+     * @param orderId orderId (optional)
+     * @param lastFillId lastFillId (optional)
+     * @param pageSize pageSize (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Gateway Frequency Limit </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Server Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call marginCrossFillsCall(String symbol, String startTime, String source, String endTime, String orderId, String lastFillId, String pageSize, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/api/margin/v1/cross/order/fills";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (symbol != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("symbol", symbol));
+        }
+
+        if (source != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("source", source));
+        }
+
+        if (startTime != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("startTime", startTime));
+        }
+
+        if (endTime != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("endTime", endTime));
+        }
+
+        if (orderId != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("orderId", orderId));
+        }
+
+        if (lastFillId != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("lastFillId", lastFillId));
+        }
+
+        if (pageSize != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("pageSize", pageSize));
+        }
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "ACCESS_KEY", "ACCESS_PASSPHRASE", "ACCESS_SIGN", "ACCESS_TIMESTAMP", "SECRET_KEY" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call marginCrossFillsValidateBeforeCall(String symbol, String startTime, String source, String endTime, String orderId, String lastFillId, String pageSize, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'symbol' is set
+        if (symbol == null) {
+            throw new ApiException("Missing the required parameter 'symbol' when calling marginCrossFills(Async)");
+        }
+
+        // verify the required parameter 'startTime' is set
+        if (startTime == null) {
+            throw new ApiException("Missing the required parameter 'startTime' when calling marginCrossFills(Async)");
+        }
+
+        return marginCrossFillsCall(symbol, startTime, source, endTime, orderId, lastFillId, pageSize, _callback);
+
+    }
+
+    /**
+     * fills
+     * Margin Cross Fills
+     * @param symbol symbol (required)
+     * @param startTime startTime (required)
+     * @param source source (optional)
+     * @param endTime endTime (optional)
+     * @param orderId orderId (optional)
+     * @param lastFillId lastFillId (optional)
+     * @param pageSize pageSize (optional)
+     * @return ApiResponseResultOfMarginTradeDetailInfoResult
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Gateway Frequency Limit </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Server Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponseResultOfMarginTradeDetailInfoResult marginCrossFills(String symbol, String startTime, String source, String endTime, String orderId, String lastFillId, String pageSize) throws ApiException {
+        ApiResponse<ApiResponseResultOfMarginTradeDetailInfoResult> localVarResp = marginCrossFillsWithHttpInfo(symbol, startTime, source, endTime, orderId, lastFillId, pageSize);
+        return localVarResp.getData();
+    }
+
+    /**
+     * fills
+     * Margin Cross Fills
+     * @param symbol symbol (required)
+     * @param startTime startTime (required)
+     * @param source source (optional)
+     * @param endTime endTime (optional)
+     * @param orderId orderId (optional)
+     * @param lastFillId lastFillId (optional)
+     * @param pageSize pageSize (optional)
+     * @return ApiResponse&lt;ApiResponseResultOfMarginTradeDetailInfoResult&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Gateway Frequency Limit </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Server Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<ApiResponseResultOfMarginTradeDetailInfoResult> marginCrossFillsWithHttpInfo(String symbol, String startTime, String source, String endTime, String orderId, String lastFillId, String pageSize) throws ApiException {
+        okhttp3.Call localVarCall = marginCrossFillsValidateBeforeCall(symbol, startTime, source, endTime, orderId, lastFillId, pageSize, null);
+        Type localVarReturnType = new TypeToken<ApiResponseResultOfMarginTradeDetailInfoResult>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * fills (asynchronously)
+     * Margin Cross Fills
+     * @param symbol symbol (required)
+     * @param startTime startTime (required)
+     * @param source source (optional)
+     * @param endTime endTime (optional)
+     * @param orderId orderId (optional)
+     * @param lastFillId lastFillId (optional)
+     * @param pageSize pageSize (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Gateway Frequency Limit </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Server Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call marginCrossFillsAsync(String symbol, String startTime, String source, String endTime, String orderId, String lastFillId, String pageSize, final ApiCallback<ApiResponseResultOfMarginTradeDetailInfoResult> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = marginCrossFillsValidateBeforeCall(symbol, startTime, source, endTime, orderId, lastFillId, pageSize, _callback);
+        Type localVarReturnType = new TypeToken<ApiResponseResultOfMarginTradeDetailInfoResult>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for marginCrossHistoryOrders
+     * @param symbol symbol (required)
+     * @param startTime startTime (required)
+     * @param source source (optional)
+     * @param endTime endTime (optional)
+     * @param orderId orderId (optional)
+     * @param clientOid clientOid (optional)
+     * @param minId minId (optional)
+     * @param pageSize pageSize (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Gateway Frequency Limit </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Server Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call marginCrossHistoryOrdersCall(String symbol, String startTime, String source, String endTime, String orderId, String clientOid, String minId, String pageSize, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/api/margin/v1/cross/order/history";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (symbol != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("symbol", symbol));
+        }
+
+        if (source != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("source", source));
+        }
+
+        if (startTime != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("startTime", startTime));
+        }
+
+        if (endTime != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("endTime", endTime));
+        }
+
+        if (orderId != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("orderId", orderId));
+        }
+
+        if (clientOid != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("clientOid", clientOid));
+        }
+
+        if (minId != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("minId", minId));
+        }
+
+        if (pageSize != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("pageSize", pageSize));
+        }
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "ACCESS_KEY", "ACCESS_PASSPHRASE", "ACCESS_SIGN", "ACCESS_TIMESTAMP", "SECRET_KEY" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call marginCrossHistoryOrdersValidateBeforeCall(String symbol, String startTime, String source, String endTime, String orderId, String clientOid, String minId, String pageSize, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'symbol' is set
+        if (symbol == null) {
+            throw new ApiException("Missing the required parameter 'symbol' when calling marginCrossHistoryOrders(Async)");
+        }
+
+        // verify the required parameter 'startTime' is set
+        if (startTime == null) {
+            throw new ApiException("Missing the required parameter 'startTime' when calling marginCrossHistoryOrders(Async)");
+        }
+
+        return marginCrossHistoryOrdersCall(symbol, startTime, source, endTime, orderId, clientOid, minId, pageSize, _callback);
+
+    }
+
+    /**
+     * history
+     * Margin Cross historyOrders
+     * @param symbol symbol (required)
+     * @param startTime startTime (required)
+     * @param source source (optional)
+     * @param endTime endTime (optional)
+     * @param orderId orderId (optional)
+     * @param clientOid clientOid (optional)
+     * @param minId minId (optional)
+     * @param pageSize pageSize (optional)
+     * @return ApiResponseResultOfMarginOpenOrderInfoResult
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Gateway Frequency Limit </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Server Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponseResultOfMarginOpenOrderInfoResult marginCrossHistoryOrders(String symbol, String startTime, String source, String endTime, String orderId, String clientOid, String minId, String pageSize) throws ApiException {
+        ApiResponse<ApiResponseResultOfMarginOpenOrderInfoResult> localVarResp = marginCrossHistoryOrdersWithHttpInfo(symbol, startTime, source, endTime, orderId, clientOid, minId, pageSize);
+        return localVarResp.getData();
+    }
+
+    /**
+     * history
+     * Margin Cross historyOrders
+     * @param symbol symbol (required)
+     * @param startTime startTime (required)
+     * @param source source (optional)
+     * @param endTime endTime (optional)
+     * @param orderId orderId (optional)
+     * @param clientOid clientOid (optional)
+     * @param minId minId (optional)
+     * @param pageSize pageSize (optional)
+     * @return ApiResponse&lt;ApiResponseResultOfMarginOpenOrderInfoResult&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Gateway Frequency Limit </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Server Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<ApiResponseResultOfMarginOpenOrderInfoResult> marginCrossHistoryOrdersWithHttpInfo(String symbol, String startTime, String source, String endTime, String orderId, String clientOid, String minId, String pageSize) throws ApiException {
+        okhttp3.Call localVarCall = marginCrossHistoryOrdersValidateBeforeCall(symbol, startTime, source, endTime, orderId, clientOid, minId, pageSize, null);
+        Type localVarReturnType = new TypeToken<ApiResponseResultOfMarginOpenOrderInfoResult>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * history (asynchronously)
+     * Margin Cross historyOrders
+     * @param symbol symbol (required)
+     * @param startTime startTime (required)
+     * @param source source (optional)
+     * @param endTime endTime (optional)
+     * @param orderId orderId (optional)
+     * @param clientOid clientOid (optional)
+     * @param minId minId (optional)
+     * @param pageSize pageSize (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Gateway Frequency Limit </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Server Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call marginCrossHistoryOrdersAsync(String symbol, String startTime, String source, String endTime, String orderId, String clientOid, String minId, String pageSize, final ApiCallback<ApiResponseResultOfMarginOpenOrderInfoResult> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = marginCrossHistoryOrdersValidateBeforeCall(symbol, startTime, source, endTime, orderId, clientOid, minId, pageSize, _callback);
+        Type localVarReturnType = new TypeToken<ApiResponseResultOfMarginOpenOrderInfoResult>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for marginCrossOpenOrders
+     * @param symbol symbol (required)
+     * @param startTime startTime (required)
+     * @param endTime endTime (optional)
+     * @param orderId orderId (optional)
+     * @param clientOid clientOid (optional)
+     * @param pageSize pageSize (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Gateway Frequency Limit </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Server Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call marginCrossOpenOrdersCall(String symbol, String startTime, String endTime, String orderId, String clientOid, String pageSize, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/api/margin/v1/cross/order/openOrders";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (symbol != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("symbol", symbol));
+        }
+
+        if (startTime != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("startTime", startTime));
+        }
+
+        if (endTime != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("endTime", endTime));
+        }
+
+        if (orderId != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("orderId", orderId));
+        }
+
+        if (clientOid != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("clientOid", clientOid));
+        }
+
+        if (pageSize != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("pageSize", pageSize));
+        }
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "ACCESS_KEY", "ACCESS_PASSPHRASE", "ACCESS_SIGN", "ACCESS_TIMESTAMP", "SECRET_KEY" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call marginCrossOpenOrdersValidateBeforeCall(String symbol, String startTime, String endTime, String orderId, String clientOid, String pageSize, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'symbol' is set
+        if (symbol == null) {
+            throw new ApiException("Missing the required parameter 'symbol' when calling marginCrossOpenOrders(Async)");
+        }
+
+        // verify the required parameter 'startTime' is set
+        if (startTime == null) {
+            throw new ApiException("Missing the required parameter 'startTime' when calling marginCrossOpenOrders(Async)");
+        }
+
+        return marginCrossOpenOrdersCall(symbol, startTime, endTime, orderId, clientOid, pageSize, _callback);
+
+    }
+
+    /**
+     * openOrders
+     * Margin Cross openOrders
+     * @param symbol symbol (required)
+     * @param startTime startTime (required)
+     * @param endTime endTime (optional)
+     * @param orderId orderId (optional)
+     * @param clientOid clientOid (optional)
+     * @param pageSize pageSize (optional)
+     * @return ApiResponseResultOfMarginOpenOrderInfoResult
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Gateway Frequency Limit </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Server Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponseResultOfMarginOpenOrderInfoResult marginCrossOpenOrders(String symbol, String startTime, String endTime, String orderId, String clientOid, String pageSize) throws ApiException {
+        ApiResponse<ApiResponseResultOfMarginOpenOrderInfoResult> localVarResp = marginCrossOpenOrdersWithHttpInfo(symbol, startTime, endTime, orderId, clientOid, pageSize);
+        return localVarResp.getData();
+    }
+
+    /**
+     * openOrders
+     * Margin Cross openOrders
+     * @param symbol symbol (required)
+     * @param startTime startTime (required)
+     * @param endTime endTime (optional)
+     * @param orderId orderId (optional)
+     * @param clientOid clientOid (optional)
+     * @param pageSize pageSize (optional)
+     * @return ApiResponse&lt;ApiResponseResultOfMarginOpenOrderInfoResult&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Gateway Frequency Limit </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Server Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<ApiResponseResultOfMarginOpenOrderInfoResult> marginCrossOpenOrdersWithHttpInfo(String symbol, String startTime, String endTime, String orderId, String clientOid, String pageSize) throws ApiException {
+        okhttp3.Call localVarCall = marginCrossOpenOrdersValidateBeforeCall(symbol, startTime, endTime, orderId, clientOid, pageSize, null);
+        Type localVarReturnType = new TypeToken<ApiResponseResultOfMarginOpenOrderInfoResult>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * openOrders (asynchronously)
+     * Margin Cross openOrders
+     * @param symbol symbol (required)
+     * @param startTime startTime (required)
+     * @param endTime endTime (optional)
+     * @param orderId orderId (optional)
+     * @param clientOid clientOid (optional)
+     * @param pageSize pageSize (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Gateway Frequency Limit </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Server Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call marginCrossOpenOrdersAsync(String symbol, String startTime, String endTime, String orderId, String clientOid, String pageSize, final ApiCallback<ApiResponseResultOfMarginOpenOrderInfoResult> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = marginCrossOpenOrdersValidateBeforeCall(symbol, startTime, endTime, orderId, clientOid, pageSize, _callback);
+        Type localVarReturnType = new TypeToken<ApiResponseResultOfMarginOpenOrderInfoResult>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

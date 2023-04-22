@@ -75,9 +75,9 @@ public class MarginIsolatedRepayApi {
     }
 
     /**
-     * Build call for repayList1
+     * Build call for isolateRepayList
+     * @param symbol symbol (required)
      * @param startTime startTime (required)
-     * @param symbol symbol (optional)
      * @param coin coin (optional)
      * @param repayId repayId (optional)
      * @param endTime endTime (optional)
@@ -95,7 +95,7 @@ public class MarginIsolatedRepayApi {
         <tr><td> 500 </td><td> Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call repayList1Call(String startTime, String symbol, String coin, String repayId, String endTime, String pageSize, String pageId, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call isolateRepayListCall(String symbol, String startTime, String coin, String repayId, String endTime, String pageSize, String pageId, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -168,21 +168,26 @@ public class MarginIsolatedRepayApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call repayList1ValidateBeforeCall(String startTime, String symbol, String coin, String repayId, String endTime, String pageSize, String pageId, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'startTime' is set
-        if (startTime == null) {
-            throw new ApiException("Missing the required parameter 'startTime' when calling repayList1(Async)");
+    private okhttp3.Call isolateRepayListValidateBeforeCall(String symbol, String startTime, String coin, String repayId, String endTime, String pageSize, String pageId, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'symbol' is set
+        if (symbol == null) {
+            throw new ApiException("Missing the required parameter 'symbol' when calling isolateRepayList(Async)");
         }
 
-        return repayList1Call(startTime, symbol, coin, repayId, endTime, pageSize, pageId, _callback);
+        // verify the required parameter 'startTime' is set
+        if (startTime == null) {
+            throw new ApiException("Missing the required parameter 'startTime' when calling isolateRepayList(Async)");
+        }
+
+        return isolateRepayListCall(symbol, startTime, coin, repayId, endTime, pageSize, pageId, _callback);
 
     }
 
     /**
      * list
      * Get liquidation List
+     * @param symbol symbol (required)
      * @param startTime startTime (required)
-     * @param symbol symbol (optional)
      * @param coin coin (optional)
      * @param repayId repayId (optional)
      * @param endTime endTime (optional)
@@ -199,16 +204,16 @@ public class MarginIsolatedRepayApi {
         <tr><td> 500 </td><td> Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponseResultOfMarginIsolatedRepayInfoResult repayList1(String startTime, String symbol, String coin, String repayId, String endTime, String pageSize, String pageId) throws ApiException {
-        ApiResponse<ApiResponseResultOfMarginIsolatedRepayInfoResult> localVarResp = repayList1WithHttpInfo(startTime, symbol, coin, repayId, endTime, pageSize, pageId);
+    public ApiResponseResultOfMarginIsolatedRepayInfoResult isolateRepayList(String symbol, String startTime, String coin, String repayId, String endTime, String pageSize, String pageId) throws ApiException {
+        ApiResponse<ApiResponseResultOfMarginIsolatedRepayInfoResult> localVarResp = isolateRepayListWithHttpInfo(symbol, startTime, coin, repayId, endTime, pageSize, pageId);
         return localVarResp.getData();
     }
 
     /**
      * list
      * Get liquidation List
+     * @param symbol symbol (required)
      * @param startTime startTime (required)
-     * @param symbol symbol (optional)
      * @param coin coin (optional)
      * @param repayId repayId (optional)
      * @param endTime endTime (optional)
@@ -225,8 +230,8 @@ public class MarginIsolatedRepayApi {
         <tr><td> 500 </td><td> Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ApiResponseResultOfMarginIsolatedRepayInfoResult> repayList1WithHttpInfo(String startTime, String symbol, String coin, String repayId, String endTime, String pageSize, String pageId) throws ApiException {
-        okhttp3.Call localVarCall = repayList1ValidateBeforeCall(startTime, symbol, coin, repayId, endTime, pageSize, pageId, null);
+    public ApiResponse<ApiResponseResultOfMarginIsolatedRepayInfoResult> isolateRepayListWithHttpInfo(String symbol, String startTime, String coin, String repayId, String endTime, String pageSize, String pageId) throws ApiException {
+        okhttp3.Call localVarCall = isolateRepayListValidateBeforeCall(symbol, startTime, coin, repayId, endTime, pageSize, pageId, null);
         Type localVarReturnType = new TypeToken<ApiResponseResultOfMarginIsolatedRepayInfoResult>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -234,8 +239,8 @@ public class MarginIsolatedRepayApi {
     /**
      * list (asynchronously)
      * Get liquidation List
+     * @param symbol symbol (required)
      * @param startTime startTime (required)
-     * @param symbol symbol (optional)
      * @param coin coin (optional)
      * @param repayId repayId (optional)
      * @param endTime endTime (optional)
@@ -253,9 +258,9 @@ public class MarginIsolatedRepayApi {
         <tr><td> 500 </td><td> Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call repayList1Async(String startTime, String symbol, String coin, String repayId, String endTime, String pageSize, String pageId, final ApiCallback<ApiResponseResultOfMarginIsolatedRepayInfoResult> _callback) throws ApiException {
+    public okhttp3.Call isolateRepayListAsync(String symbol, String startTime, String coin, String repayId, String endTime, String pageSize, String pageId, final ApiCallback<ApiResponseResultOfMarginIsolatedRepayInfoResult> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = repayList1ValidateBeforeCall(startTime, symbol, coin, repayId, endTime, pageSize, pageId, _callback);
+        okhttp3.Call localVarCall = isolateRepayListValidateBeforeCall(symbol, startTime, coin, repayId, endTime, pageSize, pageId, _callback);
         Type localVarReturnType = new TypeToken<ApiResponseResultOfMarginIsolatedRepayInfoResult>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

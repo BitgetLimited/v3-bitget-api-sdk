@@ -32,6 +32,8 @@ export * from './marginIsolatedRepayApi';
 import { MarginIsolatedRepayApi } from './marginIsolatedRepayApi';
 export * from './marginPublicApi';
 import { MarginPublicApi } from './marginPublicApi';
+export * from './p2pMerchantApi';
+import { P2pMerchantApi } from './p2pMerchantApi';
 import * as http from 'http';
 
 export class HttpError extends Error {
@@ -43,4 +45,4 @@ export class HttpError extends Error {
 
 export { RequestFile } from '../model/models';
 
-export const APIS = [MarginCrossAccountApi, MarginCrossBorrowApi, MarginCrossFinflowApi, MarginCrossInterestApi, MarginCrossLiquidationApi, MarginCrossOrderApi, MarginCrossPublicApi, MarginCrossRepayApi, MarginIsolatedAccountApi, MarginIsolatedBorrowApi, MarginIsolatedFinflowApi, MarginIsolatedInterestApi, MarginIsolatedLiquidationApi, MarginIsolatedOrderApi, MarginIsolatedPublicApi, MarginIsolatedRepayApi, MarginPublicApi];
+export const APIS = [MarginCrossAccountApi, MarginCrossBorrowApi, MarginCrossFinflowApi, MarginCrossInterestApi, MarginCrossLiquidationApi, MarginCrossOrderApi, MarginCrossPublicApi, MarginCrossRepayApi, MarginIsolatedAccountApi, MarginIsolatedBorrowApi, MarginIsolatedFinflowApi, MarginIsolatedInterestApi, MarginIsolatedLiquidationApi, MarginIsolatedOrderApi, MarginIsolatedPublicApi, MarginIsolatedRepayApi, MarginPublicApi, P2pMerchantApi];

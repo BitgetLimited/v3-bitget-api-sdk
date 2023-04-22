@@ -48,3 +48,7 @@ class PathValues(str, enum.Enum):
     API_MARGIN_V1_ISOLATED_PUBLIC_TIER_DATA = "/api/margin/v1/isolated/public/tierData"
     API_MARGIN_V1_ISOLATED_REPAY_LIST = "/api/margin/v1/isolated/repay/list"
     API_MARGIN_V1_PUBLIC_CURRENCIES = "/api/margin/v1/public/currencies"
+    API_P2P_V1_MERCHANT_ADV_LIST = "/api/p2p/v1/merchant/advList"
+    API_P2P_V1_MERCHANT_MERCHANT_INFO = "/api/p2p/v1/merchant/merchantInfo"
+    API_P2P_V1_MERCHANT_MERCHANT_LIST = "/api/p2p/v1/merchant/merchantList"
+    API_P2P_V1_MERCHANT_ORDER_LIST = "/api/p2p/v1/merchant/orderList"

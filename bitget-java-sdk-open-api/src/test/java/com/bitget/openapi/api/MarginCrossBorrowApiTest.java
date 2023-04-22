@@ -49,7 +49,7 @@ public class MarginCrossBorrowApiTest {
         String loanId = null;
         String pageSize = "10";
         String pageId = null;
-        ApiResponseResultOfMarginLoanInfoResult response = api.loanList(startTime, coin, endTime, loanId, pageSize, pageId);
+        ApiResponseResultOfMarginLoanInfoResult response = api.crossLoanList(startTime, coin, endTime, loanId, pageSize, pageId);
         assertThat(response).isNotNull();
         assertThat(response.getCode()).isEqualTo(("00000"));
         assertThat(response.getData()).isNotNull();

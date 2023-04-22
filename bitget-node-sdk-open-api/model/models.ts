@@ -32,7 +32,13 @@ export * from './apiResponseResultOfMarginOpenOrderInfoResult';
 export * from './apiResponseResultOfMarginPlaceOrderResult';
 export * from './apiResponseResultOfMarginRepayInfoResult';
 export * from './apiResponseResultOfMarginTradeDetailInfoResult';
+export * from './apiResponseResultOfMerchantAdvResult';
+export * from './apiResponseResultOfMerchantInfoResult';
+export * from './apiResponseResultOfMerchantOrderResult';
+export * from './apiResponseResultOfMerchantPersonInfo';
 export * from './apiResponseResultOfVoid';
+export * from './fiatPaymentDetailInfo';
+export * from './fiatPaymentInfo';
 export * from './marginBatchCancelOrderRequest';
 export * from './marginBatchCancelOrderResult';
 export * from './marginBatchOrdersRequest';
@@ -93,6 +99,16 @@ export * from './marginRepayInfoResult';
 export * from './marginSystemResult';
 export * from './marginTradeDetailInfo';
 export * from './marginTradeDetailInfoResult';
+export * from './merchantAdvInfo';
+export * from './merchantAdvResult';
+export * from './merchantAdvUserLimitInfo';
+export * from './merchantInfo';
+export * from './merchantInfoResult';
+export * from './merchantOrderInfo';
+export * from './merchantOrderPaymentInfo';
+export * from './merchantOrderResult';
+export * from './merchantPersonInfo';
+export * from './orderPaymentDetailInfo';
 
 import * as fs from 'fs';
 
@@ -139,7 +155,13 @@ import { ApiResponseResultOfMarginOpenOrderInfoResult } from './apiResponseResul
 import { ApiResponseResultOfMarginPlaceOrderResult } from './apiResponseResultOfMarginPlaceOrderResult';
 import { ApiResponseResultOfMarginRepayInfoResult } from './apiResponseResultOfMarginRepayInfoResult';
 import { ApiResponseResultOfMarginTradeDetailInfoResult } from './apiResponseResultOfMarginTradeDetailInfoResult';
+import { ApiResponseResultOfMerchantAdvResult } from './apiResponseResultOfMerchantAdvResult';
+import { ApiResponseResultOfMerchantInfoResult } from './apiResponseResultOfMerchantInfoResult';
+import { ApiResponseResultOfMerchantOrderResult } from './apiResponseResultOfMerchantOrderResult';
+import { ApiResponseResultOfMerchantPersonInfo } from './apiResponseResultOfMerchantPersonInfo';
 import { ApiResponseResultOfVoid } from './apiResponseResultOfVoid';
+import { FiatPaymentDetailInfo } from './fiatPaymentDetailInfo';
+import { FiatPaymentInfo } from './fiatPaymentInfo';
 import { MarginBatchCancelOrderRequest } from './marginBatchCancelOrderRequest';
 import { MarginBatchCancelOrderResult } from './marginBatchCancelOrderResult';
 import { MarginBatchOrdersRequest } from './marginBatchOrdersRequest';
@@ -200,6 +222,16 @@ import { MarginRepayInfoResult } from './marginRepayInfoResult';
 import { MarginSystemResult } from './marginSystemResult';
 import { MarginTradeDetailInfo } from './marginTradeDetailInfo';
 import { MarginTradeDetailInfoResult } from './marginTradeDetailInfoResult';
+import { MerchantAdvInfo } from './merchantAdvInfo';
+import { MerchantAdvResult } from './merchantAdvResult';
+import { MerchantAdvUserLimitInfo } from './merchantAdvUserLimitInfo';
+import { MerchantInfo } from './merchantInfo';
+import { MerchantInfoResult } from './merchantInfoResult';
+import { MerchantOrderInfo } from './merchantOrderInfo';
+import { MerchantOrderPaymentInfo } from './merchantOrderPaymentInfo';
+import { MerchantOrderResult } from './merchantOrderResult';
+import { MerchantPersonInfo } from './merchantPersonInfo';
+import { OrderPaymentDetailInfo } from './orderPaymentDetailInfo';
 import {encrypt} from "./util";
 import * as querystring from "querystring";
 import * as url from "url";
@@ -252,7 +284,13 @@ let typeMap: {[index: string]: any} = {
     "ApiResponseResultOfMarginPlaceOrderResult": ApiResponseResultOfMarginPlaceOrderResult,
     "ApiResponseResultOfMarginRepayInfoResult": ApiResponseResultOfMarginRepayInfoResult,
     "ApiResponseResultOfMarginTradeDetailInfoResult": ApiResponseResultOfMarginTradeDetailInfoResult,
+    "ApiResponseResultOfMerchantAdvResult": ApiResponseResultOfMerchantAdvResult,
+    "ApiResponseResultOfMerchantInfoResult": ApiResponseResultOfMerchantInfoResult,
+    "ApiResponseResultOfMerchantOrderResult": ApiResponseResultOfMerchantOrderResult,
+    "ApiResponseResultOfMerchantPersonInfo": ApiResponseResultOfMerchantPersonInfo,
     "ApiResponseResultOfVoid": ApiResponseResultOfVoid,
+    "FiatPaymentDetailInfo": FiatPaymentDetailInfo,
+    "FiatPaymentInfo": FiatPaymentInfo,
     "MarginBatchCancelOrderRequest": MarginBatchCancelOrderRequest,
     "MarginBatchCancelOrderResult": MarginBatchCancelOrderResult,
     "MarginBatchOrdersRequest": MarginBatchOrdersRequest,
@@ -313,6 +351,16 @@ let typeMap: {[index: string]: any} = {
     "MarginSystemResult": MarginSystemResult,
     "MarginTradeDetailInfo": MarginTradeDetailInfo,
     "MarginTradeDetailInfoResult": MarginTradeDetailInfoResult,
+    "MerchantAdvInfo": MerchantAdvInfo,
+    "MerchantAdvResult": MerchantAdvResult,
+    "MerchantAdvUserLimitInfo": MerchantAdvUserLimitInfo,
+    "MerchantInfo": MerchantInfo,
+    "MerchantInfoResult": MerchantInfoResult,
+    "MerchantOrderInfo": MerchantOrderInfo,
+    "MerchantOrderPaymentInfo": MerchantOrderPaymentInfo,
+    "MerchantOrderResult": MerchantOrderResult,
+    "MerchantPersonInfo": MerchantPersonInfo,
+    "OrderPaymentDetailInfo": OrderPaymentDetailInfo,
 }
 
 export class ObjectSerializer {

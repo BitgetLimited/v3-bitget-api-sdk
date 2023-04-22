@@ -4,12 +4,12 @@ All URIs are relative to *https://api.bitget.com*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**loanList1**](MarginIsolatedBorrowApi.md#loanList1) | **GET** /api/margin/v1/isolated/loan/list | list |
+| [**isolatedLoanList**](MarginIsolatedBorrowApi.md#isolatedLoanList) | **GET** /api/margin/v1/isolated/loan/list | list |
 
 
-<a name="loanList1"></a>
-# **loanList1**
-> ApiResponseResultOfMarginIsolatedLoanInfoResult loanList1(startTime, symbol, coin, endTime, loanId, pageSize, pageId)
+<a name="isolatedLoanList"></a>
+# **isolatedLoanList**
+> ApiResponseResultOfMarginIsolatedLoanInfoResult isolatedLoanList(symbol, startTime, coin, endTime, loanId, pageSize, pageId)
 
 list
 
@@ -61,18 +61,18 @@ public class Example {
     //SECRET_KEY.setApiKeyPrefix("Token");
 
     MarginIsolatedBorrowApi apiInstance = new MarginIsolatedBorrowApi(defaultClient);
-    String startTime = "1678193338000"; // String | startTime
     String symbol = "BTCUSDT"; // String | symbol
+    String startTime = "1678193338000"; // String | startTime
     String coin = "USDT"; // String | coin
     String endTime = "1678193338000"; // String | endTime
     String loanId = "loanId_example"; // String | loanId
     String pageSize = "10"; // String | pageSize
     String pageId = "pageId_example"; // String | pageId
     try {
-      ApiResponseResultOfMarginIsolatedLoanInfoResult result = apiInstance.loanList1(startTime, symbol, coin, endTime, loanId, pageSize, pageId);
+      ApiResponseResultOfMarginIsolatedLoanInfoResult result = apiInstance.isolatedLoanList(symbol, startTime, coin, endTime, loanId, pageSize, pageId);
       System.out.println(result);
     } catch (ApiException e) {
-      System.err.println("Exception when calling MarginIsolatedBorrowApi#loanList1");
+      System.err.println("Exception when calling MarginIsolatedBorrowApi#isolatedLoanList");
       System.err.println("Status code: " + e.getCode());
       System.err.println("Reason: " + e.getResponseBody());
       System.err.println("Response headers: " + e.getResponseHeaders());
@@ -86,8 +86,8 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
+| **symbol** | **String**| symbol | |
 | **startTime** | **String**| startTime | |
-| **symbol** | **String**| symbol | [optional] |
 | **coin** | **String**| coin | [optional] |
 | **endTime** | **String**| endTime | [optional] |
 | **loanId** | **String**| loanId | [optional] |

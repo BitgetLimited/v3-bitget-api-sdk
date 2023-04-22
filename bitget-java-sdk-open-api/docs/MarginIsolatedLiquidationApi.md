@@ -4,12 +4,12 @@ All URIs are relative to *https://api.bitget.com*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**liquidationList1**](MarginIsolatedLiquidationApi.md#liquidationList1) | **GET** /api/margin/v1/isolated/liquidation/list | list |
+| [**isolatedLiquidationList**](MarginIsolatedLiquidationApi.md#isolatedLiquidationList) | **GET** /api/margin/v1/isolated/liquidation/list | list |
 
 
-<a name="liquidationList1"></a>
-# **liquidationList1**
-> ApiResponseResultOfMarginIsolatedLiquidationInfoResult liquidationList1(startTime, symbol, endTime, pageSize, pageId)
+<a name="isolatedLiquidationList"></a>
+# **isolatedLiquidationList**
+> ApiResponseResultOfMarginIsolatedLiquidationInfoResult isolatedLiquidationList(symbol, startTime, endTime, pageSize, pageId)
 
 list
 
@@ -61,16 +61,16 @@ public class Example {
     //SECRET_KEY.setApiKeyPrefix("Token");
 
     MarginIsolatedLiquidationApi apiInstance = new MarginIsolatedLiquidationApi(defaultClient);
-    String startTime = "1678193138000"; // String | startTime
     String symbol = "BTCUSDT"; // String | symbol
+    String startTime = "1678193138000"; // String | startTime
     String endTime = "1678193338000"; // String | endTime
     String pageSize = "10"; // String | pageSize
     String pageId = "pageId_example"; // String | pageId
     try {
-      ApiResponseResultOfMarginIsolatedLiquidationInfoResult result = apiInstance.liquidationList1(startTime, symbol, endTime, pageSize, pageId);
+      ApiResponseResultOfMarginIsolatedLiquidationInfoResult result = apiInstance.isolatedLiquidationList(symbol, startTime, endTime, pageSize, pageId);
       System.out.println(result);
     } catch (ApiException e) {
-      System.err.println("Exception when calling MarginIsolatedLiquidationApi#liquidationList1");
+      System.err.println("Exception when calling MarginIsolatedLiquidationApi#isolatedLiquidationList");
       System.err.println("Status code: " + e.getCode());
       System.err.println("Reason: " + e.getResponseBody());
       System.err.println("Response headers: " + e.getResponseHeaders());
@@ -84,8 +84,8 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
+| **symbol** | **String**| symbol | |
 | **startTime** | **String**| startTime | |
-| **symbol** | **String**| symbol | [optional] |
 | **endTime** | **String**| endTime | [optional] |
 | **pageSize** | **String**| pageSize | [optional] |
 | **pageId** | **String**| pageId | [optional] |

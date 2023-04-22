@@ -75,7 +75,7 @@ public class MarginCrossBorrowApi {
     }
 
     /**
-     * Build call for loanList
+     * Build call for crossLoanList
      * @param startTime startTime (required)
      * @param coin coin (optional)
      * @param endTime endTime (optional)
@@ -94,7 +94,7 @@ public class MarginCrossBorrowApi {
         <tr><td> 500 </td><td> Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call loanListCall(String startTime, String coin, String endTime, String loanId, String pageSize, String pageId, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call crossLoanListCall(String startTime, String coin, String endTime, String loanId, String pageSize, String pageId, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -163,13 +163,13 @@ public class MarginCrossBorrowApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call loanListValidateBeforeCall(String startTime, String coin, String endTime, String loanId, String pageSize, String pageId, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call crossLoanListValidateBeforeCall(String startTime, String coin, String endTime, String loanId, String pageSize, String pageId, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'startTime' is set
         if (startTime == null) {
-            throw new ApiException("Missing the required parameter 'startTime' when calling loanList(Async)");
+            throw new ApiException("Missing the required parameter 'startTime' when calling crossLoanList(Async)");
         }
 
-        return loanListCall(startTime, coin, endTime, loanId, pageSize, pageId, _callback);
+        return crossLoanListCall(startTime, coin, endTime, loanId, pageSize, pageId, _callback);
 
     }
 
@@ -193,8 +193,8 @@ public class MarginCrossBorrowApi {
         <tr><td> 500 </td><td> Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponseResultOfMarginLoanInfoResult loanList(String startTime, String coin, String endTime, String loanId, String pageSize, String pageId) throws ApiException {
-        ApiResponse<ApiResponseResultOfMarginLoanInfoResult> localVarResp = loanListWithHttpInfo(startTime, coin, endTime, loanId, pageSize, pageId);
+    public ApiResponseResultOfMarginLoanInfoResult crossLoanList(String startTime, String coin, String endTime, String loanId, String pageSize, String pageId) throws ApiException {
+        ApiResponse<ApiResponseResultOfMarginLoanInfoResult> localVarResp = crossLoanListWithHttpInfo(startTime, coin, endTime, loanId, pageSize, pageId);
         return localVarResp.getData();
     }
 
@@ -218,8 +218,8 @@ public class MarginCrossBorrowApi {
         <tr><td> 500 </td><td> Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ApiResponseResultOfMarginLoanInfoResult> loanListWithHttpInfo(String startTime, String coin, String endTime, String loanId, String pageSize, String pageId) throws ApiException {
-        okhttp3.Call localVarCall = loanListValidateBeforeCall(startTime, coin, endTime, loanId, pageSize, pageId, null);
+    public ApiResponse<ApiResponseResultOfMarginLoanInfoResult> crossLoanListWithHttpInfo(String startTime, String coin, String endTime, String loanId, String pageSize, String pageId) throws ApiException {
+        okhttp3.Call localVarCall = crossLoanListValidateBeforeCall(startTime, coin, endTime, loanId, pageSize, pageId, null);
         Type localVarReturnType = new TypeToken<ApiResponseResultOfMarginLoanInfoResult>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -245,9 +245,9 @@ public class MarginCrossBorrowApi {
         <tr><td> 500 </td><td> Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call loanListAsync(String startTime, String coin, String endTime, String loanId, String pageSize, String pageId, final ApiCallback<ApiResponseResultOfMarginLoanInfoResult> _callback) throws ApiException {
+    public okhttp3.Call crossLoanListAsync(String startTime, String coin, String endTime, String loanId, String pageSize, String pageId, final ApiCallback<ApiResponseResultOfMarginLoanInfoResult> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = loanListValidateBeforeCall(startTime, coin, endTime, loanId, pageSize, pageId, _callback);
+        okhttp3.Call localVarCall = crossLoanListValidateBeforeCall(startTime, coin, endTime, loanId, pageSize, pageId, _callback);
         Type localVarReturnType = new TypeToken<ApiResponseResultOfMarginLoanInfoResult>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

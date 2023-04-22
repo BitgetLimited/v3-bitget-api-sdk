@@ -80,7 +80,7 @@ public class MarginCrossOrderApiTest {
         String orderId = null;
         String lastFillId = null;
         String pageSize = "10";
-        ApiResponseResultOfMarginTradeDetailInfoResult response = api.marginCrossBatchFills(symbol, startTime, source, endTime, orderId, lastFillId, pageSize);
+        ApiResponseResultOfMarginTradeDetailInfoResult response = api.marginCrossFills(symbol, startTime, source, endTime, orderId, lastFillId, pageSize);
         assertThat(response).isNotNull();
         assertThat(response.getData()).isNotNull();
         if (response.getData().getFills() != null && response.getData().getFills().size() > 0) {
@@ -113,7 +113,7 @@ public class MarginCrossOrderApiTest {
         String clientOid = null;
         String minId = null;
         String pageSize = null;
-        ApiResponseResultOfMarginOpenOrderInfoResult response = api.marginCrossBatchHistoryOrders(startTime, symbol, source, endTime, orderId, clientOid, minId, pageSize);
+        ApiResponseResultOfMarginOpenOrderInfoResult response = api.marginCrossHistoryOrders(startTime, symbol, source, endTime, orderId, clientOid, minId, pageSize);
 
         assertThat(response).isNotNull();
         assertThat(response.getData()).isNotNull();
@@ -151,7 +151,7 @@ public class MarginCrossOrderApiTest {
         String orderId = null;
         String clientOid = null;
         String pageSize = null;
-        ApiResponseResultOfMarginOpenOrderInfoResult response = api.marginCrossBatchOpenOrders(startTime, endTime, symbol, orderId, clientOid, pageSize);
+        ApiResponseResultOfMarginOpenOrderInfoResult response = api.marginCrossOpenOrders(symbol, startTime, endTime, orderId, clientOid, pageSize);
 
         assertThat(response).isNotNull();
         assertThat(response.getData()).isNotNull();

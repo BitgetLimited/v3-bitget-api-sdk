@@ -4,8 +4,6 @@ import (
 	"crypto/hmac"
 	"crypto/sha256"
 	"encoding/base64"
-	"fmt"
-	"os"
 	"strconv"
 	"strings"
 	"time"
@@ -24,7 +22,6 @@ func Sign(method string, path string, query string, body string, timesStamp stri
 		payload.WriteString(path)
 	}
 	payload.WriteString(body)
-	fmt.Fprintf(os.Stdout, "payload: %s\n", payload.String())
 
 	hash := hmac.New(sha256.New, []byte(secretKey))
 	hash.Write([]byte(payload.String()))

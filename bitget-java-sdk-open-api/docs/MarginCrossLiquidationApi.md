@@ -4,12 +4,12 @@ All URIs are relative to *https://api.bitget.com*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**liquidationList**](MarginCrossLiquidationApi.md#liquidationList) | **GET** /api/margin/v1/cross/liquidation/list | list |
+| [**crossLiquidationList**](MarginCrossLiquidationApi.md#crossLiquidationList) | **GET** /api/margin/v1/cross/liquidation/list | list |
 
 
-<a name="liquidationList"></a>
-# **liquidationList**
-> ApiResponseResultOfMarginLiquidationInfoResult liquidationList(startTime, endTime, pageSize, pageId)
+<a name="crossLiquidationList"></a>
+# **crossLiquidationList**
+> ApiResponseResultOfMarginLiquidationInfoResult crossLiquidationList(startTime, endTime, pageSize, pageId)
 
 list
 
@@ -66,10 +66,10 @@ public class Example {
     String pageSize = "10"; // String | pageSize
     String pageId = "pageId_example"; // String | pageId
     try {
-      ApiResponseResultOfMarginLiquidationInfoResult result = apiInstance.liquidationList(startTime, endTime, pageSize, pageId);
+      ApiResponseResultOfMarginLiquidationInfoResult result = apiInstance.crossLiquidationList(startTime, endTime, pageSize, pageId);
       System.out.println(result);
     } catch (ApiException e) {
-      System.err.println("Exception when calling MarginCrossLiquidationApi#liquidationList");
+      System.err.println("Exception when calling MarginCrossLiquidationApi#crossLiquidationList");
       System.err.println("Status code: " + e.getCode());
       System.err.println("Reason: " + e.getResponseBody());
       System.err.println("Response headers: " + e.getResponseHeaders());

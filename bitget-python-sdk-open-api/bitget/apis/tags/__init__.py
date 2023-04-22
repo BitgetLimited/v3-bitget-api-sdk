@@ -23,3 +23,4 @@ class TagValues(str, enum.Enum):
     MARGIN_ISOLATED_PUBLIC = "margin_isolated_public"
     MARGIN_ISOLATED_REPAY = "margin_isolated_repay"
     MARGIN_PUBLIC = "margin_public"
+    P2P_MERCHANT = "p2p_merchant"

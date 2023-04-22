@@ -52,7 +52,7 @@ public class MarginCrossFinflowApiTest {
         String endTime = "1680057356760";
         String pageSize = "10";
         String pageId = null;
-        ApiResponseResultOfMarginCrossFinFlowResult response = api.finList(startTime, coin, endTime, marginType, pageSize, pageId);
+        ApiResponseResultOfMarginCrossFinFlowResult response = api.crossFinList(startTime, coin, endTime, marginType, pageSize, pageId);
         assertThat(response).isNotNull();
         assertThat(response.getCode()).isEqualTo(("00000"));
         assertThat(response.getData()).isNotNull();

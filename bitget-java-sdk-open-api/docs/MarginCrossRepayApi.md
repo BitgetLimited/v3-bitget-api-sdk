@@ -4,12 +4,12 @@ All URIs are relative to *https://api.bitget.com*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**repayList**](MarginCrossRepayApi.md#repayList) | **GET** /api/margin/v1/cross/repay/list | list |
+| [**crossRepayList**](MarginCrossRepayApi.md#crossRepayList) | **GET** /api/margin/v1/cross/repay/list | list |
 
 
-<a name="repayList"></a>
-# **repayList**
-> ApiResponseResultOfMarginRepayInfoResult repayList(startTime, coin, repayId, endTime, pageSize, pageId)
+<a name="crossRepayList"></a>
+# **crossRepayList**
+> ApiResponseResultOfMarginRepayInfoResult crossRepayList(startTime, coin, repayId, endTime, pageSize, pageId)
 
 list
 
@@ -68,10 +68,10 @@ public class Example {
     String pageSize = "10"; // String | pageSize
     String pageId = "minId"; // String | pageId
     try {
-      ApiResponseResultOfMarginRepayInfoResult result = apiInstance.repayList(startTime, coin, repayId, endTime, pageSize, pageId);
+      ApiResponseResultOfMarginRepayInfoResult result = apiInstance.crossRepayList(startTime, coin, repayId, endTime, pageSize, pageId);
       System.out.println(result);
     } catch (ApiException e) {
-      System.err.println("Exception when calling MarginCrossRepayApi#repayList");
+      System.err.println("Exception when calling MarginCrossRepayApi#crossRepayList");
       System.err.println("Status code: " + e.getCode());
       System.err.println("Reason: " + e.getResponseBody());
       System.err.println("Response headers: " + e.getResponseHeaders());
