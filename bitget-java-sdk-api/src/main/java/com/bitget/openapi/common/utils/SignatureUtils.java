@@ -98,10 +98,13 @@ public class SignatureUtils {
     }
 
     public static void main(String[] args) throws Exception {
-      String msg=generate("1606981450","GET","/user/verify" ,null,null,"9ae40dd0f6074f9e2714e3ef9f9ed0ac33a049d85a38c02cc42873f03308f1fa");
-      System.out.println(msg);
+        String msg = generate("1606981450", "GET", "/user/verify", null, null, "9ae40dd0f6074f9e2714e3ef9f9ed0ac33a049d85a38c02cc42873f03308f1fa");
+        System.out.println(msg);
+
+
+        String msg1 = generate("1674363384733", "POST", "/api/mix/v1/plan/placePlan", null, "{“symbol”: “SBTCSUSDT_SUMCBL”,“marginCoin”: “SUSDT”,“size”: “10”, “triggerPrice”: “11000”,“side”: “open_long”,“orderType”: “market”,“triggerType”: “market_price”,“clientOid”: “BITGET#8486913695”,“presetTakeProfitPrice”: “13000”,“presetStopLossPrice”: “10500”,“timeInForceValue”: “normal”}", "8c1e6b243cc08f7450b3ab48956af4797e7887e3a73dfe582edc75917b726bad");
+        System.out.println(msg1);
+
     }
-
-
 
 }
