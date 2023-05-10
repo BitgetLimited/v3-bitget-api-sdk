@@ -451,9 +451,9 @@ public class BitgetWsHandle implements BitgetWsClient {
             List<String[]> newAllList = new ArrayList<>(priceAndValue.values());
 
             if(isReverse){
-                newAllList.sort((o1, o2) -> o2[0].compareTo(o1[0]));
+                newAllList.sort((o1, o2) -> new BigDecimal(o2[0]).compareTo(new BigDecimal(o1[0])));
             }else{
-                newAllList.sort(Comparator.comparing(o -> o[0]));
+                newAllList.sort(Comparator.comparing(o -> new BigDecimal(o[0])));
             }
 
             return newAllList;
@@ -468,11 +468,15 @@ public class BitgetWsHandle implements BitgetWsClient {
         public boolean checkSum(int checkSum,int gear) {
             StringBuilder sb = new StringBuilder();
             for (int i = 0; i < gear; i++) {
-                String[] bids = this.getBids().get(i);
-                sb.append(bids[0]).append(":").append(bids[1]).append(":");
+                if(i < this.getBids().size()){
+                    String[] bids = this.getBids().get(i);
+                    sb.append(bids[0]).append(":").append(bids[1]).append(":");
+                }
 
-                String[] asks = this.getAsks().get(i);
-                sb.append(asks[0]).append(":").append(asks[1]).append(":");
+                if(i < this.getAsks().size()){
+                    String[] asks = this.getAsks().get(i);
+                    sb.append(asks[0]).append(":").append(asks[1]).append(":");
+                }
             }
 
             String s = sb.toString();
