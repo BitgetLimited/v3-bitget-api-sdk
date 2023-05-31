@@ -47,6 +47,24 @@ from bitget.apis.paths.api_p2p_v1_merchant_adv_list import ApiP2pV1MerchantAdvLi
 from bitget.apis.paths.api_p2p_v1_merchant_merchant_info import ApiP2pV1MerchantMerchantInfo
 from bitget.apis.paths.api_p2p_v1_merchant_merchant_list import ApiP2pV1MerchantMerchantList
 from bitget.apis.paths.api_p2p_v1_merchant_order_list import ApiP2pV1MerchantOrderList
+from bitget.apis.paths.api_spot_v1_trace_order_close_tracking_order import ApiSpotV1TraceOrderCloseTrackingOrder
+from bitget.apis.paths.api_spot_v1_trace_order_end_order import ApiSpotV1TraceOrderEndOrder
+from bitget.apis.paths.api_spot_v1_trace_order_get_trace_settings import ApiSpotV1TraceOrderGetTraceSettings
+from bitget.apis.paths.api_spot_v1_trace_order_get_trader_settings import ApiSpotV1TraceOrderGetTraderSettings
+from bitget.apis.paths.api_spot_v1_trace_order_my_tracers import ApiSpotV1TraceOrderMyTracers
+from bitget.apis.paths.api_spot_v1_trace_order_my_traders import ApiSpotV1TraceOrderMyTraders
+from bitget.apis.paths.api_spot_v1_trace_order_order_current_list import ApiSpotV1TraceOrderOrderCurrentList
+from bitget.apis.paths.api_spot_v1_trace_order_order_history_list import ApiSpotV1TraceOrderOrderHistoryList
+from bitget.apis.paths.api_spot_v1_trace_order_remove_trader import ApiSpotV1TraceOrderRemoveTrader
+from bitget.apis.paths.api_spot_v1_trace_order_set_product_code import ApiSpotV1TraceOrderSetProductCode
+from bitget.apis.paths.api_spot_v1_trace_order_set_trace_config import ApiSpotV1TraceOrderSetTraceConfig
+from bitget.apis.paths.api_spot_v1_trace_order_spot_info_list import ApiSpotV1TraceOrderSpotInfoList
+from bitget.apis.paths.api_spot_v1_trace_order_update_tpsl import ApiSpotV1TraceOrderUpdateTpsl
+from bitget.apis.paths.api_spot_v1_trace_profit_profit_his_detail_list import ApiSpotV1TraceProfitProfitHisDetailList
+from bitget.apis.paths.api_spot_v1_trace_profit_profit_his_list import ApiSpotV1TraceProfitProfitHisList
+from bitget.apis.paths.api_spot_v1_trace_profit_total_profit_info import ApiSpotV1TraceProfitTotalProfitInfo
+from bitget.apis.paths.api_spot_v1_trace_profit_total_profit_list import ApiSpotV1TraceProfitTotalProfitList
+from bitget.apis.paths.api_spot_v1_trace_profit_wait_profit_detail_list import ApiSpotV1TraceProfitWaitProfitDetailList
 
 PathToApi = typing_extensions.TypedDict(
     'PathToApi',
@@ -97,6 +115,24 @@ PathToApi = typing_extensions.TypedDict(
         PathValues.API_P2P_V1_MERCHANT_MERCHANT_INFO: ApiP2pV1MerchantMerchantInfo,
         PathValues.API_P2P_V1_MERCHANT_MERCHANT_LIST: ApiP2pV1MerchantMerchantList,
         PathValues.API_P2P_V1_MERCHANT_ORDER_LIST: ApiP2pV1MerchantOrderList,
+        PathValues.API_SPOT_V1_TRACE_ORDER_CLOSE_TRACKING_ORDER: ApiSpotV1TraceOrderCloseTrackingOrder,
+        PathValues.API_SPOT_V1_TRACE_ORDER_END_ORDER: ApiSpotV1TraceOrderEndOrder,
+        PathValues.API_SPOT_V1_TRACE_ORDER_GET_TRACE_SETTINGS: ApiSpotV1TraceOrderGetTraceSettings,
+        PathValues.API_SPOT_V1_TRACE_ORDER_GET_TRADER_SETTINGS: ApiSpotV1TraceOrderGetTraderSettings,
+        PathValues.API_SPOT_V1_TRACE_ORDER_MY_TRACERS: ApiSpotV1TraceOrderMyTracers,
+        PathValues.API_SPOT_V1_TRACE_ORDER_MY_TRADERS: ApiSpotV1TraceOrderMyTraders,
+        PathValues.API_SPOT_V1_TRACE_ORDER_ORDER_CURRENT_LIST: ApiSpotV1TraceOrderOrderCurrentList,
+        PathValues.API_SPOT_V1_TRACE_ORDER_ORDER_HISTORY_LIST: ApiSpotV1TraceOrderOrderHistoryList,
+        PathValues.API_SPOT_V1_TRACE_ORDER_REMOVE_TRADER: ApiSpotV1TraceOrderRemoveTrader,
+        PathValues.API_SPOT_V1_TRACE_ORDER_SET_PRODUCT_CODE: ApiSpotV1TraceOrderSetProductCode,
+        PathValues.API_SPOT_V1_TRACE_ORDER_SET_TRACE_CONFIG: ApiSpotV1TraceOrderSetTraceConfig,
+        PathValues.API_SPOT_V1_TRACE_ORDER_SPOT_INFO_LIST: ApiSpotV1TraceOrderSpotInfoList,
+        PathValues.API_SPOT_V1_TRACE_ORDER_UPDATE_TPSL: ApiSpotV1TraceOrderUpdateTpsl,
+        PathValues.API_SPOT_V1_TRACE_PROFIT_PROFIT_HIS_DETAIL_LIST: ApiSpotV1TraceProfitProfitHisDetailList,
+        PathValues.API_SPOT_V1_TRACE_PROFIT_PROFIT_HIS_LIST: ApiSpotV1TraceProfitProfitHisList,
+        PathValues.API_SPOT_V1_TRACE_PROFIT_TOTAL_PROFIT_INFO: ApiSpotV1TraceProfitTotalProfitInfo,
+        PathValues.API_SPOT_V1_TRACE_PROFIT_TOTAL_PROFIT_LIST: ApiSpotV1TraceProfitTotalProfitList,
+        PathValues.API_SPOT_V1_TRACE_PROFIT_WAIT_PROFIT_DETAIL_LIST: ApiSpotV1TraceProfitWaitProfitDetailList,
     }
 )
 
@@ -148,5 +184,23 @@ path_to_api = PathToApi(
         PathValues.API_P2P_V1_MERCHANT_MERCHANT_INFO: ApiP2pV1MerchantMerchantInfo,
         PathValues.API_P2P_V1_MERCHANT_MERCHANT_LIST: ApiP2pV1MerchantMerchantList,
         PathValues.API_P2P_V1_MERCHANT_ORDER_LIST: ApiP2pV1MerchantOrderList,
+        PathValues.API_SPOT_V1_TRACE_ORDER_CLOSE_TRACKING_ORDER: ApiSpotV1TraceOrderCloseTrackingOrder,
+        PathValues.API_SPOT_V1_TRACE_ORDER_END_ORDER: ApiSpotV1TraceOrderEndOrder,
+        PathValues.API_SPOT_V1_TRACE_ORDER_GET_TRACE_SETTINGS: ApiSpotV1TraceOrderGetTraceSettings,
+        PathValues.API_SPOT_V1_TRACE_ORDER_GET_TRADER_SETTINGS: ApiSpotV1TraceOrderGetTraderSettings,
+        PathValues.API_SPOT_V1_TRACE_ORDER_MY_TRACERS: ApiSpotV1TraceOrderMyTracers,
+        PathValues.API_SPOT_V1_TRACE_ORDER_MY_TRADERS: ApiSpotV1TraceOrderMyTraders,
+        PathValues.API_SPOT_V1_TRACE_ORDER_ORDER_CURRENT_LIST: ApiSpotV1TraceOrderOrderCurrentList,
+        PathValues.API_SPOT_V1_TRACE_ORDER_ORDER_HISTORY_LIST: ApiSpotV1TraceOrderOrderHistoryList,
+        PathValues.API_SPOT_V1_TRACE_ORDER_REMOVE_TRADER: ApiSpotV1TraceOrderRemoveTrader,
+        PathValues.API_SPOT_V1_TRACE_ORDER_SET_PRODUCT_CODE: ApiSpotV1TraceOrderSetProductCode,
+        PathValues.API_SPOT_V1_TRACE_ORDER_SET_TRACE_CONFIG: ApiSpotV1TraceOrderSetTraceConfig,
+        PathValues.API_SPOT_V1_TRACE_ORDER_SPOT_INFO_LIST: ApiSpotV1TraceOrderSpotInfoList,
+        PathValues.API_SPOT_V1_TRACE_ORDER_UPDATE_TPSL: ApiSpotV1TraceOrderUpdateTpsl,
+        PathValues.API_SPOT_V1_TRACE_PROFIT_PROFIT_HIS_DETAIL_LIST: ApiSpotV1TraceProfitProfitHisDetailList,
+        PathValues.API_SPOT_V1_TRACE_PROFIT_PROFIT_HIS_LIST: ApiSpotV1TraceProfitProfitHisList,
+        PathValues.API_SPOT_V1_TRACE_PROFIT_TOTAL_PROFIT_INFO: ApiSpotV1TraceProfitTotalProfitInfo,
+        PathValues.API_SPOT_V1_TRACE_PROFIT_TOTAL_PROFIT_LIST: ApiSpotV1TraceProfitTotalProfitList,
+        PathValues.API_SPOT_V1_TRACE_PROFIT_WAIT_PROFIT_DETAIL_LIST: ApiSpotV1TraceProfitWaitProfitDetailList,
     }
 )

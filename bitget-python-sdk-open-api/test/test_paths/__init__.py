@@ -72,9 +72,9 @@ class ApiTestMixin:
     ):
         import bitget
         configuration = bitget.Configuration(
-            host = "https://api.bitget.com"
+            host = "http://localhost:8010"
         )
-        configuration.api_key['ACCESS_KEY'] = 'your value'
-        configuration.api_key['ACCESS_PASSPHRASE'] = 'your value'
-        configuration.api_key['SECRET_KEY'] = 'your value'
+        configuration.api_key['ACCESS_KEY'] = 'bg_43215ed00b4ca9114e7ea20a25864990'
+        configuration.api_key['ACCESS_PASSPHRASE'] = '123qweasd'
+        configuration.api_key['SECRET_KEY'] = '2f0d6c9afd0a21a63d12116be301b25559edf7e6e571fe2458902acbbc47c1e0'
         return configuration
