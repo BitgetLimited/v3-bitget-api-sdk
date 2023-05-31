@@ -41,6 +41,10 @@ tags:
   name: margin_public
 - description: Merchant Controller
   name: p2p_merchant
+- description: Spot Trace Order Controller
+  name: spot_trace_order
+- description: Spot Trace Profit Controller
+  name: spot_trace_profit
 paths:
   /api/margin/v1/cross/account/assets:
     get:
@@ -2778,6 +2782,828 @@ paths:
       summary: orderList
       tags:
       - p2p_merchant
+  /api/spot/v1/trace/order/closeTrackingOrder:
+    post:
+      deprecated: false
+      description: closeTrackingOrder
+      operationId: spotTraceCloseTrackingOrder
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CloseTrackingOrderRequest'
+        description: closeTrackingOrderRequest
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfboolean'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfVoid'
+          description: Bad Request
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfVoid'
+          description: Gateway Frequency Limit
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfVoid'
+          description: Server Error
+      security:
+      - ACCESS_TIMESTAMP: []
+      - SECRET_KEY: []
+      - ACCESS_PASSPHRASE: []
+      - ACCESS_SIGN: []
+      - ACCESS_KEY: []
+      summary: closeTrackingOrder
+      tags:
+      - spot_trace_order
+      x-codegen-request-body-name: closeTrackingOrderRequest
+  /api/spot/v1/trace/order/endOrder:
+    post:
+      deprecated: false
+      description: endOrder
+      operationId: spotTraceEndOrder
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EndOrderRequest'
+        description: endOrderRequest
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfboolean'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfVoid'
+          description: Bad Request
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfVoid'
+          description: Gateway Frequency Limit
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfVoid'
+          description: Server Error
+      security:
+      - ACCESS_TIMESTAMP: []
+      - SECRET_KEY: []
+      - ACCESS_PASSPHRASE: []
+      - ACCESS_SIGN: []
+      - ACCESS_KEY: []
+      summary: endOrder
+      tags:
+      - spot_trace_order
+      x-codegen-request-body-name: endOrderRequest
+  /api/spot/v1/trace/order/getTraceSettings:
+    post:
+      deprecated: false
+      description: Get TraceSettings
+      operationId: spotTraceGetTraceSettings
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TraceSettingsRequest'
+        description: traceSettingsRequest
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfTraceSettingResult'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfVoid'
+          description: Bad Request
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfVoid'
+          description: Gateway Frequency Limit
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfVoid'
+          description: Server Error
+      security:
+      - ACCESS_TIMESTAMP: []
+      - SECRET_KEY: []
+      - ACCESS_PASSPHRASE: []
+      - ACCESS_SIGN: []
+      - ACCESS_KEY: []
+      summary: getTraceSettings
+      tags:
+      - spot_trace_order
+      x-codegen-request-body-name: traceSettingsRequest
+  /api/spot/v1/trace/order/getTraderSettings:
+    post:
+      deprecated: false
+      description: Get TraderSettings
+      operationId: spotTraceGetTraderSettings
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfTraderSettingResult'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfVoid'
+          description: Bad Request
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfVoid'
+          description: Gateway Frequency Limit
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfVoid'
+          description: Server Error
+      security:
+      - ACCESS_TIMESTAMP: []
+      - SECRET_KEY: []
+      - ACCESS_PASSPHRASE: []
+      - ACCESS_SIGN: []
+      - ACCESS_KEY: []
+      summary: getTraderSettings
+      tags:
+      - spot_trace_order
+  /api/spot/v1/trace/order/myTracers:
+    post:
+      deprecated: false
+      description: Get MyTracers
+      operationId: spotTraceMyTracers
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MyTracersRequest'
+        description: myTracersRequest
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfMyTracersResult'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfVoid'
+          description: Bad Request
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfVoid'
+          description: Gateway Frequency Limit
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfVoid'
+          description: Server Error
+      security:
+      - ACCESS_TIMESTAMP: []
+      - SECRET_KEY: []
+      - ACCESS_PASSPHRASE: []
+      - ACCESS_SIGN: []
+      - ACCESS_KEY: []
+      summary: myTracers
+      tags:
+      - spot_trace_order
+      x-codegen-request-body-name: myTracersRequest
+  /api/spot/v1/trace/order/myTraders:
+    post:
+      deprecated: false
+      description: Get MyTraders
+      operationId: spotTraceMyTraders
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MyTradersRequest'
+        description: myTradersRequest
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfMyTradersResult'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfVoid'
+          description: Bad Request
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfVoid'
+          description: Gateway Frequency Limit
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfVoid'
+          description: Server Error
+      security:
+      - ACCESS_TIMESTAMP: []
+      - SECRET_KEY: []
+      - ACCESS_PASSPHRASE: []
+      - ACCESS_SIGN: []
+      - ACCESS_KEY: []
+      summary: myTraders
+      tags:
+      - spot_trace_order
+      x-codegen-request-body-name: myTradersRequest
+  /api/spot/v1/trace/order/orderCurrentList:
+    post:
+      deprecated: false
+      description: Get OrderCurrentList
+      operationId: spotTraceOrderCurrentList
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CurrentOrderListRequest'
+        description: currentOrderListRequest
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfOrderCurrentListResult'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfVoid'
+          description: Bad Request
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfVoid'
+          description: Gateway Frequency Limit
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfVoid'
+          description: Server Error
+      security:
+      - ACCESS_TIMESTAMP: []
+      - SECRET_KEY: []
+      - ACCESS_PASSPHRASE: []
+      - ACCESS_SIGN: []
+      - ACCESS_KEY: []
+      summary: orderCurrentList
+      tags:
+      - spot_trace_order
+      x-codegen-request-body-name: currentOrderListRequest
+  /api/spot/v1/trace/order/orderHistoryList:
+    post:
+      deprecated: false
+      description: Get OrderHistoryList
+      operationId: spotTraceOrderHistoryList
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/HistoryOrderListRequest'
+        description: historyOrderListRequest
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfOrderHistoryListResult'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfVoid'
+          description: Bad Request
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfVoid'
+          description: Gateway Frequency Limit
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfVoid'
+          description: Server Error
+      security:
+      - ACCESS_TIMESTAMP: []
+      - SECRET_KEY: []
+      - ACCESS_PASSPHRASE: []
+      - ACCESS_SIGN: []
+      - ACCESS_KEY: []
+      summary: orderHistoryList
+      tags:
+      - spot_trace_order
+      x-codegen-request-body-name: historyOrderListRequest
+  /api/spot/v1/trace/order/removeTrader:
+    post:
+      deprecated: false
+      description: RemoveTrader
+      operationId: spotTraceRemoveTrader
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RemoveTraderRequest'
+        description: removeTraderRequest
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfboolean'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfVoid'
+          description: Bad Request
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfVoid'
+          description: Gateway Frequency Limit
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfVoid'
+          description: Server Error
+      security:
+      - ACCESS_TIMESTAMP: []
+      - SECRET_KEY: []
+      - ACCESS_PASSPHRASE: []
+      - ACCESS_SIGN: []
+      - ACCESS_KEY: []
+      summary: removeTrader
+      tags:
+      - spot_trace_order
+      x-codegen-request-body-name: removeTraderRequest
+  /api/spot/v1/trace/order/setProductCode:
+    post:
+      deprecated: false
+      description: SetProductCode
+      operationId: spotTraceSetProductCode
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProductCodeRequest'
+        description: productCodeRequest
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfboolean'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfVoid'
+          description: Bad Request
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfVoid'
+          description: Gateway Frequency Limit
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfVoid'
+          description: Server Error
+      security:
+      - ACCESS_TIMESTAMP: []
+      - SECRET_KEY: []
+      - ACCESS_PASSPHRASE: []
+      - ACCESS_SIGN: []
+      - ACCESS_KEY: []
+      summary: setProductCode
+      tags:
+      - spot_trace_order
+      x-codegen-request-body-name: productCodeRequest
+  /api/spot/v1/trace/order/setTraceConfig:
+    post:
+      deprecated: false
+      description: SetTraceConfig
+      operationId: spotTraceSetTraceConfig
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TraceConfigRequest'
+        description: traceConfigRequest
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfboolean'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfVoid'
+          description: Bad Request
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfVoid'
+          description: Gateway Frequency Limit
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfVoid'
+          description: Server Error
+      security:
+      - ACCESS_TIMESTAMP: []
+      - SECRET_KEY: []
+      - ACCESS_PASSPHRASE: []
+      - ACCESS_SIGN: []
+      - ACCESS_KEY: []
+      summary: setTraceConfig
+      tags:
+      - spot_trace_order
+      x-codegen-request-body-name: traceConfigRequest
+  /api/spot/v1/trace/order/spotInfoList:
+    post:
+      deprecated: false
+      description: Get SpotInfoList
+      operationId: spotTraceSpotInfoList
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfListOfSpotInfoResult'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfVoid'
+          description: Bad Request
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfVoid'
+          description: Gateway Frequency Limit
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfVoid'
+          description: Server Error
+      security:
+      - ACCESS_TIMESTAMP: []
+      - SECRET_KEY: []
+      - ACCESS_PASSPHRASE: []
+      - ACCESS_SIGN: []
+      - ACCESS_KEY: []
+      summary: spotInfoList
+      tags:
+      - spot_trace_order
+  /api/spot/v1/trace/order/updateTpsl:
+    post:
+      deprecated: false
+      description: updateTpsl
+      operationId: spotTraceUpdateTpsl
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateTpslRequest'
+        description: updateTpslRequest
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfboolean'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfVoid'
+          description: Bad Request
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfVoid'
+          description: Gateway Frequency Limit
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfVoid'
+          description: Server Error
+      security:
+      - ACCESS_TIMESTAMP: []
+      - SECRET_KEY: []
+      - ACCESS_PASSPHRASE: []
+      - ACCESS_SIGN: []
+      - ACCESS_KEY: []
+      summary: updateTpsl
+      tags:
+      - spot_trace_order
+      x-codegen-request-body-name: updateTpslRequest
+  /api/spot/v1/trace/profit/profitHisDetailList:
+    post:
+      deprecated: false
+      description: Get ProfitHisDetailList
+      operationId: spotTraceProfitHisDetailList
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TotalProfitHisDetailListRequest'
+        description: totalProfitHisDetailListRequest
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfTraderProfitHisDetailListResult'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfVoid'
+          description: Bad Request
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfVoid'
+          description: Gateway Frequency Limit
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfVoid'
+          description: Server Error
+      security:
+      - ACCESS_TIMESTAMP: []
+      - SECRET_KEY: []
+      - ACCESS_PASSPHRASE: []
+      - ACCESS_SIGN: []
+      - ACCESS_KEY: []
+      summary: profitHisDetailList
+      tags:
+      - spot_trace_profit
+      x-codegen-request-body-name: totalProfitHisDetailListRequest
+  /api/spot/v1/trace/profit/profitHisList:
+    post:
+      deprecated: false
+      description: Get ProfitHisList
+      operationId: spotTraceProfitHisList
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TotalProfitHisListRequest'
+        description: totalProfitHisListRequest
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfTraderProfitHisListResult'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfVoid'
+          description: Bad Request
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfVoid'
+          description: Gateway Frequency Limit
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfVoid'
+          description: Server Error
+      security:
+      - ACCESS_TIMESTAMP: []
+      - SECRET_KEY: []
+      - ACCESS_PASSPHRASE: []
+      - ACCESS_SIGN: []
+      - ACCESS_KEY: []
+      summary: profitHisList
+      tags:
+      - spot_trace_profit
+      x-codegen-request-body-name: totalProfitHisListRequest
+  /api/spot/v1/trace/profit/totalProfitInfo:
+    post:
+      deprecated: false
+      description: Get TotalProfitInfo
+      operationId: spotTraceTotalProfitInfo
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfTraderTotalProfitResult'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfVoid'
+          description: Bad Request
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfVoid'
+          description: Gateway Frequency Limit
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfVoid'
+          description: Server Error
+      security:
+      - ACCESS_TIMESTAMP: []
+      - SECRET_KEY: []
+      - ACCESS_PASSPHRASE: []
+      - ACCESS_SIGN: []
+      - ACCESS_KEY: []
+      summary: totalProfitInfo
+      tags:
+      - spot_trace_profit
+  /api/spot/v1/trace/profit/totalProfitList:
+    post:
+      deprecated: false
+      description: Get TotalProfitList
+      operationId: spotTraceTotalProfitList
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TotalProfitListRequest'
+        description: totalProfitListRequest
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfListOfTraderTotalProfitListResult'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfVoid'
+          description: Bad Request
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfVoid'
+          description: Gateway Frequency Limit
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfVoid'
+          description: Server Error
+      security:
+      - ACCESS_TIMESTAMP: []
+      - SECRET_KEY: []
+      - ACCESS_PASSPHRASE: []
+      - ACCESS_SIGN: []
+      - ACCESS_KEY: []
+      summary: totalProfitList
+      tags:
+      - spot_trace_profit
+      x-codegen-request-body-name: totalProfitListRequest
+  /api/spot/v1/trace/profit/waitProfitDetailList:
+    post:
+      deprecated: false
+      description: Get WaitProfitDetailList
+      operationId: spotTraceWaitProfitDetailList
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/WaitProfitDetailListRequest'
+        description: waitProfitDetailListRequest
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfTraderWaitProfitDetailListResult'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfVoid'
+          description: Bad Request
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfVoid'
+          description: Gateway Frequency Limit
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseResultOfVoid'
+          description: Server Error
+      security:
+      - ACCESS_TIMESTAMP: []
+      - SECRET_KEY: []
+      - ACCESS_PASSPHRASE: []
+      - ACCESS_SIGN: []
+      - ACCESS_KEY: []
+      summary: waitProfitDetailList
+      tags:
+      - spot_trace_profit
+      x-codegen-request-body-name: waitProfitDetailListRequest
 components:
   schemas:
     ApiResponseResultOfListOfMarginCrossAssetsPopulationResult:
@@ -3003,6 +3829,62 @@ components:
           format: int64
           type: integer
       title: ApiResponseResultOfListOfMarginSystemResult
+      type: object
+    ApiResponseResultOfListOfSpotInfoResult:
+      example:
+        msg: success
+        requestTime: 1675044340493
+        code: "00000"
+        data: {}
+      properties:
+        code:
+          description: code
+          example: "00000"
+          type: string
+        data:
+          description: data
+          example: {}
+          items:
+            $ref: '#/components/schemas/SpotInfoResult'
+          type: array
+        msg:
+          description: msg
+          example: success
+          type: string
+        requestTime:
+          description: requestTime
+          example: 1675044340493
+          format: int64
+          type: integer
+      title: ApiResponseResultOfListOfSpotInfoResult
+      type: object
+    ApiResponseResultOfListOfTraderTotalProfitListResult:
+      example:
+        msg: success
+        requestTime: 1675044340493
+        code: "00000"
+        data: {}
+      properties:
+        code:
+          description: code
+          example: "00000"
+          type: string
+        data:
+          description: data
+          example: {}
+          items:
+            $ref: '#/components/schemas/TraderTotalProfitListResult'
+          type: array
+        msg:
+          description: msg
+          example: success
+          type: string
+        requestTime:
+          description: requestTime
+          example: 1675044340493
+          format: int64
+          type: integer
+      title: ApiResponseResultOfListOfTraderTotalProfitListResult
       type: object
     ApiResponseResultOfMarginBatchCancelOrderResult:
       example:
@@ -4162,6 +5044,435 @@ components:
           type: integer
       title: ApiResponseResultOfMerchantPersonInfo
       type: object
+    ApiResponseResultOfMyTracersResult:
+      example:
+        msg: success
+        requestTime: 1675044340493
+        code: "00000"
+        data:
+          resultList:
+          - tracerHeadPic: tracerHeadPic
+            tracerNickName: tracerNickName
+            accountEquity: accountEquity
+            canRemoveTraceUser: true
+            tracerUserId: tracerUserId
+          - tracerHeadPic: tracerHeadPic
+            tracerNickName: tracerNickName
+            accountEquity: accountEquity
+            canRemoveTraceUser: true
+            tracerUserId: tracerUserId
+          nextFlag: true
+      properties:
+        code:
+          description: code
+          example: "00000"
+          type: string
+        data:
+          $ref: '#/components/schemas/MyTracersResult'
+        msg:
+          description: msg
+          example: success
+          type: string
+        requestTime:
+          description: requestTime
+          example: 1675044340493
+          format: int64
+          type: integer
+      title: ApiResponseResultOfMyTracersResult
+      type: object
+    ApiResponseResultOfMyTradersResult:
+      example:
+        msg: success
+        requestTime: 1675044340493
+        code: "00000"
+        data:
+          resultList:
+          - certificationType: certificationType
+            tradeNickName: tradeNickName
+            traceTotalAmount: traceTotalAmount
+            traceTotalNetProfit: traceTotalNetProfit
+            traceTotalProfit: traceTotalProfit
+            headPic: headPic
+            traderUid: traderUid
+          - certificationType: certificationType
+            tradeNickName: tradeNickName
+            traceTotalAmount: traceTotalAmount
+            traceTotalNetProfit: traceTotalNetProfit
+            traceTotalProfit: traceTotalProfit
+            headPic: headPic
+            traderUid: traderUid
+          nextFlag: true
+      properties:
+        code:
+          description: code
+          example: "00000"
+          type: string
+        data:
+          $ref: '#/components/schemas/MyTradersResult'
+        msg:
+          description: msg
+          example: success
+          type: string
+        requestTime:
+          description: requestTime
+          example: 1675044340493
+          format: int64
+          type: integer
+      title: ApiResponseResultOfMyTradersResult
+      type: object
+    ApiResponseResultOfOrderCurrentListResult:
+      example:
+        msg: success
+        requestTime: 1675044340493
+        code: "00000"
+        data:
+          minId: minId
+          resultList:
+          - buyPrice: buyPrice
+            symbolId: symbolId
+            trackingType: trackingType
+            stopProfitPrice: stopProfitPrice
+            buyTime: buyTime
+            holdCount: holdCount
+            profitRate: profitRate
+            buyDelegateCount: buyDelegateCount
+            trackingNo: trackingNo
+            stopLossPrice: stopLossPrice
+            dealCount: dealCount
+            profit: profit
+            symbolDisplayName: symbolDisplayName
+          - buyPrice: buyPrice
+            symbolId: symbolId
+            trackingType: trackingType
+            stopProfitPrice: stopProfitPrice
+            buyTime: buyTime
+            holdCount: holdCount
+            profitRate: profitRate
+            buyDelegateCount: buyDelegateCount
+            trackingNo: trackingNo
+            stopLossPrice: stopLossPrice
+            dealCount: dealCount
+            profit: profit
+            symbolDisplayName: symbolDisplayName
+      properties:
+        code:
+          description: code
+          example: "00000"
+          type: string
+        data:
+          $ref: '#/components/schemas/OrderCurrentListResult'
+        msg:
+          description: msg
+          example: success
+          type: string
+        requestTime:
+          description: requestTime
+          example: 1675044340493
+          format: int64
+          type: integer
+      title: ApiResponseResultOfOrderCurrentListResult
+      type: object
+    ApiResponseResultOfOrderHistoryListResult:
+      example:
+        msg: success
+        requestTime: 1675044340493
+        code: "00000"
+        data:
+          minId: minId
+          resultList:
+          - buyPrice: buyPrice
+            symbolId: symbolId
+            traderUserId: traderUserId
+            buyTime: buyTime
+            sellPrice: sellPrice
+            profitRate: profitRate
+            netProfit: netProfit
+            buyLeftTokenId: buyLeftTokenId
+            trackingNo: trackingNo
+            buyRightTokenId: buyRightTokenId
+            dealCount: dealCount
+            profit: profit
+            sellTime: sellTime
+            symbolDisplayName: symbolDisplayName
+          - buyPrice: buyPrice
+            symbolId: symbolId
+            traderUserId: traderUserId
+            buyTime: buyTime
+            sellPrice: sellPrice
+            profitRate: profitRate
+            netProfit: netProfit
+            buyLeftTokenId: buyLeftTokenId
+            trackingNo: trackingNo
+            buyRightTokenId: buyRightTokenId
+            dealCount: dealCount
+            profit: profit
+            sellTime: sellTime
+            symbolDisplayName: symbolDisplayName
+      properties:
+        code:
+          description: code
+          example: "00000"
+          type: string
+        data:
+          $ref: '#/components/schemas/OrderHistoryListResult'
+        msg:
+          description: msg
+          example: success
+          type: string
+        requestTime:
+          description: requestTime
+          example: 1675044340493
+          format: int64
+          type: integer
+      title: ApiResponseResultOfOrderHistoryListResult
+      type: object
+    ApiResponseResultOfTraceSettingResult:
+      example:
+        msg: success
+        requestTime: 1675044340493
+        code: "00000"
+        data:
+          isMyTrader: true
+          traderHeadPic: traderHeadPic
+          traceBatchDetails:
+          - symbolId: symbolId
+            businessLineCode: businessLineCode
+            traceType: traceType
+            stopLossRation: stopLossRation
+            maxTraceAmount: maxTraceAmount
+            stopProfitRation: stopProfitRation
+            symbolDisplayName: symbolDisplayName
+          - symbolId: symbolId
+            businessLineCode: businessLineCode
+            traceType: traceType
+            stopLossRation: stopLossRation
+            maxTraceAmount: maxTraceAmount
+            stopProfitRation: stopProfitRation
+            symbolDisplayName: symbolDisplayName
+          traceProductConfigs:
+          - symbolId: symbolId
+            minTraceRation: minTraceRation
+            minStopProfitRation: minStopProfitRation
+            minStopLossRation: minStopLossRation
+            maxStopProfitRation: maxStopProfitRation
+            minTraceCount: minTraceCount
+            sliderMaxStopLossRatio: sliderMaxStopLossRatio
+            maxTraceRation: maxTraceRation
+            maxTraceAmount: maxTraceAmount
+            maxTraceCount: maxTraceCount
+            businessLine: businessLine
+            maxStopLossRation: maxStopLossRation
+            symbolName: symbolName
+            maxTraceAmountSystem: maxTraceAmountSystem
+            minTraceAmount: minTraceAmount
+            sliderMaxStopProfitRatio: sliderMaxStopProfitRatio
+          - symbolId: symbolId
+            minTraceRation: minTraceRation
+            minStopProfitRation: minStopProfitRation
+            minStopLossRation: minStopLossRation
+            maxStopProfitRation: maxStopProfitRation
+            minTraceCount: minTraceCount
+            sliderMaxStopLossRatio: sliderMaxStopLossRatio
+            maxTraceRation: maxTraceRation
+            maxTraceAmount: maxTraceAmount
+            maxTraceCount: maxTraceCount
+            businessLine: businessLine
+            maxStopLossRation: maxStopLossRation
+            symbolName: symbolName
+            maxTraceAmountSystem: maxTraceAmountSystem
+            minTraceAmount: minTraceAmount
+            sliderMaxStopProfitRatio: sliderMaxStopProfitRatio
+          settledInDays: settledInDays
+          profitRate: profitRate
+          settingType: settingType
+          traderNickName: traderNickName
+      properties:
+        code:
+          description: code
+          example: "00000"
+          type: string
+        data:
+          $ref: '#/components/schemas/TraceSettingResult'
+        msg:
+          description: msg
+          example: success
+          type: string
+        requestTime:
+          description: requestTime
+          example: 1675044340493
+          format: int64
+          type: integer
+      title: ApiResponseResultOfTraceSettingResult
+      type: object
+    ApiResponseResultOfTraderProfitHisDetailListResult:
+      example:
+        msg: success
+        requestTime: 1675044340493
+        code: "00000"
+        data:
+          resultList:
+          - distributeRatio: distributeRatio
+            tracerNickName: tracerNickName
+            nickName: nickName
+            coinName: coinName
+            headPic: headPic
+            profit: profit
+          - distributeRatio: distributeRatio
+            tracerNickName: tracerNickName
+            nickName: nickName
+            coinName: coinName
+            headPic: headPic
+            profit: profit
+          nextFlag: true
+      properties:
+        code:
+          description: code
+          example: "00000"
+          type: string
+        data:
+          $ref: '#/components/schemas/TraderProfitHisDetailListResult'
+        msg:
+          description: msg
+          example: success
+          type: string
+        requestTime:
+          description: requestTime
+          example: 1675044340493
+          format: int64
+          type: integer
+      title: ApiResponseResultOfTraderProfitHisDetailListResult
+      type: object
+    ApiResponseResultOfTraderProfitHisListResult:
+      example:
+        msg: success
+        requestTime: 1675044340493
+        code: "00000"
+        data:
+          resultList:
+          - date: date
+            coinName: coinName
+            profit: profit
+          - date: date
+            coinName: coinName
+            profit: profit
+          nextFlag: true
+      properties:
+        code:
+          description: code
+          example: "00000"
+          type: string
+        data:
+          $ref: '#/components/schemas/TraderProfitHisListResult'
+        msg:
+          description: msg
+          example: success
+          type: string
+        requestTime:
+          description: requestTime
+          example: 1675044340493
+          format: int64
+          type: integer
+      title: ApiResponseResultOfTraderProfitHisListResult
+      type: object
+    ApiResponseResultOfTraderSettingResult:
+      example:
+        msg: success
+        requestTime: 1675044340493
+        code: "00000"
+        data:
+          showEquity: true
+          supportProductCodes:
+          - openCopyTrace: true
+            productCode: productCode
+            productName: productName
+          - openCopyTrace: true
+            productCode: productCode
+            productName: productName
+          showAssetsMap: true
+          openProduct: true
+          labels:
+          - name: name
+            id: id
+          - name: name
+            id: id
+      properties:
+        code:
+          description: code
+          example: "00000"
+          type: string
+        data:
+          $ref: '#/components/schemas/TraderSettingResult'
+        msg:
+          description: msg
+          example: success
+          type: string
+        requestTime:
+          description: requestTime
+          example: 1675044340493
+          format: int64
+          type: integer
+      title: ApiResponseResultOfTraderSettingResult
+      type: object
+    ApiResponseResultOfTraderTotalProfitResult:
+      example:
+        msg: success
+        requestTime: 1675044340493
+        code: "00000"
+        data:
+          sumProfit: sumProfit
+          waitProfit: waitProfit
+          yesterdaySplitProfit: yesterdaySplitProfit
+          yesterdayTimeStamp: yesterdayTimeStamp
+      properties:
+        code:
+          description: code
+          example: "00000"
+          type: string
+        data:
+          $ref: '#/components/schemas/TraderTotalProfitResult'
+        msg:
+          description: msg
+          example: success
+          type: string
+        requestTime:
+          description: requestTime
+          example: 1675044340493
+          format: int64
+          type: integer
+      title: ApiResponseResultOfTraderTotalProfitResult
+      type: object
+    ApiResponseResultOfTraderWaitProfitDetailListResult:
+      example:
+        msg: success
+        requestTime: 1675044340493
+        code: "00000"
+        data:
+          resultList:
+          - distributeRatio: distributeRatio
+            coinName: coinName
+            profit: profit
+          - distributeRatio: distributeRatio
+            coinName: coinName
+            profit: profit
+          nextFlag: true
+      properties:
+        code:
+          description: code
+          example: "00000"
+          type: string
+        data:
+          $ref: '#/components/schemas/TraderWaitProfitDetailListResult'
+        msg:
+          description: msg
+          example: success
+          type: string
+        requestTime:
+          description: requestTime
+          example: 1675044340493
+          format: int64
+          type: integer
+      title: ApiResponseResultOfTraderWaitProfitDetailListResult
+      type: object
     ApiResponseResultOfVoid:
       example:
         msg: success
@@ -4182,6 +5493,88 @@ components:
           format: int64
           type: integer
       title: ApiResponseResultOfVoid
+      type: object
+    ApiResponseResultOfboolean:
+      example:
+        msg: success
+        requestTime: 1675044340493
+        code: "00000"
+        data: false
+      properties:
+        code:
+          description: code
+          example: "00000"
+          type: string
+        data:
+          description: data
+          example: false
+          type: boolean
+        msg:
+          description: msg
+          example: success
+          type: string
+        requestTime:
+          description: requestTime
+          example: 1675044340493
+          format: int64
+          type: integer
+      title: ApiResponseResultOfboolean
+      type: object
+    CloseTrackingOrderRequest:
+      example:
+        symbolId: BTCUSDT_SPBL
+        trackingOrderNos:
+        - trackingOrderNos
+        - trackingOrderNos
+      properties:
+        symbolId:
+          description: symbolId
+          example: BTCUSDT_SPBL
+          type: string
+        trackingOrderNos:
+          description: trackingOrderNos
+          items:
+            type: string
+          type: array
+      required:
+      - symbolId
+      - trackingOrderNos
+      title: CloseTrackingOrderRequest
+      type: object
+    CurrentOrderListRequest:
+      example:
+        trackingNo: "1032884851114008576"
+        mixId: "1"
+        pageSize: "1"
+      properties:
+        mixId:
+          description: mixId
+          example: "1"
+          type: string
+        pageSize:
+          description: pageSize
+          example: "1"
+          type: string
+        trackingNo:
+          description: trackingNo
+          example: "1032884851114008576"
+          type: string
+      title: CurrentOrderListRequest
+      type: object
+    EndOrderRequest:
+      example:
+        trackingOrderNos:
+        - trackingOrderNos
+        - trackingOrderNos
+      properties:
+        trackingOrderNos:
+          description: trackingOrderNos
+          items:
+            type: string
+          type: array
+      required:
+      - trackingOrderNos
+      title: EndOrderRequest
       type: object
     FiatPaymentDetailInfo:
       example:
@@ -4218,6 +5611,26 @@ components:
         paymentMethod:
           type: string
       title: FiatPaymentInfo
+      type: object
+    HistoryOrderListRequest:
+      example:
+        trackingNo: "1032884851114008576"
+        mixId: "1"
+        pageSize: "1"
+      properties:
+        mixId:
+          description: mixId
+          example: "1"
+          type: string
+        pageSize:
+          description: pageSize
+          example: "1"
+          type: string
+        trackingNo:
+          description: trackingNo
+          example: "1032884851114008576"
+          type: string
+      title: HistoryOrderListRequest
       type: object
     MarginBatchCancelOrderRequest:
       example:
@@ -6226,6 +7639,303 @@ components:
           type: string
       title: MerchantPersonInfo
       type: object
+    MyTracerResult:
+      example:
+        tracerHeadPic: tracerHeadPic
+        tracerNickName: tracerNickName
+        accountEquity: accountEquity
+        canRemoveTraceUser: true
+        tracerUserId: tracerUserId
+      properties:
+        accountEquity:
+          type: string
+        canRemoveTraceUser:
+          type: boolean
+        tracerHeadPic:
+          type: string
+        tracerNickName:
+          type: string
+        tracerUserId:
+          type: string
+      title: MyTracerResult
+      type: object
+    MyTracersRequest:
+      example:
+        pageNo: "1"
+        pageSize: "1"
+      properties:
+        pageNo:
+          description: pageNo
+          example: "1"
+          type: string
+        pageSize:
+          description: pageSize
+          example: "1"
+          type: string
+      title: MyTracersRequest
+      type: object
+    MyTracersResult:
+      example:
+        resultList:
+        - tracerHeadPic: tracerHeadPic
+          tracerNickName: tracerNickName
+          accountEquity: accountEquity
+          canRemoveTraceUser: true
+          tracerUserId: tracerUserId
+        - tracerHeadPic: tracerHeadPic
+          tracerNickName: tracerNickName
+          accountEquity: accountEquity
+          canRemoveTraceUser: true
+          tracerUserId: tracerUserId
+        nextFlag: true
+      properties:
+        nextFlag:
+          type: boolean
+        resultList:
+          items:
+            $ref: '#/components/schemas/MyTracerResult'
+          type: array
+      title: MyTracersResult
+      type: object
+    MyTraderResult:
+      example:
+        certificationType: certificationType
+        tradeNickName: tradeNickName
+        traceTotalAmount: traceTotalAmount
+        traceTotalNetProfit: traceTotalNetProfit
+        traceTotalProfit: traceTotalProfit
+        headPic: headPic
+        traderUid: traderUid
+      properties:
+        certificationType:
+          type: string
+        headPic:
+          type: string
+        traceTotalAmount:
+          type: string
+        traceTotalNetProfit:
+          type: string
+        traceTotalProfit:
+          type: string
+        tradeNickName:
+          type: string
+        traderUid:
+          type: string
+      title: MyTraderResult
+      type: object
+    MyTradersRequest:
+      example:
+        pageNo: "1"
+        pageSize: "1"
+      properties:
+        pageNo:
+          description: pageNo
+          example: "1"
+          type: string
+        pageSize:
+          description: pageSize
+          example: "1"
+          type: string
+      title: MyTradersRequest
+      type: object
+    MyTradersResult:
+      example:
+        resultList:
+        - certificationType: certificationType
+          tradeNickName: tradeNickName
+          traceTotalAmount: traceTotalAmount
+          traceTotalNetProfit: traceTotalNetProfit
+          traceTotalProfit: traceTotalProfit
+          headPic: headPic
+          traderUid: traderUid
+        - certificationType: certificationType
+          tradeNickName: tradeNickName
+          traceTotalAmount: traceTotalAmount
+          traceTotalNetProfit: traceTotalNetProfit
+          traceTotalProfit: traceTotalProfit
+          headPic: headPic
+          traderUid: traderUid
+        nextFlag: true
+      properties:
+        nextFlag:
+          type: boolean
+        resultList:
+          items:
+            $ref: '#/components/schemas/MyTraderResult'
+          type: array
+      title: MyTradersResult
+      type: object
+    OrderCurrentListResult:
+      example:
+        minId: minId
+        resultList:
+        - buyPrice: buyPrice
+          symbolId: symbolId
+          trackingType: trackingType
+          stopProfitPrice: stopProfitPrice
+          buyTime: buyTime
+          holdCount: holdCount
+          profitRate: profitRate
+          buyDelegateCount: buyDelegateCount
+          trackingNo: trackingNo
+          stopLossPrice: stopLossPrice
+          dealCount: dealCount
+          profit: profit
+          symbolDisplayName: symbolDisplayName
+        - buyPrice: buyPrice
+          symbolId: symbolId
+          trackingType: trackingType
+          stopProfitPrice: stopProfitPrice
+          buyTime: buyTime
+          holdCount: holdCount
+          profitRate: profitRate
+          buyDelegateCount: buyDelegateCount
+          trackingNo: trackingNo
+          stopLossPrice: stopLossPrice
+          dealCount: dealCount
+          profit: profit
+          symbolDisplayName: symbolDisplayName
+      properties:
+        minId:
+          type: string
+        resultList:
+          items:
+            $ref: '#/components/schemas/OrderCurrentResult'
+          type: array
+      title: OrderCurrentListResult
+      type: object
+    OrderCurrentResult:
+      example:
+        buyPrice: buyPrice
+        symbolId: symbolId
+        trackingType: trackingType
+        stopProfitPrice: stopProfitPrice
+        buyTime: buyTime
+        holdCount: holdCount
+        profitRate: profitRate
+        buyDelegateCount: buyDelegateCount
+        trackingNo: trackingNo
+        stopLossPrice: stopLossPrice
+        dealCount: dealCount
+        profit: profit
+        symbolDisplayName: symbolDisplayName
+      properties:
+        buyDelegateCount:
+          type: string
+        buyPrice:
+          type: string
+        buyTime:
+          type: string
+        dealCount:
+          type: string
+        holdCount:
+          type: string
+        profit:
+          type: string
+        profitRate:
+          type: string
+        stopLossPrice:
+          type: string
+        stopProfitPrice:
+          type: string
+        symbolDisplayName:
+          type: string
+        symbolId:
+          type: string
+        trackingNo:
+          type: string
+        trackingType:
+          type: string
+      title: OrderCurrentResult
+      type: object
+    OrderHistoryListResult:
+      example:
+        minId: minId
+        resultList:
+        - buyPrice: buyPrice
+          symbolId: symbolId
+          traderUserId: traderUserId
+          buyTime: buyTime
+          sellPrice: sellPrice
+          profitRate: profitRate
+          netProfit: netProfit
+          buyLeftTokenId: buyLeftTokenId
+          trackingNo: trackingNo
+          buyRightTokenId: buyRightTokenId
+          dealCount: dealCount
+          profit: profit
+          sellTime: sellTime
+          symbolDisplayName: symbolDisplayName
+        - buyPrice: buyPrice
+          symbolId: symbolId
+          traderUserId: traderUserId
+          buyTime: buyTime
+          sellPrice: sellPrice
+          profitRate: profitRate
+          netProfit: netProfit
+          buyLeftTokenId: buyLeftTokenId
+          trackingNo: trackingNo
+          buyRightTokenId: buyRightTokenId
+          dealCount: dealCount
+          profit: profit
+          sellTime: sellTime
+          symbolDisplayName: symbolDisplayName
+      properties:
+        minId:
+          type: string
+        resultList:
+          items:
+            $ref: '#/components/schemas/OrderHistoryResult'
+          type: array
+      title: OrderHistoryListResult
+      type: object
+    OrderHistoryResult:
+      example:
+        buyPrice: buyPrice
+        symbolId: symbolId
+        traderUserId: traderUserId
+        buyTime: buyTime
+        sellPrice: sellPrice
+        profitRate: profitRate
+        netProfit: netProfit
+        buyLeftTokenId: buyLeftTokenId
+        trackingNo: trackingNo
+        buyRightTokenId: buyRightTokenId
+        dealCount: dealCount
+        profit: profit
+        sellTime: sellTime
+        symbolDisplayName: symbolDisplayName
+      properties:
+        buyLeftTokenId:
+          type: string
+        buyPrice:
+          type: string
+        buyRightTokenId:
+          type: string
+        buyTime:
+          type: string
+        dealCount:
+          type: string
+        netProfit:
+          type: string
+        profit:
+          type: string
+        profitRate:
+          type: string
+        sellPrice:
+          type: string
+        sellTime:
+          type: string
+        symbolDisplayName:
+          type: string
+        symbolId:
+          type: string
+        trackingNo:
+          type: string
+        traderUserId:
+          type: string
+      title: OrderHistoryResult
+      type: object
     OrderPaymentDetailInfo:
       example:
         name: name
@@ -6242,6 +7952,582 @@ components:
         value:
           type: string
       title: OrderPaymentDetailInfo
+      type: object
+    ProductCodeRequest:
+      example:
+        symbolIds:
+        - symbolIds
+        - symbolIds
+      properties:
+        symbolIds:
+          description: symbolIds
+          items:
+            type: string
+          type: array
+      required:
+      - symbolIds
+      title: ProductCodeRequest
+      type: object
+    RemoveTraderRequest:
+      example:
+        traderUserId: traderUserId
+      properties:
+        traderUserId:
+          description: traderUserId
+          type: string
+      required:
+      - traderUserId
+      title: RemoveTraderRequest
+      type: object
+    SpotInfoResult:
+      properties:
+        maxCount:
+          type: string
+        surplusCount:
+          type: string
+        symbolId:
+          type: string
+        symbolName:
+          type: string
+      title: SpotInfoResult
+      type: object
+    TotalProfitHisDetailListRequest:
+      example:
+        date: "1681985100000"
+        pageNo: "1"
+        pageSize: "1"
+        coinName: USDT
+      properties:
+        coinName:
+          description: coinName
+          example: USDT
+          type: string
+        date:
+          description: date
+          example: "1681985100000"
+          type: string
+        pageNo:
+          description: pageNo
+          example: "1"
+          type: string
+        pageSize:
+          description: pageSize
+          example: "1"
+          type: string
+      required:
+      - coinName
+      - date
+      title: TotalProfitHisDetailListRequest
+      type: object
+    TotalProfitHisListRequest:
+      example:
+        pageNo: "1"
+        pageSize: "1"
+      properties:
+        pageNo:
+          description: pageNo
+          example: "1"
+          type: string
+        pageSize:
+          description: pageSize
+          example: "1"
+          type: string
+      title: TotalProfitHisListRequest
+      type: object
+    TotalProfitListRequest:
+      example:
+        pageNo: "1"
+        pageSize: "1"
+      properties:
+        pageNo:
+          description: pageNo
+          example: "1"
+          type: string
+        pageSize:
+          description: pageSize
+          example: "1"
+          type: string
+      title: TotalProfitListRequest
+      type: object
+    TraceConfigRequest:
+      example:
+        traderUserId: traderUserId
+        settingType: "0,1"
+        setting:
+        - symbolId: BTCUSDT_SPBL
+          traceValue: "1000"
+          traceType: "1,2,3"
+          stopLossRation: stopLossRation
+          stopProfitRation: stopProfitRation
+          maxHoldCount: "1"
+        - symbolId: BTCUSDT_SPBL
+          traceValue: "1000"
+          traceType: "1,2,3"
+          stopLossRation: stopLossRation
+          stopProfitRation: stopProfitRation
+          maxHoldCount: "1"
+      properties:
+        setting:
+          items:
+            $ref: '#/components/schemas/TraceConfigSettingRequest'
+          type: array
+        settingType:
+          description: settingType
+          example: "0,1"
+          type: string
+        traderUserId:
+          description: traderUserId
+          type: string
+      required:
+      - settingType
+      - traderUserId
+      title: TraceConfigRequest
+      type: object
+    TraceConfigSettingRequest:
+      example:
+        symbolId: BTCUSDT_SPBL
+        traceValue: "1000"
+        traceType: "1,2,3"
+        stopLossRation: stopLossRation
+        stopProfitRation: stopProfitRation
+        maxHoldCount: "1"
+      properties:
+        maxHoldCount:
+          description: maxHoldCount
+          example: "1"
+          type: string
+        stopLossRation:
+          description: stopLossRation
+          type: string
+        stopProfitRation:
+          description: stopProfitRation
+          type: string
+        symbolId:
+          description: symbolId
+          example: BTCUSDT_SPBL
+          type: string
+        traceType:
+          description: traceType
+          example: "1,2,3"
+          type: string
+        traceValue:
+          description: traceValue
+          example: "1000"
+          type: string
+      required:
+      - maxHoldCount
+      - stopLossRation
+      - stopProfitRation
+      - symbolId
+      - traceType
+      - traceValue
+      title: TraceConfigSettingRequest
+      type: object
+    TraceSettingBatchDetailsResult:
+      example:
+        symbolId: symbolId
+        businessLineCode: businessLineCode
+        traceType: traceType
+        stopLossRation: stopLossRation
+        maxTraceAmount: maxTraceAmount
+        stopProfitRation: stopProfitRation
+        symbolDisplayName: symbolDisplayName
+      properties:
+        businessLineCode:
+          type: string
+        maxTraceAmount:
+          type: string
+        stopLossRation:
+          type: string
+        stopProfitRation:
+          type: string
+        symbolDisplayName:
+          type: string
+        symbolId:
+          type: string
+        traceType:
+          type: string
+      title: TraceSettingBatchDetailsResult
+      type: object
+    TraceSettingProductConfigsResult:
+      example:
+        symbolId: symbolId
+        minTraceRation: minTraceRation
+        minStopProfitRation: minStopProfitRation
+        minStopLossRation: minStopLossRation
+        maxStopProfitRation: maxStopProfitRation
+        minTraceCount: minTraceCount
+        sliderMaxStopLossRatio: sliderMaxStopLossRatio
+        maxTraceRation: maxTraceRation
+        maxTraceAmount: maxTraceAmount
+        maxTraceCount: maxTraceCount
+        businessLine: businessLine
+        maxStopLossRation: maxStopLossRation
+        symbolName: symbolName
+        maxTraceAmountSystem: maxTraceAmountSystem
+        minTraceAmount: minTraceAmount
+        sliderMaxStopProfitRatio: sliderMaxStopProfitRatio
+      properties:
+        businessLine:
+          type: string
+        maxStopLossRation:
+          type: string
+        maxStopProfitRation:
+          type: string
+        maxTraceAmount:
+          type: string
+        maxTraceAmountSystem:
+          type: string
+        maxTraceCount:
+          type: string
+        maxTraceRation:
+          type: string
+        minStopLossRation:
+          type: string
+        minStopProfitRation:
+          type: string
+        minTraceAmount:
+          type: string
+        minTraceCount:
+          type: string
+        minTraceRation:
+          type: string
+        sliderMaxStopLossRatio:
+          type: string
+        sliderMaxStopProfitRatio:
+          type: string
+        symbolId:
+          type: string
+        symbolName:
+          type: string
+      title: TraceSettingProductConfigsResult
+      type: object
+    TraceSettingResult:
+      example:
+        isMyTrader: true
+        traderHeadPic: traderHeadPic
+        traceBatchDetails:
+        - symbolId: symbolId
+          businessLineCode: businessLineCode
+          traceType: traceType
+          stopLossRation: stopLossRation
+          maxTraceAmount: maxTraceAmount
+          stopProfitRation: stopProfitRation
+          symbolDisplayName: symbolDisplayName
+        - symbolId: symbolId
+          businessLineCode: businessLineCode
+          traceType: traceType
+          stopLossRation: stopLossRation
+          maxTraceAmount: maxTraceAmount
+          stopProfitRation: stopProfitRation
+          symbolDisplayName: symbolDisplayName
+        traceProductConfigs:
+        - symbolId: symbolId
+          minTraceRation: minTraceRation
+          minStopProfitRation: minStopProfitRation
+          minStopLossRation: minStopLossRation
+          maxStopProfitRation: maxStopProfitRation
+          minTraceCount: minTraceCount
+          sliderMaxStopLossRatio: sliderMaxStopLossRatio
+          maxTraceRation: maxTraceRation
+          maxTraceAmount: maxTraceAmount
+          maxTraceCount: maxTraceCount
+          businessLine: businessLine
+          maxStopLossRation: maxStopLossRation
+          symbolName: symbolName
+          maxTraceAmountSystem: maxTraceAmountSystem
+          minTraceAmount: minTraceAmount
+          sliderMaxStopProfitRatio: sliderMaxStopProfitRatio
+        - symbolId: symbolId
+          minTraceRation: minTraceRation
+          minStopProfitRation: minStopProfitRation
+          minStopLossRation: minStopLossRation
+          maxStopProfitRation: maxStopProfitRation
+          minTraceCount: minTraceCount
+          sliderMaxStopLossRatio: sliderMaxStopLossRatio
+          maxTraceRation: maxTraceRation
+          maxTraceAmount: maxTraceAmount
+          maxTraceCount: maxTraceCount
+          businessLine: businessLine
+          maxStopLossRation: maxStopLossRation
+          symbolName: symbolName
+          maxTraceAmountSystem: maxTraceAmountSystem
+          minTraceAmount: minTraceAmount
+          sliderMaxStopProfitRatio: sliderMaxStopProfitRatio
+        settledInDays: settledInDays
+        profitRate: profitRate
+        settingType: settingType
+        traderNickName: traderNickName
+      properties:
+        isMyTrader:
+          type: boolean
+        profitRate:
+          type: string
+        settingType:
+          type: string
+        settledInDays:
+          type: string
+        traceBatchDetails:
+          items:
+            $ref: '#/components/schemas/TraceSettingBatchDetailsResult'
+          type: array
+        traceProductConfigs:
+          items:
+            $ref: '#/components/schemas/TraceSettingProductConfigsResult'
+          type: array
+        traderHeadPic:
+          type: string
+        traderNickName:
+          type: string
+      title: TraceSettingResult
+      type: object
+    TraceSettingsRequest:
+      example:
+        traderUserId: traderUserId
+      properties:
+        traderUserId:
+          description: traderUserId
+          type: string
+      required:
+      - traderUserId
+      title: TraceSettingsRequest
+      type: object
+    TraderProfitHisDetailListResult:
+      example:
+        resultList:
+        - distributeRatio: distributeRatio
+          tracerNickName: tracerNickName
+          nickName: nickName
+          coinName: coinName
+          headPic: headPic
+          profit: profit
+        - distributeRatio: distributeRatio
+          tracerNickName: tracerNickName
+          nickName: nickName
+          coinName: coinName
+          headPic: headPic
+          profit: profit
+        nextFlag: true
+      properties:
+        nextFlag:
+          type: boolean
+        resultList:
+          items:
+            $ref: '#/components/schemas/TraderProfitHisDetailResult'
+          type: array
+      title: TraderProfitHisDetailListResult
+      type: object
+    TraderProfitHisDetailResult:
+      example:
+        distributeRatio: distributeRatio
+        tracerNickName: tracerNickName
+        nickName: nickName
+        coinName: coinName
+        headPic: headPic
+        profit: profit
+      properties:
+        coinName:
+          type: string
+        distributeRatio:
+          type: string
+        headPic:
+          type: string
+        nickName:
+          type: string
+        profit:
+          type: string
+        tracerNickName:
+          type: string
+      title: TraderProfitHisDetailResult
+      type: object
+    TraderProfitHisListResult:
+      example:
+        resultList:
+        - date: date
+          coinName: coinName
+          profit: profit
+        - date: date
+          coinName: coinName
+          profit: profit
+        nextFlag: true
+      properties:
+        nextFlag:
+          type: boolean
+        resultList:
+          items:
+            $ref: '#/components/schemas/TraderProfitHisResult'
+          type: array
+      title: TraderProfitHisListResult
+      type: object
+    TraderProfitHisResult:
+      example:
+        date: date
+        coinName: coinName
+        profit: profit
+      properties:
+        coinName:
+          type: string
+        date:
+          type: string
+        profit:
+          type: string
+      title: TraderProfitHisResult
+      type: object
+    TraderSettingLablesResult:
+      example:
+        name: name
+        id: id
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+      title: TraderSettingLablesResult
+      type: object
+    TraderSettingResult:
+      example:
+        showEquity: true
+        supportProductCodes:
+        - openCopyTrace: true
+          productCode: productCode
+          productName: productName
+        - openCopyTrace: true
+          productCode: productCode
+          productName: productName
+        showAssetsMap: true
+        openProduct: true
+        labels:
+        - name: name
+          id: id
+        - name: name
+          id: id
+      properties:
+        labels:
+          items:
+            $ref: '#/components/schemas/TraderSettingLablesResult'
+          type: array
+        openProduct:
+          type: boolean
+        showAssetsMap:
+          type: boolean
+        showEquity:
+          type: boolean
+        supportProductCodes:
+          items:
+            $ref: '#/components/schemas/TraderSettingSupportProductResult'
+          type: array
+      title: TraderSettingResult
+      type: object
+    TraderSettingSupportProductResult:
+      example:
+        openCopyTrace: true
+        productCode: productCode
+        productName: productName
+      properties:
+        openCopyTrace:
+          type: boolean
+        productCode:
+          type: string
+        productName:
+          type: string
+      title: TraderSettingSupportProductResult
+      type: object
+    TraderTotalProfitListResult:
+      properties:
+        productCode:
+          type: string
+        profit:
+          type: string
+      title: TraderTotalProfitListResult
+      type: object
+    TraderTotalProfitResult:
+      example:
+        sumProfit: sumProfit
+        waitProfit: waitProfit
+        yesterdaySplitProfit: yesterdaySplitProfit
+        yesterdayTimeStamp: yesterdayTimeStamp
+      properties:
+        sumProfit:
+          type: string
+        waitProfit:
+          type: string
+        yesterdaySplitProfit:
+          type: string
+        yesterdayTimeStamp:
+          type: string
+      title: TraderTotalProfitResult
+      type: object
+    TraderWaitProfitDetailListResult:
+      example:
+        resultList:
+        - distributeRatio: distributeRatio
+          coinName: coinName
+          profit: profit
+        - distributeRatio: distributeRatio
+          coinName: coinName
+          profit: profit
+        nextFlag: true
+      properties:
+        nextFlag:
+          type: boolean
+        resultList:
+          items:
+            $ref: '#/components/schemas/TraderWaitProfitDetailResult'
+          type: array
+      title: TraderWaitProfitDetailListResult
+      type: object
+    TraderWaitProfitDetailResult:
+      example:
+        distributeRatio: distributeRatio
+        coinName: coinName
+        profit: profit
+      properties:
+        coinName:
+          type: string
+        distributeRatio:
+          type: string
+        profit:
+          type: string
+      title: TraderWaitProfitDetailResult
+      type: object
+    UpdateTpslRequest:
+      example:
+        trackingNo: "1032884851114008576"
+        stopProfitPrice: "1"
+        stopLossPrice: "1"
+      properties:
+        stopLossPrice:
+          description: stopLossPrice
+          example: "1"
+          type: string
+        stopProfitPrice:
+          description: stopProfitPrice
+          example: "1"
+          type: string
+        trackingNo:
+          description: trackingNo
+          example: "1032884851114008576"
+          type: string
+      required:
+      - stopLossPrice
+      - stopProfitPrice
+      - trackingNo
+      title: UpdateTpslRequest
+      type: object
+    WaitProfitDetailListRequest:
+      example:
+        pageNo: "1"
+        pageSize: "1"
+      properties:
+        pageNo:
+          description: pageNo
+          example: "1"
+          type: string
+        pageSize:
+          description: pageSize
+          example: "1"
+          type: string
+      title: WaitProfitDetailListRequest
       type: object
   securitySchemes:
     ACCESS_KEY:

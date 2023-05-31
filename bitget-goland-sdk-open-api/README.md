@@ -188,6 +188,24 @@ Class | Method | HTTP request | Description
 *P2pMerchantApi* | [**MerchantInfo**](docs/P2pMerchantApi.md#merchantinfo) | **Get** /api/p2p/v1/merchant/merchantInfo | merchantInfo
 *P2pMerchantApi* | [**MerchantList**](docs/P2pMerchantApi.md#merchantlist) | **Get** /api/p2p/v1/merchant/merchantList | merchantList
 *P2pMerchantApi* | [**MerchantOrderList**](docs/P2pMerchantApi.md#merchantorderlist) | **Get** /api/p2p/v1/merchant/orderList | orderList
+*SpotTraceOrderApi* | [**SpotTraceCloseTrackingOrder**](docs/SpotTraceOrderApi.md#spottraceclosetrackingorder) | **Post** /api/spot/v1/trace/order/closeTrackingOrder | closeTrackingOrder
+*SpotTraceOrderApi* | [**SpotTraceEndOrder**](docs/SpotTraceOrderApi.md#spottraceendorder) | **Post** /api/spot/v1/trace/order/endOrder | endOrder
+*SpotTraceOrderApi* | [**SpotTraceGetTraceSettings**](docs/SpotTraceOrderApi.md#spottracegettracesettings) | **Post** /api/spot/v1/trace/order/getTraceSettings | getTraceSettings
+*SpotTraceOrderApi* | [**SpotTraceGetTraderSettings**](docs/SpotTraceOrderApi.md#spottracegettradersettings) | **Post** /api/spot/v1/trace/order/getTraderSettings | getTraderSettings
+*SpotTraceOrderApi* | [**SpotTraceMyTracers**](docs/SpotTraceOrderApi.md#spottracemytracers) | **Post** /api/spot/v1/trace/order/myTracers | myTracers
+*SpotTraceOrderApi* | [**SpotTraceMyTraders**](docs/SpotTraceOrderApi.md#spottracemytraders) | **Post** /api/spot/v1/trace/order/myTraders | myTraders
+*SpotTraceOrderApi* | [**SpotTraceOrderCurrentList**](docs/SpotTraceOrderApi.md#spottraceordercurrentlist) | **Post** /api/spot/v1/trace/order/orderCurrentList | orderCurrentList
+*SpotTraceOrderApi* | [**SpotTraceOrderHistoryList**](docs/SpotTraceOrderApi.md#spottraceorderhistorylist) | **Post** /api/spot/v1/trace/order/orderHistoryList | orderHistoryList
+*SpotTraceOrderApi* | [**SpotTraceRemoveTrader**](docs/SpotTraceOrderApi.md#spottraceremovetrader) | **Post** /api/spot/v1/trace/order/removeTrader | removeTrader
+*SpotTraceOrderApi* | [**SpotTraceSetProductCode**](docs/SpotTraceOrderApi.md#spottracesetproductcode) | **Post** /api/spot/v1/trace/order/setProductCode | setProductCode
+*SpotTraceOrderApi* | [**SpotTraceSetTraceConfig**](docs/SpotTraceOrderApi.md#spottracesettraceconfig) | **Post** /api/spot/v1/trace/order/setTraceConfig | setTraceConfig
+*SpotTraceOrderApi* | [**SpotTraceSpotInfoList**](docs/SpotTraceOrderApi.md#spottracespotinfolist) | **Post** /api/spot/v1/trace/order/spotInfoList | spotInfoList
+*SpotTraceOrderApi* | [**SpotTraceUpdateTpsl**](docs/SpotTraceOrderApi.md#spottraceupdatetpsl) | **Post** /api/spot/v1/trace/order/updateTpsl | updateTpsl
+*SpotTraceProfitApi* | [**SpotTraceProfitHisDetailList**](docs/SpotTraceProfitApi.md#spottraceprofithisdetaillist) | **Post** /api/spot/v1/trace/profit/profitHisDetailList | profitHisDetailList
+*SpotTraceProfitApi* | [**SpotTraceProfitHisList**](docs/SpotTraceProfitApi.md#spottraceprofithislist) | **Post** /api/spot/v1/trace/profit/profitHisList | profitHisList
+*SpotTraceProfitApi* | [**SpotTraceTotalProfitInfo**](docs/SpotTraceProfitApi.md#spottracetotalprofitinfo) | **Post** /api/spot/v1/trace/profit/totalProfitInfo | totalProfitInfo
+*SpotTraceProfitApi* | [**SpotTraceTotalProfitList**](docs/SpotTraceProfitApi.md#spottracetotalprofitlist) | **Post** /api/spot/v1/trace/profit/totalProfitList | totalProfitList
+*SpotTraceProfitApi* | [**SpotTraceWaitProfitDetailList**](docs/SpotTraceProfitApi.md#spottracewaitprofitdetaillist) | **Post** /api/spot/v1/trace/profit/waitProfitDetailList | waitProfitDetailList
 
 
 ## Documentation For Models
@@ -200,6 +218,8 @@ Class | Method | HTTP request | Description
  - [ApiResponseResultOfListOfMarginIsolatedLevelResult](docs/ApiResponseResultOfListOfMarginIsolatedLevelResult.md)
  - [ApiResponseResultOfListOfMarginIsolatedRateAndLimitResult](docs/ApiResponseResultOfListOfMarginIsolatedRateAndLimitResult.md)
  - [ApiResponseResultOfListOfMarginSystemResult](docs/ApiResponseResultOfListOfMarginSystemResult.md)
+ - [ApiResponseResultOfListOfSpotInfoResult](docs/ApiResponseResultOfListOfSpotInfoResult.md)
+ - [ApiResponseResultOfListOfTraderTotalProfitListResult](docs/ApiResponseResultOfListOfTraderTotalProfitListResult.md)
  - [ApiResponseResultOfMarginBatchCancelOrderResult](docs/ApiResponseResultOfMarginBatchCancelOrderResult.md)
  - [ApiResponseResultOfMarginBatchPlaceOrderResult](docs/ApiResponseResultOfMarginBatchPlaceOrderResult.md)
  - [ApiResponseResultOfMarginCrossAssetsResult](docs/ApiResponseResultOfMarginCrossAssetsResult.md)
@@ -228,9 +248,24 @@ Class | Method | HTTP request | Description
  - [ApiResponseResultOfMerchantInfoResult](docs/ApiResponseResultOfMerchantInfoResult.md)
  - [ApiResponseResultOfMerchantOrderResult](docs/ApiResponseResultOfMerchantOrderResult.md)
  - [ApiResponseResultOfMerchantPersonInfo](docs/ApiResponseResultOfMerchantPersonInfo.md)
+ - [ApiResponseResultOfMyTracersResult](docs/ApiResponseResultOfMyTracersResult.md)
+ - [ApiResponseResultOfMyTradersResult](docs/ApiResponseResultOfMyTradersResult.md)
+ - [ApiResponseResultOfOrderCurrentListResult](docs/ApiResponseResultOfOrderCurrentListResult.md)
+ - [ApiResponseResultOfOrderHistoryListResult](docs/ApiResponseResultOfOrderHistoryListResult.md)
+ - [ApiResponseResultOfTraceSettingResult](docs/ApiResponseResultOfTraceSettingResult.md)
+ - [ApiResponseResultOfTraderProfitHisDetailListResult](docs/ApiResponseResultOfTraderProfitHisDetailListResult.md)
+ - [ApiResponseResultOfTraderProfitHisListResult](docs/ApiResponseResultOfTraderProfitHisListResult.md)
+ - [ApiResponseResultOfTraderSettingResult](docs/ApiResponseResultOfTraderSettingResult.md)
+ - [ApiResponseResultOfTraderTotalProfitResult](docs/ApiResponseResultOfTraderTotalProfitResult.md)
+ - [ApiResponseResultOfTraderWaitProfitDetailListResult](docs/ApiResponseResultOfTraderWaitProfitDetailListResult.md)
  - [ApiResponseResultOfVoid](docs/ApiResponseResultOfVoid.md)
+ - [ApiResponseResultOfboolean](docs/ApiResponseResultOfboolean.md)
+ - [CloseTrackingOrderRequest](docs/CloseTrackingOrderRequest.md)
+ - [CurrentOrderListRequest](docs/CurrentOrderListRequest.md)
+ - [EndOrderRequest](docs/EndOrderRequest.md)
  - [FiatPaymentDetailInfo](docs/FiatPaymentDetailInfo.md)
  - [FiatPaymentInfo](docs/FiatPaymentInfo.md)
+ - [HistoryOrderListRequest](docs/HistoryOrderListRequest.md)
  - [MarginBatchCancelOrderRequest](docs/MarginBatchCancelOrderRequest.md)
  - [MarginBatchCancelOrderResult](docs/MarginBatchCancelOrderResult.md)
  - [MarginBatchOrdersRequest](docs/MarginBatchOrdersRequest.md)
@@ -300,7 +335,42 @@ Class | Method | HTTP request | Description
  - [MerchantOrderPaymentInfo](docs/MerchantOrderPaymentInfo.md)
  - [MerchantOrderResult](docs/MerchantOrderResult.md)
  - [MerchantPersonInfo](docs/MerchantPersonInfo.md)
+ - [MyTracerResult](docs/MyTracerResult.md)
+ - [MyTracersRequest](docs/MyTracersRequest.md)
+ - [MyTracersResult](docs/MyTracersResult.md)
+ - [MyTraderResult](docs/MyTraderResult.md)
+ - [MyTradersRequest](docs/MyTradersRequest.md)
+ - [MyTradersResult](docs/MyTradersResult.md)
+ - [OrderCurrentListResult](docs/OrderCurrentListResult.md)
+ - [OrderCurrentResult](docs/OrderCurrentResult.md)
+ - [OrderHistoryListResult](docs/OrderHistoryListResult.md)
+ - [OrderHistoryResult](docs/OrderHistoryResult.md)
  - [OrderPaymentDetailInfo](docs/OrderPaymentDetailInfo.md)
+ - [ProductCodeRequest](docs/ProductCodeRequest.md)
+ - [RemoveTraderRequest](docs/RemoveTraderRequest.md)
+ - [SpotInfoResult](docs/SpotInfoResult.md)
+ - [TotalProfitHisDetailListRequest](docs/TotalProfitHisDetailListRequest.md)
+ - [TotalProfitHisListRequest](docs/TotalProfitHisListRequest.md)
+ - [TotalProfitListRequest](docs/TotalProfitListRequest.md)
+ - [TraceConfigRequest](docs/TraceConfigRequest.md)
+ - [TraceConfigSettingRequest](docs/TraceConfigSettingRequest.md)
+ - [TraceSettingBatchDetailsResult](docs/TraceSettingBatchDetailsResult.md)
+ - [TraceSettingProductConfigsResult](docs/TraceSettingProductConfigsResult.md)
+ - [TraceSettingResult](docs/TraceSettingResult.md)
+ - [TraceSettingsRequest](docs/TraceSettingsRequest.md)
+ - [TraderProfitHisDetailListResult](docs/TraderProfitHisDetailListResult.md)
+ - [TraderProfitHisDetailResult](docs/TraderProfitHisDetailResult.md)
+ - [TraderProfitHisListResult](docs/TraderProfitHisListResult.md)
+ - [TraderProfitHisResult](docs/TraderProfitHisResult.md)
+ - [TraderSettingLablesResult](docs/TraderSettingLablesResult.md)
+ - [TraderSettingResult](docs/TraderSettingResult.md)
+ - [TraderSettingSupportProductResult](docs/TraderSettingSupportProductResult.md)
+ - [TraderTotalProfitListResult](docs/TraderTotalProfitListResult.md)
+ - [TraderTotalProfitResult](docs/TraderTotalProfitResult.md)
+ - [TraderWaitProfitDetailListResult](docs/TraderWaitProfitDetailListResult.md)
+ - [TraderWaitProfitDetailResult](docs/TraderWaitProfitDetailResult.md)
+ - [UpdateTpslRequest](docs/UpdateTpslRequest.md)
+ - [WaitProfitDetailListRequest](docs/WaitProfitDetailListRequest.md)
 
 
 ## Documentation For Authorization

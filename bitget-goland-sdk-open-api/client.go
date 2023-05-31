@@ -84,6 +84,10 @@ type APIClient struct {
 	MarginPublicApi *MarginPublicApiService
 
 	P2pMerchantApi *P2pMerchantApiService
+
+	SpotTraceOrderApi *SpotTraceOrderApiService
+
+	SpotTraceProfitApi *SpotTraceProfitApiService
 }
 
 type service struct {
@@ -120,6 +124,8 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.MarginIsolatedRepayApi = (*MarginIsolatedRepayApiService)(&c.common)
 	c.MarginPublicApi = (*MarginPublicApiService)(&c.common)
 	c.P2pMerchantApi = (*P2pMerchantApiService)(&c.common)
+	c.SpotTraceOrderApi = (*SpotTraceOrderApiService)(&c.common)
+	c.SpotTraceProfitApi = (*SpotTraceProfitApiService)(&c.common)
 
 	return c
 }
