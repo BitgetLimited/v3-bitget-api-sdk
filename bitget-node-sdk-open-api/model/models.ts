@@ -8,8 +8,6 @@ export * from './apiResponseResultOfListOfMarginIsolatedAssetsRiskResult';
 export * from './apiResponseResultOfListOfMarginIsolatedLevelResult';
 export * from './apiResponseResultOfListOfMarginIsolatedRateAndLimitResult';
 export * from './apiResponseResultOfListOfMarginSystemResult';
-export * from './apiResponseResultOfListOfSpotInfoResult';
-export * from './apiResponseResultOfListOfTraderTotalProfitListResult';
 export * from './apiResponseResultOfMarginBatchCancelOrderResult';
 export * from './apiResponseResultOfMarginBatchPlaceOrderResult';
 export * from './apiResponseResultOfMarginCrossAssetsResult';
@@ -38,24 +36,9 @@ export * from './apiResponseResultOfMerchantAdvResult';
 export * from './apiResponseResultOfMerchantInfoResult';
 export * from './apiResponseResultOfMerchantOrderResult';
 export * from './apiResponseResultOfMerchantPersonInfo';
-export * from './apiResponseResultOfMyTracersResult';
-export * from './apiResponseResultOfMyTradersResult';
-export * from './apiResponseResultOfOrderCurrentListResult';
-export * from './apiResponseResultOfOrderHistoryListResult';
-export * from './apiResponseResultOfTraceSettingResult';
-export * from './apiResponseResultOfTraderProfitHisDetailListResult';
-export * from './apiResponseResultOfTraderProfitHisListResult';
-export * from './apiResponseResultOfTraderSettingResult';
-export * from './apiResponseResultOfTraderTotalProfitResult';
-export * from './apiResponseResultOfTraderWaitProfitDetailListResult';
 export * from './apiResponseResultOfVoid';
-export * from './apiResponseResultOfboolean';
-export * from './closeTrackingOrderRequest';
-export * from './currentOrderListRequest';
-export * from './endOrderRequest';
 export * from './fiatPaymentDetailInfo';
 export * from './fiatPaymentInfo';
-export * from './historyOrderListRequest';
 export * from './marginBatchCancelOrderRequest';
 export * from './marginBatchCancelOrderResult';
 export * from './marginBatchOrdersRequest';
@@ -125,42 +108,7 @@ export * from './merchantOrderInfo';
 export * from './merchantOrderPaymentInfo';
 export * from './merchantOrderResult';
 export * from './merchantPersonInfo';
-export * from './myTracerResult';
-export * from './myTracersRequest';
-export * from './myTracersResult';
-export * from './myTraderResult';
-export * from './myTradersRequest';
-export * from './myTradersResult';
-export * from './orderCurrentListResult';
-export * from './orderCurrentResult';
-export * from './orderHistoryListResult';
-export * from './orderHistoryResult';
 export * from './orderPaymentDetailInfo';
-export * from './productCodeRequest';
-export * from './removeTraderRequest';
-export * from './spotInfoResult';
-export * from './totalProfitHisDetailListRequest';
-export * from './totalProfitHisListRequest';
-export * from './totalProfitListRequest';
-export * from './traceConfigRequest';
-export * from './traceConfigSettingRequest';
-export * from './traceSettingBatchDetailsResult';
-export * from './traceSettingProductConfigsResult';
-export * from './traceSettingResult';
-export * from './traceSettingsRequest';
-export * from './traderProfitHisDetailListResult';
-export * from './traderProfitHisDetailResult';
-export * from './traderProfitHisListResult';
-export * from './traderProfitHisResult';
-export * from './traderSettingLablesResult';
-export * from './traderSettingResult';
-export * from './traderSettingSupportProductResult';
-export * from './traderTotalProfitListResult';
-export * from './traderTotalProfitResult';
-export * from './traderWaitProfitDetailListResult';
-export * from './traderWaitProfitDetailResult';
-export * from './updateTpslRequest';
-export * from './waitProfitDetailListRequest';
 
 import * as fs from 'fs';
 
@@ -183,8 +131,6 @@ import { ApiResponseResultOfListOfMarginIsolatedAssetsRiskResult } from './apiRe
 import { ApiResponseResultOfListOfMarginIsolatedLevelResult } from './apiResponseResultOfListOfMarginIsolatedLevelResult';
 import { ApiResponseResultOfListOfMarginIsolatedRateAndLimitResult } from './apiResponseResultOfListOfMarginIsolatedRateAndLimitResult';
 import { ApiResponseResultOfListOfMarginSystemResult } from './apiResponseResultOfListOfMarginSystemResult';
-import { ApiResponseResultOfListOfSpotInfoResult } from './apiResponseResultOfListOfSpotInfoResult';
-import { ApiResponseResultOfListOfTraderTotalProfitListResult } from './apiResponseResultOfListOfTraderTotalProfitListResult';
 import { ApiResponseResultOfMarginBatchCancelOrderResult } from './apiResponseResultOfMarginBatchCancelOrderResult';
 import { ApiResponseResultOfMarginBatchPlaceOrderResult } from './apiResponseResultOfMarginBatchPlaceOrderResult';
 import { ApiResponseResultOfMarginCrossAssetsResult } from './apiResponseResultOfMarginCrossAssetsResult';
@@ -213,24 +159,9 @@ import { ApiResponseResultOfMerchantAdvResult } from './apiResponseResultOfMerch
 import { ApiResponseResultOfMerchantInfoResult } from './apiResponseResultOfMerchantInfoResult';
 import { ApiResponseResultOfMerchantOrderResult } from './apiResponseResultOfMerchantOrderResult';
 import { ApiResponseResultOfMerchantPersonInfo } from './apiResponseResultOfMerchantPersonInfo';
-import { ApiResponseResultOfMyTracersResult } from './apiResponseResultOfMyTracersResult';
-import { ApiResponseResultOfMyTradersResult } from './apiResponseResultOfMyTradersResult';
-import { ApiResponseResultOfOrderCurrentListResult } from './apiResponseResultOfOrderCurrentListResult';
-import { ApiResponseResultOfOrderHistoryListResult } from './apiResponseResultOfOrderHistoryListResult';
-import { ApiResponseResultOfTraceSettingResult } from './apiResponseResultOfTraceSettingResult';
-import { ApiResponseResultOfTraderProfitHisDetailListResult } from './apiResponseResultOfTraderProfitHisDetailListResult';
-import { ApiResponseResultOfTraderProfitHisListResult } from './apiResponseResultOfTraderProfitHisListResult';
-import { ApiResponseResultOfTraderSettingResult } from './apiResponseResultOfTraderSettingResult';
-import { ApiResponseResultOfTraderTotalProfitResult } from './apiResponseResultOfTraderTotalProfitResult';
-import { ApiResponseResultOfTraderWaitProfitDetailListResult } from './apiResponseResultOfTraderWaitProfitDetailListResult';
 import { ApiResponseResultOfVoid } from './apiResponseResultOfVoid';
-import { ApiResponseResultOfboolean } from './apiResponseResultOfboolean';
-import { CloseTrackingOrderRequest } from './closeTrackingOrderRequest';
-import { CurrentOrderListRequest } from './currentOrderListRequest';
-import { EndOrderRequest } from './endOrderRequest';
 import { FiatPaymentDetailInfo } from './fiatPaymentDetailInfo';
 import { FiatPaymentInfo } from './fiatPaymentInfo';
-import { HistoryOrderListRequest } from './historyOrderListRequest';
 import { MarginBatchCancelOrderRequest } from './marginBatchCancelOrderRequest';
 import { MarginBatchCancelOrderResult } from './marginBatchCancelOrderResult';
 import { MarginBatchOrdersRequest } from './marginBatchOrdersRequest';
@@ -300,43 +231,7 @@ import { MerchantOrderInfo } from './merchantOrderInfo';
 import { MerchantOrderPaymentInfo } from './merchantOrderPaymentInfo';
 import { MerchantOrderResult } from './merchantOrderResult';
 import { MerchantPersonInfo } from './merchantPersonInfo';
-import { MyTracerResult } from './myTracerResult';
-import { MyTracersRequest } from './myTracersRequest';
-import { MyTracersResult } from './myTracersResult';
-import { MyTraderResult } from './myTraderResult';
-import { MyTradersRequest } from './myTradersRequest';
-import { MyTradersResult } from './myTradersResult';
-import { OrderCurrentListResult } from './orderCurrentListResult';
-import { OrderCurrentResult } from './orderCurrentResult';
-import { OrderHistoryListResult } from './orderHistoryListResult';
-import { OrderHistoryResult } from './orderHistoryResult';
 import { OrderPaymentDetailInfo } from './orderPaymentDetailInfo';
-import { ProductCodeRequest } from './productCodeRequest';
-import { RemoveTraderRequest } from './removeTraderRequest';
-import { SpotInfoResult } from './spotInfoResult';
-import { TotalProfitHisDetailListRequest } from './totalProfitHisDetailListRequest';
-import { TotalProfitHisListRequest } from './totalProfitHisListRequest';
-import { TotalProfitListRequest } from './totalProfitListRequest';
-import { TraceConfigRequest } from './traceConfigRequest';
-import { TraceConfigSettingRequest } from './traceConfigSettingRequest';
-import { TraceSettingBatchDetailsResult } from './traceSettingBatchDetailsResult';
-import { TraceSettingProductConfigsResult } from './traceSettingProductConfigsResult';
-import { TraceSettingResult } from './traceSettingResult';
-import { TraceSettingsRequest } from './traceSettingsRequest';
-import { TraderProfitHisDetailListResult } from './traderProfitHisDetailListResult';
-import { TraderProfitHisDetailResult } from './traderProfitHisDetailResult';
-import { TraderProfitHisListResult } from './traderProfitHisListResult';
-import { TraderProfitHisResult } from './traderProfitHisResult';
-import { TraderSettingLablesResult } from './traderSettingLablesResult';
-import { TraderSettingResult } from './traderSettingResult';
-import { TraderSettingSupportProductResult } from './traderSettingSupportProductResult';
-import { TraderTotalProfitListResult } from './traderTotalProfitListResult';
-import { TraderTotalProfitResult } from './traderTotalProfitResult';
-import { TraderWaitProfitDetailListResult } from './traderWaitProfitDetailListResult';
-import { TraderWaitProfitDetailResult } from './traderWaitProfitDetailResult';
-import { UpdateTpslRequest } from './updateTpslRequest';
-import { WaitProfitDetailListRequest } from './waitProfitDetailListRequest';
-
 import {encrypt} from "./util";
 import * as querystring from "querystring";
 import * as url from "url";
@@ -365,8 +260,6 @@ let typeMap: {[index: string]: any} = {
     "ApiResponseResultOfListOfMarginIsolatedLevelResult": ApiResponseResultOfListOfMarginIsolatedLevelResult,
     "ApiResponseResultOfListOfMarginIsolatedRateAndLimitResult": ApiResponseResultOfListOfMarginIsolatedRateAndLimitResult,
     "ApiResponseResultOfListOfMarginSystemResult": ApiResponseResultOfListOfMarginSystemResult,
-    "ApiResponseResultOfListOfSpotInfoResult": ApiResponseResultOfListOfSpotInfoResult,
-    "ApiResponseResultOfListOfTraderTotalProfitListResult": ApiResponseResultOfListOfTraderTotalProfitListResult,
     "ApiResponseResultOfMarginBatchCancelOrderResult": ApiResponseResultOfMarginBatchCancelOrderResult,
     "ApiResponseResultOfMarginBatchPlaceOrderResult": ApiResponseResultOfMarginBatchPlaceOrderResult,
     "ApiResponseResultOfMarginCrossAssetsResult": ApiResponseResultOfMarginCrossAssetsResult,
@@ -395,24 +288,9 @@ let typeMap: {[index: string]: any} = {
     "ApiResponseResultOfMerchantInfoResult": ApiResponseResultOfMerchantInfoResult,
     "ApiResponseResultOfMerchantOrderResult": ApiResponseResultOfMerchantOrderResult,
     "ApiResponseResultOfMerchantPersonInfo": ApiResponseResultOfMerchantPersonInfo,
-    "ApiResponseResultOfMyTracersResult": ApiResponseResultOfMyTracersResult,
-    "ApiResponseResultOfMyTradersResult": ApiResponseResultOfMyTradersResult,
-    "ApiResponseResultOfOrderCurrentListResult": ApiResponseResultOfOrderCurrentListResult,
-    "ApiResponseResultOfOrderHistoryListResult": ApiResponseResultOfOrderHistoryListResult,
-    "ApiResponseResultOfTraceSettingResult": ApiResponseResultOfTraceSettingResult,
-    "ApiResponseResultOfTraderProfitHisDetailListResult": ApiResponseResultOfTraderProfitHisDetailListResult,
-    "ApiResponseResultOfTraderProfitHisListResult": ApiResponseResultOfTraderProfitHisListResult,
-    "ApiResponseResultOfTraderSettingResult": ApiResponseResultOfTraderSettingResult,
-    "ApiResponseResultOfTraderTotalProfitResult": ApiResponseResultOfTraderTotalProfitResult,
-    "ApiResponseResultOfTraderWaitProfitDetailListResult": ApiResponseResultOfTraderWaitProfitDetailListResult,
     "ApiResponseResultOfVoid": ApiResponseResultOfVoid,
-    "ApiResponseResultOfboolean": ApiResponseResultOfboolean,
-    "CloseTrackingOrderRequest": CloseTrackingOrderRequest,
-    "CurrentOrderListRequest": CurrentOrderListRequest,
-    "EndOrderRequest": EndOrderRequest,
     "FiatPaymentDetailInfo": FiatPaymentDetailInfo,
     "FiatPaymentInfo": FiatPaymentInfo,
-    "HistoryOrderListRequest": HistoryOrderListRequest,
     "MarginBatchCancelOrderRequest": MarginBatchCancelOrderRequest,
     "MarginBatchCancelOrderResult": MarginBatchCancelOrderResult,
     "MarginBatchOrdersRequest": MarginBatchOrdersRequest,
@@ -482,42 +360,7 @@ let typeMap: {[index: string]: any} = {
     "MerchantOrderPaymentInfo": MerchantOrderPaymentInfo,
     "MerchantOrderResult": MerchantOrderResult,
     "MerchantPersonInfo": MerchantPersonInfo,
-    "MyTracerResult": MyTracerResult,
-    "MyTracersRequest": MyTracersRequest,
-    "MyTracersResult": MyTracersResult,
-    "MyTraderResult": MyTraderResult,
-    "MyTradersRequest": MyTradersRequest,
-    "MyTradersResult": MyTradersResult,
-    "OrderCurrentListResult": OrderCurrentListResult,
-    "OrderCurrentResult": OrderCurrentResult,
-    "OrderHistoryListResult": OrderHistoryListResult,
-    "OrderHistoryResult": OrderHistoryResult,
     "OrderPaymentDetailInfo": OrderPaymentDetailInfo,
-    "ProductCodeRequest": ProductCodeRequest,
-    "RemoveTraderRequest": RemoveTraderRequest,
-    "SpotInfoResult": SpotInfoResult,
-    "TotalProfitHisDetailListRequest": TotalProfitHisDetailListRequest,
-    "TotalProfitHisListRequest": TotalProfitHisListRequest,
-    "TotalProfitListRequest": TotalProfitListRequest,
-    "TraceConfigRequest": TraceConfigRequest,
-    "TraceConfigSettingRequest": TraceConfigSettingRequest,
-    "TraceSettingBatchDetailsResult": TraceSettingBatchDetailsResult,
-    "TraceSettingProductConfigsResult": TraceSettingProductConfigsResult,
-    "TraceSettingResult": TraceSettingResult,
-    "TraceSettingsRequest": TraceSettingsRequest,
-    "TraderProfitHisDetailListResult": TraderProfitHisDetailListResult,
-    "TraderProfitHisDetailResult": TraderProfitHisDetailResult,
-    "TraderProfitHisListResult": TraderProfitHisListResult,
-    "TraderProfitHisResult": TraderProfitHisResult,
-    "TraderSettingLablesResult": TraderSettingLablesResult,
-    "TraderSettingResult": TraderSettingResult,
-    "TraderSettingSupportProductResult": TraderSettingSupportProductResult,
-    "TraderTotalProfitListResult": TraderTotalProfitListResult,
-    "TraderTotalProfitResult": TraderTotalProfitResult,
-    "TraderWaitProfitDetailListResult": TraderWaitProfitDetailListResult,
-    "TraderWaitProfitDetailResult": TraderWaitProfitDetailResult,
-    "UpdateTpslRequest": UpdateTpslRequest,
-    "WaitProfitDetailListRequest": WaitProfitDetailListRequest,
 }
 
 export class ObjectSerializer {
