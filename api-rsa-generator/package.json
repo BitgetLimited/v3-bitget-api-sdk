@@ -1,0 +1,91 @@
+{
+  "name": "ApiRSAGenerator",
+  "version": "1.0.0",
+  "description": "Used for openapi's RSA key pair generate.",
+  "private": true,
+  "main": "electron.js",
+  "homepage": "./",
+  "license": "MIT",
+  "author": {
+    "name": "Bitget",
+    "email": "api@bitget.com",
+    "url": "https://www.bitget.com"
+  },
+  "dependencies": {
+  },
+  "scripts": {
+    "electron-dev": "electron .",
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "dist": "electron-builder -mwl"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "@testing-library/jest-dom": "^5.16.5",
+    "@testing-library/react": "^13.4.0",
+    "@testing-library/user-event": "^13.5.0",
+    "antd": "^5.1.4",
+    "crypto-browserify": "^3.12.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-scripts": "4.0.3",
+    "web-vitals": "^2.1.4",
+    "electron": "^22.0.1",
+    "electron-builder": "^23.6.0"
+  },
+  "build": {
+    "appId": "api-rsa-generator",
+    "productName": "ApiRSAGenerator",
+    "extends": null,
+    "files": [
+      "build/**/*",
+      "electron.js"
+    ],
+    "mac": {
+      "icon": "public/logo-512.png",
+      "target": {
+        "target": "dmg",
+        "arch": [
+          "universal"
+        ]
+      }
+    },
+    "win": {
+      "icon": "public/logo-512.png",
+      "target": {
+        "target": "nsis",
+        "arch": [
+          "x64"
+        ]
+      }
+    },
+    "linux": {
+      "icon": "public/logo-512.png",
+      "target": {
+        "target": "AppImage",
+        "arch": [
+          "x64"
+        ]
+      }
+    }
+  }
+}
