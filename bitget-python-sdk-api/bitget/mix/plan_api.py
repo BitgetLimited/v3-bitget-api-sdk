@@ -24,7 +24,7 @@ class PlanApi(Client):
     '''
 
     def place_plan(self, symbol, marginCoin, size, side, orderType, triggerPrice, triggerType, executePrice='',
-                   clientOrderId='', timeInForceValue='normal', presetTakeProfitPrice='', presetStopLossPrice=''):
+                   clientOrderId='', timeInForceValue='normal', presetTakeProfitPrice=None, presetStopLossPrice=None):
         params = {}
         if symbol and marginCoin and side and orderType and triggerPrice and triggerType:
             params["symbol"] = symbol
