@@ -19,12 +19,12 @@ class Client(object):
         # url
         url = c.API_URL + request_path
 
-        # Get local time
+        # 获取本地时间
         timestamp = utils.get_timestamp()
 
         # sign & header
         if self.use_server_time:
-            # Get server time interface
+            # 获取服务器时间接口
             timestamp = self._get_timestamp()
 
         body = json.dumps(params) if method == c.POST else ""
@@ -63,8 +63,8 @@ class Client(object):
             if cursor:
                 r = dict()
                 try:
-                    r['before'] = res_header['BEFORE']
-                    r['after'] = res_header['AFTER']
+                    r['before'] = res_header['OK-BEFORE']
+                    r['after'] = res_header['OK-AFTER']
                 except:
                     pass
                 return response.json(), r
@@ -84,6 +84,6 @@ class Client(object):
         url = c.API_URL + c.SERVER_TIMESTAMP_URL
         response = requests.get(url)
         if response.status_code == 200:
-            return response.json()['data']
+            return response.json()['timestamp']
         else:
             return ""

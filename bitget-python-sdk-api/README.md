@@ -1,23 +1,82 @@
+### 如何使用？
 
-# bitget-python-sdk-api
-A Python sdk for bitget exchange API
+`python版本：3.6+`
 
-<p align="center">
-<a href="https://github.com/BitgetLimited/v3-bitget-api-sdk/blob/master/bitget-python-sdk-api/README_EN.md">English</a>
-</p>
+`WebSocketAPI：建议websockets库版本为1.4.2+`
 
-1. api文档地址： https://bitgetlimited.github.io/apidoc/zh/mix/
+#### 第一步：下载SDK，安装相关所需库
 
-2. 下载代码及版本要求
-- python版本3.6+
-- 依赖: requests
+1.1 下载`python SDK`
+* 将SDK目录`Clone`或者`Download`到本地，选择使用`bitget-python-sdk-api`即可
 
+1.2 安装所需库
+```python
+pip install requests
+pip install websockets
+```
 
-3.
-- Passphrase 口令，由用户自己设定,需要注意的是，Passphrase忘记之后是无法找回的，需要重新创建APIKey
-- API Key的申请请参考网址: https://bitgetlimited.github.io/apidoc/zh/swap/#c1ae0a8486
-- 参数 use_server_time 值默认为false, 如果为true 时, 将使用服务器的时间
-- 参数 first 值默认为 false, 如果为true时, 每次请求将会打印 url, method, body, headers, status 等信息
+#### 第二步：配置个人信息
 
+2.1 如果还未有API，可[点击](https://www.bitget.com/zh-CN/account/newapi)前往官网进行申请
 
-PS：SDK仅为给予参考，降低开发门槛，相关客户端程序代码问题，还需本地调试解决，有帮助不到的地方，望多包涵。
+2.2 将各项信息在`example_*.py（RestAPI）`和`example_ws_contract.py（WebSocketAPI）`中填写
+```python
+api_key = ""
+secret_key = ""
+passphrase = ""
+```
+#### 第三步：调用接口
+
+* RestAPI
+
+    * 运行`example.py`
+
+    * 解开相应方法的注释传参调用各接口即可
+
+* WebSocketAPI
+
+    * 运行`example_ws_contract.py`
+
+    * 根据个人/公共频道选择对应启动方法，解开相应频道的注释即可
+
+    ```python
+    # 公共数据 不需要登录（行情，K线，交易数据，资金费率，限价范围，深度数据，标记价格等频道）
+    client = BitgetWsClient(CONTRACT_WS_URL, need_login=False) \
+        .api_key(api_key) \
+        .api_secret_key(secret_key) \
+        .passphrase(passphrase) \
+        .error_listener(handel_error) \
+        .build()
+
+    channles = [SubscribeReq("mc", "ticker", "BTCUSD"), SubscribeReq("SP", "candle1W", "BTCUSDT")]
+    client.subscribe(channles,handle)
+    
+    # 个人数据 需要登录（用户账户，用户交易，用户持仓等频道）
+    client = BitgetWsClient(CONTRACT_WS_URL, need_login=True) \
+        .api_key(api_key) \
+        .api_secret_key(secret_key) \
+        .passphrase(passphrase) \
+        .error_listener(handel_error) \
+        .build()
+
+    channles = [SubscribeReq("umcbl", "order", "BTCUSDT")]
+    client.subscribe(channles,handle)  
+  
+    ```
+
+附言：
+
+* 如果对API尚不了解，建议参考`Bitget`官方[API文档](https://bitgetlimited.github.io/apidoc/zh/spot/)
+
+* 若使用`WebSocketAPI`遇到问题建议参考相关链接
+
+    * `asyncio`、`websockets`文档/`github`：
+
+            https://docs.python.org/3/library/asyncio-dev.html
+            https://websockets.readthedocs.io/en/stable/intro.html
+            https://github.com/aaugustin/websockets
+
+    * 关于`code=1006`：
+
+            https://github.com/Rapptz/discord.py/issues/1996
+            https://github.com/aaugustin/websockets/issues/587
