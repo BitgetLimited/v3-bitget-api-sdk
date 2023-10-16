@@ -12,8 +12,6 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 public class WsBaseReq<T> {
-
     private String op;
-
     private List<T> args;
 }

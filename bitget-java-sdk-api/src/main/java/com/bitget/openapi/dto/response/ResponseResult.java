@@ -1,37 +1,46 @@
 package com.bitget.openapi.dto.response;
 
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 import java.io.Serializable;
 
 /**
- * @Author: bitget-sdk-team
- * @Date: 2022-09-30 10:46
- * @DES: Response results
+ * ResponseBody注解返回的JSON对象类
+ *
+ * @author upex-team
+ * @date 2019/12/30
  */
-@Data
-@Builder
+@Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 public class ResponseResult<T> implements Serializable {
 
-    private static final long serialVersionUID = -1L;
+    /**
+     * 200成功，其他表示失败
+     */
+    private String httpCode = "200";
 
     /**
-     * Response 00000 means success, greater than 0 means failure, less than 0 means system reservation
+     * 00000表示成功，>0表示失败,<0系统保留
      */
     private String code;
 
     /**
-     * Prompt information
+     * 提示信息
      */
     private String msg;
 
     /**
-     * system time
+     * 系统时间
      */
     private Long requestTime;
+
     /**
-     * Return Data
+     * 返回数据
      */
     private T data;
 }

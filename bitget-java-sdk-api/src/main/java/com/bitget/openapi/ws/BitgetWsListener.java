@@ -1,5 +1,6 @@
 package com.bitget.openapi.ws;
 
+import lombok.extern.slf4j.Slf4j;
 import okhttp3.Response;
 import okhttp3.WebSocket;
 import okhttp3.WebSocketListener;
@@ -14,8 +15,8 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
+@Slf4j
 public class BitgetWsListener extends WebSocketListener {
-
     ScheduledExecutorService service;
     private BitgetWsClient bitgetWsClient;
 
@@ -25,33 +26,30 @@ public class BitgetWsListener extends WebSocketListener {
 
     @Override
     public void onOpen(final WebSocket webSocket, final Response response) {
-        //连接成功后，设置定时器，每隔25s，自动向服务器发送心跳，保持与服务器连接
         Runnable runnable = new Runnable() {
             public void run() {
-                // task to run goes here
                 bitgetWsClient.sendMessage("ping");
             }
         };
         service = Executors.newSingleThreadScheduledExecutor();
-        // 第二个参数为首次执行的延时时间，第三个参数为定时执行的间隔时间
         service.scheduleAtFixedRate(runnable, 25, 25, TimeUnit.SECONDS);
     }
 
     @Override
     public void onClosing(WebSocket webSocket, int code, String reason) {
-        System.out.println("Connection is about to disconnect！");
+        log.info("Connection is about to disconnect！");
         webSocket.close(1000, "Long time no message was sent or received！");
         webSocket = null;
     }
 
     @Override
     public void onClosed(final WebSocket webSocket, final int code, final String reason) {
-        System.out.println("Connection dropped！");
+        log.info("Connection dropped！");
     }
 
     @Override
     public void onFailure(final WebSocket webSocket, final Throwable t, final Response response) {
-        System.out.println("Connection failed,Please reconnect!");
+        log.info("Connection failed,Please reconnect!");
         if (Objects.nonNull(service)) {
             service.shutdown();
         }
@@ -65,7 +63,6 @@ public class BitgetWsListener extends WebSocketListener {
 
     @Override
     public void onMessage(final WebSocket webSocket, final String message) {
-
     }
 
     // 解压函数

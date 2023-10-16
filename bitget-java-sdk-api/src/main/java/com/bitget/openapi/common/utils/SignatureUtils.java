@@ -29,7 +29,7 @@ public class SignatureUtils {
     }
 
     /**
-     * signature algorithm
+     * 签名算法
      *
      * @param timestamp
      * @param method
@@ -38,8 +38,8 @@ public class SignatureUtils {
      * @param body
      * @param secretKey
      * @return java.lang.String
-     * @description ACCESS-SIGN of The request header is correct timestamp + method + requestPath
-     * + "?" + queryString + body The string (+indicates string connection) is encrypted using the HMAC SHA256 method and output through BASE64 encoding。
+     * @description ACCESS-SIGN的请求头是对 timestamp + method + requestPath
+     * + "?" + queryString + body 字符串(+表示字符串连接)使用 HMAC SHA256 方法加密，通过BASE64 编码输出而得到的。
      * @author jian.li
      * @date 2020-06-02 17:04
      */
@@ -61,7 +61,7 @@ public class SignatureUtils {
     }
 
     /**
-     * websocket Signature encryption
+     * websocket 签名加密
      * @param timestamp
      * @param method
      * @param requestPath
@@ -82,7 +82,7 @@ public class SignatureUtils {
         return Base64.getEncoder().encodeToString(mac.doFinal(preHash.getBytes(SignatureUtils.CHARSET)));
     }
     /**
-     * Ws signature
+     * ws签名
      * @param timestamp
      * @param secretKey
      * @return
@@ -98,13 +98,10 @@ public class SignatureUtils {
     }
 
     public static void main(String[] args) throws Exception {
-        String msg = generate("1606981450", "GET", "/user/verify", null, null, "9ae40dd0f6074f9e2714e3ef9f9ed0ac33a049d85a38c02cc42873f03308f1fa");
-        System.out.println(msg);
-
-
-        String msg1 = generate("1674363384733", "POST", "/api/mix/v1/plan/placePlan", null, "{“symbol”: “SBTCSUSDT_SUMCBL”,“marginCoin”: “SUSDT”,“size”: “10”, “triggerPrice”: “11000”,“side”: “open_long”,“orderType”: “market”,“triggerType”: “market_price”,“clientOid”: “BITGET#8486913695”,“presetTakeProfitPrice”: “13000”,“presetStopLossPrice”: “10500”,“timeInForceValue”: “normal”}", "8c1e6b243cc08f7450b3ab48956af4797e7887e3a73dfe582edc75917b726bad");
-        System.out.println(msg1);
-
+      String msg=generate("1606981450","GET","/user/verify" ,null,null,"9ae40dd0f6074f9e2714e3ef9f9ed0ac33a049d85a38c02cc42873f03308f1fa");
+      System.out.println(msg);
     }
+
+
 
 }

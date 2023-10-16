@@ -15,24 +15,20 @@ public class BaseTest {
 	/**
 	 * The user apiKey is replaced with his own
 	 */
-	private final String apiKey = "bg_fcdae1a6714c08a554bf4f62a6da9563";
+	private final String apiKey = "";
 	/**
 	 * The user's secretKey is replaced with his own
 	 */
-	private final String secretKey = "5ccea28f627c4ac772a8044cbe0aa2792df6688414c062b3761cc3d6d692a298";
+	private final String secretKey = "";
 	/**
 	 * Replace the password with your own
 	 */
-	private final String passphrase = "1r1b6uX6PQ9tbKwb";
+	private final String passphrase = "";
 	/**
 	 * Bitget open api root path
 	 */
-	//
 	private final String baseUrl = "https://api.bitget.com";
-	/**
-	 * Bitget open api root path
-	 */
-    //private final String baseUrl = "https://api.bitget.com";
+
 
 	private final ClientParameter parameter = ClientParameter.builder().apiKey(apiKey).secretKey(secretKey).passphrase(passphrase).baseUrl(baseUrl)
 			.locale(SupportedLocaleEnum.ZH_CN.getName()).build();

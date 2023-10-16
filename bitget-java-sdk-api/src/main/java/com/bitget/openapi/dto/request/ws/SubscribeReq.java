@@ -12,7 +12,6 @@ import java.util.Objects;
 @NoArgsConstructor
 @AllArgsConstructor
 public class SubscribeReq {
-
     private String instType;
     private String channel;
     private String instId;
