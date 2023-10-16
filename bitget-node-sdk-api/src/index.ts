@@ -1,92 +1,19 @@
-import {MixAccountApi} from './lib/mix/MixAccountApi';
-import {MixMarketApi} from './lib/mix/MixMarketApi';
-import {MixOrderApi} from './lib/mix/MixOrderApi';
-import {MixPlanApi} from './lib/mix/MixPlanApi';
-import {MixPositionApi} from './lib/mix/MixPositionApi';
-import {MixTraceApi} from './lib/mix/MixTraceApi';
-import {SpotMarketApi} from './lib/spot/SpotMarketApi';
-import {SpotPublicApi} from './lib/spot/SpotPublicApi';
-import {SpotOrderApi} from './lib/spot/SpotOrderApi';
-import {SpotAccountApi} from './lib/spot/SpotAccountApi';
-import {BitgetWsClient, Listenner} from './lib/ws/BitgetWsClient';
+import {MixAccountApi} from './lib/v1/MixAccountApi';
+import {MixMarketApi} from './lib/v1/MixMarketApi';
+import {MixOrderApi} from './lib/v1/MixOrderApi';
+import {SpotMarketApi} from './lib/v1/SpotMarketApi';
+import {SpotOrderApi} from './lib/v1/SpotOrderApi';
+import {SpotAccountApi} from './lib/v1/SpotAccountApi';
+import {SpotWalletApi} from './lib/v1/SpotWalletApi';
+import {BitgetApi} from './lib/BitgetApi';
 
-import {OpenCountReq} from './lib/model/mix/account/OpenCountReq';
-import {SetLeverageReq} from './lib/model/mix/account/SetLeverageReq';
-import {SetMarginModeReq} from './lib/model/mix/account/SetMarginModeReq';
-import {SetMarginReq} from './lib/model/mix/account/SetMarginReq';
-import {SetPositionModeReq} from './lib/model/mix/account/SetPositionModeReq';
-import {BatchOrdersReq} from './lib/model/mix/order/BatchOrdersReq';
-import {CancelBatchOrderReq} from './lib/model/mix/order/CancelBatchOrderReq';
-import {CancelOrderReq} from './lib/model/mix/order/CancelOrderReq';
-import {PlaceOrderBaseParam} from './lib/model/mix/order/PlaceOrderBaseParam';
-import {PlaceOrderReq} from './lib/model/mix/order/PlaceOrderReq';
-import {CancelPlanReq} from './lib/model/mix/plan/CancelPlanReq';
-import {ModifyPlanPresetReq} from './lib/model/mix/plan/ModifyPlanPresetReq';
-import {ModifyPlanReq} from './lib/model/mix/plan/ModifyPlanReq';
-import {ModifyTPSLPlanReq} from './lib/model/mix/plan/ModifyTPSLPlanReq';
-import {PlacePlanReq} from './lib/model/mix/plan/PlacePlanReq';
-import {PlaceTPSLReq} from './lib/model/mix/plan/PlaceTPSLReq';
-import {PlaceTrailStopReq} from './lib/model/mix/plan/PlaceTrailStopReq';
-import {CloseTrackOrderReq} from './lib/model/mix/trace/CloseTrackOrderReq';
-import {TraderSetSymbolReq} from './lib/model/mix/trace/TraderSetSymbolReq';
-import {MixTraceUpdateTPSLReq} from './lib/model/mix/trace/MixTraceUpdateTPSLReq';
-
-import {SpotBillsReq} from './lib/model/spot/account/SpotBillsReq';
-import {SpotBatchOrdersReq} from './lib/model/spot/order/SpotBatchOrdersReq';
-import {SpotCancelBatchOrderReq} from './lib/model/spot/order/SpotCancelBatchOrderReq';
-import {SpotCancelOrderReq} from './lib/model/spot/order/SpotCancelOrderReq';
-import {SpotFillsReq} from './lib/model/spot/order/SpotFillsReq';
-import {SpotHistoryReq} from './lib/model/spot/order/SpotHistoryReq';
-import {SpotOpenOrdersReq} from './lib/model/spot/order/SpotOpenOrdersReq';
-import {SpotOrderInfoReq} from './lib/model/spot/order/SpotOrderInfoReq';
-import {SpotOrdersReq} from './lib/model/spot/order/SpotOrdersReq';
-
-import {SubscribeReq} from './lib/model/ws/SubscribeReq';
-
-
-export {
+export default {
   MixAccountApi,
   MixMarketApi,
   MixOrderApi,
-  MixPlanApi,
-  MixPositionApi,
-  MixTraceApi,
   SpotMarketApi,
-  SpotPublicApi,
   SpotOrderApi,
   SpotAccountApi,
-  BitgetWsClient,
-  Listenner,
-  SubscribeReq,
-  OpenCountReq,
-  SetLeverageReq,
-  SetMarginModeReq,
-  SetMarginReq,
-  SetPositionModeReq,
-  BatchOrdersReq,
-  CancelBatchOrderReq,
-  CancelOrderReq,
-  PlaceOrderBaseParam,
-  PlaceOrderReq,
-  CancelPlanReq,
-  ModifyPlanPresetReq,
-  ModifyPlanReq,
-  ModifyTPSLPlanReq,
-  PlacePlanReq,
-  PlaceTPSLReq,
-  CloseTrackOrderReq,
-  SpotBillsReq,
-  SpotBatchOrdersReq,
-  SpotCancelBatchOrderReq,
-  SpotCancelOrderReq,
-  SpotFillsReq,
-  SpotHistoryReq,
-  SpotOpenOrdersReq,
-  SpotOrderInfoReq,
-  SpotOrdersReq,
-  PlaceTrailStopReq,
-  TraderSetSymbolReq,
-  MixTraceUpdateTPSLReq
+  SpotWalletApi,
+  BitgetApi,
 }
-
-

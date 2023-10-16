@@ -9,9 +9,7 @@ export class SubscribeReq{
         this._channel = channel;
         this._instId = instId;
     }
-    get toString(): string{
-        return this._instType+','+this._channel+','+this._instId;
-    }
+
     get instType(): string {
         return this._instType;
     }

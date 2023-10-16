@@ -1,6 +1,7 @@
 import {describe, test} from '@jest/globals';
-import {BitgetWsClient, Listenner,SubscribeReq} from '../src';
+import {BitgetWsClient, Listenner} from '../src/lib/ws/BitgetWsClient';
 import * as Console from 'console';
+import {SubscribeReq} from '../src/lib/model/ws/SubscribeReq';
 
 
 const apiKey = '';
