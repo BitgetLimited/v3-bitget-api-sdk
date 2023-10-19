@@ -9,7 +9,6 @@ use WebSocket\Exception;
 abstract class Listener
 {
 
-
     /**
      * Reveice constructor.
      */

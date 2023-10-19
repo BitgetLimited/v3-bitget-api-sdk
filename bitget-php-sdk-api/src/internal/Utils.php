@@ -29,5 +29,4 @@ class Utils
         print_r("[".$time."] [".$type."] ".$msg."\n");
     }
 
-
 }
