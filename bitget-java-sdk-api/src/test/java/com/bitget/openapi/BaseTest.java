@@ -1,10 +1,11 @@
 package com.bitget.openapi;
 
-import org.junit.After;
-import org.junit.Before;
 import com.bitget.openapi.common.client.BitgetRestClient;
 import com.bitget.openapi.common.domain.ClientParameter;
+import com.bitget.openapi.common.enums.SignTypeEnum;
 import com.bitget.openapi.common.enums.SupportedLocaleEnum;
+import org.junit.After;
+import org.junit.Before;
 
 /**
  * @author bitget-sdk-team
@@ -12,35 +13,42 @@ import com.bitget.openapi.common.enums.SupportedLocaleEnum;
  */
 public class BaseTest {
 
-	/**
-	 * The user apiKey is replaced with his own
-	 */
-	private final String apiKey = "";
-	/**
-	 * The user's secretKey is replaced with his own
-	 */
-	private final String secretKey = "";
-	/**
-	 * Replace the password with your own
-	 */
-	private final String passphrase = "";
-	/**
-	 * Bitget open api root path
-	 */
-	private final String baseUrl = "https://api.bitget.com";
+    /**
+     * 用户 apiKey 替换成自己的
+     */
+    private final String apiKey = "";
 
+    /**
+     * 用户 secretKey 替换成自己的
+     */
+    private final String secretKey = "";
 
-	private final ClientParameter parameter = ClientParameter.builder().apiKey(apiKey).secretKey(secretKey).passphrase(passphrase).baseUrl(baseUrl)
-			.locale(SupportedLocaleEnum.ZH_CN.getName()).build();
-	public BitgetRestClient bitgetRestClient;
-	
-	@Before
-	public void setup() {
-		bitgetRestClient = BitgetRestClient.builder().configuration(parameter).build();
-	}
-	
-	@After
-	public void tearDown() {
-		
-	}
+    /**
+     * 口令 替换成自己的
+     */
+    private final String passphrase = "";
+
+    /**
+     * bitget open api 根路径
+     */
+    private final String baseUrl = "https://api.bitget.com";
+
+    private final ClientParameter parameter = ClientParameter.builder()
+            .apiKey(apiKey)
+            .secretKey(secretKey)
+            .passphrase(passphrase)
+            .baseUrl(baseUrl)
+            //.signType(SignTypeEnum.RSA) // 如果你的apikey是RSA类型则主动设置
+            .locale(SupportedLocaleEnum.ZH_CN.getName())
+            .build();
+    public BitgetRestClient bitgetRestClient;
+
+    @Before
+    public void setup() {
+        bitgetRestClient = BitgetRestClient.builder().configuration(parameter).build();
+    }
+
+    @After
+    public void tearDown() {
+    }
 }

@@ -2,6 +2,7 @@ package com.bitget.openapi.ws;
 
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
+import com.bitget.openapi.common.enums.SignTypeEnum;
 import com.bitget.openapi.common.utils.DateUtil;
 import com.bitget.openapi.common.utils.SignatureUtils;
 import com.bitget.openapi.dto.request.ws.SubscribeReq;
@@ -9,15 +10,10 @@ import com.bitget.openapi.dto.request.ws.WsBaseReq;
 import com.bitget.openapi.dto.request.ws.WsLoginReq;
 import lombok.Data;
 import okhttp3.*;
-import okio.ByteString;
 import org.apache.commons.collections4.CollectionUtils;
-import org.apache.commons.compress.compressors.deflate64.Deflate64CompressorInputStream;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.Validate;
 
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
 import java.math.BigDecimal;
 import java.time.Instant;
 import java.util.*;
@@ -35,12 +31,10 @@ public class BitgetWsHandle implements BitgetWsClient {
     public static final String WS_OP_SUBSCRIBE = "subscribe";
     public static final String WS_OP_UNSUBSCRIBE = "unsubscribe";
 
-
     private WebSocket webSocket;
     private volatile boolean loginStatus = false;
     private volatile boolean connectStatus = false;
     private volatile boolean reconnectStatus = false;
-
 
     private BitgetClientBuilder builder;
     private Map<SubscribeReq, SubscriptionListener> scribeMap = new ConcurrentHashMap<>();
@@ -56,7 +50,6 @@ public class BitgetWsHandle implements BitgetWsClient {
     private static void printLog(String msg, String type) {
         System.out.println("[" + DateUtil.getUnixTime() + "] [" + type.toUpperCase() + "] " + msg);
     }
-
 
     private WebSocket initClient() {
         OkHttpClient client = new OkHttpClient.Builder()
@@ -75,7 +68,6 @@ public class BitgetWsHandle implements BitgetWsClient {
             login();
         }
         printLog("start connect ....", "info");
-
         while (!connectStatus) {
         }
 
@@ -85,7 +77,6 @@ public class BitgetWsHandle implements BitgetWsClient {
     public static BitgetClientBuilder builder() {
         return new BitgetClientBuilder();
     }
-
 
     @Override
     public void sendMessage(WsBaseReq<?> req) {
@@ -147,6 +138,9 @@ public class BitgetWsHandle implements BitgetWsClient {
     private List<WsLoginReq> buildArgs() {
         String timestamp = Long.valueOf(Instant.now().getEpochSecond()).toString();
         String sign = sha256_HMAC(timestamp, builder.secretKey);
+        if (SignTypeEnum.RSA == builder.signType) {
+            sign = ws_rsa(timestamp, builder.secretKey);
+        }
 
         WsLoginReq loginReq = WsLoginReq.builder().apiKey(builder.apiKey).passphrase(builder.passPhrase).timestamp(timestamp).sign(sign).build();
 
@@ -155,7 +149,6 @@ public class BitgetWsHandle implements BitgetWsClient {
         }};
         return args;
     }
-
 
     private void sleep(long s) {
         try {
@@ -175,6 +168,15 @@ public class BitgetWsHandle implements BitgetWsClient {
         return hash;
     }
 
+    private String ws_rsa(String timeStamp, String secret) {
+        String hash = "";
+        try {
+            hash = SignatureUtils.wsGenerateRsaSignature(timeStamp, secret);
+        } catch (Exception e) {
+            throw new RuntimeException("sha256_HMAC error", e);
+        }
+        return hash;
+    }
 
     private final class BitgetWsListener extends WebSocketListener {
 
@@ -205,7 +207,6 @@ public class BitgetWsHandle implements BitgetWsClient {
             System.out.println("Connection is about to disconnect！");
             close();
             if (!reconnectStatus) {
-
                 reConnect();
             }
 
@@ -216,7 +217,6 @@ public class BitgetWsHandle implements BitgetWsClient {
             System.out.println("Connection dropped！" + reason);
             close();
             if (!reconnectStatus) {
-
                 reConnect();
             }
         }
@@ -229,7 +229,6 @@ public class BitgetWsHandle implements BitgetWsClient {
 
                 reConnect();
             }
-
         }
 
 //        @Override
@@ -246,7 +245,6 @@ public class BitgetWsHandle implements BitgetWsClient {
                     return;
                 }
                 JSONObject jsonObject = JSONObject.parseObject(message);
-
                 if (jsonObject.containsKey("code") && !jsonObject.get("code").toString().equals("0")) {
                     printLog("code not is 0 msg:" + message, "error");
                     if (Objects.nonNull(builder.errorListener)) {
@@ -278,7 +276,6 @@ public class BitgetWsHandle implements BitgetWsClient {
                         builder.listener.onReceive(message);
                         return;
                     }
-
                 }
                 printLog("receive op msg:" + message, "info");
             } catch (Exception e) {
@@ -287,7 +284,6 @@ public class BitgetWsHandle implements BitgetWsClient {
         }
 
         private boolean checkSum(JSONObject jsonObject) {
-
             try {
                 if (!jsonObject.containsKey("arg") || !jsonObject.containsKey("action")) {
                     return true;
@@ -308,7 +304,7 @@ public class BitgetWsHandle implements BitgetWsClient {
                 }
                 if (StringUtils.equalsIgnoreCase(action, "update")) {
                     BookInfo all = allBook.get(subscribeReq);
-                    boolean checkNum = all.merge(bookInfo).checkSum(Integer.parseInt(bookInfo.getChecksum()),25);
+                    boolean checkNum = all.merge(bookInfo).checkSum(Integer.parseInt(bookInfo.getChecksum()), 25);
 
                     if (!checkNum) {
                         ArrayList<SubscribeReq> subList = new ArrayList<>();
@@ -358,13 +354,15 @@ public class BitgetWsHandle implements BitgetWsClient {
 
     }
 
-
     static class BitgetClientBuilder {
         private String pushUrl;
         private boolean isLogin;
         private String apiKey;
         private String secretKey;
         private String passPhrase;
+
+        private SignTypeEnum signType = SignTypeEnum.SHA256;
+
         private SubscriptionListener listener;
         private SubscriptionListener errorListener;
 
@@ -403,6 +401,11 @@ public class BitgetWsHandle implements BitgetWsClient {
             return this;
         }
 
+        public BitgetClientBuilder signType(SignTypeEnum signType) {
+            this.signType = signType;
+            return this;
+        }
+
         public BitgetWsClient build() {
             return new BitgetWsHandle(this);
         }
@@ -416,43 +419,33 @@ public class BitgetWsHandle implements BitgetWsClient {
         private String checksum;
         private String ts;
 
-
         public BookInfo() {
-
         }
 
         public BookInfo merge(BookInfo updateInfo) {
-
             this.asks = merge(this.asks, updateInfo.getAsks(), false);
             printLog("asks sort uniq:" + JSONObject.toJSONString(this.asks), "info");
             this.bids = merge(this.bids, updateInfo.getBids(), true);
             printLog("bids sort uniq:" + JSONObject.toJSONString(this.bids), "info");
-
             return this;
         }
 
         //isReverse: true->desc,false->asc
         private List<String[]> merge(List<String[]> allList, List<String[]> updateList, boolean isReverse) {
-
             Map<String, String[]> priceAndValue = allList.stream().collect(Collectors.toMap(o -> o[0], o -> o));
-
-
-
             for (String[] update : updateList) {
-
-                if(new BigDecimal(update[1]).compareTo(BigDecimal.ZERO)==0){
+                if (new BigDecimal(update[1]).compareTo(BigDecimal.ZERO) == 0) {
                     priceAndValue.remove(update[0]);
                     continue;
                 }
-                priceAndValue.put(update[0],update);
+                priceAndValue.put(update[0], update);
 
             }
 
             List<String[]> newAllList = new ArrayList<>(priceAndValue.values());
-
-            if(isReverse){
+            if (isReverse) {
                 newAllList.sort((o1, o2) -> new BigDecimal(o2[0]).compareTo(new BigDecimal(o1[0])));
-            }else{
+            } else {
                 newAllList.sort(Comparator.comparing(o -> new BigDecimal(o[0])));
             }
 
@@ -464,37 +457,28 @@ public class BitgetWsHandle implements BitgetWsClient {
             return t -> map.putIfAbsent(keyExtractor.apply(t), Boolean.TRUE) == null;
         }
 
-
-        public boolean checkSum(int checkSum,int gear) {
+        public boolean checkSum(int checkSum, int gear) {
             StringBuilder sb = new StringBuilder();
             for (int i = 0; i < gear; i++) {
-                if(i < this.getBids().size()){
+                if (i < this.getBids().size()) {
                     String[] bids = this.getBids().get(i);
                     sb.append(bids[0]).append(":").append(bids[1]).append(":");
                 }
 
-                if(i < this.getAsks().size()){
+                if (i < this.getAsks().size()) {
                     String[] asks = this.getAsks().get(i);
                     sb.append(asks[0]).append(":").append(asks[1]).append(":");
                 }
             }
-
             String s = sb.toString();
             String str = s.substring(0, s.length() - 1);
 
-
             CRC32 crc32 = new CRC32();
             crc32.update(str.getBytes());
-
-            int value = (int)crc32.getValue();
-
-
+            int value = (int) crc32.getValue();
             printLog("check val:" + str, "info");
             printLog("start checknum mergeVal:" + value + ",checkVal:" + checkSum, "info");
-
             return value == checkSum;
-
         }
     }
-
 }

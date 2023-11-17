@@ -1,16 +1,28 @@
-import hmac
 import base64
+import hmac
 import time
+
+# from Crypto.Hash import SHA256
+# from Crypto.PublicKey import RSA
+# from Crypto.Signature import PKCS1_v1_5 as pk
+
 from . import consts as c
 
 
 def sign(message, secret_key):
     mac = hmac.new(bytes(secret_key, encoding='utf8'), bytes(message, encoding='utf-8'), digestmod='sha256')
     d = mac.digest()
-    return base64.b64encode(d)
+    return str(base64.b64encode(d), 'utf8')
+
+def signByRSA(message, secret_key):
+    # privatekey = RSA.importKey(secret_key)
+    # h = SHA256.new(message.encode('utf-8'))
+    # signer = pk.new(privatekey)
+    # sign = signer.sign(h)
+    return str(base64.b64encode("sign"), 'utf8')
 
 
-def pre_hash(timestamp, method, request_path, body):
+def pre_hash(timestamp, method, request_path, body = ""):
     return str(timestamp) + str.upper(method) + request_path + body
 
 
@@ -45,3 +57,7 @@ def signature(timestamp, method, request_path, body, secret_key):
     mac = hmac.new(bytes(secret_key, encoding='utf8'), bytes(message, encoding='utf-8'), digestmod='sha256')
     d = mac.digest()
     return base64.b64encode(d)
+
+def check_none(value, msg=""):
+    if not value:
+        raise Exception(msg + " Invalid params!")

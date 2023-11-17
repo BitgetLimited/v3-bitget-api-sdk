@@ -1,5 +1,6 @@
 package com.bitget.openapi.common.domain;
 
+import com.bitget.openapi.common.enums.SignTypeEnum;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -31,7 +32,7 @@ public class ClientParameter {
     private String passphrase;
 
     /**
-     * 服务 url，非必填 默认 https://capi.bitget.com/api/swap/v3/
+     * 服务 url，非必填 默认
      */
     private String baseUrl;
 
@@ -44,4 +45,9 @@ public class ClientParameter {
      * 语言环境
      */
     private String locale;
+
+    /**
+     * 签名类型
+     */
+    private SignTypeEnum signType = SignTypeEnum.SHA256;
 }

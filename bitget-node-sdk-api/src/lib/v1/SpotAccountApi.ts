@@ -10,7 +10,7 @@ export class SpotAccountApi extends BaseApi {
 
     assetsLite(qsOrBody: object) {
         const url = '/api/spot/v1/account/assets-lite';
-        const headers = this.signer('GET', url, null)
+        const headers = this.signer('GET', url, qsOrBody)
         return this.axiosInstance.get(url, {headers, params: qsOrBody})
     }
 

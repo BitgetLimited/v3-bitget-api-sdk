@@ -14,15 +14,15 @@ export class MixMarketApi extends BaseApi {
         return this.axiosInstance.get(url, {headers, params: qsOrBody})
     }
 
-    ticker() {
+    ticker(qsOrBody: object) {
         const url = '/api/mix/v1/market/ticker';
-        const headers = this.signer('GET', url, null)
+        const headers = this.signer('GET', url, qsOrBody)
         return this.axiosInstance.get(url, {headers})
     }
 
-    tickers() {
+    tickers(qsOrBody: object) {
         const url = '/api/mix/v1/market/tickers';
-        const headers = this.signer('GET', url, null)
+        const headers = this.signer('GET', url, qsOrBody)
         return this.axiosInstance.get(url, {headers})
     }
 

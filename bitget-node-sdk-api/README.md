@@ -19,29 +19,71 @@ npm run build
 
 |               文件名               |         说明         |
 | :--------------------------------: | :------------------: |
-|    \_\_test\_\_/mixapi.spec.ts     |   合约相关测试用例   |
-|    \_\_test\_\_/spotapi.spec.ts    |   现货相关测试用例   |
+|    \_\_test\_\_/api.spec.ts     |   现货/合约相关测试用例   |
 | \_\_test\_\_/websocketTest.spec.ts | 消息推送相关测试用例 |
-|                                    |                      |
+
 
 ## API示例
 
 ```javascript
-const bitgetApi = require('bitget-openapi');
-const { test, describe, expect } = require('@jest/globals')
-const   Console  = require('console')
+import BitgetResetApi from '../src';
+import Console from 'console';
+import {describe, test} from '@jest/globals'
+import {toJsonString} from '../src/lib/util';
+import {MixOrderApi} from '../src/lib/v2/MixOrderApi';
 
 const apiKey = '';
 const secretKey = '';
 const passphrase = '';
-describe('test accounts', () => {
-  test('accounts', () => {
-    const mixAccountApi = new bitgetApi.default.MixAccountApi(apiKey,secretKey,passphrase);
-    mixAccountApi.accounts('umcbl').then((data) => {
-      Console.info(data);
-    });
-  })
-})
+describe('ApiTest', () => {
+    const mixOrderApi = new BitgetResetApi.MixOrderApi(apiKey, secretKey, passphrase);
+    const mixOrderV2Api = new MixOrderApi(apiKey, secretKey, passphrase);
+    const bitgetApi = new BitgetResetApi.BitgetApi(apiKey, secretKey, passphrase);
+
+    test('place order', () => {
+        const qsOrBody = {
+            'symbol': 'BTCUSDT_UMCBL',
+            'marginCoin': 'USDT',
+            'side': 'open_long',
+            'orderType': 'limit',
+            'price': '27012',
+            'size': '0.01',
+            'timInForceValue': 'normal'
+        };
+        return mixOrderApi.placeOrder(qsOrBody).then((data) => {
+            Console.info(toJsonString(data));
+        });
+    })
+
+    test('send post request directly If the interface is not defined in the sdk', () => {
+        const qsOrBody = {
+            'symbol': 'BTCUSDT_UMCBL',
+            'marginCoin': 'USDT',
+            'side': 'open_long',
+            'orderType': 'limit',
+            'price': '27012',
+            'size': '0.01',
+            'timInForceValue': 'normal'
+        };
+        return bitgetApi.post("/api/mix/v1/order/placeOrder", qsOrBody).then((data) => {
+            Console.info(toJsonString(data));
+        });
+    })
+
+    test('send get request directly If the interface is not defined in the sdk', () => {
+        const qsOrBody = {'symbol': 'btcusdt_spbl'};
+        return bitgetApi.get("/api/spot/v1/market/depth", qsOrBody).then((data) => {
+            Console.info(toJsonString(data));
+        });
+    })
+
+    test('send get request directly If the interface is not defined in the sdk', () => {
+        const qsOrBody = {'productType': 'umcbl'};
+        return bitgetApi.get("/api/mix/v1/account/accounts", qsOrBody).then((data) => {
+            Console.info(toJsonString(data));
+        });
+    })
+});
 ```
 
 ## websocket示例
@@ -71,4 +113,15 @@ subArr.push(subscribeOne);
 subArr.push(subscribeTow);
 
 bitgetWsClient.subscribe(subArr)
+```
+
+## RSA
+如果你的apikey是RSA类型则主动设置签名类型为RSA
+```node
+// config.ts
+export let API_CONFIG = {
+    WS_URL: 'wss://ws.bitget.com/mix/v1/stream',
+    API_URL: 'https://api.bitget.com',
+    SIGN_TYPE : BIZ_CONSTANT.RSA // 如果你的apikey是RSA类型则主动设置签名类型为RSA
+}
 ```

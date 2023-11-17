@@ -31,11 +31,11 @@ if __name__ == '__main__':
         .error_listener(handel_error) \
         .build()
 
-    channles = [SubscribeReq("mc", "ticker", "BTCUSD"), SubscribeReq("SP", "candle1W", "BTCUSDT")]
+    channles = [SubscribeReq("SP", "candle1W", "BTCUSDT")]
     client.subscribe(channles,handle)
 
-    channles = [SubscribeReq("mc", "ticker", "ETHUSD")]
-    client.subscribe(channles, handel_btcusd)
+    # channles = [SubscribeReq("mc", "ticker", "ETHUSD")]
+    # client.subscribe(channles, handel_btcusd)
 
 # channle2 = ["swap/ticker:btcusd"];
     # client.subscribe(channle,handel_btcusd)

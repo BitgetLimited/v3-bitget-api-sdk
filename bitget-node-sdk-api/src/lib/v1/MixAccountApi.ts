@@ -4,13 +4,13 @@ export class MixAccountApi extends BaseApi {
 
     account(qsOrBody: object) {
         const url = '/api/mix/v1/account/account';
-        const headers = this.signer('GET', url, null)
+        const headers = this.signer('GET', url, qsOrBody)
         return this.axiosInstance.get(url, {headers, params: qsOrBody})
     }
 
     accounts(qsOrBody: object) {
         const url = '/api/mix/v1/account/accounts';
-        const headers = this.signer('GET', url, null)
+        const headers = this.signer('GET', url, qsOrBody)
         return this.axiosInstance.get(url, {headers, params: qsOrBody})
     }
 

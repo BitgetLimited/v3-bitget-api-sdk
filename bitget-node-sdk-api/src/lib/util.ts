@@ -1,6 +1,8 @@
 import {stringify} from 'querystring'
 import {createHmac} from 'crypto'
 import * as Console from 'console';
+import {API_CONFIG} from './config';
+import {BIZ_CONSTANT} from './contant';
 
 export interface BitgetApiHeader {
     'ACCESS-SIGN': string
@@ -27,7 +29,10 @@ export default function getSigner(
 
     return (httpMethod: string, url: string, qsOrBody: NodeJS.Dict<any> | null, locale = 'zh-CN') => {
         const timestamp = Date.now();
-        const signString = encrypt(httpMethod, url, qsOrBody, timestamp,secretKey)
+        let signString = encrypt(httpMethod, url, qsOrBody, timestamp, secretKey);
+        if (API_CONFIG.SIGN_TYPE === BIZ_CONSTANT.RSA) {
+            signString = encryptRSA(httpMethod, url, qsOrBody, timestamp,secretKey)
+        }
 
         return {
             'ACCESS-SIGN': signString,
@@ -71,4 +76,22 @@ export function toJsonString(obj: object): string | null {
     });
     const reg = new RegExp('"_', 'g')
     return json.replace(reg, '"');
+}
+
+/**
+ * RSA加密算法
+ * @param httpMethod
+ * @param url
+ * @param qsOrBody
+ * @param timestamp
+ * @param secretKey
+ */
+export function encryptRSA(httpMethod: string, url: string, qsOrBody: NodeJS.Dict<string | number> | null, timestamp: number,secretKey:string) {
+    httpMethod = httpMethod.toUpperCase()
+    const qsOrBodyStr = qsOrBody ? httpMethod === 'GET' ? '?' + stringify(qsOrBody) : toJsonString(qsOrBody) : ''
+    const preHash = String(timestamp) + httpMethod + url + qsOrBodyStr
+    const NodeRSA = require('node-rsa')
+    const priKey = new NodeRSA(secretKey)
+    const sign = priKey.sign(preHash, 'base64', 'UTF-8')
+    return sign
 }

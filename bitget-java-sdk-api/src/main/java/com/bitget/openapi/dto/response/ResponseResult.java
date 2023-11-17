@@ -20,7 +20,7 @@ import java.io.Serializable;
 public class ResponseResult<T> implements Serializable {
 
     /**
-     * 200成功，其他表示失败
+     * 200成功
      */
     private String httpCode = "200";
 

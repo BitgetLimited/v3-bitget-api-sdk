@@ -2,8 +2,8 @@ package constants
 
 const (
 	/*
-	  http headers
-	*/
+	 * http headers
+	 */
 	ContentType        = "Content-Type"
 	BgAccessKey        = "ACCESS-KEY"
 	BgAccessSign       = "ACCESS-SIGN"
@@ -16,46 +16,14 @@ const (
 	LOCALE = "locale="
 
 	/*
-	  http methods
-	*/
-	GET    = "GET"
-	POST   = "POST"
-	DELETE = "DELETE"
+	 * http methods
+	 */
+	GET  = "GET"
+	POST = "POST"
 
 	/*
-	 others
-	*/
-	ResultDataJsonString = "resultDataJsonString"
-	ResultPageJsonString = "resultPageJsonString"
-
-	/**
-	 * SPOT URL
+	 * websocket
 	 */
-	SpotPublic  = "/api/spot/v1/public"
-	SpotMarket  = "/api/spot/v1/market"
-	SpotAccount = "/api/spot/v1/account"
-	SpotTrade   = "/api/spot/v1/trade"
-	SpotPlan    = "/api/spot/v1/plan"
-	SpotWallet  = "/api/spot/v1/wallet"
-
-	/**
-	 * MIX URL
-	 */
-	MixPlan     = "/api/mix/v1/plan"
-	MixMarket   = "/api/mix/v1/market"
-	MixAccount  = "/api/mix/v1/account"
-	MixOrder    = "/api/mix/v1/order"
-	MixPosition = "/api/mix/v1/position"
-	MixTrace    = "/api/mix/v1/trace"
-
-	/**
-	 * broker url
-	 */
-	BrokerAccount = "/api/broker/v1/account"
-
-	/**
-	websocket
-	*/
 	WsAuthMethod        = "GET"
 	WsAuthPath          = "/user/verify"
 	WsOpLogin           = "login"
@@ -63,4 +31,10 @@ const (
 	WsOpSubscribe       = "subscribe"
 	TimerIntervalSecond = 5
 	ReconnectWaitSecond = 60
+
+	/*
+	 * SignType
+	 */
+	RSA    = "RSA"
+	SHA256 = "SHA256"
 )

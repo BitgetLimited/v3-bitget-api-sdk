@@ -1,11 +1,10 @@
 package com.bitget.openapi.common.client;
 
 import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.JSONException;
 import com.alibaba.fastjson.JSONObject;
 import com.bitget.openapi.common.constant.HttpHeader;
 import com.bitget.openapi.common.domain.ClientParameter;
-import com.bitget.openapi.common.exception.BitgetApiException;
+import com.bitget.openapi.common.enums.SignTypeEnum;
 import com.bitget.openapi.common.utils.SignatureUtils;
 import com.bitget.openapi.dto.response.ResponseResult;
 import okhttp3.*;
@@ -74,6 +73,14 @@ public class ApiClient {
                         original.url().encodedQuery(),
                         original.body() == null ? "" : bodyToString(original),
                         clientParameter.getSecretKey());
+                if (SignTypeEnum.RSA == clientParameter.getSignType()) {
+                    sign = SignatureUtils.restGenerateRsaSignature(timestamp,
+                            original.method(),
+                            original.url().url().getPath(),
+                            original.url().encodedQuery(),
+                            original.body() == null ? "" : bodyToString(original),
+                            clientParameter.getSecretKey());
+                }
 
                 String localFormat = "locale=%s";
                 Request.Builder requestBuilder = original.newBuilder()
@@ -128,15 +135,6 @@ public class ApiClient {
             } catch (Exception e) {
                 throw new RuntimeException("parse response error:" + e.getMessage());
             }
-        }
-    }
-
-    public static String getJSONStringValue(String json, String key) {
-        try {
-            JSONObject obj = JSONObject.parseObject(json);
-            return obj.getString(key);
-        } catch (JSONException e) {
-            throw new JSONException(String.format("[JSONObject] Failed to get \"%s\"  from JSON object", key));
         }
     }
 }

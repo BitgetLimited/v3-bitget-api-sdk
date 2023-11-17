@@ -9,7 +9,6 @@ const secretKey = '';
 const passphrase = '';
 describe('BitgetWsClientTest', () => {
 
-
     test('websocket', () => {
        const bitgetWsClient = new BitgetWsClient({
             reveice:(message)=>{
@@ -20,10 +19,10 @@ describe('BitgetWsClientTest', () => {
        const subArr = new Array<SubscribeReq>();
 
        const subscribeOne = new SubscribeReq('mc','ticker','BTCUSD');
-       const subscribeTow = new SubscribeReq('SP','candle1W','BTCUSDT');
-
+       // const subscribeTow = new SubscribeReq('SP','candle1W','BTCUSDT');
+        bitgetWsClient.on()
         subArr.push(subscribeOne);
-        subArr.push(subscribeTow);
+        // subArr.push(subscribeTow);
 
         bitgetWsClient.subscribe(subArr)
 

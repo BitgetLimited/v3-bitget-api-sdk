@@ -29,6 +29,8 @@ class Client(object):
 
         body = json.dumps(params) if method == c.POST else ""
         sign = utils.sign(utils.pre_hash(timestamp, method, request_path, str(body)), self.API_SECRET_KEY)
+        if c.SIGN_TYPE == c.RSA:
+            sign = utils.signByRSA(utils.pre_hash(timestamp, method, request_path, str(body)), self.API_SECRET_KEY)
         header = utils.get_header(self.API_KEY, sign, timestamp, self.PASSPHRASE)
 
         if self.first:

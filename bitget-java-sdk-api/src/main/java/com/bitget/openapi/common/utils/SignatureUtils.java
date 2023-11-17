@@ -6,8 +6,9 @@ import javax.crypto.Mac;
 import javax.crypto.spec.SecretKeySpec;
 import javax.management.RuntimeErrorException;
 import java.io.UnsupportedEncodingException;
-import java.security.InvalidKeyException;
-import java.security.NoSuchAlgorithmException;
+import java.nio.charset.StandardCharsets;
+import java.security.*;
+import java.security.spec.PKCS8EncodedKeySpec;
 import java.util.Base64;
 
 /**
@@ -29,7 +30,7 @@ public class SignatureUtils {
     }
 
     /**
-     * 签名算法
+     * Rest HMAC签名算法
      *
      * @param timestamp
      * @param method
@@ -61,6 +62,32 @@ public class SignatureUtils {
     }
 
     /**
+     * Rest RSA签名算法
+     * @param timestamp
+     * @param method
+     * @param requestPath
+     * @param queryString
+     * @param body
+     * @param secretKey
+     * @return
+     * @throws CloneNotSupportedException
+     * @throws InvalidKeyException
+     * @throws UnsupportedEncodingException
+     */
+    public static String restGenerateRsaSignature(String timestamp, String method, String requestPath,
+                                  String queryString, String body, String secretKey)
+            throws CloneNotSupportedException, InvalidKeyException, UnsupportedEncodingException {
+
+        method = method.toUpperCase();
+        body = StringUtils.defaultIfBlank(body, StringUtils.EMPTY);
+        queryString = StringUtils.isBlank(queryString) ? StringUtils.EMPTY : "?" + queryString;
+
+        String preHash = timestamp + method + requestPath + queryString + body;
+        System.out.println(preHash);
+        return genRsaSignature(preHash, secretKey);
+    }
+
+    /**
      * websocket 签名加密
      * @param timestamp
      * @param method
@@ -81,8 +108,9 @@ public class SignatureUtils {
         mac.init(secretKeySpec);
         return Base64.getEncoder().encodeToString(mac.doFinal(preHash.getBytes(SignatureUtils.CHARSET)));
     }
+
     /**
-     * ws签名
+     * ws HMAC签名
      * @param timestamp
      * @param secretKey
      * @return
@@ -97,11 +125,34 @@ public class SignatureUtils {
         return Base64.getEncoder().encodeToString(mac.doFinal(preHash.getBytes(SignatureUtils.CHARSET)));
     }
 
-    public static void main(String[] args) throws Exception {
-      String msg=generate("1606981450","GET","/user/verify" ,null,null,"9ae40dd0f6074f9e2714e3ef9f9ed0ac33a049d85a38c02cc42873f03308f1fa");
-      System.out.println(msg);
+    /**
+     * ws RSA签名
+     * @param timestamp
+     * @param secretKey
+     * @return
+     */
+    public static  String wsGenerateRsaSignature(String timestamp,String secretKey)throws  CloneNotSupportedException,
+            InvalidKeyException, UnsupportedEncodingException{
+        String preHash = timestamp + "GET" + "/user/verify";
+        return genRsaSignature(preHash, secretKey);
     }
 
-
-
+    public static String genRsaSignature(String content, String privateKey) {
+        try {
+            String parsedPem = privateKey.replace("\n", "").trim();
+            parsedPem = parsedPem
+                    .replace("-----BEGIN PRIVATE KEY-----", "")
+                    .replace("-----END PRIVATE KEY-----", "");
+            PKCS8EncodedKeySpec priPKCS8 = new PKCS8EncodedKeySpec(Base64.getDecoder().decode(parsedPem.getBytes("UTF-8")));
+            KeyFactory keyFactory = KeyFactory.getInstance("RSA");
+            PrivateKey priKey = keyFactory.generatePrivate(priPKCS8);
+            Signature signature = Signature.getInstance("SHA256WithRSA");
+            signature.initSign(priKey);
+            signature.update(content.getBytes(StandardCharsets.UTF_8));
+            String sign = new String(Base64.getEncoder().encode(signature.sign()), "UTF-8");
+            return sign;
+        } catch (Exception ex) {
+            throw new RuntimeException("create sign  failed", ex);
+        }
+    }
 }

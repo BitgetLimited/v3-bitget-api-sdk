@@ -2,9 +2,9 @@
 A Java sdk for bitget exchange API
 
 - Supported APIs:
-    - /api/spot/v1/*
-    - /api/mix/v1/*
-    - Supports custom expansion of any URL
+  - /api/spot/v1/*
+  - /api/mix/v1/*
+  - Supports custom expansion of any URL
 
 # Installation
 - git clone https://github.com/BitgetLimited/v3-bitget-api-sdk.git
@@ -38,16 +38,17 @@ public class SdkConfig {
   public BitgetRestClient bitgetRestClient() throws Exception {
     ClientParameter parameter = ClientParameter.builder()
             .apiKey(apiKey)
-            .secretKey(secretKey)
+            .secretKey(secretKey) // 如果是RSA类型则设置为RSA私钥
             .passphrase(passphrase)
             .baseUrl(baseUrl)
+            //.signType(SignTypeEnum.RSA) // 如果你的apikey是RSA类型则主动设置签名类型为RSA
             .locale(SupportedLocaleEnum.ZH_CN.getName()).build();
     return BitgetRestClient.builder().configuration(parameter).build();
   }
 }
 ```
 
-## Add dependencies
+## Add dependencies 
 ```java
 @Resource
 private BitgetRestClient bitgetRestClient;
@@ -92,7 +93,7 @@ ResponseResult result = bitgetRestClient.bitget().v1().request().get("/api/mix/v
 System.out.println(JSON.toJSONString(result));
 ```
 
-## Other things to note
+## Other things to note 
 
 ## Base URL
 It's recommended to pass in the `baseUrl` parameter.<br/>
@@ -101,7 +102,7 @@ If not provided, the default baseUrl is `https://api.bitget.com`<br/>
 
 ## Optional parameters
 
-All parameters are read from a `HashMap<String,String>` object where `String` is the name of the parameter and `String` is the value of the parameter.
+All parameters are read from a `HashMap<String,String>` object where `String` is the name of the parameter and `String` is the value of the parameter. 
 The parameters should follow their exact naming as in the API documentation.<br>
 ```java
 Map<String,String> paramMap = Maps.newHashMap();
@@ -118,7 +119,7 @@ paramMap.put("timInForceValue","normal");
 
 # Websocket Run Example
 
-## Demo 1:
+## Demo 1: 
 ```java
 public class BitgetWsClientTest {
   public static final String PUSH_URL = "wss://ws.bitget.com/spot/v1/stream"; // or wss://ws.bitget.com/mix/v1/stream
@@ -130,8 +131,9 @@ public class BitgetWsClientTest {
     BitgetWsClient client = BitgetWsHandle.builder()
             .pushUrl(PUSH_URL)
             .apiKey(API_KEY)
-            .secretKey(SECRET_KEY)
+            .secretKey(SECRET_KEY) // 如果是RSA类型则设置RSA私钥
             .passPhrase(PASS_PHRASE)
+            //.signType(SignTypeEnum.RSA) // 如果你的apikey是RSA类型则主动设置签名类型为RSA
             .isLogin(true)
             //默认监听处理，如订阅时指定监听，默认不再接收该channel订阅信息
             .listener(response -> {

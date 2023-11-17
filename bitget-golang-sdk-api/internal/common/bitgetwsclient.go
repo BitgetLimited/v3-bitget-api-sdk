@@ -26,7 +26,6 @@ type BitgetBaseWsClient struct {
 	AllSuribe        *model.Set
 	Signer           *Signer
 	ScribeMap        map[model.SubscribeReq]OnReceive
-	BooksMap         map[model.SubscribeReq]model.BookInfo
 }
 
 func (p *BitgetBaseWsClient) Init() *BitgetBaseWsClient {
@@ -34,7 +33,6 @@ func (p *BitgetBaseWsClient) Init() *BitgetBaseWsClient {
 	p.AllSuribe = model.NewSet()
 	p.Signer = new(Signer).Init(config.SecretKey)
 	p.ScribeMap = make(map[model.SubscribeReq]OnReceive)
-	p.BooksMap = make(map[model.SubscribeReq]model.BookInfo)
 	p.SendMutex = &sync.Mutex{}
 	p.Ticker = time.NewTicker(constants.TimerIntervalSecond * time.Second)
 	p.LastReceivedTime = time.Now()
@@ -68,6 +66,9 @@ func (p *BitgetBaseWsClient) ConnectWebSocket() {
 func (p *BitgetBaseWsClient) Login() {
 	timesStamp := internal.TimesStampSec()
 	sign := p.Signer.Sign(constants.WsAuthMethod, constants.WsAuthPath, "", timesStamp)
+	//if constants.RSA == config.SignType {
+	//	sign = p.Signer.SignByRSA(constants.WsAuthMethod, constants.WsAuthPath, "", timesStamp)
+	//}
 
 	loginReq := model.WsLoginReq{
 		ApiKey:     config.ApiKey,
@@ -165,6 +166,8 @@ func (p *BitgetBaseWsClient) ReadLoop() {
 		p.LastReceivedTime = time.Now()
 		message := string(buf)
 
+		applogger.Info("rev:" + message)
+
 		if message == "pong" {
 			applogger.Info("Keep connected:" + message)
 			continue
@@ -185,70 +188,15 @@ func (p *BitgetBaseWsClient) ReadLoop() {
 			continue
 		}
 
-		if !p.CheckSum(jsonMap) {
-			continue
-		}
-
 		v, e = jsonMap["data"]
 		if e {
 			listener := p.GetListener(jsonMap["arg"])
-
 			listener(message)
 			continue
 		}
 		p.handleMessage(message)
 	}
 
-}
-
-func (p *BitgetBaseWsClient) CheckSum(jsonMap map[string]interface{}) bool {
-	argV, argE := jsonMap["arg"]
-	actionV, actionE := jsonMap["action"]
-
-	if !argE || !actionE {
-		return true
-	}
-	channelV, _ := argV.(map[string]interface{})["channel"]
-	if channelV != "books" {
-		return true
-	}
-	dataV, _ := jsonMap["data"]
-	if dataV == nil {
-		return true
-	}
-	data := dataV.([]interface{})[0]
-
-	asks := data.(map[string]interface{})["asks"].([]interface{})
-	bids := data.(map[string]interface{})["bids"].([]interface{})
-	checksum := data.(map[string]interface{})["checksum"].(float64)
-	bookInfo := model.BookInfo{
-		Asks:     asks,
-		Bids:     bids,
-		Checksum: fmt.Sprintf("%f", checksum),
-	}
-
-	mapData := argV.(map[string]interface{})
-	subscribeReq := model.SubscribeReq{
-		InstType: fmt.Sprintf("%v", mapData["instType"]),
-		Channel:  fmt.Sprintf("%v", mapData["channel"]),
-		InstId:   fmt.Sprintf("%v", mapData["instId"]),
-	}
-
-	if actionV == "snapshot" {
-		p.BooksMap[subscribeReq] = bookInfo
-		return true
-	}
-	if actionV == "update" {
-		allBookInfo, subE := p.BooksMap[subscribeReq]
-
-		if !subE {
-			return true
-		}
-		newBoooks := allBookInfo.Merge(bookInfo)
-		p.BooksMap[subscribeReq] = newBoooks
-		return newBoooks.CheckSum(uint32(checksum))
-	}
-	return true
 }
 
 func (p *BitgetBaseWsClient) GetListener(argJson interface{}) OnReceive {

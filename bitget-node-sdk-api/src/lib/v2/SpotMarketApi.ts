@@ -25,9 +25,9 @@ export class SpotMarketApi extends BaseApi {
         return this.axiosInstance.get(url, {headers, params: qsOrBody})
     }
 
-    tickers() {
+    tickers(qsOrBody: object) {
         const url = '/api/v2/spot/market/tickers';
-        const headers = this.signer('GET', url, null)
+        const headers = this.signer('GET', url, qsOrBody)
         return this.axiosInstance.get(url, {headers})
     }
 

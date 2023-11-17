@@ -1,16 +1,16 @@
 import {EventEmitter} from 'events';
-import {encrypt,toJsonString} from '../util';
+import {encrypt, encryptRSA, toJsonString} from '../util';
 import {API_CONFIG} from '../config';
 import WebSocket from 'ws';
 import * as Console from 'console';
 import {WsLoginReq} from '../model/ws/WsLoginReq';
 import {WsBaseReq} from '../model/ws/WsBaseReq';
 import {SubscribeReq} from '../model/ws/SubscribeReq';
+import {BIZ_CONSTANT} from '../contant';
 
 export abstract class Listenner{
     abstract reveice(message:string):void;
 }
-
 
 export class BitgetWsClient extends EventEmitter {
     private websocketUri: string;
@@ -26,22 +26,25 @@ export class BitgetWsClient extends EventEmitter {
         super();
         this.websocketUri = API_CONFIG.WS_URL;
         this.callBack = callBack;
-        this.socket = new WebSocket(API_CONFIG.WS_URL, {});
+        this.socket = new WebSocket(API_CONFIG.WS_URL);
         this.apiKey = apiKey;
         this.apiSecret = apiSecret;
         this.passphrase = passphrase;
 
+
         this.socket.on('open', () => this.onOpen());
         this.socket.on('close', (code, reason) => this.onClose(code, reason));
         this.socket.on('message', data => this.onMessage(data));
-
     }
 
     login() {
         const timestamp = Math.floor(Date.now() / 1000);
-        const sign = encrypt('GET','/user/verify',null,timestamp,this.apiSecret);
-        const wsLoginReq = new WsLoginReq(this.apiKey,this.passphrase,timestamp.toString(),sign);
+        let sign = encrypt('GET','/user/verify',null,timestamp,this.apiSecret);
+        if (API_CONFIG.SIGN_TYPE === BIZ_CONSTANT.RSA) {
+            sign = encryptRSA('GET','/user/verify',null,timestamp,this.apiSecret);
+        }
 
+        const wsLoginReq = new WsLoginReq(this.apiKey,this.passphrase,timestamp.toString(),sign);
         const args = new Array<WsLoginReq>();
         args.push(wsLoginReq);
         const request = new WsBaseReq('login',args);
@@ -58,19 +61,20 @@ export class BitgetWsClient extends EventEmitter {
         this.send(request);
     }
 
-
     private send(messageObject: any) {
         const that = this;
         if (!this.socket) throw Error('socket is not open');
         const jsonStr = toJsonString(messageObject);
         Console.info('sendInfo:'+jsonStr)
+        if (that.isOpen) {
+            this.socket?.send(jsonStr);
+        }
 
-        setInterval(() => {
-            if (that.isOpen) {
-                this.socket?.send(jsonStr);
-            }
-        }, 1000);
-
+        // setInterval(() => {
+        //     if (that.isOpen) {
+        //         this.socket?.send(jsonStr);
+        //     }
+        // }, 1000);
     }
 
     private onOpen() {
@@ -79,6 +83,7 @@ export class BitgetWsClient extends EventEmitter {
         this.initTimer();
         this.emit('open');
     }
+
 
     private initTimer() {
         this.interval = setInterval(() => {
@@ -102,6 +107,15 @@ export class BitgetWsClient extends EventEmitter {
             this.interval = null;
         }
         this.emit('close');
+    }
+
+    connection() {
+        this.socket.on('connection', () => {
+            Console.info("open")
+        })
+        Console.info(`on open Connected to ${this.websocketUri}`);
+        this.initTimer();
+        this.emit('open');
     }
 
     close() {
