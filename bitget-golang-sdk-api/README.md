@@ -3,19 +3,17 @@
 使用此sdk前请阅读api文档 [Bitget API](https://bitgetlimited.github.io/apidoc/en/mix/)
 
 ## Supported API Endpoints:
-- pkg/v1: `*client.go`
-- pkg/v2: `*client.go`
-- pkg/ws: `bitgetwsclient.go`
+- pkg/client/v1: `*client.go`
+- pkg/client/v2: `*client.go`
+- pkg/client/ws: `bitgetwsclient.go`
 
 
 ## 下载
 ```shell
-git clone  git@github.com:BitgetLimited/v3-bitget-api-sdk.git
+git clone git@github.com:BitgetLimited/v3-bitget-api-sdk.git
 ```
 
-## REST API
-
-Create an order example
+## REST API Demo
 
 ```go
 package test
@@ -46,13 +44,53 @@ func Test_PlaceOrder(t *testing.T) {
   }
   fmt.Println(resp)
 }
+
+func Test_post(t *testing.T) {
+  client := new(client.BitgetApiClient).Init()
+
+  params := internal.NewParams()
+  params["symbol"] = "BTCUSDT_UMCBL"
+  params["marginCoin"] = "USDT"
+  params["side"] = "open_long"
+  params["orderType"] = "limit"
+  params["price"] = "27012"
+  params["size"] = "0.01"
+  params["timInForceValue"] = "normal"
+
+  resp, err := client.Post("/api/mix/v1/order/placeOrder", params)
+  if err != nil {
+    println(err.Error())
+  }
+  fmt.Println(resp)
+}
+
+func Test_get(t *testing.T) {
+  client := new(client.BitgetApiClient).Init()
+
+  params := internal.NewParams()
+  params["productType"] = "umcbl"
+
+  resp, err := client.Get("/api/mix/v1/account/accounts", params)
+  if err != nil {
+    println(err.Error())
+  }
+  fmt.Println(resp)
+}
+
+func Test_get_with_params(t *testing.T) {
+  client := new(client.BitgetApiClient).Init()
+
+  params := internal.NewParams()
+
+  resp, err := client.Get("/api/spot/v1/account/getInfo", params)
+  if err != nil {
+    println(err.Error())
+  }
+  fmt.Println(resp)
+}
 ```
 
-Please find more examples for each supported endpoint in the `test` folder.
-
-## Websocket Stream
-
-
+## Websocket Demo
 ```go
 package test
 
@@ -91,76 +129,22 @@ func TestBitgetWsClient_New(t *testing.T) {
     fmt.Println("appoint:" + message)
   })
   client.Connect()
-
 }
-
 ```
 
-Combined Diff. Depth Stream Example
-
+## RSA
+如果你的apikey是RSA类型则主动设置签名类型为RSA
 ```go
-package main
+// config.go
+const (
+	BaseUrl = "https://api.bitget.com"
+	WsUrl   = "wss://ws.bitget.com/mix/v1/stream"
 
-import (
-	"fmt"
-	"time"
-
-	binance_connector "github.com/binance/binance-connector-go"
+	ApiKey        = ""
+	SecretKey     = "" // 如果是RSA类型则设置RSA私钥
+	PASSPHRASE    = ""
+	TimeoutSecond = 30 
+	SignType      = constants.RSA // 如果你的apikey是RSA类型则主动设置签名类型为RSA
 )
-
-func main() {
-	// Set isCombined parameter to true as we are using Combined Depth Stream
-	websocketStreamClient := binance_connector.NewWebsocketStreamClient(true)
-
-	wsCombinedDepthHandler := func(event *binance_connector.WsDepthEvent) {
-		fmt.Println(binance_connector.PrettyPrint(event))
-	}
-	errHandler := func(err error) {
-		fmt.Println(err)
-	}
-	// Use WsCombinedDepthServe to subscribe to multiple streams
-	doneCh, stopCh, err := websocketStreamClient.WsCombinedDepthServe([]string{"LTCBTC", "BTCUSDT", "MATICUSDT"}, wsCombinedDepthHandler, errHandler)
-	if err != nil {
-		fmt.Println(err)
-		return
-	}
-	go func() {
-		time.Sleep(5 * time.Second)
-		stopCh <- struct{}{}
-	}()
-	<-doneCh
-}
 ```
-
-## Websocket API
-
-```go
-func OCOHistoryExample() {
-	// Initialise Websocket API Client
-	client := binance_connector.NewWebsocketAPIClient("api_key", "secret_key")
-	// Connect to Websocket API
-	err := client.Connect()
-	if err != nil {
-		log.Printf("Error: %v", err)
-		return
-	}
-	defer client.Close()
-
-	// Send request to Websocket API
-	response, err := client.NewAccountOCOHistoryService().Do(context.Background())
-	if err != nil {
-		log.Printf("Error: %v", err)
-		return
-	}
-
-	// Print the response
-	fmt.Println(binance_connector.PrettyPrint(response))
-
-	client.WaitForCloseSignal()
-}
-```
-
-## 域名
-- Binance provides alternative Production URLs in case of performance issues:
-    - https://api.bitget.com
 
