@@ -66,9 +66,9 @@ func (p *BitgetBaseWsClient) ConnectWebSocket() {
 func (p *BitgetBaseWsClient) Login() {
 	timesStamp := internal.TimesStampSec()
 	sign := p.Signer.Sign(constants.WsAuthMethod, constants.WsAuthPath, "", timesStamp)
-	//if constants.RSA == config.SignType {
-	//	sign = p.Signer.SignByRSA(constants.WsAuthMethod, constants.WsAuthPath, "", timesStamp)
-	//}
+	if constants.RSA == config.SignType {
+		sign = p.Signer.SignByRSA(constants.WsAuthMethod, constants.WsAuthPath, "", timesStamp)
+	}
 
 	loginReq := model.WsLoginReq{
 		ApiKey:     config.ApiKey,

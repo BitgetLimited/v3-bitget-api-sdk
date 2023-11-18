@@ -2,9 +2,9 @@ import base64
 import hmac
 import time
 
-# from Crypto.Hash import SHA256
-# from Crypto.PublicKey import RSA
-# from Crypto.Signature import PKCS1_v1_5 as pk
+from Crypto.Hash import SHA256
+from Crypto.PublicKey import RSA
+from Crypto.Signature import PKCS1_v1_5 as pk
 
 from . import consts as c
 
@@ -15,11 +15,11 @@ def sign(message, secret_key):
     return str(base64.b64encode(d), 'utf8')
 
 def signByRSA(message, secret_key):
-    # privatekey = RSA.importKey(secret_key)
-    # h = SHA256.new(message.encode('utf-8'))
-    # signer = pk.new(privatekey)
-    # sign = signer.sign(h)
-    return str(base64.b64encode("sign"), 'utf8')
+    privatekey = RSA.importKey(secret_key)
+    h = SHA256.new(message.encode('utf-8'))
+    signer = pk.new(privatekey)
+    sign = signer.sign(h)
+    return str(base64.b64encode(sign), 'utf8')
 
 
 def pre_hash(timestamp, method, request_path, body = ""):

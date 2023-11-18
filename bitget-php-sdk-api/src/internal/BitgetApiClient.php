@@ -51,7 +51,10 @@ class BitgetApiClient extends Config
     function getHead($method, $requestPath, $body)
     {
         $timestamp = Utils::getTimestamp();
-        $sign = Utils::getSign($timestamp, $method, $requestPath, $body,self::apiSecret);
+        $sign = Utils::getSign($timestamp, $method, $requestPath, $body, self::apiSecret);
+        if (self::signType == self::RSA) {
+            $sign = Utils::getSignByRSA($timestamp, $method, $requestPath, $body, self::apiSecret);
+        }
 
         $headerArray = array();
         $headerArray[0] = "Content-type:application/json;";

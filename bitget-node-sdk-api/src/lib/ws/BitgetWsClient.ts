@@ -26,11 +26,10 @@ export class BitgetWsClient extends EventEmitter {
         super();
         this.websocketUri = API_CONFIG.WS_URL;
         this.callBack = callBack;
-        this.socket = new WebSocket(API_CONFIG.WS_URL);
+        this.socket = new WebSocket(API_CONFIG.WS_URL, {});
         this.apiKey = apiKey;
         this.apiSecret = apiSecret;
         this.passphrase = passphrase;
-
 
         this.socket.on('open', () => this.onOpen());
         this.socket.on('close', (code, reason) => this.onClose(code, reason));
@@ -66,15 +65,12 @@ export class BitgetWsClient extends EventEmitter {
         if (!this.socket) throw Error('socket is not open');
         const jsonStr = toJsonString(messageObject);
         Console.info('sendInfo:'+jsonStr)
-        if (that.isOpen) {
-            this.socket?.send(jsonStr);
-        }
 
-        // setInterval(() => {
-        //     if (that.isOpen) {
-        //         this.socket?.send(jsonStr);
-        //     }
-        // }, 1000);
+        setInterval(() => {
+            if (that.isOpen) {
+                this.socket?.send(jsonStr);
+            }
+        }, 1000);
     }
 
     private onOpen() {
@@ -83,7 +79,6 @@ export class BitgetWsClient extends EventEmitter {
         this.initTimer();
         this.emit('open');
     }
-
 
     private initTimer() {
         this.interval = setInterval(() => {
@@ -107,15 +102,6 @@ export class BitgetWsClient extends EventEmitter {
             this.interval = null;
         }
         this.emit('close');
-    }
-
-    connection() {
-        this.socket.on('connection', () => {
-            Console.info("open")
-        })
-        Console.info(`on open Connected to ${this.websocketUri}`);
-        this.initTimer();
-        this.emit('open');
     }
 
     close() {
