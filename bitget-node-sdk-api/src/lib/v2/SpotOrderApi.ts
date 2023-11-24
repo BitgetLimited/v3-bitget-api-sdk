@@ -28,25 +28,25 @@ export class SpotOrderApi extends BaseApi {
 
     orderInfo(qsOrBody: object) {
         const url = '/api/v2/spot/trade/orderInfo';
-        const headers = this.signer('POST', url, qsOrBody)
+        const headers = this.signer('GET', url, qsOrBody)
         return this.axiosInstance.get(url, {headers, params: qsOrBody})
     }
 
     unfilledOrders(qsOrBody: object) {
         const url = '/api/v2/spot/trade/unfilled-orders';
-        const headers = this.signer('POST', url, qsOrBody)
+        const headers = this.signer('GET', url, qsOrBody)
         return this.axiosInstance.get(url, {headers, params: qsOrBody})
     }
 
     historyOrders(qsOrBody: object) {
         const url = '/api/v2/spot/trade/history-orders';
-        const headers = this.signer('POST', url, qsOrBody)
+        const headers = this.signer('GET', url, qsOrBody)
         return this.axiosInstance.get(url, {headers, params: qsOrBody})
     }
 
     fills(qsOrBody: object) {
         const url = '/api/v2/spot/trade/fills';
-        const headers = this.signer('POST', url, qsOrBody)
+        const headers = this.signer('GET', url, qsOrBody)
         return this.axiosInstance.get(url, {headers, params: qsOrBody})
     }
 
@@ -64,13 +64,13 @@ export class SpotOrderApi extends BaseApi {
 
     currentPlanOrder(qsOrBody: object) {
         const url = '/api/v2/spot/trade/current-plan-order';
-        const headers = this.signer('POST', url, qsOrBody)
+        const headers = this.signer('GET', url, qsOrBody)
         return this.axiosInstance.get(url, {headers, params: qsOrBody})
     }
 
     historyPlanOrder(qsOrBody: object) {
         const url = '/api/v2/spot/trade/history-plan-order';
-        const headers = this.signer('POST', url, qsOrBody)
+        const headers = this.signer('GET', url, qsOrBody)
         return this.axiosInstance.get(url, {headers, params: qsOrBody})
     }
 
@@ -82,13 +82,13 @@ export class SpotOrderApi extends BaseApi {
 
     traderOrderCurrentTrack(qsOrBody: object) {
         const url = '/api/v2/copy/spot-trader/order-current-track';
-        const headers = this.signer('POST', url, qsOrBody)
+        const headers = this.signer('GET', url, qsOrBody)
         return this.axiosInstance.get(url, {headers, params: qsOrBody})
     }
 
     traderOrderHistoryTrack(qsOrBody: object) {
         const url = '/api/v2/copy/spot-trader/order-history-track';
-        const headers = this.signer('POST', url, qsOrBody)
+        const headers = this.signer('GET', url, qsOrBody)
         return this.axiosInstance.get(url, {headers, params: qsOrBody})
     }
 }

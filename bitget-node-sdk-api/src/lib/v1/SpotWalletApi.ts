@@ -10,7 +10,7 @@ export class SpotWalletApi extends BaseApi {
 
     depositAddress(qsOrBody: object) {
         const url = '/api/spot/v1/wallet/deposit-address';
-        const headers = this.signer('POST', url, qsOrBody)
+        const headers = this.signer('GET', url, qsOrBody)
         return this.axiosInstance.get(url, {headers, params: qsOrBody})
     }
 
@@ -22,13 +22,13 @@ export class SpotWalletApi extends BaseApi {
 
     withdrawalRecords(qsOrBody: object) {
         const url = '/api/spot/v1/wallet/withdrawal-list';
-        const headers = this.signer('POST', url, qsOrBody)
+        const headers = this.signer('GET', url, qsOrBody)
         return this.axiosInstance.get(url, {headers, params: qsOrBody})
     }
 
     depositRecords(qsOrBody: object) {
         const url = '/api/spot/v1/wallet/deposit-list';
-        const headers = this.signer('POST', url, qsOrBody)
+        const headers = this.signer('GET', url, qsOrBody)
         return this.axiosInstance.get(url, {headers, params: qsOrBody})
     }
 }

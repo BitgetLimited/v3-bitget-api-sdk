@@ -28,19 +28,19 @@ export class MixOrderApi extends BaseApi {
 
     ordersPending(qsOrBody: object) {
         const url = '/api/mix/v1/order/current';
-        const headers = this.signer('POST', url, qsOrBody)
+        const headers = this.signer('GET', url, qsOrBody)
         return this.axiosInstance.get(url, {headers, params: qsOrBody})
     }
 
     ordersHistory(qsOrBody: object) {
         const url = '/api/mix/v1/order/history';
-        const headers = this.signer('POST', url, qsOrBody)
+        const headers = this.signer('GET', url, qsOrBody)
         return this.axiosInstance.get(url, {headers, params: qsOrBody})
     }
 
     fills(qsOrBody: object) {
         const url = '/api/mix/v1/order/fills';
-        const headers = this.signer('POST', url, qsOrBody)
+        const headers = this.signer('GET', url, qsOrBody)
         return this.axiosInstance.get(url, {headers, params: qsOrBody})
     }
 
@@ -75,14 +75,14 @@ export class MixOrderApi extends BaseApi {
     }
 
     traderCurrentOrders(qsOrBody: object) {
-        const url = '/apiapi/mix/v1/trace/currentTrack';
-        const headers = this.signer('POST', url, qsOrBody)
+        const url = '/api/mix/v1/trace/currentTrack';
+        const headers = this.signer('GET', url, qsOrBody)
         return this.axiosInstance.get(url, {headers, params: qsOrBody})
     }
 
     traderHistoryTrack(qsOrBody: object) {
         const url = '/api/mix/v1/trace/historyTrack';
-        const headers = this.signer('POST', url, qsOrBody)
+        const headers = this.signer('GET', url, qsOrBody)
         return this.axiosInstance.get(url, {headers, params: qsOrBody})
     }
 
@@ -94,13 +94,13 @@ export class MixOrderApi extends BaseApi {
 
     followerQueryCurrentOrders(qsOrBody: object) {
         const url = '/api/mix/v1/trace/followerOrder';
-        const headers = this.signer('POST', url, qsOrBody)
+        const headers = this.signer('GET', url, qsOrBody)
         return this.axiosInstance.get(url, {headers, params: qsOrBody})
     }
 
     followerQueryHistoryOrders(qsOrBody: object) {
         const url = '/api/mix/v1/trace/followerHistoryOrders';
-        const headers = this.signer('POST', url, qsOrBody)
+        const headers = this.signer('GET', url, qsOrBody)
         return this.axiosInstance.get(url, {headers, params: qsOrBody})
     }
 }
