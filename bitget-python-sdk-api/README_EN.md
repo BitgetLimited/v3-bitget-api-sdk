@@ -12,7 +12,7 @@
 1.2 Install required libraries
 ```python
 pip install requests
-pip install websockets
+pip install websocket-client
 ```
 
 #### Second：Configure Apikey information

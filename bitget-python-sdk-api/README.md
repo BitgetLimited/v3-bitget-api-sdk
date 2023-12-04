@@ -12,7 +12,7 @@
 1.2 安装所需库
 ```python
 pip install requests
-pip install websockets
+pip install websocket-client
 ```
 
 #### 第二步：配置个人信息
