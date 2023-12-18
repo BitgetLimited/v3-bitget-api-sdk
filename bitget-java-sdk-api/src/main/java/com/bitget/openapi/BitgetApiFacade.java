@@ -118,50 +118,50 @@ public class BitgetApiFacade {
         /**
          * market service
          */
-        public MixMarketService mixMarket() {
-            return new MixMarketService(apiClient);
+        public com.bitget.openapi.service.v2.mix.MixMarketService mixMarket() {
+            return new com.bitget.openapi.service.v2.mix.MixMarketService(apiClient);
         }
 
         /**
          * account service
          */
-        public MixAccountService mixAccount() {
-            return new MixAccountService(apiClient);
+        public com.bitget.openapi.service.v2.mix.MixAccountService mixAccount() {
+            return new com.bitget.openapi.service.v2.mix.MixAccountService(apiClient);
         }
 
         /**
          * order service
          */
-        public MixOrderService mixOrder() {
-            return new MixOrderService(apiClient);
+        public com.bitget.openapi.service.v2.mix.MixOrderService mixOrder() {
+            return new com.bitget.openapi.service.v2.mix.MixOrderService(apiClient);
         }
 
         /**
          * account service
          */
-        public SpotAccountService spotAccount() {
-            return new SpotAccountService(apiClient);
+        public com.bitget.openapi.service.v2.spot.SpotAccountService spotAccount() {
+            return new com.bitget.openapi.service.v2.spot.SpotAccountService(apiClient);
         }
 
         /**
          * market service
          */
-        public SpotMarketService spotMarket() {
-            return new SpotMarketService(apiClient);
+        public com.bitget.openapi.service.v2.spot.SpotMarketService spotMarket() {
+            return new com.bitget.openapi.service.v2.spot.SpotMarketService(apiClient);
         }
 
         /**
          * order service
          */
-        public SpotOrderService spotOrder() {
-            return new SpotOrderService(apiClient);
+        public com.bitget.openapi.service.v2.spot.SpotOrderService spotOrder() {
+            return new com.bitget.openapi.service.v2.spot.SpotOrderService(apiClient);
         }
 
         /**
          * wallet service
          */
-        public SpotWalletService spotWallet() {
-            return new SpotWalletService(apiClient);
+        public com.bitget.openapi.service.v2.spot.SpotWalletService spotWallet() {
+            return new com.bitget.openapi.service.v2.spot.SpotWalletService(apiClient);
         }
     }
 }

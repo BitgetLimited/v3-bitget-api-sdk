@@ -56,6 +56,12 @@ export default function getSigner(
  */
 export function encrypt(httpMethod: string, url: string, qsOrBody: NodeJS.Dict<string | number> | null, timestamp: number,secretKey:string) {
     httpMethod = httpMethod.toUpperCase()
+    if (qsOrBody && httpMethod === 'GET') {
+        qsOrBody = sortByKey(qsOrBody);
+    }
+    if (qsOrBody && Object.keys(qsOrBody).length === 0) {
+        qsOrBody = null;
+    }
     const qsOrBodyStr = qsOrBody ? httpMethod === 'GET' ? '?' + stringify(qsOrBody) : toJsonString(qsOrBody) : ''
 
     const preHash = String(timestamp) + httpMethod + url + qsOrBodyStr
@@ -94,4 +100,21 @@ export function encryptRSA(httpMethod: string, url: string, qsOrBody: NodeJS.Dic
     const priKey = new NodeRSA(secretKey)
     const sign = priKey.sign(preHash, 'base64', 'UTF-8')
     return sign
+}
+
+export function sortByKey(dict:NodeJS.Dict<string | number>) {
+    const sorted = [];
+    for(const key of Object.keys(dict)) {
+        sorted[sorted.length] = key;
+    }
+    sorted.sort();
+
+    const tempDict:any = {};
+    // for(let i = 0; i < sorted.length; i++) {
+    //     tempDict[sorted[i]] = dict[sorted[i]];
+    // }
+    for(const item of sorted) {
+        tempDict[item] = dict[item];
+    }
+    return tempDict;
 }

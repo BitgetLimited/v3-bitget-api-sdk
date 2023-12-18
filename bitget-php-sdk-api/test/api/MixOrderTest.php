@@ -3,7 +3,6 @@
 
 namespace test\api;
 
-
 use bitget\api\BitgetApi;
 use bitget\api\v1\MixOrderApi;
 use bitget\internal\BitgetApiClient;

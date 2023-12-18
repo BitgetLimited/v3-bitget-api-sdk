@@ -14,6 +14,7 @@ class BitgetApiClient extends Config
     public function doGet($url, $body)
     {
         $url = $url . self::buildGetParams($body);
+//        print_r($url . " ======= url ======\n");
         $requestUrl = self::restApiUrl . $url;
         $headerArray = $this->getHead(self::GET, $url, null);
         $ch = curl_init();
@@ -74,21 +75,35 @@ class BitgetApiClient extends Config
         }
 
 
-        $x = 0;
-        foreach ($para as $key => $value) {
-            if ($value == "" || $value == null) {
-                continue;
-            }
+//        $x = 0;
+//        foreach ($para as $key => $value) {
+//            if ($value == "" || $value == null) {
+//                continue;
+//            }
+//
+//            $param = $key . "=" . $value;
+//            if ($x == 0) {
+//                $arg = "?" . $arg . $param;
+//            } else {
+//                $arg = $arg . "&" . $param;
+//            }
+//            $x = $x + 1;
+//        }
 
-            $param = $key . "=" . $value;
-            if ($x == 0) {
-                $arg = "?" . $arg . $param;
-            } else {
-                $arg = $arg . "&" . $param;
-            }
-            $x = $x + 1;
+        $arg = self::sort_data($para);
+        if ($arg == null || $arg == "") {
+            return "";
         }
-        return $arg;
+        return "?".$arg;
+    }
+
+    function sort_data($data){
+        ksort($data);
+        $result = [];
+        foreach ($data as $key => $val) {
+            array_push($result, $key."=".urlencode($val));
+        }
+        return join("&", $result);
     }
 
 }

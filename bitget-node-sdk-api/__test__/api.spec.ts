@@ -7,7 +7,6 @@ import {MixOrderApi} from '../src/lib/v2/MixOrderApi';
 const apiKey = '';
 const secretKey = "";
 const passphrase = '';
-
 describe('ApiTest', () => {
     const mixOrderApi = new BitgetResetApi.MixOrderApi(apiKey, secretKey, passphrase);
     const mixOrderV2Api = new MixOrderApi(apiKey, secretKey, passphrase);
@@ -44,15 +43,22 @@ describe('ApiTest', () => {
     })
 
     test('send get request directly If the interface is not defined in the sdk', () => {
-        const qsOrBody = {'symbol': 'btcusdt_spbl'};
+        const qsOrBody = {'symbol': 'btcusdt_spbl','b':'b','a':'a'};
         return bitgetApi.get("/api/spot/v1/market/depth", qsOrBody).then((data) => {
             Console.info(toJsonString(data));
         });
     })
 
-    test('send get request directly If the interface is not defined in the sdk', () => {
-        const qsOrBody = {'productType': 'umcbl'};
+    test('send get request directly If the interface is not defined in the sdk need auth', () => {
+        const qsOrBody = {'productType': 'umcbl','b':'b','a':'a'};
         return bitgetApi.get("/api/mix/v1/account/accounts", qsOrBody).then((data) => {
+            Console.info(toJsonString(data));
+        });
+    })
+
+    test('send get request directly If the interface is not defined in the sdk need auth spot', () => {
+        const qsOrBody = {};
+        return bitgetApi.get("/api/spot/v1/account/getInfo", qsOrBody).then((data) => {
             Console.info(toJsonString(data));
         });
     })

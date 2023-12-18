@@ -9,10 +9,16 @@ import com.bitget.openapi.common.utils.SignatureUtils;
 import com.bitget.openapi.dto.response.ResponseResult;
 import okhttp3.*;
 import okio.Buffer;
+import org.apache.commons.collections4.CollectionUtils;
+import org.apache.commons.lang3.StringUtils;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
+import java.util.Set;
+import java.util.TreeMap;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -66,18 +72,26 @@ public class ApiClient {
             Request original = chain.request();
             String timestamp = String.valueOf(System.currentTimeMillis());
             String contentType = "application/json";
+            String sortedQuery = getSortedQuery(original); // original.url().encodedQuery();
+            String url = parseToString(original.url().scheme())
+                    + "://"
+                    + parseToString(original.url().host())
+                    + parseToString(original.url().url().getPath());
+            if (StringUtils.isNotBlank(sortedQuery)) {
+                url = url + "?" + sortedQuery;
+            }
             try {
                 String sign = SignatureUtils.generate(timestamp,
                         original.method(),
                         original.url().url().getPath(),
-                        original.url().encodedQuery(),
+                        sortedQuery, // original.url().encodedQuery(),
                         original.body() == null ? "" : bodyToString(original),
                         clientParameter.getSecretKey());
                 if (SignTypeEnum.RSA == clientParameter.getSignType()) {
                     sign = SignatureUtils.restGenerateRsaSignature(timestamp,
                             original.method(),
                             original.url().url().getPath(),
-                            original.url().encodedQuery(),
+                            sortedQuery, // original.url().encodedQuery(),
                             original.body() == null ? "" : bodyToString(original),
                             clientParameter.getSecretKey());
                 }
@@ -90,7 +104,8 @@ public class ApiClient {
                         .addHeader(HttpHeader.CONTENT_TYPE, contentType)
                         .addHeader(HttpHeader.COOKIE, String.format(localFormat, clientParameter.getLocale()))
                         .addHeader(HttpHeader.LOCALE, clientParameter.getLocale())
-                        .addHeader(HttpHeader.ACCESS_TIMESTAMP, timestamp);
+                        .addHeader(HttpHeader.ACCESS_TIMESTAMP, timestamp)
+                        .url(url);
 
                 Request request = requestBuilder.build();
                 return chain.proceed(request);
@@ -108,6 +123,49 @@ public class ApiClient {
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
+        }
+
+        private String parseToString(String value) {
+            if (StringUtils.isBlank(value)) {
+                return "";
+            }
+            return value;
+        }
+
+        private String getSortedQuery(Request original) {
+            if (CollectionUtils.isEmpty(original.url().queryParameterNames())) {
+                return "";
+            }
+
+            Set<String> keys = original.url().queryParameterNames();
+            TreeMap<String, Object> params = new TreeMap<>();
+            for (String key : keys) {
+                if (StringUtils.isBlank(key)) {
+                    continue;
+                }
+
+                params.put(key, original.url().queryParameter(key));
+            }
+            if (params.size() == 0) {
+                return "";
+            }
+
+            return composeParams(params);
+        }
+
+        private String composeParams(TreeMap<String, Object> params) {
+            StringBuffer sb = new StringBuffer();
+            params.forEach((s, o) -> {
+                try {
+                    sb.append(s).append("=").append(URLEncoder.encode(String.valueOf(o), "UTF-8")).append("&");
+                } catch (UnsupportedEncodingException e) {
+                    e.printStackTrace();
+                }
+            });
+            if (sb.length() > 0) {
+                sb.deleteCharAt(sb.length() - 1);
+            }
+            return sb.toString();
         }
     }
 
