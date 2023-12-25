@@ -5,6 +5,7 @@ import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
+import retrofit2.http.QueryMap;
 
 import java.util.Map;
 
@@ -24,13 +25,13 @@ public interface SpotOrderApi {
     Call<ResponseResult> batchCancelOrder(@Body Map<String, String> body);
 
     @GET("/api/v2/spot/trade/unfilled-orders")
-    Call<ResponseResult> unfilledOrders(@Body Map<String, String> body);
+    Call<ResponseResult> unfilledOrders(@QueryMap Map<String, String> body);
 
     @GET("/api/v2/spot/trade/history-orders")
-    Call<ResponseResult> historyOrders(@Body Map<String, String> body);
+    Call<ResponseResult> historyOrders(@QueryMap Map<String, String> body);
 
     @GET("/api/v2/spot/trade/fills")
-    Call<ResponseResult> fills(@Body Map<String, String> body);
+    Call<ResponseResult> fills(@QueryMap Map<String, String> body);
 
 
     // plan
@@ -41,10 +42,10 @@ public interface SpotOrderApi {
     Call<ResponseResult> cancelPlanOrder(@Body Map<String, String> body);
 
     @GET("/api/v2/spot/trade/current-plan-order")
-    Call<ResponseResult> currentPlanOrder(@Body Map<String, String> body);
+    Call<ResponseResult> currentPlanOrder(@QueryMap Map<String, String> body);
 
     @GET("/api/v2/spot/trade/history-plan-order")
-    Call<ResponseResult> historyPlanOrder(@Body Map<String, String> body);
+    Call<ResponseResult> historyPlanOrder(@QueryMap Map<String, String> body);
 
 
     // trace
@@ -52,8 +53,8 @@ public interface SpotOrderApi {
     Call<ResponseResult> traderOrderCloseTracking(@Body Map<String, String> body);
 
     @GET("/api/v2/copy/spot-trader/order-current-track")
-    Call<ResponseResult> traderOrderCurrentTrack(@Body Map<String, String> body);
+    Call<ResponseResult> traderOrderCurrentTrack(@QueryMap Map<String, String> body);
 
     @GET("/api/v2/copy/spot-trader/order-history-track")
-    Call<ResponseResult> traderOrderHistoryTrack(@Body Map<String, String> body);
+    Call<ResponseResult> traderOrderHistoryTrack(@QueryMap Map<String, String> body);
 }

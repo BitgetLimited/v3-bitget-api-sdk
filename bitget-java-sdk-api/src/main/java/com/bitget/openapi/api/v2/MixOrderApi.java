@@ -50,7 +50,7 @@ public interface MixOrderApi {
 
     // trader
     @POST("/api/v2/copy/mix-trader/order-close-positions")
-    Call<ResponseResult> traderOrderClosePositions(@QueryMap Map<String, String> paramMap);
+    Call<ResponseResult> traderOrderClosePositions(@Body Map<String, String> paramMap);
 
     @GET("/api/v2/copy/mix-trader/order-current-track")
     Call<ResponseResult> traderOrderCurrentTrack(@QueryMap Map<String, String> paramMap);
@@ -59,7 +59,7 @@ public interface MixOrderApi {
     Call<ResponseResult> traderOrderHistoryTrack(@QueryMap Map<String, String> paramMap);
 
     @POST("/api/v2/copy/mix-follower/close-positions")
-    Call<ResponseResult> followerClosePositions(@QueryMap Map<String, String> paramMap);
+    Call<ResponseResult> followerClosePositions(@Body Map<String, String> paramMap);
 
     @GET("/api/v2/copy/mix-follower/query-current-orders")
     Call<ResponseResult> followerQueryCurrentOrders(@QueryMap Map<String, String> paramMap);

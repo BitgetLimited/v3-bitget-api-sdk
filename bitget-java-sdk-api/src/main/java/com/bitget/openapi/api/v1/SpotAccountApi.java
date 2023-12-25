@@ -2,6 +2,7 @@ package com.bitget.openapi.api.v1;
 
 import com.bitget.openapi.dto.response.ResponseResult;
 import retrofit2.Call;
+import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
 import retrofit2.http.QueryMap;
@@ -17,7 +18,7 @@ public interface SpotAccountApi {
     Call<ResponseResult> assetsLite(@QueryMap Map<String, String> paramMap);
 
     @POST("/api/spot/v1/account/bills")
-    Call<ResponseResult> bills(@QueryMap Map<String, String> paramMap);
+    Call<ResponseResult> bills(@Body Map<String, String> paramMap);
 
     @GET("/api/spot/v1/account/transferRecords")
     Call<ResponseResult> transferRecords(@QueryMap Map<String, String> paramMap);

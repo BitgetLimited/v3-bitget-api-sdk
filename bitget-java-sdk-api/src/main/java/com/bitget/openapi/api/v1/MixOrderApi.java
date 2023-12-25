@@ -47,7 +47,7 @@ public interface MixOrderApi {
 
     // trader
     @POST("/api/mix/v1/trace/closeTrackOrder")
-    Call<ResponseResult> traderCloseOrder(@QueryMap Map<String, String> paramMap);
+    Call<ResponseResult> traderCloseOrder(@Body Map<String, String> paramMap);
 
     @GET("/api/mix/v1/trace/currentTrack")
     Call<ResponseResult> traderCurrentOrders(@QueryMap Map<String, String> paramMap);
@@ -56,7 +56,7 @@ public interface MixOrderApi {
     Call<ResponseResult> traderHistoryTrack(@QueryMap Map<String, String> paramMap);
 
     @POST("/api/mix/v1/trace/followerCloseByTrackingNo")
-    Call<ResponseResult> followerCloseByTrackingNo(@QueryMap Map<String, String> paramMap);
+    Call<ResponseResult> followerCloseByTrackingNo(@Body Map<String, String> paramMap);
 
     @GET("/api/mix/v1/trace/followerOrder")
     Call<ResponseResult> followerOrder(@QueryMap Map<String, String> paramMap);
