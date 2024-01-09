@@ -87,7 +87,6 @@ func (p *BitgetWsClient) Subscribe(list []model.SubscribeReq, listener common.On
 	var args []interface{}
 	for i := 0; i < len(list); i++ {
 		req := toUpperReq(list[i])
-		args = append(args, req)
 
 		p.bitgetBaseWsClient.ScribeMap[req] = listener
 		p.bitgetBaseWsClient.AllSuribe.Add(req)
