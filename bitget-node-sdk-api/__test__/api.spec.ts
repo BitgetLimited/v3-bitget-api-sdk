@@ -62,5 +62,12 @@ describe('ApiTest', () => {
             Console.info(toJsonString(data));
         });
     })
+
+    test('send get request directly with encode params', () => {
+        const qsOrBody = {'symbol': '$AIUSDT','businessType':'spot'};
+        return bitgetApi.get("/api/v2/common/trade-rate", qsOrBody).then((data) => {
+            Console.info(toJsonString(data));
+        });
+    })
 });
 

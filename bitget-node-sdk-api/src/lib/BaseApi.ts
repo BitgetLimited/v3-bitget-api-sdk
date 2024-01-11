@@ -1,4 +1,4 @@
-import getSigner, {BitgetApiHeader, toJsonString} from './util';
+import getSigner, {BitgetApiHeader, toJsonString, sortByKey} from './util';
 import {API_CONFIG} from './config';
 import axios, {AxiosInstance, AxiosRequestConfig} from 'axios';
 import * as Console from 'console';
@@ -25,6 +25,10 @@ export class BaseApi{
         this.axiosInstance.interceptors.request.use((data) => {
             if(data.data){
                 data.data = toJsonString(data.data);
+            }
+            if(data.params){
+                data.params = sortByKey(data.params)
+                // Console.log('sort_params:', data.params)
             }
             Console.log('request:',data.data || data.params)
             return data;

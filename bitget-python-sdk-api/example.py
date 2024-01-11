@@ -4,9 +4,9 @@ import bitget.bitget_api as baseApi
 from bitget.exceptions import BitgetAPIException
 
 if __name__ == '__main__':
-    apiKey = "your apiKey"
-    secretKey = "your secretKey"
-    passphrase = "your passphrase"
+    apiKey = ""
+    secretKey = '''your'''
+    passphrase = ""
 
     # Demo 1:place order
     maxOrderApi = maxOrderApi.OrderApi(apiKey, secretKey, passphrase)
@@ -52,6 +52,16 @@ if __name__ == '__main__':
     # Demo 4:send get request with no params
     try:
         response = baseApi.get("/api/spot/v1/account/getInfo", {})
+        print(response)
+    except BitgetAPIException as e:
+        print("error:" + e.message)
+
+    # Demo 5:send get request
+    try:
+        params = {}
+        params["symbol"] = "AIUSDT"
+        params["businessType"] = "spot"
+        response = baseApi.get("/api/v2/common/trade-rate", params)
         print(response)
     except BitgetAPIException as e:
         print("error:" + e.message)

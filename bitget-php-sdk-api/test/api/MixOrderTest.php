@@ -50,6 +50,13 @@ class MixOrderTest
         return $this->bitgetApi->get("/api/mix/v1/account/accounts", $params);
     }
 
+    public function testGetWithEncodeParams()
+    {
+        $params = array("symbol" => 'AIUSDT',
+            "businessType" => "spot");
+        return $this->bitgetApi->get("/api/v2/common/trade-rate", $params);
+    }
+
     public function testGetWithNoParams()
     {
         $params = array();

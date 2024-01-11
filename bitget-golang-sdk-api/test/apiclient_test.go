@@ -70,3 +70,17 @@ func Test_get_with_params(t *testing.T) {
 	}
 	fmt.Println(resp)
 }
+
+func Test_get_with_encode_params(t *testing.T) {
+	client := new(client.BitgetApiClient).Init()
+
+	params := internal.NewParams()
+	params["symbol"] = "$AIUSDT"
+	params["businessType"] = "spot"
+
+	resp, err := client.Get("/api/v2/common/trade-rate", params)
+	if err != nil {
+		println(err.Error())
+	}
+	fmt.Println(resp)
+}

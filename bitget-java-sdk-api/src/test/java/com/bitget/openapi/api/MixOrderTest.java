@@ -55,6 +55,15 @@ public class MixOrderTest extends BaseTest {
     }
 
     @Test
+    public void get_comm() throws IOException {
+        Map<String, String> paramMap = Maps.newHashMap();
+        paramMap.put("symbol", "$AIUSDT");
+        paramMap.put("businessType", "spot");
+        ResponseResult result = bitgetRestClient.bitget().v1().request().get("/api/v2/common/trade-rate", paramMap);
+        System.out.println(JSON.toJSONString(result));
+    }
+
+    @Test
     public void getWithEmptyParams() throws IOException {
         ResponseResult result = bitgetRestClient.bitget().v1().request().get("/api/mix/v1/market/contract-vip-level", Maps.newHashMap());
         System.out.println(JSON.toJSONString(result));

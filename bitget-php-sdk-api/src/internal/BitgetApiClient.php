@@ -101,7 +101,8 @@ class BitgetApiClient extends Config
         ksort($data);
         $result = [];
         foreach ($data as $key => $val) {
-            array_push($result, $key."=".urlencode($val));
+//            array_push($result, $key."=".urlencode($val));
+            array_push($result, $key."=".$val);
         }
         return join("&", $result);
     }

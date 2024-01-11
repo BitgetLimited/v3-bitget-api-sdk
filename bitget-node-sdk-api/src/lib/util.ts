@@ -62,13 +62,22 @@ export function encrypt(httpMethod: string, url: string, qsOrBody: NodeJS.Dict<s
     if (qsOrBody && Object.keys(qsOrBody).length === 0) {
         qsOrBody = null;
     }
-    const qsOrBodyStr = qsOrBody ? httpMethod === 'GET' ? '?' + stringify(qsOrBody) : toJsonString(qsOrBody) : ''
+    // const qsOrBodyStr = qsOrBody ? httpMethod === 'GET' ? '?' + stringify(qsOrBody) : toJsonString(qsOrBody) : ''
+    const qsOrBodyStr = qsOrBody ? httpMethod === 'GET' ? '?' + unescapedStringify(qsOrBody) : toJsonString(qsOrBody) : ''
 
     const preHash = String(timestamp) + httpMethod + url + qsOrBodyStr
 
     const mac = createHmac('sha256', secretKey)
     const preHashToMacBuffer = mac.update(preHash).digest()
     return preHashToMacBuffer.toString('base64')
+}
+
+
+function unescapedStringify(formDataDict: NodeJS.Dict<string | number>){
+    let encodedData = Object.keys(formDataDict).map((eachKey) => {
+        return eachKey + '=' + formDataDict[eachKey];
+    }).join('&');
+    return encodedData;
 }
 
 export function toJsonString(obj: object): string | null {

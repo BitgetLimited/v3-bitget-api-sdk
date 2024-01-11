@@ -22,6 +22,10 @@ function test()
 
     $testGet = $mixOrderTest->testGetWithNoParams();
     print_r($testGet . "\n");
+
+    $testGet = $mixOrderTest->testGetWithEncodeParams();
+    print_r($testGet . "\n");
+
 }
 
 

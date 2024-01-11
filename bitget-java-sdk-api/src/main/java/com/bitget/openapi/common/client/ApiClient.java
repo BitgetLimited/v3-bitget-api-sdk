@@ -157,8 +157,8 @@ public class ApiClient {
             StringBuffer sb = new StringBuffer();
             params.forEach((s, o) -> {
                 try {
-                    sb.append(s).append("=").append(URLEncoder.encode(String.valueOf(o), "UTF-8")).append("&");
-                } catch (UnsupportedEncodingException e) {
+                    sb.append(s).append("=").append(o).append("&");
+                } catch (Exception e) {
                     e.printStackTrace();
                 }
             });
