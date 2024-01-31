@@ -189,7 +189,11 @@ class BitgetWsClient:
         return BooksInfo(dict['asks'], dict['bids'], dict['checksum'])
 
     def __dict_to_subscribe_req(self, dict):
-        return SubscribeReq(dict['instType'], dict['channel'], dict['instId'])
+        if "instId" in dict:
+            instId = dict['instId']
+        else:
+            instId = dict['coin']
+        return SubscribeReq(dict['instType'], dict['channel'], instId)
 
     def get_listener(self, json_obj):
         try:
@@ -323,6 +327,7 @@ class SubscribeReq:
         self.inst_type = inst_type
         self.channel = channel
         self.inst_id = instId
+        self.coin = instId
 
     def __eq__(self, other) -> bool:
         return self.__dict__ == other.__dict__

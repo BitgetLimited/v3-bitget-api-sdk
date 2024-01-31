@@ -101,6 +101,14 @@ public class BitgetWsHandle implements BitgetWsClient {
 
     @Override
     public void subscribe(List<SubscribeReq> channels) {
+        if (CollectionUtils.isNotEmpty(channels)) {
+            for (SubscribeReq subscribeReq : channels) {
+                if (subscribeReq != null && StringUtils.isBlank(subscribeReq.getCoin())) {
+                    subscribeReq.setCoin(subscribeReq.getInstId());
+                }
+            }
+        }
+
         allSuribe.addAll(channels);
         sendMessage(new WsBaseReq<>(WS_OP_SUBSCRIBE, channels));
     }

@@ -74,7 +74,7 @@ export function encrypt(httpMethod: string, url: string, qsOrBody: NodeJS.Dict<s
 
 
 function unescapedStringify(formDataDict: NodeJS.Dict<string | number>){
-    let encodedData = Object.keys(formDataDict).map((eachKey) => {
+    const encodedData = Object.keys(formDataDict).map((eachKey) => {
         return eachKey + '=' + formDataDict[eachKey];
     }).join('&');
     return encodedData;
