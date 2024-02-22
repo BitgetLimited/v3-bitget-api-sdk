@@ -362,7 +362,7 @@ public class BitgetWsHandle implements BitgetWsClient {
 
     }
 
-    static class BitgetClientBuilder {
+    public static class BitgetClientBuilder {
         private String pushUrl;
         private boolean isLogin;
         private String apiKey;
