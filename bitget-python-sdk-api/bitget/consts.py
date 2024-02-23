@@ -2,6 +2,9 @@
 API_URL = 'https://api.bitget.com'
 CONTRACT_WS_URL = 'wss://ws.bitget.com/mix/v1/stream'
 
+# Timestamp Url
+SERVER_TIMESTAMP_URL = '/api/v2/public/time'
+
 # http header
 CONTENT_TYPE = 'Content-Type'
 OK_ACCESS_KEY = 'ACCESS-KEY'
