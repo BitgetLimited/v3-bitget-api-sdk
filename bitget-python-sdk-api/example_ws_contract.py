@@ -28,7 +28,7 @@ if __name__ == '__main__':
         .error_listener(handel_error) \
         .build()
 
-    channles = [SubscribeReq("mc", "ticker", "BTCUSD"), SubscribeReq("SP", "candle1W", "BTCUSDT")]
+    channles = [SubscribeReq("mc", "ticker", "BTCUSD"), SubscribeReq("sp", "candle1W", "BTCUSDT")]
     client.subscribe(channles, handle)
 
     channles = [SubscribeReq("mc", "ticker", "ETHUSD")]
