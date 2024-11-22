@@ -9,8 +9,8 @@ from zlib import crc32
 
 import websocket
 
-from bitget.consts import GET, REQUEST_PATH
-from bitget.ws.utils import sign_utils
+from bitget.consts import GET
+from .. import consts as c, utils
 
 WS_OP_LOGIN = 'login'
 WS_OP_SUBSCRIBE = "subscribe"
@@ -28,7 +28,7 @@ def handel_error(message):
 class BitgetWsClient:
 
     def __init__(self, url, need_login=False):
-        sign_utils.check_none(url, "url")
+        utils.check_none(url, "url")
         self.__need_login = need_login
         self.__connection = False
         self.__login_status = False
@@ -94,11 +94,13 @@ class BitgetWsClient:
             print(ex)
 
     def __login(self):
-        sign_utils.check_none(self.__api_key, "api key")
-        sign_utils.check_none(self.__api_secret_key, "api secret key")
-        sign_utils.check_none(self.__passphrase, "passphrase")
+        utils.check_none(self.__api_key, "api key")
+        utils.check_none(self.__api_secret_key, "api secret key")
+        utils.check_none(self.__passphrase, "passphrase")
         timestamp = int(round(time.time()))
-        sign = sign_utils.sign(sign_utils.pre_hash(timestamp, GET, REQUEST_PATH), self.__api_secret_key)
+        sign = utils.sign(utils.pre_hash(timestamp, GET, c.REQUEST_PATH), self.__api_secret_key)
+        if c.SIGN_TYPE == c.RSA:
+            sign = utils.signByRSA(utils.pre_hash(timestamp, GET, c.REQUEST_PATH), self.__api_secret_key)
         ws_login_req = WsLoginReq(self.__api_key, self.__passphrase, str(timestamp), sign)
         self.send_message(WS_OP_LOGIN, [ws_login_req])
         print("logging in......")
@@ -128,7 +130,7 @@ class BitgetWsClient:
 
         if listener:
             for chanel in channels:
-                chanel.inst_type = str(chanel.inst_type).lower()
+                chanel.inst_type = str(chanel.inst_type)
                 self.__scribe_map[chanel] = listener
 
         for channel in channels:
@@ -187,7 +189,11 @@ class BitgetWsClient:
         return BooksInfo(dict['asks'], dict['bids'], dict['checksum'])
 
     def __dict_to_subscribe_req(self, dict):
-        return SubscribeReq(dict['instType'], dict['channel'], dict['instId'])
+        if "instId" in dict:
+            instId = dict['instId']
+        else:
+            instId = dict['coin']
+        return SubscribeReq(dict['instType'], dict['channel'], instId)
 
     def get_listener(self, json_obj):
         try:
@@ -321,6 +327,7 @@ class SubscribeReq:
         self.inst_type = inst_type
         self.channel = channel
         self.inst_id = instId
+        self.coin = instId
 
     def __eq__(self, other) -> bool:
         return self.__dict__ == other.__dict__

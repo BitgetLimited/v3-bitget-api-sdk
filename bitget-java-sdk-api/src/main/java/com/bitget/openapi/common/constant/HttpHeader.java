@@ -4,12 +4,12 @@ public class HttpHeader {
     /**
      * baseUrl must end in /
      */
-    public static final String BASE_URL = "https://capi.bitget.com/api/swap/v3/";
+    public static final String BASE_URL = "https://api.bitget.com/";
+
     /**
      * http request timeout
      */
     public static final Long TIME_OUT = 30L;
-
 
     /**
      * header parameter

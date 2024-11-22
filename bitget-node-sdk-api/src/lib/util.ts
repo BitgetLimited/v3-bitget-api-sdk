@@ -1,7 +1,8 @@
 import {stringify} from 'querystring'
 import {createHmac} from 'crypto'
 import * as Console from 'console';
-import {LOCAL} from './config';
+import {API_CONFIG} from './config';
+import {BIZ_CONSTANT} from './contant';
 
 export interface BitgetApiHeader {
     'ACCESS-SIGN': string
@@ -17,19 +18,21 @@ export interface BitgetApiHeader {
  * 获取签名器
  * @param apiKey
  * @param secretKey
+ * @param timestamp
  * @param passphrase
- * @param locale
  */
 export default function getSigner(
     apiKey: string = '',
     secretKey: string = '',
-    passphrase: string = '',
-    locale: string = LOCAL.EN_US
+    passphrase: string = ''
 ) {
 
-    return (httpMethod: string, url: string, qsOrBody: NodeJS.Dict<any> | null) => {
+    return (httpMethod: string, url: string, qsOrBody: NodeJS.Dict<any> | null, locale = 'zh-CN') => {
         const timestamp = Date.now();
-        const signString = encrypt(httpMethod, url, qsOrBody, timestamp,secretKey)
+        let signString = encrypt(httpMethod, url, qsOrBody, timestamp, secretKey);
+        if (API_CONFIG.SIGN_TYPE === BIZ_CONSTANT.RSA) {
+            signString = encryptRSA(httpMethod, url, qsOrBody, timestamp,secretKey)
+        }
 
         return {
             'ACCESS-SIGN': signString,
@@ -53,13 +56,28 @@ export default function getSigner(
  */
 export function encrypt(httpMethod: string, url: string, qsOrBody: NodeJS.Dict<string | number> | null, timestamp: number,secretKey:string) {
     httpMethod = httpMethod.toUpperCase()
-    const qsOrBodyStr = qsOrBody ? httpMethod === 'GET' ? '?' + stringify(qsOrBody) : toJsonString(qsOrBody) : ''
+    if (qsOrBody && httpMethod === 'GET') {
+        qsOrBody = sortByKey(qsOrBody);
+    }
+    if (qsOrBody && Object.keys(qsOrBody).length === 0) {
+        qsOrBody = null;
+    }
+    // const qsOrBodyStr = qsOrBody ? httpMethod === 'GET' ? '?' + stringify(qsOrBody) : toJsonString(qsOrBody) : ''
+    const qsOrBodyStr = qsOrBody ? httpMethod === 'GET' ? '?' + unescapedStringify(qsOrBody) : toJsonString(qsOrBody) : ''
 
     const preHash = String(timestamp) + httpMethod + url + qsOrBodyStr
 
     const mac = createHmac('sha256', secretKey)
     const preHashToMacBuffer = mac.update(preHash).digest()
     return preHashToMacBuffer.toString('base64')
+}
+
+
+function unescapedStringify(formDataDict: NodeJS.Dict<string | number>){
+    const encodedData = Object.keys(formDataDict).map((eachKey) => {
+        return eachKey + '=' + formDataDict[eachKey];
+    }).join('&');
+    return encodedData;
 }
 
 export function toJsonString(obj: object): string | null {
@@ -73,4 +91,39 @@ export function toJsonString(obj: object): string | null {
     });
     const reg = new RegExp('"_', 'g')
     return json.replace(reg, '"');
+}
+
+/**
+ * RSA加密算法
+ * @param httpMethod
+ * @param url
+ * @param qsOrBody
+ * @param timestamp
+ * @param secretKey
+ */
+export function encryptRSA(httpMethod: string, url: string, qsOrBody: NodeJS.Dict<string | number> | null, timestamp: number,secretKey:string) {
+    httpMethod = httpMethod.toUpperCase()
+    const qsOrBodyStr = qsOrBody ? httpMethod === 'GET' ? '?' + stringify(qsOrBody) : toJsonString(qsOrBody) : ''
+    const preHash = String(timestamp) + httpMethod + url + qsOrBodyStr
+    const NodeRSA = require('node-rsa')
+    const priKey = new NodeRSA(secretKey)
+    const sign = priKey.sign(preHash, 'base64', 'UTF-8')
+    return sign
+}
+
+export function sortByKey(dict:NodeJS.Dict<string | number>) {
+    const sorted = [];
+    for(const key of Object.keys(dict)) {
+        sorted[sorted.length] = key;
+    }
+    sorted.sort();
+
+    const tempDict:any = {};
+    // for(let i = 0; i < sorted.length; i++) {
+    //     tempDict[sorted[i]] = dict[sorted[i]];
+    // }
+    for(const item of sorted) {
+        tempDict[item] = dict[item];
+    }
+    return tempDict;
 }

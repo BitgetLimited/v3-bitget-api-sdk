@@ -36,6 +36,9 @@ func (p *BitgetRestClient) DoPost(uri string, params string) (string, error) {
 	//body, _ := internal.BuildJsonParams(params)
 
 	sign := p.Signer.Sign(constants.POST, uri, params, timesStamp)
+	if constants.RSA == config.SignType {
+		sign = p.Signer.SignByRSA(constants.POST, uri, params, timesStamp)
+	}
 	requestUrl := config.BaseUrl + uri
 
 	buffer := strings.NewReader(params)
@@ -65,6 +68,7 @@ func (p *BitgetRestClient) DoPost(uri string, params string) (string, error) {
 func (p *BitgetRestClient) DoGet(uri string, params map[string]string) (string, error) {
 	timesStamp := internal.TimesStamp()
 	body := internal.BuildGetParams(params)
+	//fmt.Println(body)
 
 	sign := p.Signer.Sign(constants.GET, uri, body, timesStamp)
 
