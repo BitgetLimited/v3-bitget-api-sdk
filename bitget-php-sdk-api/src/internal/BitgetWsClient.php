@@ -16,6 +16,4 @@ interface BitgetWsClient
 
     public function subscribe(array $req,Listener $listener): void;
 
-
-
 }

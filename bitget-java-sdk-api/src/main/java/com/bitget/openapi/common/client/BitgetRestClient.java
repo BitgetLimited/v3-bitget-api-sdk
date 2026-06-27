@@ -1,8 +1,6 @@
 package com.bitget.openapi.common.client;
 
-import com.bitget.openapi.BrokerApiFacade;
-import com.bitget.openapi.MixApiFacade;
-import com.bitget.openapi.SpotApiFacade;
+import com.bitget.openapi.BitgetApiFacade;
 import com.bitget.openapi.common.constant.HttpHeader;
 import com.bitget.openapi.common.domain.ClientParameter;
 import com.bitget.openapi.common.enums.SupportedLocaleEnum;
@@ -37,24 +35,17 @@ public class BitgetRestClient {
     }
 
     /**
-     * spot rest api
-     *
-     * @return
+     * mix api
      */
-    public SpotApiFacade spot() {
-        return new SpotApiFacade(apiClient);
+    public BitgetApiFacade bitget() {
+        return new BitgetApiFacade(apiClient);
     }
 
     /**
      * mix api
-     * @return
      */
-    public MixApiFacade mix() {
-        return new MixApiFacade(apiClient);
-    }
-
-    public BrokerApiFacade broker() {
-        return new BrokerApiFacade(apiClient);
+    public Builder configuration(ClientParameter value) {
+        return new Builder().configuration(value);
     }
 
     public static class Builder {

@@ -2,6 +2,7 @@ package com.bitget.openapi.ws;
 
 import com.bitget.openapi.dto.request.ws.SubscribeReq;
 import com.bitget.openapi.dto.request.ws.WsBaseReq;
+
 import java.util.List;
 
 public interface BitgetWsClient {
@@ -14,7 +15,7 @@ public interface BitgetWsClient {
 
     void subscribe(List<SubscribeReq> list);
 
-    void subscribe(List<SubscribeReq> list,SubscriptionListener listener);
+    void subscribe(List<SubscribeReq> list, SubscriptionListener listener);
 
     void login();
 }

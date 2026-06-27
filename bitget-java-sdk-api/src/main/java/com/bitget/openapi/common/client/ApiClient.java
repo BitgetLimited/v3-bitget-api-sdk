@@ -1,18 +1,24 @@
 package com.bitget.openapi.common.client;
 
+import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.bitget.openapi.common.constant.HttpHeader;
 import com.bitget.openapi.common.domain.ClientParameter;
+import com.bitget.openapi.common.enums.SignTypeEnum;
 import com.bitget.openapi.common.utils.SignatureUtils;
-import okhttp3.Interceptor;
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.Response;
+import com.bitget.openapi.dto.response.ResponseResult;
+import okhttp3.*;
 import okio.Buffer;
+import org.apache.commons.collections4.CollectionUtils;
+import org.apache.commons.lang3.StringUtils;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
+import java.util.Set;
+import java.util.TreeMap;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -20,9 +26,11 @@ import java.util.concurrent.TimeUnit;
  * @date 2019-01-15
  */
 public class ApiClient {
+
     private final Retrofit retrofit;
+
     /**
-     * parameter
+     * 超时时间
      */
     private final ClientParameter parameter;
 
@@ -49,7 +57,7 @@ public class ApiClient {
     }
 
     /**
-     * Signature Filter
+     * 签名过滤器
      */
     private class SignInterceptor implements Interceptor {
 
@@ -64,13 +72,29 @@ public class ApiClient {
             Request original = chain.request();
             String timestamp = String.valueOf(System.currentTimeMillis());
             String contentType = "application/json";
+            String sortedQuery = getSortedQuery(original); // original.url().encodedQuery();
+            String url = parseToString(original.url().scheme())
+                    + "://"
+                    + parseToString(original.url().host())
+                    + parseToString(original.url().url().getPath());
+            if (StringUtils.isNotBlank(sortedQuery)) {
+                url = url + "?" + sortedQuery;
+            }
             try {
                 String sign = SignatureUtils.generate(timestamp,
                         original.method(),
                         original.url().url().getPath(),
-                        original.url().encodedQuery(),
+                        sortedQuery, // original.url().encodedQuery(),
                         original.body() == null ? "" : bodyToString(original),
                         clientParameter.getSecretKey());
+                if (SignTypeEnum.RSA == clientParameter.getSignType()) {
+                    sign = SignatureUtils.restGenerateRsaSignature(timestamp,
+                            original.method(),
+                            original.url().url().getPath(),
+                            sortedQuery, // original.url().encodedQuery(),
+                            original.body() == null ? "" : bodyToString(original),
+                            clientParameter.getSecretKey());
+                }
 
                 String localFormat = "locale=%s";
                 Request.Builder requestBuilder = original.newBuilder()
@@ -80,7 +104,9 @@ public class ApiClient {
                         .addHeader(HttpHeader.CONTENT_TYPE, contentType)
                         .addHeader(HttpHeader.COOKIE, String.format(localFormat, clientParameter.getLocale()))
                         .addHeader(HttpHeader.LOCALE, clientParameter.getLocale())
-                        .addHeader(HttpHeader.ACCESS_TIMESTAMP, timestamp);
+                        .addHeader(HttpHeader.ACCESS_TIMESTAMP, timestamp)
+                        .url(url);
+
                 Request request = requestBuilder.build();
                 return chain.proceed(request);
             } catch (Exception e) {
@@ -98,10 +124,53 @@ public class ApiClient {
                 throw new RuntimeException(e);
             }
         }
+
+        private String parseToString(String value) {
+            if (StringUtils.isBlank(value)) {
+                return "";
+            }
+            return value;
+        }
+
+        private String getSortedQuery(Request original) {
+            if (CollectionUtils.isEmpty(original.url().queryParameterNames())) {
+                return "";
+            }
+
+            Set<String> keys = original.url().queryParameterNames();
+            TreeMap<String, Object> params = new TreeMap<>();
+            for (String key : keys) {
+                if (StringUtils.isBlank(key)) {
+                    continue;
+                }
+
+                params.put(key, original.url().queryParameter(key));
+            }
+            if (params.size() == 0) {
+                return "";
+            }
+
+            return composeParams(params);
+        }
+
+        private String composeParams(TreeMap<String, Object> params) {
+            StringBuffer sb = new StringBuffer();
+            params.forEach((s, o) -> {
+                try {
+                    sb.append(s).append("=").append(o).append("&");
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            });
+            if (sb.length() > 0) {
+                sb.deleteCharAt(sb.length() - 1);
+            }
+            return sb.toString();
+        }
     }
 
     /**
-     * Http request return status filter
+     * http 请求返回状态过滤器
      */
     private class HttpStatusInterceptor implements Interceptor {
         @Override
@@ -111,8 +180,19 @@ public class ApiClient {
                 return response;
             }
 
-            throw new RuntimeException(" call " + chain.request().url().url().getPath()
-                    + " failed, status : " + response.code() + ", body : " + response.body().string());
+            if (response.body() == null) {
+                throw new RuntimeException("empty response body httpCode:" + response.code());
+            }
+
+            try {
+                ResponseResult bizResponse = JSONObject.parseObject(response.body().string(), ResponseResult.class);
+                bizResponse.setHttpCode(String.valueOf(response.code()));
+                MediaType contentType = response.body().contentType();
+                ResponseBody body = ResponseBody.create(contentType, JSON.toJSONString(bizResponse));
+                return response.newBuilder().code(200).body(body).build();
+            } catch (Exception e) {
+                throw new RuntimeException("parse response error:" + e.getMessage());
+            }
         }
     }
 }

@@ -6,8 +6,9 @@ import javax.crypto.Mac;
 import javax.crypto.spec.SecretKeySpec;
 import javax.management.RuntimeErrorException;
 import java.io.UnsupportedEncodingException;
-import java.security.InvalidKeyException;
-import java.security.NoSuchAlgorithmException;
+import java.nio.charset.StandardCharsets;
+import java.security.*;
+import java.security.spec.PKCS8EncodedKeySpec;
 import java.util.Base64;
 
 /**
@@ -29,7 +30,7 @@ public class SignatureUtils {
     }
 
     /**
-     * signature algorithm
+     * Rest HMAC签名算法
      *
      * @param timestamp
      * @param method
@@ -38,8 +39,8 @@ public class SignatureUtils {
      * @param body
      * @param secretKey
      * @return java.lang.String
-     * @description ACCESS-SIGN of The request header is correct timestamp + method + requestPath
-     * + "?" + queryString + body The string (+indicates string connection) is encrypted using the HMAC SHA256 method and output through BASE64 encoding。
+     * @description ACCESS-SIGN的请求头是对 timestamp + method + requestPath
+     * + "?" + queryString + body 字符串(+表示字符串连接)使用 HMAC SHA256 方法加密，通过BASE64 编码输出而得到的。
      * @author jian.li
      * @date 2020-06-02 17:04
      */
@@ -61,7 +62,33 @@ public class SignatureUtils {
     }
 
     /**
-     * websocket Signature encryption
+     * Rest RSA签名算法
+     * @param timestamp
+     * @param method
+     * @param requestPath
+     * @param queryString
+     * @param body
+     * @param secretKey
+     * @return
+     * @throws CloneNotSupportedException
+     * @throws InvalidKeyException
+     * @throws UnsupportedEncodingException
+     */
+    public static String restGenerateRsaSignature(String timestamp, String method, String requestPath,
+                                  String queryString, String body, String secretKey)
+            throws CloneNotSupportedException, InvalidKeyException, UnsupportedEncodingException {
+
+        method = method.toUpperCase();
+        body = StringUtils.defaultIfBlank(body, StringUtils.EMPTY);
+        queryString = StringUtils.isBlank(queryString) ? StringUtils.EMPTY : "?" + queryString;
+
+        String preHash = timestamp + method + requestPath + queryString + body;
+        System.out.println(preHash);
+        return genRsaSignature(preHash, secretKey);
+    }
+
+    /**
+     * websocket 签名加密
      * @param timestamp
      * @param method
      * @param requestPath
@@ -81,8 +108,9 @@ public class SignatureUtils {
         mac.init(secretKeySpec);
         return Base64.getEncoder().encodeToString(mac.doFinal(preHash.getBytes(SignatureUtils.CHARSET)));
     }
+
     /**
-     * Ws signature
+     * ws HMAC签名
      * @param timestamp
      * @param secretKey
      * @return
@@ -97,14 +125,34 @@ public class SignatureUtils {
         return Base64.getEncoder().encodeToString(mac.doFinal(preHash.getBytes(SignatureUtils.CHARSET)));
     }
 
-    public static void main(String[] args) throws Exception {
-        String msg = generate("1606981450", "GET", "/user/verify", null, null, "9ae40dd0f6074f9e2714e3ef9f9ed0ac33a049d85a38c02cc42873f03308f1fa");
-        System.out.println(msg);
-
-
-        String msg1 = generate("1674363384733", "POST", "/api/mix/v1/plan/placePlan", null, "{“symbol”: “SBTCSUSDT_SUMCBL”,“marginCoin”: “SUSDT”,“size”: “10”, “triggerPrice”: “11000”,“side”: “open_long”,“orderType”: “market”,“triggerType”: “market_price”,“clientOid”: “BITGET#8486913695”,“presetTakeProfitPrice”: “13000”,“presetStopLossPrice”: “10500”,“timeInForceValue”: “normal”}", "8c1e6b243cc08f7450b3ab48956af4797e7887e3a73dfe582edc75917b726bad");
-        System.out.println(msg1);
-
+    /**
+     * ws RSA签名
+     * @param timestamp
+     * @param secretKey
+     * @return
+     */
+    public static  String wsGenerateRsaSignature(String timestamp,String secretKey)throws  CloneNotSupportedException,
+            InvalidKeyException, UnsupportedEncodingException{
+        String preHash = timestamp + "GET" + "/user/verify";
+        return genRsaSignature(preHash, secretKey);
     }
 
+    public static String genRsaSignature(String content, String privateKey) {
+        try {
+            String parsedPem = privateKey.replace("\n", "").trim();
+            parsedPem = parsedPem
+                    .replace("-----BEGIN PRIVATE KEY-----", "")
+                    .replace("-----END PRIVATE KEY-----", "");
+            PKCS8EncodedKeySpec priPKCS8 = new PKCS8EncodedKeySpec(Base64.getDecoder().decode(parsedPem.getBytes("UTF-8")));
+            KeyFactory keyFactory = KeyFactory.getInstance("RSA");
+            PrivateKey priKey = keyFactory.generatePrivate(priPKCS8);
+            Signature signature = Signature.getInstance("SHA256WithRSA");
+            signature.initSign(priKey);
+            signature.update(content.getBytes(StandardCharsets.UTF_8));
+            String sign = new String(Base64.getEncoder().encode(signature.sign()), "UTF-8");
+            return sign;
+        } catch (Exception ex) {
+            throw new RuntimeException("create sign  failed", ex);
+        }
+    }
 }

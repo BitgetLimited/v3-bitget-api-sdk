@@ -1,13 +1,14 @@
 package config
 
+import "bitget/constants"
+
 const (
-	//restApi config
-	BaseUrl       = "https://api.bitget.com"
+	BaseUrl = "https://api.bitget.com"
+	WsUrl   = "wss://ws.bitget.com/mix/v1/stream"
+
 	ApiKey        = ""
 	SecretKey     = ""
 	PASSPHRASE    = ""
 	TimeoutSecond = 30
-
-	//websocket config
-	WsUrl = "wss://ws.bitget.com/spot/v1/stream"
+	SignType      = constants.SHA256
 )

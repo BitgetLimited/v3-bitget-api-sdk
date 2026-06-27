@@ -13,11 +13,12 @@
   },
   "dependencies": {
     "axios": "^0.19.2",
-    "crypto": "^1.0.1",
-    "querystring": "^0.2.0",
-    "ws": "^6.1.4",
     "crc-32": "^1.2.0",
-    "pako": "^1.0.8"
+    "crypto": "^1.0.1",
+    "node-rsa": "^1.1.1",
+    "pako": "^1.0.8",
+    "querystring": "^0.2.0",
+    "ws": "^6.1.4"
   },
   "devDependencies": {
     "@types/axios": "^0.14.0",
@@ -37,7 +38,6 @@
       "pre-commit": "npm run lint"
     }
   },
-
   "author": "bitget openapi",
   "license": "ISC"
 }

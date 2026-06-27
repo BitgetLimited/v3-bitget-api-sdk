@@ -14,7 +14,8 @@ class BitgetAPIException(Exception):
                 self.code = json_res['code']
                 self.message = json_res['msg']
             else:
-                print(json_res)
+                self.code = 'Please wait a moment'
+                self.message = 'Maybe something is wrong'
 
         self.status_code = response.status_code
         self.response = response

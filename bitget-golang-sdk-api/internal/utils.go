@@ -4,10 +4,10 @@ import (
 	"bitget/constants"
 	"encoding/json"
 	"errors"
-	"math"
 	"net/http"
-	"net/url"
+	"sort"
 	"strconv"
+	"strings"
 	"time"
 )
 
@@ -45,13 +45,35 @@ func BuildJsonParams(params map[string]string) (string, error) {
 }
 
 func BuildGetParams(params map[string]string) string {
-	urlParams := url.Values{}
-	if params != nil && len(params) > 0 {
-		for k := range params {
-			urlParams.Add(k, params[k])
-		}
+	//urlParams := url.Values{}
+	//if params != nil && len(params) > 0 {
+	//	for k := range params {
+	//		urlParams.Add(k, params[k])
+	//	}
+	//}
+	//return "?" + urlParams.Encode()
+	if len(params) == 0 {
+		return ""
 	}
-	return "?" + urlParams.Encode()
+	return "?" + SortParams(params)
+}
+
+func SortParams(params map[string]string) string {
+	keys := make([]string, len(params))
+	i := 0
+	for k, _ := range params {
+		keys[i] = k
+		i++
+	}
+	sort.Strings(keys)
+	sorted := make([]string, len(params))
+	i = 0
+	for _, k := range keys {
+		//sorted[i] = k + "=" + url.QueryEscape(params[k])
+		sorted[i] = k + "=" + params[k]
+		i++
+	}
+	return strings.Join(sorted, "&")
 }
 
 func JSONToMap(str string) map[string]interface{} {
@@ -77,25 +99,4 @@ func ToJson(v interface{}) (string, error) {
 		return "", err
 	}
 	return string(result), nil
-}
-func powerf(x float64, n int) float64 {
-	ans := 1.0
-	for n != 0 {
-		if n%2 == 1 {
-			ans *= x
-		}
-		x *= x
-		n /= 2
-	}
-	return ans
-}
-
-func GetSignedInt(checksum string) string {
-	c, _ := strconv.ParseUint(checksum, 10, 64)
-
-	if c > math.MaxInt32 {
-		a := c - (1<<31-1)*2 - 2
-		return strconv.FormatUint(a, 10)
-	}
-	return checksum
 }
