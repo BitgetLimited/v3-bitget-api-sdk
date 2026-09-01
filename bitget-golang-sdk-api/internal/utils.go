@@ -93,6 +93,10 @@ func NewParams() map[string]string {
 	return make(map[string]string)
 }
 
+func NewParamsArrStr() map[string][]string {
+	return make(map[string][]string)
+}
+
 func ToJson(v interface{}) (string, error) {
 	result, err := json.Marshal(v)
 	if err != nil {

@@ -23,6 +23,15 @@ func (p *BitgetApiClient) Post(url string, params map[string]string) (string, er
 	return resp, err
 }
 
+func (p *BitgetApiClient) PostArr(url string, params map[string][]string) (string, error) {
+	postBody, jsonErr := internal.ToJson(params)
+	if jsonErr != nil {
+		return "", jsonErr
+	}
+	resp, err := p.BitgetRestClient.DoPost(url, postBody)
+	return resp, err
+}
+
 func (p *BitgetApiClient) Get(url string, params map[string]string) (string, error) {
 	resp, err := p.BitgetRestClient.DoGet(url, params)
 	return resp, err
