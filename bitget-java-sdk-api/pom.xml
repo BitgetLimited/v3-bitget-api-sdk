@@ -20,7 +20,7 @@
         <commons-codec-version>1.14</commons-codec-version>
         <junit-version>4.12</junit-version>
         <commons-collections4>4.4</commons-collections4>
-        <google-guava>27.1-jre</google-guava>
+        <google-guava>32.0.0-jre</google-guava>
     </properties>
 
     <dependencies>
