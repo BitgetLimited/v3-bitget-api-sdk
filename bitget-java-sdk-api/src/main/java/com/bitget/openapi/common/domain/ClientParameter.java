@@ -6,6 +6,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.net.Proxy;
+
 /**
  * @author bitget-sdk-team
  * @date 2019-01-15
@@ -50,4 +52,15 @@ public class ClientParameter {
      * 签名类型
      */
     private SignTypeEnum signType = SignTypeEnum.SHA256;
+
+
+    /**
+     * 代理配置
+     */
+    private Proxy proxy;
+
+     /**
+     * 是否是模拟交易
+     */
+    private boolean isPapTrading = false;
 }

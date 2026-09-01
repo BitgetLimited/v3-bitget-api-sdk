@@ -21,4 +21,5 @@ public class HttpHeader {
     public static final String CONTENT_TYPE = "Content-Type";
     public static final String LOCALE = "locale";
     public static final String COOKIE = "Cookie";
+    public static final String PAPTRADING = "paptrading";
 }

@@ -53,6 +53,7 @@ public class ApiClient {
                 .addInterceptor(new HttpStatusInterceptor())
                 .connectTimeout(parameter.getTimeout(), TimeUnit.SECONDS)
                 .readTimeout(parameter.getTimeout(), TimeUnit.SECONDS)
+                .proxy(parameter.getProxy())
                 .build();
     }
 
@@ -106,6 +107,10 @@ public class ApiClient {
                         .addHeader(HttpHeader.LOCALE, clientParameter.getLocale())
                         .addHeader(HttpHeader.ACCESS_TIMESTAMP, timestamp)
                         .url(url);
+
+                if (clientParameter.isPapTrading()) {
+                    requestBuilder.addHeader(HttpHeader.PAPTRADING, "1");
+                }
 
                 Request request = requestBuilder.build();
                 return chain.proceed(request);
